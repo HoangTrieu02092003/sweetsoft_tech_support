@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<h2>Đăng nhập</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" required />
+    </div>
+    <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <input type="password" class="form-control" id="password" name="password" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+</form>
+
+@if (ViewData.ModelState[""]?.Errors.Count > 0)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState[""].Errors)
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}

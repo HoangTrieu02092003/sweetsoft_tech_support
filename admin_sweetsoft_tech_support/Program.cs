@@ -1,4 +1,20 @@
+﻿using admin_sweetsoft_tech_support.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<RequestContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionDB")));
+
+// Thêm dịch vụ Authentication với Cookie Authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Admin/Login"; // Trang đăng nhập
+        options.LogoutPath = "/Admin/Logout"; // Trang đăng xuất
+        options.AccessDeniedPath = "/Admin/Login"; // Nếu không có quyền, chuyển đến trang đăng nhập
+    });
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -18,10 +34,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Admin}/{action=Login}/{id?}");
 
 app.Run();
