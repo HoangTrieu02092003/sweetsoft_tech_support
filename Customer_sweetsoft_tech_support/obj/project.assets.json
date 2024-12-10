@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\NHAN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ThucTapSweetSoft\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj",
+      "projectUniqueName": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj",
       "projectName": "Customer_sweetsoft_tech_support",
-      "projectPath": "D:\\ThucTapSweetSoft\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\ThucTapSweetSoft\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\obj\\",
+      "projectPath": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj",
+      "packagesPath": "C:\\Users\\NHAN\\.nuget\\packages\\",
+      "outputPath": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\NHAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -70,7 +70,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
