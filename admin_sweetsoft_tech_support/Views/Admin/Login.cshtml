@@ -1,0 +1,183 @@
+﻿@{
+    Layout = null;
+}
+<!-- stylesheet -->
+<link href="~/assets/css/styles.min.css" rel="stylesheet" />
+<link href="~/assets/libs/bootstrap/dist/css/bootstrap.min.css" />
+<!-- CSS -->
+<style>
+
+    .login-container {
+        width: 100%;
+        max-width: 400px;
+        border: 1px solid #6a1b9a; 
+        padding: 15px;
+        border-radius: 8px;
+        background: #f9f9f9; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #6a1b9a;
+        margin-bottom: 1rem;
+    }
+
+    .form-floating-label {
+        position: relative;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-floating-label input {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 1rem;
+        border: 1px solid #ddd; 
+        border-radius: 4px;
+        background: transparent;
+        outline: none;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .form-floating-label label {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        transform: translateY(-50%);
+        padding: 0 4px;
+        font-size: 1rem;
+        color: #aaa; 
+        pointer-events: none;
+        transition: all 0.2s ease-in-out;
+    }
+
+   
+    .form-floating-label input:focus {
+        border-color: #6a1b9a; 
+    }
+
+    .form-floating-label input:focus + label,
+    .form-floating-label input:not(:placeholder-shown) + label {
+        top: -8px;
+        transform: translateY(0) scale(0.85);
+        background-color: #f9f9f9;
+        color: #6a1b9a; 
+    }
+
+    .input-group {
+        position: relative;
+    }
+
+    .input-group .input-group-text {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    
+    .input-group .input-group-text:hover {
+        color: #ffb300; 
+    }
+
+    
+    button {
+        background-color: #ffb300; 
+        border-color: #ffb300; 
+        color: #fff; 
+    }
+
+    button:hover {
+        background-color: #ff9800; 
+        border-color: #ff9800; 
+    }
+
+    .text-center a {
+        color: #6a1b9a; 
+    }
+
+    .text-center a:hover {
+        color: #ffb300; 
+    }
+</style>
+
+<!-- Login Form -->
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <div class="login-container">
+        <h2 class="login-title text-center">Đăng nhập</h2>
+
+        @if (ViewData.ModelState[""]?.Errors.Count > 0)
+        {
+            <div class="alert alert-danger">
+                @foreach (var error in ViewData.ModelState[""].Errors)
+                {
+                    <p class="mb-0">@error.ErrorMessage</p>
+                }
+            </div>
+        }
+
+        <form method="post" class="needs-validation" novalidate>
+            <div class="form-floating-label">
+                <input type="text" id="username" name="username" placeholder=" " required />
+                <label for="username">Tên đăng nhập</label>
+                <div class="invalid-feedback">
+                    Vui lòng nhập tên đăng nhập.
+                </div>
+            </div>
+            <div class="form-floating-label input-group">
+                <input type="password" id="password" name="password" placeholder=" " required />
+                <label for="password">Mật khẩu</label>
+                <span class="input-group-text" id="togglePassword">
+                    <i class="fas fa-eye"></i>
+                </span>
+                <div class="invalid-feedback">
+                    Vui lòng nhập mật khẩu.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-warning w-100">Đăng nhập</button>
+        </form>
+
+        <div class="text-center mt-3">
+            <a asp-action="ForgotPassword">Quên mật khẩu?</a>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    // Bootstrap validation
+    (() => {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+
+    // Show/Hide Password
+    const togglePassword = document.querySelector('#togglePassword');
+    const passwordField = document.querySelector('#password');
+
+    togglePassword.addEventListener('click', () => {
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+
+        // Toggle icon
+        togglePassword.innerHTML =
+            type === 'password'
+                ? '<i class="fas fa-eye"></i>'
+                : '<i class="fas fa-eye-slash"></i>';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<script src="~/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
