@@ -1,0 +1,141 @@
+﻿@model admin_sweetsoft_tech_support.Models.TblDepartment
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <style>
+        .title {
+            color: #6a1b9a;
+            padding: 15px;
+            text-align: center;
+            font-size: 34px;
+            font-weight: bold;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+                color: #333;
+            }
+
+            .form-group input[type="text"] {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 16px;
+                box-sizing: border-box;
+            }
+
+                .form-group input[type="text"]:focus {
+                    outline: none;
+                    border-color: #6a1b9a;
+                    box-shadow: 0 0 5px rgba(106, 27, 154, 0.3);
+                }
+
+            .form-group input[type="radio"] {
+                width: auto;
+                margin-right: 5px;
+            }
+
+            .form-group div {
+                display: flex;
+                justify-content: start; /* Căn chỉnh các nút radio trên cùng một dòng */
+                align-items: center;
+            }
+
+                .form-group div label {
+                    font-size: 16px;
+                    font-weight: normal;
+                    color: #333;
+                    margin-right: 20px; /* Khoảng cách giữa các nút radio */
+                }
+
+            .form-group .text-danger {
+                font-size: 14px;
+                color: #dc3545;
+            }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .btn-custom {
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* Responsive Design */
+        @@media (max-width: 576px) {
+            .form-container {
+                padding: 15px;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        CHỈNH SỬA PHÒNG BAN
+    </div>
+    <div class="form-container">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DepartmentId" />
+            <div class="form-group">
+                <label asp-for="DepartmentName" class="control-label">Tên phòng ban</label>
+                <input asp-for="DepartmentName" class="form-control" />
+                <span asp-validation-for="DepartmentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Trạng thái</label>
+                <div>
+                    <label>
+                        <input type="radio" asp-for="Status" value="1" /> Hoạt động
+                    </label>
+                    <label style="margin-left: 20px;">
+                        <input type="radio" asp-for="Status" value="0" /> Tạm dừng
+                    </label>            
+                </div>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="btn-container">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-custom btn-danger">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

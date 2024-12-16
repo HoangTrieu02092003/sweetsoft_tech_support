@@ -1,5 +1,12 @@
+
+using admin_sweetsoft_tech_support.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<RequestContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionDB"))
+);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
