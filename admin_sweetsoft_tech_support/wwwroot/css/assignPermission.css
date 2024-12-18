@@ -1,0 +1,29 @@
+﻿.container {
+    max-width: 800px;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.btn-outline-primary, .btn-outline-info {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.form-check-label {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .btn-outline-dark, .btn-warning
+    {
+        font-size: 0.6rem;
+        min-width: 40%;
+    }
+
+    .form-check-label {
+        font-size: 0.9rem;
+    }
+
+}

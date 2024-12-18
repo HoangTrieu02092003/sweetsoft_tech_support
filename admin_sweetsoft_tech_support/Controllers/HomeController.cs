@@ -1,4 +1,4 @@
-using admin_sweetsoft_tech_support.Models;
+﻿using admin_sweetsoft_tech_support.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -20,6 +20,12 @@ namespace admin_sweetsoft_tech_support.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult AccessDenied()
+        {
+            TempData["ErrorMessage"] = "Bạn không có quyền truy cập vào chức năng này.";
             return View();
         }
 

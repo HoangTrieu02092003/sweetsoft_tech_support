@@ -1,0 +1,71 @@
+﻿@model int
+@{
+    ViewBag.Title = "Cấp quyền cho người dùng";
+
+    var requestPermissions = ViewBag.RequestPermissions as List<admin_sweetsoft_tech_support.Models.TblPermission>;
+    var managementPermissions = ViewBag.ManagementPermissions as List<admin_sweetsoft_tech_support.Models.TblPermission>;
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link href="~/css/assignPermission.css" rel="stylesheet">
+<h3 class="text-center">Cấp quyền cho @ViewBag.UserName</h3>
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-action="AssignPermissions">
+                <input type="hidden" name="userId" value="@Model" />
+
+                <!-- Yêu cầu -->
+                <div class="form-group mb-4">
+                    <a class="btn" style="color: #6a1b9a;" data-bs-toggle="collapse" data-bs-target="#requestPermissionsSection" aria-expanded="false" aria-controls="requestPermissionsSection">
+                        Yêu cầu <i class="bi bi-plus"></i>
+                    </a>
+                    <div id="requestPermissionsSection" class="collapse mt-2">
+                        <div class="row">
+                            @foreach (var permission in requestPermissions!)
+                            {
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-check m-2">
+                                        <input class="form-check-input" type="checkbox"
+                                               name="selectedPermissions"
+                                               value="@permission.PermissionId"
+                                        @(ViewBag.AssignedPermissions.Contains(permission.PermissionId) ? "checked" : "") />
+                                        <label class="form-check-label">@permission.PermissionName</label>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quản lý -->
+                <div class="form-group mb-4">
+                    <a class="btn" style="color: #6a1b9a;" data-bs-toggle="collapse" data-bs-target="#managementPermissionsSection" aria-expanded="false" aria-controls="managementPermissionsSection">
+                        Quản lý <i class="bi bi-plus"></i>
+                    </a>
+                    <div id="managementPermissionsSection" class="collapse mt-2">
+                        <div class="row">
+                            @foreach (var permission in managementPermissions!)
+                            {
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-check m-2">
+                                        <input class="form-check-input" type="checkbox"
+                                               name="selectedPermissions"
+                                               value="@permission.PermissionId"
+                                        @(ViewBag.AssignedPermissions.Contains(permission.PermissionId) ? "checked" : "") />
+                                        <label class="form-check-label">@permission.PermissionName</label>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <a asp-action="Index" class="btn btn-outline-dark m-2" style="width:20%;">Quay lại</a>
+                    <button type="submit" class="btn btn-warning m-2 w-100">Cấp quyền</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

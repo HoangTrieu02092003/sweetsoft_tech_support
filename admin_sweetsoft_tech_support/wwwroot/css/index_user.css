@@ -1,0 +1,53 @@
+﻿
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    background-color: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    color: #6a1b9a;
+    margin-bottom: 0.5rem;
+}
+
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Hiển thị linh hoạt */
+    gap: 1rem;
+    padding: 1rem;
+}
+
+/* Responsive: Màn hình nhỏ hơn 576px */
+@media (max-width: 576px) {
+    .card-container {
+        grid-template-columns: 1fr; /* Chỉ hiển thị 1 card mỗi hàng */
+    }
+
+    .card-actions a span, .card-actions button span {
+        display: none; /* Ẩn text, chỉ hiện icon */
+    }
+}
+
+.card-actions a, .card-actions button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+

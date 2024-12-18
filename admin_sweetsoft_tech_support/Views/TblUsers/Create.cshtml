@@ -1,0 +1,242 @@
+﻿@model admin_sweetsoft_tech_support.Models.TblUser
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f4f7fc;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container-custom {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 28px;
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .section-header {
+        background-color: #6a1b9a;
+        color: #fff;
+        padding: 12px;
+        text-align: center;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: 600;
+            color: #555;
+        }
+
+    .form-control {
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        transition: border-color 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #6a1b9a;
+            box-shadow: 0 0 5px rgba(106, 27, 154, 0.5);
+        }
+
+    .btn-back {
+        background-color: #e0e0e0;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        color: #333;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 20px;
+        transition: background-color 0.3s;
+    }
+
+        .btn-back:hover {
+            background-color: #bdbdbd;
+        }
+
+    .btn-submit {
+        background-color: mediumseagreen;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        border: none;
+        font-size: 16px;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+
+    .btn-submit:hover {
+        background-color: #399361;
+        color: black;
+    }
+
+    .form-group span {
+        font-size: 12px;
+        color: #d32f2f;
+    }
+
+    .form-group select,
+    .form-group input[type="password"] {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+
+    .form-group select {
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 16px;
+        width: 100%;
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+    }
+
+        .form-group select:focus {
+            border-color: #6a1b9a;
+            box-shadow: 0 0 5px rgba(106, 27, 154, 0.5);
+        }
+
+    .d-flex {
+        display: flex;
+        justify-content: flex-end;
+    }
+</style>
+
+<div class="container w-100 d-flex justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+        <div class="container-custom">
+            <div class="section-header">
+                <h1 class="text-white">Thêm người dùng</h1>
+            </div>
+            <form asp-action="Create">
+                <div class="d-flex justify-content-end">
+                    <a asp-action="Index" class="btn btn-back">
+                        <i class="ti ti-arrow-left"></i>
+                        Quay lại
+                    </a>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FullName" class="control-label text-dark">Họ và tên</label>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label text-dark">Email</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label text-dark">Số điện thoại</label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Username" class="control-label text-dark">Tên đăng nhập</label>
+                    <input asp-for="Username" class="form-control" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" hidden>
+                    <label asp-for="Password" class="control-label text-dark">Mật khẩu</label>
+                    <input asp-for="Password" class="form-control" value="Password123" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="RoleId" class="control-label text-dark">Nhóm quyền</label>
+                    <select asp-for="RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>
+                    <span asp-validation-for="RoleId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DepartmentId" class="control-label text-dark">Bộ phận</label>
+                    <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
+                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" hidden>
+                    <label asp-for="Status" class="control-label text-dark">Trạng thái</label>
+                    <input asp-for="Status" class="form-control" value="1" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" hidden>
+                    <label asp-for="IsAdmin" class="control-label text-dark">Quyền Admin</label>
+                    <input asp-for="IsAdmin" class="form-control" />
+                    <span asp-validation-for="IsAdmin" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" hidden>
+                    <label asp-for="ResetToken" class="control-label text-dark">Token reset mật khẩu</label>
+                    <input asp-for="ResetToken" class="form-control" value="1" />
+                    <span asp-validation-for="ResetToken" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" hidden>
+                    <label asp-for="ResetTokenExpiry" class="control-label text-dark">Hạn sử dụng Token</label>
+                    <input asp-for="ResetTokenExpiry" class="form-control" value="1" />
+                    <span asp-validation-for="ResetTokenExpiry" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" hidden>
+                    <label asp-for="CreatedUser" class="control-label text-dark">Người tạo</label>
+                    <select asp-for="CreatedUser" class="form-control" asp-items="ViewBag.CreatedUser"></select>
+                    <span asp-validation-for="CreatedUser" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" hidden>
+                    <label asp-for="CreatedAt" class="control-label text-dark">Ngày tạo</label>
+                    <input asp-for="CreatedAt" class="form-control" value="1" />
+                    <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" hidden>
+                    <label asp-for="UpdatedUser" class="control-label text-dark">Người cập nhật</label>
+                    <select asp-for="UpdatedUser" class="form-control" asp-items="ViewBag.UpdatedUser"></select>
+                    <span asp-validation-for="UpdatedUser" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" hidden>
+                    <label asp-for="UpdatedAt" class="control-label text-dark">Ngày cập nhật</label>
+                    <input asp-for="UpdatedAt" class="form-control" value="1" />
+                    <span asp-validation-for="UpdatedAt" class="text-danger"></span>
+                </div>
+
+                <div class="form-group text-center">
+                    <input type="submit" value="Tạo mới" class="btn btn-submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
