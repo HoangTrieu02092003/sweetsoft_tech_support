@@ -9640,19 +9640,40 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\NHAN\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\Khui\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+>>>>>>> origin/s_phongban
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj",
       "projectName": "Customer_sweetsoft_tech_support",
       "projectPath": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj",
       "packagesPath": "C:\\Users\\NHAN\\.nuget\\packages\\",
       "outputPath": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\obj\\",
+=======
+      "projectUniqueName": "D:\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj",
+      "projectName": "Customer_sweetsoft_tech_support",
+      "projectPath": "D:\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj",
+      "packagesPath": "C:\\Users\\Khui\\.nuget\\packages\\",
+      "outputPath": "D:\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\obj\\",
+>>>>>>> origin/s_phongban
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\NHAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\Khui\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> origin/s_phongban
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9660,7 +9681,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -9677,8 +9697,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
-      }
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -9732,7 +9753,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+>>>>>>> origin/s_phongban
       }
     }
   }

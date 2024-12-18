@@ -1,0 +1,189 @@
+﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblDepartment>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .list-container {
+            font-size: 16px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #fff;
+        }
+
+        .list-header {
+            font-weight: bold;
+            font-size: 18px;
+            color: #6a1b9a;
+        }
+
+        .list-body {
+            margin-top: 5px;
+        }
+
+        .list-footer {
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .btn:active {
+            transform: translateY(2px); 
+        }
+
+        .header {
+            color: #6a1b9a;
+            padding: 15px;
+            text-align: center;
+            font-size: 34px;
+            font-weight: bold;
+        }
+
+        /* Responsive adjustments */
+        @@media (max-width: 576px) {
+            .modal-dialog {
+                max-width: 90%; /* Giới hạn chiều rộng của modal trên thiết bị di động */
+            }
+
+            .modal-content {
+                padding: 10px; /* Thêm padding cho nội dung modal */
+            }
+
+            .form-select {
+                font-size: 14px; /* Giảm kích thước chữ cho select box */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        PHÒNG BAN
+    </div>
+    <div class="btn-container" style="text-align: right; margin-bottom: 20px;">
+        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal"> <i class="bi bi-plus-circle"></i> Tạo mới</a>
+    </div>
+    <div>
+    </div>
+    <!-- List Container -->
+    <div class="list-container">
+        @foreach (var item in Model)
+        {
+            <div class="list-item">
+                <div class="list-header">
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </div>
+                <div class="list-body">
+                    <div>
+                        Trạng thái:
+                        <span class="@(item.Status == 1 ? "text-success" : "text-danger")">
+                            @(item.Status == 1 ? "Đang hoạt động" : "Tạm dừng")
+                        </span>
+                    </div>                  
+                </div>
+                <div class="list-footer">
+                    <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.DepartmentId">
+                        <i class="bi bi-pencil-square"></i> Chỉnh sửa
+                    </a>
+                    <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.DepartmentId">
+                        <i class="bi bi-trash"></i> Xóa
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Create -->
+            <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="createModalLabel">Tạo mới phòng ban</h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form asp-action="Create" method="post">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="newDepartmentName" class="form-label">Tên phòng ban</label>
+                                    <input type="text" id="newDepartmentName" name="DepartmentName" class="form-control" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newStatus" class="form-label">Trạng thái</label>
+                                    <select id="newStatus" name="Status" class="form-select" required>
+                                        <option value="1">Hoạt động</option>
+                                        <option value="0">Tạm dừng</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                                <button type="submit" class="btn btn-primary">Lưu</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal delete -->
+            <div class="modal fade" id="deleteModal-@item.DepartmentId" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="deleteModalLabel">
+                                Xóa phòng ban
+                            </h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Bạn có muốn xóa phòng ban này không?
+                            <div id="errorMessage-@item.DepartmentId" class="text-danger mt-2"></div> <!-- Thông báo lỗi -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+                            <form id="deleteForm-@item.DepartmentId" asp-action="Delete" asp-route-id="@item.DepartmentId" method="post" onsubmit="event.preventDefault(); deleteDepartment(@item.DepartmentId)">
+                                <button type="submit" class="btn btn-danger">Xóa</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
+<script>
+    // Hàm xử lý xóa phòng ban
+    function deleteDepartment(departmentId) {
+        const form = document.querySelector(`#deleteForm-${departmentId}`);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Nếu xóa thành công, đóng modal và làm mới danh sách
+                window.location.reload();
+            } else {
+                // Nếu có lỗi, hiển thị thông báo trong modal
+                document.getElementById(`errorMessage-${departmentId}`).innerText = data.message;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
