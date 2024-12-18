@@ -1,47 +1,93 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = admin_sweetsoft_tech_support
 build_property.RootNamespace = admin_sweetsoft_tech_support
-build_property.ProjectDir = D:\ThucTap\sweetsoft_tech_support\admin_sweetsoft_tech_support\
+build_property.ProjectDir = D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\ThucTap\sweetsoft_tech_support\admin_sweetsoft_tech_support
+build_property.MSBuildProjectDirectory = D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support
 build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
 
-[D:/ThucTap/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Home/Index.cshtml]
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Admin/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRm9yZ290UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Admin/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Admin/ResedtPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVzZWR0UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ThucTap/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Home/Privacy.cshtml]
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ThucTap/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Shared/Error.cshtml]
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ThucTap/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Shared/_Layout_admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRfYWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ThucTap/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/_ViewImports.cshtml]
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/TblCustomers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsQ3VzdG9tZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/TblCustomers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsQ3VzdG9tZXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/TblCustomers/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsQ3VzdG9tZXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/TblCustomers/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsQ3VzdG9tZXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/TblCustomers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsQ3VzdG9tZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ThucTap/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/_ViewStart.cshtml]
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ThucTap/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Shared/_Layout.cshtml]
+[D:/Sweetsoft/sweetsoft_tech_support/admin_sweetsoft_tech_support/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-iqcqu1aoht
