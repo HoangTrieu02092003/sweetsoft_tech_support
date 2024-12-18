@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using admin_sweetsoft_tech_support.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,17 @@ builder.Services.AddSession(options =>
         options.Cookie.HttpOnly = true;
         options.Cookie.IsEssential = true;
     });
+=======
+
+using admin_sweetsoft_tech_support.Models;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<RequestContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionDB"))
+);
+>>>>>>> origin/s_phongban
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

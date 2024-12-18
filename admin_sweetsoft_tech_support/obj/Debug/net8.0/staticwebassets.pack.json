@@ -1,6 +1,7 @@
 {
   "Files": [
     {
+<<<<<<< HEAD
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\admin_sweetsoft_tech_support.bundle.scp.css",
       "PackagePath": "staticwebassets\\admin_sweetsoft_tech_support.bundle.scp.css"
     },
@@ -2814,7 +2815,2810 @@
     },
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+=======
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\admin_sweetsoft_tech_support.bundle.scp.css",
+      "PackagePath": "staticwebassets\\admin_sweetsoft_tech_support.k3o5xdal7l.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\css\\icons\\tabler-icons\\fonts\\tabler-icons.eot",
+      "PackagePath": "staticwebassets\\assets\\css\\icons\\tabler-icons\\fonts\\tabler-icons.eot"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\css\\icons\\tabler-icons\\fonts\\tabler-icons.svg",
+      "PackagePath": "staticwebassets\\assets\\css\\icons\\tabler-icons\\fonts\\tabler-icons.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\css\\icons\\tabler-icons\\fonts\\tabler-icons.ttf",
+      "PackagePath": "staticwebassets\\assets\\css\\icons\\tabler-icons\\fonts\\tabler-icons.ttf"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\css\\icons\\tabler-icons\\fonts\\tabler-icons.woff",
+      "PackagePath": "staticwebassets\\assets\\css\\icons\\tabler-icons\\fonts\\tabler-icons.woff"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\css\\icons\\tabler-icons\\fonts\\tabler-icons.woff2",
+      "PackagePath": "staticwebassets\\assets\\css\\icons\\tabler-icons\\fonts\\tabler-icons.woff2"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\css\\icons\\tabler-icons\\tabler-icons.css",
+      "PackagePath": "staticwebassets\\assets\\css\\icons\\tabler-icons\\tabler-icons.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\css\\styles.css",
+      "PackagePath": "staticwebassets\\assets\\css\\styles.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\css\\styles.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\styles.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\backgrounds\\product-tip.png",
+      "PackagePath": "staticwebassets\\assets\\images\\backgrounds\\product-tip.png"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\backgrounds\\rocket.png",
+      "PackagePath": "staticwebassets\\assets\\images\\backgrounds\\rocket.png"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\blog\\blog-img1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\blog-img1.jpg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\blog\\blog-img2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\blog-img2.jpg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\blog\\blog-img3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\blog-img3.jpg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\logos\\logo-light.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\logos\\logo-light.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\logos\\seodashlogo.png",
+      "PackagePath": "staticwebassets\\assets\\images\\logos\\seodashlogo.png"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\products\\s1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\products\\s1.jpg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\products\\s11.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\products\\s11.jpg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\products\\s4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\products\\s4.jpg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\products\\s5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\products\\s5.jpg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\products\\s7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\products\\s7.jpg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\profile\\user-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\profile\\user-1.jpg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\profile\\user-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\profile\\user-2.jpg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\profile\\user-3 (1).jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\profile\\user-3 (1).jpg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\profile\\user-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\profile\\user-3.jpg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\js\\app.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\app.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\js\\dashboard.js",
+      "PackagePath": "staticwebassets\\assets\\js\\dashboard.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\js\\sidebarmenu.js",
+      "PackagePath": "staticwebassets\\assets\\js\\sidebarmenu.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\LICENSE",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\README.md",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\README.md"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\apexcharts.amd.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\apexcharts.amd.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\apexcharts.common.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\apexcharts.common.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\apexcharts.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\apexcharts.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\apexcharts.esm.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\apexcharts.esm.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\apexcharts.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\apexcharts.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\apexcharts.min.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\apexcharts.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\ar.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\ar.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\ca.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\ca.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\cs.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\cs.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\de.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\de.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\el.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\el.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\en.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\en.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\es.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\es.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\et.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\et.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\fa.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\fa.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\fi.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\fi.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\fr.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\fr.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\he.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\he.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\hi.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\hi.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\hr.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\hr.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\hu.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\hu.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\hy.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\hy.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\id.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\id.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\it.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\it.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\ja.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\ja.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\ka.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\ka.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\ko.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\ko.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\lt.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\lt.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\lv.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\lv.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\nb.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\nb.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\nl.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\nl.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\pl.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\pl.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\pt-br.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\pt-br.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\pt.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\pt.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\rs.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\rs.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\ru.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\ru.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\se.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\se.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\sk.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\sk.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\sl.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\sl.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\sq.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\sq.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\th.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\th.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\tr.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\tr.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\ua.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\ua.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\zh-cn.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\zh-cn.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\dist\\locales\\zh-tw.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\dist\\locales\\zh-tw.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\package.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\package.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\apexcharts.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\apexcharts.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\apexcharts.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\apexcharts.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-camera.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-camera.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-home.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-home.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-menu.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-menu.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-minus-square.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-minus-square.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-minus.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-minus.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-pan-hand.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-pan-hand.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-pan.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-pan.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-plus-square.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-plus-square.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-plus.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-plus.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-refresh.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-refresh.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-reset.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-reset.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-select.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-select.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-select1.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-select1.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-zoom-in.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-zoom-in.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-zoom-out.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-zoom-out.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\assets\\ico-zoom.svg",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\assets\\ico-zoom.svg"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\Bar.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\Bar.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\BarStacked.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\BarStacked.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\BoxCandleStick.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\BoxCandleStick.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\HeatMap.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\HeatMap.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\Line.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\Line.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\Pie.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\Pie.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\Radar.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\Radar.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\Radial.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\Radial.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\RangeBar.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\RangeBar.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\Scatter.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\Scatter.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\Treemap.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\Treemap.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\common\\bar\\DataLabels.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\common\\bar\\DataLabels.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\common\\bar\\Helpers.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\common\\bar\\Helpers.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\common\\circle\\Helpers.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\common\\circle\\Helpers.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\common\\line\\Helpers.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\common\\line\\Helpers.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\charts\\common\\treemap\\Helpers.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\charts\\common\\treemap\\Helpers.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\libs\\Treemap-squared.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\libs\\Treemap-squared.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\ar.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\ar.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\ca.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\ca.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\cs.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\cs.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\de.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\de.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\el.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\el.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\en.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\en.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\es.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\es.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\et.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\et.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\fa.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\fa.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\fi.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\fi.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\fr.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\fr.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\he.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\he.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\hi.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\hi.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\hr.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\hr.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\hu.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\hu.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\hy.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\hy.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\id.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\id.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\it.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\it.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\ja.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\ja.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\ka.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\ka.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\ko.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\ko.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\lt.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\lt.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\lv.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\lv.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\nb.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\nb.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\nl.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\nl.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\pl.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\pl.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\pt-br.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\pt-br.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\pt.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\pt.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\rs.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\rs.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\ru.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\ru.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\se.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\se.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\sk.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\sk.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\sl.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\sl.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\sq.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\sq.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\th.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\th.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\tr.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\tr.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\ua.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\ua.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\zh-cn.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\zh-cn.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\locales\\zh-tw.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\locales\\zh-tw.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Animations.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Animations.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Base.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Base.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Core.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Core.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\CoreUtils.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\CoreUtils.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Crosshairs.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Crosshairs.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Data.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Data.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\DataLabels.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\DataLabels.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Events.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Events.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Exports.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Exports.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Fill.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Fill.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Filters.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Filters.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Formatters.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Formatters.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Graphics.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Graphics.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Markers.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Markers.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Range.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Range.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Responsive.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Responsive.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Scales.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Scales.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Series.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Series.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Theme.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Theme.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\TimeScale.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\TimeScale.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\TitleSubtitle.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\TitleSubtitle.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Toolbar.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\Toolbar.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\ZoomPanSelection.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\ZoomPanSelection.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\annotations\\Annotations.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\annotations\\Annotations.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\annotations\\Helpers.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\annotations\\Helpers.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\annotations\\PointsAnnotations.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\annotations\\PointsAnnotations.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\annotations\\XAxisAnnotations.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\annotations\\XAxisAnnotations.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\annotations\\YAxisAnnotations.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\annotations\\YAxisAnnotations.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\axes\\Axes.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\axes\\Axes.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\axes\\AxesUtils.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\axes\\AxesUtils.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\axes\\Grid.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\axes\\Grid.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\axes\\XAxis.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\axes\\XAxis.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\axes\\YAxis.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\axes\\YAxis.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\dimensions\\Dimensions.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\dimensions\\Dimensions.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\dimensions\\Grid.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\dimensions\\Grid.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\dimensions\\Helpers.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\dimensions\\Helpers.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\dimensions\\XAxis.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\dimensions\\XAxis.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\dimensions\\YAxis.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\dimensions\\YAxis.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\helpers\\Destroy.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\helpers\\Destroy.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\helpers\\InitCtxVariables.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\helpers\\InitCtxVariables.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\helpers\\Localization.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\helpers\\Localization.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\helpers\\UpdateHelpers.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\helpers\\UpdateHelpers.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\legend\\Helpers.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\legend\\Helpers.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\legend\\Legend.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\legend\\Legend.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\settings\\Config.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\settings\\Config.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\settings\\Defaults.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\settings\\Defaults.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\settings\\Globals.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\settings\\Globals.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\settings\\Options.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\settings\\Options.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\AxesTooltip.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\AxesTooltip.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Intersect.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Intersect.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Labels.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Labels.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Marker.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Marker.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Position.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Position.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\README.md",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\README.md"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Tooltip.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Tooltip.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Utils.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Utils.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\svgjs\\svg.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\svgjs\\svg.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\utils\\DateTime.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\utils\\DateTime.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\utils\\Resize.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\utils\\Resize.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\utils\\Utils.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\src\\utils\\Utils.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\types\\apexcharts.d.ts",
+      "PackagePath": "staticwebassets\\assets\\libs\\apexcharts\\types\\apexcharts.d.ts"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\README.md",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\README.md"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\alert.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\alert.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\alert.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\alert.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\base-component.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\base-component.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\base-component.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\base-component.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\button.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\button.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\button.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\button.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\carousel.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\carousel.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\carousel.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\carousel.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\collapse.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\collapse.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\collapse.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\collapse.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\dom\\data.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\dom\\data.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\dom\\data.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\dom\\data.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\dom\\event-handler.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\dom\\event-handler.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\dom\\event-handler.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\dom\\event-handler.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\dom\\manipulator.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\dom\\manipulator.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\dom\\manipulator.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\dom\\manipulator.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\dom\\selector-engine.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\dom\\selector-engine.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\dom\\selector-engine.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\dom\\selector-engine.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\dropdown.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\dropdown.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\dropdown.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\dropdown.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\modal.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\modal.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\modal.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\modal.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\offcanvas.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\offcanvas.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\offcanvas.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\offcanvas.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\popover.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\popover.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\popover.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\popover.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\scrollspy.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\scrollspy.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\scrollspy.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\scrollspy.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\tab.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\tab.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\tab.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\tab.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\toast.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\toast.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\toast.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\toast.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\tooltip.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\tooltip.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\tooltip.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\tooltip.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\backdrop.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\backdrop.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\backdrop.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\backdrop.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\component-functions.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\component-functions.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\component-functions.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\component-functions.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\config.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\config.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\config.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\config.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\focustrap.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\focustrap.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\focustrap.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\focustrap.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\index.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\index.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\index.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\index.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\sanitizer.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\sanitizer.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\sanitizer.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\sanitizer.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\scrollbar.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\scrollbar.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\scrollbar.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\scrollbar.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\swipe.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\swipe.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\swipe.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\swipe.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\template-factory.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\template-factory.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\dist\\util\\template-factory.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\dist\\util\\template-factory.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\index.esm.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\index.esm.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\index.umd.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\index.umd.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\alert.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\alert.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\base-component.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\base-component.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\button.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\button.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\carousel.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\carousel.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\collapse.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\collapse.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\dom\\data.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\dom\\data.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\dom\\event-handler.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\dom\\event-handler.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\dom\\manipulator.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\dom\\manipulator.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\dom\\selector-engine.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\dom\\selector-engine.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\dropdown.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\dropdown.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\modal.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\modal.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\offcanvas.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\offcanvas.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\popover.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\popover.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\scrollspy.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\scrollspy.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\tab.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\tab.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\toast.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\toast.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\tooltip.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\tooltip.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\util\\backdrop.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\util\\backdrop.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\util\\component-functions.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\util\\component-functions.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\util\\config.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\util\\config.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\util\\focustrap.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\util\\focustrap.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\util\\index.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\util\\index.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\util\\sanitizer.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\util\\sanitizer.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\util\\scrollbar.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\util\\scrollbar.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\util\\swipe.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\util\\swipe.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\src\\util\\template-factory.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\src\\util\\template-factory.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\README.md",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\README.md"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\browsers.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\browsers.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\helpers\\fixture.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\helpers\\fixture.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\integration\\bundle-modularity.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\integration\\bundle-modularity.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\integration\\bundle.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\integration\\bundle.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\integration\\index.html",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\integration\\index.html"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\integration\\rollup.bundle-modularity.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\integration\\rollup.bundle-modularity.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\integration\\rollup.bundle.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\integration\\rollup.bundle.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\karma.conf.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\karma.conf.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\.eslintrc.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\.eslintrc.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\alert.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\alert.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\base-component.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\base-component.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\button.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\button.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\carousel.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\carousel.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\collapse.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\collapse.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\dom\\data.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\dom\\data.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\dom\\event-handler.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\dom\\event-handler.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\dom\\manipulator.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\dom\\manipulator.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\dom\\selector-engine.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\dom\\selector-engine.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\dropdown.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\dropdown.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\jquery.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\jquery.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\modal.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\modal.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\offcanvas.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\offcanvas.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\popover.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\popover.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\scrollspy.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\scrollspy.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\tab.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\tab.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\toast.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\toast.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\tooltip.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\tooltip.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\backdrop.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\backdrop.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\component-functions.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\component-functions.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\config.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\config.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\focustrap.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\focustrap.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\index.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\index.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\sanitizer.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\sanitizer.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\scrollbar.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\scrollbar.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\swipe.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\swipe.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\template-factory.spec.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\unit\\util\\template-factory.spec.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\visual\\.eslintrc.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\visual\\.eslintrc.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\visual\\alert.html",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\visual\\alert.html"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\visual\\button.html",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\visual\\button.html"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\visual\\carousel.html",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\visual\\carousel.html"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\visual\\collapse.html",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\visual\\collapse.html"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\visual\\dropdown.html",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\visual\\dropdown.html"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\visual\\modal.html",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\visual\\modal.html"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\visual\\popover.html",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\visual\\popover.html"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\visual\\scrollspy.html",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\visual\\scrollspy.html"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\visual\\tab.html",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\visual\\tab.html"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\visual\\toast.html",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\visual\\toast.html"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\js\\tests\\visual\\tooltip.html",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\js\\tests\\visual\\tooltip.html"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\package.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\package.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_accordion.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_accordion.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_alert.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_alert.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_badge.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_badge.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_breadcrumb.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_breadcrumb.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_button-group.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_button-group.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_buttons.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_buttons.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_card.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_card.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_carousel.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_carousel.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_close.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_close.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_containers.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_containers.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_dropdown.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_dropdown.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_forms.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_forms.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_functions.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_functions.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_grid.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_grid.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_helpers.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_helpers.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_images.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_images.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_list-group.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_list-group.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_maps.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_maps.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_mixins.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_mixins.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_modal.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_modal.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_nav.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_nav.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_navbar.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_navbar.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_offcanvas.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_offcanvas.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_pagination.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_pagination.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_placeholders.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_placeholders.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_popover.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_popover.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_progress.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_progress.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_reboot.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_reboot.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_root.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_root.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_spinners.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_spinners.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_tables.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_tables.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_toasts.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_toasts.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_tooltip.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_tooltip.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_transitions.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_transitions.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_type.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_type.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_utilities.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_utilities.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_variables-dark.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_variables-dark.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_variables.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\_variables.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\bootstrap-grid.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\bootstrap-grid.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\bootstrap-reboot.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\bootstrap-reboot.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\bootstrap-utilities.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\bootstrap-utilities.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\bootstrap.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\bootstrap.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_floating-labels.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\forms\\_floating-labels.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-check.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\forms\\_form-check.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-control.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\forms\\_form-control.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-range.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\forms\\_form-range.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-select.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\forms\\_form-select.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-text.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\forms\\_form-text.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_input-group.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\forms\\_input-group.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_labels.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\forms\\_labels.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_validation.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\forms\\_validation.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\helpers\\_clearfix.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\helpers\\_clearfix.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\helpers\\_color-bg.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\helpers\\_color-bg.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\helpers\\_colored-links.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\helpers\\_colored-links.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\helpers\\_focus-ring.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\helpers\\_focus-ring.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\helpers\\_icon-link.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\helpers\\_icon-link.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\helpers\\_position.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\helpers\\_position.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\helpers\\_ratio.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\helpers\\_ratio.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\helpers\\_stacks.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\helpers\\_stacks.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\helpers\\_stretched-link.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\helpers\\_stretched-link.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\helpers\\_text-truncation.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\helpers\\_text-truncation.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\helpers\\_visually-hidden.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\helpers\\_visually-hidden.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\helpers\\_vr.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\helpers\\_vr.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_alert.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_alert.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_backdrop.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_backdrop.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_banner.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_banner.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_border-radius.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_border-radius.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_box-shadow.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_box-shadow.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_breakpoints.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_breakpoints.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_buttons.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_buttons.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_caret.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_caret.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_clearfix.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_clearfix.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_color-mode.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_color-mode.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_color-scheme.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_color-scheme.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_container.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_container.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_deprecate.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_deprecate.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_forms.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_forms.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_gradients.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_gradients.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_grid.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_grid.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_image.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_image.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_list-group.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_list-group.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_lists.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_lists.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_pagination.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_pagination.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_reset-text.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_reset-text.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_resize.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_resize.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_table-variants.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_table-variants.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_text-truncate.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_text-truncate.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_transition.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_transition.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_utilities.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_utilities.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\mixins\\_visually-hidden.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\mixins\\_visually-hidden.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\tests\\jasmine.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\tests\\jasmine.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\tests\\mixins\\_color-modes.test.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\tests\\mixins\\_color-modes.test.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\tests\\mixins\\_media-query-color-mode-full.test.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\tests\\mixins\\_media-query-color-mode-full.test.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\tests\\mixins\\_utilities.test.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\tests\\mixins\\_utilities.test.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\tests\\sass-true\\register.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\tests\\sass-true\\register.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\tests\\sass-true\\runner.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\tests\\sass-true\\runner.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\tests\\utilities\\_api.test.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\tests\\utilities\\_api.test.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\utilities\\_api.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\utilities\\_api.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\vendor\\_rfs.scss",
+      "PackagePath": "staticwebassets\\assets\\libs\\bootstrap\\scss\\vendor\\_rfs.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\AUTHORS.txt",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\AUTHORS.txt"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\README.md",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\README.md"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\bower.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\bower.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\dist\\core.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\dist\\core.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\dist\\jquery.slim.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\dist\\jquery.slim.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\dist\\jquery.slim.min.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\dist\\jquery.slim.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\dist\\jquery.slim.min.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\dist\\jquery.slim.min.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\external\\sizzle\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\external\\sizzle\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\external\\sizzle\\dist\\sizzle.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\external\\sizzle\\dist\\sizzle.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\external\\sizzle\\dist\\sizzle.min.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\external\\sizzle\\dist\\sizzle.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\external\\sizzle\\dist\\sizzle.min.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\external\\sizzle\\dist\\sizzle.min.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\package.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\package.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\.eslintrc.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\.eslintrc.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\ajax.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\ajax.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\ajax\\jsonp.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\ajax\\jsonp.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\ajax\\load.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\ajax\\load.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\ajax\\parseXML.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\ajax\\parseXML.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\ajax\\script.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\ajax\\script.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\ajax\\var\\location.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\ajax\\var\\location.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\ajax\\var\\nonce.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\ajax\\var\\nonce.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\ajax\\var\\rquery.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\ajax\\var\\rquery.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\ajax\\xhr.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\ajax\\xhr.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\attributes.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\attributes.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\attributes\\attr.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\attributes\\attr.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\attributes\\classes.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\attributes\\classes.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\attributes\\prop.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\attributes\\prop.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\attributes\\support.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\attributes\\support.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\attributes\\val.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\attributes\\val.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\callbacks.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\callbacks.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\DOMEval.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\DOMEval.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\access.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\access.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\camelCase.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\camelCase.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\init.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\init.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\isAttached.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\isAttached.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\nodeName.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\nodeName.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\parseHTML.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\parseHTML.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\ready-no-deferred.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\ready-no-deferred.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\ready.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\ready.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\readyException.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\readyException.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\stripAndCollapse.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\stripAndCollapse.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\support.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\support.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\toType.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\toType.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\core\\var\\rsingleTag.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\core\\var\\rsingleTag.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\addGetHookIf.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\addGetHookIf.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\adjustCSS.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\adjustCSS.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\curCSS.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\curCSS.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\finalPropName.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\finalPropName.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\hiddenVisibleSelectors.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\hiddenVisibleSelectors.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\showHide.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\showHide.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\support.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\support.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\var\\cssExpand.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\var\\cssExpand.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\var\\getStyles.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\var\\getStyles.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\var\\isHiddenWithinTree.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\var\\isHiddenWithinTree.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\var\\rboxStyle.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\var\\rboxStyle.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\var\\rnumnonpx.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\var\\rnumnonpx.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\css\\var\\swap.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\css\\var\\swap.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\data.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\data.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\data\\Data.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\data\\Data.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\data\\var\\acceptData.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\data\\var\\acceptData.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\data\\var\\dataPriv.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\data\\var\\dataPriv.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\data\\var\\dataUser.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\data\\var\\dataUser.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\deferred.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\deferred.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\deferred\\exceptionHook.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\deferred\\exceptionHook.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\deprecated.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\deprecated.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\dimensions.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\dimensions.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\effects.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\effects.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\effects\\Tween.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\effects\\Tween.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\effects\\animatedSelector.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\effects\\animatedSelector.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\event.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\event.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\event\\ajax.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\event\\ajax.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\event\\alias.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\event\\alias.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\event\\focusin.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\event\\focusin.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\event\\support.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\event\\support.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\event\\trigger.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\event\\trigger.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\exports\\amd.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\exports\\amd.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\exports\\global.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\exports\\global.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\jquery.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\jquery.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\manipulation.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\manipulation.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\manipulation\\_evalUrl.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\manipulation\\_evalUrl.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\manipulation\\buildFragment.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\manipulation\\buildFragment.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\manipulation\\getAll.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\manipulation\\getAll.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\manipulation\\setGlobalEval.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\manipulation\\setGlobalEval.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\manipulation\\support.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\manipulation\\support.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\manipulation\\var\\rscriptType.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\manipulation\\var\\rscriptType.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\manipulation\\var\\rtagName.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\manipulation\\var\\rtagName.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\manipulation\\wrapMap.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\manipulation\\wrapMap.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\offset.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\offset.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\queue.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\queue.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\queue\\delay.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\queue\\delay.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\selector-native.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\selector-native.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\selector-sizzle.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\selector-sizzle.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\selector.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\selector.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\serialize.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\serialize.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\traversing.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\traversing.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\traversing\\findFilter.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\traversing\\findFilter.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\traversing\\var\\dir.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\traversing\\var\\dir.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\traversing\\var\\rneedsContext.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\traversing\\var\\rneedsContext.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\traversing\\var\\siblings.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\traversing\\var\\siblings.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\ObjectFunctionString.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\ObjectFunctionString.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\arr.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\arr.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\class2type.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\class2type.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\concat.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\concat.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\document.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\document.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\documentElement.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\documentElement.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\fnToString.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\fnToString.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\getProto.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\getProto.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\hasOwn.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\hasOwn.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\indexOf.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\indexOf.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\isFunction.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\isFunction.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\isWindow.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\isWindow.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\pnum.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\pnum.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\push.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\push.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\rcheckableType.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\rcheckableType.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\rcssNum.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\rcssNum.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\rnothtmlwhite.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\rnothtmlwhite.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\slice.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\slice.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\support.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\support.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\toString.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\var\\toString.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\wrap.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\jquery\\src\\wrap.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\LICENSE",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\README.md",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\README.md"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\dist\\simplebar-core.esm.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\dist\\simplebar-core.esm.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\dist\\simplebar-core.esm.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\dist\\simplebar-core.esm.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\dist\\simplebar.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\dist\\simplebar.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\dist\\simplebar.d.ts",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\dist\\simplebar.d.ts"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\dist\\simplebar.esm.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\dist\\simplebar.esm.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\dist\\simplebar.esm.js.map",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\dist\\simplebar.esm.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\dist\\simplebar.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\dist\\simplebar.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\dist\\simplebar.min.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\dist\\simplebar.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\dist\\simplebar.min.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\dist\\simplebar.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\dist\\simplebar.umd.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\dist\\simplebar.umd.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\package.json",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\package.json"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\src\\helpers.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\src\\helpers.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\src\\index.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\src\\index.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\src\\scrollbar-width.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\src\\scrollbar-width.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\src\\simplebar.css",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\src\\simplebar.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\simplebar\\src\\simplebar.js",
+      "PackagePath": "staticwebassets\\assets\\libs\\simplebar\\src\\simplebar.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\scss\\component\\_card.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\component\\_card.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\scss\\component\\_reboot.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\component\\_reboot.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\scss\\layouts\\_header.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\layouts\\_header.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\scss\\layouts\\_layouts.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\layouts\\_layouts.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\scss\\layouts\\_sidebar.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\layouts\\_sidebar.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\scss\\pages\\_dashboard1.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\pages\\_dashboard1.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\scss\\styles.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\styles.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\scss\\utilities\\_background.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\utilities\\_background.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\scss\\utilities\\_icon-size.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\utilities\\_icon-size.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\scss\\variables\\_theme-variables.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\variables\\_theme-variables.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\scss\\variables\\_variables.scss",
+      "PackagePath": "staticwebassets\\assets\\scss\\variables\\_variables.scss"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+>>>>>>> origin/s_phongban
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.admin_sweetsoft_tech_support.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.admin_sweetsoft_tech_support.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -20,6 +20,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+<<<<<<< HEAD
     <PackageReference Include="RecaptchaNet" Version="3.1.0" />
   </ItemGroup>
 
@@ -30,6 +31,8 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Admin\ForgotPassword.cshtml" />
     <_ContentIncludedByDefault Remove="wwwroot\css\index_user.css" />
+=======
+>>>>>>> origin/s_phongban
   </ItemGroup>
 
 </Project>
