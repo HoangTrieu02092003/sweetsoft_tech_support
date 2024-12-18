@@ -52,6 +52,8 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId");
             ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId");
+            ViewBag.CustomerId = new SelectList(_context.TblCustomers, "CustomerId", "FullName");
+            ViewBag.DepartmentId = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName");
             return View();
         }
 
@@ -72,6 +74,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId", tblSupportRequest.DepartmentId);
             return View(tblSupportRequest);
         }
+
 
         public IActionResult Edit(int id)
         {

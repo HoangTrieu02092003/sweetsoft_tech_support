@@ -41,7 +41,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2">
-            <div class="card border-0">
+            <div class="card border-0 shadow-lg">
                 <div class="card-header bg-warning text-center">
                     <p style="font-size: 24px;">Thêm yêu cầu hỗ trợ</p>
                 </div>
@@ -68,19 +68,24 @@
 
                         <div class="form-group">
                             <label asp-for="Status" class="control-label text-dark">Trạng thái</label>
-                            <input asp-for="Status" class="form-control" />
+                            <select asp-for="Status" class="form-control">
+                                <option value="0">Chưa hoàn thành</option>
+                                <option value="1">Hoàn thành</option>
+                                <option value="2">Không xử lý được</option>
+                            </select>
                             <span asp-validation-for="Status" class="text-danger"></span>
                         </div>
 
                         <div class="form-group">
                             <label asp-for="CreatedAt" class="control-label text-dark">Ngày tạo</label>
-                            <input asp-for="CreatedAt" class="form-control" />
+                            <input asp-for="CreatedAt" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" readonly />
                             <span asp-validation-for="CreatedAt" class="text-danger"></span>
                         </div>
 
+
                         <div class="form-group">
                             <label asp-for="ResolvedAt" class="control-label text-dark">Ngày giải quyết</label>
-                            <input asp-for="ResolvedAt" class="form-control" />
+                            <input asp-for="ResolvedAt" class="form-control" readonly/>
                             <span asp-validation-for="ResolvedAt" class="text-danger"></span>
                         </div>
 

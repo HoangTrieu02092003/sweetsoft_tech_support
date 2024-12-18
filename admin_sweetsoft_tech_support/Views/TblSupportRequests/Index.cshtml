@@ -24,76 +24,78 @@
     </p>
 </div>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Chi tiết yêu cầu</th>
-            <th>Trạng thái</th>
-            <th>Ngày tạo</th>
-            <th>Ngày giải quyết</th>
-            <th>Khách hàng</th>
-            <th>Phòng ban</th>
-            <th>Hành động</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
             <tr>
-                <td>@item.RequestDetails</td>
-                <td>
-                    @{
-                        string statusText = item.Status switch
-                        {
-                            0 => "Chưa hoàn thành",
-                            1 => "Hoàn thành",
-                            2 => "Không xử lý được",
-                            _ => "Không xác định"
-                        };
-                    }
-                    @statusText
-                </td>
-
-                <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
-                <td>@(item.ResolvedAt?.ToString("dd/MM/yyyy") ?? "Chưa giải quyết")</td>
-                <td>@item.Customer.FullName</td>
-                <td>@item.Department.DepartmentName</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.RequestId" class="btn btn-outline-primary">
-                        <i class="bi bi-pencil-square"></i> Sửa
-                    </a>
-                    <a asp-action="Details" asp-route-id="@item.RequestId" class="btn btn-outline-info">
-                        <i class="bi bi-eye"></i> Xem
-                    </a>
-                    <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.RequestId">
-                        <i class="bi bi-trash"></i> Xóa
-                    </button>
-                </td>
+                <th>Chi tiết yêu cầu</th>
+                <th>Trạng thái</th>
+                <th>Ngày tạo</th>
+                <th>Ngày giải quyết</th>
+                <th>Khách hàng</th>
+                <th>Phòng ban</th>
+                <th>Hành động</th>
             </tr>
-            <!-- Modal Xác Nhận Xóa -->
-            <div class="modal fade" id="deleteModal-@item.RequestId" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa yêu cầu hỗ trợ</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Bạn có chắc chắn muốn xóa yêu cầu hỗ trợ này không?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                            <!-- Form Xóa -->
-                            <form method="post" asp-action="Delete" asp-route-id="@item.RequestId">
-                                <button type="submit" class="btn btn-danger">Xóa</button>
-                            </form>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.RequestDetails</td>
+                    <td>
+                        @{
+                            string statusText = item.Status switch
+                            {
+                                0 => "Chưa hoàn thành",
+                                1 => "Hoàn thành",
+                                2 => "Không xử lý được",
+                                _ => "Không xác định"
+                            };
+                        }
+                        @statusText
+                    </td>
+
+                    <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
+                    <td>@(item.ResolvedAt?.ToString("dd/MM/yyyy") ?? "Chưa giải quyết")</td>
+                    <td>@item.Customer.FullName</td>
+                    <td>@item.Department.DepartmentName</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.RequestId" class="btn btn-outline-primary">
+                            <i class="bi bi-pencil-square"></i> Sửa
+                        </a>
+                        <a asp-action="Details" asp-route-id="@item.RequestId" class="btn btn-outline-info">
+                            <i class="bi bi-eye"></i> Xem
+                        </a>
+                        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.RequestId">
+                            <i class="bi bi-trash"></i> Xóa
+                        </button>
+                    </td>
+                </tr>
+                <!-- Modal Xác Nhận Xóa -->
+                <div class="modal fade" id="deleteModal-@item.RequestId" tabindex="-1" aria-labelledby="deleteModalLabel-@item.RequestId" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel-@item.RequestId">Xác nhận xóa yêu cầu hỗ trợ</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có chắc chắn muốn xóa yêu cầu hỗ trợ này không?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                <!-- Form Xóa -->
+                                <form method="post" asp-action="Delete" asp-route-id="@item.RequestId">
+                                    <button type="submit" class="btn btn-danger">Xóa</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
-    </tbody>
-</table>
+            }
+        </tbody>
+    </table>
+</div>
 
 <!-- Phân trang -->
 <div class="d-flex justify-content-center my-4">
