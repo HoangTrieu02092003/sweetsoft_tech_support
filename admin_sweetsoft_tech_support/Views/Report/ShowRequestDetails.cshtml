@@ -1,0 +1,36 @@
+﻿@using report.Models
+
+@{
+    ViewData["Title"] = "ShowRequestDetails";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+@model List<RequestDetail>
+
+<h2>Request Details</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Request ID</th>
+            <th>Details</th>
+            <th>Status</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.RequestId</td>
+                <td>@request.RequestDetails</td>
+                <td>@request.Status</td>
+                <td>@request.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Index1")" class="btn btn-secondary">Back to Summary</a>
+
+

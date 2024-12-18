@@ -1,7 +1,11 @@
+
+using admin_sweetsoft_tech_support.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<RequestContext>();
 
 var app = builder.Build();
 
