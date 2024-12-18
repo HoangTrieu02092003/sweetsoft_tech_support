@@ -57,6 +57,14 @@
       "PackagePath": "staticwebassets\\assets\\images\\blog\\blog-img3.jpg"
     },
     {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\blog\\bug.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\blog\\bug.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\logos\\SweetSoft-logo-dark.svg",
+      "PackagePath": "staticwebassets\\assets\\images\\logos\\SweetSoft-logo-dark.svg"
+    },
+    {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\logos\\logo-light.svg",
       "PackagePath": "staticwebassets\\assets\\images\\logos\\logo-light.svg"
     },
@@ -2559,6 +2567,14 @@
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\assets\\scss\\variables\\_variables.scss",
       "PackagePath": "staticwebassets\\assets\\scss\\variables\\_variables.scss"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\css\\assignPermission.css",
+      "PackagePath": "staticwebassets\\css\\assignPermission.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\css\\index_user.css",
+      "PackagePath": "staticwebassets\\css\\index_user.css"
     },
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\css\\site.css",

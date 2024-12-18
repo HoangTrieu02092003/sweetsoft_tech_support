@@ -288,3 +288,9 @@ D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\obj\Debug\net8.0\refint\Cu
 D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\obj\Debug\net8.0\Customer_sweetsoft_tech_support.pdb
 D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\obj\Debug\net8.0\Customer_sweetsoft_tech_support.genruntimeconfig.cache
 D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\obj\Debug\net8.0\ref\Customer_sweetsoft_tech_support.dll
+D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\reCAPTCHA.AspNetCore.dll
+D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\obj\Debug\net8.0\Customer_sweetsoft_tech_support.MvcApplicationPartsAssemblyInfo.cs
+D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Recaptcha.Web.dll

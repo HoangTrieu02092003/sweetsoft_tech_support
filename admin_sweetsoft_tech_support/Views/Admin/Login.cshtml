@@ -113,7 +113,7 @@
         @if (ViewData.ModelState[""]?.Errors.Count > 0)
         {
             <div class="alert alert-danger">
-                @foreach (var error in ViewData.ModelState[""].Errors)
+                @foreach (var error in ViewData.ModelState[""]!.Errors)
                 {
                     <p class="mb-0">@error.ErrorMessage</p>
                 }
@@ -138,6 +138,11 @@
                     Vui lòng nhập mật khẩu.
                 </div>
             </div>
+            <!-- Google reCAPTCHA -->
+            <div class="g-recaptcha mb-3 w-100" data-sitekey="@ViewBag.SiteKey" data-callback="verifyCaptcha"></div>
+            <!-- Thêm trường để lưu trữ giá trị reCAPTCHA -->
+            <input type="hidden" id="recaptchaResponse" name="g-recaptcha-response" />
+            
             <button type="submit" class="btn btn-warning w-100">Đăng nhập</button>
         </form>
 
@@ -178,6 +183,8 @@
                 ? '<i class="fas fa-eye"></i>'
                 : '<i class="fas fa-eye-slash"></i>';
     });
+
 </script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 <script src="~/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
