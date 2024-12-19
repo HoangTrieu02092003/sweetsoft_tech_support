@@ -1,82 +1,140 @@
-﻿// Set new default font family and font color to mimic Bootstrap's default styling
-Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-Chart.defaults.global.defaultFontColor = '#858796';
+﻿document.getElementById("filterButton").addEventListener("click", async function (event) {
+    event.preventDefault(); // Ngăn không cho hành động mặc định
 
-let myLineChart; // Biến để lưu biểu đồ hiện tại
+    // Lấy giá trị ngày bắt đầu và ngày kết thúc từ các input
+    const startDate = document.getElementById("startDate").value;
+    const endDate = document.getElementById("endDate").value;
 
-// Hàm lấy dữ liệu từ API
-async function fetchData(startDate, endDate) {
+    // Nếu không có ngày, hiển thị 12 tháng trong năm hiện tại
+    if (!startDate || !endDate) {
+        await renderDefaultChart();
+    } else {
+        // Kiểm tra nếu ngày bắt đầu và ngày kết thúc hợp lệ
+        if (new Date(startDate) > new Date(endDate)) {
+            alert("Start date cannot be later than end date.");
+            return;
+        }
+        // Gọi hàm để fetch và render biểu đồ với dữ liệu mới
+        await fetchAndRenderChart(startDate, endDate, false);
+    }
+});
+
+async function fetchAndRenderChart(startDate, endDate, isDefault) {
     try {
-        const url = new URL('/api/requests/monthly', window.location.origin);
-        if (startDate) url.searchParams.append('startDate', startDate);
-        if (endDate) url.searchParams.append('endDate', endDate);
+        const response = await fetch(`/api/requests/monthly?startDate=${startDate}&endDate=${endDate}`);
+        if (!response.ok) {
+            throw new Error("Failed to fetch data from API");
+        }
 
-        console.log("API URL:", url.toString());
-
-        const response = await fetch(url);
         const data = await response.json();
-        console.log("API Response:", data);
 
-        return data; // Trả về dữ liệu JSON từ API
+        if (!data.monthlySummary || data.monthlySummary.length === 0) {
+            alert("No data available for the selected date range.");
+            return;
+        }
+
+        let labels = [];
+        let counts = [];
+
+        if (isDefault) {
+            const currentYear = new Date().getFullYear();
+            for (let i = 1; i <= 12; i++) {
+                labels.push(new Date(currentYear, i - 1).toLocaleString('default', { month: 'long' }));
+                counts.push(0);
+            }
+        } else {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            const months = getMonthsBetween(start, end);
+
+            labels = months.map(month => month.toLocaleString('default', { month: 'long' }));
+            counts = new Array(months.length).fill(0);
+
+            data.monthlySummary.forEach(item => {
+                const monthIndex = months.findIndex(month =>
+                    month.getMonth() === item.month - 1 &&
+                    month.getFullYear() === item.year
+                );
+                if (monthIndex !== -1) {
+                    counts[monthIndex] = item.count;
+                }
+            });
+        }
+
+        console.log("Labels:", labels);
+        console.log("Counts:", counts);
+
+        if (myLineChart) {
+            myLineChart.destroy();
+        }
+
+        drawChart(labels, counts);
+
     } catch (error) {
         console.error("Error fetching data:", error);
-        return null;
+        alert("An error occurred while fetching data.");
     }
 }
 
-// Hàm xử lý tạo biểu đồ
-// Hàm xử lý tạo biểu đồ
-async function createChart(startDate, endDate) {
-    const data = await fetchData(startDate, endDate);
+async function renderDefaultChart() {
+    const currentYear = new Date().getFullYear();
+    const defaultStartDate = `${currentYear}-01-01`;
+    const defaultEndDate = `${currentYear}-12-31`;
 
-    // Kiểm tra dữ liệu từ API
-    if (!data || !data.months || !data.requests) {
-        console.error("No data available for the chart.");
-        alert("No data available for the selected range.");
-        return;
+    let labels = [];
+    let counts = [];
+
+    for (let i = 1; i <= 12; i++) {
+        labels.push(new Date(currentYear, i - 1).toLocaleString('default', { month: 'long' }));
+        counts.push(0);
     }
 
-    // Lấy danh sách tháng và số lượng yêu cầu từ API
-    const months = data.months;
-    const requests = data.requests;
+    try {
+        const response = await fetch(`/api/requests/monthly?startDate=${defaultStartDate}&endDate=${defaultEndDate}`);
+        if (!response.ok) {
+            throw new Error("Failed to fetch data from API");
+        }
 
-    // Kiểm tra dữ liệu sau khi lấy từ API
-    console.log("Months from API:", months);
-    console.log("Requests from API:", requests);
+        const data = await response.json();
 
-    // Xác định chỉ số tháng bắt đầu và kết thúc dựa trên startDate và endDate
-    const startMonthIndex = startDate ? months.findIndex(month => new Date(month).getMonth() === new Date(startDate).getMonth()) : 0;
-    const endMonthIndex = endDate ? months.findIndex(month => new Date(month).getMonth() === new Date(endDate).getMonth()) : months.length - 1;
+        if (data.monthlySummary && data.monthlySummary.length > 0) {
+            data.monthlySummary.forEach(item => {
+                const monthIndex = labels.findIndex(label =>
+                    new Date(currentYear, item.month - 1).toLocaleString('default', { month: 'long' }) === label
+                );
+                if (monthIndex !== -1) {
+                    counts[monthIndex] = item.count;
+                }
+            });
+        }
 
-    // Kiểm tra các chỉ số
-    console.log("Start Month Index:", startMonthIndex);
-    console.log("End Month Index:", endMonthIndex);
+        drawChart(labels, counts);
+    } catch (error) {
+        console.error("Error fetching default data:", error);
+        alert("An error occurred while fetching default data.");
+    }
+}
 
-    // Lọc dữ liệu từ API dựa trên khoảng thời gian được chọn
-    const filteredMonths = months.slice(startMonthIndex, endMonthIndex + 1);
-    const filteredRequests = requests.slice(startMonthIndex, endMonthIndex + 1);
+function getMonthsBetween(startDate, endDate) {
+    const months = [];
+    const start = new Date(startDate);
+    const end = new Date(endDate);
 
-    // Kiểm tra dữ liệu sau khi lọc
-    console.log("Filtered Months:", filteredMonths);
-    console.log("Filtered Requests:", filteredRequests);
-
-    // Kiểm tra nếu không có dữ liệu sau khi lọc
-    if (filteredMonths.length === 0 || filteredRequests.length === 0) {
-        console.error("No data available for the selected range.");
-        alert("No data available for the selected range.");
-        return;
+    while (start <= end) {
+        months.push(new Date(start));
+        start.setMonth(start.getMonth() + 1);
     }
 
-    const ctx = document.getElementById("myAreaChart");
-    if (myLineChart) {
-        myLineChart.destroy(); // Hủy biểu đồ cũ trước khi tạo biểu đồ mới
-    }
+    return months;
+}
 
-    // Tạo biểu đồ mới
+function drawChart(labels, data) {
+    const ctx = document.getElementById("myAreaChart").getContext("2d");
+
     myLineChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: filteredMonths, // Hiển thị tháng
+            labels: labels,
             datasets: [{
                 label: "Requests",
                 lineTension: 0.3,
@@ -90,49 +148,34 @@ async function createChart(startDate, endDate) {
                 pointHoverBorderColor: "rgba(121, 28, 181, 1)",
                 pointHitRadius: 10,
                 pointBorderWidth: 2,
-                data: filteredRequests // Dữ liệu số lượng yêu cầu
-            }]
+                data: data,
+            }],
         },
         options: {
             maintainAspectRatio: false,
             scales: {
-                yAxes: [{
+                x: {
+                    type: 'category',
+                    labels: labels,
+                    grid: { display: false },
+                },
+                y: {
+                    beginAtZero: true,
                     ticks: {
-                        beginAtZero: true,
-                        stepSize: 2
+                        stepSize: 2,
+                    },
+                    grid: {
+                        color: "rgb(234, 236, 244)",
                     }
-                }]
-            },
-            legend: { display: false }
+                }
+            }
         }
     });
 }
 
-// Hàm xử lý sự kiện khi người dùng chọn ngày
-document.getElementById('filterButton').addEventListener('click', function (event) {
-    event.preventDefault(); // Ngăn reload trang khi nhấn nút
+let myLineChart;
 
-    const startDate = document.getElementById("startDate").value || getCurrentYearStartDate();
-    const endDate = document.getElementById("endDate").value || getCurrentYearEndDate();
-
-    console.log("Start Date:", startDate);
-    console.log("End Date:", endDate);
-
-    // Gọi hàm tạo biểu đồ với ngày bắt đầu và kết thúc
-    createChart(startDate, endDate);
+// Tự động vẽ biểu đồ mặc định khi trang tải
+window.addEventListener("DOMContentLoaded", async function () {
+    await renderDefaultChart();
 });
-
-// Hàm lấy ngày đầu tiên của năm hiện tại
-function getCurrentYearStartDate() {
-    const currentYear = new Date().getFullYear();
-    return `${currentYear}-01-01`;
-}
-
-// Hàm lấy ngày cuối cùng của năm hiện tại
-function getCurrentYearEndDate() {
-    const currentYear = new Date().getFullYear();
-    return `${currentYear}-12-31`;
-}
-
-// Gọi biểu đồ mặc định khi trang tải
-createChart(getCurrentYearStartDate(), getCurrentYearEndDate());

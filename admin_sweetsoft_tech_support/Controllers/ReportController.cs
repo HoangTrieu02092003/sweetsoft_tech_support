@@ -90,84 +90,60 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(requests);
         }
 
-        [HttpGet]
-        [Route("api/requests/monthly")]
+        [HttpGet("api/requests/monthly")]
         public async Task<IActionResult> GetMonthlyRequestSummary(DateTime? startDate, DateTime? endDate)
         {
-            // Nếu không có startDate và endDate, mặc định lấy dữ liệu của năm hiện tại
-            if (!startDate.HasValue && !endDate.HasValue)
-            {
-                var currentYear = DateTime.Now.Year;
-                startDate = new DateTime(currentYear, 1, 1);
-                endDate = new DateTime(currentYear, 12, 31);
-            }
+            // Lấy ngày mặc định nếu không có tham số startDate và endDate
+            var now = DateTime.Now;
+            var defaultStartDate = new DateTime(now.Year, 1, 1); // Ngày đầu tiên của năm hiện tại
+            var defaultEndDate = new DateTime(now.Year, 12, 31); // Ngày cuối cùng của năm hiện tại
 
-            // Kiểm tra nếu startDate lớn hơn endDate
-            if (startDate.HasValue && endDate.HasValue && startDate.Value > endDate.Value)
+            startDate ??= defaultStartDate; // Gán giá trị mặc định nếu không cung cấp startDate
+            endDate ??= defaultEndDate;     // Gán giá trị mặc định nếu không cung cấp endDate
+
+            // Đảm bảo startDate <= endDate
+            if (startDate > endDate)
             {
                 return BadRequest("Start date cannot be later than end date.");
             }
 
-            // Query dữ liệu từ database
-            IQueryable<TblSupportRequest> query = _context.TblSupportRequests;
+            // Danh sách tất cả các tháng trong khoảng thời gian từ startDate đến endDate
+            var months = new List<(int Year, int Month)>();
+            var current = startDate.Value;
 
-            // Lọc theo khoảng thời gian được chọn
-            if (startDate.HasValue)
+            while (current <= endDate.Value)
             {
-                query = query.Where(r => r.CreatedAt >= startDate.Value);
+                months.Add((current.Year, current.Month)); // Thêm năm và tháng vào danh sách
+                current = current.AddMonths(1);           // Tiến tới tháng tiếp theo
             }
 
-            if (endDate.HasValue)
-            {
-                query = query.Where(r => r.CreatedAt <= endDate.Value);
-            }
-
-            // Nhóm dữ liệu theo tháng và năm
-            var monthlyRequests = await query
+            // Lấy dữ liệu yêu cầu từ cơ sở dữ liệu
+            var requests = await _context.TblSupportRequests
+                .Where(r => r.CreatedAt >= startDate && r.CreatedAt <= endDate)
                 .GroupBy(r => new { r.CreatedAt.Year, r.CreatedAt.Month })
                 .Select(g => new
                 {
                     Year = g.Key.Year,
                     Month = g.Key.Month,
-                    RequestCount = g.Count()
+                    Count = g.Count()
                 })
-                .OrderBy(x => x.Year).ThenBy(x => x.Month)
                 .ToListAsync();
 
-            // Tạo khoảng tháng đầy đủ từ startDate đến endDate
-            var monthsInRange = new List<MonthlyRequest>();
-            for (var date = startDate.Value; date <= endDate.Value; date = date.AddMonths(1))
+            // Tạo danh sách kết quả với số lượng yêu cầu cho tất cả các tháng
+            var result = months.Select(month =>
             {
-                monthsInRange.Add(new MonthlyRequest { Year = date.Year, Month = date.Month, RequestCount = 0 });
-            }
-
-            // Cập nhật số lượng yêu cầu từ dữ liệu truy vấn
-            foreach (var monthlyRequest in monthlyRequests)
-            {
-                var month = monthsInRange.FirstOrDefault(m => m.Year == monthlyRequest.Year && m.Month == monthlyRequest.Month);
-                if (month != null)
+                var request = requests.FirstOrDefault(r => r.Year == month.Year && r.Month == month.Month);
+                return new
                 {
-                    month.RequestCount = monthlyRequest.RequestCount;
-                }
-            }
+                    Year = month.Year,
+                    Month = month.Month,
+                    Count = request?.Count ?? 0 // Nếu không có yêu cầu, set count = 0
+                };
+            }).ToList();
 
-            // Chuẩn bị kết quả trả về
-            var monthNames = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-            var filteredMonths = monthsInRange.Select(m => $"{monthNames[m.Month - 1]} {m.Year}").ToArray();
-            var filteredRequests = monthsInRange.Select(m => m.RequestCount).ToArray();
-
-            var result = new
-            {
-                Months = filteredMonths,
-                Requests = filteredRequests
-            };
-
-            // Log kết quả trước khi trả về
-            Console.WriteLine("API Result: " + JsonConvert.SerializeObject(result));
-
-            return Ok(result);
+            // Trả về kết quả dưới dạng JSON
+            return Ok(new { monthlySummary = result });
         }
-
 
 
         [HttpGet("api/requests/status-summary")]
