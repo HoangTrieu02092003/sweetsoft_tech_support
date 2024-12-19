@@ -1,0 +1,139 @@
+﻿@model admin_sweetsoft_tech_support.Models.TblSupportRequest
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<h1 class="text-center my-4" style="color: #6a1b9a;">Chỉnh sửa Yêu cầu hỗ trợ</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-warning">
+                    <p><i class="bi bi-pencil-square"></i> Chỉnh sửa yêu cầu hỗ trợ</p>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="RequestId" />
+
+                        <div class="list-group">
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="RequestDetails" class="control-label text-dark">Chi tiết yêu cầu</label>
+                                    <input asp-for="RequestDetails" class="form-control" />
+                                    <span asp-validation-for="RequestDetails" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="Status" class="control-label text-dark">Trạng thái</label>
+                                    <select asp-for="Status" class="form-control">
+                                        <option value="0">Chưa hoàn thành</option>
+                                        <option value="1">Hoàn thành</option>
+                                        <option value="2">Không xử lý được</option>
+                                    </select>
+                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="CustomerId" class="control-label text-dark">Khách hàng</label>
+                                    <select asp-for="CustomerId" class="form-control" asp-items="@ViewBag.CustomerId"></select>
+                                    <span asp-validation-for="CustomerId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="DepartmentId" class="control-label text-dark">Phòng ban</label>
+                                    <select asp-for="DepartmentId" class="form-control" asp-items="@ViewBag.DepartmentId"></select>
+                                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="CreatedAt" class="control-label text-dark">Ngày tạo</label>
+                                    <input asp-for="CreatedAt" class="form-control" readonly />
+                                    <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="ResolvedAt" class="control-label text-dark">Ngày giải quyết</label>
+                                    <input class="form-control" readonly
+                                           value="@(Model.ResolvedAt.HasValue ? Model.ResolvedAt.Value.ToString("dd/MM/yyyy") : "Chưa giải quyết")" />
+                                    <span asp-validation-for="ResolvedAt" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="form-group text-center mt-3">
+                            <input type="submit" value="Lưu" class="btn btn-warning text-white" style="background-color: #f9a825;" />
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Index" class="btn btn-outline-dark">
+                        <i class="bi bi-arrow-left"></i> Quay lại danh sách
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Styles -->
+<style>
+    h1 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+        color: #6a1b9a;
+    }
+
+    .list-group-item {
+        border: none;
+        padding: 10px;
+        background-color: #f4f6f9;
+        margin-bottom: 10px;
+    }
+
+        .list-group-item strong {
+            color: #6a1b9a;
+        }
+
+    .card-header {
+        font-size: 1.25rem;
+        background-color: #6a1b9a;
+        color: #333 !important;
+        border-radius: 0.5rem;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: #6a1b9a;
+    }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+            color: #fff;
+        }
+
+    .card-footer {
+        background-color: #fff;
+        border-top: 1px solid #ddd;
+        padding-top: 15px;
+    }
+</style>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
