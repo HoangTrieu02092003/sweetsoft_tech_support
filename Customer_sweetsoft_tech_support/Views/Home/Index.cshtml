@@ -1,8 +1,370 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="index-flash swiper-container-horizontal swiper-container-fade">
+	<script language="javascript" src="~/layoutuser/jquery/centercutimg.js"></script><script language="javascript" src="~/layoutuser/jquery/ajax.js"></script><ul class="swiper-wrapper" style="transition-duration: 0ms;">
+        <li id="pcc2" ; style="background-image: url(&quot;/LayoutUser/img/carousel11.png&quot;); width: 1519px; transform: translate3d(-3038px, 0px, 0px); opacity: 1; transition-duration: 0ms;" class="swiper-slide swiper-slide-active" data-swiper-slide-index="1">
+            <h2><a href="javascript:void(0)"  title="Kinh nghiệm">Với 17 năm kinh nghiệm, chúng tôi luôn nỗ lực mang đến cho bạn sự trải nghiệm tốt nhất</a></h2>
+            <a href="javascript:void(0)" class="btn"></a>
+        </li>
+
+        <li id="pcc2" ; style="background-image: url(&quot;/LayoutUser/img/carousel2.jpg&quot;); width: 1519px; transform: translate3d(-3038px, 0px, 0px); opacity: 1; transition-duration: 0ms;" class="swiper-slide swiper-slide-active" data-swiper-slide-index="1">
+            <h2><a href="javascript:void(0)"  title="Cùng nhau đi khám phá">Cùng nhau khám phá những điều mới mẻ và tuyệt vời nhất</a></h2>
+            <a href="javascript:void(0)" class="btn"></a>
+        </li>
+
+        <li id="pcc3" ; style="background-image: url(&quot;/LayoutUser/img/carousel33.jpg&quot;); width: 1519px; transform: translate3d(-4557px, 0px, 0px); opacity: 0; transition-duration: 0ms;" class="swiper-slide swiper-slide-next" data-swiper-slide-index="2">
+            <h2><a href="javascript:void(0)"  title="Tham gia các hoạt động thiện nguyện">Tham gia các hoạt động thiện nguyện để chung tay giúp đỡ những hoàn cảnh khó khăn</a></h2>
+            <a href="javascript:void(0)" class="btn"></a>
+        </li>
+    </ul>
+    <div class="arrow">
+        <a href="javascript:void(0)" class="prev"></a>
+        <a href="javascript:void(0)" class="next"></a>
+    </div>
 </div>
+<script>
+    $(function () {
+        new swiperFun({
+            dom: $('.index-flash'),
+            effect: 'fade',
+            autoplay: 3000
+        })
+    })
+</script>
+<div class="index-news">
+    <div class="wal">
+        <div class="container">
+
+            <div class="col">
+                <div class="p-tag"><a href="javascript:void(0)">LỜI MỞ ĐẦU</a></div>
+
+                <div class="name"><a href="javascript:void(0)">Với 17 năm kinh nghiệm, chúng tôi luôn nỗ lực mang đến cho bạn sự trải nghiệm tốt nhất</a></div>
+                <div class="more"><a href="javascript:void(0)">Read More</a></div>
+            </div>
+            <div class="img"><a href="javascript:void(0)"><img src="~/layoutuser/img/caseroul1.png" /></a></div>
+
+        </div>
+        <script>_showDynClickBatch(['dynclicks_u6_13972'], [13972], "wbnews", 1722153354)</script>
+        <div class="list">
+            <ul>
+
+                <li>
+                    <a href="javascript:void(0)"  title="​A creative journey towards film scoring">
+                        <div class="img"><img src="~/layoutuser/img/carousel2.jpg" /></div>
+						<div class="p-tag"><em></em></div>
+                        <div class="name">Cùng nhau khám phá những điều mới mẻ và tuyệt vời nhất</div>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="javascript:void(0)"  title="​Tsinghua University wins overall championship at SC24 Student Cluster Competition">
+                        <div class="img"><img src="~/layoutuser/img/caseroul3.jpg" /></div>
+                        <div class="p-tag"><em></em></div>
+                        <div class="name">​Tham gia các hoạt động thiện nguyện để chung tay giúp đỡ những hoàn cảnh khó khăn</div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="btn"><a href="javascript:void(0)" class="p-more"><b>Dưới đây là các chứng nhận quốc tế, từ những năng lực thực tế của chúng tôi</b></a></div>
+</div>
+
+<div class="index-events">
+    <div class="wal">
+        <div class="ztrkt">
+            <a href="javascript:void(0)" title="" onclick="" >
+                <img src="~/layoutuser/img/chungnhan1.jpg" border="0" />
+            </a>
+            <a href="javascript:void(0)" title="" onclick="" >
+                <img src="~/layoutuser/img/chungnhan2.jpg" border="0" />
+            </a>
+            <a href="javascript:void(0)" title="" onclick="" >
+                <img src="~/layoutuser/img/chungnhan3.jpg" border="0" />
+            </a>
+        </div>
+        <div class="col">
+            <div class="p-title">
+                <h2>Events</h2>
+                <p>ĐIều gì đang xảy ra ở SweetSoft vậy ?</p>
+            </div>
+            <div class="arrow">
+                <a class="prev"></a>
+                <a class="next"></a>
+            </div>
+        </div>
+        <div class="list">
+            <div class="list-wrapper swiper-container-horizontal">
+                <ul class="swiper-wrapper" style="transform: translate3d(-3187px, 0px, 0px); transition-duration: 0ms;">
+                    <li class="swiper-slide" data-swiper-slide-index="0" style="width: 398.375px;">
+						<div class="img"><a href="javascript:void(0)"><img src="~/layoutuser/img/muathuctap.jpg" /></a></div>
+                        <div class="time">
+                            <div>Dec</div>
+                            <b>16</b>
+                        </div>
+                        <div class="name"><a href="javascript:void(0)" title="Mùa thực tập đang diễn ra sôi động">Mùa thực tập đang diễn ra sôi động</a></div>
+                    </li>
+                    <li class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" style="width: 398.375px;">
+						<div class="img"><a href="javascript:void(0)"><img src="~/layoutuser/img/vanhoakhoidong.jpg" /></a></div>
+                        <div class="time">
+                            <div>Nov</div>
+                            <b>27</b>
+                        </div>
+                        <div class="name"><a href="javascript:void(0)" title="Văn hóa khởi động dự án mới">Văn hóa khởi động dự án mới</a></div>
+                    </li>
+                    <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="2" style="width: 398.375px;">
+						<div class="img"><a href="javascript:void(0)"><img src="~/layoutuser/img/dongphucmoi.jpg" /></a></div>
+                        <div class="time">
+                            <div>Oct</div>
+                            <b>01</b>
+                        </div>
+                        <div class="name"><a href="javascript:void(0)" title="Khoác lên mình diện mạo mới">Khoác lên mình diện mạo mới</a></div>
+                    </li>
+                    <li class="swiper-slide swiper-slide-next" data-swiper-slide-index="3" style="width: 398.375px;">
+						<div class="img"><a href="javascript:void(0)"><img src="~/layoutuser/img/kyniem17nam.jpg" /></a></div>
+                        <div class="time">
+                            <div>Apr</div>
+                            <b>17</b>
+                        </div>
+                        <div class="name"><a href="javascript:void(0)" title="Kỷ niệm hành trình 17 năm SweetSoft.vn thành lập và phát triển (10/7/2007 - 10/7/2024)!">Kỷ niệm 17 năm SweetSoft.vn thành lập và phát triển (10/7/2007 - 10/7/2024)</a></div>
+                    </li>
+                    <li class="swiper-slide" data-swiper-slide-index="4" style="width: 398.375px;">
+						<div class="img"><a href="javascript:void(0)"><img src="~/layoutuser/img/thewesternhill.png" /></a></div>
+                        <div class="time">
+                            <div>Jul</div>
+                            <b>05</b>
+                        </div>
+                        <div class="name"><a href="javascript:void(0)" title="Lên sóng website khách sạn The Western Hill - Đà Lạt">Lên sóng website khách sạn The Western Hill - Đà Lạt</a></div>
+                    </li>
+                    <li class="swiper-slide" data-swiper-slide-index="5" style="width: 398.375px;">
+						<div class="img"><a href="javascript:void(0)"><img src="~/layoutuser/img/quysweetgive.jpg" /></a></div>
+                        <div class="time">
+                            <div>Oct</div>
+                            <b>17</b>
+                        </div>
+                        <div class="name"><a href="javascript:void(0)" title="Hoạt động của quỹ SweetGive">Hoạt động của quỹ SweetGive</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div><script>_showDynClickBatch(['dynclicks_u9_13986', 'dynclicks_u9_13965', 'dynclicks_u9_13949', 'dynclicks_u9_13930', 'dynclicks_u9_13852', 'dynclicks_u9_13829'], [13986, 13965, 13949, 13930, 13852, 13829], "wbnews", 1722153354)</script>
+    </div>
+</div>
+<script>
+    $(function () {
+        var view = 8;
+        new swiperFun({
+            dom: $('.index-events'),
+            domList: '.list-wrapper',
+            slidesPerView: view
+        })
+    })
+</script>
+
+<div class="wal index-campus-life">
+    <div class="p-title">
+        <h2>Sweet's Life</h2>
+        <p>Môi trường làm việc chuyên nghiệp và hỗ trợ tốt đảm bảo chất lượng phần mềm vượt trội</p>
+    </div>
+    <div class="list">
+        <ul>
+
+            <li><a href="javascript:void(0)" title="">Năng động</a></li>
+
+            <li><a href="javascript:void(0)" title="">Sáng tạo</a></li>
+
+            <li><a href="javascript:void(0)" title="">Đầy nhiệt huyết</a></li>
+
+        </ul>
+    </div>
+    <div class="img-list swiper-container-horizontal">
+        <ul class="swiper-wrapper" style="transform: translate3d(-2721px, 0px, 0px); transition-duration: 0ms;">
+            <li class="swiper-slide" data-swiper-slide-index="0" style="width: 907px;">
+                <a href="javascript:void(0)" title="">
+                    <div class="img"><img src="~/layoutuser/img/phong1.jpg" /></div>
+                    <div class="name">
+                    </div>
+                </a>
+            </li>
+            <li class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" style="width: 907px;">
+                <a href="javascript:void(0)" title="">
+                    <div class="img"><img src="~/layoutuser/img/phong2.jpg" /></div>
+                    <div class="name">
+                    </div>
+                </a>
+            </li>
+            <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="2" style="width: 907px;">
+                <a href="javascript:void(0)" title="">
+                    <div class="img"><img src="~/layoutuser/img/phong3.jpg" /></div>
+                    <div class="name">
+                    </div>
+                </a>
+            </li>
+            <li class="swiper-slide swiper-slide-next" data-swiper-slide-index="3" style="width: 907px;">
+                <a href="javascript:void(0)" title="">
+                    <div class="img"><img src="~/layoutuser/img/phong4.jpg" /></div>
+                    <div class="name">
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div class="num">
+            <span class="num-curr">3</span>
+            <em>/</em>
+            <span class="num-total">4</span>
+        </div>
+        <div class="arrow">
+            <a href="https://www.tsinghua.edu.cn/en/index.htm" class="prev"></a>
+            <a href="https://www.tsinghua.edu.cn/en/index.htm" class="next"></a>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        var view = 1;
+        new swiperFun({
+            dom: $('.index-campus-life .img-list')
+        })
+    })
+</script>
+<div class="index-video">
+    <div class="spp">
+        <a href="javascript:void(0)">
+            <video autoplay="autoplay" loop="loop" muted="muted" preload="metadata" style="width:100%;display: block;">
+                <source src="~/layoutuser/video/rdgge5659.mp4" type="video/mp4" />
+            </video>
+        </a>
+    </div>
+    <div class="tpp" style="display:none;"><a href="javascript:void(0)"><img src="~/layoutuser/img/work.jpg" width="100%" /></a></div>
+
+    <script>
+        $(function () {
+            {
+                if ($(window).width() < 800) {
+                    var elem1 = document.getElementsByClassName('spp');
+                    elem1[0].parentNode.removeChild(elem1[0]);
+                    $('.tpp').css('display', 'block');
+                }
+            }
+        });
+    </script><script>_showDynClickBatch(['dynclicks_u13_13991'], [13991], "wbnews", 1722153354)</script>
+</div>
+
+<div class="index-research">
+    <div class="wal">
+        <div class="p-title">
+            <div style="display:flex;">
+                <h2>HOT</h2>
+                <i style="margin-left:2%; color:red;" class="fa-solid fa-fire"></i>
+            </div>
+
+            <p>Nghiên cứu chỉ ra rằng, công nghệ phần mềm thúc đẩy chuyển đổi số toàn diện, giúp tối ưu hóa quy trình vận hành, nâng cao hiệu quả kinh doanh,...</p>
+        </div>
+        <div class="list">
+            <ul>
+                <li class="on">
+                    <div class="img"><a href="javascript:void(0)" title="Tối ưu hóa hoạt động quản lý – điều hành trong doanh nghiệp"><img src="~/layoutuser/img/toiuu.jpg" /></a></div>
+                    <a href="javascript:void(0)" class="name"><b>Tối ưu hóa hoạt động quản lý – điều hành trong doanh nghiệp</b></a>
+                </li>
+                <li>
+                    <div class="img"><a href="javascript:void(0)" title="Cung cấp giải pháp thông minh, hỗ trợ ra quyết định dựa trên thông tin chính xác"><img src="~/layoutuser/img/giaiphap.png" /></a></div>
+                    <a href="javascript:void(0)" class="name"><b>Cung cấp giải pháp thông minh, hỗ trợ ra quyết định dựa trên thông tin chính xác</b></a>
+                </li>
+                <li>
+                    <div class="img"><a href="javascript:void(0)" title="Nâng cao khả năng sáng tạo và đổi mới trong các lĩnh vực đời sống"><img src="~/layoutuser/img/sangtao.jpg" /></a></div>
+                    <a href="javascript:void(0)" class="name"><b>Nâng cao khả năng sáng tạo và đổi mới trong các lĩnh vực đời sống</b></a>
+                </li>
+            </ul>
+        </div>
+        <div class="dots"></div>
+        @*  <div class="more"><a href="javascript:void(0)" class="p-more"><b>Read More</b></a></div> *@
+    </div>
+    <div class="big-img">
+        <a href="javascript:void(0)" title="Tối ưu hóa hoạt động quản lý – điều hành trong doanh nghiệp" style="background-image: url(&quot;/LayoutUser/img/toiuu.jpg&quot;);"></a>
+        <a href="javascript:void(0)" title="Cung cấp giải pháp thông minh, hỗ trợ ra quyết định dựa trên thông tin chính xác" style="background-image: url(&quot;/LayoutUser/img/giaiphap.png&quot;); display: none;"></a>
+        <a href="javascript:void(0)" title="Nâng cao khả năng sáng tạo và đổi mới trong các lĩnh vực đời sống" style="background-image: url(&quot;/LayoutUser/img/sangtao.jpg&quot;); display: none;"></a>
+    </div><script>_showDynClickBatch(['dynclicks_u10_13989', 'dynclicks_u10_13897', 'dynclicks_u10_13937'], [13989, 13897, 13937], "wbnews", 1722153354)</script>
+</div>
+<script>
+
+    $(function () {
+        var dom = $('.index-research'),
+            list = dom.find('.list');
+        if ($(window).width() > 800) {
+            list.find('li').each(function (i) {
+                $(this).hover(
+                    function () {
+                        change(i)
+                    },
+                    function () {
+
+                    }
+                )
+            });
+            change(0);
+            function change(i) {
+                dom.find('.big-img a').hide();
+                dom.find('.big-img a').eq(i).fadeIn(100);
+                list.find('li').removeClass('on');
+                list.find('li').eq(i).addClass('on')
+            }
+        } else if ($(window).width() < 800) {
+            new swiperFun({
+                dom: dom,
+                domList: '.list'
+            })
+        }
+    })
+</script>
+
+
+
+@* <div class="wal index-campus-life">
+    <div class="p-title">
+        <h2>GOOGLE MAP</h2>
+        <p>Bạn không giỏi việc tìm đường ?</p>
+    </div>
+    <div class="list">
+        <ul>
+            <li><a href="javascript:void(0)" title="">Đừng lo, chúng tôi sẽ hướng dẫn cho bạn </a></li>
+        </ul>
+    </div>
+    <div class="img-list swiper-container-horizontal">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.0987161162216!2d109.17483147482854!3d12.241594888010697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3170678749018e2f%3A0x4b0e1e18074eb956!2zQ8O0bmcgdHkgY-G7lSBwaOG6p24gU3dlZXRTb2Z0!5e0!3m2!1svi!2s!4v1734441066898!5m2!1svi!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+<script>
+    $(function () {
+        var view = 1;
+        new swiperFun({
+            dom: $('.index-campus-life .img-list')
+        })
+    })
+</script>
+
+<div class="index-video">
+    <div class="spp">
+        <a href="javascript:void(0)">
+            <video poster="/__local/E/58/28/099373301EEC4488515BAAE6FA4_5A0E1FE9_C3CF7.jpg" autoplay="autoplay" loop="loop" muted="muted" preload="metadata" style="width:100%;display: block;">
+                <source src="~/layoutuser/video/vbcge0238.mp4" type="video/mp4" />
+            </video>
+        </a>
+    </div>
+    <div class="tpp" style="display:none;"><a href="javascript:void(0)"><img src="~/layoutuser/img/map.jpg" style="width:100%;"></a></div>
+
+    <script>
+        $(function () {
+            {
+                if ($(window).width() < 800) {
+                    var elem1 = document.getElementsByClassName('spp');
+                    elem1[0].parentNode.removeChild(elem1[0]);
+                    $('.tpp').css('display', 'block');
+                }
+            }
+        });
+    </script><script>_showDynClickBatch(['dynclicks_u13_13991'], [13991], "wbnews", 1722153354)</script>
+</div> *@
