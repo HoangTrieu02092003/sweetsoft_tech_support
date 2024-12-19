@@ -1,0 +1,115 @@
+﻿@model admin_sweetsoft_tech_support.Models.TblRequestTransfer
+
+@{
+    ViewData["Title"] = "Transfer";
+}
+<style>
+    h1 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+        color: #6a1b9a;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .card-header {
+        background-color: #7b2cbf;
+        color: #333;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .btn-warning {
+        background-color: #f9a825;
+        color: white;
+        border-radius: 5px;
+    }
+
+        .btn-warning:hover {
+            background-color: #f57f17;
+        }
+
+    .text-center {
+        margin-top: 20px;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-warning text-center">
+                    <p style="font-size: 24px;">Chuyển giao yêu cầu</p>
+                </div>
+                <div class="card-body" style="background-color: #f4f0f7;">
+                    <form asp-action="Transfer">
+
+                        <div class="form-group">
+                            <label asp-for="RequestId" class="control-label text-dark">Yêu cầu</label>
+                            <select asp-for="RequestId" class="form-control" asp-items="ViewBag.RequestId"></select>
+                            <span asp-validation-for="RequestId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="FromDepartmentId" class="control-label text-dark">Phòng ban chuyển từ</label>
+                            <select asp-for="FromDepartmentId" class="form-control" asp-items="ViewBag.FromDepartmentId"></select>
+                            <span asp-validation-for="FromDepartmentId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ToDepartmentId" class="control-label text-dark">Phòng ban chuyển đến</label>
+                            <select asp-for="ToDepartmentId" class="form-control" asp-items="ViewBag.ToDepartmentId"></select>
+                            <span asp-validation-for="ToDepartmentId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Priority" class="control-label text-dark">Ưu tiên</label>
+                            <select asp-for="Priority" class="form-control">
+                                <option value="1">Thấp</option>
+                                <option value="2">Trung bình</option>
+                                <option value="3">Cao</option>
+                            </select>
+                            <span asp-validation-for="Priority" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="TransferredBy" class="control-label text-dark">Người chuyển</label>
+                            <select asp-for="TransferredBy" class="form-control" asp-items="ViewBag.TransferredBy"></select>
+                            <span asp-validation-for="TransferredBy" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="TransferredAt" class="control-label text-dark">Ngày chuyển</label>
+                            <input asp-for="TransferredAt" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" readonly />
+                            <span asp-validation-for="TransferredAt" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Note" class="control-label text-dark">Ghi chú</label>
+                            <input asp-for="Note" class="form-control" />
+                            <span asp-validation-for="Note" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <input type="submit" value="Chuyển" class="btn btn-success text-white" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <a asp-action="Index" class="btn btn-outline-dark">Quay lại danh sách</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

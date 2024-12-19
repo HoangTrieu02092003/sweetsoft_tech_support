@@ -1,20 +1,14 @@
-﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblSupportRequest>
+﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblRequestTransfer>
 
 @{
     ViewData["Title"] = "Index";
 }
-@if (TempData["ErrorMessage"] != null)
-{
-    <div class="alert alert-danger">
-        @TempData["ErrorMessage"]
-    </div>
-}
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<link href="~/css/Index_SupportRequest.css" rel="stylesheet">
+<link href="~/css/Index_RequestTransfers.css" rel="stylesheet">
 
-<h1 class="text-start my-4" style="color: #6a1b9a;">Quản lý Yêu cầu Hỗ trợ</h1>
+<h1 class="text-start my-4" style="color: #6a1b9a;">Quản lý Chuyển giao Yêu cầu</h1>
 
 <div class="d-flex justify-content-end align-items-center mb-3">
     <p class="mb-0">
@@ -28,12 +22,13 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Chi tiết yêu cầu</th>
-                <th>Trạng thái</th>
-                <th>Ngày tạo</th>
-                <th>Ngày giải quyết</th>
-                <th>Khách hàng</th>
-                <th>Phòng ban</th>
+                <th>Ưu tiên</th>
+                <th>Ngày chuyển giao</th>
+                <th>Ghi chú</th>
+                <th>Phòng ban chuyển</th>
+                <th>Yêu cầu</th>
+                <th>Phòng ban nhận</th>
+                <th>Người chuyển</th>
                 <th>Hành động</th>
             </tr>
         </thead>
@@ -41,54 +36,52 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.RequestDetails</td>
                     <td>
                         @{
-                            string statusText = item.Status switch
+                            string priorityText = item.Priority switch
                             {
-                                0 => "Chưa hoàn thành",
-                                1 => "Hoàn thành",
-                                2 => "Không xử lý được",
+                                1 => "Thấp",
+                                2 => "Trung bình",
+                                3 => "Cao",
                                 _ => "Không xác định"
                             };
                         }
-                        @statusText
+                        @priorityText
                     </td>
 
-                    <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
-                    <td>@(item.ResolvedAt?.ToString("dd/MM/yyyy") ?? "Chưa giải quyết")</td>
-                    <td>@item.Customer.FullName</td>
-                    <td>@(item.Department?.DepartmentName ?? "N/A")</td>
+                    <td>@item.TransferredAt.ToString("dd/MM/yyyy")</td>
+                    <td>@Html.DisplayFor(modelItem => item.Note)</td>
+                    <td>@item.FromDepartment.DepartmentName</td>
+                    <td>@item.Request.RequestDetails</td>
+                    <td>@item.ToDepartment.DepartmentName</td>
+                    <td>@item.TransferredByNavigation.FullName</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.RequestId" class="btn btn-outline-primary">
+                        <a asp-action="Edit" asp-route-id="@item.TransferId" class="btn btn-outline-primary">
                             <i class="bi bi-pencil-square"></i> Sửa
                         </a>
-                        <a asp-action="Details" asp-route-id="@item.RequestId" class="btn btn-outline-info">
+                        <a asp-action="Details" asp-route-id="@item.TransferId" class="btn btn-outline-info">
                             <i class="bi bi-eye"></i> Xem
                         </a>
-                        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.RequestId">
+                        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.TransferId">
                             <i class="bi bi-trash"></i> Xóa
                         </button>
-                        <a asp-action="Transfer" asp-route-id="@item.RequestId" class="btn btn-outline-secondary">
-                            <i class="bi bi-arrow-right-circle"></i> Chuyển giao
-                        </a>
                     </td>
                 </tr>
                 <!-- Modal Xác Nhận Xóa -->
-                <div class="modal fade" id="deleteModal-@item.RequestId" tabindex="-1" aria-labelledby="deleteModalLabel-@item.RequestId" aria-hidden="true">
+                <div class="modal fade" id="deleteModal-@item.TransferId" tabindex="-1" aria-labelledby="deleteModalLabel-@item.TransferId" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel-@item.RequestId">Xác nhận xóa yêu cầu hỗ trợ</h5>
+                                <h5 class="modal-title" id="deleteModalLabel-@item.TransferId">Xác nhận xóa chuyển giao yêu cầu</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Bạn có chắc chắn muốn xóa yêu cầu hỗ trợ này không?
+                                Bạn có chắc chắn muốn xóa chuyển giao yêu cầu này không?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
                                 <!-- Form Xóa -->
-                                <form method="post" asp-action="Delete" asp-route-id="@item.RequestId">
+                                <form method="post" asp-action="Delete" asp-route-id="@item.TransferId">
                                     <button type="submit" class="btn btn-danger">Xóa</button>
                                 </form>
                             </div>
