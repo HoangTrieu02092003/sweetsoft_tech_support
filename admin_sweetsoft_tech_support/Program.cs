@@ -89,6 +89,11 @@ app.MapControllerRoute(
     defaults: new { controller = "TblUsers", action = "Create" });
 
 app.MapControllerRoute(
+    name: "UserCreate",
+    pattern: "danh-sach-phong-ban",
+    defaults: new { controller = "TblDepartments", action = "Index" });
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Admin}/{action=Login}/{id?}");
 
