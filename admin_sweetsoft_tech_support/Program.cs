@@ -33,6 +33,7 @@ builder.Services.AddSession(options =>
     });
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<RequestContext>();
 
 var app = builder.Build();
 
