@@ -2,7 +2,7 @@
 @model IEnumerable<admin_sweetsoft_tech_support.Models.TblCustomer>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Quản lý Khách hàng";
     Layout = "~/Views/Shared/_Layout_admin.cshtml";
 }
 
@@ -36,11 +36,12 @@
             <p>
                 <strong>Trạng thái:</strong>
                 <span class="badge @((item.Status == 1) ? "bg-success" : "bg-danger")">
-                    @(item.Status == 1 ? "Hoạt động" : "Ngừng hoạt động")
+                    @(item.Status == 1 ? "Hoạt động" : "Chưa hoạt động")
                 </span>
             </p>
-            <p><strong>Người tạo:</strong> @item.CreatedUser</p>
-            <p><strong>Người cập nhật:</strong> @item.CreatedUser</p>
+            <p><strong>Người tạo:</strong> @item.CreatedUserNavigation?.FullName </p
+            <p><strong>Người cập nhật:</strong> @item.UpdatedUserNavigation?.FullName</p>
+
             <p><strong>Ngày tạo:</strong> @item.CreatedAt?.ToString("dd/MM/yyyy")</p>
             <p><strong>Ngày cập nhật:</strong> @item.UpdatedAt?.ToString("dd/MM/yyyy")</p>
             <div class="card-actions">
@@ -55,12 +56,13 @@
                 </button>
             </div>
         </div>
+
         <!-- Modal Xác Nhận Xóa -->
         <div class="modal fade" id="deleteModal-@item.CustomerId" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa người dùng</h5>
+<h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa người dùng</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -68,7 +70,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                        <!-- Form Xóa -->
                         <form method="post" asp-action="Delete" asp-route-id="@item.CustomerId">
                             <button type="submit" class="btn btn-danger">Xóa</button>
                         </form>

@@ -1,11 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
-using Microsoft.CodeAnalysis.Scripting;
-using BCrypt.Net;
-
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -19,10 +19,29 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
         // GET: TblCustomers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            var requestContext = _context.TblCustomers.Include(t => t.CreatedUserNavigation).Include(t => t.UpdatedUserNavigation);
-            return View(await requestContext.ToListAsync());
+            int pageSize = 10; // or any number based on your requirement
+
+            // Include related users for CreatedUser and UpdatedUser
+            var query = _context.TblCustomers.Include(t => t.CreatedUserNavigation).Include(t => t.UpdatedUserNavigation);
+
+            // Get the total count of customers
+            var totalCount = await query.CountAsync();
+
+            // Fetch the paged list of customers
+            var customers = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            // Calculate total pages for pagination
+            ViewData["TotalPages"] = (int)Math.Ceiling(totalCount / (double)pageSize);
+            ViewData["CurrentPage"] = page;
+
+            // You don't need to set CreatedUser and UpdatedUser for the entire list.
+            // You can keep them for general purposes if needed:
+            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
+            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
+
+            return View(customers);
         }
 
         // GET: TblCustomers/Details/5
@@ -48,12 +67,14 @@ namespace admin_sweetsoft_tech_support.Controllers
         // GET: TblCustomers/Create
         public IActionResult Create()
         {
-            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId");
-            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId");
+            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
+            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
             return View();
         }
 
         // POST: TblCustomers/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Product,Username,Password,Status,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedUser,CreatedAt,UpdatedUser,UpdatedAt")] TblCustomer tblCustomer)
@@ -64,8 +85,8 @@ namespace admin_sweetsoft_tech_support.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.CreatedUser);
-            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.UpdatedUser);
+            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
+            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
             return View(tblCustomer);
         }
 
@@ -77,29 +98,19 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return NotFound();
             }
 
-            var tblCustomer = await _context.TblCustomers
-                 .Include(t => t.CreatedUserNavigation)
-                 .Include(t => t.UpdatedUserNavigation)
-                 .FirstOrDefaultAsync(m => m.CustomerId == id);
-
+            var tblCustomer = await _context.TblCustomers.FindAsync(id);
             if (tblCustomer == null)
             {
                 return NotFound();
             }
-            var statusList = new List<SelectListItem> {
-                new SelectListItem { Value = "1", Text = "Hoạt động" },
-                new SelectListItem { Value = "0", Text = "Chưa hoạt động" }
-            };
-            ViewBag.StatusList = new SelectList(statusList, "Value", "Text", tblCustomer.Status);
-
-            ViewBag.createdUser = tblCustomer.CreatedUserNavigation?.FullName ?? "N/A";
-            ViewBag.updatedUser = tblCustomer.UpdatedUserNavigation?.FullName ?? "N/A";
-           
+            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.CreatedUser);
+            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.UpdatedUser);
             return View(tblCustomer);
-
         }
 
         // POST: TblCustomers/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Product,Username,Password,Status,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedUser,CreatedAt,UpdatedUser,UpdatedAt")] TblCustomer tblCustomer)
@@ -110,22 +121,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             if (ModelState.IsValid)
-
             {
-                var existingUser = await _context.TblUsers.FindAsync(id);
-                if (existingUser == null)
-                {
-                    return NotFound();
-                }
-
-                // Cập nhật chỉ những thuộc tính được chỉnh sửa, các thuộc tính không thay đổi sẽ giữ nguyên
-                if (!string.IsNullOrEmpty(tblCustomer.FullName)) existingUser.FullName = tblCustomer.FullName;
-                if (!string.IsNullOrEmpty(tblCustomer.Email)) existingUser.Email = tblCustomer.Email;
-                if (!string.IsNullOrEmpty(tblCustomer.Phone)) existingUser.Phone = tblCustomer.Phone;
-                if (!string.IsNullOrEmpty(tblCustomer.Username)) existingUser.Username = tblCustomer.Username;
-                
-                existingUser.Status = tblCustomer.Status;
-                existingUser.UpdatedAt = DateTime.Today;
                 try
                 {
                     _context.Update(tblCustomer);
@@ -184,51 +180,9 @@ namespace admin_sweetsoft_tech_support.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // Thêm chức năng Register (Đăng ký khách hàng)
-        // GET: TblCustomers/Register (Form đăng ký)
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        // POST: TblCustomers/Register (Xử lý đăng ký)
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register([Bind("FullName, Email, Phone, TaxCode, Company, Product, Username, Password")] TblCustomer tblCustomer)
-        {
-            if (ModelState.IsValid)
-            {
-                // Kiểm tra email và username có trùng không
-                if (_context.TblCustomers.Any(c => c.Email == tblCustomer.Email))
-                {
-                    ModelState.AddModelError("Email", "Email này đã tồn tại.");
-                    return View(tblCustomer);
-                }
-
-                if (_context.TblCustomers.Any(c => c.Username == tblCustomer.Username))
-                {
-                    ModelState.AddModelError("Username", "Tên tài khoản này đã tồn tại.");
-                    return View(tblCustomer);
-                }
-
-                // Mã hóa mật khẩu trước khi lưu
-                tblCustomer.Password = BCrypt.Net.BCrypt.HashPassword(tblCustomer.Password);
-
-                // Lưu thông tin khách hàng vào cơ sở dữ liệu
-                _context.Add(tblCustomer);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction(nameof(Index)); // Redirect sau khi đăng ký thành công
-            }
-
-            return View(tblCustomer);
-        }
-
-        // Kiểm tra tồn tại của khách hàng theo CustomerId
         private bool TblCustomerExists(int id)
         {
             return _context.TblCustomers.Any(e => e.CustomerId == id);
         }
-
     }
 }

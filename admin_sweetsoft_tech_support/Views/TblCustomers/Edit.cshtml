@@ -1,8 +1,10 @@
 ﻿@model admin_sweetsoft_tech_support.Models.TblCustomer
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Thông tin khách hàng";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
 }
+
 <style>
     body {
         font-family: 'Poppins', sans-serif;
@@ -129,99 +131,109 @@
             </div>
             <div class="d-flex justify-content-end">
                 <a asp-action="Index" class="btn btn-back">
-                    <i class="ti ti-arrow-left"></i>
-                    Quay lại
+                    <i class="ti ti-arrow-left"></i> Quay lại
                 </a>
             </div>
+
             <form asp-action="Edit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="CustomerId" />
 
+                <!-- Các trường thông tin khách hàng -->
                 <div class="form-group">
-                    <label asp-for="FullName" class="control-label text-dark">Họ và tên</label>
+                    <label asp-for="FullName" class="control-label">Họ và tên</label>
                     <input asp-for="FullName" class="form-control" />
                     <span asp-validation-for="FullName" class="text-danger"></span>
                 </div>
-
                 <div class="form-group">
-                    <label asp-for="Email" class="control-label text-dark">Email</label>
+                    <label asp-for="Email" class="control-label">Email</label>
                     <input asp-for="Email" class="form-control" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
-
                 <div class="form-group">
-                    <label asp-for="Phone" class="control-label text-dark">Số điện thoại</label>
+                    <label asp-for="Phone" class="control-label">Số điện thoại</label>
                     <input asp-for="Phone" class="form-control" />
                     <span asp-validation-for="Phone" class="text-danger"></span>
                 </div>
-
                 <div class="form-group">
-                    <label asp-for="Username" class="control-label text-dark">Tên đăng nhập</label>
+                    <label asp-for="TaxCode" class="control-label">Mã số thuế</label>
+                    <input asp-for="TaxCode" class="form-control" />
+                    <span asp-validation-for="TaxCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Company" class="control-label">Công ty</label>
+                    <input asp-for="Company" class="form-control" />
+                    <span asp-validation-for="Company" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Product" class="control-label">Sản phẩm</label>
+                    <input asp-for="Product" class="form-control" />
+                    <span asp-validation-for="Product" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Username" class="control-label">Tên đăng nhập</label>
                     <input asp-for="Username" class="form-control" />
                     <span asp-validation-for="Username" class="text-danger"></span>
                 </div>
-
-                <div class="form-group" hidden>
-                    <label asp-for="Password" class="control-label text-dark">Mật khẩu</label>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">Mật khẩu</label>
                     <input asp-for="Password" class="form-control" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
-
                 <div class="form-group">
-                    <label asp-for="Status" class="control-label text-dark">Trạng thái</label>
-                    <select asp-for="Status" class="form-control" asp-items="ViewBag.StatusList"></select>
+                    <label asp-for="Status" class="control-label">Trạng thái</label>
+                    <select asp-for="Status" class="form-control">
+                        <option value="1">Hoạt động</option>
+                        <option value="0">Chưa hoạt động</option>
+                    </select>
                     <span asp-validation-for="Status" class="text-danger"></span>
                 </div>
-
-                <div class="form-group" hidden>
-                    <label asp-for="ResetToken" class="control-label text-dark">Token reset mật khẩu</label>
+                <div class="form-group">
+                    <label asp-for="ResetToken" class="control-label">Token đặt lại</label>
                     <input asp-for="ResetToken" class="form-control" />
                     <span asp-validation-for="ResetToken" class="text-danger"></span>
                 </div>
-
-                <div class="form-group" hidden>
-                    <label asp-for="ResetTokenExpiry" class="control-label text-dark">Hạn sử dụng Token</label>
+                <div class="form-group">
+                    <label asp-for="ResetTokenExpiry" class="control-label">Hết hạn token đặt lại</label>
                     <input asp-for="ResetTokenExpiry" class="form-control" />
                     <span asp-validation-for="ResetTokenExpiry" class="text-danger"></span>
                 </div>
-
                 <div class="form-group">
-                    <label asp-for="Token" class="control-label text-dark">Token tạo tài khoản</label>
+                    <label asp-for="Token" class="control-label">Token</label>
                     <input asp-for="Token" class="form-control" />
                     <span asp-validation-for="Token" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="TokenExpiry" class="control-label text-dark">Hạn sử dụng Token</label>
+                    <label asp-for="TokenExpiry" class="control-label">Hết hạn token</label>
                     <input asp-for="TokenExpiry" class="form-control" />
                     <span asp-validation-for="TokenExpiry" class="text-danger"></span>
                 </div>
-
                 <div class="form-group">
-                    <label asp-for="CreatedUser" class="control-label text-dark">Người tạo</label>
-                    <p asp-for="CreatedUser" class="form-control">@ViewBag.createdUser</p>
+                    <label asp-for="CreatedUser" class="control-label">Người tạo</label>
+                    <select asp-for="CreatedUser" class="form-control" asp-items="ViewBag.CreatedUser"></select>
                     <span asp-validation-for="CreatedUser" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="CreatedAt" class="control-label text-dark">Ngày tạo</label>
-                    <p asp-for="CreatedAt" class="form-control">@Model.CreatedAt?.ToString("dd/MM/yyyy")</p>
+                    <label asp-for="CreatedAt" class="control-label">Ngày tạo</label>
+                    <input asp-for="CreatedAt" class="form-control" readonly />
                     <span asp-validation-for="CreatedAt" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="UpdatedUser" class="control-label text-dark">Người cập nhật</label>
-                    <p asp-for="UpdatedUser" class="form-control">@ViewBag.updatedUser</p>
+                    <label asp-for="UpdatedUser" class="control-label">Người cập nhật</label>
+                    <select asp-for="UpdatedUser" class="form-control" asp-items="ViewBag.UpdatedUser"></select>
                     <span asp-validation-for="UpdatedUser" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="UpdatedAt" class="control-label text-dark">Ngày cập nhật</label>
-                    <p asp-for="UpdatedAt" class="form-control">@Model.UpdatedAt?.ToString("dd/MM/yyyy")</p>
+                    <label asp-for="UpdatedAt" class="control-label">Ngày cập nhật</label>
+                    <input asp-for="UpdatedAt" class="form-control" readonly />
                     <span asp-validation-for="UpdatedAt" class="text-danger"></span>
-                </div>       
-       
+                </div>
+
                 <div class="form-group">
-                    <input type="submit" value="Lưu" class="btn btn-warning w-100" />
+                    <input type="submit" value="Lưu" class="btn btn-submit" />
                 </div>
             </form>
         </div>

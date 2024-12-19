@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
 }
 
 <style>
@@ -122,6 +123,7 @@
         justify-content: flex-end;
     }
 </style>
+
 <div class="container w-100 d-flex justify-content-center">
     <div class="col-12 col-md-10 col-lg-8">
         <div class="container-custom">
@@ -136,95 +138,121 @@
                     </a>
                 </div>
 
+
+                <!-- Các trường nhập liệu cho khách hàng -->
                 <div class="form-group">
-                    <label asp-for="FullName" class="control-label text-dark">Họ và tên</label>
+                    <label asp-for="FullName" class="control-label"></label>
                     <input asp-for="FullName" class="form-control" />
                     <span asp-validation-for="FullName" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="Email" class="control-label text-dark">Email</label>
+                    <label asp-for="Email" class="control-label"></label>
                     <input asp-for="Email" class="form-control" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="Phone" class="control-label text-dark">Số điện thoại</label>
+                    <label asp-for="Phone" class="control-label"></label>
                     <input asp-for="Phone" class="form-control" />
                     <span asp-validation-for="Phone" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="TaxCode" class="control-label text-dark">Mã số thuế</label>
+                    <label asp-for="TaxCode" class="control-label"></label>
                     <input asp-for="TaxCode" class="form-control" />
                     <span asp-validation-for="TaxCode" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="Username" class="control-label text-dark">Tên đăng nhập</label>
+                    <label asp-for="Company" class="control-label"></label>
+                    <input asp-for="Company" class="form-control" />
+                    <span asp-validation-for="Company" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Product" class="control-label"></label>
+                    <input asp-for="Product" class="form-control" />
+                    <span asp-validation-for="Product" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Username" class="control-label"></label>
                     <input asp-for="Username" class="form-control" />
                     <span asp-validation-for="Username" class="text-danger"></span>
                 </div>
 
-                <div class="form-group" hidden>
-                    <label asp-for="Password" class="control-label text-dark">Mật khẩu</label>
-                    <input asp-for="Password" class="form-control" value="Password123" />
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
 
-                <div class="form-group" hidden>
-                    <label asp-for="Status" class="control-label text-dark">Trạng thái</label>
-                    <input asp-for="Status" class="form-control" value="1" />
+                <div class="form-group">
+                    <label asp-for="Status" class="control-label">Trạng thái</label>
+                    <select asp-for="Status" class="form-control">
+                        <option value="1">Hoạt động</option>
+                        <option value="0">Chưa hoạt động</option>
+                    </select>
                     <span asp-validation-for="Status" class="text-danger"></span>
                 </div>
 
-                <div class="form-group" hidden>
-                    <label asp-for="ResetToken" class="control-label text-dark">Token reset mật khẩu</label>
-                    <input asp-for="ResetToken" class="form-control" value="1" />
+                <div class="form-group">
+                    <label asp-for="ResetToken" class="control-label"></label>
+                    <input asp-for="ResetToken" class="form-control" />
                     <span asp-validation-for="ResetToken" class="text-danger"></span>
                 </div>
 
-                <div class="form-group" hidden>
-                    <label asp-for="ResetTokenExpiry" class="control-label text-dark">Hạn sử dụng Token</label>
-                    <input asp-for="ResetTokenExpiry" class="form-control" value="1" />
+                <div class="form-group">
+                    <label asp-for="ResetTokenExpiry" class="control-label"></label>
+                    <input asp-for="ResetTokenExpiry" class="form-control" />
                     <span asp-validation-for="ResetTokenExpiry" class="text-danger"></span>
                 </div>
 
-                <div class="form-group" hidden>
-                    <label asp-for="CreatedUser" class="control-label text-dark">Người tạo</label>
-                    <select asp-for="CreatedUser" class="form-control" asp-items="ViewBag.CreatedUser"></select>
-                    <span asp-validation-for="CreatedUser" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="Token" class="control-label"></label>
+                    <input asp-for="Token" class="form-control" />
+                    <span asp-validation-for="Token" class="text-danger"></span>
                 </div>
 
-                <div class="form-group" hidden>
-                    <label asp-for="CreatedAt" class="control-label text-dark">Ngày tạo</label>
-                    <input asp-for="CreatedAt" class="form-control" value="1" />
+                <div class="form-group">
+                    <label asp-for="TokenExpiry" class="control-label"></label>
+                    <input asp-for="TokenExpiry" class="form-control" />
+                    <span asp-validation-for="TokenExpiry" class="text-danger"></span>
+                </div>
+
+                <!-- Dropdown cho Người tạo và Người cập nhật -->
+                <div class="form-group">
+                    <label asp-for="CreatedUser" class="control-label"></label>
+                    <select asp-for="CreatedUser" class="form-control" asp-items="ViewBag.CreatedUser"></select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CreatedAt" class="control-label"></label>
+                    <input asp-for="CreatedAt" class="form-control" />
                     <span asp-validation-for="CreatedAt" class="text-danger"></span>
                 </div>
 
-                <div class="form-group" hidden>
-                    <label asp-for="UpdatedUser" class="control-label text-dark">Người cập nhật</label>
+                <div class="form-group">
+                    <label asp-for="UpdatedUser" class="control-label"></label>
                     <select asp-for="UpdatedUser" class="form-control" asp-items="ViewBag.UpdatedUser"></select>
-                    <span asp-validation-for="UpdatedUser" class="text-danger"></span>
                 </div>
 
-                <div class="form-group" hidden>
-                    <label asp-for="UpdatedAt" class="control-label text-dark">Ngày cập nhật</label>
-                    <input asp-for="UpdatedAt" class="form-control" value="1" />
+                <div class="form-group">
+                    <label asp-for="UpdatedAt" class="control-label"></label>
+                    <input asp-for="UpdatedAt" class="form-control" />
                     <span asp-validation-for="UpdatedAt" class="text-danger"></span>
                 </div>
 
-                <div class="form-group text-center">
-                    <input type="submit" value="Tạo mới" class="btn btn-submit" />
+                <!-- Nút tạo khách hàng -->
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn-submit" />
+                </div>
+
+                <!-- Quay lại danh sách khách hàng -->
+                <div>
+                    <a asp-action="Index" class="btn-back">Back to List</a>
                 </div>
             </form>
         </div>
     </div>
-</div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
-
