@@ -5,6 +5,10 @@ using System.Security.Claims;
 using admin_sweetsoft_tech_support.Models;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using BCrypt.Net;
+using System.Net.Mail;
+using System.Net;
+
 namespace admin_sweetsoft_tech_support.Controllers
 {
     public class AdminController : Controller
@@ -13,15 +17,22 @@ namespace admin_sweetsoft_tech_support.Controllers
         private readonly ILogger<AdminController> _logger;
         private readonly IConfiguration _configuration;
 
+        public AdminController(RequestContext context, ILogger<AdminController> logger, IConfiguration configuration)
+        {
+            _context = context;
+            _logger = logger;
+            _configuration = configuration;
+        }
+
         private async Task<bool> Validate(string secretKey, string recaptchaResponse)
         {
             using (var client = new HttpClient())
             {
                 var content = new FormUrlEncodedContent(new[]
                 {
-            new KeyValuePair<string, string>("secret", secretKey),
-            new KeyValuePair<string, string>("response", recaptchaResponse)
-        });
+                    new KeyValuePair<string, string>("secret", secretKey),
+                    new KeyValuePair<string, string>("response", recaptchaResponse)
+                });
 
                 var response = await client.PostAsync("https://www.google.com/recaptcha/api/siteverify", content);
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -55,12 +66,14 @@ namespace admin_sweetsoft_tech_support.Controllers
             var recaptchaSecretKey = _configuration["ReCaptcha:SecretKey"];
             var recaptchaResponseValue = Request.Form["g-recaptcha-response"];
             var isCaptchaValid = await Validate(recaptchaSecretKey, recaptchaResponseValue);
+
             if (!isCaptchaValid)
             {
                 ModelState.AddModelError("", "Mã xác thực không hợp lệ.");
                 ViewBag.SiteKey = siteKey;
                 return View();
             }
+
             var user = await _context.TblUsers
                 .FirstOrDefaultAsync(u => u.Username == username); // Kiểm tra admin
 
@@ -76,12 +89,12 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 // Tạo các Claims và Identity cho người dùng đã đăng nhập
                 var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-                new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Email, user.Email),
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+            new Claim(ClaimTypes.Name, user.Username),
+            new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Role, "Admin") // Thêm quyền admin cho người dùng
-            };
+        };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
@@ -94,6 +107,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 TempData["IsAdmin"] = user.IsAdmin == true ? "true" : "false";
                 return RedirectToAction("Index1", "Report"); // Sau khi đăng nhập, chuyển tới trang chính của quản trị viên
             }
+
             ViewBag.SiteKey = siteKey;
             ModelState.AddModelError(string.Empty, "Mật khẩu sai.");
             return View();
@@ -107,6 +121,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return RedirectToAction("Login");
         }
 
+        // Quên mật khẩu (GET)
         public IActionResult ForgotPassword()
         {
             var siteKey = _configuration["ReCaptcha:SiteKey"];
@@ -153,6 +168,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return RedirectToAction("Login");
         }
 
+        // Reset mật khẩu (GET)
         [HttpGet]
         public IActionResult ResetPassword(string token)
         {
@@ -173,6 +189,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View();
         }
 
+        // Xử lý đặt lại mật khẩu (POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(string token, string password, string confirmPassword)
@@ -233,6 +250,39 @@ namespace admin_sweetsoft_tech_support.Controllers
             mailMessage.To.Add(toEmail);
 
             await client.SendMailAsync(mailMessage);
+        }
+
+        // Thêm người dùng mới (Register)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(string username, string email, string password)
+        {
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+
+            var existingUser = await _context.TblUsers.FirstOrDefaultAsync(u => u.Username == username || u.Email == email);
+            if (existingUser != null)
+            {
+                ModelState.AddModelError(string.Empty, "Username hoặc Email đã tồn tại.");
+                return View();
+            }
+
+            var newUser = new TblUser
+            {
+                Username = username,
+                Email = email,
+                Password = hashedPassword,
+                RoleId = 1, // Admin
+                DepartmentId = 1, // Ví dụ phòng ban
+                Status = 1,
+                IsAdmin = true,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now
+            };
+
+            _context.TblUsers.Add(newUser);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Login");
         }
     }
 }

@@ -10,10 +10,10 @@
     .login-container {
         width: 100%;
         max-width: 400px;
-        border: 1px solid #6a1b9a; 
+        border: 1px solid #6a1b9a;
         padding: 15px;
         border-radius: 8px;
-        background: #f9f9f9; 
+        background: #f9f9f9;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
@@ -29,80 +29,80 @@
         margin-bottom: 1.5rem;
     }
 
-    .form-floating-label input {
-        width: 100%;
-        padding: 12px 16px;
-        font-size: 1rem;
-        border: 1px solid #ddd; 
-        border-radius: 4px;
-        background: transparent;
-        outline: none;
-        transition: all 0.2s ease-in-out;
-    }
+        .form-floating-label input {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: transparent;
+            outline: none;
+            transition: all 0.2s ease-in-out;
+        }
 
-    .form-floating-label label {
-        position: absolute;
-        top: 50%;
-        left: 16px;
-        transform: translateY(-50%);
-        padding: 0 4px;
-        font-size: 1rem;
-        color: #aaa; 
-        pointer-events: none;
-        transition: all 0.2s ease-in-out;
-    }
+        .form-floating-label label {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            transform: translateY(-50%);
+            padding: 0 4px;
+            font-size: 1rem;
+            color: #aaa;
+            pointer-events: none;
+            transition: all 0.2s ease-in-out;
+        }
 
-   
-    .form-floating-label input:focus {
-        border-color: #6a1b9a; 
-    }
 
-    .form-floating-label input:focus + label,
-    .form-floating-label input:not(:placeholder-shown) + label {
-        top: -8px;
-        transform: translateY(0) scale(0.85);
-        background-color: #f9f9f9;
-        color: #6a1b9a; 
-    }
+        .form-floating-label input:focus {
+            border-color: #6a1b9a;
+        }
+
+            .form-floating-label input:focus + label,
+            .form-floating-label input:not(:placeholder-shown) + label {
+                top: -8px;
+                transform: translateY(0) scale(0.85);
+                background-color: #f9f9f9;
+                color: #6a1b9a;
+            }
 
     .input-group {
         position: relative;
     }
 
-    .input-group .input-group-text {
-        position: absolute;
-        top: 50%;
-        right: 10px;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        cursor: pointer;
-    }
+        .input-group .input-group-text {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
 
-    
-    .input-group .input-group-text:hover {
-        color: #ffb300; 
-    }
 
-    
+            .input-group .input-group-text:hover {
+                color: #ffb300;
+            }
+
+
     button {
-        background-color: #ffb300; 
-        border-color: #ffb300; 
-        color: #fff; 
+        background-color: #ffb300;
+        border-color: #ffb300;
+        color: #fff;
     }
 
-    button:hover {
-        background-color: #ff9800; 
-        border-color: #ff9800; 
-    }
+        button:hover {
+            background-color: #ff9800;
+            border-color: #ff9800;
+        }
 
     .text-center a {
-        color: #6a1b9a; 
+        color: #6a1b9a;
     }
 
-    .text-center a:hover {
-        color: #ffb300; 
-    }
+        .text-center a:hover {
+            color: #ffb300;
+        }
 </style>
 
 <!-- Login Form -->
@@ -142,7 +142,7 @@
             <div class="g-recaptcha mb-3 w-100" data-sitekey="@ViewBag.SiteKey" data-callback="verifyCaptcha"></div>
             <!-- Thêm trường để lưu trữ giá trị reCAPTCHA -->
             <input type="hidden" id="recaptchaResponse" name="g-recaptcha-response" />
-            
+
             <button type="submit" class="btn btn-warning w-100">Đăng nhập</button>
         </form>
 
