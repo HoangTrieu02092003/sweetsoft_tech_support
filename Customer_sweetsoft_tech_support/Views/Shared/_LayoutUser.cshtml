@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
-    <title>Tsinghua University</title>
-    <meta name="keywords" content="Tsinghua University">
 
 	<link href="~/layoutuser/style/index.css" rel="stylesheet" />
 	<link href="~/layoutuser/style/mystyle.css" rel="stylesheet" />
     <link href="~/layoutuser/style/phone.css" rel="stylesheet" media="screen and (max-width: 800px)" />
+	<link href="~/layoutuser/style/inner5.vsb.css" rel="stylesheet" />
 
     <!--font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,17 +24,15 @@
     <script type="text/javascript" src="~/layoutuser/jquery/jquery.min.js"></script>
     <script src="~/layoutuser/jquery/set.js"></script>
 	<link href="~/layoutuser/style/index2.css" rel="stylesheet" />
-    <script type="text/javascript" src="./Tsinghua University_files/counter.js"></script>
+	<script src="~/layoutuser/jquery/counter.js"></script>
     <script type="text/javascript">_jsq_(1001, '/index.jsp', -1, 1722153354)</script>
 </head>
 <body class="show">
     <div class="g-head">
         <div class="wal">
-            <a href="" class="logo"></a>
+            <a href="@Url.Action("Index", "Home")" class="logo"></a>
             <div class="btn-list">
                 <ul>
-                    <script language="javascript" src="./Tsinghua University_files/dynclicks.js.download"></script>
-                    <script language="javascript" src="./Tsinghua University_files/openlink.js.download"></script>
                     <li><a href="#">Đăng Nhập</a></li>
                     <li><a href="#">Đăng Ký</a></li>
 
@@ -54,7 +51,7 @@
             <div class="g-nav">
                 <ul>
                     <li>
-                        <a class="name" href="" title="Trang Chủ">Trang Chủ</a>
+                        <a class="name" href="@Url.Action("Index", "Home")" title="Trang Chủ">Trang Chủ</a>
                     </li>
                     <li>
                         <a class="name" href="" title="Tài Khoản">Tài Khoản</a>
@@ -76,16 +73,7 @@
                         <a class="name" href="" title="FAQs">FAQs</a>
                     </li>
                     <li>
-                        <a class="name" href="" title="Liên Hệ">Liên Hệ</a>
-                        <div class="list">
-                            <dl>
-                                <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
-                                <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
-                                <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
-                                <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
-                                <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
-                            </dl>
-                        </div>
+                        <a class="name" href="@Url.Action("Index", "Contact")" title="Liên Hệ">Liên Hệ</a>
                     </li>
                 </ul>
             </div>
@@ -95,7 +83,7 @@
         <div class="scroll">
             <ul>
                 <li>
-                    <h2><a href="" title="Trang Chủ">Trang Chủ</a></h2>
+                    <h2><a href="@Url.Action("Index", "Home")" title="Trang Chủ">Trang Chủ</a></h2>
                 </li>
                 <li>
                     <h2 class="h2"><a class="name" href="" title="Tài Khoản">Tài Khoản</a></h2>
@@ -114,7 +102,7 @@
                     <h2><a class="name" href="" title="FAQs">FAQs</a></h2>
                 </li>
                 <li>
-                    <h2 class="h2"><a class="name" href="" title="Liên Hệ">Liên Hệ</a></h2>
+                    <h2 class="h2"><a class="name" href="@Url.Action("Index", "Contact")" title="Liên Hệ">Liên Hệ</a></h2>
                     <div class="list">
                         <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
                         <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>

@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets\\LayoutUser\\img\\dongphucmoi.jpg"
     },
     {
+      "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\dqwz_bg.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\dqwz_bg.png"
+    },
+    {
       "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\giaiphap.png",
       "PackagePath": "staticwebassets\\LayoutUser\\img\\giaiphap.png"
     },
@@ -83,6 +87,14 @@
     {
       "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img536.png",
       "PackagePath": "staticwebassets\\LayoutUser\\img\\img536.png"
+    },
+    {
+      "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\inner.jpg"
+    },
+    {
+      "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner_dqwz.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\inner_dqwz.png"
     },
     {
       "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\kyniem17nam.jpg",
@@ -323,6 +335,10 @@
     {
       "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\index2.css",
       "PackagePath": "staticwebassets\\LayoutUser\\style\\index2.css"
+    },
+    {
+      "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\inner5.vsb.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\style\\inner5.vsb.css"
     },
     {
       "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\mystyle.css",
