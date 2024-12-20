@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "srQYljNJA1AOeTuDOGihovcQ68Il6CFJ3QmbznwetzI=",
+  "Hash": "lPfiKDEyfluMYsGmF7zNxdX56D7GVTg3EUXXJ5gvdrY=",
   "Source": "admin_sweetsoft_tech_support",
   "BasePath": "_content/admin_sweetsoft_tech_support",
   "Mode": "Default",
@@ -47496,6 +47496,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\assignPermission.css"
+    },
+    {
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\css\\Index_SupportRequest.css",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "css/Index_SupportRequest.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Index_SupportRequest.css"
     },
     {
       "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\css\\index_user.css",

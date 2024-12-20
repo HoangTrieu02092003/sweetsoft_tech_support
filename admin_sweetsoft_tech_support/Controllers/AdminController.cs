@@ -92,7 +92,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 HttpContext.Session.SetString("Username", user.FullName);
                 TempData["UserId"] = user.UserId;
                 TempData["IsAdmin"] = user.IsAdmin == true ? "true" : "false";
-                return RedirectToAction("Index", "Home"); // Sau khi đăng nhập, chuyển tới trang chính của quản trị viên
+                return RedirectToAction("Index1", "Report"); // Sau khi đăng nhập, chuyển tới trang chính của quản trị viên
             }
             ViewBag.SiteKey = siteKey;
             ModelState.AddModelError(string.Empty, "Mật khẩu sai.");

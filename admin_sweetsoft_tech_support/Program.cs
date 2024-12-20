@@ -90,9 +90,19 @@ app.MapControllerRoute(
     defaults: new { controller = "TblUsers", action = "Create" });
 
 app.MapControllerRoute(
-    name: "UserCreate",
+    name: "DepartmentList",
     pattern: "danh-sach-phong-ban",
     defaults: new { controller = "TblDepartments", action = "Index" });
+
+app.MapControllerRoute(
+    name: "RequetsList",
+    pattern: "danh-sach-yeu-cau",
+    defaults: new { controller = "TblSupportRequests", action = "Index" });
+
+app.MapControllerRoute(
+    name: "Reportindex",
+    pattern: "Bao-cao",
+    defaults: new { controller = "Report", action = "Index1" });
 
 app.MapControllerRoute(
     name: "default",

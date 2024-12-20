@@ -9989,6 +9989,10 @@
       "PackagePath": "staticwebassets\\chart\\vendor\\jquery\\jquery.slim.min.map"
     },
     {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\css\\Index_SupportRequest.css",
+      "PackagePath": "staticwebassets\\css\\Index_SupportRequest.css"
+    },
+    {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\css\\assignPermission.css",
       "PackagePath": "staticwebassets\\css\\assignPermission.css"
     },
