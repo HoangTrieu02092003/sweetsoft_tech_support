@@ -11694,8 +11694,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>a844w7rlps</Fingerprint>
-      <Integrity>loWzoLfuJ0WIenN6acJeMFI1QfEEdlA7QYosrPUNgQU=</Integrity>
+      <Fingerprint>relqu0kg6a</Fingerprint>
+      <Integrity>4wzzMs1X9+QeYtxp43K+0iWAY5pKOdmcxuLiWsR7/yQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\chart\js\demo\chart-bar-demo.js'))</OriginalItemSpec>

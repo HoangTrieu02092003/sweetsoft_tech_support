@@ -69,7 +69,7 @@ async function createChart(startDate, endDate) {
     myBarChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Pending', 'Processing', 'Completed', 'Cannot be Resolved'], // Trục X
+            labels: ['Chưa xủ lý', 'Đang xử lý', 'Đã xử lý', 'Không xử lý được'], // Trục X
             datasets: [{
                 label: "Number of Requests",
                 backgroundColor: [

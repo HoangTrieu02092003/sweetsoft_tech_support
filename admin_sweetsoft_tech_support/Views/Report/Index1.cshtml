@@ -40,19 +40,19 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Report</h1>
+                    <h1 class="h3 mb-2 text-gray-800" style="margin-top: 20px">Báo cáo thống kê</h1>
                     <!-- Form để nhập bộ lọc thống kê -->
                     <div class="col-xl-8 col-lg-7">
                         <form id="reportFilterForm">
                             <div class="form-group">
-                                <label for="startDate">Start Date</label>
+                                <label for="startDate">Ngày bắt đầu</label>
                                 <input type="date" id="startDate" name="startDate" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label for="endDate">End Date</label>
+                                <label for="endDate">Ngày kết thúc</label>
                                 <input type="date" id="endDate" name="endDate" class="form-control" />
                             </div>
-                            <button type="submit" id="filterButton" class="btn btn-primary">Generate Report</button>
+                            <button type="submit" id="filterButton" class="btn btn-primary" style="margin-bottom: 20px;">Tạo báo cáo</button>
                         </form>
                     </div>
 
@@ -64,7 +64,7 @@
                             <!-- Area Chart -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Time Chart</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Thống kê theo tháng</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area">
@@ -79,7 +79,7 @@
                             <!-- Bar Chart -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Status Reports Chart</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Thống kê thao trạng thái</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
@@ -97,7 +97,7 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Department Chart</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Thống kê theo phòng ban</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -117,9 +117,9 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Customer Name</th>
-                                <th>Total Requests</th>
-                                <th>Detail</th>
+                                <th>Tên khách hàng</th>
+                                <th>Tổng số yêu cầu</th>
+                                <th>Chi tiết</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -130,7 +130,7 @@
                                     <td>@item.TotalRequests</td>
                                     <td>
                                         <!-- Liên kết đến trang chi tiết -->
-                                        <a href="@Url.Action("ShowRequestDetails", new { customerId = item.CustomerId })" class="btn btn-info">Show Details</a>
+                                        <a href="@Url.Action("ShowRequestDetails", new { customerId = item.CustomerId })" class="btn btn-info">Chi tiết yêu cầu</a>
                                     </td>
                                 </tr>
                             }
