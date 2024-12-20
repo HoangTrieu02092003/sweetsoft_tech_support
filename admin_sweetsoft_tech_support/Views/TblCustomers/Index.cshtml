@@ -36,7 +36,7 @@
             <p>
                 <strong>Trạng thái:</strong>
                 <span class="badge @((item.Status == 1) ? "bg-success" : "bg-danger")">
-                    @(item.Status == 1 ? "Hoạt động" : "Chưa hoạt động")
+                    @(item.Status == 1 ? "Kích hoạt" : "Chưa kích hoạt")
                 </span>
             </p>
             <p><strong>Người tạo:</strong> @item.CreatedUserNavigation?.FullName </p
@@ -48,9 +48,13 @@
                 <a asp-action="Edit" asp-route-id="@item.CustomerId" class="btn btn-outline-primary">
                     <i class="bi bi-pencil-square"></i> <span>Thông tin</span>
                 </a>
-                <a asp-action="AssignPermissions" asp-route-id="@item.CustomerId" class="btn btn-outline-info">
-                    <i class="bi bi-gear"></i> <span>Cấp quyền</span>
-                </a>
+                <form method="post" asp-action="ToggleActivation" asp-route-customerId="@item.CustomerId" class="d-inline">
+    <button type="submit" class="btn btn-outline-info">
+        <i class="bi bi-gear"></i> 
+        <span>@((item.Status == 1) ?  "Chưa kích hoạt" : "Kích hoạt")</span>
+    </button>
+</form>
+
                 <button class="btn btn-outline-danger " data-bs-toggle="modal" data-bs-target="#deleteModal-@item.CustomerId">
                     <i class="bi bi-trash"></i> <span>Xóa</span>
                 </button>
@@ -62,7 +66,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-<h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa người dùng</h5>
+                        <h5 class="modal-title" id="deleteModalLabel">Xác nhận xóa người dùng</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

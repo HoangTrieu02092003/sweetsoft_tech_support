@@ -129,6 +129,7 @@
             <div class="section-header">
                 <h1 class="text-white">Thông tin khách hàng</h1>
             </div>
+
             <div class="d-flex justify-content-end">
                 <a asp-action="Index" class="btn btn-back">
                     <i class="ti ti-arrow-left"></i> Quay lại
@@ -180,14 +181,7 @@
                     <input asp-for="Password" class="form-control" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Status" class="control-label">Trạng thái</label>
-                    <select asp-for="Status" class="form-control">
-                        <option value="1">Hoạt động</option>
-                        <option value="0">Chưa hoạt động</option>
-                    </select>
-                    <span asp-validation-for="Status" class="text-danger"></span>
-                </div>
+               
                 <div class="form-group">
                     <label asp-for="ResetToken" class="control-label">Token đặt lại</label>
                     <input asp-for="ResetToken" class="form-control" />
@@ -216,19 +210,19 @@
 
                 <div class="form-group">
                     <label asp-for="CreatedAt" class="control-label">Ngày tạo</label>
-                    <input asp-for="CreatedAt" class="form-control" readonly />
+                    <input asp-for="CreatedAt" class="form-control" />
                     <span asp-validation-for="CreatedAt" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="UpdatedUser" class="control-label">Người cập nhật</label>
-                    <select asp-for="UpdatedUser" class="form-control" asp-items="ViewBag.UpdatedUser"></select>
+                    <select asp-for="UpdatedUser" class="form-control" asp-items="ViewBag.UpdatedUser" ></select>
                     <span asp-validation-for="UpdatedUser" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="UpdatedAt" class="control-label">Ngày cập nhật</label>
-                    <input asp-for="UpdatedAt" class="form-control" readonly />
+                    <input asp-for="UpdatedAt" class="form-control" />
                     <span asp-validation-for="UpdatedAt" class="text-danger"></span>
                 </div>
 

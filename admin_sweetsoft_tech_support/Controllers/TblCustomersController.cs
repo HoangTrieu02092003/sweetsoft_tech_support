@@ -44,6 +44,26 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(customers);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ToggleActivation(int customerId)
+        {
+            var customer = await _context.TblCustomers.FindAsync(customerId);
+
+            if (customer != null)
+            {
+                // Đổi trạng thái: Nếu hiện tại là 1 (kích hoạt), chuyển thành 0 (chưa kích hoạt) và ngược lại
+                customer.Status = (short)(customer.Status == 1 ? 0 : 1);
+
+                // Cập nhật khách hàng
+                _context.Update(customer);
+                await _context.SaveChangesAsync();
+
+                TempData["SuccessMessage"] = "Trạng thái đã được thay đổi.";
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
         // GET: TblCustomers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -79,15 +99,33 @@ namespace admin_sweetsoft_tech_support.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Product,Username,Password,Status,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedUser,CreatedAt,UpdatedUser,UpdatedAt")] TblCustomer tblCustomer)
         {
-            if (ModelState.IsValid)
+            // Kiểm tra sự trùng lặp của Username
+            bool isUsernameExist = await _context.TblCustomers.AnyAsync(c => c.Username == tblCustomer.Username);
+            if (isUsernameExist)
             {
-                _context.Add(tblCustomer);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ModelState.AddModelError("Username", "Username đã tồn tại. Vui lòng chọn một tên khác.");
             }
-            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
-            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
-            return View(tblCustomer);
+
+            // Kiểm tra sự trùng lặp của Email
+            bool isEmailExist = await _context.TblCustomers.AnyAsync(c => c.Email == tblCustomer.Email);
+            if (isEmailExist)
+            {
+                ModelState.AddModelError("Email", "Email đã tồn tại. Vui lòng sử dụng một email khác.");
+            }
+
+            // Nếu có lỗi trong ModelState, trả lại form để người dùng sửa
+            if (!ModelState.IsValid)
+            {
+                ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
+                ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
+                return View(tblCustomer);
+            }
+
+            // Nếu không có lỗi, thêm khách hàng vào cơ sở dữ liệu
+            tblCustomer.Status = 0;
+            _context.Add(tblCustomer);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: TblCustomers/Edit/5
@@ -145,25 +183,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblCustomer);
         }
 
-        // GET: TblCustomers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblCustomer = await _context.TblCustomers
-                .Include(t => t.CreatedUserNavigation)
-                .Include(t => t.UpdatedUserNavigation)
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
-            if (tblCustomer == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblCustomer);
-        }
 
         // POST: TblCustomers/Delete/5
         [HttpPost, ActionName("Delete")]
