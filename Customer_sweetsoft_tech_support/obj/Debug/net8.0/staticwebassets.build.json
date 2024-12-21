@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vlVStcOKb7GCty+Pi9EKdyhz2smW9hgm/ygudor8R+g=",
+  "Hash": "1xcg1LLB4QUqGqTenAXE9Jp4/ypiKsqrzXI/US8d4mA=",
   "Source": "Customer_sweetsoft_tech_support",
   "BasePath": "_content/Customer_sweetsoft_tech_support",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Customer_sweetsoft_tech_support\\wwwroot",
       "Source": "Customer_sweetsoft_tech_support",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Customer_sweetsoft_tech_support.styles.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Customer_sweetsoft_tech_support.styles.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "Customer_sweetsoft_tech_support.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Customer_sweetsoft_tech_support.styles.css"
+      "OriginalItemSpec": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\bundle\\Customer_sweetsoft_tech_support.styles.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Customer_sweetsoft_tech_support.bundle.scp.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Customer_sweetsoft_tech_support.bundle.scp.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "Customer_sweetsoft_tech_support.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Customer_sweetsoft_tech_support.bundle.scp.css"
+      "OriginalItemSpec": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Customer_sweetsoft_tech_support.bundle.scp.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\css\\customer.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\css\\customer.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "css/customer.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\css\\customer.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\css\\site.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\css\\site.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\favicon.ico",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\favicon.ico",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\js\\customer.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\js\\customer.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "js/customer.js",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\js\\customer.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\js\\site.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\js\\site.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\carousel11.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\carousel11.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/carousel11.png",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\carousel11.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\carousel2.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\carousel2.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/carousel2.jpg",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\carousel2.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\carousel33.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\carousel33.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/carousel33.jpg",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\carousel33.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\caseroul1.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\caseroul1.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/caseroul1.png",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\caseroul1.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\caseroul3.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\caseroul3.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/caseroul3.jpg",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\caseroul3.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\chungnhan1.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\chungnhan1.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/chungnhan1.jpg",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\chungnhan1.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\chungnhan2.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\chungnhan2.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/chungnhan2.jpg",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\chungnhan2.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\chungnhan3.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\chungnhan3.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/chungnhan3.jpg",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\chungnhan3.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\dongphucmoi.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\dongphucmoi.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/dongphucmoi.jpg",
       "AssetKind": "All",
@@ -321,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\dongphucmoi.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\dqwz_bg.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\dqwz_bg.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/dqwz_bg.png",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\dqwz_bg.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\giaiphap.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\giaiphap.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/giaiphap.png",
       "AssetKind": "All",
@@ -359,10 +359,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\giaiphap.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\haha3.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\haha3.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/haha3.png",
       "AssetKind": "All",
@@ -378,10 +378,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\haha3.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\head-bg.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\head-bg.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/head-bg.png",
       "AssetKind": "All",
@@ -397,10 +397,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\head-bg.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\head-bg2.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\head-bg2.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/head-bg2.jpg",
       "AssetKind": "All",
@@ -416,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\head-bg2.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img100.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img100.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/img100.png",
       "AssetKind": "All",
@@ -435,10 +435,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\img100.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img1068.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img1068.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/img1068.jpg",
       "AssetKind": "All",
@@ -454,10 +454,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\img1068.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img31.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img31.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/img31.png",
       "AssetKind": "All",
@@ -473,10 +473,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\img31.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img375.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img375.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/img375.jpg",
       "AssetKind": "All",
@@ -492,10 +492,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\img375.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img536.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img536.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/img536.png",
       "AssetKind": "All",
@@ -511,10 +511,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\img536.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/inner.jpg",
       "AssetKind": "All",
@@ -530,10 +530,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\inner.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner_dqwz.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner_dqwz.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/inner_dqwz.png",
       "AssetKind": "All",
@@ -549,10 +549,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\inner_dqwz.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\kyniem17nam.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\kyniem17nam.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/kyniem17nam.jpg",
       "AssetKind": "All",
@@ -568,10 +568,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\kyniem17nam.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\map.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\map.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/map.jpg",
       "AssetKind": "All",
@@ -587,10 +587,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\map.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\muathuctap.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\muathuctap.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/muathuctap.jpg",
       "AssetKind": "All",
@@ -606,10 +606,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\muathuctap.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\navA.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\navA.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/navA.png",
       "AssetKind": "All",
@@ -625,10 +625,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\navA.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\nav-bg.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\nav-bg.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/nav-bg.jpg",
       "AssetKind": "All",
@@ -644,10 +644,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\nav-bg.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\next53.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\next53.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/next53.png",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\next53.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\next53_2.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\next53_2.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/next53_2.png",
       "AssetKind": "All",
@@ -682,10 +682,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\next53_2.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\next53_2on.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\next53_2on.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/next53_2on.png",
       "AssetKind": "All",
@@ -701,10 +701,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\next53_2on.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\none.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\none.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/none.png",
       "AssetKind": "All",
@@ -720,10 +720,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\none.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\phong1.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\phong1.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/phong1.jpg",
       "AssetKind": "All",
@@ -739,10 +739,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\phong1.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\phong2.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\phong2.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/phong2.jpg",
       "AssetKind": "All",
@@ -758,10 +758,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\phong2.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\phong3.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\phong3.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/phong3.jpg",
       "AssetKind": "All",
@@ -777,10 +777,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\phong3.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\phong4.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\phong4.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/phong4.jpg",
       "AssetKind": "All",
@@ -796,10 +796,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\phong4.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\prev53.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\prev53.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/prev53.png",
       "AssetKind": "All",
@@ -815,10 +815,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\prev53.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\prev53_2.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\prev53_2.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/prev53_2.png",
       "AssetKind": "All",
@@ -834,10 +834,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\prev53_2.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\prev53_2on.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\prev53_2on.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/prev53_2on.png",
       "AssetKind": "All",
@@ -853,10 +853,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\prev53_2on.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\prev53-white.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\prev53-white.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/prev53-white.png",
       "AssetKind": "All",
@@ -872,10 +872,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\prev53-white.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\quysweetgive.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\quysweetgive.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/quysweetgive.jpg",
       "AssetKind": "All",
@@ -891,10 +891,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\quysweetgive.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\sangtao.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\sangtao.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/sangtao.jpg",
       "AssetKind": "All",
@@ -910,10 +910,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\sangtao.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\SweetSoft-logo-dark.svg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\SweetSoft-logo-dark.svg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/SweetSoft-logo-dark.svg",
       "AssetKind": "All",
@@ -929,10 +929,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\SweetSoft-logo-dark.svg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\SweetSoft-logo-light.svg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\SweetSoft-logo-light.svg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/SweetSoft-logo-light.svg",
       "AssetKind": "All",
@@ -948,10 +948,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\SweetSoft-logo-light.svg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\team.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\team.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/team.png",
       "AssetKind": "All",
@@ -967,10 +967,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\team.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\thewesternhill.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\thewesternhill.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/thewesternhill.png",
       "AssetKind": "All",
@@ -986,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\thewesternhill.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\toiuu.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\toiuu.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/toiuu.jpg",
       "AssetKind": "All",
@@ -1005,10 +1005,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\toiuu.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\vanhoakhoidong.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\vanhoakhoidong.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/vanhoakhoidong.jpg",
       "AssetKind": "All",
@@ -1024,10 +1024,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\vanhoakhoidong.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\work.jpg",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\work.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/img/work.jpg",
       "AssetKind": "All",
@@ -1043,10 +1043,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\work.jpg"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\ajax.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\ajax.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/jquery/ajax.js",
       "AssetKind": "All",
@@ -1062,10 +1062,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\jquery\\ajax.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\centerCutImg.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\centerCutImg.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/jquery/centerCutImg.js",
       "AssetKind": "All",
@@ -1081,10 +1081,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\jquery\\centerCutImg.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\counter.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\counter.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/jquery/counter.js",
       "AssetKind": "All",
@@ -1100,10 +1100,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\jquery\\counter.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\jquery.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\jquery.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/jquery/jquery.min.js",
       "AssetKind": "All",
@@ -1119,10 +1119,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\jquery\\jquery.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\js.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\js.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/jquery/js.js",
       "AssetKind": "All",
@@ -1138,10 +1138,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\jquery\\js.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\set.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\set.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/jquery/set.js",
       "AssetKind": "All",
@@ -1157,10 +1157,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\jquery\\set.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\swiper.jquery.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\swiper.jquery.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/jquery/swiper.jquery.min.js",
       "AssetKind": "All",
@@ -1176,10 +1176,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\jquery\\swiper.jquery.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\TweenMax.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\TweenMax.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/jquery/TweenMax.min.js",
       "AssetKind": "All",
@@ -1195,10 +1195,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\jquery\\TweenMax.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\animate\\animate.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\animate\\animate.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/animate/animate.css",
       "AssetKind": "All",
@@ -1214,10 +1214,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\animate\\animate.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\animate\\animate.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\animate\\animate.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/animate/animate.min.css",
       "AssetKind": "All",
@@ -1233,10 +1233,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\animate\\animate.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\counterup\\counterup.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\counterup\\counterup.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/counterup/counterup.min.js",
       "AssetKind": "All",
@@ -1252,10 +1252,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\counterup\\counterup.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\easing\\easing.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\easing\\easing.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/easing/easing.js",
       "AssetKind": "All",
@@ -1271,10 +1271,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\easing\\easing.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\easing\\easing.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\easing\\easing.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/easing/easing.min.js",
       "AssetKind": "All",
@@ -1290,10 +1290,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\easing\\easing.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\css\\lightbox.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\css\\lightbox.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/lightbox/css/lightbox.min.css",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\lightbox\\css\\lightbox.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\images\\close.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\images\\close.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/lightbox/images/close.png",
       "AssetKind": "All",
@@ -1328,10 +1328,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\lightbox\\images\\close.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\images\\loading.gif",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\images\\loading.gif",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/lightbox/images/loading.gif",
       "AssetKind": "All",
@@ -1347,10 +1347,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\lightbox\\images\\loading.gif"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\images\\next.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\images\\next.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/lightbox/images/next.png",
       "AssetKind": "All",
@@ -1366,10 +1366,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\lightbox\\images\\next.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\images\\prev.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\images\\prev.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/lightbox/images/prev.png",
       "AssetKind": "All",
@@ -1385,10 +1385,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\lightbox\\images\\prev.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\js\\lightbox.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\js\\lightbox.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/lightbox/js/lightbox.min.js",
       "AssetKind": "All",
@@ -1404,10 +1404,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\lightbox\\js\\lightbox.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\ajax-loader.gif",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\ajax-loader.gif",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/owlcarousel/assets/ajax-loader.gif",
       "AssetKind": "All",
@@ -1423,10 +1423,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\ajax-loader.gif"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.carousel.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.carousel.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/owlcarousel/assets/owl.carousel.css",
       "AssetKind": "All",
@@ -1442,10 +1442,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.carousel.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.carousel.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.carousel.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/owlcarousel/assets/owl.carousel.min.css",
       "AssetKind": "All",
@@ -1461,10 +1461,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.carousel.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.default.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.default.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/owlcarousel/assets/owl.theme.default.css",
       "AssetKind": "All",
@@ -1480,10 +1480,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.default.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.default.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.default.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/owlcarousel/assets/owl.theme.default.min.css",
       "AssetKind": "All",
@@ -1499,10 +1499,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.default.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.green.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.green.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/owlcarousel/assets/owl.theme.green.css",
       "AssetKind": "All",
@@ -1518,10 +1518,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.green.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.green.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.green.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/owlcarousel/assets/owl.theme.green.min.css",
       "AssetKind": "All",
@@ -1537,10 +1537,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.green.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.video.play.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.video.play.png",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/owlcarousel/assets/owl.video.play.png",
       "AssetKind": "All",
@@ -1556,10 +1556,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.video.play.png"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\LICENSE",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\LICENSE",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/owlcarousel/LICENSE",
       "AssetKind": "All",
@@ -1575,10 +1575,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\owlcarousel\\LICENSE"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\owl.carousel.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\owl.carousel.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/owlcarousel/owl.carousel.js",
       "AssetKind": "All",
@@ -1594,10 +1594,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\owlcarousel\\owl.carousel.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\owl.carousel.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\owl.carousel.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/owlcarousel/owl.carousel.min.js",
       "AssetKind": "All",
@@ -1613,10 +1613,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\owlcarousel\\owl.carousel.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\waypoints\\links.php",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\waypoints\\links.php",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/waypoints/links.php",
       "AssetKind": "All",
@@ -1632,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\waypoints\\links.php"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\waypoints\\waypoints.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\waypoints\\waypoints.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/waypoints/waypoints.min.js",
       "AssetKind": "All",
@@ -1651,10 +1651,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\waypoints\\waypoints.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\wow\\wow.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\wow\\wow.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/wow/wow.js",
       "AssetKind": "All",
@@ -1670,10 +1670,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\wow\\wow.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\wow\\wow.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\wow\\wow.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/lib/wow/wow.min.js",
       "AssetKind": "All",
@@ -1689,10 +1689,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\wow\\wow.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\index.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\index.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/style/index.css",
       "AssetKind": "All",
@@ -1708,10 +1708,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\style\\index.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\index2.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\index2.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/style/index2.css",
       "AssetKind": "All",
@@ -1727,10 +1727,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\style\\index2.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\inner5.vsb.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\inner5.vsb.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/style/inner5.vsb.css",
       "AssetKind": "All",
@@ -1746,10 +1746,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\style\\inner5.vsb.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\mystyle.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\mystyle.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/style/mystyle.css",
       "AssetKind": "All",
@@ -1765,10 +1765,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\style\\mystyle.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\phone.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\phone.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/style/phone.css",
       "AssetKind": "All",
@@ -1784,10 +1784,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\style\\phone.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\swiper.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\swiper.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/style/swiper.min.css",
       "AssetKind": "All",
@@ -1803,10 +1803,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\style\\swiper.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\video\\RDGGE5659.mp4",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\video\\RDGGE5659.mp4",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/video/RDGGE5659.mp4",
       "AssetKind": "All",
@@ -1822,10 +1822,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\video\\RDGGE5659.mp4"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\video\\VBCGE0238.mp4",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\video\\VBCGE0238.mp4",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "LayoutUser/video/VBCGE0238.mp4",
       "AssetKind": "All",
@@ -1841,10 +1841,10 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\video\\VBCGE0238.mp4"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -1860,10 +1860,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -1879,10 +1879,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -1898,10 +1898,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -1917,10 +1917,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -1936,10 +1936,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -1955,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -1974,10 +1974,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -1993,10 +1993,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -2012,10 +2012,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -2031,10 +2031,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -2050,10 +2050,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -2069,10 +2069,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -2088,10 +2088,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -2107,10 +2107,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -2126,10 +2126,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -2145,10 +2145,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -2164,10 +2164,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -2183,10 +2183,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -2202,10 +2202,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -2221,10 +2221,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -2240,10 +2240,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -2259,10 +2259,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -2278,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -2297,10 +2297,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-theme.css",
       "AssetKind": "All",
@@ -2316,10 +2316,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-theme.css.map",
       "AssetKind": "All",
@@ -2335,10 +2335,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-theme.min.css",
       "AssetKind": "All",
@@ -2354,10 +2354,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-theme.min.css.map",
       "AssetKind": "All",
@@ -2373,10 +2373,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -2392,10 +2392,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -2411,10 +2411,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -2430,10 +2430,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -2449,10 +2449,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -2468,10 +2468,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -2487,10 +2487,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -2506,10 +2506,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -2525,10 +2525,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -2544,10 +2544,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -2563,10 +2563,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -2582,10 +2582,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -2601,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -2620,10 +2620,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -2639,10 +2639,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -2658,10 +2658,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -2677,10 +2677,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -2696,10 +2696,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -2715,10 +2715,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -2734,10 +2734,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -2753,10 +2753,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -2772,10 +2772,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -2791,10 +2791,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -2810,10 +2810,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -2829,10 +2829,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -2848,10 +2848,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -2867,10 +2867,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -2886,10 +2886,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -2905,10 +2905,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -2924,10 +2924,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -2943,10 +2943,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -2962,10 +2962,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -2981,10 +2981,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/Customer_sweetsoft_tech_support",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
