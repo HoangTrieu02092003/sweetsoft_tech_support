@@ -55,9 +55,24 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "Denied",
+    pattern:"quyen-han",
+    defaults: new { controller = "Home", action = "AccessDenied" });
+
+app.MapControllerRoute(
     name: "CustomLogin",
     pattern:"dang-nhap",
     defaults: new { controller = "Admin", action = "Login" });
+
+app.MapControllerRoute(
+    name: "CustomForgot",
+    pattern:"quen-mat-khau",
+    defaults: new { controller = "Admin", action = "ForgotPassword" });
+
+app.MapControllerRoute(
+    name: "CustomReset",
+    pattern:"dat-lai-mat-khau-{token}",
+    defaults: new { controller = "Admin", action = "ResetPassword" });
 
 app.MapControllerRoute(
     name: "UserList",
@@ -76,7 +91,7 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "UserAssign",
-    pattern: "cap-quyen-nguoi-dung",
+    pattern: "cap-quyen-nguoi-dung-{id}",
     defaults: new { controller = "TblUsers", action = "AssignPermissions" });
 
 app.MapControllerRoute(
@@ -95,14 +110,29 @@ app.MapControllerRoute(
     defaults: new { controller = "TblDepartments", action = "Index" });
 
 app.MapControllerRoute(
+    name: "DepartmentEdit",
+    pattern: "chinh-sua-phong-ban-{id}",
+    defaults: new { controller = "TblDepartments", action = "Edit" });
+
+app.MapControllerRoute(
     name: "RequetsList",
     pattern: "danh-sach-yeu-cau",
     defaults: new { controller = "TblSupportRequests", action = "Index" });
 
 app.MapControllerRoute(
     name: "Reportindex",
-    pattern: "Bao-cao",
+    pattern: "bao-cao",
     defaults: new { controller = "Report", action = "Index1" });
+
+app.MapControllerRoute(
+    name: "ReportDetails",
+    pattern: "chi-tiet-bao-cao-{customerId}",
+    defaults: new { controller = "Report", action = "ShowRequestDetails" });
+
+app.MapControllerRoute(
+    name: "CustomerList",
+    pattern: "danh-sach-khach-hang",
+    defaults: new { controller = "TblCustomers", action = "Index" });
 
 app.MapControllerRoute(
     name: "default",

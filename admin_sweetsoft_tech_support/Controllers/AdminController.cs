@@ -42,13 +42,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
         }
 
-        public AdminController(RequestContext context, ILogger<AdminController> logger, IConfiguration configuration)
-        {
-            _context = context;
-            _logger = logger;
-            _configuration = configuration;
-        }
-
         // Trang Login (GET)
         public IActionResult Login()
         {

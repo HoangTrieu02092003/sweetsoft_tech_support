@@ -418,3 +418,5 @@ D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\bin\Debug\net8.0\Newtonsoft.J
 D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\bin\Debug\net8.0\Recaptcha.Web.dll
 D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\obj\Debug\net8.0\admin_sweetsoft_tech_support.MvcApplicationPartsAssemblyInfo.cs
 D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\bin\Debug\net8.0\System.Web.Mvc.dll
+D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\obj\Debug\net8.0\admin_sweetsoft_tech_support.Properties.Resources.resources
+D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\obj\Debug\net8.0\admin_sweetsoft_tech_support.csproj.GenerateResource.cache
