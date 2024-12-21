@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<!DOCTYPE html>
+<html style="font-size: 96px;">
+<head>
+    <title>Liên Hệ</title>
+</head>
+
+<body class="show">
+    <div class="inner_bn">
+		<img src="~/layoutuser/img/inner.jpg" />
+    </div>
+    <div class="inner_main">
+        <div class="rem12">
+            <div class="dqwz">
+                <a href="@Url.Action("Index", "Home")">Trang Chủ</a>
+                /
+                <a href="@Url.Action("Index", "Contact")">Liên Hệ</a>
+            </div>
+            <div class="zb_nr">
+                <div class="zc fl">
+                    <div class="listmore" id="leftlistmore">
+                        <i class="icon-dot-3"></i>
+                        <i class="close"></i>
+                    </div>
+                    <ul>
+                        <li class="on">
+                            <a style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: .3rem" href="@Url.Action("Index", "Contact")">Liên Hệ</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="yc fr">
+                    <div class="con">
+                        <div class="section" id="posi_01">
+                            <h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" >Liên Hệ</h1>
+                            <div id="vsb_content_1563_u91">
+                                <div id="vsb_content">
+                                    <p style="font-size: .4rem;"><b>Văn Phòng Công Ty</b></p>
+                                    <p><strong>Thiết kế web Nha Trang, công ty phần mềm SweetSoft</strong></p>
+                                    <p>
+                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbspÔ 10 Tầng 12A - Tòa nhà VCN Tower, 02 Tố Hữu, khu đô thị VCN, P.Phước Hải, TP Nha Trang, Tỉnh Khánh Hòa.<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Điện thoại: &nbsp;0258.3704199 - 0258.6567900
+                                        <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Email: &nbspinfo@sweetsoft.vn<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Thứ hai - Thứ sáu 7:30–17:00, &nbspThứ bảy 7:30–11:30 ( Chủ nhật nghỉ )
+                                    </p>
+                                    <p style="font-size: .4rem;"><b>Nhân Sự</b></p>
+                                    <p><strong>CEO</strong></p>
+                                    <p>Nguyễn Tri Huy<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Điện Thoại: &nbsp;0903500600<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Email: &nbsphuy@sweetsoft.vn</p>
+                                    <p><strong>Project Manager</strong></p>
+                                    <p>Nguyễn Hồng Linh<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Điện Thoại: &nbsp;0903136836<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Email: &nbsplinh.nguyen@sweetsoft.vn</p>
+                                    <p><strong>Project Leader</strong></p>
+                                    <p>Lê Thị Hoàng Yến Nhi<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Điện Thoại: &nbsp;0898382020<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Email: &nbsnhi.le@sweetsoft.vn</p>
+                                    <p><strong>Product Consultant</strong></p>
+                                    <p>Trần Thị Mỹ Hạnh<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Điện Thoại: &nbsp;0898383030<br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Email: &nbsphanh.tran@sweetsoft.vn</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="wal index-campus-life iindex-campus-life">
+        <div class="p-title pp-title">
+            <h2>GOOGLE MAP</h2>
+            <p>Bạn không giỏi việc tìm đường ?</p>
+        </div>
+        <div class="list">
+            <ul>
+                <li><a href="javascript:void(0)" title="">Đừng lo, chúng tôi sẽ hướng dẫn cho bạn </a></li>
+            </ul>
+        </div>
+        <div class="img-list swiper-container-horizontal">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.0987161162216!2d109.17483147482854!3d12.241594888010697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3170678749018e2f%3A0x4b0e1e18074eb956!2zQ8O0bmcgdHkgY-G7lSBwaOG6p24gU3dlZXRTb2Z0!5e0!3m2!1svi!2s!4v1734441066898!5m2!1svi!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            var view = 1;
+            new swiperFun({
+                dom: $('.index-campus-life .img-list')
+            })
+        })
+    </script>
+
+    <div class="index-video iindex-video">
+        <div class="spp">
+            <a href="javascript:void(0)">
+                <video poster="/__local/E/58/28/099373301EEC4488515BAAE6FA4_5A0E1FE9_C3CF7.jpg" autoplay="autoplay" loop="loop" muted="muted" preload="metadata" style="width:100%;display: block;">
+                    <source src="~/layoutuser/video/vbcge0238.mp4" type="video/mp4" />
+                </video>
+            </a>
+        </div>
+        <div class="tpp" style="display:none;"><a href="javascript:void(0)"><img src="~/layoutuser/img/map.jpg" style="width:100%;"></a></div>
+
+        <script>
+            $(function () {
+                {
+                    if ($(window).width() < 800) {
+                        var elem1 = document.getElementsByClassName('spp');
+                        elem1[0].parentNode.removeChild(elem1[0]);
+                        $('.tpp').css('display', 'block');
+                    }
+                }
+            });
+        </script><script>_showDynClickBatch(['dynclicks_u13_13991'], [13991], "wbnews", 1722153354)</script>
+    </div>
+</body>
+</html>
+

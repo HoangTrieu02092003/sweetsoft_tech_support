@@ -1,0 +1,78 @@
+﻿    .navbar-nav {
+        display: flex;
+        gap: 20px;
+        transition: all 0.4s ease;
+    }
+
+    .search-icon {
+        font-size: 20px;
+        color: #fff;
+        cursor: pointer;
+    }
+    .search-icon:hover {
+        color: #FB8C00;
+    }
+
+/* Form tìm kiếm */
+    .search {
+        border-radius: 10px;
+        border: 2px solid #ddd;
+        line-height: 35px;
+        gap: 10px;
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: all 0.4s ease;
+    }
+
+    /* Hiển thị form */
+    .search.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+    /* Input */
+    .search input {
+        margin-left: 4%;
+        width: 98%;
+        border: none;
+        background-color: transparent;
+        color: #fff;
+        font-size: 16px;
+    }
+        .search input::placeholder {
+            color: #fff;
+        }
+
+        .search input:focus {
+            outline: none;
+        }
+    
+    body{
+        font-size:96%;
+    }
+
+.navbar:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: -.05rem;
+    right: 0;
+    height: .05rem;
+    background: url('../layoutuser/img/head-bg2.jpg') center repeat-x;
+    background-size: 100% 100%;
+}
+
+@media (max-width: 992px) {
+    .search-icon {
+        padding: 4% 0;
+        color: black;
+    }
+
+    .formsearch {
+        padding: 4% 0;
+    }
+}
+
+

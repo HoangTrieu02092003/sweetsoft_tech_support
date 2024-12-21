@@ -1,0 +1,45 @@
+.g-head .btn-list .search .input input{width:85%;}
+/*重保搜索隐藏代码*/
+
+/*
+.g-head .btn-list .search{
+display:none;
+}
+.g-nav2 .btn-list .search {
+    display:none;
+}
+
+*/
+
+.inner_main .rem12 .zb_nr .yc p{    margin-bottom: .15rem;}
+.pb_sys_style1 .p_no_d,.pb_sys_style2 .p_no_d,.pb_sys_style3 .p_no_d,.pb_sys_style4 .p_no_d{border: 1px solid #5d14b0 !important;color: #fff;background-color: #5e13b0 !important;}
+.vsbcontent-table-container-outer { position: relative;}
+.vsbcontent-table-container
+{
+    width: 98%;
+    overflow-y: auto;
+    _overflow: auto;
+    margin: 2px;}
+.vsbcontent-table-container::-webkit-scrollbar
+{
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;}
+.vsbcontent-table-container::-webkit-scrollbar-thumb
+{
+    border-radius: 8px;
+    border: 3px solid #fff;
+    background-color: rgba(0, 0, 0, .3);}
+.vsbcontent-table-container-fade
+{
+    position: absolute;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    background-image: -webkit-linear-gradient(0deg, rgba(255,255,255,.5), #fff);
+    background-image: -moz-linear-gradient(0deg, rgba(255,255,255,.5), #fff);
+    background-image: -ms-linear-gradient(0deg, rgba(255,255,255,.5), #fff);
+    background-image: -o-linear-gradient(0deg, rgba(255,255,255,.5), #fff);
+    background-image: linear-gradient(0deg, rgba(255,255,255,.5), #fff);}
+.inner_main .rem12 .zb_nr .con .section h1{    line-height: .38rem;}
+.inner_main .rem12 .yc .con table td.tdborder,.current .box .p2{    word-break: break-word !important;}
