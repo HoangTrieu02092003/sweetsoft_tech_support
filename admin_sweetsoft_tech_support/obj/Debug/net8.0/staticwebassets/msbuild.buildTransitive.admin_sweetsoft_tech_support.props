@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\admin_sweetsoft_tech_support.props" />
+</Project>

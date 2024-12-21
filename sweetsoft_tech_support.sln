@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "admin_sweetsoft_tech_support", "admin_sweetsoft_tech_support\admin_sweetsoft_tech_support.csproj", "{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "admin_sweetsoft_tech_support", "admin_sweetsoft_tech_support\admin_sweetsoft_tech_support.csproj", "{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer_sweetsoft_tech_support", "Customer_sweetsoft_tech_support\Customer_sweetsoft_tech_support.csproj", "{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customer_sweetsoft_tech_support", "Customer_sweetsoft_tech_support\Customer_sweetsoft_tech_support.csproj", "{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
