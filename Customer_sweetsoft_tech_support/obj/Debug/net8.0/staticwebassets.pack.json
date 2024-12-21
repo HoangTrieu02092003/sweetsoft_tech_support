@@ -5,12 +5,376 @@
       "PackagePath": "staticwebassets\\Customer_sweetsoft_tech_support.bundle.scp.css"
     },
     {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\SweetSoft-logo-dark.svg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\SweetSoft-logo-dark.svg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\SweetSoft-logo-light.svg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\SweetSoft-logo-light.svg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\carousel11.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\carousel11.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\carousel2.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\carousel2.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\carousel33.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\carousel33.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\caseroul1.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\caseroul1.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\caseroul3.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\caseroul3.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\chungnhan1.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\chungnhan1.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\chungnhan2.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\chungnhan2.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\chungnhan3.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\chungnhan3.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\dongphucmoi.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\dongphucmoi.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\dqwz_bg.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\dqwz_bg.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\giaiphap.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\giaiphap.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\haha3.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\haha3.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\head-bg.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\head-bg.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\head-bg2.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\head-bg2.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img100.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\img100.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img1068.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\img1068.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img31.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\img31.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img375.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\img375.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\img536.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\img536.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\inner.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner_dqwz.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\inner_dqwz.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\kyniem17nam.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\kyniem17nam.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\map.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\map.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\muathuctap.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\muathuctap.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\nav-bg.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\nav-bg.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\navA.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\navA.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\next53.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\next53.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\next53_2.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\next53_2.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\next53_2on.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\next53_2on.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\none.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\none.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\phong1.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\phong1.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\phong2.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\phong2.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\phong3.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\phong3.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\phong4.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\phong4.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\prev53-white.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\prev53-white.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\prev53.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\prev53.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\prev53_2.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\prev53_2.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\prev53_2on.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\prev53_2on.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\quysweetgive.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\quysweetgive.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\sangtao.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\sangtao.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\team.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\team.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\thewesternhill.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\thewesternhill.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\toiuu.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\toiuu.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\vanhoakhoidong.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\vanhoakhoidong.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\work.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\work.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\TweenMax.min.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\jquery\\TweenMax.min.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\ajax.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\jquery\\ajax.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\centerCutImg.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\jquery\\centerCutImg.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\counter.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\jquery\\counter.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\jquery.min.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\jquery\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\js.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\jquery\\js.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\set.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\jquery\\set.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\swiper.jquery.min.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\jquery\\swiper.jquery.min.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\animate\\animate.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\animate\\animate.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\animate\\animate.min.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\animate\\animate.min.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\counterup\\counterup.min.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\counterup\\counterup.min.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\easing\\easing.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\easing\\easing.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\easing\\easing.min.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\easing\\easing.min.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\css\\lightbox.min.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\lightbox\\css\\lightbox.min.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\images\\close.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\lightbox\\images\\close.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\images\\loading.gif",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\lightbox\\images\\loading.gif"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\images\\next.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\lightbox\\images\\next.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\images\\prev.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\lightbox\\images\\prev.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\lightbox\\js\\lightbox.min.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\lightbox\\js\\lightbox.min.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\LICENSE",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\owlcarousel"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\ajax-loader.gif",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\owlcarousel\\assets\\ajax-loader.gif"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.carousel.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\owlcarousel\\assets\\owl.carousel.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\owlcarousel\\assets\\owl.carousel.min.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.default.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.default.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.default.min.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.default.min.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.green.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.green.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.green.min.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\owlcarousel\\assets\\owl.theme.green.min.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\assets\\owl.video.play.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\owlcarousel\\assets\\owl.video.play.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\owl.carousel.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\owlcarousel\\owl.carousel.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\owlcarousel\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\owlcarousel\\owl.carousel.min.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\waypoints\\links.php",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\waypoints\\links.php"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\waypoints\\waypoints.min.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\waypoints\\waypoints.min.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\wow\\wow.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\wow\\wow.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\wow\\wow.min.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\lib\\wow\\wow.min.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\index.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\style\\index.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\index2.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\style\\index2.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\inner5.vsb.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\style\\inner5.vsb.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\mystyle.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\style\\mystyle.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\phone.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\style\\phone.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\swiper.min.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\style\\swiper.min.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\video\\RDGGE5659.mp4",
+      "PackagePath": "staticwebassets\\LayoutUser\\video\\RDGGE5659.mp4"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\video\\VBCGE0238.mp4",
+      "PackagePath": "staticwebassets\\LayoutUser\\video\\VBCGE0238.mp4"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\css\\customer.css",
+      "PackagePath": "staticwebassets\\css\\customer.css"
+    },
+    {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\js\\customer.js",
+      "PackagePath": "staticwebassets\\js\\customer.js"
     },
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\js\\site.js",
@@ -83,6 +447,22 @@
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map"
     },
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
