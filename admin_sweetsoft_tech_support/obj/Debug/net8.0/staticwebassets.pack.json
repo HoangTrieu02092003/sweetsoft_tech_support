@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\admin_sweetsoft_tech_support.k3o5xdal7l.bundle.scp.css"
     },
     {
+      "Id": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\assignPermission.css",
+      "PackagePath": "staticwebassets\\css\\assignPermission.css"
+    },
+    {
       "Id": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\icons\\tabler-icons\\fonts\\tabler-icons.eot",
       "PackagePath": "staticwebassets\\css\\icons\\tabler-icons\\fonts\\tabler-icons.eot"
     },
@@ -27,6 +31,10 @@
     {
       "Id": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\icons\\tabler-icons\\tabler-icons.css",
       "PackagePath": "staticwebassets\\css\\icons\\tabler-icons\\tabler-icons.css"
+    },
+    {
+      "Id": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\index_user.css",
+      "PackagePath": "staticwebassets\\css\\index_user.css"
     },
     {
       "Id": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\site.css",
@@ -191,6 +199,22 @@
     {
       "Id": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css"
+    },
+    {
+      "Id": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map"
+    },
+    {
+      "Id": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css"
+    },
+    {
+      "Id": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map"
     },
     {
       "Id": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",

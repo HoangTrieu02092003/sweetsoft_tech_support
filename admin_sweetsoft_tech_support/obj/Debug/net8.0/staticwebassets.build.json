@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RLRn/lA0BrVjqCnCld3y5gfQJqEPh+O7JTVATsWgijw=",
+  "Hash": "85JrvokjwdUOjbVgP79Q6KeMpqaJFl6cOz3WnECRLJg=",
   "Source": "admin_sweetsoft_tech_support",
   "BasePath": "_content/admin_sweetsoft_tech_support",
   "Mode": "Default",
@@ -57,6 +57,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\admin_sweetsoft_tech_support.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\assignPermission.css",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "css/assignPermission#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "l4q6m3l987",
+      "Integrity": "O+Rm61Plr+fbLOF6LRIx5+7nkHtH3WSHgO0M4ol3O2g=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\assignPermission.css"
     },
     {
       "Identity": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\icons\\tabler-icons\\fonts\\tabler-icons.eot",
@@ -185,6 +206,27 @@
       "OriginalItemSpec": "wwwroot\\css\\icons\\tabler-icons\\tabler-icons.css"
     },
     {
+      "Identity": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\index_user.css",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "css/index_user#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "te004foest",
+      "Integrity": "FSIHHHxbZXIiYCEopOa4FrthmsZoVS1//kPDzQoxO80=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\index_user.css"
+    },
+    {
       "Identity": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\site.css",
       "SourceId": "admin_sweetsoft_tech_support",
       "SourceType": "Discovered",
@@ -199,8 +241,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2tiyv64ts",
-      "Integrity": "pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=",
+      "Fingerprint": "ngc0t0sep8",
+      "Integrity": "6UOSub1zbqHI0a7+m4E87r5oXAeDzxAzFL02fhWGWhA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -1191,6 +1233,90 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Identity": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap-theme#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "z4giugmkw0",
+      "Integrity": "zV9PFwSVxm/pFuTNckKIh9wgMQP8fXUcFf/7rL80aHs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css"
+    },
+    {
+      "Identity": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap-theme.css#[.{fingerprint}]?.map",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5wl60yermk",
+      "Integrity": "VRy4P+cTamJkVbr669tBzZ91ZP77a2isRQLPSGmjuxE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map"
+    },
+    {
+      "Identity": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap-theme.min#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "hncdx5t4mz",
+      "Integrity": "s7kj0ytsxBKSuSaMKmHfQZLxmh3qtRVzK1km6ig5kC0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css"
+    },
+    {
+      "Identity": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap-theme.min.css#[.{fingerprint}]?.map",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kfyfhdxh97",
+      "Integrity": "8E6OsUWRNMzsJQE8ChLBEDe/FbE48DnqxqzNic75ALo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map"
     },
     {
       "Identity": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
@@ -14762,7 +14888,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 16 Dec 2024 00:57:31 GMT"
+          "Value": "Sun, 22 Dec 2024 06:15:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14799,7 +14925,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 16 Dec 2024 00:57:31 GMT"
+          "Value": "Sun, 22 Dec 2024 06:15:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14844,7 +14970,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 16 Dec 2024 00:57:31 GMT"
+          "Value": "Sun, 22 Dec 2024 06:15:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14889,7 +15015,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 16 Dec 2024 00:57:31 GMT"
+          "Value": "Sun, 22 Dec 2024 06:15:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14900,6 +15026,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-QP5YStf3mFo2R9KgVLWBqE5KBFkaxxiXlbO7fnXmiDM="
+        }
+      ]
+    },
+    {
+      "Route": "css/assignPermission.css",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\assignPermission.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "394"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O+Rm61Plr+fbLOF6LRIx5+7nkHtH3WSHgO0M4ol3O2g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Dec 2024 06:01:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-O+Rm61Plr+fbLOF6LRIx5+7nkHtH3WSHgO0M4ol3O2g="
+        }
+      ]
+    },
+    {
+      "Route": "css/assignPermission.l4q6m3l987.css",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\assignPermission.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "394"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"O+Rm61Plr+fbLOF6LRIx5+7nkHtH3WSHgO0M4ol3O2g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Dec 2024 06:01:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l4q6m3l987"
+        },
+        {
+          "Name": "label",
+          "Value": "css/assignPermission.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-O+Rm61Plr+fbLOF6LRIx5+7nkHtH3WSHgO0M4ol3O2g="
         }
       ]
     },
@@ -15396,8 +15604,8 @@
       ]
     },
     {
-      "Route": "css/site.c2tiyv64ts.css",
-      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\site.css",
+      "Route": "css/index_user.css",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\index_user.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15406,7 +15614,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "1101"
         },
         {
           "Name": "Content-Type",
@@ -15414,11 +15622,48 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"FSIHHHxbZXIiYCEopOa4FrthmsZoVS1//kPDzQoxO80=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 13 Dec 2024 11:37:17 GMT"
+          "Value": "Sun, 22 Dec 2024 06:00:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FSIHHHxbZXIiYCEopOa4FrthmsZoVS1//kPDzQoxO80="
+        }
+      ]
+    },
+    {
+      "Route": "css/index_user.te004foest.css",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\index_user.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1101"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FSIHHHxbZXIiYCEopOa4FrthmsZoVS1//kPDzQoxO80=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Dec 2024 06:00:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15428,15 +15673,15 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
+          "Value": "te004foest"
         },
         {
           "Name": "label",
-          "Value": "css/site.css"
+          "Value": "css/index_user.css"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-FSIHHHxbZXIiYCEopOa4FrthmsZoVS1//kPDzQoxO80="
         }
       ]
     },
@@ -15451,7 +15696,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "384"
         },
         {
           "Name": "Content-Type",
@@ -15459,11 +15704,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"6UOSub1zbqHI0a7+m4E87r5oXAeDzxAzFL02fhWGWhA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 13 Dec 2024 11:37:17 GMT"
+          "Value": "Sun, 22 Dec 2024 06:01:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15473,7 +15718,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-6UOSub1zbqHI0a7+m4E87r5oXAeDzxAzFL02fhWGWhA="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.ngc0t0sep8.css",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "384"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6UOSub1zbqHI0a7+m4E87r5oXAeDzxAzFL02fhWGWhA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Dec 2024 06:01:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ngc0t0sep8"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6UOSub1zbqHI0a7+m4E87r5oXAeDzxAzFL02fhWGWhA="
         }
       ]
     },
@@ -19328,6 +19618,334 @@
         {
           "Name": "integrity",
           "Value": "sha256-BnHmEJpgor1n0UuwNdXG2VhHdV1r9MibuqBVHsgp9a8="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap-theme.css",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "26135"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zV9PFwSVxm/pFuTNckKIh9wgMQP8fXUcFf/7rL80aHs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Dec 2024 06:16:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-zV9PFwSVxm/pFuTNckKIh9wgMQP8fXUcFf/7rL80aHs="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap-theme.css.5wl60yermk.map",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "47709"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VRy4P+cTamJkVbr669tBzZ91ZP77a2isRQLPSGmjuxE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Dec 2024 06:16:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5wl60yermk"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap-theme.css.map"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VRy4P+cTamJkVbr669tBzZ91ZP77a2isRQLPSGmjuxE="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap-theme.css.map",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "47709"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VRy4P+cTamJkVbr669tBzZ91ZP77a2isRQLPSGmjuxE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Dec 2024 06:16:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VRy4P+cTamJkVbr669tBzZ91ZP77a2isRQLPSGmjuxE="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap-theme.min.css",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23412"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"s7kj0ytsxBKSuSaMKmHfQZLxmh3qtRVzK1km6ig5kC0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Dec 2024 06:16:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-s7kj0ytsxBKSuSaMKmHfQZLxmh3qtRVzK1km6ig5kC0="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap-theme.min.css.kfyfhdxh97.map",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5535"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8E6OsUWRNMzsJQE8ChLBEDe/FbE48DnqxqzNic75ALo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Dec 2024 06:16:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kfyfhdxh97"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap-theme.min.css.map"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8E6OsUWRNMzsJQE8ChLBEDe/FbE48DnqxqzNic75ALo="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap-theme.min.css.map",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5535"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8E6OsUWRNMzsJQE8ChLBEDe/FbE48DnqxqzNic75ALo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Dec 2024 06:16:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8E6OsUWRNMzsJQE8ChLBEDe/FbE48DnqxqzNic75ALo="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap-theme.min.hncdx5t4mz.css",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23412"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"s7kj0ytsxBKSuSaMKmHfQZLxmh3qtRVzK1km6ig5kC0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Dec 2024 06:16:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hncdx5t4mz"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap-theme.min.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-s7kj0ytsxBKSuSaMKmHfQZLxmh3qtRVzK1km6ig5kC0="
+        }
+      ]
+    },
+    {
+      "Route": "lib/bootstrap/dist/css/bootstrap-theme.z4giugmkw0.css",
+      "AssetFile": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "26135"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"zV9PFwSVxm/pFuTNckKIh9wgMQP8fXUcFf/7rL80aHs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Dec 2024 06:16:12 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "z4giugmkw0"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/bootstrap/dist/css/bootstrap-theme.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-zV9PFwSVxm/pFuTNckKIh9wgMQP8fXUcFf/7rL80aHs="
         }
       ]
     },

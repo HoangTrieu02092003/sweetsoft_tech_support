@@ -1,9 +1,11 @@
+wwwroot\css\assignPermission.css
 wwwroot\css\icons\tabler-icons\fonts\tabler-icons.eot
 wwwroot\css\icons\tabler-icons\fonts\tabler-icons.svg
 wwwroot\css\icons\tabler-icons\fonts\tabler-icons.ttf
 wwwroot\css\icons\tabler-icons\fonts\tabler-icons.woff
 wwwroot\css\icons\tabler-icons\fonts\tabler-icons.woff2
 wwwroot\css\icons\tabler-icons\tabler-icons.css
+wwwroot\css\index_user.css
 wwwroot\css\site.css
 wwwroot\css\styles.css
 wwwroot\css\styles.min.css
@@ -52,6 +54,10 @@ wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css

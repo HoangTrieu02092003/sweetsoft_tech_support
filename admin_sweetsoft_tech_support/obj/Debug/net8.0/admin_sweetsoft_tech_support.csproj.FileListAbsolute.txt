@@ -672,3 +672,4 @@ D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\admin_sweetsoft_tech_support.pdb
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\admin_sweetsoft_tech_support.genruntimeconfig.cache
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\ref\admin_sweetsoft_tech_support.dll
+D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\bundleconfig.json
