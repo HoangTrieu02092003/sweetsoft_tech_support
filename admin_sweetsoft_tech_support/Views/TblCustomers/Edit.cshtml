@@ -1,11 +1,12 @@
 ﻿@model admin_sweetsoft_tech_support.Models.TblCustomer
 
 @{
-    ViewData["Title"] = "Thông tin khách hàng";
+    ViewData["Title"] = "Chỉnh sửa thông tin khách hàng";
     Layout = "~/Views/Shared/_Layout_admin.cshtml";
 }
 
 <style>
+
     body {
         font-family: 'Poppins', sans-serif;
         background-color: #f4f7fc;
@@ -96,31 +97,16 @@
         color: #d32f2f;
     }
 
-    .form-group select,
-    .form-group input[type="password"] {
-        appearance: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-    }
-
-    .form-group select {
-        padding: 12px;
-        border-radius: 8px;
-        font-size: 16px;
-        width: 100%;
-        background-color: #f5f5f5;
-        border: 1px solid #ddd;
-    }
-
-        .form-group select:focus {
-            border-color: #6a1b9a;
-            box-shadow: 0 0 5px rgba(106, 27, 154, 0.5);
-        }
-
     .d-flex {
         display: flex;
         justify-content: flex-end;
     }
+
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle; /* Căn giữa theo chiều dọc */
+    }
+
 </style>
 
 <div class="container w-100 d-flex justify-content-center">
@@ -136,100 +122,157 @@
                 </a>
             </div>
 
-            <form asp-action="Edit">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="CustomerId" />
+            <!-- Tabs Navigation -->
+            <ul class="nav nav-tabs" id="customerTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="true">
+                        Thông tin chung
+                    </button>
+                </li>
+                
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="credentials-tab" data-bs-toggle="tab" data-bs-target="#support-requests" type="button" role="tab" aria-controls="support-requests" aria-selected="false">
+                        Thống kê yêu cầu
+                    </button>
+                </li>
+            </ul>
 
-                <!-- Các trường thông tin khách hàng -->
-                <div class="form-group">
-                    <label asp-for="FullName" class="control-label">Họ và tên</label>
-                    <input asp-for="FullName" class="form-control" />
-                    <span asp-validation-for="FullName" class="text-danger"></span>
+            <!-- Tabs Content -->
+            <div class="tab-content" id="customerTabContent">
+                <!-- General Information Tab -->
+                <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                    <form asp-action="Edit" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CustomerId" />
+
+                        <div class="form-group">
+                            <label asp-for="FullName" class="control-label">Họ và tên</label>
+                            <input asp-for="FullName" class="form-control" />
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Phone" class="control-label">Số điện thoại</label>
+                            <input asp-for="Phone" class="form-control" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TaxCode" class="control-label">Mã số thuế</label>
+                            <input asp-for="TaxCode" class="form-control" />
+                            <span asp-validation-for="TaxCode" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Company" class="control-label">Công ty</label>
+                            <input asp-for="Company" class="form-control" />
+                            <span asp-validation-for="Company" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Product" class="control-label">Sản phẩm</label>
+                            <input asp-for="Product" class="form-control" />
+                            <span asp-validation-for="Product" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Username" class="control-label">Tên đăng nhập</label>
+                            <input asp-for="Username" class="form-control" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label">Mật khẩu</label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ResetToken" class="control-label">Token đặt lại</label>
+                            <input asp-for="ResetToken" class="form-control" />
+                            <span asp-validation-for="ResetToken" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ResetTokenExpiry" class="control-label">Hết hạn token đặt lại</label>
+                            <input asp-for="ResetTokenExpiry" class="form-control" />
+                            <span asp-validation-for="ResetTokenExpiry" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Token" class="control-label">Token</label>
+                            <input asp-for="Token" class="form-control" />
+                            <span asp-validation-for="Token" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TokenExpiry" class="control-label">Hết hạn token</label>
+                            <input asp-for="TokenExpiry" class="form-control" />
+                            <span asp-validation-for="TokenExpiry" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CreatedUser" class="control-label">Người tạo</label>
+                            <select asp-for="CreatedUser" class="form-control" asp-items="ViewBag.CreatedUser"></select>
+                            <span asp-validation-for="CreatedUser" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CreatedAt" class="control-label">Ngày tạo</label>
+                            <input asp-for="CreatedAt" class="form-control" />
+                            <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UpdatedUser" class="control-label">Người cập nhật</label>
+                            <select asp-for="UpdatedUser" class="form-control" asp-items="ViewBag.UpdatedUser"></select>
+                            <span asp-validation-for="UpdatedUser" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UpdatedAt" class="control-label">Ngày cập nhật</label>
+                            <input asp-for="UpdatedAt" class="form-control" />
+                            <span asp-validation-for="UpdatedAt" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Lưu" class="btn btn-submit" />
+                        </div>
+
+
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Email" class="control-label">Email</label>
-                    <input asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                <!-- Credentials Tab -->
+                <div class="tab-pane fade" id="support-requests" role="tabpanel" aria-labelledby="support-requests-tab">
+                    <form asp-action="Edit" method="post">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Mã khách hàng</th>
+                                        <th>Mã phòng ban</th>
+                                        <th>Vấn đề</th>
+                                        <th>Trạng thái</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Ngày hoàn thành</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var request in Model.TblSupportRequests)
+                                    {
+                                        <tr>
+                                            <td>@request.CustomerId</td>
+                                            <td>@request.DepartmentId</td>
+                                            <td>@request.RequestDetails</td>
+                                            <td>
+                                                @(request.Status == 1 ? "Đã xử lý" : "Chưa xử lý")
+                                            </td>
+                                            <td>@request.CreatedAt.ToString("yyyy-MM-dd HH")</td>
+                                            <td>@(request.ResolvedAt.HasValue ? request.ResolvedAt.Value.ToString("yyyy-MM-dd HH:mm:ss") : "N/A")</td>
+                                        </tr>
+                                    }
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Phone" class="control-label">Số điện thoại</label>
-                    <input asp-for="Phone" class="form-control" />
-                    <span asp-validation-for="Phone" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="TaxCode" class="control-label">Mã số thuế</label>
-                    <input asp-for="TaxCode" class="form-control" />
-                    <span asp-validation-for="TaxCode" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Company" class="control-label">Công ty</label>
-                    <input asp-for="Company" class="form-control" />
-                    <span asp-validation-for="Company" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Product" class="control-label">Sản phẩm</label>
-                    <input asp-for="Product" class="form-control" />
-                    <span asp-validation-for="Product" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Username" class="control-label">Tên đăng nhập</label>
-                    <input asp-for="Username" class="form-control" />
-                    <span asp-validation-for="Username" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Password" class="control-label">Mật khẩu</label>
-                    <input asp-for="Password" class="form-control" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
+
                
-                <div class="form-group">
-                    <label asp-for="ResetToken" class="control-label">Token đặt lại</label>
-                    <input asp-for="ResetToken" class="form-control" />
-                    <span asp-validation-for="ResetToken" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ResetTokenExpiry" class="control-label">Hết hạn token đặt lại</label>
-                    <input asp-for="ResetTokenExpiry" class="form-control" />
-                    <span asp-validation-for="ResetTokenExpiry" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Token" class="control-label">Token</label>
-                    <input asp-for="Token" class="form-control" />
-                    <span asp-validation-for="Token" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="TokenExpiry" class="control-label">Hết hạn token</label>
-                    <input asp-for="TokenExpiry" class="form-control" />
-                    <span asp-validation-for="TokenExpiry" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CreatedUser" class="control-label">Người tạo</label>
-                    <select asp-for="CreatedUser" class="form-control" asp-items="ViewBag.CreatedUser"></select>
-                    <span asp-validation-for="CreatedUser" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="CreatedAt" class="control-label">Ngày tạo</label>
-                    <input asp-for="CreatedAt" class="form-control" />
-                    <span asp-validation-for="CreatedAt" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="UpdatedUser" class="control-label">Người cập nhật</label>
-                    <select asp-for="UpdatedUser" class="form-control" asp-items="ViewBag.UpdatedUser" ></select>
-                    <span asp-validation-for="UpdatedUser" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="UpdatedAt" class="control-label">Ngày cập nhật</label>
-                    <input asp-for="UpdatedAt" class="form-control" />
-                    <span asp-validation-for="UpdatedAt" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <input type="submit" value="Lưu" class="btn btn-submit" />
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

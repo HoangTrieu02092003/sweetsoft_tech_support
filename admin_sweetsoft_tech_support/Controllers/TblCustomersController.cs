@@ -21,7 +21,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         // GET: TblCustomers
         public async Task<IActionResult> Index(int page = 1)
         {
-            int pageSize = 10; // or any number based on your requirement
+            int pageSize = 6;
 
             // Include related users for CreatedUser and UpdatedUser
             var query = _context.TblCustomers.Include(t => t.CreatedUserNavigation).Include(t => t.UpdatedUserNavigation);
@@ -36,13 +36,13 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["TotalPages"] = (int)Math.Ceiling(totalCount / (double)pageSize);
             ViewData["CurrentPage"] = page;
 
-            // You don't need to set CreatedUser and UpdatedUser for the entire list.
-            // You can keep them for general purposes if needed:
+            // Dropdown lists for CreatedUser and UpdatedUser (if needed)
             ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
             ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
 
             return View(customers);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> ToggleActivation(int customerId)
@@ -136,14 +136,23 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return NotFound();
             }
 
-            var tblCustomer = await _context.TblCustomers.FindAsync(id);
+            // Truy vấn thông tin khách hàng và các yêu cầu hỗ trợ liên quan
+            var tblCustomer = await _context.TblCustomers
+                                            .Include(c => c.TblSupportRequests) // Bao gồm dữ liệu yêu cầu hỗ trợ
+                                            .Include(c => c.CreatedUserNavigation)
+                                            .Include(c => c.UpdatedUserNavigation)
+                                            .FirstOrDefaultAsync(m => m.CustomerId == id);
+
             if (tblCustomer == null)
             {
                 return NotFound();
             }
+
+            // Truyền dữ liệu Customer và yêu cầu hỗ trợ vào View
             ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.CreatedUser);
             ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.UpdatedUser);
-            return View(tblCustomer);
+
+            return View(tblCustomer); // Trả lại View với dữ liệu khách hàng và các yêu cầu hỗ trợ
         }
 
         // POST: TblCustomers/Edit/5
@@ -151,7 +160,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Product,Username,Password,Status,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedUser,CreatedAt,UpdatedUser,UpdatedAt")] TblCustomer tblCustomer)
+        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Product,Username,Password,Status,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedUser,CreatedAt,UpdatedUser,UpdatedAt")] TblCustomer tblCustomer, List<TblSupportRequest> updatedSupportRequests)
         {
             if (id != tblCustomer.CustomerId)
             {
@@ -162,7 +171,21 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 try
                 {
+                    // Cập nhật thông tin khách hàng
                     _context.Update(tblCustomer);
+
+                    // Cập nhật các yêu cầu hỗ trợ
+                    foreach (var supportRequest in updatedSupportRequests)
+                    {
+                        var existingRequest = await _context.TblSupportRequests.FindAsync(supportRequest.RequestId);
+                        if (existingRequest != null)
+                        {
+                            existingRequest.RequestDetails = supportRequest.RequestDetails; // Ví dụ, cập nhật chi tiết yêu cầu
+                            existingRequest.Status = supportRequest.Status; // Cập nhật trạng thái yêu cầu
+                            
+                        }
+                    }
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -182,6 +205,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.UpdatedUser);
             return View(tblCustomer);
         }
+
 
 
         // POST: TblCustomers/Delete/5
