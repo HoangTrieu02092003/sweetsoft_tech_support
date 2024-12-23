@@ -15,12 +15,65 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link href="~/css/index_user.css" rel="stylesheet">
 
+
 <div class="d-flex justify-content-between align-items-center mb-0">
     <h1 class=" my-4" style="color: #6a1b9a; font-size: 24px;">Quản lý Người dùng</h1>
     <a asp-action="Create" class="btn btn-warning text-dark">
         <i class="bi bi-plus-circle"></i> Tạo mới
     </a>
 </div>
+
+<form method="get" class="m-3" id="filterForm">
+    <div class="row"> 
+        <div class="col-md-3"> 
+            <label for="Status" class="form-label">Trạng thái</label> 
+            <select id="Status" name="Status" class="form-select" onchange="submitForm()"> 
+                
+                @if (ViewData["Status"] == null)
+                {
+                    <option value="" selected>Tất cả</option>
+                }
+                else
+                {
+                    <option value="">Tất cả</option>
+                }
+                @if (ViewData["Status"] != null && (int)ViewData["Status"] == 1)
+                {
+                    <option value="1" selected>Hoạt động</option>
+                }
+                else
+                {
+                    <option value="1">Hoạt động</option>
+                } 
+                @if (ViewData["Status"] != null && (int)ViewData["Status"] == 0)
+                {
+                    <option value="0" selected>Ngừng hoạt động</option>
+                }
+                else
+                {
+                    <option value="0">Ngừng hoạt động</option>
+                }
+            </select> 
+        </div> 
+        <div class="col-md-2"> 
+            <label for="Role" class="form-label">Nhóm quyền</label> 
+            <select id="Role" name="Role" class="form-select" onchange="submitForm()"> 
+                <option value="">Tất cả</option> 
+                @foreach (var role in ViewBag.Roles)
+                {
+                    if (ViewData["Role"] != null && (int)ViewData["Role"] == role.RoleId)
+                    {
+                        <option value="@role.RoleId" selected>@role.RoleName</option>
+                    }
+                    else
+                    {
+                        <option value="@role.RoleId">@role.RoleName</option>
+                    }
+                } 
+            </select> 
+        </div> 
+    </div> 
+</form>
 
 <div class="card-container">
     @foreach (var item in Model)
@@ -82,10 +135,10 @@
         @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] > 1)
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = 1 })">Đầu</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = 1, status = ViewBag.Status, role = ViewBag.Role })">Đầu</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1 })">Trước</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1, status = ViewBag.Status, role = ViewBag.Role })">Trước</a>
             </li>
         }
 
@@ -95,7 +148,7 @@
             for (int i = 1; i <= totalPages; i++)
             {
                 <li class="page-item @(i == (int)ViewData["CurrentPage"] ? "active" : "")">
-                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                    <a class="page-link" href="@Url.Action("Index", new { page = i, status = ViewBag.Status, role = ViewBag.Role })">@i</a>
                 </li>
             }
         }
@@ -103,11 +156,18 @@
         @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1 })">Sau</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1, status = ViewBag.Status, role = ViewBag.Role })">Sau</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"] })">Cuối</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"], status = ViewBag.Status, role = ViewBag.Role })">Cuối</a>
             </li>
         }
     </ul>
 </div>
+
+<script>
+    function submitForm() {
+        document.getElementById('filterForm').submit();
+    }
+
+</script>
