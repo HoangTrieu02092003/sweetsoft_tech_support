@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using System.Security.Claims;
 using admin_sweetsoft_tech_support.Attributes;
+using System.Data;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -20,8 +21,19 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
         // GET: TblUsers
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Index(int? status, int? role, int page = 1)
         {
+            var users = _context.TblUsers.Include(u => u.Role).AsQueryable();
+            if (status.HasValue)
+            {
+                users = users.Where(u => u.Status == status.Value);
+            }
+
+            // Lọc theo nhóm quyền
+            if (role.HasValue)
+            {
+                users = users.Where(u => u.RoleId == role.Value);
+            }
             var pageSize = 6; // số lượng người dùng mỗi trang
             var skip = (page - 1) * pageSize;
             var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -29,7 +41,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 return RedirectToAction("Login", "Admin");
             }
-            var requestContext = _context.TblUsers
+            var requestContext = users
                 .Where(u => u.UserId != currentUserId)
                 .Include(t => t.CreatedUserNavigation)
                 .Include(t => t.Department)
@@ -38,7 +50,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 .Skip(skip) // bỏ qua dữ liệu đã xem ở các trang trước
                 .Take(pageSize);
 
-            var totalUsers = await _context.TblUsers.CountAsync();
+            var totalUsers = await users.CountAsync();
 
             // Tính tổng số trang
             var totalPages = (int)Math.Ceiling(totalUsers / (double)pageSize);
@@ -46,6 +58,9 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Chuyển dữ liệu sang View
             ViewData["TotalPages"] = totalPages;
             ViewData["CurrentPage"] = page;
+            ViewBag.Status = status; 
+            ViewBag.Role = role;
+            ViewBag.Roles = _context.TblRoles.ToList();
             return View(await requestContext.ToListAsync());
         }
 
