@@ -16,13 +16,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Customer_sweetsoft_tech_support.4cty4okfo9.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"4cty4okfo9"},{"Name":"integrity","Value":"sha256-/FLy/Idwe125bD1lKHRTzvxh4PxzvehuwG\u002Bv2HxEAw8="},{"Name":"label","Value":"_content/Customer_sweetsoft_tech_support/Customer_sweetsoft_tech_support.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1149"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022/FLy/Idwe125bD1lKHRTzvxh4PxzvehuwG\u002Bv2HxEAw8=\u0022"},{"Name":"Last-Modified","Value":"Wed, 18 Dec 2024 14:17:24 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1149"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022/FLy/Idwe125bD1lKHRTzvxh4PxzvehuwG\u002Bv2HxEAw8=\u0022"},{"Name":"Last-Modified","Value":"Mon, 23 Dec 2024 09:20:18 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Customer_sweetsoft_tech_support/Customer_sweetsoft_tech_support.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Customer_sweetsoft_tech_support.4cty4okfo9.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-/FLy/Idwe125bD1lKHRTzvxh4PxzvehuwG\u002Bv2HxEAw8="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1149"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022/FLy/Idwe125bD1lKHRTzvxh4PxzvehuwG\u002Bv2HxEAw8=\u0022"},{"Name":"Last-Modified","Value":"Wed, 18 Dec 2024 14:17:24 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1149"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022/FLy/Idwe125bD1lKHRTzvxh4PxzvehuwG\u002Bv2HxEAw8=\u0022"},{"Name":"Last-Modified","Value":"Mon, 23 Dec 2024 09:20:18 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/Customer_sweetsoft_tech_support/favicon.61n19gt1b8.ico">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</AssetFile>

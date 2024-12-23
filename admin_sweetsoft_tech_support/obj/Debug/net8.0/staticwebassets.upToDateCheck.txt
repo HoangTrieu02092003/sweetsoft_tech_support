@@ -2492,7 +2492,7 @@ wwwroot\chart\vendor\jquery\jquery.slim.min.map
 wwwroot\chart\vendor\jquery-easing\jquery.easing.compatibility.js
 wwwroot\chart\vendor\jquery-easing\jquery.easing.js
 wwwroot\chart\vendor\jquery-easing\jquery.easing.min.js
-wwwroot\css\site.css
+wwwroot\css\style.css
 wwwroot\favicon.ico
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
