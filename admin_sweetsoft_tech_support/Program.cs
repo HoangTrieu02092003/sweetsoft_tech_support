@@ -76,6 +76,11 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "UserList",
+    pattern: "danh-sach-nguoi-dung-{page}",
+    defaults: new { controller = "TblUsers", action = "Index" });
+
+app.MapControllerRoute(
+    name: "UserList",
     pattern: "danh-sach-nguoi-dung",
     defaults: new { controller = "TblUsers", action = "Index" });
 
