@@ -26,6 +26,22 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Admin/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRm9yZ290UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -92,10 +108,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/TblCustomers/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsQ3VzdG9tZXJzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/TblCustomers/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsQ3VzdG9tZXJzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/TblCustomers/Edit.cshtml]
