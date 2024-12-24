@@ -233,11 +233,11 @@ h5 {
 
 textarea, input {
     background: transparent;
-    font-size: 12px;
-    font-family: "SourceSansPro-Regular", "微软雅黑";
+    font-size: inherit;
     color: #888;
     outline: none;
     border: 0;
+    white-space: nowrap;
 }
 
 em {
@@ -1565,7 +1565,7 @@ body.navShow {
 
     .inner_main .rem12 .zb_nr .zc {
         width: 2.5rem;
-        margin-top: .43rem;
+        margin-top: .1rem;
     }
 
         .inner_main .rem12 .zb_nr .zc .listmore {

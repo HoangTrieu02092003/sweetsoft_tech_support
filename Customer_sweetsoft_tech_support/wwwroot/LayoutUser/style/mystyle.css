@@ -1,4 +1,4 @@
-﻿@media (min-width: 800px) {
+﻿@media (min-width: 801px) {
     .ztrkt a img {
         margin-bottom: .8rem;
     }
@@ -6,6 +6,12 @@
         margin-bottom: 1rem;
     }
     .inner_main .rem12 .zb_nr .con .section h1{
+        display: none;
+    }
+    .inner_main .rem12 .zb_nr .tableAccount {
+        display: none;
+    }
+    .inner_main .rem12 .zb_nr .h1Account{
         display: none;
     }
 }
@@ -45,4 +51,20 @@
     .iindex-video img{
         margin-bottom: 1rem;
     }
+    .inner_main .rem12 .zb_nr .ycc{
+        display: none;
+    }
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+
