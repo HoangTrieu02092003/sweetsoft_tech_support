@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "p2L4O3+df8nqdc5xO5QTAjwjQY80uBfq5bV2NcGABSY=",
+  "Hash": "ZHlrn3FUe7kpU4LDZB7akXHJ8tccEYOIQM03UXxQFi4=",
   "Source": "admin_sweetsoft_tech_support",
   "BasePath": "_content/admin_sweetsoft_tech_support",
   "Mode": "Default",
@@ -47650,12 +47650,12 @@
       "OriginalItemSpec": "wwwroot\\css\\index_user.css"
     },
     {
-      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\css\\site.css",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\css\\style.css",
       "SourceId": "admin_sweetsoft_tech_support",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/admin_sweetsoft_tech_support",
-      "RelativePath": "css/site.css",
+      "RelativePath": "css/style.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -47666,7 +47666,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\site.css"
+      "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
       "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\css\\styles.css",

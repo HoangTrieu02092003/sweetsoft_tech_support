@@ -17,8 +17,6 @@ public partial class TblCustomer
 
     public string? Company { get; set; }
 
-    public string Product { get; set; } = null!;
-
     public string Username { get; set; } = null!;
 
     public string Password { get; set; } = null!;
@@ -33,17 +31,17 @@ public partial class TblCustomer
 
     public DateTime? TokenExpiry { get; set; }
 
-    public int? CreatedUser { get; set; }
+    public int? CreatedBy { get; set; }
+
+    public int? UpdatedBy { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
-    public int? UpdatedUser { get; set; }
-
     public DateTime? UpdatedAt { get; set; }
 
-    public virtual TblUser? CreatedUserNavigation { get; set; }
+    public virtual TblUser? CreatedByNavigation { get; set; }
 
     public virtual ICollection<TblSupportRequest> TblSupportRequests { get; set; } = new List<TblSupportRequest>();
 
-    public virtual TblUser? UpdatedUserNavigation { get; set; }
+    public virtual TblUser? UpdatedByNavigation { get; set; }
 }

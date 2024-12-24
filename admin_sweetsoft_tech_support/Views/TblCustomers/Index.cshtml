@@ -40,8 +40,8 @@
                     @(item.Status == 1 ? "Kích hoạt" : "Chưa kích hoạt")
                 </span>
             </p>
-            <p><strong>Người tạo:</strong> @item.CreatedUserNavigation?.FullName </p>
-            <p><strong>Người cập nhật:</strong> @item.UpdatedUserNavigation?.FullName</p>
+            <p><strong>Người tạo:</strong> @item.CreatedByNavigation?.FullName </p>
+            <p><strong>Người cập nhật:</strong> @item.UpdatedByNavigation?.FullName</p>
 
             <p><strong>Ngày tạo:</strong> @item.CreatedAt?.ToString("dd/MM/yyyy")</p>
             <p><strong>Ngày cập nhật:</strong> @item.UpdatedAt?.ToString("dd/MM/yyyy")</p>

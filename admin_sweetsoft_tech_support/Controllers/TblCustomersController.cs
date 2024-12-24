@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
@@ -24,7 +20,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             int pageSize = 6;
 
             // Include related users for CreatedUser and UpdatedUser
-            var query = _context.TblCustomers.Include(t => t.CreatedUserNavigation).Include(t => t.UpdatedUserNavigation);
+            var query = _context.TblCustomers.Include(t => t.CreatedByNavigation).Include(t => t.UpdatedByNavigation);
 
             // Get the total count of customers
             var totalCount = await query.CountAsync();
@@ -73,8 +69,8 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             var tblCustomer = await _context.TblCustomers
-                .Include(t => t.CreatedUserNavigation)
-                .Include(t => t.UpdatedUserNavigation)
+                .Include(t => t.CreatedByNavigation)
+                .Include(t => t.UpdatedByNavigation)
                 .FirstOrDefaultAsync(m => m.CustomerId == id);
             if (tblCustomer == null)
             {
@@ -139,8 +135,8 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Truy vấn thông tin khách hàng và các yêu cầu hỗ trợ liên quan
             var tblCustomer = await _context.TblCustomers
                                             .Include(c => c.TblSupportRequests) // Bao gồm dữ liệu yêu cầu hỗ trợ
-                                            .Include(c => c.CreatedUserNavigation)
-                                            .Include(c => c.UpdatedUserNavigation)
+                                            .Include(c => c.CreatedByNavigation)
+                                            .Include(c => c.UpdatedByNavigation)
                                             .FirstOrDefaultAsync(m => m.CustomerId == id);
 
             if (tblCustomer == null)
@@ -149,8 +145,8 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             // Truyền dữ liệu Customer và yêu cầu hỗ trợ vào View
-            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.CreatedUser);
-            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.UpdatedUser);
+            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.CreatedBy);
+            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.UpdatedBy);
 
             return View(tblCustomer); // Trả lại View với dữ liệu khách hàng và các yêu cầu hỗ trợ
         }
@@ -201,8 +197,8 @@ namespace admin_sweetsoft_tech_support.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.CreatedUser);
-            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.UpdatedUser);
+            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.CreatedBy);
+            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.UpdatedBy);
             return View(tblCustomer);
         }
 
