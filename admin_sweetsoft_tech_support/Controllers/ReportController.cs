@@ -227,6 +227,82 @@ namespace admin_sweetsoft_tech_support.Controllers
             return Ok(new { departmentPercentages });
         }
 
+         [HttpGet("api/requests/export-excel")]
+        public async Task<IActionResult> ExportSupportRequestsToExcel(DateTime? startDate, DateTime? endDate)
+        {
+            // Kiểm tra ngày bắt đầu và kết thúc
+            if (!startDate.HasValue || !endDate.HasValue)
+            {
+                return BadRequest("Mời bạn nhập ngày bắt đầu và kết thúc!");
+            }
+
+            // Đảm bảo startDate <= endDate
+            if (startDate.Value > endDate.Value)
+            {
+                return BadRequest("Ngày bắt đầu không thể trễ hơn ngày kết thúc!");
+            }
+
+            // Lấy dữ liệu từ bảng TblSupportRequests trong khoảng thời gian được chọn
+            var supportRequests = await _context.TblSupportRequests
+                .Include(r => r.Customer)
+                .Include(r => r.Department)
+                .Where(r => r.CreatedAt >= startDate.Value && r.CreatedAt <= endDate.Value)
+                .Select(r => new
+                {
+                    r.RequestId,
+                    CustomerName = r.Customer.FullName,
+                    DepartmentName = r.Department.DepartmentName,
+                    r.RequestDetails,
+                    Status = r.Status == 1 ? "Chưa xử lý" :
+                             r.Status == 2 ? "Đang xử lý" :
+                             r.Status == 3 ? "Đã xử lý" :
+                             r.Status == 4 ? "Không xử lý được" :
+                             "Unknown",
+                    r.CreatedAt
+                })
+                .ToListAsync();
+
+            if (!supportRequests.Any())
+            {
+                return NotFound("Không có dữ liệu trong khoảng thời gian này.");
+            }
+
+            using var package = new OfficeOpenXml.ExcelPackage();
+            var worksheet = package.Workbook.Worksheets.Add("SupportRequests");
+
+            // Thiết lập tiêu đề cột
+            worksheet.Cells[1, 1].Value = "STT";
+            worksheet.Cells[1, 2].Value = "Mã yêu cầu";
+            worksheet.Cells[1, 3].Value = "Tên khách hàng";
+            worksheet.Cells[1, 4].Value = "Tên bộ phận";
+            worksheet.Cells[1, 5].Value = "Thông tin yêu cầu";
+            worksheet.Cells[1, 6].Value = "Trạng thái";
+            worksheet.Cells[1, 7].Value = "Ngày tạo";
+
+            // Đổ dữ liệu vào Excel
+            for (int i = 0; i < supportRequests.Count; i++)
+            {
+                var request = supportRequests[i];
+                worksheet.Cells[i + 2, 1].Value = i + 1; // STT
+                worksheet.Cells[i + 2, 2].Value = request.RequestId;
+                worksheet.Cells[i + 2, 3].Value = request.CustomerName;
+                worksheet.Cells[i + 2, 4].Value = request.DepartmentName;
+                worksheet.Cells[i + 2, 5].Value = request.RequestDetails;
+                worksheet.Cells[i + 2, 6].Value = request.Status;
+                worksheet.Cells[i + 2, 7].Value = request.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+
+            // Định dạng bảng
+            worksheet.Cells[1, 1, 1, 7].Style.Font.Bold = true; // Tiêu đề in đậm
+            worksheet.Cells[1, 1, supportRequests.Count + 1, 7].AutoFitColumns(); // Tự động chỉnh độ rộng cột
+
+            // Trả về file Excel
+            var excelData = package.GetAsByteArray();
+            var fileName = $"SupportRequests_{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+            return File(excelData, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+
+
         public async Task<IActionResult> Index()
         {
             var requestContext = _context.TblSupportRequests.Include(t => t.Customer).Include(t => t.Department);

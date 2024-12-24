@@ -136,7 +136,7 @@ function drawChart(labels, data) {
         data: {
             labels: labels,
             datasets: [{
-                label: "Requests",
+                label: "Số yêu cầu",
                 lineTension: 0.3,
                 backgroundColor: "rgba(121, 28, 181, 0.05)",
                 borderColor: "rgba(121, 28, 181, 1)",

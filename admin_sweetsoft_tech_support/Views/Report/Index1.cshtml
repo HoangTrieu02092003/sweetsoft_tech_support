@@ -4,7 +4,6 @@
 }
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Charts</title>
+    <title>Charts</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/chart/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,6 +24,8 @@
 
     <!-- Custom styles for this template-->
     <link href="~/chart/css/sb-admin-2.min.css" rel="stylesheet">
+
+    
 
 </head>
 
@@ -40,7 +41,11 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800" style="margin-top: 20px">Báo cáo thống kê</h1>
+                    <div class="d-flex justify-content-between align-items-center" style="margin-top: 20px;">
+                        <h1 class="h3 mb-2 text-gray-800">Báo cáo thống kê</h1>
+                        <button id="exportButton" class="btn btn-success" style=" background-color: #791cb5;border: none;">Xuất file</button>
+                    </div>                    
+                    
                     <!-- Form để nhập bộ lọc thống kê -->
                     <div class="col-xl-8 col-lg-7">
                         <form id="reportFilterForm">
@@ -52,7 +57,7 @@
                                 <label for="endDate">Ngày kết thúc</label>
                                 <input type="date" id="endDate" name="endDate" class="form-control" />
                             </div>
-                            <button type="submit" id="filterButton" class="btn btn-primary" style="margin-bottom: 20px;">Tạo báo cáo</button>
+                            <button type="submit" id="filterButton" class="btn btn-primary" style=" background-color: #791cb5; color: #fff;border: none;margin-bottom: 20px;">Tạo báo cáo</button>
                         </form>
                     </div>
 
@@ -79,7 +84,7 @@
                             <!-- Bar Chart -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Thống kê thao trạng thái</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Thống kê theo trạng thái</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
@@ -113,7 +118,7 @@
 
                 </div>
                 <!-- /.container-fluid -->
-                <div class="table-responsive">
+               @* <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -136,7 +141,7 @@
                             }
                         </tbody>
                     </table>
-                </div>
+                </div>*@
 
             </div>
             <!-- End of Main Content -->
@@ -181,6 +186,29 @@
                 }
             });
         }
+    </script>
+    <script>
+        document.getElementById("exportButton").addEventListener("click", function () {
+            // Lấy giá trị ngày bắt đầu và ngày kết thúc từ form
+            const startDate = document.getElementById("startDate").value;
+            const endDate = document.getElementById("endDate").value;
+
+            // Kiểm tra nếu ngày không được nhập
+            if (!startDate || !endDate) {
+                alert("Vui lòng nhập ngày bắt đầu và ngày kết thúc.");
+                return;
+            }
+
+            // Kiểm tra nếu startDate > endDate
+            if (new Date(startDate) > new Date(endDate)) {
+                alert("Ngày bắt đầu không được lớn hơn ngày kết thúc.");
+                return;
+            }
+
+            // Gửi yêu cầu đến API để xuất file
+            const url = `/api/requests/export-excel?startDate=${startDate}&endDate=${endDate}`;
+            window.location.href = url; // Điều hướng tới API xuất file
+        });
     </script>
 
 
