@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
 <html style="font-size: 96px;">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -33,9 +34,16 @@
             <a href="@Url.Action("Index", "Home")" class="logo"></a>
             <div class="btn-list">
                 <ul>
-                    <li><a href="#">Đăng Nhập</a></li>
-                    <li><a href="#">Đăng Ký</a></li>
-
+                    @if (string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Username")))
+                    {
+                        <li><a asp-action="Login" asp-controller="Custommer">Đăng Nhập</a></li>
+                        <li><a asp-action="Register" asp-controller="Custommer">Đăng Ký</a></li>
+                    }
+                    else
+                    {
+                        <li><span class="d-lg-block d-none" style="color: yellow">Chào, @HttpContextAccessor.HttpContext.Session.GetString("Username")</span></li>
+                        <li><a asp-action="Logout" asp-controller="Custommer">Đăng Xuất</a></li>
+                    }
                 </ul>
                 <div class="language">
                     &nbsp;

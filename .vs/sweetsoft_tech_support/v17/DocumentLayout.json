@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "D:\\HocTap\\N4\\TTCN\\Git\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\customer_sweetsoft_tech_support\\controllers\\custommercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|solutionrelative:customer_sweetsoft_tech_support\\controllers\\custommercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\customer_sweetsoft_tech_support\\views\\custommer\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|solutionrelative:customer_sweetsoft_tech_support\\views\\custommer\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\customer_sweetsoft_tech_support\\views\\custommer\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|solutionrelative:customer_sweetsoft_tech_support\\views\\custommer\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\customer_sweetsoft_tech_support\\views\\shared\\_layoutuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|solutionrelative:customer_sweetsoft_tech_support\\views\\shared\\_layoutuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 256,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,16 +38,53 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Program.cs",
-              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Program.cs",
-              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Program.cs",
-              "RelativeToolTip": "admin_sweetsoft_tech_support\\Program.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAAABcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-21T01:30:18.387Z",
+              "DocumentIndex": 1,
+              "Title": "ForgotPassword.cshtml",
+              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Views\\Custommer\\ForgotPassword.cshtml",
+              "RelativeDocumentMoniker": "Customer_sweetsoft_tech_support\\Views\\Custommer\\ForgotPassword.cshtml",
+              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Views\\Custommer\\ForgotPassword.cshtml",
+              "RelativeToolTip": "Customer_sweetsoft_tech_support\\Views\\Custommer\\ForgotPassword.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-24T00:33:22.645Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ResetPassword.cshtml",
+              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Views\\Custommer\\ResetPassword.cshtml",
+              "RelativeDocumentMoniker": "Customer_sweetsoft_tech_support\\Views\\Custommer\\ResetPassword.cshtml",
+              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Views\\Custommer\\ResetPassword.cshtml",
+              "RelativeToolTip": "Customer_sweetsoft_tech_support\\Views\\Custommer\\ResetPassword.cshtml",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAAAF4AAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-24T00:34:52.534Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CustommerController.cs",
+              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Controllers\\CustommerController.cs",
+              "RelativeDocumentMoniker": "Customer_sweetsoft_tech_support\\Controllers\\CustommerController.cs",
+              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Controllers\\CustommerController.cs*",
+              "RelativeToolTip": "Customer_sweetsoft_tech_support\\Controllers\\CustommerController.cs*",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAkwGUAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T03:00:42.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_LayoutUser.cshtml",
+              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Views\\Shared\\_LayoutUser.cshtml",
+              "RelativeDocumentMoniker": "Customer_sweetsoft_tech_support\\Views\\Shared\\_LayoutUser.cshtml",
+              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Views\\Shared\\_LayoutUser.cshtml",
+              "RelativeToolTip": "Customer_sweetsoft_tech_support\\Views\\Shared\\_LayoutUser.cshtml",
+              "ViewState": "AQIAAEEAAAAAAAAAAAAYwFgAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-23T03:40:02.043Z"
             }
           ]
         },
@@ -46,6 +95,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             },
             {
               "$type": "Bookmark",
