@@ -1,0 +1,128 @@
+﻿@model admin_sweetsoft_tech_support.Models.TblFaq
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+<style>
+    /* Header */
+    h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-align: center;
+        color: #6a1b9a; /* Màu tím tương tự */
+    }
+
+    /* Card Container */
+    .card {
+        border-radius: 0.5rem;
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+    }
+
+    /* Labels */
+    .form-label {
+        color: #333;
+        font-weight: bold;
+    }
+
+    /* Button styles */
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #4e555b;
+        }
+
+    /* Error messages */
+    .text-danger {
+        font-size: 0.9rem;
+    }
+
+    /* Form fields */
+    .form-control {
+        border-radius: 0.25rem;
+        padding: 10px;
+    }
+
+    /* Adjusting margins between form fields */
+    .form-group.mb-3 {
+        margin-bottom: 1rem;
+    }
+
+    /* Button container */
+    .d-flex.justify-content-between {
+        margin-top: 1rem;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<h1>Tạo mới FAQ</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm p-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group mb-3">
+                    <label asp-for="Question" class="form-label">Câu hỏi</label>
+                    <input asp-for="Question" class="form-control" />
+                    <span asp-validation-for="Question" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Answer" class="form-label">Câu trả lời</label>
+                    <textarea asp-for="Answer" rows="4" class="form-control"></textarea>
+                    <span asp-validation-for="Answer" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="CreatedAt" class="form-label">Ngày tạo</label>
+                    <input asp-for="CreatedAt" type="datetime-local" class="form-control" id="CreatedAt" />
+                    <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="UpdatedAt" class="form-label">Ngày cập nhật</label>
+                    <input asp-for="UpdatedAt" type="datetime-local" class="form-control" id="UpdatedAt" />
+                    <span asp-validation-for="UpdatedAt" class="text-danger"></span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Set default value for CreatedAt and UpdatedAt to the current date and time
+        document.addEventListener("DOMContentLoaded", function () {
+            var now = new Date().toISOString().slice(0, 16); // Get current date and time in yyyy-MM-ddTHH:mm format
+            document.getElementById("CreatedAt").value = now;
+            document.getElementById("UpdatedAt").value = now;
+        });
+    </script>
+}
