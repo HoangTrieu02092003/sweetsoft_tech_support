@@ -3,6 +3,94 @@
 @{
     ViewData["Title"] = "Create";
 }
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-warning d-flex justify-content-between align-items-center">
+                    <a asp-action="Index" class="btn btn-outline-dark btn-sm">
+                        <i class="bi bi-arrow-left"></i> Quay lại
+                    </a>
+                    <p class="mb-0 text-center flex-grow-1" style="color: #6a1b9a; font-weight: bold;">
+                        <i class="bi bi-plus-circle"></i> Thêm Yêu cầu Hỗ trợ
+                    </p>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger d-none" id="validationSummary"></div>
+
+                        <div class="list-group">
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="CustomerId" class="control-label text-dark">Khách hàng</label>
+                                    <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId">
+                                        <option value="" disabled selected>Chọn khách hàng...</option>
+                                    </select>
+                                    <span asp-validation-for="CustomerId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="DepartmentId" class="control-label text-dark">Bộ phận</label>
+                                    <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId">
+                                        <option value="" disabled selected>Chọn bộ phận...</option>
+                                    </select>
+                                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="RequestDetails" class="control-label text-dark">Chi tiết yêu cầu</label>
+                                    <textarea asp-for="RequestDetails" class="form-control" rows="5" placeholder="Nhập chi tiết yêu cầu..."></textarea>
+                                    <span asp-validation-for="RequestDetails" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="Status" class="control-label text-dark">Trạng thái</label>
+                                    <select asp-for="Status" class="form-control">
+                                        <option value="0">Chưa hoàn thành</option>
+                                        <option value="1">Hoàn thành</option>
+                                        <option value="2">Không xử lý được</option>
+                                    </select>
+                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="CreatedAt" class="control-label text-dark">Ngày tạo</label>
+                                    <input asp-for="CreatedAt" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" readonly />
+                                    <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="ResolvedAt" class="control-label text-dark">Ngày giải quyết</label>
+                                    <input asp-for="ResolvedAt" class="form-control" readonly placeholder="Chưa có thông tin" />
+                                    <span asp-validation-for="ResolvedAt" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group text-center mt-3">
+                            <input type="submit" value="Tạo" class="btn btn-warning text-white" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Styles -->
 <style>
     h1 {
         font-family: 'Poppins', sans-serif;
@@ -10,13 +98,41 @@
         color: #6a1b9a;
     }
 
-    .form-group {
-        margin-bottom: 20px;
+    .list-group-item {
+        border: none;
+        padding: 10px;
+        background-color: #f4f6f9;
+        margin-bottom: 10px;
     }
 
     .card-header {
-        background-color: #7b2cbf;
-        color: #333;
+        font-size: 1.25rem;
+        background-color: #ffc107;
+        color: #6a1b9a !important;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: #6a1b9a;
+    }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+            color: #fff;
+        }
+
+    .btn-outline-dark {
+        border-color: #6a1b9a;
+        color: #6a1b9a;
+    }
+
+        .btn-outline-dark:hover {
+            background-color: #6a1b9a;
+            color: #fff;
+        }
+
+    .form-group label {
+        font-weight: bold;
     }
 
     .form-control {
@@ -24,87 +140,17 @@
         padding: 10px;
     }
 
-    .btn-warning {
-        background-color: #f9a825;
-        color: white;
-        border-radius: 5px;
-    }
-
-        .btn-warning:hover {
-            background-color: #f57f17;
-        }
-
-    .text-center {
-        margin-top: 20px;
+    .alert-danger {
+        margin-bottom: 15px;
     }
 </style>
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-md-8 offset-md-2">
-            <div class="card border-0 shadow-lg">
-                <div class="card-header bg-warning text-center">
-                    <p style="font-size: 24px;">Thêm yêu cầu hỗ trợ</p>
-                </div>
-                <div class="card-body" style="background-color: #f4f0f7;">
-                    <form asp-action="Create">
-
-                        <div class="form-group">
-                            <label asp-for="CustomerId" class="control-label text-dark">Khách hàng</label>
-                            <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
-                            <span asp-validation-for="CustomerId" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label asp-for="DepartmentId" class="control-label text-dark">Bộ phận</label>
-                            <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
-                            <span asp-validation-for="DepartmentId" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label asp-for="RequestDetails" class="control-label text-dark">Chi tiết yêu cầu</label>
-                            <input asp-for="RequestDetails" class="form-control" />
-                            <span asp-validation-for="RequestDetails" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label asp-for="Status" class="control-label text-dark">Trạng thái</label>
-                            <select asp-for="Status" class="form-control">
-                                <option value="0">Chưa hoàn thành</option>
-                                <option value="1">Hoàn thành</option>
-                                <option value="2">Không xử lý được</option>
-                            </select>
-                            <span asp-validation-for="Status" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label asp-for="CreatedAt" class="control-label text-dark">Ngày tạo</label>
-                            <input asp-for="CreatedAt" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" readonly />
-                            <span asp-validation-for="CreatedAt" class="text-danger"></span>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label asp-for="ResolvedAt" class="control-label text-dark">Ngày giải quyết</label>
-                            <input asp-for="ResolvedAt" class="form-control" readonly/>
-                            <span asp-validation-for="ResolvedAt" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group text-center">
-                            <input type="submit" value="Tạo" class="btn btn-success text-white" />
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="text-center mt-3">
-                <a asp-action="Index" class="btn btn-outline-dark">Quay lại danh sách</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @Html.Partial("_ValidationScriptsPartial")
+    <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+            const validationSummary = document.getElementById("validationSummary");
+            validationSummary.classList.add("d-none"); // Hide error by default
+        });
+    </script>
 }
