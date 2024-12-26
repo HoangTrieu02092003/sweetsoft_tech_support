@@ -25,6 +25,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
+                TempData["ReturnUrl"] = Url.Action("Index","TblRequestsProcessings");
                 return RedirectToAction("Login", "Custommer");
             }
             var id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

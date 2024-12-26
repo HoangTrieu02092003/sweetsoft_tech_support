@@ -81,11 +81,11 @@ namespace Customer_sweetsoft_tech_support.Controllers
             {
                 // Tạo các Claims và Identity cho người dùng đã đăng nhập
                 var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.NameIdentifier, user.CustomerId.ToString()),
-            new Claim(ClaimTypes.Name, user.Username),
-            new Claim(ClaimTypes.Email, user.Email),
-        };
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.CustomerId.ToString()),
+                    new Claim(ClaimTypes.Name, user.FullName),
+                    new Claim(ClaimTypes.Email, user.Email),
+                };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
@@ -93,8 +93,6 @@ namespace Customer_sweetsoft_tech_support.Controllers
                 // Đăng nhập và lưu thông tin vào Cookie
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
 
-                HttpContext.Session.SetString("Username", user.FullName);
-                TempData["UserId"] = user.CustomerId;
                 if (TempData["ReturnUrl"] != null)
                 {
                     string returnUrl = TempData["ReturnUrl"].ToString();

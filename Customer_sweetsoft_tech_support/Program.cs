@@ -19,7 +19,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.AccessDeniedPath = "/dang-nhap"; // N?u không có quy?n, chuy?n ??n trang ??ng nh?p
     });
 
-builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30); // Th?i gian timeout c?a session
