@@ -4006,19 +4006,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aliho\\.nuget\\packages\\": {}
+    "C:\\Users\\NHAN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CC\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj",
+      "projectUniqueName": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj",
       "projectName": "admin_sweetsoft_tech_support",
-      "projectPath": "D:\\CC\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj",
-      "packagesPath": "C:\\Users\\aliho\\.nuget\\packages\\",
-      "outputPath": "D:\\CC\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\obj\\",
+      "projectPath": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj",
+      "packagesPath": "C:\\Users\\NHAN\\.nuget\\packages\\",
+      "outputPath": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\aliho\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\NHAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4086,7 +4086,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
