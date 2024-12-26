@@ -26,8 +26,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/HocTap/N4/TTCN/Git/Customer_sweetsoft_tech_support/Views/Account/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HocTap/N4/TTCN/Git/Customer_sweetsoft_tech_support/Views/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/Customer_sweetsoft_tech_support/Views/FollowingRequest/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9sbG93aW5nUmVxdWVzdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HocTap/N4/TTCN/Git/Customer_sweetsoft_tech_support/Views/Home/Index.cshtml]
