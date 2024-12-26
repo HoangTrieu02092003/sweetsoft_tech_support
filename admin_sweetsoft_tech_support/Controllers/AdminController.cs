@@ -79,7 +79,8 @@ namespace admin_sweetsoft_tech_support.Controllers
                 ViewBag.SiteKey = siteKey;
                 return View();
             }
-            if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
+            var hasPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            if (!BCrypt.Net.BCrypt.Verify(password, hasPassword))
             {
                 // Xử lý đăng nhập thất bại
                 user.FailedLoginAttempts = (user.FailedLoginAttempts ?? 0) + 1;
