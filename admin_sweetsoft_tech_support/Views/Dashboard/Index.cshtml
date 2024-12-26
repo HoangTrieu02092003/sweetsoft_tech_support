@@ -1,0 +1,111 @@
+﻿@model DashboardViewModel
+
+<div class="container mt-4">
+    <h1 class="text-center">Bảng Điều Khiển</h1>
+    <div class="row mt-4">
+        <!-- Số phiên hoạt động -->
+        <div class="col-md-4">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Số người hoạt động</h5>
+                    <p class="card-text display-4">@Model.ActiveSessions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Số nhật ký gần đây -->
+        <div class="col-md-4">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">Nhật ký gần đây</h5>
+                    <p class="card-text display-4">@Model.RecentLogCount</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thống kê nhật ký kiểm tra -->
+        <div class="col-md-4">
+            <div class="card text-white bg-warning">
+                <div class="card-body">
+                    <h5 class="card-title">Thống kê nhật ký kiểm tra</h5>
+                    <ul>
+                        @foreach (var stat in Model.AuditLogStatistics)
+                        {
+                            <li>@stat.ActionType: @stat.Count</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Biểu đồ Thống kê -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="text-center">Biểu đồ Thống kê Nhật ký</h3>
+            <canvas id="auditChart" width="400" height="200"></canvas>
+            <canvas id="recentLogsChart" width="400" height="200" class="mt-5"></canvas>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Dữ liệu từ ViewModel
+        var auditLabels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.AuditLogStatistics.Select(x => x.ActionType).ToList()));
+        var auditData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.AuditLogStatistics.Select(x => x.Count).ToList()));
+        var recentLabels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.RecentLogs.Select(x => x.CreatedAt?.ToString("yyyy-MM-dd")).ToList()));
+        var recentData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.RecentLogs.Select(x => 1).ToList())); // Mỗi log sẽ có giá trị 1 để đếm số lượng
+
+        // Cấu hình biểu đồ thống kê Audit Logs
+        var ctxAudit = document.getElementById('auditChart').getContext('2d');
+        var auditChart = new Chart(ctxAudit, {
+            type: 'line',
+            data: {
+                labels: auditLabels,
+                datasets: [{
+                    label: 'Số lượng hành động',
+                    data: auditData,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Cấu hình biểu đồ nhật ký gần đây
+        var ctxRecent = document.getElementById('recentLogsChart').getContext('2d');
+        var recentLogsChart = new Chart(ctxRecent, {
+            type: 'line',
+            data: {
+                labels: recentLabels,
+                datasets: [{
+                    label: 'Nhật ký gần đây',
+                    data: recentData,
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblActivityLog>
+@{
+    ViewData["Title"] = "Nhật ký xử lý yêu cầu";
+    var currentId = ViewData["userId"];
+    var searchQuery = ViewData["Search"];
+}
+
+<h1>Nhật ký hoạt động</h1>
+
+<form method="get" class="mb-3">
+    <input type="text"
+           name="search"
+           placeholder="Tìm kiếm nội dung"
+           value="@searchQuery"
+           class="form-control d-inline-block w-25 mr-2" />
+    <select name="userId" class="form-control d-inline-block w-25 mr-2">
+        @if (currentId == null)
+        {
+            <option value="" selected>Tất cả</option>
+        }
+        else
+        {
+            <option value="">Tất cả</option>
+        }
+        @foreach (var user in ViewData["Users"] as IEnumerable<admin_sweetsoft_tech_support.Models.TblUser>)
+        {
+            @if (currentId != null && (int)currentId == user.UserId)
+            {
+                <option value="@user.UserId" selected>@user.FullName</option>
+            }
+            else
+            {
+                <option value="@user.UserId">@user.FullName</option>
+            }
+        }
+    </select>
+    <button type="submit" class="btn btn-primary">Lọc</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Người dùng</th>
+            <th>Yêu cầu</th>
+            <th>Hành động</th>
+            <th>Thời gian</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var log in Model)
+        {
+            <tr>
+                <td>@log.User?.FullName</td>
+                <td>@log.Request?.RequestId</td>
+                <td>@log.Action</td>
+                <td>@log.CreatedAt?.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+                    <form asp-action="Delete" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="@log.ActivityId" />
+                        <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

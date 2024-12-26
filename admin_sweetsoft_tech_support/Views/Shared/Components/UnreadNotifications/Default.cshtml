@@ -1,0 +1,42 @@
+﻿@model int
+
+<style>
+    .badge-style {
+        color: white;
+        font-size: 0.8rem;
+        padding: 4px;
+        min-width: 20px;
+        text-align: center;
+        line-height: 1;
+        position: absolute;
+        top: 5px;
+        left: 30px;
+    }
+
+    @@media (max-width: 600px) {
+        .badge-style {
+            position: absolute;
+            top: 5px;
+            left: 84px;
+        }
+    }
+    @@media (max-width: 1199px) {
+        .badge-style {
+            position: absolute;
+            top: 5px;
+            left: 84px;
+        }
+    }
+    @@media (max-width: 800px) {
+        .badge-style {
+            position: absolute;
+            top: 5px;
+            left: 80px;
+        }
+    }
+</style>
+
+@if (Model > 0)
+{
+    <span class=" badge-style bg-danger rounded-circle">@Model</span>
+}

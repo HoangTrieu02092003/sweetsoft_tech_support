@@ -1,5 +1,4 @@
 ﻿@inject IHttpContextAccessor HttpContextAccessor
-
 <!doctype html>
 <html lang="en">
 
@@ -16,6 +15,26 @@
             width: 80%;
             height: auto;
         }
+        
+        .notification-tooltip {
+            line-height: 2.5;
+            padding: 0 3px;
+            font-size: 16px;
+            display: none; /* Ẩn thông báo ngắn gọn ban đầu */
+            position: absolute;
+            top: 8%;
+            left: 60px;
+            background-color: rgba(0, 0, 0, 0.8); /* Màu nền tối với độ trong suốt */
+            color: white; /* Màu chữ trắng */
+            border-radius: 5px;
+            white-space: nowrap; /* Không cho phép xuống dòng */
+            z-index: 1; /* Đảm bảo rằng nó nằm trên các phần tử khác */
+        }
+
+        .nav-item:hover .notification-tooltip {
+            display: block;
+        }
+
     </style>
 </head>
 
@@ -40,11 +59,16 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="Dashboard" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link" asp-action="Index1" asp-controller="Report" aria-expanded="false">
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
                                 <span class="hide-menu">Báo cáo</span>
                             </a>
-                        </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
                             <span class="hide-menu">Điều Hướng</span>
@@ -54,6 +78,36 @@
 
 
                         <!-- Thêm phần mình làm ở đây nhen mn -->
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="Logs" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Quản lý hoạt động</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="AuditLogs" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Quản lý nhật ký kiểm tra</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="Sessions" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Quản lý Session</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="Notifications" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Quản lý thông báo</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="ActivityLogs" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Nhật ký yêu cầu hỗ trợ</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" asp-action="Index" asp-controller="TblUsers" aria-expanded="false">
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
@@ -96,12 +150,16 @@
                                 <i class="ti ti-menu-2"></i>
                             </a>
                         </li>
+                        <li class="nav-item position-relative">
+                            <a class="nav-link nav-icon-hover" asp-action="MyNotifications" asp-controller="Notifications">
+                                <i class="ti ti-bell-ringing"></i>
+                                @await Component.InvokeAsync("Notification")
+                            </a>
+                            @await Component.InvokeAsync("UnreadNotifications")
+                        </li>
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                            <li class="nav-item">
-
-                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="~/assets/images/profile/user-1.jpg" alt="User" width="35" height="35" class="rounded-circle m-2">
@@ -111,8 +169,8 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                     <li><a class="dropdown-item" asp-action="MyAccount" asp-controller="TblUsers"><i class="ti ti-user fs-6"></i> Hồ sơ</a></li>
-                                    <li><a class="dropdown-item" asp-action="ForgotPassword" asp-controller="Admin"><i class="ti ti-lock fs-6"></i> Reset mật khẩu</a></li>
-                                    <li><a class="dropdown-item" asp-action="Logout" asp-controller="Admin"><i class="ti ti-logout fs-6"></i> Đăng xuất</a></li>
+                                    <li><a class="dropdown-item" asp-action="ForgotPassword" asp-controller="Admin"><i class="ti ti-lock fs-6"></i> Reset mật khẩu</a></li>               
+                                   <li><a class="dropdown-item" asp-action="Logout" asp-controller="Admin"><i class="ti ti-logout fs-6"></i> Đăng xuất</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -133,6 +191,28 @@
     <script src="~/assets/js/scripts.js"></script>
     <script src="~/assets/js/sidebarmenu.js"></script>
     <script src="~/assets/js/app.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var notificationIcons = document.querySelectorAll('.nav-icon-hover');
+
+            notificationIcons.forEach(function (icon) {
+                icon.addEventListener('mouseenter', function () {
+                    var tooltip = icon.querySelector('.notification-tooltip');
+                    if (tooltip) {
+                        tooltip.style.display = 'block';
+                    }
+                });
+
+                icon.addEventListener('mouseleave', function () {
+                    var tooltip = icon.querySelector('.notification-tooltip');
+                    if (tooltip) {
+                        tooltip.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
     @RenderSection("Scripts", required: false)
 </body>
 

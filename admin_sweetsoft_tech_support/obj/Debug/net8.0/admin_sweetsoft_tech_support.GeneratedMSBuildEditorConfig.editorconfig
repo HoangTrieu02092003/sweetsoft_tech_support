@@ -42,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/ActivityLogs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0aXZpdHlMb2dzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Admin/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRm9yZ290UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -58,8 +62,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVzZXRQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/AuditLogs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRMb2dzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/AuditLogs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRMb2dzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Home/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Logs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Logs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Notifications/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2F0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Notifications/MyNotifications.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2F0aW9uc1xNeU5vdGlmaWNhdGlvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Report/Create.cshtml]
@@ -88,6 +120,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Report/ShowRequestDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XFNob3dSZXF1ZXN0RGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Sessions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2Vzc2lvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Shared/Components/Notification/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTm90aWZpY2F0aW9uXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Shared/Components/UnreadNotifications/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVW5yZWFkTm90aWZpY2F0aW9uc1xEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Shared/Error.cshtml]

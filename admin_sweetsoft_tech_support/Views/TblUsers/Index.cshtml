@@ -92,6 +92,8 @@
             <p><strong>Ngày tạo:</strong> @item.CreatedAt?.ToString("dd/MM/yyyy")</p>
             <p><strong>Ngày cập nhật:</strong> @item.UpdatedAt?.ToString("dd/MM/yyyy")</p>
             <p><strong>Nhóm quyền:</strong> @item.Role!.RoleName</p>
+            <p><strong>Đăng nhập lần cuối:</strong> @(item.LastLogin?.ToString("dd/MM/yyyy")??"N/A")</p>
+
             <div class="card-actions">
                 <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-outline-primary">
                     <i class="bi bi-pencil-square"></i> <span>Thông tin</span>

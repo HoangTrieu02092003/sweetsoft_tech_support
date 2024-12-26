@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using BCrypt.Net;
 using System.Net.Mail;
 using System.Net;
+using admin_sweetsoft_tech_support.Attributes;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -15,13 +16,17 @@ namespace admin_sweetsoft_tech_support.Controllers
     {
         private readonly RequestContext _context;
         private readonly ILogger<AdminController> _logger;
+        private readonly LogService _logService;
+        private readonly SessionService _sessionService;
         private readonly IConfiguration _configuration;
 
-        public AdminController(RequestContext context, ILogger<AdminController> logger, IConfiguration configuration)
+        public AdminController(RequestContext context, ILogger<AdminController> logger,LogService logService, SessionService sessionService, IConfiguration configuration)
         {
             _context = context;
             _logger = logger;
             _configuration = configuration;
+            _logService = logService;
+            _sessionService = sessionService;
         }
 
         private async Task<bool> Validate(string secretKey, string recaptchaResponse)
@@ -56,6 +61,45 @@ namespace admin_sweetsoft_tech_support.Controllers
         public async Task<IActionResult> Login(string username, string password)
         {
             var siteKey = _configuration["ReCaptcha:SiteKey"];
+            const int MaxFailedAttempts = 5; // Số lần đăng nhập thất bại tối đa
+            const int LockoutDurationMinutes = 15; // thời gian khóa tài khoản
+            var user = await _context.TblUsers.FirstOrDefaultAsync(u => u.Username == username);
+
+            if (user == null || user.Status != 1)
+            {
+                ModelState.AddModelError(string.Empty, "Tài khoản không hợp lệ.");
+                ViewBag.SiteKey = siteKey;
+                return View();
+            }
+
+            if (user.LockoutTime.HasValue && user.LockoutTime > DateTime.Now)
+            {
+                // Nếu tài khoản đang bị khóa
+                ModelState.AddModelError(string.Empty, "Tài khoản của bạn đã bị khóa. Vui lòng thử lại sau.");
+                ViewBag.SiteKey = siteKey;
+                return View();
+            }
+            if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
+            {
+                // Xử lý đăng nhập thất bại
+                user.FailedLoginAttempts = (user.FailedLoginAttempts ?? 0) + 1;
+
+                if (user.FailedLoginAttempts >= MaxFailedAttempts)
+                {
+                    user.LockoutTime = DateTime.Now.AddMinutes(LockoutDurationMinutes);
+                    ModelState.AddModelError(string.Empty, $"Tài khoản của bạn đã bị khóa trong {LockoutDurationMinutes} phút.");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Tên người dùng hoặc mật khẩu không chính xác.");
+                }
+
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+                ViewBag.SiteKey = siteKey;
+                return View();
+            }
+            
             var recaptchaSecretKey = _configuration["ReCaptcha:SecretKey"];
             var recaptchaResponseValue = Request.Form["g-recaptcha-response"];
             var isCaptchaValid = await Validate(recaptchaSecretKey, recaptchaResponseValue);
@@ -67,49 +111,44 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return View();
             }
 
-            var user = await _context.TblUsers
-                .FirstOrDefaultAsync(u => u.Username == username); // Kiểm tra admin
+            // Đăng nhập thành công
+            user.LastLogin = DateTime.Now;
+            user.FailedLoginAttempts = 0; // Reset số lần thất bại
+            user.LockoutTime = null; // Bỏ khóa tài khoản nếu bị khóa
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+            await _sessionService.DeleteSessionAsync(user.UserId);
+            await _logService.LogAction(user.UserId,"Đăng nhập thành công", $"Người dùng {user.FullName} đã đăng nhập thành công.");
+            await _sessionService.CreateSessionAsync(user.UserId, Guid.NewGuid().ToString());
 
-            if (user == null)
+            // Tạo các Claims và Identity cho người dùng đã đăng nhập
+            var claims = new List<Claim>
             {
-                ModelState.AddModelError(string.Empty, "Username không tồn tại");
-                ViewBag.SiteKey = siteKey;
-                return View();
-            }
-
-            // Kiểm tra mật khẩu
-            var hasPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            if (BCrypt.Net.BCrypt.Verify(password, hasPassword)) // Sử dụng BCrypt để so sánh mật khẩu
-            {
-                // Tạo các Claims và Identity cho người dùng đã đăng nhập
-                var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-            new Claim(ClaimTypes.Name, user.Username),
-            new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Name, user.FullName),
+                new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Role, "Admin") // Thêm quyền admin cho người dùng
-        };
+            };
 
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
-                // Đăng nhập và lưu thông tin vào Cookie
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
-
-                HttpContext.Session.SetString("Username", user.FullName);
-                TempData["UserId"] = user.UserId;
-                TempData["IsAdmin"] = user.IsAdmin == true ? "true" : "false";
-                return RedirectToAction("Index1", "Report"); // Sau khi đăng nhập, chuyển tới trang chính của quản trị viên
-            }
-
-            ViewBag.SiteKey = siteKey;
-            ModelState.AddModelError(string.Empty, "Mật khẩu sai.");
-            return View();
+            // Đăng nhập và lưu thông tin vào Cookie
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
+            HttpContext.Session.SetString("Username", user.FullName);
+            HttpContext.Session.SetInt32("UserId",user.UserId);
+            TempData["UserId"] = user.UserId;
+            TempData["IsAdmin"] = user.IsAdmin == true ? "true" : "false";
+            return RedirectToAction("Index1", "Report"); // Sau khi đăng nhập, chuyển tới trang chính của quản trị viên
         }
 
         // Đăng xuất (Logout)
         public async Task<IActionResult> Logout()
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            var username = HttpContext.Session.GetString("Username");
+            await _logService.LogAction(userId, "Đăng xuất", $"Người dùng {username} đã đăng xuất thành công.");
+            await _sessionService.DeleteSessionAsync(userId);
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
@@ -218,7 +257,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             user.ResetTokenExpiry = null;
             _context.TblUsers.Update(user);
             await _context.SaveChangesAsync();
-
+            await _logService.LogAction(user.UserId,"Cập nhật hồ sơ", $"Người dùng {user.FullName} đã thay đổi mật khẩu.");
             return RedirectToAction("Login");
         }
 
@@ -244,39 +283,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             mailMessage.To.Add(toEmail);
 
             await client.SendMailAsync(mailMessage);
-        }
-
-        // Thêm người dùng mới (Register)
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(string username, string email, string password)
-        {
-            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-
-            var existingUser = await _context.TblUsers.FirstOrDefaultAsync(u => u.Username == username || u.Email == email);
-            if (existingUser != null)
-            {
-                ModelState.AddModelError(string.Empty, "Username hoặc Email đã tồn tại.");
-                return View();
-            }
-
-            var newUser = new TblUser
-            {
-                Username = username,
-                Email = email,
-                Password = hashedPassword,
-                RoleId = 1, // Admin
-                DepartmentId = 1, // Ví dụ phòng ban
-                Status = 1,
-                IsAdmin = true,
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now
-            };
-
-            _context.TblUsers.Add(newUser);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Login");
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblNotification>
+@{
+    ViewData["Title"] = "Thông báo của tôi";
+}
+
+<h1>Thông báo của tôi</h1>
+
+@if (!Model.Any())
+{
+    <p>Không có thông báo nào.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nội dung</th>
+                <th>Trạng thái</th>
+                <th>Thời gian</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var notification in Model)
+            {
+                <tr>
+                    <td>@notification.NotificationId</td>
+                    <td>@notification.Message</td>
+                    <td>@(notification.Status == 0 ? "Chưa đọc" : "Đã đọc")</td>
+                    <td>@notification.CreatedAt?.ToString("yyyy-MM-dd HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

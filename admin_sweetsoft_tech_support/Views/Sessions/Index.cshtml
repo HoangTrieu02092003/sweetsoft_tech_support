@@ -1,0 +1,123 @@
+﻿@model IEnumerable<TblSession>
+
+@{
+    ViewData["Title"] = "Quản lý Phiên làm việc";
+}
+
+<style>
+    .text-truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .badge {
+        color: black;
+        font-size: 0.9rem;
+    }
+</style>
+
+
+<div class="container mt-4">
+    <h1 class="text-center">Quản lý Phiên làm việc</h1>
+    <!-- Bộ lọc và tìm kiếm -->
+    <form method="get" asp-action="Index">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <input type="text" name="userId" class="form-control" placeholder="Lọc theo User ID" />
+            </div>
+            <div class="col-md-4">
+                <select name="status" class="form-control">
+                    <option value="">Trạng thái (Tất cả)</option>
+                    <option value="active">Còn hiệu lực</option>
+                    <option value="expired">Hết hạn</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary">Lọc</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Danh sách Sessions -->
+    <table class="table table-bordered mt-4">
+        <thead class="thead-dark">
+            <tr>
+                <th>Người dùng</th>
+                <th>Session Token</th>
+                <th>Ngày tạo</th>
+                <th>Hết hạn</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var session in Model)
+            {
+                <tr>
+                    <td>@session.User.FullName</td>
+                    <td>
+                        <div class="text-truncate" style="max-width: 200px;" title="@session.SessionToken">
+                            @session.SessionToken
+                        </div>
+                    </td>
+                    <td>@session.CreatedAt?.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@session.ExpiresAt?.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>
+                        @if (session.ExpiresAt > DateTime.Now)
+                        {
+                            <span class="badge badge-success">Còn hiệu lực</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-danger">Hết hạn</span>
+                        }
+                    </td>
+                    <td>
+                        <form method="post" asp-action="EndSession" asp-route-id="@session.SessionId">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc muốn kết thúc phiên này?');">
+                                Kết thúc
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Phân trang -->
+<div class="d-flex justify-content-center my-4">
+    <ul class="pagination">
+        @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = 1, status = ViewBag.Status, role = ViewBag.Role })">Đầu</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1, status = ViewBag.Status, role = ViewBag.Role })">Trước</a>
+            </li>
+        }
+
+        @if (ViewData["TotalPages"] != null)
+        {
+            int totalPages = (int)ViewData["TotalPages"];
+            for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == (int)ViewData["CurrentPage"] ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i, status = ViewBag.Status, role = ViewBag.Role })">@i</a>
+                </li>
+            }
+        }
+
+        @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1, status = ViewBag.Status, role = ViewBag.Role })">Sau</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"], status = ViewBag.Status, role = ViewBag.Role })">Cuối</a>
+            </li>
+        }
+    </ul>
+</div>

@@ -5,6 +5,7 @@ using admin_sweetsoft_tech_support.Models;
 using System.Security.Claims;
 using admin_sweetsoft_tech_support.Attributes;
 using System.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -13,11 +14,15 @@ namespace admin_sweetsoft_tech_support.Controllers
     {
         private readonly RequestContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly LogService _logService;
+        private readonly AuditLogService _auditLogService;
 
-        public TblUsersController(RequestContext context, IHttpContextAccessor httpContextAccessor)
+        public TblUsersController(RequestContext context, IHttpContextAccessor httpContextAccessor, LogService logService, AuditLogService auditLogService)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
+            _logService = logService;
+            _auditLogService = auditLogService;
         }
 
         // GET: TblUsers
@@ -64,7 +69,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(await requestContext.ToListAsync());
         }
 
-        [PermissionAuthorize("Thêm người dùng")]
+        //[PermissionAuthorize("Thêm người dùng")]
         // GET: TblUsers/Create
         public IActionResult Create()
         {
@@ -84,17 +89,20 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             if (ModelState.IsValid)
             {
+                var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
                 tblUser.Password = BCrypt.Net.BCrypt.HashPassword("Password123"); // Mã hóa mật khẩu mặc định
                 tblUser.Status = 1;
                 tblUser.IsAdmin = false; // Mặc định là false
                 tblUser.ResetToken = null; // Mặc định là null
                 tblUser.ResetTokenExpiry = null; // Mặc định là null
-                tblUser.CreatedUser = 1; // Mặc định là userId 1
+                tblUser.CreatedUser = currentUserId;
                 tblUser.CreatedAt = DateTime.Now; // Mặc định là ngày hiện tại
-                tblUser.UpdatedUser = 1; // Mặc định là userId 1
+                tblUser.UpdatedUser = currentUserId;
                 tblUser.UpdatedAt = DateTime.Now; // Mặc định là ngày hiện tại
                 _context.Add(tblUser);
                 await _context.SaveChangesAsync();
+                await _logService.LogAction(currentUserId, "Thêm người dùng",$"{User.Identity.Name} đã thực hiện thêm người dùng");
+                await _auditLogService.LogAuditAction("TblUsers",tblUser.UserId, "INSERT",currentUserId,"", Newtonsoft.Json.JsonConvert.SerializeObject(tblUser));
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblUser.CreatedUser);
@@ -154,7 +162,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     return NotFound();
                 }
-
+                var oldValue = Newtonsoft.Json.JsonConvert.SerializeObject(existingUser);
                 // Cập nhật chỉ những thuộc tính được chỉnh sửa, các thuộc tính không thay đổi sẽ giữ nguyên
                 if (!string.IsNullOrEmpty(tblUser.FullName)) existingUser.FullName = tblUser.FullName;
                 if (!string.IsNullOrEmpty(tblUser.Email)) existingUser.Email = tblUser.Email;
@@ -168,6 +176,9 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     _context.Update(existingUser);
                     await _context.SaveChangesAsync();
+                    var newValue = Newtonsoft.Json.JsonConvert.SerializeObject(existingUser);
+                    await _logService.LogAction(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0"), "Cập nhật người dùng", $"{User.Identity.Name} đã thực hiện sửa người dùng");
+                    await _auditLogService.LogAuditAction("TblUsers", tblUser.UserId, "UPDATE", int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0"), oldValue, newValue);
                 }
                 catch (DbUpdateConcurrencyException)
                 {

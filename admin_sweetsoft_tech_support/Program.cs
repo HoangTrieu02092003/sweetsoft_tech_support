@@ -1,4 +1,5 @@
-﻿using admin_sweetsoft_tech_support.Models;
+﻿using admin_sweetsoft_tech_support.Attributes;
+using admin_sweetsoft_tech_support.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
@@ -34,6 +35,9 @@ builder.Services.AddSession(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<RequestContext>();
+builder.Services.AddScoped<LogService>();
+builder.Services.AddScoped<AuditLogService>();
+builder.Services.AddScoped<SessionService>();
 
 var app = builder.Build();
 
@@ -54,7 +58,17 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
+//app.Use(async (context, next) => {
+//var userId = context.Session.GetInt32("UserId"); 
+//    if (userId != null && context.Request.Path == "/dang-nhap")
+//    {
+//        context.Response.Redirect("/bao-cao");
+//        return;
+//    } 
+//    await next(); 
+//});
+
+    app.MapControllerRoute(
     name: "Denied",
     pattern:"quyen-han",
     defaults: new { controller = "Home", action = "AccessDenied" });

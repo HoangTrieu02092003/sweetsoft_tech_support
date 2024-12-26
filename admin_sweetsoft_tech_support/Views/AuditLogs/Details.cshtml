@@ -1,0 +1,63 @@
+﻿@model TblAuditLog
+@{
+    ViewData["Title"] = "Chi tiết Audit Log";
+}
+
+<style>
+    .data-container {
+        max-width: 95%;
+        overflow: auto; 
+        word-wrap: break-word; 
+        word-break: break-all;
+        white-space: pre-wrap; 
+        background-color: #f8f9fa;
+        padding: 10px;
+        border: 1px solid #dee2e6; 
+        border-radius: 5px; 
+        font-family: monospace; 
+        font-size: 0.9rem; 
+    }
+    th{
+        min-width: 9rem;
+    }
+</style>
+
+<div class="container mt-4">
+    <h1 class="text-center">Chi tiết Nhật ký Kiểm tra</h1>
+
+    <table class="table table-bordered mt-4">
+        <tr>
+            <th>ID</th>
+            <td>@Model.AuditId</td>
+        </tr>
+        <tr>
+            <th>Bảng</th>
+            <td>@Model.TableName</td>
+        </tr>
+        <tr>
+            <th>Bản ghi</th>
+            <td>@Model.RecordId</td>
+        </tr>
+        <tr>
+            <th>Hành động</th>
+            <td>@Model.ActionType</td>
+        </tr>
+        <tr>
+            <th>Người thay đổi</th>
+            <td>@Model.ChangedBy</td>
+        </tr>
+        <tr>
+            <th>Thời gian</th>
+            <td>@Model.ChangedAt?.ToString("yyyy-MM-dd HH:mm")</td>
+        </tr>
+        <tr>
+            <th>Dữ liệu cũ</th>
+            <td><div class="data-container">@Model.OldValue</div></td>
+        </tr>
+        <tr>
+            <th>Dữ liệu mới</th>
+            <td><div class="data-container">@Model.NewValue</div></td>
+        </tr>
+    </table>
+    <a href="@Url.Action("Index", "AuditLogs")" class="btn btn-secondary">Quay lại</a>
+</div>

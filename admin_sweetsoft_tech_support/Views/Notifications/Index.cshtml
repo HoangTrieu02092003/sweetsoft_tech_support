@@ -1,0 +1,94 @@
+﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblNotification>
+@{
+    ViewData["Title"] = "Quản lý Thông báo";
+
+    // Lấy giá trị lọc từ ViewData
+    var currentStatus = ViewData["Status"];
+    var searchQuery = ViewData["Search"]?.ToString();
+}
+
+<h1>Quản lý Thông báo</h1>
+
+<!-- Form lọc và tìm kiếm -->
+<form method="get" class="mb-3">
+    <input 
+        type="text" 
+        name="search" 
+        placeholder="Tìm kiếm nội dung" 
+        value="@searchQuery" 
+        class="form-control d-inline-block w-25 mr-2" />
+
+    <select name="status" class="form-control d-inline-block w-25 mr-2">
+        @if (currentStatus == null)
+        {
+            <option value="" selected>Tất cả</option>
+        }
+        else
+        {
+            <option value="">Tất cả</option>
+        }
+        @if (currentStatus != null && (int)currentStatus == 1)
+        {
+            <option value="1" selected>Đã đọc</option>
+        }
+        else
+        {
+            <option value="1">Đã đọc</option>
+        }
+        @if (currentStatus != null && (int)currentStatus == 0)
+        {
+            <option value="0" selected>Chưa đọc</option>
+        }
+        else
+        {
+            <option value="0">Chưa đọc</option>
+        }
+    </select>
+
+    <button type="submit" class="btn btn-primary">Lọc</button>
+</form>
+
+<!-- Bảng hiển thị thông báo -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Người dùng</th>
+            <th>Nội dung</th>
+            <th>Trạng thái</th>
+            <th>Thời gian</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="6" class="text-center">Không có thông báo nào</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var notification in Model)
+            {
+                <tr>
+                    <td>@notification.User.FullName</td>
+                    <td>@notification.Message</td>
+                    <td>@(notification.Status == 0 ? "Chưa đọc" : "Đã đọc")</td>
+                    <td>@notification.CreatedAt?.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>
+                        <form asp-action="MarkAsRead" method="post" style="display: inline;">
+                            <input type="hidden" name="id" value="@notification.NotificationId" />
+                            <button type="submit" class="btn btn-sm btn-success" @(notification.Status == 1 ? "disabled" : "")>
+                                Đánh dấu đã đọc
+                            </button>
+                        </form>
+                        <form asp-action="Delete" method="post" style="display: inline;">
+                            <input type="hidden" name="id" value="@notification.NotificationId" />
+                            <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

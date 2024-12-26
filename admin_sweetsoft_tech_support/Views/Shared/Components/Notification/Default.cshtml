@@ -1,0 +1,8 @@
+﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblNotification>
+
+@if (Model.Any())
+{
+    <div class="notification-tooltip">
+        @Model.FirstOrDefault()?.Message
+    </div>
+}
