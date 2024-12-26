@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "E+SIHAiooRc=",
+  "dgSpecHash": "pH6dh4J3uTk=",
   "success": true,
   "projectFilePath": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\NHAN\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
+    "C:\\Users\\NHAN\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",

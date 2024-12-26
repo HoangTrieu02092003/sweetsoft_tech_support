@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Customer_sweetsoft_tech_support")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a047b2271d2dbb0a041b714f00697400d30a95f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55ad4e6a756c3ee40139df9bb6b1f581d2382873")]
 [assembly: System.Reflection.AssemblyProductAttribute("Customer_sweetsoft_tech_support")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Customer_sweetsoft_tech_support")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
