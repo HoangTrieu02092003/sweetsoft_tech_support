@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "odb/A4bKAth4hCpNnSVy8f0EP9SZMdiANWYDEcuux6c=",
+  "Hash": "QRSqiE+4nmvqAitC5gpxpKHStURrxTMQ8slsUg6gLxM=",
   "Source": "Customer_sweetsoft_tech_support",
   "BasePath": "_content/Customer_sweetsoft_tech_support",
   "Mode": "Default",
@@ -566,6 +566,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\inner2.jpg"
+    },
+    {
+      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner3.jpg",
+      "SourceId": "Customer_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/Customer_sweetsoft_tech_support",
+      "RelativePath": "LayoutUser/img/inner3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\inner3.jpg"
     },
     {
       "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\kyniem17nam.jpg",
@@ -1706,6 +1725,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\LayoutUser\\lib\\wow\\wow.min.js"
+    },
+    {
+      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\dpybt.vsb.css",
+      "SourceId": "Customer_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/Customer_sweetsoft_tech_support",
+      "RelativePath": "LayoutUser/style/dpybt.vsb.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\LayoutUser\\style\\dpybt.vsb.css"
     },
     {
       "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\index.css",

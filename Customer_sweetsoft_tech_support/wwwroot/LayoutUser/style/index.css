@@ -1579,7 +1579,6 @@ body.navShow {
             margin-bottom: -1px;
             position: relative;
             cursor: pointer;
-            display: none;
         }
 
             .inner_main .rem12 .zb_nr .zc .listmore .icon-dot-3 {
@@ -1641,6 +1640,10 @@ body.navShow {
         margin-top: .5rem;
     }
 
+        /*.inner_main .rem12 .zb_nr .yccc {
+            margin-top: 0;
+        }*/
+
         .inner_main .rem12 .zb_nr .yc p {
             font-size: .18rem;
             line-height: .3rem;
@@ -1676,10 +1679,12 @@ body.navShow {
             width: 100%;
         }
 
-        .inner_main .rem12 .zb_nr .zc .listmore {
+        .inner_main .rem12 .zb_nr .listmore {
             display: block;
             width: 70px;
             height: 42px;
+            position:relative;
+            z-index:100;
         }
 
         .inner_main .rem12 .zb_nr .zc {
@@ -1727,7 +1732,6 @@ body.navShow {
             top: 3px;
             width: 32px;
             height: 32px;
-            display: none;
         }
 
             .inner_main .rem12 .zb_nr .zc .listmore .close:before, .close:after {

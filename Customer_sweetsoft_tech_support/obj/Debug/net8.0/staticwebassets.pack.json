@@ -97,6 +97,10 @@
       "PackagePath": "staticwebassets\\LayoutUser\\img\\inner2.jpg"
     },
     {
+      "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner3.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\inner3.jpg"
+    },
+    {
       "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner_dqwz.png",
       "PackagePath": "staticwebassets\\LayoutUser\\img\\inner_dqwz.png"
     },
@@ -331,6 +335,10 @@
     {
       "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\wow\\wow.min.js",
       "PackagePath": "staticwebassets\\LayoutUser\\lib\\wow\\wow.min.js"
+    },
+    {
+      "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\dpybt.vsb.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\style\\dpybt.vsb.css"
     },
     {
       "Id": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\index.css",
