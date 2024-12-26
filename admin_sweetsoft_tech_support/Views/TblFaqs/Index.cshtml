@@ -120,7 +120,7 @@
                 </div>
             </div>
             <div class="col-md-1">
-                <button type="submit" class="btn btn-primary w-100">Lọc</button>
+                <button type="submit" class="btn btn-info">Lọc</button>
             </div>
         </div>
     </form>
@@ -141,14 +141,14 @@
     </div>
 
     <div class="faq-detail">
-        <h3 id="faq-title"></h3>
+        <h3 style="color:#6a1b9a" id="faq-title"></h3>
         <p class="faq-answer" id="faq-answer"></p>
         <p id="faq-created"></p>
         <p id="faq-updated"></p>
         <div class="faq-actions">
-            <a id="edit-btn" class="btn-edit" href="#">Chỉnh sửa</a>
+            <a id="edit-btn" class="btn btn-outline-info" href="#">Chỉnh sửa</a>
             <form id="delete-form" method="post" asp-action="Delete" asp-route-id="" style="display:inline;">
-                <button type="submit" class="btn-delete" id="delete-btn" onclick="return confirmDelete();">Xóa</button>
+                <button type="submit" class="btn btn-outline-danger" id="delete-btn" onclick="return confirmDelete();">Xóa</button>
             </form>
         </div>
     </div>

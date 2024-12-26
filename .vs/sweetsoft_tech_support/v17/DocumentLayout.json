@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\sweetsoft_tech_support\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\views\\tbldepartments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\tbldepartments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\views\\tblfaqs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\tblfaqs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\controllers\\tbldepartmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\controllers\\tbldepartmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\views\\tbldepartments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\tbldepartments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\views\\tblfaqs\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -38,17 +38,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\TblFaqs\\Index.cshtml",
               "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\TblFaqs\\Index.cshtml",
               "ToolTip": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\TblFaqs\\Index.cshtml",
               "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\TblFaqs\\Index.cshtml",
-              "ViewState": "AgIAAM4AAAAAAAAAAAAIwNcAAABIAAAAAAAAAA==",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAIwHEAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-20T02:51:26.73Z",
               "IsPinned": true,
@@ -81,11 +81,12 @@
               "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\TblFaqs\\Edit.cshtml",
               "ViewState": "AgIAAD8AAAAAAAAAAAAAAEwAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-23T01:29:32.792Z"
+              "WhenOpened": "2024-12-23T01:29:32.792Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "TblFaqsController.cs",
               "DocumentMoniker": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Controllers\\TblFaqsController.cs",
               "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\TblFaqsController.cs",
@@ -98,13 +99,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\TblDepartments\\Index.cshtml",
               "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\TblDepartments\\Index.cshtml",
               "ToolTip": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\TblDepartments\\Index.cshtml",
               "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\TblDepartments\\Index.cshtml",
-              "ViewState": "AgIAAKQAAAAAAAAAAAAIwLwAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAKQAAAAAAAAAAAAIwKwAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-20T14:04:47.9Z",
               "EditorCaption": ""
@@ -119,11 +120,12 @@
               "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\TblDepartments\\Edit.cshtml",
               "ViewState": "AgIAAHUAAAAAAAAAAAAAAIoAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-24T13:57:16.211Z"
+              "WhenOpened": "2024-12-24T13:57:16.211Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TblDepartmentsController.cs",
               "DocumentMoniker": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Controllers\\TblDepartmentsController.cs",
               "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\TblDepartmentsController.cs",
