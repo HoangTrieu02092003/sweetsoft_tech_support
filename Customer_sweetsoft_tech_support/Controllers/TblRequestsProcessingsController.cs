@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Customer_sweetsoft_tech_support.Models;
+using System.Security.Claims;
+using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
 
 namespace Customer_sweetsoft_tech_support.Controllers
 {
@@ -21,7 +23,13 @@ namespace Customer_sweetsoft_tech_support.Controllers
         // GET: TblRequestsProcessings
         public async Task<IActionResult> Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Custommer");
+            }
+            var id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var requestContext = _context.TblRequestsProcessings
+                .Where(t => t.Request.CustomerId == int.Parse(id))
                 .Include(t => t.Department)
                 .Include(t => t.Request);
 

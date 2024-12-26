@@ -7,9 +7,13 @@ public partial class TblFaq
 {
     public int FaqId { get; set; }
 
+    public string? FaqThumbnail { get; set; }
+
     public string Question { get; set; } = null!;
 
     public string Answer { get; set; } = null!;
+
+    public bool? IsDelete { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

@@ -9,5 +9,7 @@ public partial class TblRole
 
     public string RoleName { get; set; } = null!;
 
+    public virtual ICollection<TblRolePermission> TblRolePermissions { get; set; } = new List<TblRolePermission>();
+
     public virtual ICollection<TblUser> TblUsers { get; set; } = new List<TblUser>();
 }

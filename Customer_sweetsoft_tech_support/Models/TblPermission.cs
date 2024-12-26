@@ -11,5 +11,7 @@ public partial class TblPermission
 
     public string? Description { get; set; }
 
+    public virtual ICollection<TblRolePermission> TblRolePermissions { get; set; } = new List<TblRolePermission>();
+
     public virtual ICollection<TblUserPermission> TblUserPermissions { get; set; } = new List<TblUserPermission>();
 }

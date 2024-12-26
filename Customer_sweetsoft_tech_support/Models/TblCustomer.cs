@@ -8,29 +8,31 @@ public partial class TblCustomer
 {
     public int CustomerId { get; set; }
 
-    [Required(ErrorMessage = "Họ và tên không được để trống.")]
-    [StringLength(100, ErrorMessage = "Họ và tên không được vượt quá 100 ký tự.")]
+    [Required(ErrorMessage = "Vui lòng nhập họ và tên.")]
     public string FullName { get; set; } = null!;
 
-    [Required(ErrorMessage = "Email không được để trống.")]
     [EmailAddress(ErrorMessage = "Email không hợp lệ.")]
+    [Required(ErrorMessage = "Vui lòng nhập email.")]
     public string Email { get; set; } = null!;
 
-    [Required(ErrorMessage = "Số điện thoại không được để trống.")]
     [Phone(ErrorMessage = "Số điện thoại không hợp lệ.")]
+    [Required(ErrorMessage = "Vui lòng nhập số điện thoại.")]
     public string Phone { get; set; } = null!;
 
+    [RegularExpression("^[0-9]{10}$", ErrorMessage = "Mã số thuế phải là 10 chữ số.")]
     public string? TaxCode { get; set; }
 
     public string? Company { get; set; }
 
-    [Required(ErrorMessage = "Tên đăng nhập không được để trống.")]
-    [StringLength(50, ErrorMessage = "Tên đăng nhập không được vượt quá 50 ký tự.")]
+    [Required(ErrorMessage = "Vui lòng nhập tên đăng nhập.")]
     public string Username { get; set; } = null!;
 
+    [Required(ErrorMessage = "Vui lòng nhập mật khẩu.")]
     public string Password { get; set; } = null!;
 
     public short Status { get; set; }
+
+    public bool IsDelete { get; set; }
 
     public string? ResetToken { get; set; }
 
@@ -40,17 +42,17 @@ public partial class TblCustomer
 
     public DateTime? TokenExpiry { get; set; }
 
-    public int? CreatedUser { get; set; }
+    public int? CreatedBy { get; set; }
+
+    public int? UpdatedBy { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
-    public int? UpdatedUser { get; set; }
-
     public DateTime? UpdatedAt { get; set; }
 
-    public virtual TblUser? CreatedUserNavigation { get; set; }
+    public virtual TblUser? CreatedByNavigation { get; set; }
 
     public virtual ICollection<TblSupportRequest> TblSupportRequests { get; set; } = new List<TblSupportRequest>();
 
-    public virtual TblUser? UpdatedUserNavigation { get; set; }
+    public virtual TblUser? UpdatedByNavigation { get; set; }
 }

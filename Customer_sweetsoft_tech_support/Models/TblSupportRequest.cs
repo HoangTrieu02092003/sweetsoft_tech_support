@@ -11,9 +11,15 @@ public partial class TblSupportRequest
 
     public int? DepartmentId { get; set; }
 
+    public string RequestTitle { get; set; } = null!;
+
+    public string Product { get; set; } = null!;
+
     public string RequestDetails { get; set; } = null!;
 
     public short Status { get; set; }
+
+    public bool? IsDelete { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
@@ -22,6 +28,8 @@ public partial class TblSupportRequest
     public virtual TblCustomer? Customer { get; set; }
 
     public virtual TblDepartment? Department { get; set; }
+
+    public virtual ICollection<TblActivityLog> TblActivityLogs { get; set; } = new List<TblActivityLog>();
 
     public virtual ICollection<TblRequestTransfer> TblRequestTransfers { get; set; } = new List<TblRequestTransfer>();
 
