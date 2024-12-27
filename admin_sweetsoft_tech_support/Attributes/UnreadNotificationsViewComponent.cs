@@ -22,10 +22,32 @@ namespace admin_sweetsoft_tech_support.Attributes
             if (!string.IsNullOrEmpty(userId))
             {
                 unreadCount = _context.TblNotifications
-                    .Where(n => n.UserId == int.Parse(userId) && n.Status == 0)
+                    .Where(n => n.UserId == int.Parse(userId))
                     .Count();
             }
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "notification.log");
 
+            if (File.Exists(filePath))
+            {
+                var logLines = File.ReadAllLines(filePath);
+
+                foreach (var line in logLines)
+                {
+                    var logParts = line.Split(new string[] { ": " }, StringSplitOptions.None);
+
+                    if (logParts.Length == 2)
+                    {
+                        var logDetails = logParts[1].Split(", ");
+                        var userIdLog = logDetails.FirstOrDefault(detail => detail.StartsWith("UserId"))?.Split('=')[1].Trim();
+                        var status = logDetails.FirstOrDefault(detail => detail.StartsWith("Status"))?.Split('=')[1].Trim();
+
+                        if (userIdLog == userId)
+                        {
+                            unreadCount++;
+                        }
+                    }
+                }
+            }
             return View(unreadCount);
         }
     }

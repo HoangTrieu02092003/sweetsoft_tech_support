@@ -6,16 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
+using admin_sweetsoft_tech_support.Attributes;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
     public class TblSupportRequestsController : Controller
     {
         private readonly RequestContext _context;
+        private readonly NotificationService _notificationService;
 
-        public TblSupportRequestsController(RequestContext context)
+        public TblSupportRequestsController(RequestContext context, NotificationService notificationService)
         {
             _context = context;
+            _notificationService = notificationService;
         }
 
         //// GET: TblSupportRequests
@@ -87,7 +90,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RequestId,CustomerId,DepartmentId,RequestDetails,Status,CreatedAt,ResolvedAt")] TblSupportRequest tblSupportRequest)
+        public async Task<IActionResult> Create([Bind("RequestId,CustomerId,DepartmentId,RequestTitle,Product,RequestDetails,Status,CreatedAt,ResolvedAt")] TblSupportRequest tblSupportRequest)
         {
             if (!_context.TblCustomers.Any(c => c.CustomerId == tblSupportRequest.CustomerId))
             {
@@ -98,6 +101,9 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 _context.Add(tblSupportRequest);
                 await _context.SaveChangesAsync();
+                var departmentManager = _context.TblUsers
+                    .FirstOrDefault(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.Role.RoleName == "Trưởng phòng");
+                await _notificationService.LogActionToFile(departmentManager.UserId,$"Bạn có yêu cầu mới");
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId", tblSupportRequest.CustomerId);

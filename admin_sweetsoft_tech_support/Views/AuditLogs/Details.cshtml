@@ -35,16 +35,12 @@
             <td>@Model.TableName</td>
         </tr>
         <tr>
-            <th>Bản ghi</th>
-            <td>@Model.RecordId</td>
-        </tr>
-        <tr>
             <th>Hành động</th>
             <td>@Model.ActionType</td>
         </tr>
         <tr>
             <th>Người thay đổi</th>
-            <td>@Model.ChangedBy</td>
+            <td>@Model.ChangedByNavigation.FullName</td>
         </tr>
         <tr>
             <th>Thời gian</th>

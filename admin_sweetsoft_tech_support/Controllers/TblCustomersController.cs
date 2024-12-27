@@ -2,16 +2,20 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
+using admin_sweetsoft_tech_support.Attributes;
+using System.Security.Claims;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
     public class TblCustomersController : Controller
     {
         private readonly RequestContext _context;
+        private readonly AuditLogService _auditLogService;
 
-        public TblCustomersController(RequestContext context)
+        public TblCustomersController(RequestContext context, AuditLogService auditLogService)
         {
             _context = context;
+            _auditLogService = auditLogService;
         }
 
         // GET: TblCustomers
@@ -121,6 +125,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             tblCustomer.Status = 0;
             _context.Add(tblCustomer);
             await _context.SaveChangesAsync();
+            _auditLogService.LogActionToFile("Khách hàng", tblCustomer.CustomerId, "Thêm", int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value), "", Newtonsoft.Json.JsonConvert.SerializeObject(tblCustomer));
             return RedirectToAction(nameof(Index));
         }
 

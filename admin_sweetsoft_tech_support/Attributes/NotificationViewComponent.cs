@@ -1,6 +1,5 @@
 ﻿using admin_sweetsoft_tech_support.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace admin_sweetsoft_tech_support.Attributes
@@ -13,6 +12,50 @@ namespace admin_sweetsoft_tech_support.Attributes
             _context = context;
         }
 
-        public IViewComponentResult Invoke() { var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier); var notifications = _context.TblNotifications.Where(n => n.UserId == int.Parse(userId)).ToList(); return View(notifications); }
+        public IViewComponentResult Invoke() 
+        {
+            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var logs = new List<dynamic>();
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "notification.log");
+
+            if (File.Exists(filePath))
+            {
+                var logLines = File.ReadAllLines(filePath);
+
+                foreach (var line in logLines)
+                {
+                    // Tách các phần từ log
+                    var logParts = line.Split(new string[] { ": " }, StringSplitOptions.None);
+
+                    if (logParts.Length == 2)
+                    {
+                        var dateTime = logParts[0];
+                        var logDetails = logParts[1].Split(", ");
+
+                        var userIdLog = logDetails.FirstOrDefault(detail => detail.StartsWith("UserId"))?.Split('=')[1].Trim();
+                        var message = logDetails.FirstOrDefault(detail => detail.StartsWith("Message"))?.Split('=')[1].Trim();
+                        var status = logDetails.FirstOrDefault(detail => detail.StartsWith("status"))?.Split('=')[1].Trim();
+                        if (userIdLog == userId)
+                        {
+                            logs.Add(new
+                            {
+                                UserId = userIdLog,
+                                Message = message,
+                                Status = status,
+                                CreatedAt = DateTime.Parse(dateTime),
+                            });
+                        }
+                    }
+                }
+            }
+            
+            var notifications = _context.TblNotifications
+                .Where(n => n.UserId == int.Parse(userId)).ToList();
+
+
+            var allLogs = notifications.Concat(logs).ToList();
+            return View(allLogs); 
+        }
     }
 }

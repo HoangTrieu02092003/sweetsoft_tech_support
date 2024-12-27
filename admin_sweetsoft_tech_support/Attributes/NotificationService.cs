@@ -1,24 +1,22 @@
 ﻿using admin_sweetsoft_tech_support.Models;
-using Microsoft.EntityFrameworkCore;
-using System.IO;
 
 namespace admin_sweetsoft_tech_support.Attributes
 {
-    public class LogService
+    public class NotificationService
     {
         private readonly RequestContext _context;
 
-        public LogService(RequestContext context)
+        public NotificationService(RequestContext context)
         {
             _context = context;
         }
 
         // Phương thức log vào file
-        public async Task LogActionToFile(int? userId, string action, string description)
+        public async Task LogActionToFile(int userId, string message, short? status = 0)
         {
-            var logMessage = $"{DateTime.Now}: UserId = {userId}, Action = {action}, Description = {description}";
+            var logMessage = $"{DateTime.Now}: UserId = {userId}, Message = {message}, Status = {status}";
 
-            var logFilePath = Path.Combine(Directory.GetCurrentDirectory(), "logs", "application.log");
+            var logFilePath = Path.Combine(Directory.GetCurrentDirectory(), "logs", "notification.log");
 
             // Đảm bảo thư mục logs tồn tại
             if (!Directory.Exists(Path.GetDirectoryName(logFilePath)))
@@ -33,18 +31,18 @@ namespace admin_sweetsoft_tech_support.Attributes
             }
         }
 
-        // Phương thức log vào database
-        public async Task LogActionToDatabase(int? userId, string action, string description)
+        // Phương thức log vào Db
+        public async Task LogActionToDb(int userId, string message, short? status = 0)
         {
-            var log = new TblLog
+            var notificationLog = new TblNotification
             {
                 UserId = userId,
-                Action = action,
-                Description = description,
-                CreatedAt = DateTime.Now
+                Message = message,
+                Status = status,
+                CreatedAt = DateTime.Now,
             };
 
-            _context.TblLogs.Add(log);
+            _context.TblNotifications.Add(notificationLog);
             await _context.SaveChangesAsync();
         }
     }

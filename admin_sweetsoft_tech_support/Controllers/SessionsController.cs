@@ -47,6 +47,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             var totalUsers = await sessions.CountAsync();
 
+
             // Tính tổng số trang
             var totalPages = (int)Math.Ceiling(totalUsers / (double)pageSize);
 
@@ -56,6 +57,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(await requestContext.ToListAsync());
         }
 
+
         // Kết thúc Session
         [HttpPost]
         public IActionResult EndSession(int id)
@@ -63,7 +65,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             var session = _context.TblSessions.Find(id);
             if (session != null)
             {
-                _context.TblSessions.Remove(session);
+                session.ExpiresAt = DateTime.Now;
                 _context.SaveChanges();
                 TempData["Message"] = "Phiên làm việc đã được kết thúc.";
             }

@@ -15,6 +15,13 @@ namespace admin_sweetsoft_tech_support.Attributes
         //tạo mới
         public async Task CreateSessionAsync(int userId, string sessionToken, int expiresInHours = 2)
         {
+            // Xóa tất cả các phiên cũ trước khi tạo phiên mới
+            var existingSessions = await _context.TblSessions.Where(s => s.UserId == userId).ToListAsync();
+            if (existingSessions.Any())
+            {
+                _context.TblSessions.RemoveRange(existingSessions);
+            }
+
             var session = new TblSession
             {
                 UserId = userId,
@@ -27,15 +34,20 @@ namespace admin_sweetsoft_tech_support.Attributes
             await _context.SaveChangesAsync();
         }
 
+
         //xóa
         public async Task DeleteSessionAsync(int? userId)
         {
-            var session = await _context.TblSessions.FirstOrDefaultAsync(s => s.UserId == userId);
-            if (session != null)
+            if (userId == null)
+                return;
+
+            var sessions = await _context.TblSessions.Where(s => s.UserId == userId).ToListAsync();
+            if (sessions.Any())
             {
-                _context.TblSessions.Remove(session);
+                _context.TblSessions.RemoveRange(sessions); // Xóa tất cả các phiên liên quan
                 await _context.SaveChangesAsync();
             }
         }
+
     }
 }

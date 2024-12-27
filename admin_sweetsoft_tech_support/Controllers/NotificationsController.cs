@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Dynamic;
+using System.Security.AccessControl;
 using System.Security.Claims;
 
 namespace admin_sweetsoft_tech_support.Controllers
@@ -16,7 +18,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
         // GET: Notifications
-        public async Task<IActionResult> Index(string search, int? status)
+        public async Task<IActionResult> Index(string search, int? status, int page = 1)
         {
             ViewData["Search"] = search;
             ViewData["Status"] = status;
@@ -36,8 +38,28 @@ namespace admin_sweetsoft_tech_support.Controllers
                 notifications = notifications.Where(u => u.Status == status.Value);
             }
 
-            ViewBag.Notifications = notifications;
-            return View(notifications.ToList());
+            var logsFromDb = await notifications.Skip((page - 1) * 10).Take(10).ToListAsync();
+            var logsFromFile = await GetLogsFromFile();
+            var logs = logsFromDb.Select(log =>
+            {
+                dynamic logItem = new ExpandoObject();
+                logItem.NotificationId = log.NotificationId;
+                logItem.UserId = log.UserId;
+                logItem.Message = log.Message;
+                logItem.Status = log.Status;
+                logItem.CreatedAt = log.CreatedAt;
+                logItem.User = log.User;
+                return logItem;
+            }).ToList();
+
+            var totalNotification = await notifications.CountAsync();
+
+            // Tính tổng số trang
+            var totalPages = (int)Math.Ceiling((double)totalNotification / 10);
+
+            ViewData["TotalPages"] = totalPages;
+            ViewData["CurrentPage"] = page;
+            return View(new Tuple<List<dynamic>, List<dynamic>>(logs, logsFromFile));
         }
 
         public IActionResult MyNotifications()
@@ -50,13 +72,89 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return RedirectToAction("Login", "Admin"); // Chuyển hướng đến trang đăng nhập nếu hết session
             }
 
-            // Truy vấn thông báo của người dùng
+            // Truy vấn thông báo của người dùng từ cơ sở dữ liệu
             var notifications = _context.TblNotifications
                 .Where(n => n.UserId == int.Parse(userId))
                 .OrderByDescending(n => n.CreatedAt)
                 .ToList();
+
+            // Lấy thông tin log từ file
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "notification.log");
+
+            if (System.IO.File.Exists(filePath))
+            {
+                var logLines = System.IO.File.ReadAllLines(filePath);
+
+                foreach (var line in logLines)
+                {
+                    // Tách các phần từ log
+                    var logParts = line.Split(new string[] { ": " }, StringSplitOptions.None);
+
+                    if (logParts.Length == 2)
+                    {
+                        var dateTime = logParts[0];
+                        var logDetails = logParts[1].Split(", ");
+
+                        var userIdLog = logDetails.FirstOrDefault(detail => detail.StartsWith("UserId"))?.Split('=')[1].Trim();
+                        var message = logDetails.FirstOrDefault(detail => detail.StartsWith("Message"))?.Split('=')[1].Trim();
+                        var status = logDetails.FirstOrDefault(detail => detail.StartsWith("Status"))?.Split('=')[1].Trim();
+
+                        if (userIdLog == userId)
+                        {
+                            notifications.Add(new TblNotification
+                            {
+                                UserId = int.Parse(userIdLog),
+                                Message = message,
+                                Status = short.Parse(status),
+                                CreatedAt = DateTime.Parse(dateTime),
+                            });
+                        }
+                    }
+                }
+            }
+
             ViewBag.Notifications = notifications;
             return View(notifications);
+        }
+
+
+        private async Task<List<dynamic>> GetLogsFromFile()
+        {
+            var logs = new List<dynamic>();
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "notification.log");
+
+            if (System.IO.File.Exists(filePath))
+            {
+                var logLines = System.IO.File.ReadAllLines(filePath);
+
+                foreach (var line in logLines)
+                {
+                    // Tách các phần từ log
+                    var logParts = line.Split(new string[] { ": " }, StringSplitOptions.None);
+
+                    if (logParts.Length == 2)
+                    {
+                        var dateTime = logParts[0];
+                        var logDetails = logParts[1].Split(", ");
+
+                        var userId = logDetails.FirstOrDefault(detail => detail.StartsWith("UserId"))?.Split('=')[1].Trim();
+                        var message = logDetails.FirstOrDefault(detail => detail.StartsWith("Message"))?.Split('=')[1].Trim();
+                        var status = logDetails.FirstOrDefault(detail => detail.StartsWith("status"))?.Split('=')[1].Trim();
+                        var createByUser = await _context.TblUsers.FindAsync(int.Parse(userId));
+                        var user = createByUser?.FullName;
+                        logs.Add(new
+                        {
+                            UserId = userId,
+                            Message = message,
+                            Status = status,
+                            CreatedAt = DateTime.Parse(dateTime),
+                            User = new { FullName = user },
+                        });
+                    }
+                }
+            }
+
+            return logs;
         }
 
         public int GetUnreadNotificationsCount()

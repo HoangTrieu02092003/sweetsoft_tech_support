@@ -88,36 +88,38 @@
 
 <!-- Phân trang -->
 <div class="d-flex justify-content-center my-4">
-    <ul class="pagination">
-        @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] > 1)
-        {
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = 1, status = ViewBag.Status, role = ViewBag.Role })">Đầu</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1, status = ViewBag.Status, role = ViewBag.Role })">Trước</a>
-            </li>
-        }
-
-        @if (ViewData["TotalPages"] != null)
-        {
-            int totalPages = (int)ViewData["TotalPages"];
-            for (int i = 1; i <= totalPages; i++)
+    @if ((int)ViewData["CurrentPage"] > 1){
+        <ul class="pagination">
+            @if (ViewData["CurrentPage"] != null)
             {
-                <li class="page-item @(i == (int)ViewData["CurrentPage"] ? "active" : "")">
-                    <a class="page-link" href="@Url.Action("Index", new { page = i, status = ViewBag.Status, role = ViewBag.Role })">@i</a>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = 1, status = ViewBag.Status, role = ViewBag.Role })">Đầu</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1, status = ViewBag.Status, role = ViewBag.Role })">Trước</a>
                 </li>
             }
-        }
 
-        @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
-        {
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1, status = ViewBag.Status, role = ViewBag.Role })">Sau</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"], status = ViewBag.Status, role = ViewBag.Role })">Cuối</a>
-            </li>
-        }
-    </ul>
+            @if (ViewData["TotalPages"] != null)
+            {
+                int totalPages = (int)ViewData["TotalPages"];
+                for (int i = 1; i <= totalPages; i++)
+                {
+                    <li class="page-item @(i == (int)ViewData["CurrentPage"] ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i, status = ViewBag.Status, role = ViewBag.Role })">@i</a>
+                    </li>
+                }
+            }
+
+            @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1, status = ViewBag.Status, role = ViewBag.Role })">Sau</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"], status = ViewBag.Status, role = ViewBag.Role })">Cuối</a>
+                </li>
+            }
+        </ul>
+    }
 </div>

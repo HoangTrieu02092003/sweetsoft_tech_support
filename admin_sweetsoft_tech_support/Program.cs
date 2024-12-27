@@ -23,9 +23,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LoginPath = "/dang-nhap"; // Trang đăng nhập
         options.LogoutPath = "/Admin/Logout"; // Trang đăng xuất
         options.AccessDeniedPath = "/dang-nhap"; // Nếu không có quyền, chuyển đến trang đăng nhập
+        options.ExpireTimeSpan = TimeSpan.FromHours(2);
+        options.SlidingExpiration = true;
     });
 
-builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession(options =>
     {
         options.IdleTimeout = TimeSpan.FromMinutes(30); // Thời gian timeout của session
@@ -38,6 +39,7 @@ builder.Services.AddScoped<RequestContext>();
 builder.Services.AddScoped<LogService>();
 builder.Services.AddScoped<AuditLogService>();
 builder.Services.AddScoped<SessionService>();
+builder.Services.AddScoped<NotificationService>();
 
 var app = builder.Build();
 
@@ -57,16 +59,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
-//app.Use(async (context, next) => {
-//var userId = context.Session.GetInt32("UserId"); 
-//    if (userId != null && context.Request.Path == "/dang-nhap")
-//    {
-//        context.Response.Redirect("/bao-cao");
-//        return;
-//    } 
-//    await next(); 
-//});
+app.UseMiddleware<SessionValidationMiddleware>();
 
     app.MapControllerRoute(
     name: "Denied",

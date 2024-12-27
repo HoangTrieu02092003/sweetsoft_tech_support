@@ -1,5 +1,4 @@
-﻿@inject IHttpContextAccessor HttpContextAccessor
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
@@ -59,23 +58,14 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" asp-action="Index" asp-controller="Dashboard" aria-expanded="false">
-                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
-                                <span class="hide-menu">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
                             <a class="sidebar-link" asp-action="Index1" asp-controller="Report" aria-expanded="false">
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
                                 <span class="hide-menu">Báo cáo</span>
                             </a>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
-                            <span class="hide-menu">Điều Hướng</span>
+                            <span class="hide-menu">Quản lý log</span>
                         </li>
-                        
-
-
 
                         <!-- Thêm phần mình làm ở đây nhen mn -->
                         <li class="sidebar-item">
@@ -108,16 +98,14 @@
                                 <span class="hide-menu">Nhật ký yêu cầu hỗ trợ</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" asp-action="Index" asp-controller="TblUsers" aria-expanded="false">
-                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
-                                <span class="hide-menu">Quản lý người dùng</span>
-                            </a>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
+                            <span class="hide-menu">Quản Lý</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" asp-action="Index" asp-controller="TblDepartments" aria-expanded="false">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="TblCustomers" aria-expanded="false">
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
-                                <span class="hide-menu">Quản lý phòng ban</span>
+                                <span class="hide-menu">Quản lý khách hàng</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -127,9 +115,15 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" asp-action="Index" asp-controller="TblCustomers" aria-expanded="false">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="TblDepartments" aria-expanded="false">
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
-                                <span class="hide-menu">Quản lý khách hàng</span>
+                                <span class="hide-menu">Quản lý phòng ban</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="TblUsers" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Quản lý người dùng</span>
                             </a>
                         </li>
                         <!-- Thêm phần mình làm ở đây nhen mn -->
@@ -164,7 +158,7 @@
                                 <a class="nav-link" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="~/assets/images/profile/user-1.jpg" alt="User" width="35" height="35" class="rounded-circle m-2">
                                     <span class="d-lg-block d-none" >
-                                        @HttpContextAccessor.HttpContext.Session.GetString("Username")
+                                        @User.Identity.Name
                                     </span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">

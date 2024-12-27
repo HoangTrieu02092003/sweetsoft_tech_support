@@ -119,7 +119,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             _context.Update(user);
             await _context.SaveChangesAsync();
             await _sessionService.DeleteSessionAsync(user.UserId);
-            await _logService.LogAction(user.UserId,"Đăng nhập thành công", $"Người dùng {user.FullName} đã đăng nhập thành công.");
+            await _logService.LogActionToFile(user.UserId,"Đăng nhập thành công", $"Người dùng {user.FullName} đã đăng nhập thành công.");
             await _sessionService.CreateSessionAsync(user.UserId, Guid.NewGuid().ToString());
 
             // Tạo các Claims và Identity cho người dùng đã đăng nhập
@@ -127,8 +127,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Name, user.FullName),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, "Admin") // Thêm quyền admin cho người dùng
+                new Claim(ClaimTypes.Email, user.Email)
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -136,8 +135,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             // Đăng nhập và lưu thông tin vào Cookie
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
-            HttpContext.Session.SetString("Username", user.FullName);
-            HttpContext.Session.SetInt32("UserId",user.UserId);
+            
             TempData["UserId"] = user.UserId;
             TempData["IsAdmin"] = user.IsAdmin == true ? "true" : "false";
             return RedirectToAction("Index1", "Report"); // Sau khi đăng nhập, chuyển tới trang chính của quản trị viên
@@ -146,10 +144,9 @@ namespace admin_sweetsoft_tech_support.Controllers
         // Đăng xuất (Logout)
         public async Task<IActionResult> Logout()
         {
-            var userId = HttpContext.Session.GetInt32("UserId");
-            var username = HttpContext.Session.GetString("Username");
-            await _logService.LogAction(userId, "Đăng xuất", $"Người dùng {username} đã đăng xuất thành công.");
-            await _sessionService.DeleteSessionAsync(userId);
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var username = User.Identity.Name;
+            await _logService.LogActionToFile(userId, "Đăng xuất", $"Người dùng {username} đã đăng xuất thành công.");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
@@ -258,7 +255,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             user.ResetTokenExpiry = null;
             _context.TblUsers.Update(user);
             await _context.SaveChangesAsync();
-            await _logService.LogAction(user.UserId,"Cập nhật hồ sơ", $"Người dùng {user.FullName} đã thay đổi mật khẩu.");
+            await _logService.LogActionToDatabase(user.UserId,"Cập nhật hồ sơ", $"Người dùng {user.FullName} đã thay đổi mật khẩu.");
             return RedirectToAction("Login");
         }
 
