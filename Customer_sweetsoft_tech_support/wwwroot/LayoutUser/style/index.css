@@ -1284,7 +1284,7 @@ body.navShow {
             content: "";
             display: block;
             position: absolute;
-            left: 0;
+            left: .8rem;
             top: 0;
             right: -1.06rem;
             background: url("../img/img1068.jpg") center no-repeat;
@@ -1307,7 +1307,7 @@ body.navShow {
             display: block;
             position: absolute;
             z-index: 1;
-            left: 0;
+            left: .8rem;
             right: -2.42rem;
             top: 0.5rem;
             bottom: 0;

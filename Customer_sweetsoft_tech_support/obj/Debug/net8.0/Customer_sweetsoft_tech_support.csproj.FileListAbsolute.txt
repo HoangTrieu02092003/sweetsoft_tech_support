@@ -664,3 +664,4 @@ D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Customer_
 D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Customer_sweetsoft_tech_support.pdb
 D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\obj\Debug\net8.0\Customer_sweetsoft_tech_support.genruntimeconfig.cache
 D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\obj\Debug\net8.0\ref\Customer_sweetsoft_tech_support.dll
+D:\CC\sweetsoft_tech_support\Customer_sweetsoft_tech_support\bin\Debug\net8.0\BCrypt.Net-Next.dll
