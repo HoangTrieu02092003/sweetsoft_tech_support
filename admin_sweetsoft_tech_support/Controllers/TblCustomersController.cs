@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
+using OfficeOpenXml;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -23,26 +24,20 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             int pageSize = 6;
 
-            // Include related users for CreatedUser and UpdatedUser
-            var query = _context.TblCustomers.Include(t => t.CreatedUserNavigation).Include(t => t.UpdatedUserNavigation);
+            var query = _context.TblCustomers.Include(t => t.CreatedByNavigation).Include(t => t.UpdatedByNavigation);
 
-            // Get the total count of customers
             var totalCount = await query.CountAsync();
 
-            // Fetch the paged list of customers
             var customers = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 
-            // Calculate total pages for pagination
             ViewData["TotalPages"] = (int)Math.Ceiling(totalCount / (double)pageSize);
             ViewData["CurrentPage"] = page;
 
-            // Dropdown lists for CreatedUser and UpdatedUser (if needed)
             ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
             ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
 
             return View(customers);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> ToggleActivation(int customerId)
@@ -51,10 +46,8 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             if (customer != null)
             {
-                // Đổi trạng thái: Nếu hiện tại là 1 (kích hoạt), chuyển thành 0 (chưa kích hoạt) và ngược lại
                 customer.Status = (short)(customer.Status == 1 ? 0 : 1);
 
-                // Cập nhật khách hàng
                 _context.Update(customer);
                 await _context.SaveChangesAsync();
 
@@ -73,8 +66,8 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             var tblCustomer = await _context.TblCustomers
-                .Include(t => t.CreatedUserNavigation)
-                .Include(t => t.UpdatedUserNavigation)
+                .Include(t => t.CreatedByNavigation)
+                .Include(t => t.UpdatedByNavigation)
                 .FirstOrDefaultAsync(m => m.CustomerId == id);
             if (tblCustomer == null)
             {
@@ -139,8 +132,8 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Truy vấn thông tin khách hàng và các yêu cầu hỗ trợ liên quan
             var tblCustomer = await _context.TblCustomers
                                             .Include(c => c.TblSupportRequests) // Bao gồm dữ liệu yêu cầu hỗ trợ
-                                            .Include(c => c.CreatedUserNavigation)
-                                            .Include(c => c.UpdatedUserNavigation)
+                                            .Include(c => c.CreatedByNavigation)
+                                            .Include(c => c.UpdatedByNavigation)
                                             .FirstOrDefaultAsync(m => m.CustomerId == id);
 
             if (tblCustomer == null)
@@ -149,8 +142,8 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             // Truyền dữ liệu Customer và yêu cầu hỗ trợ vào View
-            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.CreatedUser);
-            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.UpdatedUser);
+            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.CreatedBy);
+            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.UpdatedBy);
 
             return View(tblCustomer); // Trả lại View với dữ liệu khách hàng và các yêu cầu hỗ trợ
         }
@@ -182,7 +175,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                         {
                             existingRequest.RequestDetails = supportRequest.RequestDetails; // Ví dụ, cập nhật chi tiết yêu cầu
                             existingRequest.Status = supportRequest.Status; // Cập nhật trạng thái yêu cầu
-                            
+
                         }
                     }
 
@@ -201,12 +194,10 @@ namespace admin_sweetsoft_tech_support.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.CreatedUser);
-            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.UpdatedUser);
+            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.CreatedBy);
+            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.UpdatedBy);
             return View(tblCustomer);
         }
-
-
 
         // POST: TblCustomers/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -226,6 +217,60 @@ namespace admin_sweetsoft_tech_support.Controllers
         private bool TblCustomerExists(int id)
         {
             return _context.TblCustomers.Any(e => e.CustomerId == id);
+        }
+
+        // Action để xuất danh sách khách hàng ra file Excel
+        public async Task<IActionResult> ExportToExcel()
+        {
+            var customers = await _context.TblCustomers
+                .Include(t => t.CreatedByNavigation)
+                .Include(t => t.UpdatedByNavigation)
+                .ToListAsync();
+
+            // Sử dụng EPPlus để tạo file Excel
+            using (var package = new ExcelPackage())
+            {
+                var worksheet = package.Workbook.Worksheets.Add("Customers");
+
+                // Tạo tiêu đề cột
+                worksheet.Cells[1, 1].Value = "Customer ID";
+                worksheet.Cells[1, 2].Value = "Full Name";
+                worksheet.Cells[1, 3].Value = "Email";
+                worksheet.Cells[1, 4].Value = "Phone";
+                worksheet.Cells[1, 5].Value = "Status";
+                worksheet.Cells[1, 6].Value = "Created At";
+                worksheet.Cells[1, 7].Value = "Updated At";
+
+                // Tô đậm tiêu đề
+                worksheet.Row(1).Style.Font.Bold = true;
+
+                // Thêm dữ liệu khách hàng
+                for (int i = 0; i < customers.Count; i++)
+                {
+                    var customer = customers[i];
+                    worksheet.Cells[i + 2, 1].Value = customer.CustomerId;
+                    worksheet.Cells[i + 2, 2].Value = customer.FullName;
+                    worksheet.Cells[i + 2, 3].Value = customer.Email;
+                    worksheet.Cells[i + 2, 4].Value = customer.Phone;
+                    worksheet.Cells[i + 2, 5].Value = customer.Status == 1 ? "Active" : "Inactive";
+                    worksheet.Cells[i + 2, 6].Value = customer.CreatedAt?.ToString("yyyy-MM-dd HH:mm:ss"); 
+                    worksheet.Cells[i + 2, 7].Value = customer.UpdatedAt?.ToString("yyyy-MM-dd HH:mm:ss"); 
+                }
+
+                // Tự động căn chỉnh kích thước cột
+                worksheet.Cells.AutoFitColumns();
+
+                // Trả về file Excel dưới dạng FileStreamResult
+                var stream = new MemoryStream();
+                package.SaveAs(stream);
+                stream.Position = 0;
+
+                var fileName = $"Customers_{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+                var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
+                return File(stream, contentType, fileName);
+            }
+
         }
     }
 }

@@ -639,8 +639,6 @@ D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
-D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
@@ -665,7 +663,6 @@ D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.admin_sweetsoft_tech_support.props
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.admin_sweetsoft_tech_support.props
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\staticwebassets.pack.json
-D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\admin_sw.50560FEB.Up2Date
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\admin_sweetsoft_tech_support.dll
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\refint\admin_sweetsoft_tech_support.dll
@@ -673,3 +670,13 @@ D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\admin_sweetsoft_tech_support.genruntimeconfig.cache
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\ref\admin_sweetsoft_tech_support.dll
 D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\bundleconfig.json
+D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\EPPlus.dll
+D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\EPPlus.Interfaces.dll
+D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\EPPlus.System.Drawing.dll
+D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
+D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
+D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
+D:\Sweetsoft\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

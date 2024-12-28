@@ -15,11 +15,19 @@ public partial class RequestContext : DbContext
     {
     }
 
+    public virtual DbSet<TblActivityLog> TblActivityLogs { get; set; }
+
+    public virtual DbSet<TblAuditLog> TblAuditLogs { get; set; }
+
     public virtual DbSet<TblCustomer> TblCustomers { get; set; }
 
     public virtual DbSet<TblDepartment> TblDepartments { get; set; }
 
     public virtual DbSet<TblFaq> TblFaqs { get; set; }
+
+    public virtual DbSet<TblLog> TblLogs { get; set; }
+
+    public virtual DbSet<TblNotification> TblNotifications { get; set; }
 
     public virtual DbSet<TblPermission> TblPermissions { get; set; }
 
@@ -28,6 +36,10 @@ public partial class RequestContext : DbContext
     public virtual DbSet<TblRequestsProcessing> TblRequestsProcessings { get; set; }
 
     public virtual DbSet<TblRole> TblRoles { get; set; }
+
+    public virtual DbSet<TblRolePermission> TblRolePermissions { get; set; }
+
+    public virtual DbSet<TblSession> TblSessions { get; set; }
 
     public virtual DbSet<TblSupportRequest> TblSupportRequests { get; set; }
 
@@ -41,13 +53,62 @@ public partial class RequestContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<TblActivityLog>(entity =>
+        {
+            entity.HasKey(e => e.ActivityId).HasName("PK__TblActiv__482FBD63EC0AD7BE");
+
+            entity.Property(e => e.ActivityId).HasColumnName("activity_id");
+            entity.Property(e => e.Action)
+                .HasMaxLength(100)
+                .HasColumnName("action");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("created_at");
+            entity.Property(e => e.RequestId).HasColumnName("request_id");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.Request).WithMany(p => p.TblActivityLogs)
+                .HasForeignKey(d => d.RequestId)
+                .HasConstraintName("FK__TblActivi__reque__5441852A");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TblActivityLogs)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__TblActivi__user___5535A963");
+        });
+
+        modelBuilder.Entity<TblAuditLog>(entity =>
+        {
+            entity.HasKey(e => e.AuditId).HasName("PK__TblAudit__5AF33E33A1576F77");
+
+            entity.Property(e => e.AuditId).HasColumnName("audit_id");
+            entity.Property(e => e.ActionType)
+                .HasMaxLength(50)
+                .HasColumnName("action_type");
+            entity.Property(e => e.ChangedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("changed_at");
+            entity.Property(e => e.ChangedBy).HasColumnName("changed_by");
+            entity.Property(e => e.NewValue).HasColumnName("new_value");
+            entity.Property(e => e.OldValue).HasColumnName("old_value");
+            entity.Property(e => e.RecordId).HasColumnName("record_id");
+            entity.Property(e => e.TableName)
+                .HasMaxLength(100)
+                .HasColumnName("table_name");
+
+            entity.HasOne(d => d.ChangedByNavigation).WithMany(p => p.TblAuditLogs)
+                .HasForeignKey(d => d.ChangedBy)
+                .HasConstraintName("FK__TblAuditL__chang__2D27B809");
+        });
+
         modelBuilder.Entity<TblCustomer>(entity =>
         {
-            entity.HasKey(e => e.CustomerId).HasName("PK__TblCusto__CD65CB85C13C501E");
+            entity.HasKey(e => e.CustomerId).HasName("PK__TblCusto__CD65CB85E44C676B");
 
-            entity.HasIndex(e => e.Email, "UQ__TblCusto__AB6E61646A37F282").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__TblCusto__AB6E61643D048480").IsUnique();
 
-            entity.HasIndex(e => e.Username, "UQ__TblCusto__F3DBC572941EE8B8").IsUnique();
+            entity.HasIndex(e => e.Username, "UQ__TblCusto__F3DBC5722F0F0CDD").IsUnique();
 
             entity.Property(e => e.CustomerId).HasColumnName("customer_id");
             entity.Property(e => e.Company)
@@ -56,7 +117,7 @@ public partial class RequestContext : DbContext
             entity.Property(e => e.CreatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("created_at");
-            entity.Property(e => e.CreatedUser).HasColumnName("created_user");
+            entity.Property(e => e.CreatedBy).HasColumnName("created_by");
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -64,17 +125,17 @@ public partial class RequestContext : DbContext
             entity.Property(e => e.FullName)
                 .HasMaxLength(100)
                 .HasColumnName("full_name");
+            entity.Property(e => e.IsDelete)
+                .HasDefaultValue(false)
+                .HasColumnName("is_delete");
             entity.Property(e => e.Password)
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("password");
             entity.Property(e => e.Phone)
-                .HasMaxLength(15)
+                .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("phone");
-            entity.Property(e => e.Product)
-                .HasMaxLength(100)
-                .HasColumnName("product");
             entity.Property(e => e.ResetToken)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -97,41 +158,50 @@ public partial class RequestContext : DbContext
             entity.Property(e => e.UpdatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");
-            entity.Property(e => e.UpdatedUser).HasColumnName("updated_user");
+            entity.Property(e => e.UpdatedBy).HasColumnName("updated_by");
             entity.Property(e => e.Username)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("username");
 
-            entity.HasOne(d => d.CreatedUserNavigation).WithMany(p => p.TblCustomerCreatedUserNavigations)
-                .HasForeignKey(d => d.CreatedUser)
-                .HasConstraintName("FK__TblCustom__creat__24927208");
+            entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.TblCustomerCreatedByNavigations)
+                .HasForeignKey(d => d.CreatedBy)
+                .HasConstraintName("FK__TblCustom__creat__36B12243");
 
-            entity.HasOne(d => d.UpdatedUserNavigation).WithMany(p => p.TblCustomerUpdatedUserNavigations)
-                .HasForeignKey(d => d.UpdatedUser)
-                .HasConstraintName("FK__TblCustom__updat__25869641");
+            entity.HasOne(d => d.UpdatedByNavigation).WithMany(p => p.TblCustomerUpdatedByNavigations)
+                .HasForeignKey(d => d.UpdatedBy)
+                .HasConstraintName("FK__TblCustom__updat__37A5467C");
         });
 
         modelBuilder.Entity<TblDepartment>(entity =>
         {
-            entity.HasKey(e => e.DepartmentId).HasName("PK__TblDepar__C2232422ED2F2058");
+            entity.HasKey(e => e.DepartmentId).HasName("PK__TblDepar__C2232422BF9E755F");
 
             entity.Property(e => e.DepartmentId).HasColumnName("department_id");
             entity.Property(e => e.DepartmentName)
                 .HasMaxLength(100)
                 .HasColumnName("department_name");
+            entity.Property(e => e.IsDelete)
+                .HasDefaultValue(false)
+                .HasColumnName("is_delete");
             entity.Property(e => e.Status).HasColumnName("status");
         });
 
         modelBuilder.Entity<TblFaq>(entity =>
         {
-            entity.HasKey(e => e.FaqId).HasName("PK__TblFaqs__66734BAF6DC6BCD3");
+            entity.HasKey(e => e.FaqId).HasName("PK__TblFaqs__66734BAFF015551E");
 
             entity.Property(e => e.FaqId).HasColumnName("faq_id");
             entity.Property(e => e.Answer).HasColumnName("answer");
             entity.Property(e => e.CreatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("created_at");
+            entity.Property(e => e.FaqThumbnail)
+                .HasMaxLength(255)
+                .HasColumnName("faq_thumbnail");
+            entity.Property(e => e.IsDelete)
+                .HasDefaultValue(false)
+                .HasColumnName("is_delete");
             entity.Property(e => e.Question)
                 .HasMaxLength(255)
                 .HasColumnName("question");
@@ -140,9 +210,51 @@ public partial class RequestContext : DbContext
                 .HasColumnName("updated_at");
         });
 
+        modelBuilder.Entity<TblLog>(entity =>
+        {
+            entity.HasKey(e => e.LogId).HasName("PK__TblLogs__9E2397E0B34E15F4");
+
+            entity.Property(e => e.LogId).HasColumnName("log_id");
+            entity.Property(e => e.Action)
+                .HasMaxLength(255)
+                .HasColumnName("action");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("created_at");
+            entity.Property(e => e.Description).HasColumnName("description");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TblLogs)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__TblLogs__user_id__29572725");
+        });
+
+        modelBuilder.Entity<TblNotification>(entity =>
+        {
+            entity.HasKey(e => e.NotificationId).HasName("PK__TblNotif__E059842FB4E7C099");
+
+            entity.Property(e => e.NotificationId).HasColumnName("notification_id");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("created_at");
+            entity.Property(e => e.Message)
+                .HasMaxLength(255)
+                .HasColumnName("message");
+            entity.Property(e => e.Status)
+                .HasDefaultValue((short)0)
+                .HasColumnName("status");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TblNotifications)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__TblNotifi__user___5070F446");
+        });
+
         modelBuilder.Entity<TblPermission>(entity =>
         {
-            entity.HasKey(e => e.PermissionId).HasName("PK__TblPermi__E5331AFAEDB26A13");
+            entity.HasKey(e => e.PermissionId).HasName("PK__TblPermi__E5331AFAA05A571E");
 
             entity.Property(e => e.PermissionId).HasColumnName("permission_id");
             entity.Property(e => e.Description).HasColumnName("description");
@@ -153,7 +265,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblRequestTransfer>(entity =>
         {
-            entity.HasKey(e => e.TransferId).HasName("PK__TblReque__78E6FD333B7E60AB");
+            entity.HasKey(e => e.TransferId).HasName("PK__TblReque__78E6FD33C2731B4E");
 
             entity.ToTable("TblRequest_Transfers");
 
@@ -173,24 +285,24 @@ public partial class RequestContext : DbContext
 
             entity.HasOne(d => d.FromDepartment).WithMany(p => p.TblRequestTransferFromDepartments)
                 .HasForeignKey(d => d.FromDepartmentId)
-                .HasConstraintName("FK__TblReques__from___2F10007B");
+                .HasConstraintName("FK__TblReques__from___4222D4EF");
 
             entity.HasOne(d => d.Request).WithMany(p => p.TblRequestTransfers)
                 .HasForeignKey(d => d.RequestId)
-                .HasConstraintName("FK__TblReques__reque__2E1BDC42");
+                .HasConstraintName("FK__TblReques__reque__412EB0B6");
 
             entity.HasOne(d => d.ToDepartment).WithMany(p => p.TblRequestTransferToDepartments)
                 .HasForeignKey(d => d.ToDepartmentId)
-                .HasConstraintName("FK__TblReques__to_de__300424B4");
+                .HasConstraintName("FK__TblReques__to_de__4316F928");
 
             entity.HasOne(d => d.TransferredByNavigation).WithMany(p => p.TblRequestTransfers)
                 .HasForeignKey(d => d.TransferredBy)
-                .HasConstraintName("FK__TblReques__trans__30F848ED");
+                .HasConstraintName("FK__TblReques__trans__440B1D61");
         });
 
         modelBuilder.Entity<TblRequestsProcessing>(entity =>
         {
-            entity.HasKey(e => e.ProcessId).HasName("PK__TblReque__9446C3E17BDA0F3C");
+            entity.HasKey(e => e.ProcessId).HasName("PK__TblReque__9446C3E1BD1A1A0A");
 
             entity.ToTable("TblRequests_Processing");
 
@@ -207,16 +319,16 @@ public partial class RequestContext : DbContext
 
             entity.HasOne(d => d.Department).WithMany(p => p.TblRequestsProcessings)
                 .HasForeignKey(d => d.DepartmentId)
-                .HasConstraintName("FK__TblReques__depar__35BCFE0A");
+                .HasConstraintName("FK__TblReques__depar__48CFD27E");
 
             entity.HasOne(d => d.Request).WithMany(p => p.TblRequestsProcessings)
                 .HasForeignKey(d => d.RequestId)
-                .HasConstraintName("FK__TblReques__reque__34C8D9D1");
+                .HasConstraintName("FK__TblReques__reque__47DBAE45");
         });
 
         modelBuilder.Entity<TblRole>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__TblRoles__760965CC2CFABDA9");
+            entity.HasKey(e => e.RoleId).HasName("PK__TblRoles__760965CC553F8278");
 
             entity.Property(e => e.RoleId).HasColumnName("role_id");
             entity.Property(e => e.RoleName)
@@ -224,9 +336,51 @@ public partial class RequestContext : DbContext
                 .HasColumnName("role_name");
         });
 
+        modelBuilder.Entity<TblRolePermission>(entity =>
+        {
+            entity.HasKey(e => e.RolePermissionId).HasName("PK__TblRole___B1E85A1074C4726D");
+
+            entity.ToTable("TblRole_Permissions");
+
+            entity.Property(e => e.RolePermissionId).HasColumnName("role_permission_id");
+            entity.Property(e => e.PermissionId).HasColumnName("permission_id");
+            entity.Property(e => e.RoleId).HasColumnName("role_id");
+
+            entity.HasOne(d => d.Permission).WithMany(p => p.TblRolePermissions)
+                .HasForeignKey(d => d.PermissionId)
+                .HasConstraintName("FK__TblRole_P__permi__21B6055D");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.TblRolePermissions)
+                .HasForeignKey(d => d.RoleId)
+                .HasConstraintName("FK__TblRole_P__role___20C1E124");
+        });
+
+        modelBuilder.Entity<TblSession>(entity =>
+        {
+            entity.HasKey(e => e.SessionId).HasName("PK__TblSessi__69B13FDC459E35DE");
+
+            entity.Property(e => e.SessionId).HasColumnName("session_id");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("created_at");
+            entity.Property(e => e.ExpiresAt)
+                .HasColumnType("datetime")
+                .HasColumnName("expires_at");
+            entity.Property(e => e.SessionToken)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("session_token");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TblSessions)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__TblSessio__user___30F848ED");
+        });
+
         modelBuilder.Entity<TblSupportRequest>(entity =>
         {
-            entity.HasKey(e => e.RequestId).HasName("PK__TblSuppo__18D3B90FD0336012");
+            entity.HasKey(e => e.RequestId).HasName("PK__TblSuppo__18D3B90F657F9F33");
 
             entity.ToTable("TblSupport_Requests");
 
@@ -236,7 +390,16 @@ public partial class RequestContext : DbContext
                 .HasColumnName("created_at");
             entity.Property(e => e.CustomerId).HasColumnName("customer_id");
             entity.Property(e => e.DepartmentId).HasColumnName("department_id");
+            entity.Property(e => e.IsDelete)
+                .HasDefaultValue(false)
+                .HasColumnName("is_delete");
+            entity.Property(e => e.Product)
+                .HasMaxLength(255)
+                .HasColumnName("product");
             entity.Property(e => e.RequestDetails).HasColumnName("request_details");
+            entity.Property(e => e.RequestTitle)
+                .HasMaxLength(30)
+                .HasColumnName("request_title");
             entity.Property(e => e.ResolvedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("resolved_at");
@@ -244,20 +407,20 @@ public partial class RequestContext : DbContext
 
             entity.HasOne(d => d.Customer).WithMany(p => p.TblSupportRequests)
                 .HasForeignKey(d => d.CustomerId)
-                .HasConstraintName("FK__TblSuppor__custo__286302EC");
+                .HasConstraintName("FK__TblSuppor__custo__3B75D760");
 
             entity.HasOne(d => d.Department).WithMany(p => p.TblSupportRequests)
                 .HasForeignKey(d => d.DepartmentId)
-                .HasConstraintName("FK__TblSuppor__depar__29572725");
+                .HasConstraintName("FK__TblSuppor__depar__3C69FB99");
         });
 
         modelBuilder.Entity<TblUser>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__TblUsers__B9BE370FD51FCD5D");
+            entity.HasKey(e => e.UserId).HasName("PK__TblUsers__B9BE370F456EBA3F");
 
-            entity.HasIndex(e => e.Email, "UQ__TblUsers__AB6E616481969D56").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__TblUsers__AB6E61643A57FDB7").IsUnique();
 
-            entity.HasIndex(e => e.Username, "UQ__TblUsers__F3DBC5720FD05B96").IsUnique();
+            entity.HasIndex(e => e.Username, "UQ__TblUsers__F3DBC57204497AFB").IsUnique();
 
             entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.CreatedAt)
@@ -269,18 +432,27 @@ public partial class RequestContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("email");
+            entity.Property(e => e.FailedLoginAttempts)
+                .HasDefaultValue(0)
+                .HasColumnName("failed_login_attempts");
             entity.Property(e => e.FullName)
                 .HasMaxLength(100)
                 .HasColumnName("full_name");
             entity.Property(e => e.IsAdmin)
                 .HasDefaultValue(false)
                 .HasColumnName("is_admin");
+            entity.Property(e => e.LastLogin)
+                .HasColumnType("datetime")
+                .HasColumnName("last_login");
+            entity.Property(e => e.LockoutTime)
+                .HasColumnType("datetime")
+                .HasColumnName("lockout_time");
             entity.Property(e => e.Password)
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("password");
             entity.Property(e => e.Phone)
-                .HasMaxLength(15)
+                .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("phone");
             entity.Property(e => e.ResetToken)
@@ -303,24 +475,24 @@ public partial class RequestContext : DbContext
 
             entity.HasOne(d => d.CreatedUserNavigation).WithMany(p => p.InverseCreatedUserNavigation)
                 .HasForeignKey(d => d.CreatedUser)
-                .HasConstraintName("FK__TblUsers__create__1B0907CE");
+                .HasConstraintName("FK__TblUsers__create__1CF15040");
 
             entity.HasOne(d => d.Department).WithMany(p => p.TblUsers)
                 .HasForeignKey(d => d.DepartmentId)
-                .HasConstraintName("FK__TblUsers__depart__1A14E395");
+                .HasConstraintName("FK__TblUsers__depart__1BFD2C07");
 
             entity.HasOne(d => d.Role).WithMany(p => p.TblUsers)
                 .HasForeignKey(d => d.RoleId)
-                .HasConstraintName("FK__TblUsers__role_i__1920BF5C");
+                .HasConstraintName("FK__TblUsers__role_i__1B0907CE");
 
             entity.HasOne(d => d.UpdatedUserNavigation).WithMany(p => p.InverseUpdatedUserNavigation)
                 .HasForeignKey(d => d.UpdatedUser)
-                .HasConstraintName("FK__TblUsers__update__1BFD2C07");
+                .HasConstraintName("FK__TblUsers__update__1DE57479");
         });
 
         modelBuilder.Entity<TblUserPermission>(entity =>
         {
-            entity.HasKey(e => e.UserPermissionId).HasName("PK__TblUser___D98F481961E2DBBD");
+            entity.HasKey(e => e.UserPermissionId).HasName("PK__TblUser___D98F481991459B9C");
 
             entity.ToTable("TblUser_Permissions");
 
@@ -330,11 +502,11 @@ public partial class RequestContext : DbContext
 
             entity.HasOne(d => d.Permission).WithMany(p => p.TblUserPermissions)
                 .HasForeignKey(d => d.PermissionId)
-                .HasConstraintName("FK__TblUser_P__permi__1FCDBCEB");
+                .HasConstraintName("FK__TblUser_P__permi__25869641");
 
             entity.HasOne(d => d.User).WithMany(p => p.TblUserPermissions)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__TblUser_P__user___1ED998B2");
+                .HasConstraintName("FK__TblUser_P__user___24927208");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -4,13 +4,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\admin_sweetsoft_tech_support.k3o5xdal7l.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-QP5YStf3mFo2R9KgVLWBqE5KBFkaxxiXlbO7fnXmiDM="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1146"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022QP5YStf3mFo2R9KgVLWBqE5KBFkaxxiXlbO7fnXmiDM=\u0022"},{"Name":"Last-Modified","Value":"Sun, 22 Dec 2024 06:15:30 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1146"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022QP5YStf3mFo2R9KgVLWBqE5KBFkaxxiXlbO7fnXmiDM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 28 Dec 2024 13:22:20 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/admin_sweetsoft_tech_support/admin_sweetsoft_tech_support.k3o5xdal7l.bundle.scp.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\admin_sweetsoft_tech_support.k3o5xdal7l.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"k3o5xdal7l"},{"Name":"integrity","Value":"sha256-QP5YStf3mFo2R9KgVLWBqE5KBFkaxxiXlbO7fnXmiDM="},{"Name":"label","Value":"_content/admin_sweetsoft_tech_support/admin_sweetsoft_tech_support.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1146"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022QP5YStf3mFo2R9KgVLWBqE5KBFkaxxiXlbO7fnXmiDM=\u0022"},{"Name":"Last-Modified","Value":"Sun, 22 Dec 2024 06:15:30 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1146"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022QP5YStf3mFo2R9KgVLWBqE5KBFkaxxiXlbO7fnXmiDM=\u0022"},{"Name":"Last-Modified","Value":"Sat, 28 Dec 2024 13:22:20 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/admin_sweetsoft_tech_support/css/assignPermission.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\assignPermission.css'))</AssetFile>

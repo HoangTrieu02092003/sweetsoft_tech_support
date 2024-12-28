@@ -42,12 +42,7 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Company)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Product)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Product)
-        </dd>
+       
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Username)
         </dt>
@@ -103,16 +98,16 @@
             @Html.DisplayFor(model => model.UpdatedAt)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedUserNavigation)
+            @Html.DisplayNameFor(model => model.CreatedByNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedUserNavigation.UserId)
+            @Html.DisplayFor(model => model.CreatedByNavigation.UserId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdatedUserNavigation)
+            @Html.DisplayNameFor(model => model.UpdatedByNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UpdatedUserNavigation.UserId)
+            @Html.DisplayFor(model => model.UpdatedByNavigation.UserId)
         </dd>
     </dl>
     

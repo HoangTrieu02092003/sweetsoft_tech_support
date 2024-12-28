@@ -11,6 +11,8 @@ public partial class TblDepartment
 
     public short Status { get; set; }
 
+    public bool? IsDelete { get; set; }
+
     public virtual ICollection<TblRequestTransfer> TblRequestTransferFromDepartments { get; set; } = new List<TblRequestTransfer>();
 
     public virtual ICollection<TblRequestTransfer> TblRequestTransferToDepartments { get; set; } = new List<TblRequestTransfer>();

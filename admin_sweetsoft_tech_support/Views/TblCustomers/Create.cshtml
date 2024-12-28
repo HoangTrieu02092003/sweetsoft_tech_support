@@ -170,11 +170,6 @@
                 <span asp-validation-for="Company" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Product" class="control-label">Sản phẩm</label>
-                <input asp-for="Product" class="form-control" />
-                <span asp-validation-for="Product" class="text-danger"></span>
-            </div>
 
             <div class="form-group">
                     <label asp-for="Username" class="control-label">Tên đăng nhập</label>
@@ -215,8 +210,8 @@
 
             <!-- Dropdown cho Người tạo và Người cập nhật -->
             <div class="form-group" hidden>
-                <label asp-for="CreatedUser" class="control-label">Người tạo</label>
-                <select asp-for="CreatedUser" class="form-control" asp-items="ViewBag.CreatedUser"></select>
+                <label asp-for="CreatedBy" class="control-label">Người tạo</label>
+                <select asp-for="CreatedBy" class="form-control" asp-items="ViewBag.CreatedUser"></select>
             </div>
 
             <div class="form-group" hidden>
@@ -226,8 +221,8 @@
             </div>
 
             <div class="form-group" hidden>
-                <label asp-for="UpdatedUser" class="control-label">Người cập nhật</label>
-                <select asp-for="UpdatedUser" class="form-control" asp-items="ViewBag.UpdatedUser"></select>
+                <label asp-for="UpdatedBy" class="control-label">Người cập nhật</label>
+                <select asp-for="UpdatedBy" class="form-control" asp-items="ViewBag.UpdatedUser"></select>
             </div>
 
             <div class="form-group" hidden>
