@@ -23,6 +23,8 @@ public partial class TblCustomer
 
     public short Status { get; set; }
 
+    public bool? IsDelete { get; set; }
+
     public string? ResetToken { get; set; }
 
     public DateTime? ResetTokenExpiry { get; set; }

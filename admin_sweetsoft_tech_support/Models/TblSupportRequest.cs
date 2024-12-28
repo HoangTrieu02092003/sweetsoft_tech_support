@@ -19,6 +19,8 @@ public partial class TblSupportRequest
 
     public short Status { get; set; }
 
+    public bool? IsDelete { get; set; }
+
     public DateTime CreatedAt { get; set; }
 
     public DateTime? ResolvedAt { get; set; }
