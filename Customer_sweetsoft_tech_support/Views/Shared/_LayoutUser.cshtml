@@ -35,8 +35,16 @@
             <a href="@Url.Action("Index", "Home")" class="logo"></a>
             <div class="btn-list">
                 <ul>
-                    <li><a href="#">Đăng Nhập</a></li>
-                    <li><a href="#">Đăng Ký</a></li>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-action="Login" asp-controller="Custommer">Đăng Nhập</a></li>
+                        <li><a asp-action="Register" asp-controller="Custommer">Đăng Ký</a></li>
+                    }
+                    else
+                    {
+                        <li><span class="d-lg-block d-none" style="color: yellow">Chào, @User.Identity.Name</span></li>
+                        <li><a asp-action="Logout" asp-controller="Custommer">Đăng Xuất</a></li>
+                    }
 
                 </ul>
                 <div class="language">
@@ -69,10 +77,10 @@
                         </div> *@
                     </li>
                     <li>
-                        <a class="name" href="@Url.Action("Index", "FollowingRequest")" title="Gửi Yêu Cầu">Gửi Yêu Cầu</a>
+                        <a class="name" href="@Url.Action("Index", "TblRequestsProcessings")" title="Gửi Yêu Cầu">Gửi Yêu Cầu</a>
                     </li>
                     <li>
-                        <a class="name" href="@Url.Action("Index", "FollowingRequest")" title="Theo Dõi Yêu Cầu">Theo Dõi Yêu Cầu</a>
+                        <a class="name" href="@Url.Action("Index", "TblRequestsProcessings")" title="Theo Dõi Yêu Cầu">Theo Dõi Yêu Cầu</a>
                     </li>
                     <li>
                         <a class="name" href="" title="FAQs">FAQs</a>
@@ -101,10 +109,10 @@
                     </div> *@
                 </li>
                 <li>
-                    <h2><a class="name" href="@Url.Action("Index", "FollowingRequest")" title="Gửi Yêu Cầu">Gửi Yêu Cầu</a></h2>
+                    <h2><a class="name" href="@Url.Action("Index", "TblRequestsProcessings")" title="Gửi Yêu Cầu">Gửi Yêu Cầu</a></h2>
                 </li>
                 <li>
-                    <h2><a class="name" href="@Url.Action("Index", "FollowingRequest")" title="Theo Dõi Yêu Cầu">Theo Dõi Yêu Cầu</a></h2>
+                    <h2><a class="name" href="@Url.Action("Index", "TblRequestsProcessings")" title="Theo Dõi Yêu Cầu">Theo Dõi Yêu Cầu</a></h2>
                 </li>
                 <li>
                     <h2><a class="name" href="" title="FAQs">FAQs</a></h2>
