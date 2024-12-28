@@ -18,7 +18,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             _logService = logService;
         }
 
-        public async Task<IActionResult> Index(string startDate, string endDate, int page = 1)
+        public async Task<IActionResult> Index(string startDate, string endDate, int page = 1, int filePage = 1)
         {
             // Lọc logs từ database nếu có điều kiện ngày
             var query = _context.TblLogs.AsQueryable();
@@ -39,7 +39,10 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             // Đọc logs từ file
             var logsFromFile = GetLogsFromFile();
-
+            var paginatedFileLogs = logsFromFile
+                .Skip((filePage - 1) * 10)
+                .Take(10)
+                .ToList();
             // Tạo danh sách log từ database dưới dạng dynamic
             var logs = logsFromDb.Select(log =>
             {
@@ -51,10 +54,14 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return logItem;
             }).ToList();
 
-            ViewData["CurrentPage"] = page;
-            ViewData["TotalPages"] = (int)Math.Ceiling((double)query.Count() / 10);
+            var TotalPages = (int)Math.Ceiling((double)query.Count() / 10);
 
-            return View(new Tuple<List<dynamic>, List<dynamic>>(logs, logsFromFile));
+            var FileTotalPages = (int)Math.Ceiling((double)logsFromFile.Count / 10);
+
+            ViewData["DbPagination"] = new Pagination { CurrentPage = page, TotalPages = TotalPages };
+            ViewData["FilePagination"] = new Pagination { CurrentPage = filePage, TotalPages = FileTotalPages };
+
+            return View(new Tuple<List<dynamic>, List<dynamic>>(logs, paginatedFileLogs));
         }
 
         private List<dynamic> GetLogsFromFile()
@@ -92,6 +99,27 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             return logs;
+        }
+
+        private async Task<(List<dynamic>, int)> GetPaginatedLogs(IQueryable<TblLog> query, int page, int pageSize)
+        {
+            int totalLogs = await query.CountAsync();
+            var paginatedLogs = await query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var logs = paginatedLogs.Select(log =>
+            {
+                dynamic logItem = new ExpandoObject();
+                logItem.UserId = log.UserId;
+                logItem.Action = log.Action;
+                logItem.Description = log.Description;
+                logItem.CreatedAt = log.CreatedAt;
+                return logItem;
+            }).ToList();
+
+            return (logs, (int)Math.Ceiling((double)totalLogs / pageSize));
         }
 
         public async Task<IActionResult> ExportToExcel()

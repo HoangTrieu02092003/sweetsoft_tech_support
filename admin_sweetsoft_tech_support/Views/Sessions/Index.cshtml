@@ -15,6 +15,10 @@
         color: black;
         font-size: 0.9rem;
     }
+    
+    th{
+        white-space: nowrap;
+    }
 </style>
 
 
@@ -24,7 +28,7 @@
     <form method="get" asp-action="Index">
         <div class="row mb-3">
             <div class="col-md-4">
-                <input type="text" name="userId" class="form-control" placeholder="Lọc theo User ID" />
+                <input type="text" name="name" class="form-control" placeholder="Lọc theo tên" />
             </div>
             <div class="col-md-4">
                 <select name="status" class="form-control">
@@ -40,7 +44,8 @@
     </form>
 
     <!-- Danh sách Sessions -->
-    <table class="table table-bordered mt-4">
+    <div class="table-responsive">
+        <table class="table table-bordered mt-4">
         <thead class="thead-dark">
             <tr>
                 <th>Người dùng</th>
@@ -76,7 +81,8 @@
                     <td>
                         <form method="post" asp-action="EndSession" asp-route-id="@session.SessionId">
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc muốn kết thúc phiên này?');">
-                                Kết thúc
+                                <span class="d-lg-none d-block">X</span>
+                                <span class="d-lg-block d-none">Kết thúc</span>
                             </button>
                         </form>
                     </td>
@@ -84,6 +90,7 @@
             }
         </tbody>
     </table>
+    </div>
 </div>
 
 <!-- Phân trang -->

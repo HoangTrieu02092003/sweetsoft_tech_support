@@ -22,7 +22,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             _auditLogService = auditLogService;
         }
         // Danh sách Audit Logs
-        public async Task<IActionResult> Index(string tableName, string actionType, int page = 1)
+        public async Task<IActionResult> Index(string tableName, string actionType, int page = 1, int filePage = 1)
         {
             var auditLogs = _context.TblAuditLogs.AsQueryable();
 
@@ -36,6 +36,10 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             var logsFromDb = await auditLogs.Skip((page - 1) * 10).Take(10).ToListAsync();
             var logsFromFile = await GetLogsFromFile();
+            var paginatedFileLogs = logsFromFile
+               .Skip((filePage - 1) * 10)
+               .Take(10)
+               .ToList();
             var logs = logsFromDb.Select(log =>
             {
                 dynamic logItem = new ExpandoObject();
@@ -55,10 +59,11 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             // Tính tổng số trang
             var totalPages = (int)Math.Ceiling((double)totalUsers / 10);
-            
-            ViewData["TotalPages"] = totalPages;
-            ViewData["CurrentPage"] = page;
-            return View(new Tuple<List<dynamic>, List<dynamic>>(logs, logsFromFile));
+            var FileTotalPages = (int)Math.Ceiling((double)logsFromFile.Count / 10);
+
+            ViewData["DbPagination"] = new Pagination { CurrentPage = page, TotalPages = totalPages };
+            ViewData["FilePagination"] = new Pagination { CurrentPage = filePage, TotalPages = FileTotalPages };
+            return View(new Tuple<List<dynamic>, List<dynamic>>(logs, paginatedFileLogs));
         }
 
         private async Task<List<dynamic>> GetLogsFromFile()

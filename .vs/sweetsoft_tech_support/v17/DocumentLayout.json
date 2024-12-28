@@ -1,20 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\HocTap\\N4\\TTCN\\Git\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\views\\shared\\components\\unreadnotifications\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\shared\\components\\unreadnotifications\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\controllers\\tblsupportrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\controllers\\tblsupportrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\attributes\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\attributes\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,54 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Views\\Shared\\Components\\UnreadNotifications\\Default.cshtml",
-              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\Shared\\Components\\UnreadNotifications\\Default.cshtml",
-              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Views\\Shared\\Components\\UnreadNotifications\\Default.cshtml*",
-              "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\Shared\\Components\\UnreadNotifications\\Default.cshtml*",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABoAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-27T09:54:49.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TblSupportRequestsController.cs",
-              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\TblSupportRequestsController.cs",
-              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\TblSupportRequestsController.cs",
-              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\TblSupportRequestsController.cs",
-              "RelativeToolTip": "admin_sweetsoft_tech_support\\Controllers\\TblSupportRequestsController.cs",
-              "ViewState": "AQIAAGMAAAAAAAAAAAAowGkAAABoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T09:49:29.101Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NotificationService.cs",
-              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Attributes\\NotificationService.cs",
-              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Attributes\\NotificationService.cs",
-              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Attributes\\NotificationService.cs",
-              "RelativeToolTip": "admin_sweetsoft_tech_support\\Attributes\\NotificationService.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAQwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T09:48:42.63Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         },

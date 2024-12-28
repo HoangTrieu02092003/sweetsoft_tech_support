@@ -15,16 +15,16 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
         // Danh sách Sessions
-        public async Task<IActionResult> Index(string userId, string status, int page = 1)
+        public async Task<IActionResult> Index(string name, string status, int page = 1)
         {
             var sessions = _context.TblSessions
                 .Include(s => s.User)
                 .AsQueryable();
 
-            // Lọc theo User ID
-            if (!string.IsNullOrEmpty(userId))
+            // Lọc theo User tên
+            if (!string.IsNullOrEmpty(name))
             {
-                sessions = sessions.Where(s => s.UserId.ToString().Contains(userId));
+                sessions = sessions.Where(l => l.User.FullName.Contains(name));
             }
 
             // Lọc theo Trạng thái

@@ -2,11 +2,15 @@
 @{
     ViewData["Title"] = "Quản lý Thông báo";
 
+    //lấy giá trị phân trang
+    var dbPagination = (Pagination)ViewData["DbPagination"];
+    var filePagination = (Pagination)ViewData["FilePagination"];
+
     // Lấy giá trị lọc từ ViewData
     var currentStatus = ViewData["Status"];
     var searchQuery = ViewData["Search"]?.ToString();
 }
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <h1>Quản lý Thông báo</h1>
 <!-- Tab navigation -->
 <div class="d-flex justify-content-between">
@@ -19,9 +23,6 @@
                 <a class="nav-link" id="file-tab" data-bs-toggle="tab" href="#file" role="tab" aria-controls="file" aria-selected="false">Từ File</a>
             </li>
         </ul>
-    </div>
-    <div>
-        <a asp-action="ExportToExcel" class="btn btn-success">Xuất file</a>
     </div>
 </div>
 
@@ -90,12 +91,16 @@
                             <form asp-action="MarkAsRead" method="post" style="display: inline;">
                                 <input type="hidden" name="id" value="@notification.NotificationId" />
                                 <button type="submit" class="btn btn-sm btn-success" @(notification.Status == 1 ? "disabled" : "")>
-                                    Đánh dấu đã đọc
+                                    <i class="ti ti-check d-lg-none d-block"></i>
+                                    <span class="d-lg-block d-none">Đánh dấu đã đọc</span>
                                 </button>
                             </form>
                             <form asp-action="Delete" method="post" style="display: inline;">
                                 <input type="hidden" name="id" value="@notification.NotificationId" />
-                                <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    <i class="bi bi-trash d-lg-none d-block"></i>
+                                    <span class="d-lg-block d-none">Xóa</span>
+                                </button>
                             </form>
                         </td>
                     </tr>
@@ -104,38 +109,41 @@
         </table>
         <!-- Phân trang -->
         <div class="d-flex justify-content-center my-4">
-            <ul class="pagination">
-                @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] > 1)
-                {
-                    <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = 1 })">Đầu</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1 })">Trước</a>
-                    </li>
-                }
-
-                @if (ViewData["TotalPages"] != null)
-                {
-                    int totalPages = (int)ViewData["TotalPages"];
-                    for (int i = 1; i <= totalPages; i++)
+            @if (dbPagination.TotalPages > 1)
+            {
+                <ul class="pagination">
+                    @if (ViewData["DbPagination"] != null)
                     {
-                        <li class="page-item @(i == (int)ViewData["CurrentPage"] ? "active" : "")">
-                            <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
-                        </li>
-                    }
-                }
 
-                @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
-                {
-                    <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1 })">Sau</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"] })">Cuối</a>
-                    </li>
-                }
-            </ul>
+                        if (dbPagination.CurrentPage > 1)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", new { page = 1, filePage = filePagination.CurrentPage })">Đầu</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage - 1, filePage = filePagination.CurrentPage })">Trước</a>
+                            </li>
+                        }
+
+                        for (int i = 1; i <= dbPagination.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == dbPagination.CurrentPage ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("Index", new { page = i, filePage = filePagination.CurrentPage })">@i</a>
+                            </li>
+                        }
+
+                        if (dbPagination.CurrentPage < dbPagination.TotalPages)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage + 1, filePage = filePagination.CurrentPage })">Sau</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.TotalPages, filePage = filePagination.CurrentPage })">Cuối</a>
+                            </li>
+                        }
+                    }
+                </ul>
+            }
         </div>
     </div>
     <!-- Tab 2: From File -->
@@ -161,5 +169,42 @@
                 }
             </tbody>
         </table>
+        <!-- Phân trang -->
+        <div class="d-flex justify-content-center my-4">
+            @if (filePagination.TotalPages > 1)
+            {
+                <ul class="pagination">
+                    @if (ViewData["FilePagination"] != null)
+                    {
+                        if (filePagination.CurrentPage > 1)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = 1, activeTab = "file" })">Đầu</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = filePagination.CurrentPage - 1, activeTab = "file" })">Trước</a>
+                            </li>
+                        }
+
+                        for (int i = 1; i <= filePagination.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == filePagination.CurrentPage ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = i, activeTab = "file" })">@i</a>
+                            </li>
+                        }
+
+                        if (filePagination.CurrentPage < filePagination.TotalPages)
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = filePagination.CurrentPage + 1, activeTab = "file" })">Sau</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = filePagination.TotalPages, activeTab = "file" })">Cuối</a>
+                            </li>
+                        }
+                    }
+                </ul>
+            }
+        </div>
     </div>
 </div>
