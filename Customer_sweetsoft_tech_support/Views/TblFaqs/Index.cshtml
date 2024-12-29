@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Customer_sweetsoft_tech_support.Models.TblFaq>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<div class="card-container">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <img src="@(item.FaqThumbnail != null ? item.FaqThumbnail : "/layoutuser/img/faq.jpg")" alt="FAQ Thumbnail" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">@item.Question</h5>
+                <p class="card-text">
+                    @item.Answer
+                </p>
+                <div class="btn-container">
+                    <a asp-action="Details" asp-route-id="@item.FaqId" class="btn btn-primary" style="font-weight: bold;">
+
+                        Xem <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .card-container {
+        margin-top: 10%;
+        min-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+    }
+
+    .card {
+        width: 340px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+    .card-img-top {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-title {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        min-height: 40px;
+        text-align: center;
+    }
+
+    .card-text {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 10px 20px;
+        color: #6a1b9a;
+        border: 1px solid #6a1b9a;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        text-align: center;
+    }
+
+    .btn:hover {
+        color: white;
+        background-color: #6a1b9a;
+        transform: scale(1.1);
+    }
+
+    .btn:active {
+        transform: scale(1);
+    }
+</style>

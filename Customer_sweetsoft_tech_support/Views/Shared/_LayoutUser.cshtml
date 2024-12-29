@@ -83,7 +83,7 @@
                         <a class="name" href="@Url.Action("Index", "TblRequestsProcessings")" title="Theo Dõi Yêu Cầu">Theo Dõi Yêu Cầu</a>
                     </li>
                     <li>
-                        <a class="name" href="" title="FAQs">FAQs</a>
+                        <a class="name" asp-action="Index" asp-controller="TblFaqs" title="FAQs">FAQs</a>
                     </li>
                     <li>
                         <a class="name" href="@Url.Action("Index", "Contact")" title="Liên Hệ">Liên Hệ</a>
@@ -115,7 +115,7 @@
                     <h2><a class="name" href="@Url.Action("Index", "TblRequestsProcessings")" title="Theo Dõi Yêu Cầu">Theo Dõi Yêu Cầu</a></h2>
                 </li>
                 <li>
-                    <h2><a class="name" href="" title="FAQs">FAQs</a></h2>
+                    <h2><a class="name" asp-action="Index" asp-controller="TblFaqs" title="FAQs">FAQs</a></h2>
                 </li>
                 <li>
                     <h2 @* class="h2" *@><a class="name" href="@Url.Action("Index", "Contact")" title="Liên Hệ">Liên Hệ</a></h2>

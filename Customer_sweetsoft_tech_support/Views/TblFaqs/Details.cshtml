@@ -1,0 +1,105 @@
+﻿@model Customer_sweetsoft_tech_support.Models.TblFaq
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="main-content">
+    <!-- Chi tiết bài viết -->
+    <div class="post-detail">
+        <img src="@(Model.FaqThumbnail ?? "/layoutuser/img/default-thumbnail.jpg")" alt="@Model.Question" class="post-image" />
+        <h1>@Model.Question</h1>
+        <div class="post-meta">
+            <span>Ngày tạo: @Model.CreatedAt.ToString("dd/MM/yyyy")</span> |
+            <span>Cập nhật: @Model.UpdatedAt?.ToString("dd/MM/yyyy")</span>
+        </div>
+        <p>@Model.Answer</p>
+    </div>
+
+    <!-- Nội dung khác -->
+    <div class="related-content">
+        <h2>Nội dung khác</h2>
+        <div class="related-card-container">
+            @foreach (var item in ViewBag.OtherFaqs as IEnumerable<Customer_sweetsoft_tech_support.Models.TblFaq>)
+            {
+                <div class="related-card">
+                    <img src="@(item.FaqThumbnail ?? "/layoutuser/img/default-thumbnail.jpg")" alt="@item.Question" class="related-card-img" />
+                    <h3>@item.Question</h3>
+                    <p>@item.Answer.Substring(0, Math.Min(100, item.Answer.Length))...</p>
+                    <a asp-action="Details" asp-route-id="@item.FaqId" class="btn-details">Xem</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Chi tiết bài viết */
+    .main-content{
+        margin: 10%;
+    }
+
+    .post-detail {
+        max-width: 800px;
+        text-align: justify;
+    }
+
+    .post-image {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .post-meta {
+        color: #777;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    /* Nội dung khác */
+    .related-content {
+        margin-top: 50px;
+    }
+
+    .related-card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .related-card {
+        width: 250px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-align: center;
+        padding: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .related-card-img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .btn-details {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 5px 10px;
+        color: #fff;
+        background-color: #6c63ff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-details:hover {
+        background-color: #473db3;
+    }
+</style>

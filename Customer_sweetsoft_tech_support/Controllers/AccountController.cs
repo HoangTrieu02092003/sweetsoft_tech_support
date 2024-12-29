@@ -33,7 +33,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Username,Password,Status,IsDelete,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedBy,UpdatedBy,CreatedAt,UpdatedAt")] TblCustomer tblCustomer)
+        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FullName,Email,Phone,TaxCode,Username,Password,Status,IsDelete,ResetToken,ResetTokenExpiry,Token,TokenExpiry,Company,UpdatedAt,UpdatedBy,CreateAt,CreateBy")] TblCustomer tblCustomer)
         {
             if (id != tblCustomer.CustomerId)
             {
@@ -44,8 +44,23 @@ namespace Customer_sweetsoft_tech_support.Controllers
             {
                 try
                 {
-                    _context.Update(tblCustomer);
+                    var existingCustomer = await _context.TblCustomers.FindAsync(id);
+                    if (existingCustomer == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Cập nhật các trường thay đổi
+                    existingCustomer.FullName = tblCustomer.FullName;
+                    existingCustomer.Email = tblCustomer.Email;
+                    existingCustomer.Phone = tblCustomer.Phone;
+                    existingCustomer.TaxCode = tblCustomer.TaxCode;
+                    existingCustomer.Company = tblCustomer.Company;
+                    existingCustomer.UpdatedAt = DateTime.Now;
+
+                    _context.Update(existingCustomer);
                     await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Cập nhật thông tin thành công!";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -60,9 +75,9 @@ namespace Customer_sweetsoft_tech_support.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreatedBy"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.CreatedBy);
-            ViewData["UpdatedBy"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.UpdatedBy);
-            return View(tblCustomer);
+            TempData["ErrorMessage"] = "Cập nhật thông tin thất bại. Vui lòng kiểm tra lại dữ liệu.";
+            // Trả về view với dữ liệu nếu ModelState không hợp lệ
+            return View("Index", tblCustomer);
         }
 
         private bool TblCustomerExists(int id)
