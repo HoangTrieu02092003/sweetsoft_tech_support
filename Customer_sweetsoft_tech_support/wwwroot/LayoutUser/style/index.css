@@ -231,7 +231,7 @@ h5 {
     font-size: .12rem;
 }
 
-textarea, input {
+textarea, input, select {
     background: transparent;
     font-size: inherit;
     color: #888;

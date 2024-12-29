@@ -47,9 +47,12 @@
                     </ul>
                 </div>
                 <div class="yc yccc fr">
-                    <button type="button" class="btn">
-                        GỬI YÊU CẦU <i style="margin-left: .1rem" class="fa-solid fa-arrow-right"></i>
-                    </button>
+                    <form asp-action="Create" asp-controller="TblSupportRequests">
+                        <button type="submit" class="btn">
+                            GỬI YÊU CẦU <i style="margin-left: .1rem" class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+
                     @foreach(var item in Model)
                     {
                         <div class="container">

@@ -78,6 +78,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsUmVxdWVzdHNQcm9jZXNzaW5nc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HocTap/N4/TTCN/Git/Customer_sweetsoft_tech_support/Views/TblSupportRequests/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsU3VwcG9ydFJlcXVlc3RzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/Customer_sweetsoft_tech_support/Views/TblSupportRequests/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsU3VwcG9ydFJlcXVlc3RzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HocTap/N4/TTCN/Git/Customer_sweetsoft_tech_support/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

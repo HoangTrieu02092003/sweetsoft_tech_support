@@ -1,0 +1,229 @@
+﻿@model Customer_sweetsoft_tech_support.Models.TblSupportRequest
+@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    var customer = (Customer_sweetsoft_tech_support.Models.TblCustomer)ViewData["Customer"];
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>Thêm Yêu Cầu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .containerrr {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .headerrr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .headerrr img {
+                height: 50px;
+            }
+
+            .headerrr .infooo {
+                text-align: right;
+            }
+
+        form {
+            padding: 20px;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            .form-group input, .form-group textarea, .form-group select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+        .form-actionss {
+            text-align: right;
+        }
+
+        .add-buttonn, .submit-buttonn {
+            background-color: #6200ea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .add-buttonn {
+            margin-bottom: 20px;
+        }
+
+        .remove-buttonn {
+            background-color: #d32f2f;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .d-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body class="show">
+    <div class="inner_bn">
+        <img src="~/layoutuser/img/inner.jpg" />
+    </div>
+    <div class="inner_main">
+        <div class="rem12">
+            <div class="dqwz">
+                <a href="@Url.Action("Index", "Home")">Trang Chủ</a>
+                /
+                <a href="@Url.Action("Index", "TblSupportRequests")">Gửi Yêu Cầu</a>
+            </div>
+            @if (ViewData.ModelState[""]?.Errors.Count > 0)
+            {
+                <div class="alert alert-danger">
+                    @foreach (var error in ViewData.ModelState[""]!.Errors)
+                    {
+                        <p class="mb-0">@error.ErrorMessage</p>
+                    }
+                </div>
+            }
+            @if (TempData["error"] != null)
+            {
+                <div class="alert alert-danger text-black">
+                    @TempData["error"]
+                    <button type="button" class="close"></button>
+                </div>
+            }
+            @if (TempData["success"] != null)
+            {
+                <div class="alert alert-success text-black">
+                    @TempData["success"]
+                    <button type="button" class="close "></button>
+                </div>
+            }
+            <div class="zb_nr">
+                <div class="containerrr">
+                    <form id="requestForm" method="post" asp-action="Create">
+                        <h2 class="section-title">PHIẾU GỬI YÊU CẦU</h2>
+
+                        <p class="section-title">Thông tin người yêu cầu</p>
+                        <div class="form-group-inlinee">
+                            <div class="form-group">
+                                <label for="name">Họ tên (*)</label>
+                                <input type="text" id="name" name="name" value="@customer.FullName" readonly>
+                                <input type="hidden" id="customerId" name="CustomerId" value="@customer.CustomerId">
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Đơn vị (*)</label>
+                                <input type="text" id="company" name="company" value="@customer.Company" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group-inlinee">
+                            <div class="form-group">
+                                <label for="email">Email (*)</label>
+                                <input type="email" id="email" name="email" value="@customer.Email" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Số điện thoại (*)</label>
+                                <input type="tel" id="phone" name="phone" value="@customer.Phone" readonly>
+                            </div>
+                        </div>
+
+                        <div class="d-flex">
+                            <p class="section-title">Thông tin yêu cầu</p>
+                            <button type="button" class="add-buttonn" onclick="addRequestFields()">+ Thêm</button>
+                        </div>
+                        <div id="requestDetails">
+                            <div class="form-group request-entry">
+                                <label for="projectName">Tên dự án (*)</label>
+                                <input type="text" id="projectName" name="Product" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="DepartmentId">Phòng ban</label>
+                                <select id="DepartmentId" name="DepartmentId[]" class="form-control" asp-items="@ViewBag.Department" required></select>
+                                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Tiêu đề (*)</label>
+                                <input type="text" id="title" name="RequestTitle[]" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Mô tả (*)</label>
+                                <textarea id="description" name="RequestDetails[]" required></textarea>
+                            </div>
+                            <input type="hidden" name="Status" value="0" />
+                            <input type="hidden" name="IsDelete" value="false" />
+                            <input type="hidden" name="CreatedAt" value="@DateTime.Now" />
+                            <input type="hidden" name="ResolvedAt" value="" />
+                        </div>
+
+                        <!-- Google reCAPTCHA -->
+                        <div class="g-recaptcha mb-3 w-100" style="min-width: 50px;" data-sitekey="@ViewBag.SiteKey" data-callback="verifyCaptcha"></div>
+                        <input type="hidden" id="recaptchaResponse" name="g-recaptcha-response" />
+
+                        <div class="form-actionss">
+                            <button type="submit" class="submit-buttonn">Gửi yêu cầu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<script>
+
+    function addRequestFields() {
+        const requestDetailsDiv = document.getElementById("requestDetails");
+        const newRequest = document.createElement("div");
+        newRequest.classList.add("form-group", "request-entry");
+
+        newRequest.innerHTML = `
+        <hr/>
+            <label for="DepartmentId">Phòng ban</label>
+            <select name="DepartmentId[]" class="form-control">${document.querySelector("#DepartmentId").innerHTML}</select>
+            <label for="title">Tiêu đề (*)</label>
+            <input type="text" name="RequestTitle[]" required>
+            <label for="description">Mô tả (*)</label>
+            <textarea name="RequestDetails[]" required></textarea>
+            <button type="button" class="remove-buttonn" onclick="this.parentElement.remove()">Xóa</button>
+        `;
+
+        requestDetailsDiv.appendChild(newRequest);
+    }
+
+</script>
