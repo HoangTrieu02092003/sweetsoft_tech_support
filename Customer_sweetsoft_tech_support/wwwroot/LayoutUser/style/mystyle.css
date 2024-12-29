@@ -200,3 +200,13 @@ td, th {
     margin: 10px 0;
 }
 
+@media screen and (min-width: 801px) {
+    .form-group-inlinee {
+        display: flex;
+        gap: 20px;
+    }
+
+        .form-group-inlinee .form-group {
+            flex: 1;
+        }
+}
