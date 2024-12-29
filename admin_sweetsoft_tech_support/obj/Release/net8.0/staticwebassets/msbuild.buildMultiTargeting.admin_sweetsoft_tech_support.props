@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\admin_sweetsoft_tech_support.props" />
+</Project>
