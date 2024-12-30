@@ -46,7 +46,7 @@
                             <div class="list-group-item bg-light border-0">
                                 <div class="form-group">
                                     <label asp-for="RequestTitle" class="control-label text-dark">Tiêu đề</label>
-                                    <textarea asp-for="RequestTitle" class="form-control" rows="5" placeholder="Nhập tiêu đề..."></textarea>
+                                    <input asp-for="RequestTitle" class="form-control" placeholder="Nhập tiêu đề..." />
                                     <span asp-validation-for="RequestTitle" class="text-danger"></span>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                             <div class="list-group-item bg-light border-0">
                                 <div class="form-group">
                                     <label asp-for="Product" class="control-label text-dark">Sản phẩm</label>
-                                    <textarea asp-for="Product" class="form-control" rows="5" placeholder="Sản phẩm......"></textarea>
+                                    <input asp-for="Product" class="form-control" placeholder="Sản phẩm..." />
                                     <span asp-validation-for="Product" class="text-danger"></span>
                                 </div>
                             </div>

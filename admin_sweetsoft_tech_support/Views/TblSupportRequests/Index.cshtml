@@ -2,13 +2,28 @@
 
 @{
     ViewData["Title"] = "Quản lý Yêu cầu Hỗ trợ";
+    ViewData["TitleSortParm"] = String.IsNullOrEmpty(ViewData["CurrentSort"] as string) ? "title_desc" : "";
+    ViewData["StatusSortParm"] = ViewData["CurrentSort"] as string == "Status" ? "status_desc" : "Status";
+    ViewData["CreatedSortParm"] = ViewData["CurrentSort"] as string == "Created" ? "created_desc" : "Created";
+    ViewData["ResolvedSortParm"] = ViewData["CurrentSort"] as string == "Resolved" ? "resolved_desc" : "Resolved";
+    ViewData["CustomerSortParm"] = ViewData["CurrentSort"] as string == "Customer" ? "customer_desc" : "Customer";
+    ViewData["DepartmentSortParm"] = ViewData["CurrentSort"] as string == "Department" ? "department_desc" : "Department";
+    int currentPage = ViewData["CurrentPage"] as int? ?? 1;
+    int totalPages = ViewData["TotalPages"] as int? ?? 1;
 }
 @if (TempData["ErrorMessage"] != null)
 {
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
         @TempData["ErrorMessage"]
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 }
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -38,12 +53,25 @@
         <table class="table table-hover align-middle text-center">
             <thead class="table-light">
                 <tr>
-                    <th>Chi tiết yêu cầu</th>
-                    <th>Trạng thái</th>
-                    <th>Ngày tạo</th>
-                    <th>Ngày giải quyết</th>
-                    <th>Khách hàng</th>
-                    <th>Phòng ban</th>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParm"]">Tiêu đề yêu cầu</a>
+                    </th>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["StatusSortParm"]">Trạng thái</a>
+                    </th>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["CreatedSortParm"]">Ngày tạo</a>
+                    </th>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["ResolvedSortParm"]">Ngày giải quyết</a>
+                    </th>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["CustomerSortParm"]">Khách hàng</a>
+                    </th>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["DepartmentSortParm"]">Phòng ban</a>
+                    </th>
+
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -52,18 +80,18 @@
                 {
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>
+                        <tr>
+                            <td>
                                 @{
-                                    string detailsText = item.RequestDetails;
+                                    string detailsText = item.RequestTitle;
                                     if (detailsText.Length > 30) // Assuming 50 is the max length before truncation
                                     {
                                         detailsText = detailsText.Substring(0, 30) + "...";
                                     }
                                 }
                                 @detailsText
-                        </td>
-                        <td>
+                            </td>
+                            <td>
                                 @{
                                     string statusText = item.Status switch
                                     {
@@ -74,93 +102,158 @@
                                     };
                                 }
                                 @Html.Raw(statusText)
-                        </td>
-                        <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
-                        <td>@(item.ResolvedAt?.ToString("dd/MM/yyyy") ?? "Chưa giải quyết")</td>
-                        <td>@(item.Customer?.FullName ?? "N/A")</td>
-                        <td>@(item.Department?.DepartmentName ?? "N/A")</td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.RequestId" class="btn btn-outline-primary btn-sm">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <a asp-action="Details" asp-route-id="@item.RequestId" class="btn btn-outline-info btn-sm">
-                                <i class="bi bi-eye"></i>
-                            </a>
-                            <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.RequestId">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                            <a asp-action="Transfer" asp-route-id="@item.RequestId" class="btn btn-outline-secondary btn-sm">
-                                <i class="bi bi-arrow-right-circle"></i>
-                            </a>
-                        </td>
-                    </tr>
+                            </td>
+                            <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
+                            <td>@(item.ResolvedAt?.ToString("dd/MM/yyyy") ?? "Chưa giải quyết")</td>
+                            <td>@(item.Customer?.FullName ?? "N/A")</td>
+                            <td>@(item.Department?.DepartmentName ?? "N/A")</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.RequestId" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.RequestId" class="btn btn-outline-info btn-sm">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.RequestId">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                <a asp-action="Transfer" asp-route-id="@item.RequestId" class="btn btn-outline-secondary btn-sm">
+                                    <i class="bi bi-arrow-right-circle"></i>
+                                </a>
+                                <form method="post" class="d-inline" onsubmit="openStatusModal(event, @item.RequestId)">
+                                    <button type="submit" class="btn btn-outline-success btn-sm">
+                                        <i class="bi bi-check-circle"></i>
+                                    </button>
+                                </form>
 
-                    <!-- Modal Xác Nhận Xóa -->
-                    <div class="modal fade" id="deleteModal-@item.RequestId" tabindex="-1" aria-labelledby="deleteModalLabel-@item.RequestId" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteModalLabel-@item.RequestId">Xác nhận xóa yêu cầu hỗ trợ</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Bạn có chắc chắn muốn xóa yêu cầu hỗ trợ này không?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                    <form method="post" asp-action="Delete" asp-route-id="@item.RequestId">
-                                        <button type="submit" class="btn btn-danger">Xóa</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            </td>
+                        </tr>
                     }
                 }
                 else
                 {
-            <tr>
-                <td colspan="7" class="text-center text-muted">Không có yêu cầu nào để hiển thị.</td>
-            </tr>
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">Không có yêu cầu nào để hiển thị.</td>
+                    </tr>
                 }
-</tbody>
-
+            </tbody>
         </table>
+    </div>
+
+    <!-- Modals -->
+    @foreach (var item in Model)
+    {
+        <!-- Modal Xác Nhận Xóa -->
+        <div class="modal fade" id="deleteModal-@item.RequestId" tabindex="-1" aria-labelledby="deleteModalLabel-@item.RequestId" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel-@item.RequestId">Xác nhận xóa yêu cầu hỗ trợ</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có chắc chắn muốn xóa yêu cầu hỗ trợ này không?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <form method="post" asp-action="Delete" asp-route-id="@item.RequestId">
+                            <button type="submit" class="btn btn-danger">Xóa</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Modal for selecting status -->
+    <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="statusModalLabel">Chọn Trạng Thái</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="statusForm" method="post" asp-action="UpdateStatus">
+                        <input type="hidden" id="requestId" name="id" />
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Trạng Thái</label>
+                            <select id="status" name="status" class="form-select">
+                                <option value="0">Chưa hoàn thành</option>
+                                <option value="1">Hoàn thành</option>
+                                <option value="2">Không xử lý được</option>
+                                <option value="3">Không xác định</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary" onclick="submitStatusForm()">Lưu</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Phân trang -->
     <div class="d-flex justify-content-center mt-4">
         <ul class="pagination">
-            @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] > 1)
+            @if (currentPage > 1)
             {
-                    <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = 1 })">Đầu</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1 })">Trước</a>
-                    </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = 1 })">Đầu</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1 })">Trước</a>
+                </li>
             }
 
-            @if (ViewData["TotalPages"] != null)
+            @for (int i = 1; i <= totalPages; i++)
             {
-                int totalPages = (int)ViewData["TotalPages"];
-                for (int i = 1; i <= totalPages; i++)
-                {
-                            <li class="page-item @(i == (int)ViewData["CurrentPage"] ? "active" : "")">
-                                <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
-                            </li>
-                }
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                </li>
             }
 
-            @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
+            @if (currentPage < totalPages)
             {
-                    <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1 })">Sau</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"] })">Cuối</a>
-                    </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1 })">Sau</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = totalPages })">Cuối</a>
+                </li>
             }
         </ul>
     </div>
 </div>
+@section Scripts {
+    <script>
+        function openStatusModal(event, requestId) {
+            event.preventDefault();
+            document.getElementById('requestId').value = requestId;
+            var statusModal = new bootstrap.Modal(document.getElementById('statusModal'));
+            statusModal.show();
+        }
+
+        function submitStatusForm() {
+            var form = document.getElementById('statusForm');
+            var status = document.getElementById('status').value;
+            if (status == 1) {
+                form.appendChild(createHiddenInput('resolvedAt', new Date().toISOString()));
+            } else {
+                form.appendChild(createHiddenInput('resolvedAt', ''));
+            }
+            form.submit();
+        }
+
+        function createHiddenInput(name, value) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = name;
+            input.value = value;
+            return input;
+        }
+    </script>
+}
+

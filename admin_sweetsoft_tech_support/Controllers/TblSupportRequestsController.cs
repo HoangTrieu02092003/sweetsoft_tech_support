@@ -29,7 +29,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         //}
         [HttpGet]
         [Route("TblSupportRequests/Index")]
-        public IActionResult Index(int? status, int page = 1)
+        public IActionResult Index(int? status, int page = 1, string sortOrder = "")
         {
             int pageSize = 6;
             var requests = _context.TblSupportRequests
@@ -42,11 +42,38 @@ namespace admin_sweetsoft_tech_support.Controllers
                 requests = requests.Where(r => r.Status == status.Value);
             }
 
+            // Sorting logic
+            switch (sortOrder)
+            {
+                case "title_asc":
+                    requests = requests.OrderBy(r => r.RequestTitle);
+                    break;
+                case "title_desc":
+                    requests = requests.OrderByDescending(r => r.RequestTitle);
+                    break;
+                case "date_asc":
+                    requests = requests.OrderBy(r => r.CreatedAt);
+                    break;
+                case "date_desc":
+                    requests = requests.OrderByDescending(r => r.CreatedAt);
+                    break;
+                case "status_asc":
+                    requests = requests.OrderBy(r => r.Status);
+                    break;
+                case "status_desc":
+                    requests = requests.OrderByDescending(r => r.Status);
+                    break;
+                default:
+                    requests = requests.OrderBy(r => r.RequestId);
+                    break;
+            }
+
             int totalRequests = requests.Count();
             var paginatedRequests = requests.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
             ViewData["CurrentPage"] = page;
             ViewData["TotalPages"] = (int)Math.Ceiling(totalRequests / (double)pageSize);
+            ViewData["SortOrder"] = sortOrder;
             return View(paginatedRequests);
         }
 
@@ -88,6 +115,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         // POST: TblSupportRequests/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: TblSupportRequests/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RequestId,CustomerId,DepartmentId,RequestTitle,Product,RequestDetails,Status,CreatedAt,ResolvedAt")] TblSupportRequest tblSupportRequest)
@@ -97,20 +125,28 @@ namespace admin_sweetsoft_tech_support.Controllers
                 ModelState.AddModelError("CustomerId", "Invalid CustomerId.");
             }
 
+            if (string.IsNullOrEmpty(tblSupportRequest.RequestTitle))
+            {
+                ModelState.AddModelError("RequestTitle", "RequestTitle is required.");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(tblSupportRequest);
                 await _context.SaveChangesAsync();
                 var departmentManager = _context.TblUsers
                     .FirstOrDefault(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.Role.RoleName == "Trưởng phòng");
-                await _notificationService.LogActionToFile(departmentManager.UserId,$"Bạn có yêu cầu mới");
+
+                if (departmentManager != null)
+                {
+                    await _notificationService.LogActionToFile(departmentManager.UserId, "Bạn có yêu cầu mới");
+                }
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId", tblSupportRequest.CustomerId);
             ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId", tblSupportRequest.DepartmentId);
             return View(tblSupportRequest);
         }
-
 
 
         public IActionResult Edit(int id)
@@ -129,17 +165,36 @@ namespace admin_sweetsoft_tech_support.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("RequestId,RequestDetails,Status,CustomerId,DepartmentId,CreatedAt,ResolvedAt")] TblSupportRequest supportRequest)
+        public async Task<IActionResult> Edit(int id, [Bind("RequestId,RequestTitle,Product,RequestDetails,Status,CustomerId,DepartmentId,CreatedAt,ResolvedAt")] TblSupportRequest supportRequest)
         {
             if (id != supportRequest.RequestId)
             {
                 return NotFound();
             }
 
+            if (string.IsNullOrEmpty(supportRequest.RequestTitle))
+            {
+                ModelState.AddModelError("RequestTitle", "RequestTitle is required.");
+            }
+
             if (ModelState.IsValid)
             {
-                _context.Update(supportRequest);
-                _context.SaveChanges();
+                try
+                {
+                    _context.Update(supportRequest);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!TblSupportRequestExists(supportRequest.RequestId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
 
@@ -148,6 +203,8 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             return View(supportRequest);
         }
+
+
         // GET: TblSupportRequests/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -177,11 +234,16 @@ namespace admin_sweetsoft_tech_support.Controllers
             if (tblSupportRequest != null)
             {
                 _context.TblSupportRequests.Remove(tblSupportRequest);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Xóa yêu cầu hỗ trợ thành công.";
             }
-
-            await _context.SaveChangesAsync();
+            else
+            {
+                TempData["ErrorMessage"] = "Không tìm thấy yêu cầu hỗ trợ.";
+            }
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool TblSupportRequestExists(int id)
         {
@@ -298,7 +360,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 TransferredAt = DateTime.Now // Set default values as needed
             };
 
-            ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestDetails", tblSupportRequest.RequestId);
+            ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestTitle", tblSupportRequest.RequestId);
             ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", tblSupportRequest.DepartmentId);
             ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName");
             ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName");
@@ -347,29 +409,34 @@ namespace admin_sweetsoft_tech_support.Controllers
                         // Update the existing support request for the first department
                         if (toDepartmentId == ToDepartmentId.First())
                         {
-                            supportRequest.DepartmentId = toDepartmentId;
-                            _context.Update(supportRequest);
+                            if (supportRequest != null)
+                            {
+                                supportRequest.DepartmentId = toDepartmentId;
+                                _context.Update(supportRequest);
+                            }
                         }
                         // Create a new support request for subsequent departments
                         else if (ToDepartmentId.Count > 1)
                         {
-                            var newSupportRequest = new TblSupportRequest
+                            if (supportRequest != null)
                             {
-                                CustomerId = supportRequest.CustomerId,
-                                DepartmentId = toDepartmentId,
-                                RequestDetails = supportRequest.RequestDetails,
-                                Status = 0, // Assuming 0 is the default status
-                                CreatedAt = DateTime.Now,
-                                ResolvedAt = null
-                            };
+                                var newSupportRequest = new TblSupportRequest
+                                {
+                                    CustomerId = supportRequest.CustomerId,
+                                    DepartmentId = toDepartmentId,
+                                    RequestDetails = supportRequest.RequestDetails,
+                                    Product = supportRequest.Product, // Ensure Product is set
+                                    Status = 0, // Assuming 0 is the default status
+                                    CreatedAt = DateTime.Now,
+                                    ResolvedAt = null
+                                };
 
-                            _context.Add(newSupportRequest);
+                                _context.Add(newSupportRequest);
+                            }
                         }
                     }
 
                     await _context.SaveChangesAsync();
-
-
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -385,13 +452,46 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestDetails", requestTransfer.RequestId);
+            ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestTitle", requestTransfer.RequestId);
             ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.FromDepartmentId);
             ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.ToDepartmentId);
             ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName", requestTransfer.TransferredBy);
 
             return View(requestTransfer);
-        }   
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateStatus(int id, int status, DateTime? resolvedAt)
+        {
+            var supportRequest = await _context.TblSupportRequests.FindAsync(id);
+            if (supportRequest == null)
+            {
+                return NotFound();
+            }
 
+            supportRequest.Status = (short)status;
+            supportRequest.ResolvedAt = status == 1 ? resolvedAt : null;
+
+            try
+            {
+                _context.Update(supportRequest);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Chuyển trạng thái thành công";
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TblSupportRequestExists(supportRequest.RequestId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+        
     }
 }
