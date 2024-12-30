@@ -170,6 +170,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsRGVwYXJ0bWVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/TblFaqs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsRmFxc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/TblFaqs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsRmFxc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/TblFaqs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsRmFxc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/TblSupportRequests/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsU3VwcG9ydFJlcXVlc3RzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
