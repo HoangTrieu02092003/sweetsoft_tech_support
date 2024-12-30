@@ -61,6 +61,22 @@
       "PackagePath": "staticwebassets\\assets\\images\\blog\\bug.jpg"
     },
     {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\125315429_1762580700565898_2636578599932985705_o.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\faqs\\125315429_1762580700565898_2636578599932985705_o.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\faq1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\faqs\\faq1.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\faq2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\faqs\\faq2.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\faq3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\faqs\\faq3.jpg"
+    },
+    {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\logos\\SweetSoft-logo-dark.svg",
       "PackagePath": "staticwebassets\\assets\\images\\logos\\SweetSoft-logo-dark.svg"
     },

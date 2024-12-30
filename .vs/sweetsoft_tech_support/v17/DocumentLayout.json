@@ -28,7 +28,7 @@
               "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\Shared\\_Layout_admin.cshtml",
               "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Views\\Shared\\_Layout_admin.cshtml",
               "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\Shared\\_Layout_admin.cshtml",
-              "ViewState": "AQIAAGsAAAAAAAAAAAAAAHcAAABdAAAA",
+              "ViewState": "AQIAAHQAAAAAAAAAAAAAAHcAAABdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-30T01:39:40.6Z",
               "EditorCaption": ""
@@ -50,6 +50,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
               "$type": "Bookmark",
