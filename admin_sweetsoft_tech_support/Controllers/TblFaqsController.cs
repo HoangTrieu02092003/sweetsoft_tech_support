@@ -19,7 +19,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
         // GET: TblFaqs
-        public async Task<IActionResult> Index(string searchTerm, DateTime? createdFrom, DateTime? createdTo, DateTime? updatedFrom, DateTime? updatedTo, int page = 1)
+        public async Task<IActionResult> Index(string searchTerm, string answerTerm, DateTime? createdFrom, DateTime? createdTo, DateTime? updatedFrom, DateTime? updatedTo, int page = 1)
         {
             var faqs = _context.TblFaqs.AsQueryable();
 
@@ -27,6 +27,12 @@ namespace admin_sweetsoft_tech_support.Controllers
             if (!string.IsNullOrEmpty(searchTerm))
             {
                 faqs = faqs.Where(f => f.Question.Contains(searchTerm));
+            }
+
+            // Lọc theo nội dung câu trả lời (tìm gần đúng)
+            if (!string.IsNullOrEmpty(answerTerm))
+            {
+                faqs = faqs.Where(f => f.Answer.Contains(answerTerm));
             }
 
             // Lọc theo ngày tạo
@@ -63,27 +69,16 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             ViewData["TotalPages"] = totalPages;
             ViewData["CurrentPage"] = page;
+            ViewData["SearchTerm"] = searchTerm;
+            ViewData["AnswerTerm"] = answerTerm;
+            ViewData["CreatedFrom"] = createdFrom?.ToString("dd-MM-yyyy");
+            ViewData["CreatedTo"] = createdTo?.ToString("dd-MM-yyyy");
+            ViewData["UpdatedFrom"] = updatedFrom?.ToString("yyyy-MM-dd");
+            ViewData["UpdatedTo"] = updatedTo?.ToString("yyyy-MM-dd");
 
             return View(pagedFaqs);
         }
 
-        // GET: TblFaqs/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblFaq = await _context.TblFaqs
-                .FirstOrDefaultAsync(m => m.FaqId == id);
-            if (tblFaq == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblFaq);
-        }
 
         // GET: TblFaqs/Create
         public IActionResult Create()
@@ -96,16 +91,37 @@ namespace admin_sweetsoft_tech_support.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FaqId,Question,Answer,CreatedAt,UpdatedAt")] TblFaq tblFaq)
+        public async Task<IActionResult> Create([Bind("FaqId,Question,Answer,CreatedAt,UpdatedAt")] TblFaq tblFaq, IFormFile? FaqThumbnail)
         {
             if (ModelState.IsValid)
             {
-                // Cập nhật ngày giờ cho trường UpdatedAt
-                tblFaq.UpdatedAt = DateTime.Now;
+                try
+                {
+                    tblFaq.UpdatedAt = DateTime.Now;
 
-                _context.Add(tblFaq);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                    if (FaqThumbnail != null && FaqThumbnail.Length > 0)
+                    {
+                        var uploadDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/assets/images/faqs");
+                        var fileName = Path.GetFileName(FaqThumbnail.FileName);
+                        var filePath = Path.Combine(uploadDir, fileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await FaqThumbnail.CopyToAsync(stream);
+                        }
+
+                        tblFaq.FaqThumbnail = $"/assets/images/faqs/{fileName}";
+                    }
+
+                    _context.Add(tblFaq);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "FAQ đã được tạo mới thành công.";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception)
+                {
+                    TempData["ErrorMessage"] = "Có lỗi xảy ra khi tạo FAQ. Vui lòng thử lại!";
+                }
             }
             return View(tblFaq);
         }
@@ -131,7 +147,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FaqId,Question,Answer,CreatedAt,UpdatedAt")] TblFaq tblFaq)
+        public async Task<IActionResult> Edit(int id, [Bind("FaqId,Question,Answer,CreatedAt,UpdatedAt,FaqThumbnail")] TblFaq tblFaq, IFormFile? FaqThumbnail)
         {
             if (id != tblFaq.FaqId)
             {
@@ -142,11 +158,30 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 try
                 {
-                    // Cập nhật ngày giờ cho trường UpdatedAt
                     tblFaq.UpdatedAt = DateTime.Now;
+
+                    if (FaqThumbnail != null && FaqThumbnail.Length > 0)
+                    {
+                        var uploadDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/assets/images/faqs");
+                        var fileName = Path.GetFileName(FaqThumbnail.FileName);
+                        var filePath = Path.Combine(uploadDir, fileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await FaqThumbnail.CopyToAsync(stream);
+                        }
+
+                        tblFaq.FaqThumbnail = $"/assets/images/faqs/{fileName}";
+                    }
+                    else
+                    {
+                        _context.Entry(tblFaq).Property(x => x.FaqThumbnail).IsModified = false;
+                    }
 
                     _context.Update(tblFaq);
                     await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "FAQ đã được chỉnh sửa thành công.";
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -156,13 +191,14 @@ namespace admin_sweetsoft_tech_support.Controllers
                     }
                     else
                     {
+                        TempData["ErrorMessage"] = "Có lỗi xảy ra khi chỉnh sửa FAQ. Vui lòng thử lại!";
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
             return View(tblFaq);
         }
+
 
         // GET: TblFaqs/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -191,9 +227,13 @@ namespace admin_sweetsoft_tech_support.Controllers
             if (tblFaq != null)
             {
                 _context.TblFaqs.Remove(tblFaq);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "FAQ đã được xóa thành công.";
             }
-
-            await _context.SaveChangesAsync();
+            else
+            {
+                TempData["ErrorMessage"] = "Không tìm thấy FAQ cần xóa.";
+            }
             return RedirectToAction(nameof(Index));
         }
 

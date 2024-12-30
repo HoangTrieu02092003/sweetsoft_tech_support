@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "q1hD49zRVi3RtWFpZA3D12Z33gbjEjv20Wlgim/KtE8=",
+  "Hash": "RDP42rfKnoAtqePk3P7L3NDmcITEp1vm5UbDfr1v99A=",
   "Source": "admin_sweetsoft_tech_support",
   "BasePath": "_content/admin_sweetsoft_tech_support",
   "Mode": "Default",
@@ -330,6 +330,90 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\blog\\blog-img3.jpg"
+    },
+    {
+      "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\125315429_1762580700565898_2636578599932985705_o.jpg",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "assets/images/faqs/125315429_1762580700565898_2636578599932985705_o#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "git6j6c7iz",
+      "Integrity": "6CWSB7pGceNyFhMrZEPkfmXmMt3pS3pMvAg70F+THko=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\faqs\\125315429_1762580700565898_2636578599932985705_o.jpg"
+    },
+    {
+      "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\faq1.jpg",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "assets/images/faqs/faq1#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "u5um5i5mqa",
+      "Integrity": "Mr9W9FkGC4U5lFEDfxfPd2gnurrkSGalKz0aSeuOQrM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\faqs\\faq1.jpg"
+    },
+    {
+      "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\faq2.jpg",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "assets/images/faqs/faq2#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "9oyheeg5ge",
+      "Integrity": "yc94vS6gnhlti0mItdKFkHmRDGvcFEiRnc2KNk20A84=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\faqs\\faq2.jpg"
+    },
+    {
+      "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\faq3.jpg",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "assets/images/faqs/faq3#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "git6j6c7iz",
+      "Integrity": "6CWSB7pGceNyFhMrZEPkfmXmMt3pS3pMvAg70F+THko=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\faqs\\faq3.jpg"
     },
     {
       "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\logos\\logo-light.svg",
@@ -4091,27 +4175,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\libs\\apexcharts\\src\\modules\\settings\\Options.js"
     },
     {
-      "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Theme.js",
-      "SourceId": "admin_sweetsoft_tech_support",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
-      "BasePath": "_content/admin_sweetsoft_tech_support",
-      "RelativePath": "assets/libs/apexcharts/src/modules/Theme#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "q1kfg5fc3i",
-      "Integrity": "wrjNERVs7w3UBaD27BfKfIimenA4CYBJoBF/Ds8KcHc=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Theme.js"
-    },
-    {
       "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\TimeScale.js",
       "SourceId": "admin_sweetsoft_tech_support",
       "SourceType": "Discovered",
@@ -4341,6 +4404,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\libs\\apexcharts\\src\\modules\\tooltip\\Utils.js"
+    },
+    {
+      "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Theme.js",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "assets/libs/apexcharts/src/modules/Theme#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "q1kfg5fc3i",
+      "Integrity": "wrjNERVs7w3UBaD27BfKfIimenA4CYBJoBF/Ds8KcHc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Theme.js"
     },
     {
       "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\ZoomPanSelection.js",
@@ -8858,27 +8942,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\libs\\bootstrap\\scss\\_tooltip.scss"
     },
     {
-      "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_transitions.scss",
-      "SourceId": "admin_sweetsoft_tech_support",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
-      "BasePath": "_content/admin_sweetsoft_tech_support",
-      "RelativePath": "assets/libs/bootstrap/scss/_transitions#[.{fingerprint}]?.scss",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "7xz1la1irp",
-      "Integrity": "5WYb4Udq9gyeRTdQeA+GhBxonc8inegCIwB8PK2hSMk=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\libs\\bootstrap\\scss\\_transitions.scss"
-    },
-    {
       "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_type.scss",
       "SourceId": "admin_sweetsoft_tech_support",
       "SourceType": "Discovered",
@@ -8898,6 +8961,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\libs\\bootstrap\\scss\\_type.scss"
+    },
+    {
+      "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_transitions.scss",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "assets/libs/bootstrap/scss/_transitions#[.{fingerprint}]?.scss",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7xz1la1irp",
+      "Integrity": "5WYb4Udq9gyeRTdQeA+GhBxonc8inegCIwB8PK2hSMk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\libs\\bootstrap\\scss\\_transitions.scss"
     },
     {
       "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_utilities.scss",
@@ -9068,27 +9152,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_floating-labels.scss"
     },
     {
-      "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-check.scss",
-      "SourceId": "admin_sweetsoft_tech_support",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
-      "BasePath": "_content/admin_sweetsoft_tech_support",
-      "RelativePath": "assets/libs/bootstrap/scss/forms/_form-check#[.{fingerprint}]?.scss",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "jt4crwozn0",
-      "Integrity": "maE71TqPIXOUJZI+BKH1X3sWyFTj8resqxV/KOSjNxo=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-check.scss"
-    },
-    {
       "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-control.scss",
       "SourceId": "admin_sweetsoft_tech_support",
       "SourceType": "Discovered",
@@ -9108,6 +9171,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-control.scss"
+    },
+    {
+      "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-check.scss",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "assets/libs/bootstrap/scss/forms/_form-check#[.{fingerprint}]?.scss",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jt4crwozn0",
+      "Integrity": "maE71TqPIXOUJZI+BKH1X3sWyFTj8resqxV/KOSjNxo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-check.scss"
     },
     {
       "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-range.scss",
@@ -12722,27 +12806,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\libs\\jquery\\src\\var\\push.js"
     },
     {
-      "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\rcheckableType.js",
-      "SourceId": "admin_sweetsoft_tech_support",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
-      "BasePath": "_content/admin_sweetsoft_tech_support",
-      "RelativePath": "assets/libs/jquery/src/var/rcheckableType#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "hvawlfii8m",
-      "Integrity": "849PQpl513CvAi45KAyBwZvQYuApovHVrzG3SyKDRWk=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\libs\\jquery\\src\\var\\rcheckableType.js"
-    },
-    {
       "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\rcssNum.js",
       "SourceId": "admin_sweetsoft_tech_support",
       "SourceType": "Discovered",
@@ -12762,6 +12825,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\libs\\jquery\\src\\var\\rcssNum.js"
+    },
+    {
+      "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\rcheckableType.js",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "assets/libs/jquery/src/var/rcheckableType#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "hvawlfii8m",
+      "Integrity": "849PQpl513CvAi45KAyBwZvQYuApovHVrzG3SyKDRWk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\libs\\jquery\\src\\var\\rcheckableType.js"
     },
     {
       "Identity": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\rnothtmlwhite.js",
@@ -15966,6 +16050,334 @@
         {
           "Name": "integrity",
           "Value": "sha256-MlWczZnTfqQ1XqRyTcPm4QTjQ7M8QgJ1xa2fyZbua8s="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/faqs/125315429_1762580700565898_2636578599932985705_o.git6j6c7iz.jpg",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\125315429_1762580700565898_2636578599932985705_o.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94638"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6CWSB7pGceNyFhMrZEPkfmXmMt3pS3pMvAg70F+THko=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Dec 2024 12:57:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "git6j6c7iz"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/images/faqs/125315429_1762580700565898_2636578599932985705_o.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6CWSB7pGceNyFhMrZEPkfmXmMt3pS3pMvAg70F+THko="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/faqs/125315429_1762580700565898_2636578599932985705_o.jpg",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\125315429_1762580700565898_2636578599932985705_o.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94638"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6CWSB7pGceNyFhMrZEPkfmXmMt3pS3pMvAg70F+THko=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Dec 2024 12:57:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6CWSB7pGceNyFhMrZEPkfmXmMt3pS3pMvAg70F+THko="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/faqs/faq1.jpg",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\faq1.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "39665"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Mr9W9FkGC4U5lFEDfxfPd2gnurrkSGalKz0aSeuOQrM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Dec 2024 02:28:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Mr9W9FkGC4U5lFEDfxfPd2gnurrkSGalKz0aSeuOQrM="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/faqs/faq1.u5um5i5mqa.jpg",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\faq1.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "39665"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Mr9W9FkGC4U5lFEDfxfPd2gnurrkSGalKz0aSeuOQrM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Dec 2024 02:28:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "u5um5i5mqa"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/images/faqs/faq1.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Mr9W9FkGC4U5lFEDfxfPd2gnurrkSGalKz0aSeuOQrM="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/faqs/faq2.9oyheeg5ge.jpg",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\faq2.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "102345"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yc94vS6gnhlti0mItdKFkHmRDGvcFEiRnc2KNk20A84=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Dec 2024 13:03:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "9oyheeg5ge"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/images/faqs/faq2.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yc94vS6gnhlti0mItdKFkHmRDGvcFEiRnc2KNk20A84="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/faqs/faq2.jpg",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\faq2.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "102345"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yc94vS6gnhlti0mItdKFkHmRDGvcFEiRnc2KNk20A84=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Dec 2024 13:03:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-yc94vS6gnhlti0mItdKFkHmRDGvcFEiRnc2KNk20A84="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/faqs/faq3.git6j6c7iz.jpg",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\faq3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94638"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6CWSB7pGceNyFhMrZEPkfmXmMt3pS3pMvAg70F+THko=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Dec 2024 13:09:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "git6j6c7iz"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/images/faqs/faq3.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6CWSB7pGceNyFhMrZEPkfmXmMt3pS3pMvAg70F+THko="
+        }
+      ]
+    },
+    {
+      "Route": "assets/images/faqs/faq3.jpg",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\images\\faqs\\faq3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94638"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6CWSB7pGceNyFhMrZEPkfmXmMt3pS3pMvAg70F+THko=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Dec 2024 13:09:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6CWSB7pGceNyFhMrZEPkfmXmMt3pS3pMvAg70F+THko="
         }
       ]
     },
@@ -30648,88 +31060,6 @@
       ]
     },
     {
-      "Route": "assets/libs/apexcharts/src/modules/Theme.js",
-      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Theme.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "7170"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"wrjNERVs7w3UBaD27BfKfIimenA4CYBJoBF/Ds8KcHc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 09 Dec 2024 03:56:29 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-wrjNERVs7w3UBaD27BfKfIimenA4CYBJoBF/Ds8KcHc="
-        }
-      ]
-    },
-    {
-      "Route": "assets/libs/apexcharts/src/modules/Theme.q1kfg5fc3i.js",
-      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Theme.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "7170"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"wrjNERVs7w3UBaD27BfKfIimenA4CYBJoBF/Ds8KcHc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 09 Dec 2024 03:56:29 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "q1kfg5fc3i"
-        },
-        {
-          "Name": "label",
-          "Value": "assets/libs/apexcharts/src/modules/Theme.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-wrjNERVs7w3UBaD27BfKfIimenA4CYBJoBF/Ds8KcHc="
-        }
-      ]
-    },
-    {
       "Route": "assets/libs/apexcharts/src/modules/TimeScale.dnt2hllv5e.js",
       "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\TimeScale.js",
       "Selectors": [],
@@ -31628,6 +31958,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-VneKt44BdXPosyC9O3dXJAS8KfGdOXhFuFaTdezvfzI="
+        }
+      ]
+    },
+    {
+      "Route": "assets/libs/apexcharts/src/modules/Theme.js",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Theme.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7170"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wrjNERVs7w3UBaD27BfKfIimenA4CYBJoBF/Ds8KcHc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Dec 2024 03:56:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wrjNERVs7w3UBaD27BfKfIimenA4CYBJoBF/Ds8KcHc="
+        }
+      ]
+    },
+    {
+      "Route": "assets/libs/apexcharts/src/modules/Theme.q1kfg5fc3i.js",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\apexcharts\\src\\modules\\Theme.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7170"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wrjNERVs7w3UBaD27BfKfIimenA4CYBJoBF/Ds8KcHc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Dec 2024 03:56:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "q1kfg5fc3i"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/libs/apexcharts/src/modules/Theme.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wrjNERVs7w3UBaD27BfKfIimenA4CYBJoBF/Ds8KcHc="
         }
       ]
     },
@@ -49262,88 +49674,6 @@
       ]
     },
     {
-      "Route": "assets/libs/bootstrap/scss/_transitions.7xz1la1irp.scss",
-      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_transitions.scss",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "425"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"5WYb4Udq9gyeRTdQeA+GhBxonc8inegCIwB8PK2hSMk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 09 Dec 2024 03:56:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "7xz1la1irp"
-        },
-        {
-          "Name": "label",
-          "Value": "assets/libs/bootstrap/scss/_transitions.scss"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-5WYb4Udq9gyeRTdQeA+GhBxonc8inegCIwB8PK2hSMk="
-        }
-      ]
-    },
-    {
-      "Route": "assets/libs/bootstrap/scss/_transitions.scss",
-      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_transitions.scss",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "425"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"5WYb4Udq9gyeRTdQeA+GhBxonc8inegCIwB8PK2hSMk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 09 Dec 2024 03:56:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-5WYb4Udq9gyeRTdQeA+GhBxonc8inegCIwB8PK2hSMk="
-        }
-      ]
-    },
-    {
       "Route": "assets/libs/bootstrap/scss/_type.aaj5v37kcd.scss",
       "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_type.scss",
       "Selectors": [],
@@ -49422,6 +49752,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-4stEur8Fg3samFkSjlU3EtbdXBxaucu33MNr/NJjSG0="
+        }
+      ]
+    },
+    {
+      "Route": "assets/libs/bootstrap/scss/_transitions.7xz1la1irp.scss",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_transitions.scss",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "425"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5WYb4Udq9gyeRTdQeA+GhBxonc8inegCIwB8PK2hSMk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Dec 2024 03:56:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7xz1la1irp"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/libs/bootstrap/scss/_transitions.scss"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5WYb4Udq9gyeRTdQeA+GhBxonc8inegCIwB8PK2hSMk="
+        }
+      ]
+    },
+    {
+      "Route": "assets/libs/bootstrap/scss/_transitions.scss",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\_transitions.scss",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "425"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5WYb4Udq9gyeRTdQeA+GhBxonc8inegCIwB8PK2hSMk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Dec 2024 03:56:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5WYb4Udq9gyeRTdQeA+GhBxonc8inegCIwB8PK2hSMk="
         }
       ]
     },
@@ -50082,88 +50494,6 @@
       ]
     },
     {
-      "Route": "assets/libs/bootstrap/scss/forms/_form-check.jt4crwozn0.scss",
-      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-check.scss",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4833"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"maE71TqPIXOUJZI+BKH1X3sWyFTj8resqxV/KOSjNxo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 09 Dec 2024 03:56:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "jt4crwozn0"
-        },
-        {
-          "Name": "label",
-          "Value": "assets/libs/bootstrap/scss/forms/_form-check.scss"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-maE71TqPIXOUJZI+BKH1X3sWyFTj8resqxV/KOSjNxo="
-        }
-      ]
-    },
-    {
-      "Route": "assets/libs/bootstrap/scss/forms/_form-check.scss",
-      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-check.scss",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4833"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"maE71TqPIXOUJZI+BKH1X3sWyFTj8resqxV/KOSjNxo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 09 Dec 2024 03:56:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-maE71TqPIXOUJZI+BKH1X3sWyFTj8resqxV/KOSjNxo="
-        }
-      ]
-    },
-    {
       "Route": "assets/libs/bootstrap/scss/forms/_form-control.ro0d9v3zy6.scss",
       "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-control.scss",
       "Selectors": [],
@@ -50242,6 +50572,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-RUbc1YZ25puIv9QdzdsT+yN1Bu0yuVMfJLQlrXaTWxs="
+        }
+      ]
+    },
+    {
+      "Route": "assets/libs/bootstrap/scss/forms/_form-check.jt4crwozn0.scss",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-check.scss",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4833"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"maE71TqPIXOUJZI+BKH1X3sWyFTj8resqxV/KOSjNxo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Dec 2024 03:56:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jt4crwozn0"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/libs/bootstrap/scss/forms/_form-check.scss"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-maE71TqPIXOUJZI+BKH1X3sWyFTj8resqxV/KOSjNxo="
+        }
+      ]
+    },
+    {
+      "Route": "assets/libs/bootstrap/scss/forms/_form-check.scss",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\bootstrap\\scss\\forms\\_form-check.scss",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4833"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"maE71TqPIXOUJZI+BKH1X3sWyFTj8resqxV/KOSjNxo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Dec 2024 03:56:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-maE71TqPIXOUJZI+BKH1X3sWyFTj8resqxV/KOSjNxo="
         }
       ]
     },
@@ -64350,88 +64762,6 @@
       ]
     },
     {
-      "Route": "assets/libs/jquery/src/var/rcheckableType.hvawlfii8m.js",
-      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\rcheckableType.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "79"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"849PQpl513CvAi45KAyBwZvQYuApovHVrzG3SyKDRWk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 09 Dec 2024 03:56:41 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "hvawlfii8m"
-        },
-        {
-          "Name": "label",
-          "Value": "assets/libs/jquery/src/var/rcheckableType.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-849PQpl513CvAi45KAyBwZvQYuApovHVrzG3SyKDRWk="
-        }
-      ]
-    },
-    {
-      "Route": "assets/libs/jquery/src/var/rcheckableType.js",
-      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\rcheckableType.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "79"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"849PQpl513CvAi45KAyBwZvQYuApovHVrzG3SyKDRWk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 09 Dec 2024 03:56:41 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-849PQpl513CvAi45KAyBwZvQYuApovHVrzG3SyKDRWk="
-        }
-      ]
-    },
-    {
       "Route": "assets/libs/jquery/src/var/rcssNum.js",
       "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\rcssNum.js",
       "Selectors": [],
@@ -64510,6 +64840,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-nV8R+j8wlF0LiI89UHWox6X7xk6cUiHsB1nu3rkJE0Y="
+        }
+      ]
+    },
+    {
+      "Route": "assets/libs/jquery/src/var/rcheckableType.hvawlfii8m.js",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\rcheckableType.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "79"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"849PQpl513CvAi45KAyBwZvQYuApovHVrzG3SyKDRWk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Dec 2024 03:56:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hvawlfii8m"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/libs/jquery/src/var/rcheckableType.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-849PQpl513CvAi45KAyBwZvQYuApovHVrzG3SyKDRWk="
+        }
+      ]
+    },
+    {
+      "Route": "assets/libs/jquery/src/var/rcheckableType.js",
+      "AssetFile": "D:\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\assets\\libs\\jquery\\src\\var\\rcheckableType.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "79"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"849PQpl513CvAi45KAyBwZvQYuApovHVrzG3SyKDRWk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Dec 2024 03:56:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-849PQpl513CvAi45KAyBwZvQYuApovHVrzG3SyKDRWk="
         }
       ]
     },
