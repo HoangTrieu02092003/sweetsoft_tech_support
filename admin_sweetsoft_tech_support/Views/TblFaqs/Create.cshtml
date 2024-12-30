@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout_admin.cshtml";
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 }
 
 <style>
@@ -27,27 +28,6 @@
         color: #333;
         font-weight: bold;
     }
-
-    /* Button styles */
-    .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-    }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
-        }
-
-    .btn-secondary {
-        background-color: #6c757d;
-        border-color: #6c757d;
-    }
-
-        .btn-secondary:hover {
-            background-color: #5a6268;
-            border-color: #4e555b;
-        }
 
     /* Error messages */
     .text-danger {
@@ -81,7 +61,7 @@
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card shadow-sm p-4">
-            <form asp-action="Create">
+            <form asp-action="Create" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group mb-3">
                     <label asp-for="Question" class="form-label">Câu hỏi</label>
@@ -95,17 +75,23 @@
                 </div>
                 <div class="form-group mb-3">
                     <label asp-for="CreatedAt" class="form-label">Ngày tạo</label>
-                    <input asp-for="CreatedAt" type="datetime-local" class="form-control" id="CreatedAt" />
+                    <input asp-for="CreatedAt" type="datetime-local" class="form-control" id="CreatedAt" readonly />
                     <span asp-validation-for="CreatedAt" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-3">
                     <label asp-for="UpdatedAt" class="form-label">Ngày cập nhật</label>
-                    <input asp-for="UpdatedAt" type="datetime-local" class="form-control" id="UpdatedAt" />
+                    <input asp-for="UpdatedAt" type="datetime-local" class="form-control" id="UpdatedAt" readonly />
                     <span asp-validation-for="UpdatedAt" class="text-danger"></span>
                 </div>
+                <!-- Thêm trường tải ảnh -->
+                <div class="form-group mb-3">
+                    <label for="FaqThumbnail" class="form-label">Ảnh đại diện</label>
+                    <input type="file" id="FaqThumbnail" name="FaqThumbnail" class="form-control" />
+                    <span asp-validation-for="FaqThumbnail" class="text-danger"></span>
+                </div>
                 <div class="d-flex justify-content-between">
-                    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
-                    <button type="submit" class="btn btn-primary">Lưu</button>
+                    <a asp-action="Index" class="btn btn-danger"><i class="bi bi-arrow-left"></i> Quay lại</a>
+                    <button type="submit" class="btn btn-warning"><i class="bi bi-plus-circle"></i> Tạo mới</button>
                 </div>
             </form>
         </div>

@@ -23,6 +23,9 @@
     }
 
     .faq-item {
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
         padding: 15px;
         border-bottom: 1px solid #ddd;
         cursor: pointer;
@@ -38,7 +41,14 @@
             background-color: #ffd700;
             color: #000;
         }
-
+    
+    .faq-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width:28.5rem;
+    }
+    
     .faq-detail {
         min-height: 300px;
         width: 70%;
@@ -50,54 +60,97 @@
 
     .faq-answer {
         white-space: pre-wrap;
-        height: 100px;
-        overflow-y: auto;
         padding: 10px;
         background-color: #f9f9f9;
         border: 1px solid #ddd;
         border-radius: 5px;
+        margin-top: 5px;
+        line-height: 1.5; /* Khoảng cách giữa các dòng */
+        height: 75px; /* Giới hạn chiều cao */
+        overflow-y: auto; /* Cho phép cuộn nếu vượt quá chiều cao */
     }
 
-    .faq-actions a {
-        margin-right: 10px;
+
+    .faq-img img {
+        width: 300px; /* Ensure the image doesn't exceed the container's width */
+        height: 260px; /* Maintain the aspect ratio */
+        border-radius: 8px; /* Optional: rounded corners */
+        margin-left: 15px;
     }
 
-    .btn-edit {
-        background-color: #ffc107;
-        color: #000;
-        text-decoration: none;
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
+    /* Media Query cho màn hình nhỏ */
+    @@media (max-width: 767px) {
+        .faq-wrapper
 
-    .btn-delete {
-        background-color: #dc3545;
-        color: #fff;
-        text-decoration: none;
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
-
-    .filter-section .row {
-        align-items: flex-end;
-    }
-
-    .filter-section .form-group {
-        display: flex;
+    {
         flex-direction: column;
     }
 
-    .filter-section .btn {
-        padding: 10px 20px;
+    .faq-list {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .faq-detail {
+        width: 100%;
+    }
+
+    /* Ẩn ảnh trên màn hình nhỏ */
+    .faq-img img {
+        display: none;
+    }
+
+    .faq-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 21.5rem;     
+    }
+
     }
 </style>
 
-<h1 class="text-center" style="color: #6a1b9a; font-weight: bold;">Quản lý FAQs</h1>
 
-<div style="text-align: right; margin-bottom: 20px;">
-    <a class="btn btn-warning" asp-action="Create"><i class="bi bi-plus-circle"></i> Tạo mới</a>
+<!-- Header -->
+<div class="d-flex justify-content-between">
+    <p class="text-center" style="color: #6a1b9a; font-weight: bold; font-size:24px">
+        Quản lý FAQS
+    </p>
+
+    <div style="text-align: right; margin-bottom: 20px;">
+        <a class="btn btn-warning" asp-action="Create"><i class="bi bi-plus-circle"></i> Tạo mới</a>
+    </div>
 </div>
 
+<!-- Hiển thị thông báo -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<script>
+    // Tự động ẩn thông báo sau 5 giây
+    setTimeout(() => {
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+            alert.classList.remove('show'); // Ẩn alert
+            alert.addEventListener('transitionend', () => alert.remove()); // Loại bỏ khỏi DOM sau khi ẩn
+        });
+    }, 5000); // 5000ms = 5 giây
+</script>
+
+<!-- Body -->
+<!-- Bộ lọc -->
 <div class="filter-section mb-4">
     <form method="get">
         <div class="row align-items-end">
@@ -105,6 +158,12 @@
                 <div class="form-group">
                     <label for="searchTerm" class="form-label">Tìm kiếm câu hỏi</label>
                     <input type="text" id="searchTerm" name="searchTerm" class="form-control" value="@ViewData["SearchTerm"]">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="answerTerm" class="form-label">Tìm kiếm câu trả lời</label>
+                    <input type="text" id="answerTerm" name="answerTerm" class="form-control" value="@ViewData["AnswerTerm"]">
                 </div>
             </div>
             <div class="col-md-3">
@@ -119,44 +178,65 @@
                     <input type="date" id="createdTo" name="createdTo" class="form-control" value="@ViewData["CreatedTo"]">
                 </div>
             </div>
-            <div class="col-md-1">
-                <button type="submit" class="btn btn-primary w-100">Lọc</button>
+            <div class="mt-2 text-end">
+                <button type="submit" class="btn btn-info"><i class="bi bi-search"></i> Tìm kiếm</button>
             </div>
         </div>
     </form>
 </div>
 
 <div class="faq-wrapper">
-    <div class="faq-list">
-        @foreach (var item in Model)
-        {
-            <div class="faq-item" data-id="@item.FaqId"
-                 data-question="@item.Question"
-                 data-answer="@item.Answer"
-                 data-created="@item.CreatedAt.ToString("dd/MM/yyyy")"
-                 data-updated="@item.UpdatedAt?.ToString("dd/MM/yyyy")">
-                @item.Question
-            </div>
-        }
-    </div>
-
-    <div class="faq-detail">
-        <h3 id="faq-title"></h3>
-        <p class="faq-answer" id="faq-answer"></p>
-        <p id="faq-created"></p>
-        <p id="faq-updated"></p>
-        <div class="faq-actions">
-            <a id="edit-btn" class="btn-edit" href="#">Chỉnh sửa</a>
-            <form id="delete-form" method="post" asp-action="Delete" asp-route-id="" style="display:inline;">
-                <button type="submit" class="btn-delete" id="delete-btn" onclick="return confirmDelete();">Xóa</button>
-            </form>
+    @if (Model.Any())
+    {
+        <div class="faq-list">
+            @foreach (var item in Model)
+            {
+                <div class="faq-item"
+                     data-id="@item.FaqId"
+                     data-question="@item.Question"
+                     data-answer="@item.Answer"
+                     data-created="@item.CreatedAt.ToString("dd/MM/yyyy")"
+                     data-updated="@item.UpdatedAt?.ToString("dd/MM/yyyy")"
+                     data-thumbnail="@(!string.IsNullOrEmpty(item.FaqThumbnail) ? Url.Content(item.FaqThumbnail) : Url.Content("~/assets/images/faqs/faq1.jpg"))">
+                    @item.Question
+                </div>
+            }
         </div>
-    </div>
+        <!-- Thông tin chi tiết của câu hỏi được chọn -->
+        <div class="faq-detail d-flex justify-content-between">
+            <div>
+                <h3 class="faq-title" style="color:#6a1b9a" id="faq-title"></h3>
+                <label>Trả lời: </label>
+                <p class="faq-answer" id="faq-answer"></p>
+                <p id="faq-created"></p>
+                <p id="faq-updated"></p>
+                <div class="faq-actions">
+                    <a id="edit-btn" class="btn btn-outline-info" href="#"><i class="bi bi-pencil-square"></i> Chỉnh sửa</a>
+                    <form id="delete-form" method="post" asp-action="Delete" asp-route-id="" style="display:inline;">
+                        <button type="submit" class="btn btn-outline-danger" id="delete-btn" onclick="return confirmDelete();">
+                            <i class="bi bi-trash"></i> Xóa
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="faq-img">
+                <img id="faq-thumbnail" src="~/assets/images/faqs/faq1.jpg" alt="FAQ Thumbnail" />
+            </div>
+        </div>
+    }
+    else
+    {   
+        <div class="col-12" style="margin-top: 20px;">
+            <p class="text-center" style="font-size: 25px;">Không tìm thấy dữ liệu cần tìm</p>
+        </div>
+    }
 </div>
 
-<div class="d-flex justify-content-center mt-4">
+
+<!-- Phân trang -->
+<div class="d-flex justify-content-center my-4 mt-5">
     <ul class="pagination">
-        @if ((int)ViewData["CurrentPage"]! > 1)
+        @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"]! > 1)
         {
             <li class="page-item">
                 <a class="page-link" href="@Url.Action("Index", new { page = 1 })">Đầu</a>
@@ -166,14 +246,18 @@
             </li>
         }
 
-        @for (int i = 1; i <= (int)ViewData["TotalPages"]!; i++)
+        @if ((int)ViewData["TotalPages"]! > 1)
         {
-            <li class="page-item @(i == (int)ViewData["CurrentPage"]! ? "active" : "")">
-                <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
-            </li>
+            int totalPages = (int)ViewData["TotalPages"]!;
+            for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == (int)ViewData["CurrentPage"]! ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                </li>
+            }
         }
 
-        @if ((int)ViewData["CurrentPage"]! < (int)ViewData["TotalPages"]!)
+        @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"]! < (int)ViewData["TotalPages"]!)
         {
             <li class="page-item">
                 <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"]! + 1 })">Sau</a>
@@ -192,21 +276,23 @@
         const faqAnswer = document.getElementById('faq-answer');
         const faqCreated = document.getElementById('faq-created');
         const faqUpdated = document.getElementById('faq-updated');
+        const faqThumbnail = document.getElementById('faq-thumbnail'); // Thẻ ảnh
         const editBtn = document.getElementById('edit-btn');
         const deleteForm = document.getElementById('delete-form');
-        const deleteBtn = document.getElementById('delete-btn');
 
         function updateDetails(item) {
             const question = item.dataset.question;
             const answer = item.dataset.answer;
             const created = item.dataset.created;
             const updated = item.dataset.updated || "N/A";
+            const thumbnail = item.dataset.thumbnail || "~/assets/images/faqs/faq1.jpg"; // Đường dẫn ảnh
             const id = item.dataset.id;
 
             faqTitle.textContent = question;
-            faqAnswer.textContent = `Trả lời: ${answer}`;
+            faqAnswer.textContent = `${answer}`;
             faqCreated.textContent = `Ngày tạo: ${created}`;
             faqUpdated.textContent = `Ngày cập nhật: ${updated}`;
+            faqThumbnail.src = thumbnail; // Cập nhật ảnh
             editBtn.href = `/TblFaqs/Edit/${id}`;
             deleteForm.action = `/TblFaqs/Delete/${id}`;
         }
@@ -219,7 +305,7 @@
             });
 
             if (index === 0) {
-                item.click();
+                item.click(); // Chọn FAQ đầu tiên khi tải trang
             }
         });
     });

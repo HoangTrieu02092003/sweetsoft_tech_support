@@ -11,6 +11,10 @@ wwwroot\assets\images\backgrounds\rocket.png
 wwwroot\assets\images\blog\blog-img1.jpg
 wwwroot\assets\images\blog\blog-img2.jpg
 wwwroot\assets\images\blog\blog-img3.jpg
+wwwroot\assets\images\faqs\125315429_1762580700565898_2636578599932985705_o.jpg
+wwwroot\assets\images\faqs\faq1.jpg
+wwwroot\assets\images\faqs\faq2.jpg
+wwwroot\assets\images\faqs\faq3.jpg
 wwwroot\assets\images\logos\logo-light.svg
 wwwroot\assets\images\logos\seodashlogo.png
 wwwroot\assets\images\products\s1.jpg
@@ -190,7 +194,6 @@ wwwroot\assets\libs\apexcharts\src\modules\settings\Config.js
 wwwroot\assets\libs\apexcharts\src\modules\settings\Defaults.js
 wwwroot\assets\libs\apexcharts\src\modules\settings\Globals.js
 wwwroot\assets\libs\apexcharts\src\modules\settings\Options.js
-wwwroot\assets\libs\apexcharts\src\modules\Theme.js
 wwwroot\assets\libs\apexcharts\src\modules\TimeScale.js
 wwwroot\assets\libs\apexcharts\src\modules\TitleSubtitle.js
 wwwroot\assets\libs\apexcharts\src\modules\Toolbar.js
@@ -202,6 +205,7 @@ wwwroot\assets\libs\apexcharts\src\modules\tooltip\Position.js
 wwwroot\assets\libs\apexcharts\src\modules\tooltip\README.md
 wwwroot\assets\libs\apexcharts\src\modules\tooltip\Tooltip.js
 wwwroot\assets\libs\apexcharts\src\modules\tooltip\Utils.js
+wwwroot\assets\libs\apexcharts\src\modules\Theme.js
 wwwroot\assets\libs\apexcharts\src\modules\ZoomPanSelection.js
 wwwroot\assets\libs\apexcharts\src\svgjs\svg.js
 wwwroot\assets\libs\apexcharts\src\utils\DateTime.js
@@ -417,8 +421,8 @@ wwwroot\assets\libs\bootstrap\scss\_spinners.scss
 wwwroot\assets\libs\bootstrap\scss\_tables.scss
 wwwroot\assets\libs\bootstrap\scss\_toasts.scss
 wwwroot\assets\libs\bootstrap\scss\_tooltip.scss
-wwwroot\assets\libs\bootstrap\scss\_transitions.scss
 wwwroot\assets\libs\bootstrap\scss\_type.scss
+wwwroot\assets\libs\bootstrap\scss\_transitions.scss
 wwwroot\assets\libs\bootstrap\scss\_utilities.scss
 wwwroot\assets\libs\bootstrap\scss\_variables.scss
 wwwroot\assets\libs\bootstrap\scss\_variables-dark.scss
@@ -427,8 +431,8 @@ wwwroot\assets\libs\bootstrap\scss\bootstrap-grid.scss
 wwwroot\assets\libs\bootstrap\scss\bootstrap-reboot.scss
 wwwroot\assets\libs\bootstrap\scss\bootstrap-utilities.scss
 wwwroot\assets\libs\bootstrap\scss\forms\_floating-labels.scss
-wwwroot\assets\libs\bootstrap\scss\forms\_form-check.scss
 wwwroot\assets\libs\bootstrap\scss\forms\_form-control.scss
+wwwroot\assets\libs\bootstrap\scss\forms\_form-check.scss
 wwwroot\assets\libs\bootstrap\scss\forms\_form-range.scss
 wwwroot\assets\libs\bootstrap\scss\forms\_form-select.scss
 wwwroot\assets\libs\bootstrap\scss\forms\_form-text.scss
@@ -601,8 +605,8 @@ wwwroot\assets\libs\jquery\src\var\isWindow.js
 wwwroot\assets\libs\jquery\src\var\ObjectFunctionString.js
 wwwroot\assets\libs\jquery\src\var\pnum.js
 wwwroot\assets\libs\jquery\src\var\push.js
-wwwroot\assets\libs\jquery\src\var\rcheckableType.js
 wwwroot\assets\libs\jquery\src\var\rcssNum.js
+wwwroot\assets\libs\jquery\src\var\rcheckableType.js
 wwwroot\assets\libs\jquery\src\var\rnothtmlwhite.js
 wwwroot\assets\libs\jquery\src\var\slice.js
 wwwroot\assets\libs\jquery\src\var\support.js
