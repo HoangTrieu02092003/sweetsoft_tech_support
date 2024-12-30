@@ -16,16 +16,14 @@ namespace admin_sweetsoft_tech_support.Controllers
     {
         private readonly RequestContext _context;
         private readonly ILogger<AdminController> _logger;
-        private readonly LogService _logService;
         private readonly SessionService _sessionService;
         private readonly IConfiguration _configuration;
 
-        public AdminController(RequestContext context, ILogger<AdminController> logger,LogService logService, SessionService sessionService, IConfiguration configuration)
+        public AdminController(RequestContext context, ILogger<AdminController> logger,SessionService sessionService, IConfiguration configuration)
         {
             _context = context;
             _logger = logger;
             _configuration = configuration;
-            _logService = logService;
             _sessionService = sessionService;
         }
 
@@ -119,7 +117,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             _context.Update(user);
             await _context.SaveChangesAsync();
             await _sessionService.DeleteSessionAsync(user.UserId);
-            await _logService.LogActionToFile(user.UserId,"Đăng nhập thành công", $"Người dùng {user.FullName} đã đăng nhập thành công.");
             await _sessionService.CreateSessionAsync(user.UserId, Guid.NewGuid().ToString());
 
             // Tạo các Claims và Identity cho người dùng đã đăng nhập
@@ -146,7 +143,6 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var username = User.Identity.Name;
-            await _logService.LogActionToFile(userId, "Đăng xuất", $"Người dùng {username} đã đăng xuất thành công.");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
@@ -255,7 +251,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             user.ResetTokenExpiry = null;
             _context.TblUsers.Update(user);
             await _context.SaveChangesAsync();
-            await _logService.LogActionToDatabase(user.UserId,"Cập nhật hồ sơ", $"Người dùng {user.FullName} đã thay đổi mật khẩu.");
             return RedirectToAction("Login");
         }
 

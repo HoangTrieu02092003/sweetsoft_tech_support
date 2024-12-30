@@ -14,7 +14,7 @@ namespace admin_sweetsoft_tech_support.Attributes
         // Phương thức log vào file
         public async Task LogActionToFile(string tableName, int recordId, string actionType, int? changedBy, string oldValue, string newValue)
         {
-            var logMessage = $"{DateTime.Now}: TableName = {tableName}, RecordId = {recordId}, ActionType = {actionType}, ChangedBy = {changedBy}, OldValue = {oldValue}, NewValue = {newValue}";
+            var logMessage = $"{DateTime.UtcNow}: TableName = {tableName}, RecordId = {recordId}, ActionType = {actionType}, ChangedBy = {changedBy}, OldValue = {oldValue}, NewValue = {newValue}";
 
             var logFilePath = Path.Combine(Directory.GetCurrentDirectory(), "logs", "auditApplication.log");
 
@@ -40,7 +40,7 @@ namespace admin_sweetsoft_tech_support.Attributes
                 RecordId = recordId,
                 ActionType = actionType,
                 ChangedBy = changedBy,
-                ChangedAt = DateTime.Now,
+                ChangedAt = DateTime.UtcNow,
                 OldValue = oldValue,
                 NewValue = newValue
             };

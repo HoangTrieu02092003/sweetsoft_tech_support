@@ -3,7 +3,11 @@
 @{
     ViewData["Title"] = "Thông báo của tôi";
 }
-
+<style>
+    .bold-text{
+        font-weight: bold;
+    }
+</style>
 <h1>Thông báo của tôi</h1>
 
 @if (!Model.Any())
@@ -15,18 +19,38 @@ else
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Nội dung</th>
-                <th>Trạng thái</th>
-                <th>Thời gian</th>
+                <th>
+                    <a href="?sortColumn=Message&sortOrder=@(
+                        ViewData["SortOrder"] as string == "asc" && 
+                        ViewData["SortColumn"] as string == "Message" ? "desc" : "asc")">
+                        Nội dung
+                    </a>
+                </th>
+                <th>
+                    <a href="?sortColumn=Status&sortOrder=@(
+                        ViewData["SortOrder"] as string == "asc" && 
+                        ViewData["SortColumn"] as string == "Status" ? "desc" : "asc")">
+                        Trạng thái
+                    </a>
+                </th>
+                <th>
+                    <a href="?sortColumn=CreatedAt&sortOrder=@(
+                        ViewData["SortOrder"] as string == "asc" && 
+                        ViewData["SortColumn"] as string == "CreatedAt" ? "desc" : "asc")">
+                        Thời gian
+                    </a>
+                </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var notification in Model)
             {
-                <tr>
-                    <td>@notification.Message</td>
-                    <td>@(notification.Status == 0 ? "Chưa đọc" : "Đã đọc")</td>
-                    <td>@notification.CreatedAt?.ToString("yyyy-MM-dd HH:mm")</td>
+                <tr class="@(notification.Status == 0 ? "bold-text" : "")"
+                    style="cursor: pointer;"
+                    onclick="window.location.href='@Url.Action("Index", "TblSupportRequests")'">
+                    <td>@notification.Message</td> 
+                    <td>@(notification.Status == 0 ? "Chưa đọc" : "Đã đọc")</td> 
+                    <td>@notification.CreatedAt?.ToString("yyyy-MM-dd HH:mm")</td> 
                 </tr>
             }
         </tbody>

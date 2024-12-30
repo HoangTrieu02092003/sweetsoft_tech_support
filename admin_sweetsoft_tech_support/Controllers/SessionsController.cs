@@ -52,11 +52,12 @@ namespace admin_sweetsoft_tech_support.Controllers
             var totalPages = (int)Math.Ceiling(totalUsers / (double)pageSize);
 
             // Chuyển dữ liệu sang View
+            ViewData["name"] = name;
+            ViewData["status"] = status;
             ViewData["TotalPages"] = totalPages;
             ViewData["CurrentPage"] = page;
             return View(await requestContext.ToListAsync());
         }
-
 
         // Kết thúc Session
         [HttpPost]

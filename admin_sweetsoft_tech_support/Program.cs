@@ -36,7 +36,6 @@ builder.Services.AddSession(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<RequestContext>();
-builder.Services.AddScoped<LogService>();
 builder.Services.AddScoped<AuditLogService>();
 builder.Services.AddScoped<SessionService>();
 builder.Services.AddScoped<NotificationService>();

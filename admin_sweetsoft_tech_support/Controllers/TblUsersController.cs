@@ -13,13 +13,11 @@ namespace admin_sweetsoft_tech_support.Controllers
     public class TblUsersController : Controller
     {
         private readonly RequestContext _context;
-        private readonly LogService _logService;
         private readonly AuditLogService _auditLogService;
 
-        public TblUsersController(RequestContext context, LogService logService, AuditLogService auditLogService)
+        public TblUsersController(RequestContext context, AuditLogService auditLogService)
         {
             _context = context;
-            _logService = logService;
             _auditLogService = auditLogService;
         }
 
@@ -99,7 +97,6 @@ namespace admin_sweetsoft_tech_support.Controllers
                 tblUser.UpdatedAt = DateTime.Now; // Mặc định là ngày hiện tại
                 _context.Add(tblUser);
                 await _context.SaveChangesAsync();
-                await _logService.LogActionToDatabase(currentUserId, "Thêm người dùng",$"{User.Identity.Name} đã thực hiện thêm người dùng");
                 await _auditLogService.LogAuditAction("TblUsers",tblUser.UserId, "INSERT",currentUserId,"", Newtonsoft.Json.JsonConvert.SerializeObject(tblUser));
                 return RedirectToAction(nameof(Index));
             }
@@ -175,7 +172,6 @@ namespace admin_sweetsoft_tech_support.Controllers
                     _context.Update(existingUser);
                     await _context.SaveChangesAsync();
                     var newValue = Newtonsoft.Json.JsonConvert.SerializeObject(existingUser);
-                    await _logService.LogActionToDatabase(int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0"), "Cập nhật người dùng", $"{User.Identity.Name} đã thực hiện sửa người dùng");
                     await _auditLogService.LogAuditAction("TblUsers", tblUser.UserId, "UPDATE", int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0"), oldValue, newValue);
                 }
                 catch (DbUpdateConcurrencyException)

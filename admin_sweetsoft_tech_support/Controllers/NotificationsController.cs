@@ -1,8 +1,11 @@
-﻿using admin_sweetsoft_tech_support.Models;
+﻿using admin_sweetsoft_tech_support.Attributes;
+using admin_sweetsoft_tech_support.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Dynamic;
+using System.Globalization;
 using System.Security.AccessControl;
 using System.Security.Claims;
 
@@ -67,7 +70,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(new Tuple<List<dynamic>, List<dynamic>>(logs, paginatedFileLogs));
         }
 
-        public IActionResult MyNotifications()
+        public IActionResult MyNotifications(string sortColumn, string sortOrder)
         {
             // Lấy thông tin userId từ người dùng đang đăng nhập
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -106,18 +109,29 @@ namespace admin_sweetsoft_tech_support.Controllers
 
                         if (userIdLog == userId)
                         {
-                            notifications.Add(new TblNotification
+                            DateTime parsedDateTime;
+                            if (DateTime.TryParseExact(dateTime, "MM/dd/yyyy h:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDateTime))
                             {
-                                UserId = int.Parse(userIdLog),
-                                Message = message,
-                                Status = short.Parse(status),
-                                CreatedAt = DateTime.Parse(dateTime),
-                            });
+                                notifications.Add(new TblNotification
+                                {
+                                    UserId = int.Parse(userIdLog),
+                                    Message = message,
+                                    Status = short.Parse(status),
+                                    CreatedAt = parsedDateTime,
+                                });
+                            }
                         }
                     }
                 }
-            }
 
+                if (!string.IsNullOrEmpty(sortColumn))
+                {
+                    notifications = TableSorter.Sort(notifications, sortColumn, sortOrder);
+                }
+
+            }
+            ViewData["SortColumn"] = sortColumn;
+            ViewData["SortOrder"] = sortOrder;
             ViewBag.Notifications = notifications;
             return View(notifications);
         }
@@ -146,14 +160,18 @@ namespace admin_sweetsoft_tech_support.Controllers
                         var status = logDetails.FirstOrDefault(detail => detail.StartsWith("status"))?.Split('=')[1].Trim();
                         var createByUser = await _context.TblUsers.FindAsync(int.Parse(userId));
                         var user = createByUser?.FullName;
-                        logs.Add(new
+                        DateTime parsedDateTime;
+                        if (DateTime.TryParseExact(dateTime, "MM/dd/yyyy h:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDateTime))
                         {
-                            UserId = userId,
-                            Message = message,
-                            Status = status,
-                            CreatedAt = DateTime.Parse(dateTime),
-                            User = new { FullName = user },
-                        });
+                            logs.Add(new
+                            {
+                                UserId = userId,
+                                Message = message,
+                                Status = status,
+                                CreatedAt = parsedDateTime,
+                                User = new { FullName = user },
+                            });
+                        }
                     }
                 }
             }

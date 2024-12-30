@@ -13,7 +13,7 @@ namespace admin_sweetsoft_tech_support.Attributes
         // Phương thức log vào file
         public async Task LogActionToFile(int userId, int requestId, string action)
         {
-            var logMessage = $"{DateTime.Now}: UserId = {userId}, RequestId = {requestId}, Action = {action}";
+            var logMessage = $"{DateTime.UtcNow}: UserId = {userId}, RequestId = {requestId}, Action = {action}";
 
             var logFilePath = Path.Combine(Directory.GetCurrentDirectory(), "logs", "activity.log");
 
@@ -38,7 +38,7 @@ namespace admin_sweetsoft_tech_support.Attributes
                 UserId = userId,
                 RequestId = requestId,
                 Action = action,
-                CreatedAt = DateTime.Now
+                CreatedAt = DateTime.UtcNow
             };
 
             _context.TblActivityLogs.Add(log);

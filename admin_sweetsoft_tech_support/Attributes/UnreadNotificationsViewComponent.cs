@@ -22,7 +22,7 @@ namespace admin_sweetsoft_tech_support.Attributes
             if (!string.IsNullOrEmpty(userId))
             {
                 unreadCount = _context.TblNotifications
-                    .Where(n => n.UserId == int.Parse(userId))
+                    .Where(n => n.UserId == int.Parse(userId) && n.Status == 0)
                     .Count();
             }
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "notification.log");
@@ -41,7 +41,7 @@ namespace admin_sweetsoft_tech_support.Attributes
                         var userIdLog = logDetails.FirstOrDefault(detail => detail.StartsWith("UserId"))?.Split('=')[1].Trim();
                         var status = logDetails.FirstOrDefault(detail => detail.StartsWith("Status"))?.Split('=')[1].Trim();
 
-                        if (userIdLog == userId)
+                        if (userIdLog == userId && status == "0")
                         {
                             unreadCount++;
                         }

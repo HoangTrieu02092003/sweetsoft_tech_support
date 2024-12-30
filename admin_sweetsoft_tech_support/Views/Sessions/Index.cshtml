@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<TblSession>
-
+@using admin_sweetsoft_tech_support.Attributes
 @{
     ViewData["Title"] = "Quản lý Phiên làm việc";
 }
@@ -27,18 +27,27 @@
     <!-- Bộ lọc và tìm kiếm -->
     <form method="get" asp-action="Index">
         <div class="row mb-3">
-            <div class="col-md-4">
-                <input type="text" name="name" class="form-control" placeholder="Lọc theo tên" />
+            <div class="col-md-3">
+                @Html.GenerateFilterTextbox(
+                    id: "name",
+                    name: "name",
+                    placeholder: "Tìm theo tên....",
+                    value: ViewData["name"]?.ToString() ?? "",
+                    includeCancelButton: false
+                )
             </div>
-            <div class="col-md-4">
-                <select name="status" class="form-control">
-                    <option value="">Trạng thái (Tất cả)</option>
-                    <option value="active">Còn hiệu lực</option>
-                    <option value="expired">Hết hạn</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary">Lọc</button>
+            <div class="col-md-3">
+                @Html.GenerateFilterDropdown(
+                id: "status",
+                name: "status",
+                options: new Dictionary<string, string>
+                    {
+                        {"active","Còn hiệu lực"},
+                        {"expired","Hết hạn"}
+                    },
+                selectedValue: ViewData["status"]?.ToString() ?? "",
+                includeCancelButton: false
+                )
             </div>
         </div>
     </form>

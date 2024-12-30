@@ -1,5 +1,6 @@
 ﻿using admin_sweetsoft_tech_support.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using System.Security.Claims;
 
 namespace admin_sweetsoft_tech_support.Attributes
@@ -36,15 +37,20 @@ namespace admin_sweetsoft_tech_support.Attributes
                         var userIdLog = logDetails.FirstOrDefault(detail => detail.StartsWith("UserId"))?.Split('=')[1].Trim();
                         var message = logDetails.FirstOrDefault(detail => detail.StartsWith("Message"))?.Split('=')[1].Trim();
                         var status = logDetails.FirstOrDefault(detail => detail.StartsWith("status"))?.Split('=')[1].Trim();
+                        
                         if (userIdLog == userId)
                         {
-                            logs.Add(new
+                            DateTime parsedDateTime;
+                            if (DateTime.TryParseExact(dateTime, "MM/dd/yyyy h:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDateTime))
                             {
-                                UserId = userIdLog,
-                                Message = message,
-                                Status = status,
-                                CreatedAt = DateTime.Parse(dateTime),
-                            });
+                                logs.Add(new
+                                {
+                                    UserId = userIdLog,
+                                    Message = message,
+                                    Status = status,
+                                    CreatedAt = parsedDateTime,
+                                });
+                            }
                         }
                     }
                 }

@@ -1,4 +1,5 @@
 ﻿@model Tuple<List<dynamic>, List<dynamic>>
+@using admin_sweetsoft_tech_support.Attributes
 @{
     ViewData["Title"] = "Quản lý Audit Logs";
     var dbPagination = (Pagination)ViewData["DbPagination"];
@@ -51,31 +52,41 @@
         <!-- Tab 1: Cơ sở dữ liệu -->
         <div class="tab-pane fade show active" id="database" role="tabpanel" aria-labelledby="database-tab">
             <!-- Form tìm kiếm -->
-            <form method="get" class="mt-4">
-                <div class="row g-3">
-                    <div class="col-12 col-md-3">
-                        <input type="text" name="tableName" class="form-control" placeholder="Lọc theo bảng" />
+            <form method="get" class="m-3" id="filterForm">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="tableName" class="form-label">Bảng</label>
+                        @Html.GenerateFilterTextbox(
+                                 id: "tableName",
+                                 name: "tableName",
+                                 placeholder: "Lọc theo bảng",
+                                 value: ViewData["tableName"]?.ToString() ?? "",
+                                 includeCancelButton: false
+                                 )
                     </div>
-                    <div class="col-12 col-md-3">
-                        <input type="text" name="changedBy" class="form-control" placeholder="Lọc theo người thay đổi" />
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <select name="actionType" class="form-control">
-                            <option value="">-- Lọc theo hành động --</option>
-                            <option value="INSERT">Thêm</option>
-                            <option value="UPDATE">Chỉnh sửa</option>
-                            <option value="DELETE">Xóa</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-1">
-                        <button type="submit" class="btn btn-primary w-100">Lọc</button>
-                    </div>
+
+                    <div class="col-md-3">
+                        <label for="actionType" class="form-label">Hành động</label>
+                        @Html.GenerateFilterDropdown(
+                                 id: "actionType",
+                                 name: "actionType",
+                                 options: new Dictionary<string, string>
+                        {
+                        { "INSERT", "Thêm" },
+                        { "UPDATE", "Chỉnh sửa" },
+                        { "DELETE", "Xóa" }
+                        },
+                                 placeholder: "-- Lọc theo hành động --",
+                                 selectedValue: ViewData["actionType"]?.ToString() ?? "",
+                                 includeCancelButton: false
+                                 )
+                    </div>  
                 </div>
             </form>
 
             <!-- Danh sách Audit Logs -->
             <div class="table-responsive mt-4">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped" id="auditLogList">
                     <thead class="thead-dark">
                         <tr>
                             <th>Bảng</th>
@@ -102,7 +113,7 @@
                 </table>
             </div>
             <!-- Phân trang -->
-            <div class="d-flex justify-content-center my-4">
+            <div class="d-flex justify-content-center my-4" id="dbPagination">
                 <ul class="pagination">
                     @if (ViewData["DbPagination"] != null)
                     {
@@ -141,7 +152,7 @@
         <!-- Tab 2: Từ File -->
         <div class="tab-pane fade" id="file" role="tabpanel" aria-labelledby="file-tab">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped mt-4">
+                <table class="table table-bordered table-striped mt-4" id="auditLogList">
                 <thead class="thead-dark">
                     <tr>
                         <th>Bảng</th>
@@ -164,7 +175,7 @@
             </table>
             </div>
             <!-- Phân trang -->
-            <div class="d-flex justify-content-center my-4">
+            <div class="d-flex justify-content-center my-4" id="filePagination">
                 @if (filePagination.TotalPages > 1)
                 {
                     <ul class="pagination">
@@ -203,3 +214,55 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function loadAuditLogs(page, filePage) {
+        var tableName = $('#tableName').val();
+        var actionType = $('#actionType').val();
+
+        $.ajax({
+            url: '@Url.Action("Index", "AuditLogs")',
+            data: {
+                tableName: tableName,
+                actionType: actionType,
+                page: page,
+                filePage: filePage,
+                isAjaxRequest: true
+            },
+            success: function (response) {
+                // Cập nhật lại danh sách log và phân trang từ dữ liệu trả về
+                $('#auditLogList').empty(); // Xóa danh sách cũ
+                $.each(response.Logs, function (index, log) {
+                    var logHtml = '<tr>' +
+                        '<td>' + log.TableName + '</td>' +
+                        '<td>' + log.RecordId + '</td>' +
+                        '<td>' + log.ActionType + '</td>' +
+                        '<td>' + log.ChangedByNavigation.FullName + '</td>' +
+                        '<td>' + log.ChangedAt + '</td>' +
+                        '</tr>';
+                    $('#auditLogList').append(logHtml);
+                });
+
+                // Cập nhật phân trang
+                $('#dbPagination').text('Page ' + response.DbPagination.CurrentPage + ' of ' + response.DbPagination.TotalPages);
+                $('#filePagination').text('Page ' + response.FilePagination.CurrentPage + ' of ' + response.FilePagination.TotalPages);
+            }
+        });
+    }
+
+    // Gọi AJAX khi thay đổi trang hoặc bộ lọc
+    $(document).ready(function () {
+        // Đặt sự kiện cho thay đổi trang
+        $('#dbPagination, #filePagination').on('click', function () {
+            var page = $(this).data('page');
+            var filePage = $(this).data('filePage');
+            loadAuditLogs(page, filePage);
+        });
+
+        // Đặt sự kiện cho việc lọc
+        $('#filterInput').on('input', function () {
+            loadAuditLogs(1, 1); // Tải lại trang đầu tiên
+        });
+    });
+</script>

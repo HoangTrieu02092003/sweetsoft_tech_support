@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OfficeOpenXml;
 using System.Dynamic;
+using System.Globalization;
 using System.Security.Claims;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -22,7 +23,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             _auditLogService = auditLogService;
         }
         // Danh sách Audit Logs
-        public async Task<IActionResult> Index(string tableName, string actionType, int page = 1, int filePage = 1)
+        public async Task<IActionResult> Index(string tableName, string actionType, int page = 1, int filePage = 1, bool isAjaxRequest = false)
         {
             var auditLogs = _context.TblAuditLogs.AsQueryable();
 
@@ -40,6 +41,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                .Skip((filePage - 1) * 10)
                .Take(10)
                .ToList();
+
             var logs = logsFromDb.Select(log =>
             {
                 dynamic logItem = new ExpandoObject();
@@ -56,13 +58,29 @@ namespace admin_sweetsoft_tech_support.Controllers
             }).ToList();
 
             var totalUsers = await auditLogs.CountAsync();
-
-            // Tính tổng số trang
             var totalPages = (int)Math.Ceiling((double)totalUsers / 10);
             var FileTotalPages = (int)Math.Ceiling((double)logsFromFile.Count / 10);
 
+            // Dữ liệu cần thiết để gửi về view hoặc trả lại qua AJAX
+            var paginationData = new
+            {
+                DbPagination = new Pagination { CurrentPage = page, TotalPages = totalPages },
+                FilePagination = new Pagination { CurrentPage = filePage, TotalPages = FileTotalPages },
+                Logs = logs,
+                FileLogs = paginatedFileLogs
+            };
+
+            if (isAjaxRequest)
+            {
+                return Json(paginationData); // Trả về dữ liệu dưới dạng JSON cho AJAX
+            }
+
+            // Nếu không phải AJAX request, trả về toàn bộ view
+            ViewData["tableName"] = tableName;
+            ViewData["actionType"] = actionType;
             ViewData["DbPagination"] = new Pagination { CurrentPage = page, TotalPages = totalPages };
             ViewData["FilePagination"] = new Pagination { CurrentPage = filePage, TotalPages = FileTotalPages };
+
             return View(new Tuple<List<dynamic>, List<dynamic>>(logs, paginatedFileLogs));
         }
 
@@ -93,17 +111,21 @@ namespace admin_sweetsoft_tech_support.Controllers
                         var changedBy = logDetails.FirstOrDefault(detail => detail.StartsWith("ChangedBy"))?.Split('=')[1].Trim();
                         var changedByUser = await _context.TblUsers.FindAsync(int.Parse(changedBy));
                         var changedByNavigation = changedByUser?.FullName;
-                        logs.Add(new
+                        DateTime parsedDateTime;
+                        if (DateTime.TryParseExact(dateTime, "MM/dd/yyyy h:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDateTime))
                         {
-                            TableName = tableName,
-                            RecordId = recordId,
-                            ActionType = actionType,
-                            OldValue = oldValue,
-                            NewValue = newValue,
-                            ChangedBy = changedBy,
-                            ChangedByNavigation = new { FullName = changedByNavigation },
-                            ChangedAt = DateTime.Parse(dateTime),
-                        });
+                            logs.Add(new
+                            {
+                                TableName = tableName,
+                                RecordId = recordId,
+                                ActionType = actionType,
+                                OldValue = oldValue,
+                                NewValue = newValue,
+                                ChangedBy = changedBy,
+                                ChangedByNavigation = new { FullName = changedByNavigation },
+                                ChangedAt = parsedDateTime,
+                            });
+                        }
                     }
                 }
             }

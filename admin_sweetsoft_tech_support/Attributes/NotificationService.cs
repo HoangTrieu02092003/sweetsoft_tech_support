@@ -14,7 +14,7 @@ namespace admin_sweetsoft_tech_support.Attributes
         // Phương thức log vào file
         public async Task LogActionToFile(int userId, string message, short? status = 0)
         {
-            var logMessage = $"{DateTime.Now}: UserId = {userId}, Message = {message}, Status = {status}";
+            var logMessage = $"{DateTime.UtcNow}: UserId = {userId}, Message = {message}, Status = {status}";
 
             var logFilePath = Path.Combine(Directory.GetCurrentDirectory(), "logs", "notification.log");
 
@@ -39,7 +39,7 @@ namespace admin_sweetsoft_tech_support.Attributes
                 UserId = userId,
                 Message = message,
                 Status = status,
-                CreatedAt = DateTime.Now,
+                CreatedAt = DateTime.UtcNow,
             };
 
             _context.TblNotifications.Add(notificationLog);
