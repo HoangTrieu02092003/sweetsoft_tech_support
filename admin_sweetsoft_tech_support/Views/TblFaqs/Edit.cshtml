@@ -1,0 +1,89 @@
+﻿@model admin_sweetsoft_tech_support.Models.TblFaq
+
+@{
+    ViewData["Title"] = "Chỉnh sửa FAQ";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+<style>
+    h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #6a1b9a;
+    }
+
+    .card {
+        border-radius: 0.5rem;
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-label {
+        color: #333;
+        font-weight: bold;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #4e555b;
+        }
+
+    .text-danger {
+        font-size: 0.9rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+</style>
+
+<h1 class="text-center">Chỉnh sửa FAQ</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="FaqId" />
+                <div class="form-group">
+                    <label asp-for="Question" class="form-label">Câu hỏi</label>
+                    <input asp-for="Question" class="form-control" />
+                    <span asp-validation-for="Question" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Answer" class="form-label">Câu trả lời</label>
+                    <textarea rows="4" asp-for="Answer" class="form-control"></textarea>
+                    <span asp-validation-for="Answer" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreatedAt" class="form-label">Ngày tạo</label>
+                    <input asp-for="CreatedAt" type="datetime-local" class="form-control" readonly />
+                    <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UpdatedAt" class="form-label">Ngày cập nhật</label>
+                    <input asp-for="UpdatedAt" type="datetime-local" class="form-control" readonly />
+                    <span asp-validation-for="UpdatedAt" class="text-danger"></span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

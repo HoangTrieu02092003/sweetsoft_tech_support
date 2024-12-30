@@ -1,0 +1,230 @@
+﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblFaq>
+
+@{
+    ViewData["Title"] = "Quản lý FAQs";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+    .faq-wrapper {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .faq-list {
+        width: 30%;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .faq-item {
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item:hover,
+        .faq-item.active {
+            background-color: #ffd700;
+            color: #000;
+        }
+
+    .faq-detail {
+        min-height: 300px;
+        width: 70%;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-answer {
+        white-space: pre-wrap;
+        height: 100px;
+        overflow-y: auto;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .faq-actions a {
+        margin-right: 10px;
+    }
+
+    .btn-edit {
+        background-color: #ffc107;
+        color: #000;
+        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: #fff;
+        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .filter-section .row {
+        align-items: flex-end;
+    }
+
+    .filter-section .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filter-section .btn {
+        padding: 10px 20px;
+    }
+</style>
+
+<h1 class="text-center" style="color: #6a1b9a; font-weight: bold;">Quản lý FAQs</h1>
+
+<div style="text-align: right; margin-bottom: 20px;">
+    <a class="btn btn-warning" asp-action="Create"><i class="bi bi-plus-circle"></i> Tạo mới</a>
+</div>
+
+<div class="filter-section mb-4">
+    <form method="get">
+        <div class="row align-items-end">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="searchTerm" class="form-label">Tìm kiếm câu hỏi</label>
+                    <input type="text" id="searchTerm" name="searchTerm" class="form-control" value="@ViewData["SearchTerm"]">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="createdFrom" class="form-label">Ngày tạo từ</label>
+                    <input type="date" id="createdFrom" name="createdFrom" class="form-control" value="@ViewData["CreatedFrom"]">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="createdTo" class="form-label">Đến</label>
+                    <input type="date" id="createdTo" name="createdTo" class="form-control" value="@ViewData["CreatedTo"]">
+                </div>
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary w-100">Lọc</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="faq-wrapper">
+    <div class="faq-list">
+        @foreach (var item in Model)
+        {
+            <div class="faq-item" data-id="@item.FaqId"
+                 data-question="@item.Question"
+                 data-answer="@item.Answer"
+                 data-created="@item.CreatedAt.ToString("dd/MM/yyyy")"
+                 data-updated="@item.UpdatedAt?.ToString("dd/MM/yyyy")">
+                @item.Question
+            </div>
+        }
+    </div>
+
+    <div class="faq-detail">
+        <h3 id="faq-title"></h3>
+        <p class="faq-answer" id="faq-answer"></p>
+        <p id="faq-created"></p>
+        <p id="faq-updated"></p>
+        <div class="faq-actions">
+            <a id="edit-btn" class="btn-edit" href="#">Chỉnh sửa</a>
+            <form id="delete-form" method="post" asp-action="Delete" asp-route-id="" style="display:inline;">
+                <button type="submit" class="btn-delete" id="delete-btn" onclick="return confirmDelete();">Xóa</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+    <ul class="pagination">
+        @if ((int)ViewData["CurrentPage"]! > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = 1 })">Đầu</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"]! - 1 })">Trước</a>
+            </li>
+        }
+
+        @for (int i = 1; i <= (int)ViewData["TotalPages"]!; i++)
+        {
+            <li class="page-item @(i == (int)ViewData["CurrentPage"]! ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+            </li>
+        }
+
+        @if ((int)ViewData["CurrentPage"]! < (int)ViewData["TotalPages"]!)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"]! + 1 })">Sau</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"]! })">Cuối</a>
+            </li>
+        }
+    </ul>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const faqItems = document.querySelectorAll('.faq-item');
+        const faqTitle = document.getElementById('faq-title');
+        const faqAnswer = document.getElementById('faq-answer');
+        const faqCreated = document.getElementById('faq-created');
+        const faqUpdated = document.getElementById('faq-updated');
+        const editBtn = document.getElementById('edit-btn');
+        const deleteForm = document.getElementById('delete-form');
+        const deleteBtn = document.getElementById('delete-btn');
+
+        function updateDetails(item) {
+            const question = item.dataset.question;
+            const answer = item.dataset.answer;
+            const created = item.dataset.created;
+            const updated = item.dataset.updated || "N/A";
+            const id = item.dataset.id;
+
+            faqTitle.textContent = question;
+            faqAnswer.textContent = `Trả lời: ${answer}`;
+            faqCreated.textContent = `Ngày tạo: ${created}`;
+            faqUpdated.textContent = `Ngày cập nhật: ${updated}`;
+            editBtn.href = `/TblFaqs/Edit/${id}`;
+            deleteForm.action = `/TblFaqs/Delete/${id}`;
+        }
+
+        faqItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                faqItems.forEach(faq => faq.classList.remove('active'));
+                item.classList.add('active');
+                updateDetails(item);
+            });
+
+            if (index === 0) {
+                item.click();
+            }
+        });
+    });
+
+    function confirmDelete() {
+        return confirm('Bạn có chắc muốn xóa mục FAQs này không?');
+    }
+</script>
