@@ -2,15 +2,13 @@
 
 @{
     ViewData["Title"] = "Quản lý Yêu cầu Hỗ trợ";
-    ViewData["TitleSortParm"] = String.IsNullOrEmpty(ViewData["CurrentSort"] as string) ? "title_desc" : "";
-    ViewData["StatusSortParm"] = ViewData["CurrentSort"] as string == "Status" ? "status_desc" : "Status";
-    ViewData["CreatedSortParm"] = ViewData["CurrentSort"] as string == "Created" ? "created_desc" : "Created";
-    ViewData["ResolvedSortParm"] = ViewData["CurrentSort"] as string == "Resolved" ? "resolved_desc" : "Resolved";
-    ViewData["CustomerSortParm"] = ViewData["CurrentSort"] as string == "Customer" ? "customer_desc" : "Customer";
-    ViewData["DepartmentSortParm"] = ViewData["CurrentSort"] as string == "Department" ? "department_desc" : "Department";
+    ViewData["TitleSortParm"] = String.IsNullOrEmpty(ViewData["SortOrder"] as string) ? "title_desc" : "title_asc";
+    ViewData["StatusSortParm"] = ViewData["SortOrder"] as string == "status_asc" ? "status_desc" : "status_asc";
+    ViewData["CreatedSortParm"] = ViewData["SortOrder"] as string == "date_asc" ? "date_desc" : "date_asc";
     int currentPage = ViewData["CurrentPage"] as int? ?? 1;
     int totalPages = ViewData["TotalPages"] as int? ?? 1;
 }
+
 @if (TempData["ErrorMessage"] != null)
 {
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -62,16 +60,9 @@
                     <th>
                         <a asp-action="Index" asp-route-sortOrder="@ViewData["CreatedSortParm"]">Ngày tạo</a>
                     </th>
-                    <th>
-                        <a asp-action="Index" asp-route-sortOrder="@ViewData["ResolvedSortParm"]">Ngày giải quyết</a>
-                    </th>
-                    <th>
-                        <a asp-action="Index" asp-route-sortOrder="@ViewData["CustomerSortParm"]">Khách hàng</a>
-                    </th>
-                    <th>
-                        <a asp-action="Index" asp-route-sortOrder="@ViewData["DepartmentSortParm"]">Phòng ban</a>
-                    </th>
-
+                    <th>Ngày giải quyết</th>
+                    <th>Khách hàng</th>
+                    <th>Phòng ban</th>
                     <th>Hành động</th>
                 </tr>
             </thead>
@@ -84,7 +75,7 @@
                             <td>
                                 @{
                                     string detailsText = item.RequestTitle;
-                                    if (detailsText.Length > 30) // Assuming 50 is the max length before truncation
+                                    if (detailsText.Length > 30)
                                     {
                                         detailsText = detailsText.Substring(0, 30) + "...";
                                     }
@@ -125,7 +116,6 @@
                                         <i class="bi bi-check-circle"></i>
                                     </button>
                                 </form>
-
                             </td>
                         </tr>
                     }
@@ -167,7 +157,7 @@
 
     <!-- Modal for selecting status -->
     <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="statusModalLabel">Chọn Trạng Thái</h5>
@@ -227,6 +217,7 @@
         </ul>
     </div>
 </div>
+
 @section Scripts {
     <script>
         function openStatusModal(event, requestId) {
@@ -256,4 +247,3 @@
         }
     </script>
 }
-
