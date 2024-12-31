@@ -9,16 +9,12 @@
 <head>
     <title>Thêm Yêu Cầu</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+
 
         .containerrr {
-            width: 80%;
+            width: 90%;
             margin: 0 auto;
-            padding: 20px;
+            padding: 20px 0;
         }
 
         .headerrr {
@@ -36,8 +32,8 @@
                 text-align: right;
             }
 
-        form {
-            padding: 20px;
+        .formm {
+            padding: 0 20px 20px 20px;
             border-radius: 5px;
             background: #f9f9f9;
         }
@@ -58,6 +54,7 @@
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 box-sizing: border-box;
+                max-width: -webkit-fill-available;
             }
 
         .form-actionss {
@@ -65,36 +62,62 @@
         }
 
         .add-buttonn, .submit-buttonn {
-            background-color: #6200ea;
-            color: white;
             padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
+            white-space: nowrap;
+            font-size: 15px;
+            color: black;
+            background-color: white;
+            border: 1px solid black;
             cursor: pointer;
         }
-
-        .add-buttonn {
-            margin-bottom: 20px;
-        }
+        
+            .add-buttonn:hover, .submit-buttonn:hover{
+                color: white;
+                background-color: #6510ad;
+                transition: .5s;
+            }
 
         .remove-buttonn {
-            background-color: #d32f2f;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 4px;
+            padding: 10px 15px;
+            white-space: nowrap;
+            font-size: 15px;
+            color: black;
+            background-color: white;
+            border: 1px solid black;
             cursor: pointer;
+            margin-top: .2rem;
         }
+
+            .remove-buttonn:hover{
+                color: white;
+                background-color: #6510ad;
+                transition: .5s;
+            }
 
         .section-title {
             font-weight: bold;
-            margin-bottom: 10px;
         }
 
         .d-flex {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin: .4rem 0;
+        }
+
+        textarea {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            overflow: hidden;
+            resize: vertical;
+            height:1.5rem;
+        }
+
+        .g-recaptcha {
+            max-width: 100%;
+            width: auto;
+            height: auto;
         }
     </style>
 </head>
@@ -134,10 +157,13 @@
             }
             <div class="zb_nr">
                 <div class="containerrr">
-                    <form id="requestForm" method="post" asp-action="Create">
-                        <h2 class="section-title">PHIẾU GỬI YÊU CẦU</h2>
+                    <form id="requestForm" class="formm" method="post" asp-action="Create">
+                        <div class="d-flex justify-content-between">
+                            <h2 class="section-title">PHIẾU GỬI YÊU CẦU</h2>
+                            <p style="border:1px solid black; padding: 5px 10px; border-radius: 4px;">@DateTime.Now.ToString("dd/MM/yyyy")</p>
+                        </div>
 
-                        <p class="section-title">Thông tin người yêu cầu</p>
+                        <p class="section-title" style="margin-bottom:30px; margin-top:20px;">Thông tin người yêu cầu</p>
                         <div class="form-group-inlinee">
                             <div class="form-group">
                                 <label for="name">Họ tên (*)</label>
@@ -180,7 +206,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Mô tả (*)</label>
-                                <textarea id="description" name="RequestDetails[]" required></textarea>
+                                <textarea class="textareaaa" id="description" name="RequestDetails[]" wrap="soft" required></textarea>
                             </div>
                             <input type="hidden" name="Status" value="0" />
                             <input type="hidden" name="IsDelete" value="false" />
@@ -189,11 +215,11 @@
                         </div>
 
                         <!-- Google reCAPTCHA -->
-                        <div class="g-recaptcha mb-3 w-100" style="min-width: 50px;" data-sitekey="@ViewBag.SiteKey" data-callback="verifyCaptcha"></div>
+                        <div class="g-recaptcha" data-sitekey="@ViewBag.SiteKey" data-callback="verifyCaptcha"></div>
                         <input type="hidden" id="recaptchaResponse" name="g-recaptcha-response" />
 
                         <div class="form-actionss">
-                            <button type="submit" class="submit-buttonn">Gửi yêu cầu</button>
+                            <button type="submit" class="submit-buttonn" style="margin-top: .4rem">Gửi yêu cầu</button>
                         </div>
                     </form>
                 </div>
@@ -213,14 +239,15 @@
         newRequest.classList.add("form-group", "request-entry");
 
         newRequest.innerHTML = `
-        <hr/>
+                <hr style="margin: .2rem 0;border: none; border-top: 2px dashed #ddd; "/>
             <label for="DepartmentId">Phòng ban</label>
             <select name="DepartmentId[]" class="form-control">${document.querySelector("#DepartmentId").innerHTML}</select>
-            <label for="title">Tiêu đề (*)</label>
+                <label style="margin-top: .2rem" for="title">Tiêu đề (*)</label>
             <input type="text" name="RequestTitle[]" required>
-            <label for="description">Mô tả (*)</label>
-            <textarea name="RequestDetails[]" required></textarea>
+                <label style="margin-top: .2rem" for="description">Mô tả (*)</label>
+                    <textarea class="textareaaa" name="RequestDetails[]" wrap="soft" required></textarea>
             <button type="button" class="remove-buttonn" onclick="this.parentElement.remove()">Xóa</button>
+
         `;
 
         requestDetailsDiv.appendChild(newRequest);

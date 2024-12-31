@@ -46,8 +46,13 @@
         .inner_main .rem12 .zb_nr .ycc .btn:hover {
             color: white;
             background-color: #6510ad;
-            transition: .5s
+            transition: .5s;
         }
+
+    .remove-buttonn {
+        width: 11%;
+        height: .4rem;
+    }
 }
 
 @media (min-width: 1130px) {
@@ -55,7 +60,7 @@
         min-height: 5.5rem;
     }
     .pp-title h2 {
-        padding-top: .5rem;
+        padding-top: .6rem;
     }
 }
 
@@ -81,17 +86,15 @@
 }
 
 @media (max-width: 800px) {
-    .iindex-video img{
+    .iindex-video img {
         margin-bottom: 1rem;
     }
-    .inner_main .rem12 .zb_nr .ycc{
+
+    .inner_main .rem12 .zb_nr .ycc {
         display: none;
     }
-    .inner_main .rem12 .zb_nr .zc .listmore {
-        display: block;
-        width: 70px;
-        height: 420px;
-    }
+
+
     .inner_main .rem12 .zb_nr .yccc .btn {
         width: 2rem;
         height: .5rem;
@@ -101,10 +104,11 @@
         background-color: #6510ad;
     }
 
-    .inner_main .rem12 .zb_nr .yccc .btn:hover {
-        color: white;
-        background-color: #6510ad;
-    }
+        .inner_main .rem12 .zb_nr .yccc .btn:hover {
+            color: white;
+            background-color: #6510ad;
+        }
+
     .inner_main .rem12 .zb_nr .yccc p {
         font-size: .17rem;
     }
@@ -117,6 +121,17 @@
         color: white;
         background-color: #6510ad;
         border: 1px solid black;
+    }
+
+    .alert-success {
+        margin-bottom : 1rem;
+    }
+
+    .textareaaa {
+        height: 3rem;
+    }
+    .inner_main .rem12 .zb_nr .zc ul li {
+        margin: 11.5px 0 10px 0;
     }
 }
 
