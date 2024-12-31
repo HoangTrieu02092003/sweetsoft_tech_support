@@ -292,8 +292,8 @@ D:\Sweetsoft\Customer_sweetsoft_tech_support\obj\Debug\net8.0\Customer_sweetsoft
 D:\Sweetsoft\Customer_sweetsoft_tech_support\obj\Debug\net8.0\ref\Customer_sweetsoft_tech_support.dll
 D:\Sweetsoft\sweetsoft_tech_support\Customer_sweetsoft_tech_support\bin\Debug\net8.0\appsettings.Development.json
 D:\Sweetsoft\sweetsoft_tech_support\Customer_sweetsoft_tech_support\bin\Debug\net8.0\appsettings.json
-D:\Sweetsoft\sweetsoft_tech_support\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Customer_sweetsoft_tech_support.staticwebassets.endpoints.json
 D:\Sweetsoft\sweetsoft_tech_support\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Customer_sweetsoft_tech_support.staticwebassets.runtime.json
+D:\Sweetsoft\sweetsoft_tech_support\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Customer_sweetsoft_tech_support.staticwebassets.endpoints.json
 D:\Sweetsoft\sweetsoft_tech_support\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Customer_sweetsoft_tech_support.exe
 D:\Sweetsoft\sweetsoft_tech_support\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Customer_sweetsoft_tech_support.deps.json
 D:\Sweetsoft\sweetsoft_tech_support\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Customer_sweetsoft_tech_support.runtimeconfig.json

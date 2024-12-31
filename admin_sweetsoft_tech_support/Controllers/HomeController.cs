@@ -28,5 +28,11 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult AccessDenied()
+        {
+            TempData["ErrorMessage"] = "B?n không có quy?n truy c?p vào ch?c n?ng này.";
+            return View();
+        }
+
     }
 }

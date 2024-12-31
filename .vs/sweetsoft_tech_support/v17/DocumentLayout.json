@@ -1,0 +1,334 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Sweetsoft\\sweetsoft_tech_support\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\controllers\\tblcustomerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\controllers\\tblcustomerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\views\\tblcustomers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\tblcustomers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\views\\tblcustomers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\tblcustomers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\views\\home\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\home\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\attributes\\permissionauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\attributes\\permissionauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\models\\tbluser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\models\\tbluser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\models\\tbldepartment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\models\\tbldepartment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\models\\tblcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\models\\tblcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\models\\requestcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\models\\requestcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\views\\tblcustomers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\tblcustomers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\models\\tblauditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\models\\tblauditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\views\\tblcustomers\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\tblcustomers\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\models\\tblsupportrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\models\\tblsupportrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\views\\shared\\_layout_admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\shared\\_layout_admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\index_user.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\wwwroot\\css\\index_user.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-31T09:18:12.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\TblCustomers\\Edit.cshtml",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\TblCustomers\\Edit.cshtml",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\TblCustomers\\Edit.cshtml",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\TblCustomers\\Edit.cshtml",
+              "ViewState": "AgIAABMBAAAAAAAAAAAAABABAABmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-30T00:33:08.525Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TblDepartment.cs",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Models\\TblDepartment.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Models\\TblDepartment.cs",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Models\\TblDepartment.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Models\\TblDepartment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T01:11:27.462Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TblCustomer.cs",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Models\\TblCustomer.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Models\\TblCustomer.cs",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Models\\TblCustomer.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Models\\TblCustomer.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T01:22:10.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TblCustomersController.cs",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Controllers\\TblCustomersController.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\TblCustomersController.cs",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Controllers\\TblCustomersController.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Controllers\\TblCustomersController.cs",
+              "ViewState": "AgIAABMBAAAAAAAAAADwv04BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T17:26:30.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Program.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Program.cs",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Program.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Program.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAADwvy0AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T15:02:08.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T10:14:25.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PermissionAuthorizeAttribute.cs",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Attributes\\PermissionAuthorizeAttribute.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Attributes\\PermissionAuthorizeAttribute.cs",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Attributes\\PermissionAuthorizeAttribute.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Attributes\\PermissionAuthorizeAttribute.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-31T02:09:09.814Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\TblCustomers\\Index.cshtml",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\TblCustomers\\Index.cshtml",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\TblCustomers\\Index.cshtml",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\TblCustomers\\Index.cshtml",
+              "ViewState": "AgIAAJIAAAAAAAAAAAAAAK4AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-29T14:28:49.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AccessDenied.cshtml",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\Home\\AccessDenied.cshtml",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\Home\\AccessDenied.cshtml",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\Home\\AccessDenied.cshtml",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\Home\\AccessDenied.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-31T03:17:23.709Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RequestContext.cs",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Models\\RequestContext.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Models\\RequestContext.cs",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Models\\RequestContext.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Models\\RequestContext.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T11:24:48.146Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\TblCustomers\\Create.cshtml",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\TblCustomers\\Create.cshtml",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\TblCustomers\\Create.cshtml",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\TblCustomers\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-29T17:23:13.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TblUser.cs",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Models\\TblUser.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Models\\TblUser.cs",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Models\\TblUser.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Models\\TblUser.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADsAAAB0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T16:36:23.387Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TblAuditLog.cs",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Models\\TblAuditLog.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Models\\TblAuditLog.cs",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Models\\TblAuditLog.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Models\\TblAuditLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T16:36:51.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\TblCustomers\\Delete.cshtml",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\TblCustomers\\Delete.cshtml",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\TblCustomers\\Delete.cshtml",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\TblCustomers\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-30T01:20:25.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "TblSupportRequest.cs",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Models\\TblSupportRequest.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Models\\TblSupportRequest.cs",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Models\\TblSupportRequest.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Models\\TblSupportRequest.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T16:17:10.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "index_user.css",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\index_user.css",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\wwwroot\\css\\index_user.css",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\wwwroot\\css\\index_user.css",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\wwwroot\\css\\index_user.css",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAwDQAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-12-29T14:28:58.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-30T01:32:19.175Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "_Layout_admin.cshtml",
+              "DocumentMoniker": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\Shared\\_Layout_admin.cshtml",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\Shared\\_Layout_admin.cshtml",
+              "ToolTip": "D:\\Sweetsoft\\sweetsoft_tech_support\\admin_sweetsoft_tech_support\\Views\\Shared\\_Layout_admin.cshtml",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\Shared\\_Layout_admin.cshtml",
+              "ViewState": "AgIAALEAAAAAAAAAAAAuwNIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-29T14:35:25.82Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

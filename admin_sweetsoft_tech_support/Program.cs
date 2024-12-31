@@ -1,4 +1,4 @@
-using admin_sweetsoft_tech_support.Models;
+ï»¿using admin_sweetsoft_tech_support.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
@@ -9,7 +9,7 @@ builder.Services.AddDbContext<RequestContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionDB"))
 );
 
-// Thêm ch?ng ch?
+// ThÃªm ch?ng ch?
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ConfigureHttpsDefaults(httpsOptions =>
@@ -18,13 +18,13 @@ builder.WebHost.ConfigureKestrel(options =>
     });
 });
 
-// Thêm d?ch v? Authentication v?i Cookie Authentication
+// ThÃªm d?ch v? Authentication v?i Cookie Authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.LoginPath = "/dang-nhap"; // Trang ??ng nh?p
         options.LogoutPath = "/Admin/Logout"; // Trang ??ng xu?t
-        options.AccessDeniedPath = "/dang-nhap"; // N?u không có quy?n, chuy?n ??n trang ??ng nh?p
+        options.AccessDeniedPath = "/dang-nhap"; // N?u khÃ´ng cÃ³ quy?n, chuy?n ??n trang ??ng nh?p
     });
 
 builder.Services.AddHttpContextAccessor();
@@ -55,6 +55,11 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "Denied",
+    pattern: "quyen-han",
+    defaults: new { controller = "Home", action = "AccessDenied" });
 
 app.MapControllerRoute(
     name: "CustomLogin",

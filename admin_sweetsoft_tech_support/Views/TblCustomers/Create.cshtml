@@ -4,6 +4,16 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout_admin.cshtml";
 }
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+}
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @successMessage
+    </div>
+}
 
 <style>
     body {
@@ -214,22 +224,22 @@
                 <select asp-for="CreatedBy" class="form-control" asp-items="ViewBag.CreatedUser"></select>
             </div>
 
-            <div class="form-group" hidden>
-                <label asp-for="CreatedAt" class="control-label">Ngày tạo</label>
-                <input asp-for="CreatedAt" class="form-control" />
-                <span asp-validation-for="CreatedAt" class="text-danger"></span>
-            </div>
+                <div class="form-group" hidden>
+                    <label asp-for="CreatedAt" class="control-label text-dark">Ngày tạo</label>
+                    <input asp-for="CreatedAt" class="form-control" type="datetime-local" value="@DateTime.Now.ToString("dd/MM/yyyy HH:mm")" readonly />
+                    <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                </div>
 
             <div class="form-group" hidden>
                 <label asp-for="UpdatedBy" class="control-label">Người cập nhật</label>
                 <select asp-for="UpdatedBy" class="form-control" asp-items="ViewBag.UpdatedUser"></select>
             </div>
 
-            <div class="form-group" hidden>
-                <label asp-for="UpdatedAt" class="control-label">Ngày cập nhật</label>
-                <input asp-for="UpdatedAt" class="form-control" />
-                <span asp-validation-for="UpdatedAt" class="text-danger"></span>
-            </div>
+                <div class="form-group" hidden>
+                    <label asp-for="UpdatedAt" class="control-label text-dark">Ngày cập nhật</label>
+                    <input asp-for="UpdatedAt" class="form-control" value="1" />
+                    <span asp-validation-for="UpdatedAt" class="text-danger"></span>
+                </div>
 
             <!-- Nút tạo khách hàng -->
             <div class="form-group">

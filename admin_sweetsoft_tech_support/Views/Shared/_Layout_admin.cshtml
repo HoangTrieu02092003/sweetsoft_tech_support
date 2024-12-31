@@ -6,12 +6,39 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SeoDash - Admin Template</title>
+    <title>Admin</title>
     <link rel="shortcut icon" type="image/png" href="~/images/logos/seodashlogo.png">
     <!-- Bootstrap CSS -->
     <link href="~/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/styles.min.css">
+    <style>
+        .logo-img img {
+            width: 80%;
+            height: auto;
+        }
+
+        .notification-tooltip {
+            line-height: 2.5;
+            padding: 0 3px;
+            font-size: 16px;
+            display: none; /* Ẩn thông báo ngắn gọn ban đầu */
+            position: absolute;
+            top: 8%;
+            left: 60px;
+            background-color: rgba(0, 0, 0, 0.8); /* Màu nền tối với độ trong suốt */
+            color: white; /* Màu chữ trắng */
+            border-radius: 5px;
+            white-space: nowrap; /* Không cho phép xuống dòng */
+            z-index: 1; /* Đảm bảo rằng nó nằm trên các phần tử khác */
+        }
+
+        .nav-item:hover .notification-tooltip {
+            display: block;
+        }
+
+    </style>
 </head>
+
 
 <body>
     <!--  Body Wrapper -->
@@ -21,7 +48,7 @@
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="./index.html" class="text-nowrap logo-img">
-                        <img src="~/images/logos/logo-light.svg" alt="Logo">
+                        <img src="~/assets/images/logos/sweetsoft-logo-dark.svg" alt="Logo">
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -34,28 +61,81 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./index.html" aria-expanded="false">
-                                <span><iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon></span>
-                                <span class="hide-menu">Dashboard</span>
+                            <a class="sidebar-link" asp-action="Index1" asp-controller="Report" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Báo cáo</span>
                             </a>
-                        </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
-                            <span class="hide-menu">Điều Hướng</span>
+                            <span class="hide-menu">Quản lý log</span>
                         </li>
 
                         <!-- Thêm phần mình làm ở đây nhen mn -->
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="~/TblUsers/index" aria-expanded="false">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="Logs" aria-expanded="false">
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
-                                <span class="hide-menu">Users</span>
+                                <span class="hide-menu">Quản lý hoạt động</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="AuditLogs" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Quản lý nhật ký kiểm tra</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="Sessions" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Quản lý Session</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="Notifications" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Quản lý thông báo</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="ActivityLogs" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Nhật ký yêu cầu hỗ trợ</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
+                            <span class="hide-menu">Quản Lý</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="TblCustomers" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Quản lý khách hàng</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="TblSupportRequests" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Quản lý yêu cầu</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="TblDepartments" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Quản lý phòng ban</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="TblUsers" aria-expanded="false">
+                                <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
+                                <span class="hide-menu">Quản lý người dùng</span>
                             </a>
                         </li>
                         <!-- Thêm phần mình làm ở đây nhen mn -->
+
                     </ul>
                 </nav>
             </div>
         </aside>
+        
         <!-- Sidebar End -->
         <!-- Main Wrapper -->
         <div class="body-wrapper">
@@ -72,15 +152,16 @@
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                             <li class="nav-item dropdown">
-                                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="~/images/profile/user-1.jpg" alt="User" width="35" height="35" class="rounded-circle">
-                                    <p>@HttpContextAccessor.HttpContext.Session.GetString("Username")</p>
-
-                                </a>
+                                    <a class="nav-link" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="~/assets/images/profile/user-1.jpg" alt="User" width="35" height="35" class="rounded-circle m-2">
+                                        <span class="d-lg-block d-none">
+                                            @User.Identity.Name
+                                        </span>
+                                    </a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                                    <li><a class="dropdown-item" href="~/TblUsers/MyAccount"><i class="ti ti-user fs-6"></i> My Profile</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="ti ti-mail fs-6"></i> My Account</a></li>
-                                    <li><a class="dropdown-item" href="~/Admin/Logout"><i class="ti ti-list-check fs-6"></i> Log out</a></li>
+                                    <li><a class="dropdown-item" asp-action="MyAccount" asp-controller="TblUsers"><i class="ti ti-user fs-6"></i> Hồ sơ</a></li>
+                                    <li><a class="dropdown-item" asp-action="ForgotPassword" asp-controller="Admin"><i class="ti ti-lock fs-6"></i> Reset mật khẩu</a></li>
+                                    <li><a class="dropdown-item" asp-action="Logout" asp-controller="Admin"><i class="ti ti-logout fs-6"></i> Đăng xuất</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -96,11 +177,33 @@
     </div>
 
     <!-- Scripts -->
-    <script src="~/libs/jquery/dist/jquery.min.js"></script>
-    <script src="~/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/scripts.js"></script>
-    <script src="~/js/sidebarmenu.js"></script>
-    <script src="~/js/app.min.js"></script>
+    <script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/scripts.js"></script>
+    <script src="~/assets/js/sidebarmenu.js"></script>
+    <script src="~/assets/js/app.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var notificationIcons = document.querySelectorAll('.nav-icon-hover');
+
+            notificationIcons.forEach(function (icon) {
+                icon.addEventListener('mouseenter', function () {
+                    var tooltip = icon.querySelector('.notification-tooltip');
+                    if (tooltip) {
+                        tooltip.style.display = 'block';
+                    }
+                });
+
+                icon.addEventListener('mouseleave', function () {
+                    var tooltip = icon.querySelector('.notification-tooltip');
+                    if (tooltip) {
+                        tooltip.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
     @RenderSection("Scripts", required: false)
 </body>
 
