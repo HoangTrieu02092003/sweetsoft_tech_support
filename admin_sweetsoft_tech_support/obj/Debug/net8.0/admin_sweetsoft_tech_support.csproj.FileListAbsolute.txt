@@ -717,3 +717,7 @@ D:\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\refint\a
 D:\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\admin_sweetsoft_tech_support.pdb
 D:\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\admin_sweetsoft_tech_support.genruntimeconfig.cache
 D:\sweetsoft_tech_support\admin_sweetsoft_tech_support\obj\Debug\net8.0\ref\admin_sweetsoft_tech_support.dll
+D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\bin\Debug\net8.0\NLog.dll
+D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\bin\Debug\net8.0\NLog.Extensions.Logging.dll
+D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\bin\Debug\net8.0\NLog.Web.AspNetCore.dll
+D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\bin\Debug\net8.0\System.Linq.Dynamic.Core.dll

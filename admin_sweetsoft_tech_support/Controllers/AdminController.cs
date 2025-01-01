@@ -17,13 +17,13 @@ namespace admin_sweetsoft_tech_support.Controllers
     {
         private readonly RequestContext _context;
         private readonly SessionService _sessionService;
-        private readonly AuditLogService _auditLogService;
+        private readonly LogService _logService;
         private readonly IConfiguration _configuration;
 
-        public AdminController(RequestContext context, AuditLogService auditLogService, SessionService sessionService, IConfiguration configuration)
+        public AdminController(RequestContext context, LogService logService, SessionService sessionService, IConfiguration configuration)
         {
             _context = context;
-            _auditLogService = auditLogService;
+            _logService = logService;
             _configuration = configuration;
             _sessionService = sessionService;
         }
@@ -131,7 +131,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
             // Đăng nhập và lưu thông tin vào Cookie
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
-            _auditLogService.LogAction("Login", User.Identity.Name, "Đăng nhập thành công");
+            _logService.LogAuditAction("Login", User.Identity.Name, "Đăng nhập thành công");
             TempData["UserId"] = user.UserId;
             TempData["IsAdmin"] = user.IsAdmin == true ? "true" : "false";
             var returnUrl = TempData["ReturnUrl"]?.ToString() ?? Url.Action("Index1", "Report");
@@ -143,7 +143,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var username = User.Identity.Name;
-            _auditLogService.LogAction("Logout", username, "Đăng xuất thành công");
+            _logService.LogAuditAction("Logout", username, "Đăng xuất thành công");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
         }

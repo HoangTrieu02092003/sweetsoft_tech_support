@@ -11,12 +11,12 @@ namespace admin_sweetsoft_tech_support.Controllers
     public class TblUsersController : Controller
     {
         private readonly RequestContext _context;
-        private readonly AuditLogService _auditLogService;
+        private readonly LogService _logService;
 
-        public TblUsersController(RequestContext context, AuditLogService auditLogService)
+        public TblUsersController(RequestContext context, LogService logService)
         {
             _context = context;
-            _auditLogService = auditLogService;
+            _logService = logService;
         }
         // GET: TblUsers
         public async Task<IActionResult> Index(string status, string search, int page = 1)
@@ -110,7 +110,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 tblUser.UpdatedAt = DateTime.Now; // Mặc định là ngày hiện tại
                 _context.Add(tblUser);
                 await _context.SaveChangesAsync();
-                _auditLogService.LogAction("Thêm",User.Identity.Name, $"Thêm thành công nhân viên {tblUser.FullName}","Nhân viên", " ", Newtonsoft.Json.JsonConvert.SerializeObject(tblUser));
+                _logService.LogAuditAction("Thêm",User.Identity.Name, $"Thêm thành công nhân viên {tblUser.FullName}","Nhân viên", " ", Newtonsoft.Json.JsonConvert.SerializeObject(tblUser));
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblUser.CreatedUser);
@@ -206,7 +206,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                     // Ghi log chỉ khi có thay đổi
                     if (changes.Count > 0)
                     {
-                        _auditLogService.LogAction(
+                        _logService.LogAuditAction(
                             "Sửa",
                             User.Identity.Name,
                             $"Sửa nhân viên {tblUser.FullName} thành công",

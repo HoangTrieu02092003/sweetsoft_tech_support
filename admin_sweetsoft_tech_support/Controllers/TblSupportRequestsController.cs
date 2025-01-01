@@ -13,12 +13,12 @@ namespace admin_sweetsoft_tech_support.Controllers
     public class TblSupportRequestsController : Controller
     {
         private readonly RequestContext _context;
-        private readonly NotificationService _notificationService;
+        private readonly LogService _logService;
 
-        public TblSupportRequestsController(RequestContext context, NotificationService notificationService)
+        public TblSupportRequestsController(RequestContext context, LogService logService)
         {
             _context = context;
-            _notificationService = notificationService;
+            _logService = logService;
         }
 
         //// GET: TblSupportRequests
@@ -139,7 +139,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
                 if (departmentManager != null)
                 {
-                    await _notificationService.LogActionToFile(departmentManager.UserId, "Bạn có yêu cầu mới");
+                    _logService.LogNotificationAction(departmentManager.FullName, "Bạn có yêu cầu mới");
                 }
                 return RedirectToAction(nameof(Index), new { page = currentPage });
             }
