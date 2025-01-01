@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\LayoutUser\\img\\dqwz_bg.png"
     },
     {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\faq.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\faq.jpg"
+    },
+    {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\giaiphap.png",
       "PackagePath": "staticwebassets\\LayoutUser\\img\\giaiphap.png"
     },
@@ -91,6 +95,18 @@
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner.jpg",
       "PackagePath": "staticwebassets\\LayoutUser\\img\\inner.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner2.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\inner2.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner3.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\inner3.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner4.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\inner4.jpg"
     },
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\inner_dqwz.png",
@@ -327,6 +343,10 @@
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\lib\\wow\\wow.min.js",
       "PackagePath": "staticwebassets\\LayoutUser\\lib\\wow\\wow.min.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\dpybt.vsb.css",
+      "PackagePath": "staticwebassets\\LayoutUser\\style\\dpybt.vsb.css"
     },
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\index.css",

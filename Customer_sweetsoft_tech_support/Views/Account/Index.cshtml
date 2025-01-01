@@ -1,0 +1,283 @@
+﻿@model Customer_sweetsoft_tech_support.Models.TblCustomer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<!DOCTYPE html>
+<html style="font-size: 95px;">
+<head>
+    <title>Tài Khoản</title>
+    <style>
+        /* Căn chỉnh và kiểu dáng cho thông báo */
+        .alert {
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Thông báo thành công */
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-success::before {
+            content: '✔️';
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        /* Thông báo lỗi */
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .alert-danger::before {
+            content: '❌';
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        /* Hiệu ứng fade-in */
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Nút đóng thông báo */
+        .alert .close {
+            margin-left: auto;
+            background: none;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            color: inherit;
+            line-height: 1;
+        }
+
+    </style>
+</head>
+
+<body class="show">
+    <div class="inner_bn">
+        <img src="~/layoutuser/img/inner2.jpg" />
+    </div>
+    <div class="inner_main">
+        <div class="rem12">
+            <div class="dqwz">
+                <a href="@Url.Action("Index", "Home")">Trang Chủ</a>
+                /
+                <a href="@Url.Action("Index", "Account")">Tài Khoản</a>
+            </div>
+
+            <div class="zb_nr">
+                <div class="zc fl">
+                    <ul>
+                        <li class="on">
+                            <a href="javascript:void(0)">Tài Khoản</a>
+                        </li>
+                    </ul>
+                </div>
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success">
+                        @TempData["SuccessMessage"]
+                        <button type="button" class="close" onclick="this.parentElement.style.display='none';">&times;</button>
+                    </div>
+
+                }
+
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger">
+                        @TempData["ErrorMessage"]
+                        <button type="button" class="close" onclick="this.parentElement.style.display='none';">&times;</button>
+                    </div>
+                }
+
+                <div class="yc fr ycc">
+                    <div class="dpybt">
+                        <div class="con">
+                            <h1>Thông Tin Cá Nhân</h1>
+                            <div id="vsb_content_12383_u91">
+                                <div id="vsb_content">
+                                    <form asp-action="Edit" asp-route-id="@Model.CustomerId" method="post">
+                                        <table>
+                                            <tr>
+                                                <td style="white-space: nowrap;">Tài khoản hỗ trợ</td>
+                                                <td style="background-color: #d4d3d3" ;><input style="width:100%;" name="Username" value="@Model.Username" readonly /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>ID</td>
+                                                <td style="background-color: #d4d3d3;"><input style="width:100%;" name="CustomerId" value="@Model.CustomerId" readonly /></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;">Họ và tên</td>
+                                                <td class="tdName"><input class="Name" style="width:100%;" name="FullName" value="@Model.FullName" data-original="" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;">Công Ty</td>
+                                                <td class="tdNameCT"><input class="NameCT" style="width:100%;" name="Company" value="@Model.Company" data-original="" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;">Địa chỉ Email</td>
+                                                <td><input style="width:100%;" name="Email" value="@Model.Email" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;">Số điện thoại</td>
+                                                <td><input style="width:100%;" name="Phone" value="@Model.Phone" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="text-align:right; white-space: nowrap; border:none">
+                                                    <button class="btn" type="submit">Thay đổi</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="50" align="right" class="tdline" colspan="2" style="word-break: break-all; white-space: nowrap;">
+                                                    (Dữ liệu được cập nhật lần cuối cùng vào @Model.UpdatedAt?.ToString("dd/MM/yyyy HH:mm"))
+                                                </td>
+                                            </tr>
+                                            <tr hidden>
+                                                <td><input style="width:100%;" name="TaxCode" value="@Model.TaxCode" /></td>
+                                            </tr>
+                                            <tr hidden>
+                                                <td><input style="width:100%;" name="Password" value="@Model.Password" /></td>
+                                            </tr>
+                                            <tr hidden>
+                                                <td><input style="width:100%;" name="Status" value="@Model.Status" /></td>
+                                            </tr>
+                                            <tr hidden>
+                                                <td><input style="width:100%;" name="IsDelete" value="@Model.IsDelete" /></td>
+                                            </tr>
+                                            <tr hidden>
+                                                <td><input style="width:100%;" name="ResetToken" value="@Model.ResetToken" /></td>
+                                            </tr>
+                                            <tr hidden>
+                                                <td><input style="width:100%;" name="ResetToken" value="@Model.Token" /></td>
+                                            </tr>
+                                            <tr hidden>
+                                                <td><input style="width:100%;" name="ResetTokenExpiry" value="@Model.ResetTokenExpiry" /></td>
+                                            </tr>
+                                            <tr hidden>
+                                                <td><input style="width:100%;" name="ResetTokenExpiry" value="@Model.TokenExpiry" /></td>
+                                            </tr>
+                                            <tr hidden>
+                                                <td><input style="width:100%;" name="CreatedBy" value="@Model.CreatedBy" /></td>
+                                            </tr>
+                                            <tr hidden>
+                                                <td><input style="width:100%;" name="UpdatedBy" value="@Model.UpdatedBy" /></td>
+                                            </tr>
+                                            <tr hidden>
+                                                <td><input style="width:100%;" name="CreatedAt" value="@Model.CreatedAt" /></td>
+                                            </tr>
+                                            <tr hidden>
+                                                <td><input style="width:100%;" name="UpdatedAt" value="@Model.UpdatedAt" /></td>
+                                            </tr>
+
+                                        </table>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="h1Account">Thông tin cá nhân</h1>
+                    <form asp-action="Edit" asp-route-id="@Model.CustomerId" method="post">
+                        <table class="tableAccount">
+                            <tr>
+                                <td style="white-space: nowrap;">Tài khoản hỗ trợ</td>
+                                <td style="background-color: #d4d3d3;"><input style="width:100%; " name="Username" value="@Model.Username" readonly /></td>
+                            </tr>
+                            <tr>
+                                <td>ID</td>
+                                <td style="background-color: #d4d3d3;"><input style="width:100%;" name="CustomerId" value="@Model.CustomerId" readonly /></td>
+                            </tr>
+                            <tr>
+                                <td style="white-space: nowrap;">Họ và tên</td>
+                                <td class="tdName"><input class="Name" style="width:100%;" name="FullName" value="@Model.FullName" data-original="" /></td>
+                            </tr>
+                            <tr>
+                                <td style="white-space: nowrap;">Công Ty</td>
+                                <td class="tdNameCT"><input class="NameCT" style="width:100%;" name="Company" value="@Model.Company" data-original="" /></td>
+                            </tr>
+                            <tr>
+                                <td style="white-space: nowrap;">Địa chỉ Email</td>
+                                <td><input style="width:100%;" name="Email" value="@Model.Email" /></td>
+                            </tr>
+                            <tr>
+                                <td style="white-space: nowrap;">Số điện thoại</td>
+                                <td><input style="width:100%;" name="Phone" value="@Model.Phone" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:right; white-space: nowrap; border:none">
+                                    <button class="btn" type="submit">Thay đổi</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="50" align="right" class="tdline" colspan="2" style="word-break: break-all; white-space: nowrap;">
+                                    (Dữ liệu được cập nhật lần cuối cùng vào @Model.UpdatedAt?.ToString("dd/MM/yyyy HH:mm"))
+                                </td>
+                            </tr>
+                            <tr hidden>
+                                <td><input style="width:100%;" name="TaxCode" value="@Model.TaxCode" /></td>
+                            </tr>
+                            <tr hidden>
+                                <td><input style="width:100%;" name="Password" value="@Model.Password" /></td>
+                            </tr>
+                            <tr hidden>
+                                <td><input style="width:100%;" name="Status" value="@Model.Status" /></td>
+                            </tr>
+                            <tr hidden>
+                                <td><input style="width:100%;" name="IsDelete" value="@Model.IsDelete" /></td>
+                            </tr>
+                            <tr hidden>
+                                <td><input style="width:100%;" name="ResetToken" value="@Model.ResetToken" /></td>
+                            </tr>
+                            <tr hidden>
+                                <td><input style="width:100%;" name="ResetToken" value="@Model.Token" /></td>
+                            </tr>
+                            <tr hidden>
+                                <td><input style="width:100%;" name="ResetTokenExpiry" value="@Model.ResetTokenExpiry" /></td>
+                            </tr>
+                            <tr hidden>
+                                <td><input style="width:100%;" name="ResetTokenExpiry" value="@Model.TokenExpiry" /></td>
+                            </tr>
+                            <tr hidden>
+                                <td><input style="width:100%;" name="CreatedBy" value="@Model.CreatedBy" /></td>
+                            </tr>
+                            <tr hidden>
+                                <td><input style="width:100%;" name="UpdatedBy" value="@Model.UpdatedBy" /></td>
+                            </tr>
+                            <tr hidden>
+                                <td><input style="width:100%;" name="CreatedAt" value="@Model.CreatedAt" /></td>
+                            </tr>
+                            <tr hidden>
+                                <td><input style="width:100%;" name="UpdatedAt" value="@Model.UpdatedAt" /></td>
+                            </tr>
+
+                        </table>
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

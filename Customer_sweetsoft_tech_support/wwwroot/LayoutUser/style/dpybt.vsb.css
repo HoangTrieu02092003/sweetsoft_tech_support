@@ -13,6 +13,15 @@ display:none;
 
 .inner_main .rem12 .zb_nr .yc p{    margin-bottom: .15rem;}
 .pb_sys_style1 .p_no_d,.pb_sys_style2 .p_no_d,.pb_sys_style3 .p_no_d,.pb_sys_style4 .p_no_d{border: 1px solid #5d14b0 !important;color: #fff;background-color: #5e13b0 !important;}
+.dpybt h1 {
+    font-size: .36rem;
+    line-height: .5rem;
+    color: #6510ad;
+    margin-bottom: .25rem;
+    margin-top: -.4rem;
+}
+
+
 .vsbcontent-table-container-outer { position: relative;}
 .vsbcontent-table-container
 {
@@ -41,8 +50,3 @@ display:none;
     background-image: -ms-linear-gradient(0deg, rgba(255,255,255,.5), #fff);
     background-image: -o-linear-gradient(0deg, rgba(255,255,255,.5), #fff);
     background-image: linear-gradient(0deg, rgba(255,255,255,.5), #fff);}
-.inner_main .rem12 .zb_nr .con .section h1 {
-    line-height: .38rem;
-    margin-top: -.5rem;
-}
-.inner_main .rem12 .yc .con table td.tdborder,.current .box .p2{    word-break: break-word !important;}
