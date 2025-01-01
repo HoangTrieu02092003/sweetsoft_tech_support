@@ -4,52 +4,150 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
-
-<div class="main-content">
-    <!-- Chi tiết bài viết -->
-    <div class="post-detail">
-        <img src="@(Model.FaqThumbnail ?? "/layoutuser/img/default-thumbnail.jpg")" alt="@Model.Question" class="post-image" />
-        <h1>@Model.Question</h1>
-        <div class="post-meta">
-            <span>Ngày tạo: @Model.CreatedAt.ToString("dd/MM/yyyy")</span> |
-            <span>Cập nhật: @Model.UpdatedAt?.ToString("dd/MM/yyyy")</span>
-        </div>
-        <p>@Model.Answer</p>
+<div class="show">
+    <div class="inner_bn">
+        <img src="~/layoutuser/img/inner4.jpg" />
     </div>
-
-    <!-- Nội dung khác -->
-    <div class="related-content">
-        <h2>Nội dung khác</h2>
-        <div class="related-card-container">
-            @foreach (var item in ViewBag.OtherFaqs as IEnumerable<Customer_sweetsoft_tech_support.Models.TblFaq>)
-            {
-                <div class="related-card">
-                    <img src="@(item.FaqThumbnail ?? "/layoutuser/img/default-thumbnail.jpg")" alt="@item.Question" class="related-card-img" />
-                    <h3>@item.Question</h3>
-                    <p>@item.Answer.Substring(0, Math.Min(100, item.Answer.Length))...</p>
-                    <a asp-action="Details" asp-route-id="@item.FaqId" class="btn-details">Xem</a>
+    <div class="inner_main">
+        <div class="rem12">
+            <div class="dqwz">
+                <a href="@Url.Action("Index", "Home")">Trang Chủ</a>
+                /
+                <a href="@Url.Action("Index", "TblFaqs")">FAQs</a>
+            </div>
+             <!-- Chi tiết bài viết -->
+            <div class="post-detail">
+                <div class="post-image-container">
+                    <img style="flex: 1" src="@(Model.FaqThumbnail == null ? "/layoutuser/img/faq.jpg" : Model.FaqThumbnail)" alt="@Model.Question" class="post-image" />
                 </div>
-            }
+                <div class="post-content">
+                    <h1>@Model.Question</h1>
+                    <div class="post-meta">
+                        <span style="font-size: 16px;">Cập nhật ngày: @Model.UpdatedAt?.ToString("dd/MM/yyyy")</span>
+                    </div>
+                    <p>@Model.Answer</p>
+                </div>
+            </div>
+
+            <!-- Nội dung khác -->
+            <div class="related-content">
+                <h2 style="margin-bottom: 30px;">Nội dung khác</h2>
+                <div class="related-card-container">
+                    @foreach (var item in ViewBag.OtherFaqs as IEnumerable<Customer_sweetsoft_tech_support.Models.TblFaq>)
+                    {
+                        <div class="related-card">
+                            <img src="@(item.FaqThumbnail ?? "/layoutuser/img/faq.jpg")" alt="@item.Question" class="related-card-img" />
+                            <h3>@item.Question</h3>
+                            <p>@item.Answer.Substring(0, Math.Min(100, item.Answer.Length))...</p>
+                            <a asp-action="Details" asp-route-id="@item.FaqId" class="btn-details">Xem</a>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 <style>
-    /* Chi tiết bài viết */
-    .main-content{
-        margin: 10%;
+    .card-container {
+        padding-top: .4rem;
+        padding-bottom: .5rem;
+        min-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
     }
+
+    .card {
+        width: 250px;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-title {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        min-height: 40px;
+        text-align: center;
+    }
+
+    .card-text {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 10px 20px;
+        color: #6a1b9a;
+        border: 1px solid #6a1b9a;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        text-align: center;
+    }
+
+    .btn:hover {
+        color: white;
+        background-color: #6a1b9a;
+        transform: scale(1.1);
+    }
+
+    .btn:active {
+        transform: scale(1);
+    }
+
 
     .post-detail {
-        max-width: 800px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 100%;
         text-align: justify;
+        gap: 20px;
+        margin-bottom: 5%;
     }
 
-    .post-image {
+    .post-image-container {
+        
         width: 100%;
         height: auto;
         border-radius: 5px;
         margin-bottom: 20px;
+        margin-top: 10%;
+    }
+
+    .post-content {
+        margin-top: 10%;
+        font-size: 1rem;
     }
 
     .post-meta {
@@ -58,16 +156,25 @@
         margin-bottom: 20px;
     }
 
-    /* Nội dung khác */
-    .related-content {
-        margin-top: 50px;
+    .post-content h1 {
+        font-size: .5rem; /* Adjust heading size as needed */
+        margin-bottom: 20px;
     }
+
+    .post-content p {
+        font-size: .3rem; /* Adjust paragraph size as needed */
+    }
+    /* Nội dung khác */
 
     .related-card-container {
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
         justify-content: center;
+    }
+
+    .related-content{
+        margin-bottom: 5%;
     }
 
     .related-card {
@@ -86,6 +193,7 @@
         object-fit: cover;
         border-radius: 5px;
         margin-bottom: 10px;
+        background-size: cover;
     }
 
     .btn-details {
@@ -99,7 +207,7 @@
         transition: background-color 0.3s ease;
     }
 
-    .btn-details:hover {
-        background-color: #473db3;
-    }
+        .btn-details:hover {
+            background-color: #473db3;
+        }
 </style>

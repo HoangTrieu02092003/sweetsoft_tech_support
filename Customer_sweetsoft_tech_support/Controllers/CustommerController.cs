@@ -72,8 +72,8 @@ namespace Customer_sweetsoft_tech_support.Controllers
             }
 
             // Kiểm tra mật khẩu
-            var hashPass = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            if (BCrypt.Net.BCrypt.Verify(password, hashPass)) // Sử dụng BCrypt để so sánh mật khẩu
+            //var hashPass = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            if (BCrypt.Net.BCrypt.Verify(password, user.Password)) // Sử dụng BCrypt để so sánh mật khẩu
             {
                 // Tạo các Claims và Identity cho người dùng đã đăng nhập
                 var claims = new List<Claim>
