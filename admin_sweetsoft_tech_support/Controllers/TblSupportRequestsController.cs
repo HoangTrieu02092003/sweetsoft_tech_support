@@ -134,6 +134,20 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 _context.Add(tblSupportRequest);
                 await _context.SaveChangesAsync();
+
+                var newRequestProcessing = new TblRequestsProcessing
+                {
+                    RequestId = tblSupportRequest.RequestId,
+                    DepartmentId = tblSupportRequest.DepartmentId,
+                    IsCompleted = 0, // Đánh dấu là chưa xử lý
+                    ProcessedAt = DateTime.Now,
+                    Note = "Yêu cầu được tạo mới"
+                };
+
+                // Lưu vào database
+                _context.TblRequestsProcessings.Add(newRequestProcessing);
+                await _context.SaveChangesAsync();
+
                 var departmentManager = _context.TblUsers
                     .FirstOrDefault(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.Role.RoleName == "Trưởng phòng");
 

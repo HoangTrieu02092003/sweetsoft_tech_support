@@ -62,7 +62,9 @@ namespace Customer_sweetsoft_tech_support.Controllers
             }
 
             var user = await _context.TblCustomers
-                .FirstOrDefaultAsync(u => u.Username == username && u.Status == 1);
+                .Where(u => u.Username == username && u.Status == 1)
+                .Select(u => new { u.CustomerId, u.FullName, u.Email, u.Password })
+                .FirstOrDefaultAsync();
 
             if (user == null)
             {
@@ -85,7 +87,11 @@ namespace Customer_sweetsoft_tech_support.Controllers
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = true, // Lưu cookie sau khi đóng trình duyệt
+                    ExpiresUtc = DateTime.UtcNow.AddDays(30) // Thời gian hết hạn cookie
+                };
                 // Đăng nhập và lưu thông tin vào Cookie
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
 
@@ -106,7 +112,6 @@ namespace Customer_sweetsoft_tech_support.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            HttpContext.Session.Clear();
             return RedirectToAction("Index", new {controller = "Home"});
         }
 
@@ -220,17 +225,22 @@ namespace Customer_sweetsoft_tech_support.Controllers
         // Hàm gửi email
         private async Task SendEmailAsync(string toEmail, string subject, string body)
         {
+            var emailSettings = _configuration.GetSection("EmailSettings");
+            var smtpServer = emailSettings["SmtpServer"];
+            var port = int.Parse(emailSettings["Port"]);
+            var fromEmail = emailSettings["FromEmail"];
+            var password = emailSettings["Password"];
             // Cấu hình SMTP client (Gmail SMTP)
-            using var client = new System.Net.Mail.SmtpClient("smtp.gmail.com")
+            using var client = new System.Net.Mail.SmtpClient(smtpServer)
             {
-                Port = 587,
-                Credentials = new System.Net.NetworkCredential("nhantrung890@gmail.com", "mika juyt thab rbit"),
+                Port = port,
+                Credentials = new System.Net.NetworkCredential(fromEmail, password),
                 EnableSsl = true,
             };
 
             var mailMessage = new System.Net.Mail.MailMessage
             {
-                From = new System.Net.Mail.MailAddress("nhantrung890@gmail.com", "Support Team"),
+                From = new System.Net.Mail.MailAddress(fromEmail, "Support Team"),
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true,

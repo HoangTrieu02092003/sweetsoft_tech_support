@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Customer_sweetsoft_tech_support.Models;
 using System.Security.Claims;
 using Newtonsoft.Json;
+using Customer_sweetsoft_tech_support.signalNotifications;
 
 namespace Customer_sweetsoft_tech_support.Controllers
 {
@@ -45,7 +46,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
-                TempData["ReturnUrl"] = Url.Action("Create", "TblSupportRequests");
+                TempData["ReturnUrl"] = Url.RouteUrl("addRequest");
                 return RedirectToAction("Login", "Custommer");
             }
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -101,8 +102,24 @@ namespace Customer_sweetsoft_tech_support.Controllers
                         ResolvedAt = null,
                     };
                     _context.Add(supportRequest);
+                    await _context.SaveChangesAsync();
+                    var requestProcessing = new TblRequestsProcessing
+                    {
+                        RequestId = supportRequest.RequestId, // Lấy ID của TblSupportRequest vừa lưu
+                        DepartmentId = int.Parse(departmentIds[i]),
+                        IsCompleted = 0, // Đánh dấu là chưa xử lý
+                        ProcessedAt = DateTime.Now,
+                        Note = "Yêu cầu được tạo mới"
+                    };
+
+                    _context.TblRequestsProcessings.Add(requestProcessing);
                 }
                 await _context.SaveChangesAsync();
+                var departmentManager = _context.TblUsers
+                    .FirstOrDefault(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.Role.RoleName == "Trưởng phòng");
+       
+                var logService = new LogNotificationService();
+                logService.LogNotificationAction(departmentManager?.FullName??"Khách hàng", "Khách hàng tạo yêu cầu mới");
                 TempData["success"] = "thành công";
                 return RedirectToAction(nameof(Create));
             }

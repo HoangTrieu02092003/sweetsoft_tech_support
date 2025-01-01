@@ -53,23 +53,8 @@ public partial class TblUser
 
     public virtual TblRole? Role { get; set; }
 
-    public virtual ICollection<TblActivityLog> TblActivityLogs { get; set; } = new List<TblActivityLog>();
-
-    public virtual ICollection<TblAuditLog> TblAuditLogs { get; set; } = new List<TblAuditLog>();
-
     public virtual ICollection<TblCustomer> TblCustomerCreatedByNavigations { get; set; } = new List<TblCustomer>();
 
     public virtual ICollection<TblCustomer> TblCustomerUpdatedByNavigations { get; set; } = new List<TblCustomer>();
-
-    public virtual ICollection<TblLog> TblLogs { get; set; } = new List<TblLog>();
-
-    public virtual ICollection<TblNotification> TblNotifications { get; set; } = new List<TblNotification>();
-
-    public virtual ICollection<TblRequestTransfer> TblRequestTransfers { get; set; } = new List<TblRequestTransfer>();
-
-    public virtual ICollection<TblSession> TblSessions { get; set; } = new List<TblSession>();
-
-    public virtual ICollection<TblUserPermission> TblUserPermissions { get; set; } = new List<TblUserPermission>();
-
     public virtual TblUser? UpdatedUserNavigation { get; set; }
 }

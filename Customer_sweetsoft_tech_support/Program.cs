@@ -1,4 +1,4 @@
-using Customer_sweetsoft_tech_support.Models;
+﻿using Customer_sweetsoft_tech_support.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,13 +10,13 @@ builder.Services.AddDbContext<RequestContext>(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Th�m d?ch v? Authentication v?i Cookie Authentication
+// Thêm d?ch v? Authentication v?i Cookie Authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/dang-nhap"; // Trang ??ng nh?p
-        options.LogoutPath = "/Custommer/Logout"; // Trang ??ng xu?t
-        options.AccessDeniedPath = "/dang-nhap"; // N?u kh�ng c� quy?n, chuy?n ??n trang ??ng nh?p
+        options.LoginPath = "/dang-nhap";
+        options.LogoutPath = "/Custommer/Logout"; 
+        options.AccessDeniedPath = "/dang-nhap"; 
         options.ExpireTimeSpan = TimeSpan.FromDays(30);
         options.SlidingExpiration = true;
     });
@@ -24,7 +24,27 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<RequestContext>();
 
+var date = DateTime.Now;
+string adminLogPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(),
+    $"../admin_sweetsoft_tech_support/Notifications/{date.Year}/{date.Month:D2}/{date.Day:D2}"));
+var normalizedPath = Path.GetFullPath(adminLogPath);
+// Tạo thư mục nếu chưa tồn tại
+if (!Directory.Exists(normalizedPath))
+{
+    Directory.CreateDirectory(normalizedPath);
+}
 
+string logFilePath = Path.Combine(normalizedPath, $"{date:yyyy-MM-dd-HH}.log");
+
+// Tạo file log nếu chưa có
+if (!File.Exists(logFilePath))
+{
+    using (var stream = File.Create(logFilePath))
+    {
+        // Đóng file ngay sau khi tạo
+    }
+}
+Console.WriteLine($"File log đã được tạo tại: {logFilePath}");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -42,6 +62,60 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "account",
+    pattern: "Tài-khoản",
+    defaults: new { controller = "Account", action = "Index" });
+
+app.MapControllerRoute(
+    name: "addRequest",
+    pattern: "Gửi-yêu-cầu",
+    defaults: new { controller = "TblSupportRequests", action = "Create" });
+
+app.MapControllerRoute(
+    name: "followingRequest",
+    pattern: "Theo-dõi-yêu-cầu",
+    defaults: new { controller = "TblRequestsProcessings", action = "Index" });
+
+
+app.MapControllerRoute(
+    name: "FaqList",
+    pattern: "Câu-hỏi-thường-gặp",
+    defaults: new { controller = "TblFaqs", action = "Index" });
+
+app.MapControllerRoute(
+    name: "FaqDetails",
+    pattern: "Chi-tiết-faq-{id}",
+    defaults: new { controller = "TblFaqs", action = "Details" });
+
+app.MapControllerRoute(
+    name: "contact",
+    pattern: "Thông-tin-liên-hệ",
+    defaults: new { controller = "Contact", action = "Index" });
+
+app.MapControllerRoute(
+    name: "login",
+    pattern: "Đăng-nhập",
+    defaults: new { controller = "Custommer", action = "Login" });
+
+app.MapControllerRoute(
+    name: "register",
+    pattern: "Đăng-ký",
+    defaults: new { controller = "Custommer", action = "Register" });
+
+
+app.MapControllerRoute(
+    name: "contact",
+    pattern: "Quên-mật-khẩu",
+    defaults: new { controller = "Custommer", action = "ForgotPassword" });
+
+
+app.MapControllerRoute(
+    name: "contact",
+    pattern: "Đặt-lại-mật-khẩu",
+    defaults: new { controller = "Custommer", action = "ResetPassword" });
+
 
 app.MapControllerRoute(
     name: "default",
