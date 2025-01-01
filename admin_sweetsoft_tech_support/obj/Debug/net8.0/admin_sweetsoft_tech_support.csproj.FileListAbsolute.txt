@@ -432,3 +432,4 @@ D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\obj\Debug\net8.0\admin_sweets
 D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\obj\Debug\net8.0\admin_sweetsoft_tech_support.genruntimeconfig.cache
 D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\obj\Debug\net8.0\ref\admin_sweetsoft_tech_support.dll
 D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\bin\Debug\net8.0\BCrypt.Net-Next.dll
+D:\CC\sweetsoft_tech_support\admin_sweetsoft_tech_support\bin\Debug\net8.0\BCrypt.Net-Next.dll
