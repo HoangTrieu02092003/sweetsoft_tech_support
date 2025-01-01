@@ -9,20 +9,21 @@ using BCrypt.Net;
 using System.Net.Mail;
 using System.Net;
 using admin_sweetsoft_tech_support.Attributes;
+using NLog;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
     public class AdminController : Controller
     {
         private readonly RequestContext _context;
-        private readonly ILogger<AdminController> _logger;
         private readonly SessionService _sessionService;
+        private readonly AuditLogService _auditLogService;
         private readonly IConfiguration _configuration;
 
-        public AdminController(RequestContext context, ILogger<AdminController> logger,SessionService sessionService, IConfiguration configuration)
+        public AdminController(RequestContext context, AuditLogService auditLogService, SessionService sessionService, IConfiguration configuration)
         {
             _context = context;
-            _logger = logger;
+            _auditLogService = auditLogService;
             _configuration = configuration;
             _sessionService = sessionService;
         }
@@ -118,7 +119,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             await _context.SaveChangesAsync();
             await _sessionService.DeleteSessionAsync(user.UserId);
             await _sessionService.CreateSessionAsync(user.UserId, Guid.NewGuid().ToString());
-
             // Tạo các Claims và Identity cho người dùng đã đăng nhập
             var claims = new List<Claim>
             {
@@ -129,13 +129,13 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
             // Đăng nhập và lưu thông tin vào Cookie
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
-            
+            _auditLogService.LogAction("Login", User.Identity.Name, "Đăng nhập thành công");
             TempData["UserId"] = user.UserId;
             TempData["IsAdmin"] = user.IsAdmin == true ? "true" : "false";
-            return RedirectToAction("Index1", "Report"); // Sau khi đăng nhập, chuyển tới trang chính của quản trị viên
+            var returnUrl = TempData["ReturnUrl"]?.ToString() ?? Url.Action("Index1", "Report");
+            return Redirect(returnUrl); // Sau khi đăng nhập, chuyển tới trang chính của quản trị viên
         }
 
         // Đăng xuất (Logout)
@@ -143,8 +143,8 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var username = User.Identity.Name;
+            _auditLogService.LogAction("Logout", username, "Đăng xuất thành công");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
 

@@ -56,12 +56,16 @@ namespace admin_sweetsoft_tech_support.Attributes
                 }
             }
             
-            var notifications = _context.TblNotifications
-                .Where(n => n.UserId == int.Parse(userId)).ToList();
 
-
-            var allLogs = notifications.Concat(logs).ToList();
-            return View(allLogs); 
-        }
+            if (!string.IsNullOrEmpty(userId)) 
+            { 
+                var notifications = _context.TblNotifications.Where(n => n.UserId == int.Parse(userId)).ToList(); 
+                var allLogs = notifications.Concat(logs).ToList(); 
+                return View(allLogs); 
+            }
+            else
+            { // Handle the case where userId is null
+              return View(new List<dynamic>()); }
+            }
     }
 }

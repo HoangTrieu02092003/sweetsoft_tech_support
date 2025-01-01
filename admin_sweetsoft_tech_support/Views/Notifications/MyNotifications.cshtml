@@ -2,12 +2,9 @@
 
 @{
     ViewData["Title"] = "Thông báo của tôi";
+    int stt = 1;
 }
-<style>
-    .bold-text{
-        font-weight: bold;
-    }
-</style>
+
 <h1>Thông báo của tôi</h1>
 
 @if (!Model.Any())
@@ -19,27 +16,32 @@ else
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>STT</th>
                 <th>
                     <a href="?sortColumn=Message&sortOrder=@(
-                        ViewData["SortOrder"] as string == "asc" && 
+                        ViewData["SortOrder"] as string == "asc" &&
                         ViewData["SortColumn"] as string == "Message" ? "desc" : "asc")">
                         Nội dung
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "Message" ? ViewData["SortOrder"] : "")"></span>
                     </a>
                 </th>
                 <th>
                     <a href="?sortColumn=Status&sortOrder=@(
-                        ViewData["SortOrder"] as string == "asc" && 
+                        ViewData["SortOrder"] as string == "asc" &&
                         ViewData["SortColumn"] as string == "Status" ? "desc" : "asc")">
                         Trạng thái
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "Status" ? ViewData["SortOrder"] : "")"></span>
                     </a>
                 </th>
                 <th>
                     <a href="?sortColumn=CreatedAt&sortOrder=@(
-                        ViewData["SortOrder"] as string == "asc" && 
+                        ViewData["SortOrder"] as string == "asc" &&
                         ViewData["SortColumn"] as string == "CreatedAt" ? "desc" : "asc")">
                         Thời gian
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "CreatedAt" ? ViewData["SortOrder"] : "")"></span>
                     </a>
                 </th>
+
             </tr>
         </thead>
         <tbody>
@@ -48,10 +50,12 @@ else
                 <tr class="@(notification.Status == 0 ? "bold-text" : "")"
                     style="cursor: pointer;"
                     onclick="window.location.href='@Url.Action("Index", "TblSupportRequests")'">
+                    <td>@stt</td>
                     <td>@notification.Message</td> 
                     <td>@(notification.Status == 0 ? "Chưa đọc" : "Đã đọc")</td> 
                     <td>@notification.CreatedAt?.ToString("yyyy-MM-dd HH:mm")</td> 
                 </tr>
+                stt++;
             }
         </tbody>
     </table>

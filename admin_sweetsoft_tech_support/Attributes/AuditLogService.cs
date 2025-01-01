@@ -1,52 +1,26 @@
-﻿using admin_sweetsoft_tech_support.Models;
+﻿using NLog;
 
 namespace admin_sweetsoft_tech_support.Attributes
 {
     public class AuditLogService
     {
-        private readonly RequestContext _context;
+        private static readonly Logger logger = LogManager.GetLogger("AdminSweetsoftTechSupport");
 
-        public AuditLogService(RequestContext context)
+        // Phương thức ghi log với Action, User và message
+        public void LogAction(string action, string user, string message, string module = "", string oldValue = "", string newValue = "")
         {
-            _context = context;
-        }
+            // Tạo LogEventInfo mới
+            var logEvent = new LogEventInfo(NLog.LogLevel.Info, logger.Name, message);
 
-        // Phương thức log vào file
-        public async Task LogActionToFile(string tableName, int recordId, string actionType, int? changedBy, string oldValue, string newValue)
-        {
-            var logMessage = $"{DateTime.UtcNow}: TableName = {tableName}, RecordId = {recordId}, ActionType = {actionType}, ChangedBy = {changedBy}, OldValue = {oldValue}, NewValue = {newValue}";
+            // Gán các properties vào logEvent
+            logEvent.Properties["Action"] = action;
+            logEvent.Properties["User"] = user;
+            logEvent.Properties["Module"] = module;
+            logEvent.Properties["OldValue"] = oldValue;
+            logEvent.Properties["NewValue"] = newValue;
 
-            var logFilePath = Path.Combine(Directory.GetCurrentDirectory(), "logs", "auditApplication.log");
-
-            // Đảm bảo thư mục logs tồn tại
-            if (!Directory.Exists(Path.GetDirectoryName(logFilePath)))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(logFilePath));
-            }
-
-            // Ghi log vào file (Append nếu file đã tồn tại)
-            using (var writer = new StreamWriter(logFilePath, append: true))
-            {
-                await writer.WriteLineAsync(logMessage);
-            }
-        }
-
-        // Phương thức log vào Db
-        public async Task LogAuditAction(string tableName, int recordId, string actionType, int? changedBy, string oldValue, string newValue)
-        {
-            var auditLog = new TblAuditLog
-            {
-                TableName = tableName,
-                RecordId = recordId,
-                ActionType = actionType,
-                ChangedBy = changedBy,
-                ChangedAt = DateTime.UtcNow,
-                OldValue = oldValue,
-                NewValue = newValue
-            };
-
-            _context.TblAuditLogs.Add(auditLog);
-            await _context.SaveChangesAsync();
+            // Ghi log vào file
+            logger.Log(logEvent);
         }
     }
 }

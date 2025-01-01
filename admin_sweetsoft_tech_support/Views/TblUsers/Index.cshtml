@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblUser>
 @using admin_sweetsoft_tech_support.Attributes
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Quản Lý Nhân Viên";
+    int stt = 1;
 }
 
 @if (TempData["ErrorMessage"] != null)
@@ -11,7 +12,6 @@
     </div>
 }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link href="~/css/index_user.css" rel="stylesheet">
 <style>
@@ -28,10 +28,6 @@
     .input-fillter-container {
         position: relative;
         display: inline-block;
-    }
-
-    .input-fillter-container input {
-        padding-right: 30px; /* Đảm bảo có không gian cho nút X */
     }
 
     .input-fillter-container button {
@@ -52,42 +48,49 @@
     </a>
 </div>
 
-<form method="get" class="m-3" id="filterForm">
+<form method="get" action="@Url.Action("Index", "TblUsers")" class="m-3" id="filterForm">
     <div class="row">
-        <div class="col-md-3">
-            <label for="Status" class="form-label">Trạng thái</label>
+        <h5 class="">
+            Bộ tìm kiếm
+        </h5>
+        <div class="col-lg-3 col-md-8">
+
             @Html.GenerateFilterDropdown(
-                     id: "Status",
-                     name: "Status",
+                     id: "status",
+                     name: "status",
                      options: new Dictionary<string, string>
-            {
-            { "1", "Hoạt động" },
-            { "0", "Ngừng hoạt động" }
-            },
-                     selectedValue: (ViewData["Status"] as int?)?.ToString() ?? ""
+                    {
+                        {"1", "Hoạt động"},
+                        {"0", "Ngừng hoạt động"}
+                    },
+                    placeholder: "-- Trạng thái --",
+                    selectedValue: ViewData["status"]?.ToString() ?? "",
+                    includeCancelButton: false
+            )
+        </div>
+        <div class="col-lg-3 col-md-8">
+            @Html.GenerateFilterTextbox(
+                     id: "search",
+                     name: "search",
+                     placeholder: "Tìm kiếm......",
+                     value: ViewData["search"]?.ToString() ?? "",
+                     includeCancelButton: true
                      )
         </div>
-        <div class="col-md-2">
-            <label for="Role" class="form-label">Nhóm quyền</label>
-            @Html.GenerateFilterDropdown(
-                     id: "Role",
-                     name: "Role",
-                     options: ((IEnumerable<TblRole>)ViewBag.Roles).ToDictionary(
-                     r => r.RoleId.ToString(),
-                     r => r.RoleName
-                     ),
-                     selectedValue: (ViewData["Role"] as int?)?.ToString() ?? ""
-                     )
+        <div class="d-lg-none d-block mt-3">
+            <button type="submit" class="btn btn-primary w-100">Lọc</button>
         </div>
     </div>
 </form>
 
+
 <!-- Table to display the users -->
-<div class="table-responsive">
-    <table class="table table-striped">
+<div class="table-responsive table-responsive-custom">
+    <table class="table table-striped custom-table">
         <thead>
             <tr>
-                <th>Tên người dùng</th>
+                <th>STT</th>
+                <th class="custom-header">Tên người dùng</th>
                 <th>Email</th>
                 <th>Số điện thoại</th>
                 <th>Trạng thái</th>
@@ -100,11 +103,12 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
+                <tr class="custom-row">
+                    <td>@stt</td>
                     <td>@item.FullName</td>
                     <td class="email-content">@item.Email</td>
                     <td>@item.Phone</td>
-                    <td>
+                    <td class="text-center">
                         <span class="badge @((item.Status == 1) ? "bg-success" : "bg-danger")">
                             @(item.Status == 1 ? "Hoạt động" : "Ngừng hoạt động")
                         </span>
@@ -124,10 +128,12 @@
                         </button>
                     </td>
                 </tr>
+                stt++;
             }
         </tbody>
     </table>
 </div>
+
 
 <!-- Modal Xác Nhận Xóa -->
 @foreach (var item in Model)
@@ -159,10 +165,14 @@
         @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] > 1)
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = 1, status = ViewBag.Status, role = ViewBag.Role })">Đầu</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = 1, status = ViewBag.Status, search = ViewBag.search })">
+                    <i class="bi bi-chevron-double-left"></i>
+                </a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1, status = ViewBag.Status, role = ViewBag.Role })">Trước</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1, status = ViewBag.Status, role = ViewBag.Role })">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
             </li>
         }
 
@@ -180,10 +190,14 @@
         @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1, status = ViewBag.Status, role = ViewBag.Role })">Sau</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1, status = ViewBag.Status, role = ViewBag.Role })">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"], status = ViewBag.Status, role = ViewBag.Role })">Cuối</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"], status = ViewBag.Status, role = ViewBag.Role })">
+                    <i class="bi bi-chevron-double-right"></i>
+                </a>
             </li>
         }
     </ul>

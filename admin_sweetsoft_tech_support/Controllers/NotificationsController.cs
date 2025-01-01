@@ -82,9 +82,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             // Truy vấn thông báo của người dùng từ cơ sở dữ liệu
             var notifications = _context.TblNotifications
-                .Where(n => n.UserId == int.Parse(userId))
-                .OrderByDescending(n => n.CreatedAt)
-                .ToList();
+                .Where(n => n.UserId == int.Parse(userId)).ToList();
 
             // Lấy thông tin log từ file
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "notification.log");
@@ -92,7 +90,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             if (System.IO.File.Exists(filePath))
             {
                 var logLines = System.IO.File.ReadAllLines(filePath);
-
+                var logNotifications = new List<TblNotification>();
                 foreach (var line in logLines)
                 {
                     // Tách các phần từ log
@@ -112,7 +110,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                             DateTime parsedDateTime;
                             if (DateTime.TryParseExact(dateTime, "MM/dd/yyyy h:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDateTime))
                             {
-                                notifications.Add(new TblNotification
+                                logNotifications.Add(new TblNotification 
                                 {
                                     UserId = int.Parse(userIdLog),
                                     Message = message,
@@ -124,11 +122,11 @@ namespace admin_sweetsoft_tech_support.Controllers
                     }
                 }
 
-                if (!string.IsNullOrEmpty(sortColumn))
-                {
-                    notifications = TableSorter.Sort(notifications, sortColumn, sortOrder);
-                }
-
+                notifications.AddRange(logNotifications);
+            }
+            if (!string.IsNullOrEmpty(sortColumn))
+            {
+                notifications = TableSorter.Sort<TblNotification>(notifications.AsQueryable(), sortColumn, sortOrder);
             }
             ViewData["SortColumn"] = sortColumn;
             ViewData["SortOrder"] = sortOrder;
