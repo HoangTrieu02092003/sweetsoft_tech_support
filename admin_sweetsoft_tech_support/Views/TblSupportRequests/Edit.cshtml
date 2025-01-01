@@ -26,12 +26,26 @@
                         <div class="list-group">
                             <div class="list-group-item bg-light border-0">
                                 <div class="form-group">
+                                    <label asp-for="RequestTitle" class="control-label text-dark">Tiêu đề yêu cầu</label>
+                                    <input asp-for="RequestTitle" class="form-control" />
+                                    <span asp-validation-for="RequestTitle" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
+                                    <label asp-for="Product" class="control-label text-dark">Sản phẩm</label>
+                                    <input asp-for="Product" class="form-control" />
+                                    <span asp-validation-for="Product" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item bg-light border-0">
+                                <div class="form-group">
                                     <label asp-for="RequestDetails" class="control-label text-dark">Chi tiết yêu cầu</label>
                                     <textarea asp-for="RequestDetails" class="form-control" rows="5"></textarea>
                                     <span asp-validation-for="RequestDetails" class="text-danger"></span>
                                 </div>
                             </div>
-
                             <div class="list-group-item bg-light border-0">
                                 <div class="form-group">
                                     <label asp-for="Status" class="control-label text-dark">Trạng thái</label>
