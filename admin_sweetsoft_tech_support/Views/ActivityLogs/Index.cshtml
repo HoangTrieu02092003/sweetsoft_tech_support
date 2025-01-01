@@ -7,6 +7,7 @@
     //lấy giá trị phân trang
     var dbPagination = (Pagination)ViewData["DbPagination"];
     var filePagination = (Pagination)ViewData["FilePagination"];
+    int stt = 1;
 }
 
 <h1>Nhật ký hoạt động</h1>
@@ -58,6 +59,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>STT</th>
                         <th>Người dùng</th>
                         <th>Yêu cầu</th>
                         <th>Hành động</th>
@@ -69,6 +71,7 @@
                     @foreach (var log in Model.Item1)
                     {
                         <tr>
+                            <td>@stt</td>
                             <td>@log.User?.FullName</td>
                             <td>@log.Request?.RequestId</td>
                             <td>@log.Action</td>
@@ -80,6 +83,7 @@
                                 </form>
                             </td>
                         </tr>
+                        stt++;
                     }
                 </tbody>
             </table>

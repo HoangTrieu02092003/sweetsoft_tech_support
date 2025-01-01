@@ -35,7 +35,7 @@ namespace admin_sweetsoft_tech_support.Attributes
                 var user = dbContext.TblUsers
                     .Include(u => u.TblUserPermissions)
                     .ThenInclude(up => up.Permission)
-                    .FirstOrDefault(u => u.Username == username);
+                    .FirstOrDefault(u => u.FullName == username);
 
                 if (user == null || !user.TblUserPermissions.Any(p => p.Permission.PermissionName == _permission))
                 {

@@ -1,0 +1,892 @@
+2024-12-30 12:15:57.0734 | INFO | Application Starting Up
+2024-12-30 12:15:57.7286 | INFO | User profile is available. Using 'C:\Users\NHAN\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-30 12:15:57.7939 | FATAL | Application startup exception
+2024-12-30 12:15:57.7955 | ERROR | Hosting failed to start
+2024-12-30 12:15:57.7955 | ERROR | Stopped program because of exception
+2024-12-30 12:17:17.1562 | INFO | Application Starting Up
+2024-12-30 12:17:17.3928 | INFO | User profile is available. Using 'C:\Users\NHAN\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-30 12:17:17.4495 | INFO | Application started. Press Ctrl+C to shut down.
+2024-12-30 12:17:17.4495 | INFO | Hosting environment: Development
+2024-12-30 12:17:17.4495 | INFO | Content root path: D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support
+2024-12-30 12:17:17.4769 | INFO | Request starting HTTP/2 GET https://localhost:44351/ - - -
+2024-12-30 12:17:17.9371 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:17.9511 | INFO | Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller admin_sweetsoft_tech_support.Controllers.AdminController (admin_sweetsoft_tech_support).
+2024-12-30 12:17:17.9804 | INFO | Executing ViewResult, running view Login.
+2024-12-30 12:17:18.0331 | INFO | Executed ViewResult - view Login executed in 53.0955ms.
+2024-12-30 12:17:18.0331 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support) in 82.1635ms
+2024-12-30 12:17:18.0331 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:18.0331 | WARN | Unable to configure Browser Link script injection on the response. 
+2024-12-30 12:17:18.0331 | WARN | Unable to configure browser refresh script injection on the response. Consider manually adding '<script src="/_framework/aspnetcore-browser-refresh.js"></script>' to the body of the page.
+2024-12-30 12:17:18.0331 | INFO | Request finished HTTP/2 GET https://localhost:44351/ - 200 - text/html;+charset=utf-8 562.3169ms
+2024-12-30 12:17:20.0581 | INFO | Request starting HTTP/2 GET https://localhost:44351/ - - -
+2024-12-30 12:17:20.0689 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:20.0689 | INFO | Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller admin_sweetsoft_tech_support.Controllers.AdminController (admin_sweetsoft_tech_support).
+2024-12-30 12:17:20.0689 | INFO | Executing ViewResult, running view Login.
+2024-12-30 12:17:20.0783 | INFO | Executed ViewResult - view Login executed in 7.6464ms.
+2024-12-30 12:17:20.0783 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support) in 9.0241ms
+2024-12-30 12:17:20.0783 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:20.0783 | WARN | Unable to configure Browser Link script injection on the response. 
+2024-12-30 12:17:20.0783 | WARN | Unable to configure browser refresh script injection on the response. Consider manually adding '<script src="/_framework/aspnetcore-browser-refresh.js"></script>' to the body of the page.
+2024-12-30 12:17:20.0783 | INFO | Request finished HTTP/2 GET https://localhost:44351/ - 200 - text/html;+charset=utf-8 22.2255ms
+2024-12-30 12:17:28.2709 | INFO | Request starting HTTP/2 POST https://localhost:44351/ - application/x-www-form-urlencoded 2288
+2024-12-30 12:17:28.2709 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:28.2869 | INFO | Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String, System.String) on controller admin_sweetsoft_tech_support.Controllers.AdminController (admin_sweetsoft_tech_support).
+2024-12-30 12:17:29.6343 | INFO | Executed DbCommand (206ms) [Parameters=[@__username_0='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[user_id], [t].[created_at], [t].[created_user], [t].[department_id], [t].[email], [t].[failed_login_attempts], [t].[full_name], [t].[is_admin], [t].[last_login], [t].[lockout_time], [t].[password], [t].[phone], [t].[reset_token], [t].[reset_token_expiry], [t].[role_id], [t].[status], [t].[updated_at], [t].[updated_user], [t].[username]
+FROM [TblUsers] AS [t]
+WHERE [t].[username] = @__username_0
+2024-12-30 12:17:30.6818 | INFO | Executed DbCommand (72ms) [Parameters=[@p18='?' (DbType = Int32), @p0='?' (DbType = DateTime), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int32), @p5='?' (Size = 100), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (DbType = DateTime), @p9='?' (Size = 255) (DbType = AnsiString), @p10='?' (Size = 20) (DbType = AnsiString), @p11='?' (Size = 255) (DbType = AnsiString), @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32), @p14='?' (DbType = Int16), @p15='?' (DbType = DateTime), @p16='?' (DbType = Int32), @p17='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [TblUsers] SET [created_at] = @p0, [created_user] = @p1, [department_id] = @p2, [email] = @p3, [failed_login_attempts] = @p4, [full_name] = @p5, [is_admin] = @p6, [last_login] = @p7, [lockout_time] = @p8, [password] = @p9, [phone] = @p10, [reset_token] = @p11, [reset_token_expiry] = @p12, [role_id] = @p13, [status] = @p14, [updated_at] = @p15, [updated_user] = @p16, [username] = @p17
+OUTPUT 1
+WHERE [user_id] = @p18;
+2024-12-30 12:17:30.6936 | INFO | TableName=, RecordId=1, ActionType=Đăng Nhập, ChangedBy=1, OldValue=, NewValue=
+2024-12-30 12:17:30.7056 | INFO | Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0
+2024-12-30 12:17:30.7269 | INFO | Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [TblSessions]
+OUTPUT 1
+WHERE [session_id] = @p0;
+2024-12-30 12:17:30.7360 | INFO | Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0
+2024-12-30 12:17:30.7542 | INFO | Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 255) (DbType = AnsiString), @p3='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [TblSessions] ([created_at], [expires_at], [session_token], [user_id])
+OUTPUT INSERTED.[session_id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-12-30 12:17:30.7642 | INFO | AuthenticationScheme: Cookies signed in.
+2024-12-30 12:17:30.7642 | INFO | Executing RedirectResult, redirecting to /bao-cao.
+2024-12-30 12:17:30.7642 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support) in 2481.0565ms
+2024-12-30 12:17:30.7642 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:30.7642 | INFO | Request finished HTTP/2 POST https://localhost:44351/ - 302 - - 2501.3930ms
+2024-12-30 12:17:30.7642 | INFO | Request starting HTTP/2 GET https://localhost:44351/bao-cao - - -
+2024-12-30 12:17:30.7991 | INFO | Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 12:17:30.7991 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.Index1 (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:30.7991 | INFO | Route matched with {action = "Index1", controller = "Report"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index1(report.Models.ReportFilterModel) on controller admin_sweetsoft_tech_support.Controllers.ReportController (admin_sweetsoft_tech_support).
+2024-12-30 12:17:30.9297 | INFO | Executed DbCommand (55ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[c], [t0].[c0], [t0].[c1], [t0].[customer_id], [t3].[request_id], [t3].[request_details], CASE
+    WHEN [t3].[status] = CAST(1 AS smallint) THEN N'Pending'
+    WHEN [t3].[status] = CAST(2 AS smallint) THEN N'Processing'
+    WHEN [t3].[status] = CAST(3 AS smallint) THEN N'Completed'
+    WHEN [t3].[status] = CAST(4 AS smallint) THEN N'Cannot be Resolved'
+    ELSE N'Unknown'
+END, [t3].[created_at]
+FROM (
+    SELECT COALESCE([t].[customer_id], 0) AS [c], (
+        SELECT TOP(1) [t2].[full_name]
+        FROM [TblSupport_Requests] AS [t1]
+        LEFT JOIN [TblCustomers] AS [t2] ON [t1].[customer_id] = [t2].[customer_id]
+        WHERE [t].[customer_id] = [t1].[customer_id] OR ([t].[customer_id] IS NULL AND [t1].[customer_id] IS NULL)) AS [c0], COUNT(*) AS [c1], [t].[customer_id]
+    FROM [TblSupport_Requests] AS [t]
+    GROUP BY [t].[customer_id]
+) AS [t0]
+LEFT JOIN [TblSupport_Requests] AS [t3] ON [t0].[customer_id] = [t3].[customer_id]
+ORDER BY [t0].[customer_id]
+2024-12-30 12:17:30.9297 | INFO | Executing ViewResult, running view Index1.
+2024-12-30 12:17:30.9763 | INFO | Executed DbCommand (5ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[notification_id], [t].[created_at], [t].[message], [t].[status], [t].[user_id]
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0
+2024-12-30 12:17:30.9950 | INFO | Executed DbCommand (2ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0 AND [t].[status] = CAST(0 AS smallint)
+2024-12-30 12:17:31.0004 | INFO | Executed ViewResult - view Index1 executed in 67.6431ms.
+2024-12-30 12:17:31.0004 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ReportController.Index1 (admin_sweetsoft_tech_support) in 196.1346ms
+2024-12-30 12:17:31.0004 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.Index1 (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:31.0004 | INFO | Request finished HTTP/2 GET https://localhost:44351/bao-cao - 200 - text/html;+charset=utf-8 225.4938ms
+2024-12-30 12:17:31.0271 | INFO | Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - -
+2024-12-30 12:17:31.0295 | INFO | Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13792 application/javascript;+charset=utf-8 2.2932ms
+2024-12-30 12:17:31.0295 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/js/scripts.js - - -
+2024-12-30 12:17:31.0295 | INFO | Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - - -
+2024-12-30 12:17:31.0782 | INFO | Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 12:17:31.0782 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/js/scripts.js - 404 - - 48.6964ms
+2024-12-30 12:17:31.0782 | INFO | Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44351/assets/js/scripts.js, Response status code: 404
+2024-12-30 12:17:31.0782 | INFO | Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 54.3657ms
+2024-12-30 12:17:31.0985 | INFO | Request starting HTTP/2 GET https://localhost:44351/api/requests/department-summary?startDate=2024-01-01&endDate=2024-12-31 - - -
+2024-12-30 12:17:31.0985 | INFO | Request starting HTTP/2 GET https://localhost:44351/api/requests/status-summary?startDate=2024-01-01&endDate=2024-12-31 - - -
+2024-12-30 12:17:31.0985 | INFO | Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 12:17:31.0985 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetStatusRequest (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:31.1084 | INFO | Route matched with {action = "GetStatusRequest", controller = "Report"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStatusRequest(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime]) on controller admin_sweetsoft_tech_support.Controllers.ReportController (admin_sweetsoft_tech_support).
+2024-12-30 12:17:31.1084 | INFO | Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 12:17:31.1084 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetDepartmentRequest (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:31.1084 | INFO | Route matched with {action = "GetDepartmentRequest", controller = "Report"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDepartmentRequest(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime]) on controller admin_sweetsoft_tech_support.Controllers.ReportController (admin_sweetsoft_tech_support).
+2024-12-30 12:17:31.1276 | INFO | Executed DbCommand (8ms) [Parameters=[@__startDate_Value_0='?' (DbType = DateTime), @__endDate_Value_1='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[status] AS [Status], COUNT(*) AS [Count]
+FROM [TblSupport_Requests] AS [t]
+WHERE [t].[created_at] >= @__startDate_Value_0 AND [t].[created_at] <= @__endDate_Value_1
+GROUP BY [t].[status]
+2024-12-30 12:17:31.1276 | INFO | Executing OkObjectResult, writing value of type '<>f__AnonymousType12`1[[System.Collections.Generic.List`1[[<>f__AnonymousType11`2[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], admin_sweetsoft_tech_support, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-30 12:17:31.1468 | INFO | Request starting HTTP/2 GET https://localhost:44351/api/requests/monthly?startDate=2024-01-01&endDate=2024-12-31 - - -
+2024-12-30 12:17:31.1636 | INFO | Executed DbCommand (9ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 12:17:31.1636 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ReportController.GetStatusRequest (admin_sweetsoft_tech_support) in 55.9398ms
+2024-12-30 12:17:31.1636 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetMonthlyRequestSummary (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:31.1636 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetStatusRequest (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:31.1636 | INFO | Request finished HTTP/2 GET https://localhost:44351/api/requests/status-summary?startDate=2024-01-01&endDate=2024-12-31 - 200 - application/json;+charset=utf-8 68.8550ms
+2024-12-30 12:17:31.1636 | INFO | Executed DbCommand (23ms) [Parameters=[@__startDate_0='?' (DbType = DateTime), @__endDate_1='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[department_id] AS [DepartmentId], (
+    SELECT TOP(1) [t1].[department_name]
+    FROM [TblSupport_Requests] AS [t0]
+    LEFT JOIN [TblDepartments] AS [t1] ON [t0].[department_id] = [t1].[department_id]
+    WHERE [t0].[created_at] >= @__startDate_0 AND [t0].[created_at] <= @__endDate_1 AND ([t].[department_id] = [t0].[department_id] OR ([t].[department_id] IS NULL AND [t0].[department_id] IS NULL))) AS [DepartmentName], COUNT(*) AS [Count]
+FROM [TblSupport_Requests] AS [t]
+WHERE [t].[created_at] >= @__startDate_0 AND [t].[created_at] <= @__endDate_1
+GROUP BY [t].[department_id]
+2024-12-30 12:17:31.1751 | INFO | Route matched with {action = "GetMonthlyRequestSummary", controller = "Report"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMonthlyRequestSummary(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime]) on controller admin_sweetsoft_tech_support.Controllers.ReportController (admin_sweetsoft_tech_support).
+2024-12-30 12:17:31.1751 | INFO | Executing OkObjectResult, writing value of type '<>f__AnonymousType15`1[[System.Collections.Generic.List`1[[<>f__AnonymousType14`4[[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], admin_sweetsoft_tech_support, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-30 12:17:31.1858 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ReportController.GetDepartmentRequest (admin_sweetsoft_tech_support) in 66.3969ms
+2024-12-30 12:17:31.1858 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetDepartmentRequest (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:31.1858 | INFO | Request finished HTTP/2 GET https://localhost:44351/api/requests/department-summary?startDate=2024-01-01&endDate=2024-12-31 - 200 - application/json;+charset=utf-8 89.2142ms
+2024-12-30 12:17:31.1858 | INFO | Executed DbCommand (9ms) [Parameters=[@__startDate_0='?' (DbType = DateTime), @__endDate_1='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[Year], [t0].[Month], COUNT(*) AS [Count]
+FROM (
+    SELECT DATEPART(year, [t].[created_at]) AS [Year], DATEPART(month, [t].[created_at]) AS [Month]
+    FROM [TblSupport_Requests] AS [t]
+    WHERE [t].[created_at] >= @__startDate_0 AND [t].[created_at] <= @__endDate_1
+) AS [t0]
+GROUP BY [t0].[Year], [t0].[Month]
+2024-12-30 12:17:31.2020 | INFO | Executing OkObjectResult, writing value of type '<>f__AnonymousType10`1[[System.Collections.Generic.List`1[[<>f__AnonymousType9`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], admin_sweetsoft_tech_support, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-30 12:17:31.2020 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ReportController.GetMonthlyRequestSummary (admin_sweetsoft_tech_support) in 29.0826ms
+2024-12-30 12:17:31.2020 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetMonthlyRequestSummary (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:31.2020 | INFO | Request finished HTTP/2 GET https://localhost:44351/api/requests/monthly?startDate=2024-01-01&endDate=2024-12-31 - 200 - application/json;+charset=utf-8 59.6307ms
+2024-12-30 12:17:33.6474 | INFO | Request starting HTTP/2 GET https://localhost:44351/chart/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 - - -
+2024-12-30 12:17:33.6474 | INFO | The file /chart/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 was not modified
+2024-12-30 12:17:33.6474 | INFO | Request finished HTTP/2 GET https://localhost:44351/chart/vendor/fontawesome-free/webfonts/fa-solid-900.woff2 - 304 - font/woff2 6.4632ms
+2024-12-30 12:17:36.0800 | INFO | Request starting HTTP/2 GET https://localhost:44351/TblFaqs/Index - - -
+2024-12-30 12:17:36.0914 | INFO | Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 12:17:36.0914 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.TblFaqsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:36.0914 | INFO | Route matched with {action = "Index", controller = "TblFaqs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime], Int32) on controller admin_sweetsoft_tech_support.Controllers.TblFaqsController (admin_sweetsoft_tech_support).
+2024-12-30 12:17:36.1128 | INFO | Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblFaqs] AS [t]
+2024-12-30 12:17:36.1247 | INFO | Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[faq_id], [t].[answer], [t].[created_at], [t].[faq_thumbnail], [t].[is_delete], [t].[question], [t].[updated_at]
+FROM [TblFaqs] AS [t]
+ORDER BY [t].[created_at]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-12-30 12:17:36.1247 | INFO | Executing ViewResult, running view Index.
+2024-12-30 12:17:36.1424 | INFO | Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[notification_id], [t].[created_at], [t].[message], [t].[status], [t].[user_id]
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0
+2024-12-30 12:17:36.1424 | INFO | Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0 AND [t].[status] = CAST(0 AS smallint)
+2024-12-30 12:17:36.1424 | INFO | Executed ViewResult - view Index executed in 14.8465ms.
+2024-12-30 12:17:36.1424 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.TblFaqsController.Index (admin_sweetsoft_tech_support) in 52.0835ms
+2024-12-30 12:17:36.1424 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.TblFaqsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:36.1424 | INFO | Request finished HTTP/2 GET https://localhost:44351/TblFaqs/Index - 200 - text/html;+charset=utf-8 69.3247ms
+2024-12-30 12:17:36.1638 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/images/faqs/faq1.jpg - - -
+2024-12-30 12:17:36.1638 | INFO | Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - -
+2024-12-30 12:17:36.1638 | INFO | The file /assets/images/faqs/faq1.jpg was not modified
+2024-12-30 12:17:36.1638 | INFO | Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - - -
+2024-12-30 12:17:36.1638 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/images/faqs/faq1.jpg - 304 - image/jpeg 1.1276ms
+2024-12-30 12:17:36.1638 | INFO | Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13792 application/javascript;+charset=utf-8 1.1698ms
+2024-12-30 12:17:36.1638 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/js/scripts.js - - -
+2024-12-30 12:17:36.1638 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 12:17:36.1638 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/js/scripts.js - 404 - - 5.9074ms
+2024-12-30 12:17:36.1707 | INFO | Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44351/assets/js/scripts.js, Response status code: 404
+2024-12-30 12:17:36.1707 | INFO | Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 7.6519ms
+2024-12-30 12:17:40.0693 | INFO | Request starting HTTP/2 GET https://localhost:44351/AuditLogs/Index - - -
+2024-12-30 12:17:40.0768 | INFO | Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 12:17:40.0768 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:40.0768 | INFO | Route matched with {action = "Index", controller = "AuditLogs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, Int32, Int32, Boolean) on controller admin_sweetsoft_tech_support.Controllers.AuditLogsController (admin_sweetsoft_tech_support).
+2024-12-30 12:17:40.0768 | WARN | The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-30 12:17:40.0768 | WARN | The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-30 12:17:40.0939 | INFO | Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[audit_id], [t].[action_type], [t].[changed_at], [t].[changed_by], [t].[new_value], [t].[old_value], [t].[record_id], [t].[table_name]
+FROM [TblAuditLogs] AS [t]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-12-30 12:17:40.1173 | INFO | Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblAuditLogs] AS [t]
+2024-12-30 12:17:40.1173 | INFO | Executing ViewResult, running view Index.
+2024-12-30 12:17:40.1333 | INFO | Executed DbCommand (2ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[notification_id], [t].[created_at], [t].[message], [t].[status], [t].[user_id]
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0
+2024-12-30 12:17:40.1333 | INFO | Executed DbCommand (2ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0 AND [t].[status] = CAST(0 AS smallint)
+2024-12-30 12:17:40.1388 | INFO | Executed ViewResult - view Index executed in 20.7827ms.
+2024-12-30 12:17:40.1388 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support) in 58.714ms
+2024-12-30 12:17:40.1388 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 12:17:40.1388 | INFO | Request finished HTTP/2 GET https://localhost:44351/AuditLogs/Index - 200 - text/html;+charset=utf-8 70.5281ms
+2024-12-30 12:17:40.1388 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/js/scripts.js - - -
+2024-12-30 12:17:40.1388 | INFO | Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - -
+2024-12-30 12:17:40.1388 | INFO | Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - - -
+2024-12-30 12:17:40.1388 | INFO | Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13792 application/javascript;+charset=utf-8 1.1074ms
+2024-12-30 12:17:40.1586 | INFO | Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 12:17:40.1586 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/js/scripts.js - 404 - - 6.3762ms
+2024-12-30 12:17:40.1586 | INFO | Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44351/assets/js/scripts.js, Response status code: 404
+2024-12-30 12:17:40.1586 | INFO | Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 7.4578ms
+2024-12-30 13:26:28.3349 | INFO | Application Starting Up
+2024-12-30 13:26:28.5781 | INFO | User profile is available. Using 'C:\Users\NHAN\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-30 13:26:28.6161 | INFO | Application started. Press Ctrl+C to shut down.
+2024-12-30 13:26:28.6161 | INFO | Hosting environment: Development
+2024-12-30 13:26:28.6161 | INFO | Content root path: D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support
+2024-12-30 13:26:28.6264 | INFO | Request starting HTTP/2 GET https://localhost:44351/AuditLogs/Index - - -
+2024-12-30 13:26:29.3493 | INFO | Executed DbCommand (23ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:26:29.3883 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 13:26:29.4000 | INFO | Route matched with {action = "Index", controller = "AuditLogs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, Int32, Int32, Boolean) on controller admin_sweetsoft_tech_support.Controllers.AuditLogsController (admin_sweetsoft_tech_support).
+2024-12-30 13:26:29.4136 | WARN | The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-30 13:26:29.4136 | WARN | The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-30 13:26:29.4262 | INFO | Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[audit_id], [t].[action_type], [t].[changed_at], [t].[changed_by], [t].[new_value], [t].[old_value], [t].[record_id], [t].[table_name]
+FROM [TblAuditLogs] AS [t]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-12-30 13:26:29.4710 | INFO | Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblAuditLogs] AS [t]
+2024-12-30 13:26:29.4710 | INFO | Executing ViewResult, running view Index.
+2024-12-30 13:26:29.5444 | INFO | Executed DbCommand (3ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[notification_id], [t].[created_at], [t].[message], [t].[status], [t].[user_id]
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0
+2024-12-30 13:26:29.5614 | INFO | Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0 AND [t].[status] = CAST(0 AS smallint)
+2024-12-30 13:26:29.5786 | INFO | Executed ViewResult - view Index executed in 101.3327ms.
+2024-12-30 13:26:29.5786 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support) in 178.8013ms
+2024-12-30 13:26:29.5786 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 13:26:29.5786 | INFO | Request finished HTTP/2 GET https://localhost:44351/AuditLogs/Index - 200 - text/html;+charset=utf-8 960.5274ms
+2024-12-30 13:26:29.5786 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/css/styles.min.css - - -
+2024-12-30 13:26:29.5786 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/libs/bootstrap/dist/css/bootstrap.min.css - - -
+2024-12-30 13:26:29.5786 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/images/logos/sweetsoft-logo-dark.svg - - -
+2024-12-30 13:26:29.5786 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/libs/jquery/dist/jquery.min.js - - -
+2024-12-30 13:26:29.5926 | INFO | The file /assets/libs/bootstrap/dist/css/bootstrap.min.css was not modified
+2024-12-30 13:26:29.5926 | INFO | The file /assets/css/styles.min.css was not modified
+2024-12-30 13:26:29.5926 | INFO | The file /assets/libs/jquery/dist/jquery.min.js was not modified
+2024-12-30 13:26:29.5926 | INFO | The file /assets/images/logos/sweetsoft-logo-dark.svg was not modified
+2024-12-30 13:26:29.5926 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/libs/bootstrap/dist/css/bootstrap.min.css - 304 - text/css 5.1430ms
+2024-12-30 13:26:29.5926 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/css/styles.min.css - 304 - text/css 5.1430ms
+2024-12-30 13:26:29.5926 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/libs/jquery/dist/jquery.min.js - 304 - text/javascript 3.0155ms
+2024-12-30 13:26:29.5926 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/images/logos/sweetsoft-logo-dark.svg - 304 - image/svg+xml 4.9341ms
+2024-12-30 13:26:29.5926 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/js/scripts.js - - -
+2024-12-30 13:26:29.5926 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js - - -
+2024-12-30 13:26:29.5926 | INFO | The file /assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2024-12-30 13:26:29.5926 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js - 304 - text/javascript 1.1426ms
+2024-12-30 13:26:29.5926 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/libs/simplebar/dist/simplebar.css - - -
+2024-12-30 13:26:29.5926 | INFO | The file /assets/libs/simplebar/dist/simplebar.css was not modified
+2024-12-30 13:26:29.5926 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/libs/simplebar/dist/simplebar.css - 304 - text/css 0.7935ms
+2024-12-30 13:26:29.5926 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/css/icons/tabler-icons/tabler-icons.css - - -
+2024-12-30 13:26:29.5926 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/js/sidebarmenu.js - - -
+2024-12-30 13:26:29.6077 | INFO | The file /assets/css/icons/tabler-icons/tabler-icons.css was not modified
+2024-12-30 13:26:29.6077 | INFO | The file /assets/js/sidebarmenu.js was not modified
+2024-12-30 13:26:29.6077 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/css/icons/tabler-icons/tabler-icons.css - 304 - text/css 1.1418ms
+2024-12-30 13:26:29.6077 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/js/sidebarmenu.js - 304 - text/javascript 1.4508ms
+2024-12-30 13:26:29.6077 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/js/app.min.js - - -
+2024-12-30 13:26:29.6077 | INFO | The file /assets/js/app.min.js was not modified
+2024-12-30 13:26:29.6077 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/js/app.min.js - 304 - text/javascript 0.5916ms
+2024-12-30 13:26:29.6077 | INFO | Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - -
+2024-12-30 13:26:29.6077 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/images/profile/user-1.jpg - - -
+2024-12-30 13:26:29.6077 | INFO | The file /assets/images/profile/user-1.jpg was not modified
+2024-12-30 13:26:29.6077 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/images/profile/user-1.jpg - 304 - image/jpeg 1.1089ms
+2024-12-30 13:26:29.6077 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:26:29.6077 | INFO | Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13792 application/javascript;+charset=utf-8 1.5301ms
+2024-12-30 13:26:29.6077 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/js/scripts.js - 404 - - 15.1654ms
+2024-12-30 13:26:29.6077 | INFO | Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44351/assets/js/scripts.js, Response status code: 404
+2024-12-30 13:26:29.6239 | INFO | Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - - -
+2024-12-30 13:26:29.6239 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/css/icons/tabler-icons/fonts/tabler-icons.woff2 - - -
+2024-12-30 13:26:29.6239 | INFO | The file /assets/css/icons/tabler-icons/fonts/tabler-icons.woff2 was not modified
+2024-12-30 13:26:29.6239 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/css/icons/tabler-icons/fonts/tabler-icons.woff2 - 304 - font/woff2 0.8255ms
+2024-12-30 13:26:29.6395 | INFO | Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 15.5211ms
+2024-12-30 13:26:29.6718 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/images/logos/seodashlogo.png - - -
+2024-12-30 13:26:29.6718 | INFO | The file /assets/images/logos/seodashlogo.png was not modified
+2024-12-30 13:26:29.6718 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/images/logos/seodashlogo.png - 304 - image/png 1.2628ms
+2024-12-30 13:26:32.0067 | INFO | Request starting HTTP/2 GET https://localhost:44351/Admin/Logout - - -
+2024-12-30 13:26:32.0472 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:26:32.0472 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Logout (admin_sweetsoft_tech_support)'
+2024-12-30 13:26:32.0472 | INFO | Route matched with {action = "Logout", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout() on controller admin_sweetsoft_tech_support.Controllers.AdminController (admin_sweetsoft_tech_support).
+2024-12-30 13:26:32.0472 | INFO | AuthenticationScheme: Cookies signed out.
+2024-12-30 13:26:32.0472 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AdminController.Logout (admin_sweetsoft_tech_support) in 5.1237ms
+2024-12-30 13:26:32.0472 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Logout (admin_sweetsoft_tech_support)'
+2024-12-30 13:26:32.0472 | ERROR | An unhandled exception has occurred while executing the request.
+2024-12-30 13:26:32.1378 | INFO | Request finished HTTP/2 GET https://localhost:44351/Admin/Logout - 500 - text/html;+charset=utf-8 131.1145ms
+2024-12-30 13:26:32.1518 | INFO | Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - -
+2024-12-30 13:26:32.1518 | INFO | Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - - -
+2024-12-30 13:26:32.1518 | INFO | Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13792 application/javascript;+charset=utf-8 1.1593ms
+2024-12-30 13:26:32.1614 | INFO | Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 9.5082ms
+2024-12-30 13:27:22.4222 | INFO | Application Starting Up
+2024-12-30 13:27:22.6985 | INFO | User profile is available. Using 'C:\Users\NHAN\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-30 13:27:22.7468 | INFO | Application started. Press Ctrl+C to shut down.
+2024-12-30 13:27:22.7468 | INFO | Hosting environment: Development
+2024-12-30 13:27:22.7468 | INFO | Content root path: D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support
+2024-12-30 13:27:22.7571 | INFO | Request starting HTTP/2 GET https://localhost:44351/ - - -
+2024-12-30 13:27:23.6083 | INFO | Executed DbCommand (25ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:27:23.6452 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 13:27:23.6452 | INFO | Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller admin_sweetsoft_tech_support.Controllers.AdminController (admin_sweetsoft_tech_support).
+2024-12-30 13:27:23.6764 | INFO | Executing ViewResult, running view Login.
+2024-12-30 13:27:23.7242 | INFO | Executed ViewResult - view Login executed in 44.6587ms.
+2024-12-30 13:27:23.7242 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support) in 74.2139ms
+2024-12-30 13:27:23.7242 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 13:27:23.7242 | WARN | Unable to configure Browser Link script injection on the response. 
+2024-12-30 13:27:23.7242 | WARN | Unable to configure browser refresh script injection on the response. Consider manually adding '<script src="/_framework/aspnetcore-browser-refresh.js"></script>' to the body of the page.
+2024-12-30 13:27:23.7353 | INFO | Request finished HTTP/2 GET https://localhost:44351/ - 200 - text/html;+charset=utf-8 978.9065ms
+2024-12-30 13:27:39.5558 | INFO | Request starting HTTP/2 POST https://localhost:44351/ - application/x-www-form-urlencoded 2544
+2024-12-30 13:27:39.5799 | INFO | Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:27:39.5799 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 13:27:39.5799 | INFO | Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String, System.String) on controller admin_sweetsoft_tech_support.Controllers.AdminController (admin_sweetsoft_tech_support).
+2024-12-30 13:27:39.6187 | INFO | Executed DbCommand (10ms) [Parameters=[@__username_0='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[user_id], [t].[created_at], [t].[created_user], [t].[department_id], [t].[email], [t].[failed_login_attempts], [t].[full_name], [t].[is_admin], [t].[last_login], [t].[lockout_time], [t].[password], [t].[phone], [t].[reset_token], [t].[reset_token_expiry], [t].[role_id], [t].[status], [t].[updated_at], [t].[updated_user], [t].[username]
+FROM [TblUsers] AS [t]
+WHERE [t].[username] = @__username_0
+2024-12-30 13:28:03.1612 | INFO | Executed DbCommand (27ms) [Parameters=[@p18='?' (DbType = Int32), @p0='?' (DbType = DateTime), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int32), @p5='?' (Size = 100), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (DbType = DateTime), @p9='?' (Size = 255) (DbType = AnsiString), @p10='?' (Size = 20) (DbType = AnsiString), @p11='?' (Size = 255) (DbType = AnsiString), @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32), @p14='?' (DbType = Int16), @p15='?' (DbType = DateTime), @p16='?' (DbType = Int32), @p17='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [TblUsers] SET [created_at] = @p0, [created_user] = @p1, [department_id] = @p2, [email] = @p3, [failed_login_attempts] = @p4, [full_name] = @p5, [is_admin] = @p6, [last_login] = @p7, [lockout_time] = @p8, [password] = @p9, [phone] = @p10, [reset_token] = @p11, [reset_token_expiry] = @p12, [role_id] = @p13, [status] = @p14, [updated_at] = @p15, [updated_user] = @p16, [username] = @p17
+OUTPUT 1
+WHERE [user_id] = @p18;
+2024-12-30 13:28:03.1729 | INFO | TableName=, RecordId=1, ActionType=Đăng Nhập, ChangedBy=1, OldValue=, NewValue=
+2024-12-30 13:28:03.1729 | INFO | Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0
+2024-12-30 13:28:03.1902 | INFO | Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [TblSessions]
+OUTPUT 1
+WHERE [session_id] = @p0;
+2024-12-30 13:28:03.1902 | INFO | Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0
+2024-12-30 13:28:03.2095 | INFO | Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 255) (DbType = AnsiString), @p3='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [TblSessions] ([created_at], [expires_at], [session_token], [user_id])
+OUTPUT INSERTED.[session_id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-12-30 13:28:03.2206 | INFO | AuthenticationScheme: Cookies signed in.
+2024-12-30 13:28:03.2206 | INFO | Executing RedirectResult, redirecting to /bao-cao.
+2024-12-30 13:28:03.2206 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support) in 23639.1173ms
+2024-12-30 13:28:03.2206 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:03.2206 | INFO | Request finished HTTP/2 POST https://localhost:44351/ - 302 - - 23672.6797ms
+2024-12-30 13:28:03.2206 | INFO | Request starting HTTP/2 GET https://localhost:44351/bao-cao - - -
+2024-12-30 13:28:03.2698 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:28:03.2698 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.Index1 (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:03.2698 | INFO | Route matched with {action = "Index1", controller = "Report"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index1(report.Models.ReportFilterModel) on controller admin_sweetsoft_tech_support.Controllers.ReportController (admin_sweetsoft_tech_support).
+2024-12-30 13:28:03.3593 | INFO | Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[c], [t0].[c0], [t0].[c1], [t0].[customer_id], [t3].[request_id], [t3].[request_details], CASE
+    WHEN [t3].[status] = CAST(1 AS smallint) THEN N'Pending'
+    WHEN [t3].[status] = CAST(2 AS smallint) THEN N'Processing'
+    WHEN [t3].[status] = CAST(3 AS smallint) THEN N'Completed'
+    WHEN [t3].[status] = CAST(4 AS smallint) THEN N'Cannot be Resolved'
+    ELSE N'Unknown'
+END, [t3].[created_at]
+FROM (
+    SELECT COALESCE([t].[customer_id], 0) AS [c], (
+        SELECT TOP(1) [t2].[full_name]
+        FROM [TblSupport_Requests] AS [t1]
+        LEFT JOIN [TblCustomers] AS [t2] ON [t1].[customer_id] = [t2].[customer_id]
+        WHERE [t].[customer_id] = [t1].[customer_id] OR ([t].[customer_id] IS NULL AND [t1].[customer_id] IS NULL)) AS [c0], COUNT(*) AS [c1], [t].[customer_id]
+    FROM [TblSupport_Requests] AS [t]
+    GROUP BY [t].[customer_id]
+) AS [t0]
+LEFT JOIN [TblSupport_Requests] AS [t3] ON [t0].[customer_id] = [t3].[customer_id]
+ORDER BY [t0].[customer_id]
+2024-12-30 13:28:03.3593 | INFO | Executing ViewResult, running view Index1.
+2024-12-30 13:28:03.4017 | INFO | Executed DbCommand (3ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[notification_id], [t].[created_at], [t].[message], [t].[status], [t].[user_id]
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0
+2024-12-30 13:28:03.4222 | INFO | Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0 AND [t].[status] = CAST(0 AS smallint)
+2024-12-30 13:28:03.4222 | INFO | Executed ViewResult - view Index1 executed in 65.453ms.
+2024-12-30 13:28:03.4222 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ReportController.Index1 (admin_sweetsoft_tech_support) in 153.0192ms
+2024-12-30 13:28:03.4222 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.Index1 (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:03.4222 | INFO | Request finished HTTP/2 GET https://localhost:44351/bao-cao - 200 - text/html;+charset=utf-8 198.3964ms
+2024-12-30 13:28:03.4482 | INFO | Request starting HTTP/2 GET https://localhost:44351/chart/vendor/fontawesome-free/css/all.min.css - - -
+2024-12-30 13:28:03.4482 | INFO | Request starting HTTP/2 GET https://localhost:44351/chart/css/sb-admin-2.min.css - - -
+2024-12-30 13:28:03.4482 | INFO | Request starting HTTP/2 GET https://localhost:44351/chart/vendor/jquery/jquery.min.js - - -
+2024-12-30 13:28:03.4482 | INFO | Request starting HTTP/2 GET https://localhost:44351/chart/vendor/bootstrap/js/bootstrap.bundle.min.js - - -
+2024-12-30 13:28:03.4513 | INFO | Request starting HTTP/2 GET https://localhost:44351/chart/vendor/jquery-easing/jquery.easing.min.js - - -
+2024-12-30 13:28:03.4513 | INFO | The file /chart/vendor/fontawesome-free/css/all.min.css was not modified
+2024-12-30 13:28:03.4513 | INFO | The file /chart/vendor/jquery/jquery.min.js was not modified
+2024-12-30 13:28:03.4513 | INFO | The file /chart/vendor/jquery-easing/jquery.easing.min.js was not modified
+2024-12-30 13:28:03.4513 | INFO | The file /chart/vendor/bootstrap/js/bootstrap.bundle.min.js was not modified
+2024-12-30 13:28:03.4513 | INFO | The file /chart/css/sb-admin-2.min.css was not modified
+2024-12-30 13:28:03.4513 | INFO | Request finished HTTP/2 GET https://localhost:44351/chart/vendor/jquery/jquery.min.js - 304 - text/javascript 5.7121ms
+2024-12-30 13:28:03.4513 | INFO | Request finished HTTP/2 GET https://localhost:44351/chart/vendor/jquery-easing/jquery.easing.min.js - 304 - text/javascript 4.3459ms
+2024-12-30 13:28:03.4513 | INFO | Request finished HTTP/2 GET https://localhost:44351/chart/vendor/fontawesome-free/css/all.min.css - 304 - text/css 7.2967ms
+2024-12-30 13:28:03.4513 | INFO | Request finished HTTP/2 GET https://localhost:44351/chart/vendor/bootstrap/js/bootstrap.bundle.min.js - 304 - text/javascript 5.6432ms
+2024-12-30 13:28:03.4513 | INFO | Request finished HTTP/2 GET https://localhost:44351/chart/css/sb-admin-2.min.css - 304 - text/css 8.2838ms
+2024-12-30 13:28:03.4513 | INFO | Request starting HTTP/2 GET https://localhost:44351/chart/js/sb-admin-2.min.js - - -
+2024-12-30 13:28:03.4513 | INFO | Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - -
+2024-12-30 13:28:03.4513 | INFO | The file /chart/js/sb-admin-2.min.js was not modified
+2024-12-30 13:28:03.4513 | INFO | Request starting HTTP/2 GET https://localhost:44351/chart/vendor/chart.js/Chart.min.js - - -
+2024-12-30 13:28:03.4513 | INFO | Request starting HTTP/2 GET https://localhost:44351/chart/js/demo/chart-area-demo.js - - -
+2024-12-30 13:28:03.4513 | INFO | Request finished HTTP/2 GET https://localhost:44351/chart/js/sb-admin-2.min.js - 304 - text/javascript 3.4738ms
+2024-12-30 13:28:03.4513 | INFO | Request starting HTTP/2 GET https://localhost:44351/chart/js/demo/chart-pie-demo.js - - -
+2024-12-30 13:28:03.4513 | INFO | The file /chart/vendor/chart.js/Chart.min.js was not modified
+2024-12-30 13:28:03.4513 | INFO | Request starting HTTP/2 GET https://localhost:44351/chart/js/demo/chart-bar-demo.js - - -
+2024-12-30 13:28:03.4513 | INFO | The file /chart/js/demo/chart-area-demo.js was not modified
+2024-12-30 13:28:03.4513 | INFO | The file /chart/js/demo/chart-pie-demo.js was not modified
+2024-12-30 13:28:03.4513 | INFO | Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13792 application/javascript;+charset=utf-8 3.8278ms
+2024-12-30 13:28:03.4513 | INFO | Request finished HTTP/2 GET https://localhost:44351/chart/vendor/chart.js/Chart.min.js - 304 - text/javascript 3.7105ms
+2024-12-30 13:28:03.4513 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/js/scripts.js - - -
+2024-12-30 13:28:03.4513 | INFO | The file /chart/js/demo/chart-bar-demo.js was not modified
+2024-12-30 13:28:03.4513 | INFO | Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - - -
+2024-12-30 13:28:03.4513 | INFO | Request finished HTTP/2 GET https://localhost:44351/chart/js/demo/chart-area-demo.js - 304 - text/javascript 2.5219ms
+2024-12-30 13:28:03.4513 | INFO | Request finished HTTP/2 GET https://localhost:44351/chart/js/demo/chart-pie-demo.js - 304 - text/javascript 2.6085ms
+2024-12-30 13:28:03.4513 | INFO | Request finished HTTP/2 GET https://localhost:44351/chart/js/demo/chart-bar-demo.js - 304 - text/javascript 3.7626ms
+2024-12-30 13:28:03.4741 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:28:03.4741 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/js/scripts.js - 404 - - 12.5205ms
+2024-12-30 13:28:03.4741 | INFO | Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44351/assets/js/scripts.js, Response status code: 404
+2024-12-30 13:28:03.4948 | INFO | Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 30.4301ms
+2024-12-30 13:28:03.5336 | INFO | Request starting HTTP/2 GET https://localhost:44351/api/requests/status-summary?startDate=2024-01-01&endDate=2024-12-31 - - -
+2024-12-30 13:28:03.5336 | INFO | Request starting HTTP/2 GET https://localhost:44351/api/requests/department-summary?startDate=2024-01-01&endDate=2024-12-31 - - -
+2024-12-30 13:28:03.5336 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:28:03.5336 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetDepartmentRequest (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:03.5454 | INFO | Route matched with {action = "GetDepartmentRequest", controller = "Report"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDepartmentRequest(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime]) on controller admin_sweetsoft_tech_support.Controllers.ReportController (admin_sweetsoft_tech_support).
+2024-12-30 13:28:03.5454 | INFO | Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:28:03.5454 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetStatusRequest (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:03.5454 | INFO | Route matched with {action = "GetStatusRequest", controller = "Report"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStatusRequest(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime]) on controller admin_sweetsoft_tech_support.Controllers.ReportController (admin_sweetsoft_tech_support).
+2024-12-30 13:28:03.5630 | INFO | Request starting HTTP/2 GET https://localhost:44351/api/requests/monthly?startDate=2024-01-01&endDate=2024-12-31 - - -
+2024-12-30 13:28:03.5630 | INFO | Executed DbCommand (4ms) [Parameters=[@__startDate_Value_0='?' (DbType = DateTime), @__endDate_Value_1='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[status] AS [Status], COUNT(*) AS [Count]
+FROM [TblSupport_Requests] AS [t]
+WHERE [t].[created_at] >= @__startDate_Value_0 AND [t].[created_at] <= @__endDate_Value_1
+GROUP BY [t].[status]
+2024-12-30 13:28:03.5630 | INFO | Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:28:03.5630 | INFO | Executing OkObjectResult, writing value of type '<>f__AnonymousType12`1[[System.Collections.Generic.List`1[[<>f__AnonymousType11`2[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], admin_sweetsoft_tech_support, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-30 13:28:03.5630 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetMonthlyRequestSummary (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:03.5630 | INFO | Route matched with {action = "GetMonthlyRequestSummary", controller = "Report"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMonthlyRequestSummary(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime]) on controller admin_sweetsoft_tech_support.Controllers.ReportController (admin_sweetsoft_tech_support).
+2024-12-30 13:28:03.5859 | INFO | Executed DbCommand (6ms) [Parameters=[@__startDate_0='?' (DbType = DateTime), @__endDate_1='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[department_id] AS [DepartmentId], (
+    SELECT TOP(1) [t1].[department_name]
+    FROM [TblSupport_Requests] AS [t0]
+    LEFT JOIN [TblDepartments] AS [t1] ON [t0].[department_id] = [t1].[department_id]
+    WHERE [t0].[created_at] >= @__startDate_0 AND [t0].[created_at] <= @__endDate_1 AND ([t].[department_id] = [t0].[department_id] OR ([t].[department_id] IS NULL AND [t0].[department_id] IS NULL))) AS [DepartmentName], COUNT(*) AS [Count]
+FROM [TblSupport_Requests] AS [t]
+WHERE [t].[created_at] >= @__startDate_0 AND [t].[created_at] <= @__endDate_1
+GROUP BY [t].[department_id]
+2024-12-30 13:28:03.5859 | INFO | Executing OkObjectResult, writing value of type '<>f__AnonymousType15`1[[System.Collections.Generic.List`1[[<>f__AnonymousType14`4[[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], admin_sweetsoft_tech_support, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-30 13:28:03.5859 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ReportController.GetStatusRequest (admin_sweetsoft_tech_support) in 38.1566ms
+2024-12-30 13:28:03.5920 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetStatusRequest (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:03.5920 | INFO | Request finished HTTP/2 GET https://localhost:44351/api/requests/status-summary?startDate=2024-01-01&endDate=2024-12-31 - 200 - application/json;+charset=utf-8 59.4612ms
+2024-12-30 13:28:03.5920 | INFO | Executed DbCommand (5ms) [Parameters=[@__startDate_0='?' (DbType = DateTime), @__endDate_1='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[Year], [t0].[Month], COUNT(*) AS [Count]
+FROM (
+    SELECT DATEPART(year, [t].[created_at]) AS [Year], DATEPART(month, [t].[created_at]) AS [Month]
+    FROM [TblSupport_Requests] AS [t]
+    WHERE [t].[created_at] >= @__startDate_0 AND [t].[created_at] <= @__endDate_1
+) AS [t0]
+GROUP BY [t0].[Year], [t0].[Month]
+2024-12-30 13:28:03.5920 | INFO | Executing OkObjectResult, writing value of type '<>f__AnonymousType10`1[[System.Collections.Generic.List`1[[<>f__AnonymousType9`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], admin_sweetsoft_tech_support, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-30 13:28:03.5920 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ReportController.GetDepartmentRequest (admin_sweetsoft_tech_support) in 53.3993ms
+2024-12-30 13:28:03.5920 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ReportController.GetMonthlyRequestSummary (admin_sweetsoft_tech_support) in 22.8546ms
+2024-12-30 13:28:03.5920 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetDepartmentRequest (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:03.5920 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetMonthlyRequestSummary (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:03.5920 | INFO | Request finished HTTP/2 GET https://localhost:44351/api/requests/department-summary?startDate=2024-01-01&endDate=2024-12-31 - 200 - application/json;+charset=utf-8 67.2376ms
+2024-12-30 13:28:03.5920 | INFO | Request finished HTTP/2 GET https://localhost:44351/api/requests/monthly?startDate=2024-01-01&endDate=2024-12-31 - 200 - application/json;+charset=utf-8 38.0636ms
+2024-12-30 13:28:09.6069 | INFO | Request starting HTTP/2 GET https://localhost:44351/ActivityLogs/Index - - -
+2024-12-30 13:28:09.6219 | INFO | Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:28:09.6219 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ActivityLogsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:09.6255 | INFO | Route matched with {action = "Index", controller = "ActivityLogs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.Nullable`1[System.Int32], Int32, Int32) on controller admin_sweetsoft_tech_support.Controllers.ActivityLogsController (admin_sweetsoft_tech_support).
+2024-12-30 13:28:09.6255 | WARN | The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-30 13:28:09.6255 | WARN | The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-30 13:28:09.6555 | INFO | Executed DbCommand (14ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[activity_id], [t0].[action], [t0].[created_at], [t0].[request_id], [t0].[user_id], [t1].[user_id], [t1].[created_at], [t1].[created_user], [t1].[department_id], [t1].[email], [t1].[failed_login_attempts], [t1].[full_name], [t1].[is_admin], [t1].[last_login], [t1].[lockout_time], [t1].[password], [t1].[phone], [t1].[reset_token], [t1].[reset_token_expiry], [t1].[role_id], [t1].[status], [t1].[updated_at], [t1].[updated_user], [t1].[username], [t2].[request_id], [t2].[created_at], [t2].[customer_id], [t2].[department_id], [t2].[is_delete], [t2].[product], [t2].[request_details], [t2].[request_title], [t2].[resolved_at], [t2].[status]
+FROM (
+    SELECT [t].[activity_id], [t].[action], [t].[created_at], [t].[request_id], [t].[user_id]
+    FROM [TblActivityLogs] AS [t]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t0]
+LEFT JOIN [TblUsers] AS [t1] ON [t0].[user_id] = [t1].[user_id]
+LEFT JOIN [TblSupport_Requests] AS [t2] ON [t0].[request_id] = [t2].[request_id]
+2024-12-30 13:28:09.6972 | INFO | Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblActivityLogs] AS [t]
+2024-12-30 13:28:09.7200 | INFO | Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [t].[user_id], [t].[created_at], [t].[created_user], [t].[department_id], [t].[email], [t].[failed_login_attempts], [t].[full_name], [t].[is_admin], [t].[last_login], [t].[lockout_time], [t].[password], [t].[phone], [t].[reset_token], [t].[reset_token_expiry], [t].[role_id], [t].[status], [t].[updated_at], [t].[updated_user], [t].[username]
+FROM [TblUsers] AS [t]
+2024-12-30 13:28:09.7200 | INFO | Executing ViewResult, running view Index.
+2024-12-30 13:28:09.7419 | INFO | Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[notification_id], [t].[created_at], [t].[message], [t].[status], [t].[user_id]
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0
+2024-12-30 13:28:09.7419 | INFO | Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0 AND [t].[status] = CAST(0 AS smallint)
+2024-12-30 13:28:09.7419 | INFO | Executed ViewResult - view Index executed in 26.0852ms.
+2024-12-30 13:28:09.7419 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ActivityLogsController.Index (admin_sweetsoft_tech_support) in 121.6366ms
+2024-12-30 13:28:09.7419 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ActivityLogsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:09.7419 | INFO | Request finished HTTP/2 GET https://localhost:44351/ActivityLogs/Index - 200 - text/html;+charset=utf-8 141.1360ms
+2024-12-30 13:28:09.7598 | INFO | Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - -
+2024-12-30 13:28:09.7598 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/js/scripts.js - - -
+2024-12-30 13:28:09.7598 | INFO | Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - - -
+2024-12-30 13:28:09.7598 | INFO | Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13792 application/javascript;+charset=utf-8 0.8019ms
+2024-12-30 13:28:09.7634 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:28:09.7634 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/js/scripts.js - 404 - - 4.9622ms
+2024-12-30 13:28:09.7634 | INFO | Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44351/assets/js/scripts.js, Response status code: 404
+2024-12-30 13:28:09.7634 | INFO | Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 10.9060ms
+2024-12-30 13:28:11.4522 | INFO | Request starting HTTP/2 GET https://localhost:44351/AuditLogs/Index - - -
+2024-12-30 13:28:11.4522 | INFO | Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:28:11.4522 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:11.4669 | INFO | Route matched with {action = "Index", controller = "AuditLogs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, Int32, Int32, Boolean) on controller admin_sweetsoft_tech_support.Controllers.AuditLogsController (admin_sweetsoft_tech_support).
+2024-12-30 13:28:11.4669 | WARN | The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-30 13:28:11.4669 | WARN | The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-30 13:28:11.4669 | INFO | Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[audit_id], [t].[action_type], [t].[changed_at], [t].[changed_by], [t].[new_value], [t].[old_value], [t].[record_id], [t].[table_name]
+FROM [TblAuditLogs] AS [t]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-12-30 13:28:11.5186 | INFO | Executed DbCommand (24ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblAuditLogs] AS [t]
+2024-12-30 13:28:11.5186 | INFO | Executing ViewResult, running view Index.
+2024-12-30 13:28:11.5362 | INFO | Executed DbCommand (4ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[notification_id], [t].[created_at], [t].[message], [t].[status], [t].[user_id]
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0
+2024-12-30 13:28:11.5362 | INFO | Executed DbCommand (4ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0 AND [t].[status] = CAST(0 AS smallint)
+2024-12-30 13:28:11.5362 | INFO | Executed ViewResult - view Index executed in 25.41ms.
+2024-12-30 13:28:11.5454 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support) in 78.1156ms
+2024-12-30 13:28:11.5454 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 13:28:11.5454 | INFO | Request finished HTTP/2 GET https://localhost:44351/AuditLogs/Index - 200 - text/html;+charset=utf-8 93.8965ms
+2024-12-30 13:28:11.5454 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/js/scripts.js - - -
+2024-12-30 13:28:11.5454 | INFO | Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - - -
+2024-12-30 13:28:11.5454 | INFO | Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - -
+2024-12-30 13:28:11.5454 | INFO | Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13792 application/javascript;+charset=utf-8 1.0427ms
+2024-12-30 13:28:11.5608 | INFO | Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:28:11.5608 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/js/scripts.js - 404 - - 4.1772ms
+2024-12-30 13:28:11.5608 | INFO | Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44351/assets/js/scripts.js, Response status code: 404
+2024-12-30 13:28:11.5608 | INFO | Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 7.2258ms
+2024-12-30 13:35:16.2599 | INFO | Application Starting Up
+2024-12-30 13:35:16.4867 | INFO | User profile is available. Using 'C:\Users\NHAN\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-12-30 13:35:16.5280 | INFO | Application started. Press Ctrl+C to shut down.
+2024-12-30 13:35:16.5280 | INFO | Hosting environment: Development
+2024-12-30 13:35:16.5280 | INFO | Content root path: D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support
+2024-12-30 13:35:16.5387 | INFO | Request starting HTTP/2 GET https://localhost:44351/AuditLogs/Index - - -
+2024-12-30 13:35:17.2779 | INFO | Executed DbCommand (24ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:35:17.3194 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:17.3301 | INFO | Route matched with {action = "Index", controller = "AuditLogs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, Int32, Int32, Boolean) on controller admin_sweetsoft_tech_support.Controllers.AuditLogsController (admin_sweetsoft_tech_support).
+2024-12-30 13:35:17.3443 | WARN | The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-30 13:35:17.3443 | WARN | The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2024-12-30 13:35:17.3615 | INFO | Executed DbCommand (13ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[audit_id], [t].[action_type], [t].[changed_at], [t].[changed_by], [t].[new_value], [t].[old_value], [t].[record_id], [t].[table_name]
+FROM [TblAuditLogs] AS [t]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-12-30 13:35:17.4093 | INFO | Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblAuditLogs] AS [t]
+2024-12-30 13:35:17.4093 | INFO | Executing ViewResult, running view Index.
+2024-12-30 13:35:17.4801 | INFO | Executed DbCommand (2ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[notification_id], [t].[created_at], [t].[message], [t].[status], [t].[user_id]
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0
+2024-12-30 13:35:17.4974 | INFO | Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0 AND [t].[status] = CAST(0 AS smallint)
+2024-12-30 13:35:17.5164 | INFO | Executed ViewResult - view Index executed in 100.3714ms.
+2024-12-30 13:35:17.5164 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support) in 186.529ms
+2024-12-30 13:35:17.5164 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:17.5164 | INFO | Request finished HTTP/2 GET https://localhost:44351/AuditLogs/Index - 200 - text/html;+charset=utf-8 987.0649ms
+2024-12-30 13:35:17.5460 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/js/scripts.js - - -
+2024-12-30 13:35:17.5460 | INFO | Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - -
+2024-12-30 13:35:17.5460 | INFO | Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - - -
+2024-12-30 13:35:17.5460 | INFO | Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13792 application/javascript;+charset=utf-8 1.8662ms
+2024-12-30 13:35:17.5610 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:35:17.5610 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/js/scripts.js - 404 - - 16.2944ms
+2024-12-30 13:35:17.5610 | INFO | Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44351/assets/js/scripts.js, Response status code: 404
+2024-12-30 13:35:17.5610 | INFO | Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 17.6029ms
+2024-12-30 13:35:22.1615 | INFO | Request starting HTTP/2 GET https://localhost:44351/ - - -
+2024-12-30 13:35:22.2228 | INFO | Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:35:22.2228 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:22.2228 | INFO | Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller admin_sweetsoft_tech_support.Controllers.AdminController (admin_sweetsoft_tech_support).
+2024-12-30 13:35:22.2228 | INFO | Executing ViewResult, running view Login.
+2024-12-30 13:35:22.2356 | INFO | Executed ViewResult - view Login executed in 7.9697ms.
+2024-12-30 13:35:22.2356 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support) in 10.8896ms
+2024-12-30 13:35:22.2356 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:22.2356 | WARN | Unable to configure Browser Link script injection on the response. 
+2024-12-30 13:35:22.2356 | WARN | Unable to configure browser refresh script injection on the response. Consider manually adding '<script src="/_framework/aspnetcore-browser-refresh.js"></script>' to the body of the page.
+2024-12-30 13:35:22.2356 | INFO | Request finished HTTP/2 GET https://localhost:44351/ - 200 - text/html;+charset=utf-8 78.9286ms
+2024-12-30 13:35:29.4709 | INFO | Request starting HTTP/2 POST https://localhost:44351/ - application/x-www-form-urlencoded 2309
+2024-12-30 13:35:29.4709 | INFO | Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:35:29.4709 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:29.4846 | INFO | Route matched with {action = "Login", controller = "Admin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String, System.String) on controller admin_sweetsoft_tech_support.Controllers.AdminController (admin_sweetsoft_tech_support).
+2024-12-30 13:35:29.5026 | INFO | Executed DbCommand (4ms) [Parameters=[@__username_0='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[user_id], [t].[created_at], [t].[created_user], [t].[department_id], [t].[email], [t].[failed_login_attempts], [t].[full_name], [t].[is_admin], [t].[last_login], [t].[lockout_time], [t].[password], [t].[phone], [t].[reset_token], [t].[reset_token_expiry], [t].[role_id], [t].[status], [t].[updated_at], [t].[updated_user], [t].[username]
+FROM [TblUsers] AS [t]
+WHERE [t].[username] = @__username_0
+2024-12-30 13:35:30.2674 | INFO | Executed DbCommand (11ms) [Parameters=[@p18='?' (DbType = Int32), @p0='?' (DbType = DateTime), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (Size = 100) (DbType = AnsiString), @p4='?' (DbType = Int32), @p5='?' (Size = 100), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (DbType = DateTime), @p9='?' (Size = 255) (DbType = AnsiString), @p10='?' (Size = 20) (DbType = AnsiString), @p11='?' (Size = 255) (DbType = AnsiString), @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32), @p14='?' (DbType = Int16), @p15='?' (DbType = DateTime), @p16='?' (DbType = Int32), @p17='?' (Size = 50) (DbType = AnsiString)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [TblUsers] SET [created_at] = @p0, [created_user] = @p1, [department_id] = @p2, [email] = @p3, [failed_login_attempts] = @p4, [full_name] = @p5, [is_admin] = @p6, [last_login] = @p7, [lockout_time] = @p8, [password] = @p9, [phone] = @p10, [reset_token] = @p11, [reset_token_expiry] = @p12, [role_id] = @p13, [status] = @p14, [updated_at] = @p15, [updated_user] = @p16, [username] = @p17
+OUTPUT 1
+WHERE [user_id] = @p18;
+2024-12-30 13:35:30.2674 | INFO | TableName=, RecordId=1, ActionType=Đăng Nhập, ChangedBy=1, OldValue=, NewValue=
+2024-12-30 13:35:30.2798 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0
+2024-12-30 13:35:30.2798 | INFO | Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+DELETE FROM [TblSessions]
+OUTPUT 1
+WHERE [session_id] = @p0;
+2024-12-30 13:35:30.2798 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0
+2024-12-30 13:35:30.3085 | INFO | Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = DateTime), @p2='?' (Size = 255) (DbType = AnsiString), @p3='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [TblSessions] ([created_at], [expires_at], [session_token], [user_id])
+OUTPUT INSERTED.[session_id]
+VALUES (@p0, @p1, @p2, @p3);
+2024-12-30 13:35:30.3178 | INFO | AuthenticationScheme: Cookies signed in.
+2024-12-30 13:35:30.3178 | INFO | Executing RedirectResult, redirecting to /bao-cao.
+2024-12-30 13:35:30.3178 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support) in 835.202ms
+2024-12-30 13:35:30.3178 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AdminController.Login (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:30.3178 | INFO | Request finished HTTP/2 POST https://localhost:44351/ - 302 - - 850.0115ms
+2024-12-30 13:35:30.3178 | INFO | Request starting HTTP/2 GET https://localhost:44351/bao-cao - - -
+2024-12-30 13:35:30.3281 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:35:30.3281 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.Index1 (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:30.3281 | INFO | Route matched with {action = "Index1", controller = "Report"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index1(report.Models.ReportFilterModel) on controller admin_sweetsoft_tech_support.Controllers.ReportController (admin_sweetsoft_tech_support).
+2024-12-30 13:35:30.3934 | INFO | Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[c], [t0].[c0], [t0].[c1], [t0].[customer_id], [t3].[request_id], [t3].[request_details], CASE
+    WHEN [t3].[status] = CAST(1 AS smallint) THEN N'Pending'
+    WHEN [t3].[status] = CAST(2 AS smallint) THEN N'Processing'
+    WHEN [t3].[status] = CAST(3 AS smallint) THEN N'Completed'
+    WHEN [t3].[status] = CAST(4 AS smallint) THEN N'Cannot be Resolved'
+    ELSE N'Unknown'
+END, [t3].[created_at]
+FROM (
+    SELECT COALESCE([t].[customer_id], 0) AS [c], (
+        SELECT TOP(1) [t2].[full_name]
+        FROM [TblSupport_Requests] AS [t1]
+        LEFT JOIN [TblCustomers] AS [t2] ON [t1].[customer_id] = [t2].[customer_id]
+        WHERE [t].[customer_id] = [t1].[customer_id] OR ([t].[customer_id] IS NULL AND [t1].[customer_id] IS NULL)) AS [c0], COUNT(*) AS [c1], [t].[customer_id]
+    FROM [TblSupport_Requests] AS [t]
+    GROUP BY [t].[customer_id]
+) AS [t0]
+LEFT JOIN [TblSupport_Requests] AS [t3] ON [t0].[customer_id] = [t3].[customer_id]
+ORDER BY [t0].[customer_id]
+2024-12-30 13:35:30.3934 | INFO | Executing ViewResult, running view Index1.
+2024-12-30 13:35:30.3934 | INFO | Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[notification_id], [t].[created_at], [t].[message], [t].[status], [t].[user_id]
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0
+2024-12-30 13:35:30.4068 | INFO | Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0 AND [t].[status] = CAST(0 AS smallint)
+2024-12-30 13:35:30.4068 | INFO | Executed ViewResult - view Index1 executed in 12.6505ms.
+2024-12-30 13:35:30.4068 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ReportController.Index1 (admin_sweetsoft_tech_support) in 75.6274ms
+2024-12-30 13:35:30.4068 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.Index1 (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:30.4068 | INFO | Request finished HTTP/2 GET https://localhost:44351/bao-cao - 200 - text/html;+charset=utf-8 85.2530ms
+2024-12-30 13:35:30.4307 | INFO | Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - -
+2024-12-30 13:35:30.4307 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/js/scripts.js - - -
+2024-12-30 13:35:30.4307 | INFO | Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13792 application/javascript;+charset=utf-8 1.5614ms
+2024-12-30 13:35:30.4307 | INFO | Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - - -
+2024-12-30 13:35:30.4361 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:35:30.4361 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/js/scripts.js - 404 - - 5.8441ms
+2024-12-30 13:35:30.4361 | INFO | Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44351/assets/js/scripts.js, Response status code: 404
+2024-12-30 13:35:30.4361 | INFO | Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 11.1695ms
+2024-12-30 13:35:30.4871 | INFO | Request starting HTTP/2 GET https://localhost:44351/api/requests/status-summary?startDate=2024-01-01&endDate=2024-12-31 - - -
+2024-12-30 13:35:30.4871 | INFO | Request starting HTTP/2 GET https://localhost:44351/api/requests/department-summary?startDate=2024-01-01&endDate=2024-12-31 - - -
+2024-12-30 13:35:30.4871 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:35:30.4871 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetDepartmentRequest (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:30.4871 | INFO | Route matched with {action = "GetDepartmentRequest", controller = "Report"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDepartmentRequest(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime]) on controller admin_sweetsoft_tech_support.Controllers.ReportController (admin_sweetsoft_tech_support).
+2024-12-30 13:35:30.4996 | INFO | Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:35:30.4996 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetStatusRequest (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:30.4996 | INFO | Route matched with {action = "GetStatusRequest", controller = "Report"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStatusRequest(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime]) on controller admin_sweetsoft_tech_support.Controllers.ReportController (admin_sweetsoft_tech_support).
+2024-12-30 13:35:30.4996 | INFO | Executed DbCommand (3ms) [Parameters=[@__startDate_Value_0='?' (DbType = DateTime), @__endDate_Value_1='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[status] AS [Status], COUNT(*) AS [Count]
+FROM [TblSupport_Requests] AS [t]
+WHERE [t].[created_at] >= @__startDate_Value_0 AND [t].[created_at] <= @__endDate_Value_1
+GROUP BY [t].[status]
+2024-12-30 13:35:30.4996 | INFO | Request starting HTTP/2 GET https://localhost:44351/api/requests/monthly?startDate=2024-01-01&endDate=2024-12-31 - - -
+2024-12-30 13:35:30.4996 | INFO | Executed DbCommand (4ms) [Parameters=[@__startDate_0='?' (DbType = DateTime), @__endDate_1='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[department_id] AS [DepartmentId], (
+    SELECT TOP(1) [t1].[department_name]
+    FROM [TblSupport_Requests] AS [t0]
+    LEFT JOIN [TblDepartments] AS [t1] ON [t0].[department_id] = [t1].[department_id]
+    WHERE [t0].[created_at] >= @__startDate_0 AND [t0].[created_at] <= @__endDate_1 AND ([t].[department_id] = [t0].[department_id] OR ([t].[department_id] IS NULL AND [t0].[department_id] IS NULL))) AS [DepartmentName], COUNT(*) AS [Count]
+FROM [TblSupport_Requests] AS [t]
+WHERE [t].[created_at] >= @__startDate_0 AND [t].[created_at] <= @__endDate_1
+GROUP BY [t].[department_id]
+2024-12-30 13:35:30.5144 | INFO | Executing OkObjectResult, writing value of type '<>f__AnonymousType12`1[[System.Collections.Generic.List`1[[<>f__AnonymousType11`2[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], admin_sweetsoft_tech_support, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-30 13:35:30.5144 | INFO | Executing OkObjectResult, writing value of type '<>f__AnonymousType15`1[[System.Collections.Generic.List`1[[<>f__AnonymousType14`4[[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Double, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], admin_sweetsoft_tech_support, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-30 13:35:30.5144 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:35:30.5144 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetMonthlyRequestSummary (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:30.5144 | INFO | Route matched with {action = "GetMonthlyRequestSummary", controller = "Report"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMonthlyRequestSummary(System.Nullable`1[System.DateTime], System.Nullable`1[System.DateTime]) on controller admin_sweetsoft_tech_support.Controllers.ReportController (admin_sweetsoft_tech_support).
+2024-12-30 13:35:30.5328 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ReportController.GetDepartmentRequest (admin_sweetsoft_tech_support) in 35.6242ms
+2024-12-30 13:35:30.5328 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ReportController.GetStatusRequest (admin_sweetsoft_tech_support) in 30.8156ms
+2024-12-30 13:35:30.5328 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetDepartmentRequest (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:30.5328 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetStatusRequest (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:30.5328 | INFO | Request finished HTTP/2 GET https://localhost:44351/api/requests/department-summary?startDate=2024-01-01&endDate=2024-12-31 - 200 - application/json;+charset=utf-8 49.1593ms
+2024-12-30 13:35:30.5328 | INFO | Request finished HTTP/2 GET https://localhost:44351/api/requests/status-summary?startDate=2024-01-01&endDate=2024-12-31 - 200 - application/json;+charset=utf-8 49.3707ms
+2024-12-30 13:35:30.5328 | INFO | Executed DbCommand (8ms) [Parameters=[@__startDate_0='?' (DbType = DateTime), @__endDate_1='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+SELECT [t0].[Year], [t0].[Month], COUNT(*) AS [Count]
+FROM (
+    SELECT DATEPART(year, [t].[created_at]) AS [Year], DATEPART(month, [t].[created_at]) AS [Month]
+    FROM [TblSupport_Requests] AS [t]
+    WHERE [t].[created_at] >= @__startDate_0 AND [t].[created_at] <= @__endDate_1
+) AS [t0]
+GROUP BY [t0].[Year], [t0].[Month]
+2024-12-30 13:35:30.5328 | INFO | Executing OkObjectResult, writing value of type '<>f__AnonymousType10`1[[System.Collections.Generic.List`1[[<>f__AnonymousType9`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], admin_sweetsoft_tech_support, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-12-30 13:35:30.5460 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.ReportController.GetMonthlyRequestSummary (admin_sweetsoft_tech_support) in 22.5504ms
+2024-12-30 13:35:30.5460 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.ReportController.GetMonthlyRequestSummary (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:30.5460 | INFO | Request finished HTTP/2 GET https://localhost:44351/api/requests/monthly?startDate=2024-01-01&endDate=2024-12-31 - 200 - application/json;+charset=utf-8 34.1530ms
+2024-12-30 13:35:32.8557 | INFO | Request starting HTTP/2 GET https://localhost:44351/AuditLogs/Index - - -
+2024-12-30 13:35:32.8644 | INFO | Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:35:32.8644 | INFO | Executing endpoint 'admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:32.8644 | INFO | Route matched with {action = "Index", controller = "AuditLogs"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String, System.String, Int32, Int32, Boolean) on controller admin_sweetsoft_tech_support.Controllers.AuditLogsController (admin_sweetsoft_tech_support).
+2024-12-30 13:35:32.8644 | INFO | Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[audit_id], [t].[action_type], [t].[changed_at], [t].[changed_by], [t].[new_value], [t].[old_value], [t].[record_id], [t].[table_name]
+FROM [TblAuditLogs] AS [t]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2024-12-30 13:35:32.8644 | INFO | Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblAuditLogs] AS [t]
+2024-12-30 13:35:32.8644 | INFO | Executing ViewResult, running view Index.
+2024-12-30 13:35:32.8769 | INFO | Executed DbCommand (3ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[notification_id], [t].[created_at], [t].[message], [t].[status], [t].[user_id]
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0
+2024-12-30 13:35:32.8769 | INFO | Executed DbCommand (1ms) [Parameters=[@__Parse_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [TblNotifications] AS [t]
+WHERE [t].[user_id] = @__Parse_0 AND [t].[status] = CAST(0 AS smallint)
+2024-12-30 13:35:32.8769 | INFO | Executed ViewResult - view Index executed in 10.05ms.
+2024-12-30 13:35:32.8769 | INFO | Executed action admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support) in 16.3233ms
+2024-12-30 13:35:32.8769 | INFO | Executed endpoint 'admin_sweetsoft_tech_support.Controllers.AuditLogsController.Index (admin_sweetsoft_tech_support)'
+2024-12-30 13:35:32.8769 | INFO | Request finished HTTP/2 GET https://localhost:44351/AuditLogs/Index - 200 - text/html;+charset=utf-8 26.9073ms
+2024-12-30 13:35:32.8938 | INFO | Request starting HTTP/2 GET https://localhost:44351/assets/js/scripts.js - - -
+2024-12-30 13:35:32.8938 | INFO | Request starting HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - - -
+2024-12-30 13:35:32.8938 | INFO | Request starting HTTP/2 GET https://localhost:44351/_vs/browserLink - - -
+2024-12-30 13:35:32.8938 | INFO | Request finished HTTP/2 GET https://localhost:44351/_framework/aspnetcore-browser-refresh.js - 200 13792 application/javascript;+charset=utf-8 0.7288ms
+2024-12-30 13:35:32.8938 | INFO | Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [t].[session_id], [t].[created_at], [t].[expires_at], [t].[session_token], [t].[user_id]
+FROM [TblSessions] AS [t]
+WHERE [t].[user_id] = @__userId_0 AND [t].[expires_at] > GETDATE()
+2024-12-30 13:35:32.8938 | INFO | Request finished HTTP/2 GET https://localhost:44351/assets/js/scripts.js - 404 - - 3.4380ms
+2024-12-30 13:35:32.8938 | INFO | Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:44351/assets/js/scripts.js, Response status code: 404
+2024-12-30 13:35:32.8938 | INFO | Request finished HTTP/2 GET https://localhost:44351/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 6.4540ms

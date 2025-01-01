@@ -1,268 +1,140 @@
-﻿@model Tuple<List<dynamic>, List<dynamic>>
+﻿@model List<admin_sweetsoft_tech_support.Models.AuditLogEntry>
 @using admin_sweetsoft_tech_support.Attributes
 @{
     ViewData["Title"] = "Quản lý Audit Logs";
-    var dbPagination = (Pagination)ViewData["DbPagination"];
-    var filePagination = (Pagination)ViewData["FilePagination"];
+    int totalPages = (int)ViewData["TotalPages"];
+    int currentPage = (int)ViewData["CurrentPage"];
+    int stt = 1;
 }
 <style>
-/* Custom CSS để điều chỉnh giao diện trên màn hình nhỏ */
-@@media (max-width: 768px) {
-
-    .nav-tabs .nav-item {
-        margin-bottom: 5px;
+    table tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
     }
 
-    .form-control {
-        margin-bottom: 10px;
+    table tbody tr:nth-child(even) {
+        background-color: #ffffff;
     }
 
-    .pagination {
-        flex-wrap: wrap;
-    }
-
-    th{
-        white-space: nowrap;
-    }
-}
 </style>
-
-<div class="container mt-4">
+<div class="mt-4">
     <h1 class="text-center">Quản lý Nhật ký Kiểm tra</h1>
 
-    <!-- Tab navigation -->
-    <div class="d-flex flex-md-row justify-content-between align-items-center">
-        <div>
-            <ul class="nav nav-tabs" id="logTabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="database-tab" data-bs-toggle="tab" href="#database" role="tab" aria-controls="database" aria-selected="true">Từ database</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="file-tab" data-bs-toggle="tab" href="#file" role="tab" aria-controls="file" aria-selected="false">Từ File</a>
-                </li>
-            </ul>
+    <!-- Form tìm kiếm -->
+    <form method="get" class="m-3" id="filterForm">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.GenerateFilterTextbox(
+                         id: "searchTerm",
+                         name: "searchTerm",
+                         placeholder: "Tìm kiếm......",
+                         value: ViewData["SearchTerm"]?.ToString() ?? "",
+                         includeCancelButton: false
+                         )
+            </div>
+            <div class="col-md-3">
+                @Html.GenerateFilterDropdown(
+                         id: "filterOption",
+                         name: "filterOption",
+                         options: new Dictionary<string, string>{
+                             {"day", "Ngày"},
+                             {"month", "Tháng"},
+                             {"year", "Năm"}
+                         },
+                         selectedValue: ViewData["FilterOption"]?.ToString()??"",
+                         includeCancelButton: false
+                )
+            </div>
         </div>
-        <div class="mt-3 mt-md-0">
-            <a asp-action="ExportToExcel" class="btn btn-success">Xuất file</a>
-        </div>
+    </form>
+
+    <!-- Danh sách Audit Logs -->
+    <div class="table-responsive mt-4">
+        <table class="table table-striped" id="auditLogList">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Hành động</th>
+                    <th>Người thực hiện</th>
+                    <th class="d-lg-block d-none">message</th>
+                    <th>Thời gian</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var log in Model)
+                {
+                    <tr>
+                        <td>@stt</td>
+                        <td>@log.Action</td>
+                        <td>@log.User</td>
+                        <td class="d-lg-block d-none">@log.Message</td>
+                        <td>@log.Timestamp</td>
+                        <td>
+                            <button class="btn btn-sm btn-info" onclick="toggleDetails('@log.Timestamp')">
+                                Xem
+                            </button>
+                        </td>
+                    </tr>
+                    <tr id="details-@log.Timestamp" class="details-row" style="display: none;">
+                        <td colspan="6">
+                            <strong>Chi tiết:</strong><br />
+                            <ul>
+                                <li class="d-lg-none d-block"><strong>Message:</strong> @log.Message</li>
+                                <li><strong>Dữ liệu cũ:</strong> @log.OldValue</li>
+                                <li><strong>Dữ liệu mới:</strong> @log.NewValue</li>
+                                <!-- Add other details here -->
+                            </ul>
+                        </td>
+                    </tr>
+                    stt++;
+                }
+            </tbody>
+        </table>
     </div>
 
-    <!-- Tab content -->
-    <div class="tab-content mt-3" id="logTabsContent">
-        <!-- Tab 1: Cơ sở dữ liệu -->
-        <div class="tab-pane fade show active" id="database" role="tabpanel" aria-labelledby="database-tab">
-            <!-- Form tìm kiếm -->
-            <form method="get" class="m-3" id="filterForm">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="tableName" class="form-label">Bảng</label>
-                        @Html.GenerateFilterTextbox(
-                                 id: "tableName",
-                                 name: "tableName",
-                                 placeholder: "Lọc theo bảng",
-                                 value: ViewData["tableName"]?.ToString() ?? "",
-                                 includeCancelButton: false
-                                 )
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="actionType" class="form-label">Hành động</label>
-                        @Html.GenerateFilterDropdown(
-                                 id: "actionType",
-                                 name: "actionType",
-                                 options: new Dictionary<string, string>
-                        {
-                        { "INSERT", "Thêm" },
-                        { "UPDATE", "Chỉnh sửa" },
-                        { "DELETE", "Xóa" }
-                        },
-                                 placeholder: "-- Lọc theo hành động --",
-                                 selectedValue: ViewData["actionType"]?.ToString() ?? "",
-                                 includeCancelButton: false
-                                 )
-                    </div>  
-                </div>
-            </form>
-
-            <!-- Danh sách Audit Logs -->
-            <div class="table-responsive mt-4">
-                <table class="table table-bordered table-striped" id="auditLogList">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Bảng</th>
-                            <th>Hành động</th>
-                            <th>Người thực hiện</th>
-                            <th>Thời gian</th>
-                            <th>Thao tác</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var log in Model.Item1)
-                        {
-                            <tr>
-                                <td>@log.TableName</td>
-                                <td>@log.ActionType</td>
-                                <td>@log.ChangedByNavigation?.FullName</td>
-                                <td>@log.ChangedAt?.ToString("dd/MM/yyyy HH:mm")</td>
-                                <td>
-                                    <a href="@Url.Action("Details", "AuditLogs", new { id = log.AuditId })" class="btn btn-info btn-sm">Xem</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-            <!-- Phân trang -->
-            <div class="d-flex justify-content-center my-4" id="dbPagination">
-                <ul class="pagination">
-                    @if (ViewData["DbPagination"] != null)
-                    {
-
-                        if (dbPagination.CurrentPage > 1)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = 1, filePage = filePagination.CurrentPage })">Đầu</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage - 1, filePage = filePagination.CurrentPage })">Trước</a>
-                            </li>
-                        }
-
-                        for (int i = 1; i <= dbPagination.TotalPages; i++)
-                        {
-                            <li class="page-item @(i == dbPagination.CurrentPage ? "active" : "")">
-                                <a class="page-link" href="@Url.Action("Index", new { page = i, filePage = filePagination.CurrentPage })">@i</a>
-                            </li>
-                        }
-
-                        if (dbPagination.CurrentPage < dbPagination.TotalPages)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage + 1, filePage = filePagination.CurrentPage })">Sau</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.TotalPages, filePage = filePagination.CurrentPage })">Cuối</a>
-                            </li>
-                        }
-                    }
-                </ul>
-
-            </div>
-        </div>
-        <!-- Tab 2: Từ File -->
-        <div class="tab-pane fade" id="file" role="tabpanel" aria-labelledby="file-tab">
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped mt-4" id="auditLogList">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Bảng</th>
-                        <th>Hành động</th>
-                        <th>Người thực hiện</th>
-                        <th>Thời gian</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var log in Model.Item2)
-                    {
-                        <tr>
-                            <td>@log.TableName</td>
-                            <td>@log.ActionType</td>
-                            <td>@log.ChangedByNavigation?.FullName</td>
-                            <td>@log.ChangedAt?.ToString("dd/MM/yyyy HH:mm")</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-            </div>
-            <!-- Phân trang -->
-            <div class="d-flex justify-content-center my-4" id="filePagination">
-                @if (filePagination.TotalPages > 1)
+    <!-- Phân trang -->
+    <div class="d-flex justify-content-center my-4" id="dbPagination">
+        <ul class="pagination">
+            @if (totalPages > 1)
+            {
+                if (currentPage > 1)
                 {
-                    <ul class="pagination">
-                        @if (ViewData["FilePagination"] != null)
-                        {
-                            if (filePagination.CurrentPage > 1)
-                            {
-                                <li class="page-item">
-                                    <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = 1, activeTab = "file" })">Đầu</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = filePagination.CurrentPage - 1, activeTab = "file" })">Trước</a>
-                                </li>
-                            }
-
-                            for (int i = 1; i <= filePagination.TotalPages; i++)
-                            {
-                                <li class="page-item @(i == filePagination.CurrentPage ? "active" : "")">
-                                    <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = i, activeTab = "file" })">@i</a>
-                                </li>
-                            }
-
-                            if (filePagination.CurrentPage < filePagination.TotalPages)
-                            {
-                                <li class="page-item">
-                                    <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = filePagination.CurrentPage + 1, activeTab = "file" })">Sau</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = filePagination.TotalPages, activeTab = "file" })">Cuối</a>
-                                </li>
-                            }
-                        }
-                    </ul>
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = 1, date = ViewData["Date"] })"><i class="bi bi-chevron-double-left"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, date = ViewData["Date"] })"><i class="bi bi-chevron-left"></i></a>
+                    </li>
                 }
-            </div>
-        </div>
+                for (int i = 1; i <= totalPages; i++)
+                {
+                    <li class="page-item @(i == currentPage ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i, date = ViewData["Date"] })">@i</a>
+                    </li>
+                }
+                if (currentPage < totalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, date = ViewData["Date"] })"><i class="bi bi-chevron-right"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = totalPages, date = ViewData["Date"] })"><i class="bi bi-chevron-double-right"></i></a>
+                    </li>
+                }
+            }
+        </ul>
     </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    function loadAuditLogs(page, filePage) {
-        var tableName = $('#tableName').val();
-        var actionType = $('#actionType').val();
-
-        $.ajax({
-            url: '@Url.Action("Index", "AuditLogs")',
-            data: {
-                tableName: tableName,
-                actionType: actionType,
-                page: page,
-                filePage: filePage,
-                isAjaxRequest: true
-            },
-            success: function (response) {
-                // Cập nhật lại danh sách log và phân trang từ dữ liệu trả về
-                $('#auditLogList').empty(); // Xóa danh sách cũ
-                $.each(response.Logs, function (index, log) {
-                    var logHtml = '<tr>' +
-                        '<td>' + log.TableName + '</td>' +
-                        '<td>' + log.RecordId + '</td>' +
-                        '<td>' + log.ActionType + '</td>' +
-                        '<td>' + log.ChangedByNavigation.FullName + '</td>' +
-                        '<td>' + log.ChangedAt + '</td>' +
-                        '</tr>';
-                    $('#auditLogList').append(logHtml);
-                });
-
-                // Cập nhật phân trang
-                $('#dbPagination').text('Page ' + response.DbPagination.CurrentPage + ' of ' + response.DbPagination.TotalPages);
-                $('#filePagination').text('Page ' + response.FilePagination.CurrentPage + ' of ' + response.FilePagination.TotalPages);
-            }
-        });
+    function toggleDetails(timestamp) {
+        var detailsRow = document.getElementById('details-' + timestamp);
+        if (detailsRow.style.display === 'none') {
+            detailsRow.style.display = 'table-row';
+        } else {
+            detailsRow.style.display = 'none';
+        }
     }
-
-    // Gọi AJAX khi thay đổi trang hoặc bộ lọc
-    $(document).ready(function () {
-        // Đặt sự kiện cho thay đổi trang
-        $('#dbPagination, #filePagination').on('click', function () {
-            var page = $(this).data('page');
-            var filePage = $(this).data('filePage');
-            loadAuditLogs(page, filePage);
-        });
-
-        // Đặt sự kiện cho việc lọc
-        $('#filterInput').on('input', function () {
-            loadAuditLogs(1, 1); // Tải lại trang đầu tiên
-        });
-    });
 </script>

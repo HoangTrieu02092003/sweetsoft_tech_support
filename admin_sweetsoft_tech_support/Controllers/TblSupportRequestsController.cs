@@ -13,12 +13,12 @@ namespace admin_sweetsoft_tech_support.Controllers
     public class TblSupportRequestsController : Controller
     {
         private readonly RequestContext _context;
-        private readonly NotificationService _notificationService;
+        private readonly LogService _logService;
 
-        public TblSupportRequestsController(RequestContext context, NotificationService notificationService)
+        public TblSupportRequestsController(RequestContext context, LogService logService)
         {
             _context = context;
-            _notificationService = notificationService;
+            _logService = logService;
         }
 
         //// GET: TblSupportRequests
@@ -103,7 +103,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 await _context.SaveChangesAsync();
                 var departmentManager = _context.TblUsers
                     .FirstOrDefault(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.Role.RoleName == "Trưởng phòng");
-                await _notificationService.LogActionToFile(departmentManager.UserId,$"Bạn có yêu cầu mới");
+                _logService.LogNotificationAction(departmentManager.FullName,"Bạn có yêu cầu mới");
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId", tblSupportRequest.CustomerId);

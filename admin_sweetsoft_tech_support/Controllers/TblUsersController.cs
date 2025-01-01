@@ -5,8 +5,6 @@ using admin_sweetsoft_tech_support.Models;
 using System.Security.Claims;
 using admin_sweetsoft_tech_support.Attributes;
 using System.Data;
-using Microsoft.AspNetCore.Http;
-
 namespace admin_sweetsoft_tech_support.Controllers
 {
     
@@ -20,26 +18,42 @@ namespace admin_sweetsoft_tech_support.Controllers
             _context = context;
             _auditLogService = auditLogService;
         }
-
         // GET: TblUsers
-        public async Task<IActionResult> Index(int? status, int? role, int page = 1)
+        public async Task<IActionResult> Index(string status, string search, int page = 1)
         {
-            var users = _context.TblUsers.Include(u => u.Role).AsQueryable();
-            if (status.HasValue)
-            {
-                users = users.Where(u => u.Status == status.Value);
-            }
 
-            // Lọc theo nhóm quyền
-            if (role.HasValue)
+            var users = _context.TblUsers
+                .Include(u => u.Role)
+                .Include(u => u.Department)
+                .AsQueryable();
+
+            if (status == "1")
             {
-                users = users.Where(u => u.RoleId == role.Value);
+                users = users.Where(u => u.Status == 1);
+            }
+            else if (status == "0")
+            {
+                users = users.Where(u => u.Status == 0);
+            }
+            //tìm kiếm 
+            if (!string.IsNullOrEmpty(search))
+            {
+                // Lọc logs theo tiêu chí tìm kiếm
+                var lowerSearch = search.ToLower();
+                users = users.Where(u =>
+                    u.FullName.ToLower().Contains(lowerSearch) ||
+                    u.Email.ToLower().Contains(lowerSearch) ||
+                    u.Phone.ToLower().Contains(lowerSearch) ||
+                    (u.Department != null && u.Department.DepartmentName.ToLower().Contains(lowerSearch))||
+                    (u.Role != null && u.Role.RoleName.ToLower().Contains(lowerSearch))
+                    );
             }
             var pageSize = 6; // số lượng người dùng mỗi trang
             var skip = (page - 1) * pageSize;
             var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
             {
+                TempData["ReturnUrl"] = Request.Path.ToString();
                 return RedirectToAction("Login", "Admin");
             }
             var requestContext = users
@@ -59,13 +73,12 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Chuyển dữ liệu sang View
             ViewData["TotalPages"] = totalPages;
             ViewData["CurrentPage"] = page;
-            ViewBag.Status = status; 
-            ViewBag.Role = role;
-            ViewBag.Roles = _context.TblRoles.ToList();
+            ViewData["status"] = status ?? "";  // Giữ giá trị của status nếu có, nếu không thì để trống
+            ViewData["search"] = search ?? "";
             return View(await requestContext.ToListAsync());
         }
 
-        //[PermissionAuthorize("Thêm người dùng")]
+        [PermissionAuthorize("Quản lý nhân viên")]
         // GET: TblUsers/Create
         public IActionResult Create()
         {
@@ -97,7 +110,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 tblUser.UpdatedAt = DateTime.Now; // Mặc định là ngày hiện tại
                 _context.Add(tblUser);
                 await _context.SaveChangesAsync();
-                await _auditLogService.LogAuditAction("TblUsers",tblUser.UserId, "INSERT",currentUserId,"", Newtonsoft.Json.JsonConvert.SerializeObject(tblUser));
+                _auditLogService.LogAction("Thêm",User.Identity.Name, $"Thêm thành công nhân viên {tblUser.FullName}","Nhân viên", " ", Newtonsoft.Json.JsonConvert.SerializeObject(tblUser));
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblUser.CreatedUser);
@@ -157,22 +170,51 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     return NotFound();
                 }
-                var oldValue = Newtonsoft.Json.JsonConvert.SerializeObject(existingUser);
-                // Cập nhật chỉ những thuộc tính được chỉnh sửa, các thuộc tính không thay đổi sẽ giữ nguyên
-                if (!string.IsNullOrEmpty(tblUser.FullName)) existingUser.FullName = tblUser.FullName;
-                if (!string.IsNullOrEmpty(tblUser.Email)) existingUser.Email = tblUser.Email;
-                if (!string.IsNullOrEmpty(tblUser.Phone)) existingUser.Phone = tblUser.Phone;
-                if (!string.IsNullOrEmpty(tblUser.Username)) existingUser.Username = tblUser.Username;
-                if (tblUser.RoleId != null) existingUser.RoleId = tblUser.RoleId;
-                if (tblUser.DepartmentId != null) existingUser.DepartmentId = tblUser.DepartmentId;
-                existingUser.Status = tblUser.Status;
+
+                // Lưu giá trị cũ và thay đổi
+                var oldValue = new Dictionary<string, object>();
+                var changes = new Dictionary<string, object>();
+
+                // Lấy danh sách các thuộc tính cần quan tâm (lọc bỏ các navigation properties không cần thiết)
+                var properties = typeof(TblUser).GetProperties()
+                    .Where(p => !p.PropertyType.Name.Contains("ICollection")) // Loại bỏ navigation collections
+                    .ToList();
+
+                foreach (var property in properties)
+                {
+                    var oldPropValue = property.GetValue(existingUser);
+                    var newPropValue = property.GetValue(tblUser);
+
+                    // Nếu giá trị thay đổi, lưu vào log
+                    if (newPropValue != null && !Equals(oldPropValue, newPropValue))
+                    {
+                        oldValue[property.Name] = oldPropValue;
+                        changes[property.Name] = newPropValue;
+
+                        // Cập nhật giá trị mới vào existingUser
+                        property.SetValue(existingUser, newPropValue);
+                    }
+                }
+
                 existingUser.UpdatedAt = DateTime.Today;
+
                 try
                 {
                     _context.Update(existingUser);
                     await _context.SaveChangesAsync();
-                    var newValue = Newtonsoft.Json.JsonConvert.SerializeObject(existingUser);
-                    await _auditLogService.LogAuditAction("TblUsers", tblUser.UserId, "UPDATE", int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0"), oldValue, newValue);
+
+                    // Ghi log chỉ khi có thay đổi
+                    if (changes.Count > 0)
+                    {
+                        _auditLogService.LogAction(
+                            "Sửa",
+                            User.Identity.Name,
+                            $"Sửa nhân viên {tblUser.FullName} thành công",
+                            "Nhân viên",
+                            Newtonsoft.Json.JsonConvert.SerializeObject(oldValue),
+                            Newtonsoft.Json.JsonConvert.SerializeObject(changes)
+                        );
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -185,8 +227,10 @@ namespace admin_sweetsoft_tech_support.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblUser.CreatedUser);
             ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId", tblUser.DepartmentId);
             ViewData["RoleId"] = new SelectList(_context.TblRoles, "RoleId", "RoleId", tblUser.RoleId);
@@ -266,7 +310,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value; // Lấy ID người dùng từ Claims
             if (userId == null)
             {
-                return RedirectToAction("Login", "Account"); 
+                return RedirectToAction("Login", "Admin"); 
             }
 
             var user = await _context.TblUsers

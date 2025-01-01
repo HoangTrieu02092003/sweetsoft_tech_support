@@ -294,3 +294,6 @@ D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Microsoft
 D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
 D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\Recaptcha.Web.dll
+D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\NLog.dll
+D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\NLog.Extensions.Logging.dll
+D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\bin\Debug\net8.0\NLog.Web.AspNetCore.dll

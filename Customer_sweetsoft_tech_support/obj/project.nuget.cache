@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uwxp+MW23Lw=",
+  "dgSpecHash": "NQRu0t2OneQ=",
   "success": true,
   "projectFilePath": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj",
   "expectedPackageFiles": [
@@ -85,6 +85,9 @@
     "C:\\Users\\NHAN\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
+    "C:\\Users\\NHAN\\.nuget\\packages\\nlog\\5.3.4\\nlog.5.3.4.nupkg.sha512",
+    "C:\\Users\\NHAN\\.nuget\\packages\\nlog.extensions.logging\\5.3.15\\nlog.extensions.logging.5.3.15.nupkg.sha512",
+    "C:\\Users\\NHAN\\.nuget\\packages\\nlog.web.aspnetcore\\5.3.15\\nlog.web.aspnetcore.5.3.15.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\recaptcha.aspnetcore\\3.0.10\\recaptcha.aspnetcore.3.0.10.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\recaptchanet\\3.1.0\\recaptchanet.3.1.0.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

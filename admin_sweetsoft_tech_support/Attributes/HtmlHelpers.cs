@@ -6,15 +6,15 @@ namespace admin_sweetsoft_tech_support.Attributes
     public static class HtmlHelpers
     {
         public static IHtmlContent GenerateFilterDropdown(
-    this IHtmlHelper htmlHelper,
-    string id,
-    string name,
-    Dictionary<string, string> options,
-    string selectedValue = "",
-    string placeholder = "Tất cả",
-    string cssClass = "form-select",
-    bool includeCancelButton = true,
-    string cancelButtonLabel = "X")
+            this IHtmlHelper htmlHelper,
+            string id,
+            string name,
+            Dictionary<string, string> options,
+            string selectedValue = "",
+            string placeholder = "Tất cả",
+            string cssClass = "form-select",
+            bool includeCancelButton = true,
+            string cancelButtonLabel = "X")
         {
             var containerTag = new TagBuilder("div");
             containerTag.AddCssClass("input-fillter-container");
@@ -24,7 +24,7 @@ namespace admin_sweetsoft_tech_support.Attributes
             selectTag.Attributes["id"] = id;
             selectTag.Attributes["name"] = name;
             selectTag.Attributes["class"] = cssClass;
-            selectTag.Attributes["onchange"] = "submitForm()";
+            selectTag.Attributes["onchange"] = "submitFilterForm()";
 
             // Thêm tùy chọn Placeholder
             var placeholderOption = new TagBuilder("option");
@@ -72,13 +72,27 @@ namespace admin_sweetsoft_tech_support.Attributes
             // Tạo script JavaScript
             var scriptTag = new TagBuilder("script");
             scriptTag.InnerHtml.AppendHtml(@"
-        function submitForm() {
+        function submitFilterForm() {
             document.getElementById('" + id + @"').form.submit();
         }
-        function clearFilter(selectId) {
-            document.getElementById(selectId).value = '';
-            document.getElementById(selectId).form.submit();
-        }
+
+        function clearFilter(inputId) {
+    var params = new URLSearchParams(window.location.search);
+
+    // Xóa giá trị của tham số bộ lọc trong URL
+    params.delete(inputId);
+
+    // Cập nhật lại URL mà không tải lại trang
+    var newURL = window.location.pathname + '?' + params.toString();
+    window.history.pushState({}, '', newURL);
+
+    // Reset giá trị của input hoặc select
+    document.getElementById(inputId).value = '';
+    
+    // Gửi lại form
+    submitFilterForm();
+}
+
     ");
 
             // Kết hợp các phần tử
@@ -89,17 +103,15 @@ namespace admin_sweetsoft_tech_support.Attributes
             return result;
         }
 
-
-        //
         public static IHtmlContent GenerateFilterTextbox(
-    this IHtmlHelper htmlHelper,
-    string id,
-    string name,
-    string placeholder = "Nhập để tìm kiếm...",
-    string cssClass = "form-control",
-    string value = "",
-    bool includeCancelButton = true,
-    string cancelButtonLabel = "X")
+            this IHtmlHelper htmlHelper,
+            string id,
+            string name,
+            string placeholder = "Nhập để tìm kiếm...",
+            string cssClass = "form-control",
+            string value = "",
+            bool includeCancelButton = true,
+            string cancelButtonLabel = "X")
         {
             var containerTag = new TagBuilder("div");
             containerTag.AddCssClass("input-fillter-container");
@@ -112,7 +124,7 @@ namespace admin_sweetsoft_tech_support.Attributes
             inputTag.Attributes["class"] = cssClass;
             inputTag.Attributes["placeholder"] = placeholder;
             inputTag.Attributes["value"] = value;
-            inputTag.Attributes["oninput"] = "autoSubmitForm()";
+            inputTag.Attributes["oninput"] = "";
 
             // Thêm thẻ input vào container
             containerTag.InnerHtml.AppendHtml(inputTag);
@@ -132,28 +144,24 @@ namespace admin_sweetsoft_tech_support.Attributes
             // Tạo script JavaScript
             var scriptTag = new TagBuilder("script");
             scriptTag.InnerHtml.AppendHtml(@"
-        function autoSubmitForm() {
-            clearTimeout(window.autoSubmitTimer);
-            window.autoSubmitTimer = setTimeout(function() {
-                var value = document.getElementById('" + id + @"').value;
-                var name = '" + name + @"';
-                // Gửi AJAX yêu cầu với giá trị input
-                $.ajax({
-                    url: '/your-controller/your-action', // Thay đổi URL theo controller và action của bạn
-                    type: 'GET',
-                    data: { name: name, value: value },
-                    success: function(response) {
-                        // Xử lý dữ liệu trả về (cập nhật UI hoặc danh sách)
-                        $('#your-results-container').html(response); // Cập nhật phần tử UI với dữ liệu mới
-                    }
-                });
-            }, 300); // Delay 300ms để tránh submit quá nhanh
-        }
-
+        
         function clearFilter(inputId) {
-            document.getElementById(inputId).value = '';
-            autoSubmitForm(); // Gửi lại yêu cầu AJAX khi xóa
-        }
+    var params = new URLSearchParams(window.location.search);
+
+    // Xóa giá trị của tham số bộ lọc trong URL
+    params.delete(inputId);
+
+    // Cập nhật lại URL mà không tải lại trang
+    var newURL = window.location.pathname + '?' + params.toString();
+    window.history.pushState({}, '', newURL);
+
+    // Reset giá trị của input hoặc select
+    document.getElementById(inputId).value = '';
+    
+    // Gửi lại form
+    submitFilterForm();
+}
+
     ");
 
             // Kết hợp các phần tử
@@ -164,17 +172,15 @@ namespace admin_sweetsoft_tech_support.Attributes
             return result;
         }
 
-
-        // ngày
         public static IHtmlContent GenerateDateFilterTextbox(
-    this IHtmlHelper htmlHelper,
-    string id,
-    string name,
-    string placeholder = "Chọn ngày...",
-    string cssClass = "form-control",
-    string value = "",
-    bool includeCancelButton = true,
-    string cancelButtonLabel = "X")
+            this IHtmlHelper htmlHelper,
+            string id,
+            string name,
+            string placeholder = "Chọn ngày...",
+            string cssClass = "form-control",
+            string value = "",
+            bool includeCancelButton = true,
+            string cancelButtonLabel = "X")
         {
             var containerTag = new TagBuilder("div");
             containerTag.AddCssClass("input-fillter-container");
@@ -187,7 +193,7 @@ namespace admin_sweetsoft_tech_support.Attributes
             inputTag.Attributes["class"] = cssClass;
             inputTag.Attributes["placeholder"] = placeholder;
             inputTag.Attributes["value"] = value;
-            inputTag.Attributes["oninput"] = "autoSubmitForm()";
+            inputTag.Attributes["oninput"] = "submitFilterForm()";
 
             // Thêm thẻ input vào container
             containerTag.InnerHtml.AppendHtml(inputTag);
@@ -207,13 +213,26 @@ namespace admin_sweetsoft_tech_support.Attributes
             // Tạo script JavaScript
             var scriptTag = new TagBuilder("script");
             scriptTag.InnerHtml.AppendHtml(@"
-        function autoSubmitForm() {
-            document.getElementById('" + id + @"').form.submit();
+        function submitFilterForm() {
+            document.getElementById('"" + id + @""').form.submit();
         }
-        function clearFilter(inputId) {
-            document.getElementById(inputId).value = '';
-            autoSubmitForm(); 
-        }
+            function clearFilter(inputId) {
+        var params = new URLSearchParams(window.location.search);
+
+        // Xóa giá trị của tham số bộ lọc trong URL
+        params.delete(inputId);
+
+        // Cập nhật lại URL mà không tải lại trang
+        var newURL = window.location.pathname + '?' + params.toString();
+        window.history.pushState({}, '', newURL);
+
+        // Reset giá trị của input hoặc select
+        document.getElementById(inputId).value = '';
+    
+        // Gửi lại form
+        submitFilterForm();
+    }
+
     ");
 
             // Kết hợp các phần tử
@@ -223,7 +242,5 @@ namespace admin_sweetsoft_tech_support.Attributes
 
             return result;
         }
-
-
     }
 }

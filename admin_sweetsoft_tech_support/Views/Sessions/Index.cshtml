@@ -2,6 +2,7 @@
 @using admin_sweetsoft_tech_support.Attributes
 @{
     ViewData["Title"] = "Quản lý Phiên làm việc";
+    int stt = 1;
 }
 
 <style>
@@ -49,14 +50,18 @@
                 includeCancelButton: false
                 )
             </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary">Lọc</button>
+            </div>
         </div>
     </form>
 
     <!-- Danh sách Sessions -->
     <div class="table-responsive">
-        <table class="table table-bordered mt-4">
+        <table class="table table-bordered table-striped mt-4">
         <thead class="thead-dark">
             <tr>
+                <th>STT</th>
                 <th>Người dùng</th>
                 <th>Session Token</th>
                 <th>Ngày tạo</th>
@@ -69,6 +74,7 @@
             @foreach (var session in Model)
             {
                 <tr>
+                    <td>@stt</td>
                     <td>@session.User.FullName</td>
                     <td>
                         <div class="text-truncate" style="max-width: 200px;" title="@session.SessionToken">
@@ -96,6 +102,7 @@
                         </form>
                     </td>
                 </tr>
+                stt++;
             }
         </tbody>
     </table>

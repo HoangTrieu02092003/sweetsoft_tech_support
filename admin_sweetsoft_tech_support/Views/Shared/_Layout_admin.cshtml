@@ -4,11 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin</title>
+    <title>@ViewData["Title"]</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="~/assets/images/logos/seodashlogo.png">
     <!-- Bootstrap CSS -->
     <link href="~/assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/assets/css/styles.min.css">
+    <link href="~/css/sort.css" rel="stylesheet" />
+    <script src="~/js/sort.js"></script>
+    <script src="~/js/set.js"></script>
     <style>
         .logo-img img{
             width: 80%;
@@ -70,7 +75,7 @@
                         <!-- Thêm phần mình làm ở đây nhen mn -->
                         
                         <li class="sidebar-item">
-                            <a class="sidebar-link" asp-action="Index" asp-controller="AuditLogs" aria-expanded="false">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="AuditLogs" asp-route-date="@DateTime.Now.ToString("yyyy-MM-dd")" asp-route-filterOption="day" aria-expanded="false">
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
                                 <span class="hide-menu">Quản lý nhật ký kiểm tra</span>
                             </a>

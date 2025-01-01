@@ -9,8 +9,9 @@
     // Lấy giá trị lọc từ ViewData
     var currentStatus = ViewData["Status"];
     var searchQuery = ViewData["Search"]?.ToString();
+
+    int stt = 1;
 }
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <h1>Quản lý Thông báo</h1>
 <!-- Tab navigation -->
 <div class="d-flex justify-content-between">
@@ -72,6 +73,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>STT</th>
                     <th>Người dùng</th>
                     <th>Nội dung</th>
                     <th>Trạng thái</th>
@@ -83,6 +85,7 @@
                 @foreach (var notification in Model.Item1)
                 {
                     <tr>
+                        <td>@stt</td>
                         <td>@notification.User.FullName</td>
                         <td>@notification.Message</td>
                         <td>@(notification.Status == 0 ? "Chưa đọc" : "Đã đọc")</td>
@@ -104,6 +107,7 @@
                             </form>
                         </td>
                     </tr>
+                    stt++;
                 }
             </tbody>
         </table>
