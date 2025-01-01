@@ -46,4 +46,5 @@ public partial class TblCustomer
     public virtual ICollection<TblSupportRequest> TblSupportRequests { get; set; } = new List<TblSupportRequest>();
 
     public virtual TblUser? UpdatedByNavigation { get; set; }
+
 }
