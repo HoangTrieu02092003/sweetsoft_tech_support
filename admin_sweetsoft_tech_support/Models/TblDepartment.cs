@@ -7,7 +7,7 @@ public partial class TblDepartment
 {
     public int DepartmentId { get; set; }
 
-    public string DepartmentName { get; set; }
+    public string DepartmentName { get; set; } = null!;
 
     public short Status { get; set; }
 

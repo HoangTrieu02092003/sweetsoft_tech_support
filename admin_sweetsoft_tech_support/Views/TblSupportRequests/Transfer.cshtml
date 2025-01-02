@@ -94,9 +94,9 @@
                             </select>
                             <span asp-validation-for="FromDepartmentId" class="text-danger"></span>
                         </div>
-
                         <div id="toDepartmentContainer">
                             <div class="flex-container">
+                                <div class="col-sm-12 colForm mt-0" style="border-bottom: 1px dashed #eaeaea; padding-bottom: 30px;"></div>
                                 <div class="flex-item">
                                     <div class="form-group">
                                         <label asp-for="ToDepartmentId" class="control-label text-dark">Phòng ban chuyển đến</label>
@@ -121,7 +121,7 @@
                                     <div class="form-group">
                                         <label asp-for="TransferredBy" class="control-label text-dark">Người chuyển</label>
                                         <select asp-for="TransferredBy" class="form-control" asp-items="ViewBag.TransferredBy">
-                                            <option value="" disabled selected>Chọn người...</option>
+                                            @* <option value="" disabled selected>Chọn người...</option> *@
                                         </select>
                                         <span asp-validation-for="TransferredBy" class="text-danger"></span>
                                     </div>
@@ -147,9 +147,15 @@
                             <button type="button" class="btn btn-info" id="addDepartmentButton">Thêm phòng ban</button>
                         </div>
 
-                        <div class="form-group text-center">
-                            <input type="submit" value="Chuyển" class="btn btn-success text-white" />
-                        </div>
+                        <form asp-action="Transfer" method="post">
+                            <div class="form-group">
+                                <!-- Other form fields -->
+                            </div>
+                            <input type="hidden" name="userName" value="@User.Identity.Name" />
+                            <div class="form-group text-center">
+                                <input type="submit" value="Chuyển" class="btn btn-success text-white" />
+                            </div>
+                        </form>
                     </form>
                 </div>
             </div>

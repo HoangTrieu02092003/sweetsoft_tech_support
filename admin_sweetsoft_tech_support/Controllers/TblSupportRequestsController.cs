@@ -29,43 +29,23 @@ namespace admin_sweetsoft_tech_support.Controllers
         //}
         [HttpGet]
         [Route("TblSupportRequests/Index")]
-        public IActionResult Index(int? status, int page = 1, string sortOrder = "")
+        public IActionResult Index(int? status, string sortColumn, string sortOrder, int page = 1)
         {
             int pageSize = 6;
             var requests = _context.TblSupportRequests
                 .Include(r => r.Customer)
                 .Include(r => r.Department)
-                .AsQueryable();
+                .ToList();
 
             if (status.HasValue)
             {
-                requests = requests.Where(r => r.Status == status.Value);
+                requests = requests.Where(r => r.Status == status.Value).ToList();
             }
 
-            // Sorting logic
-            switch (sortOrder)
+            // Using dynamic sorting
+            if (!string.IsNullOrEmpty(sortColumn))
             {
-                case "title_asc":
-                    requests = requests.OrderBy(r => r.RequestTitle);
-                    break;
-                case "title_desc":
-                    requests = requests.OrderByDescending(r => r.RequestTitle);
-                    break;
-                case "date_asc":
-                    requests = requests.OrderBy(r => r.CreatedAt);
-                    break;
-                case "date_desc":
-                    requests = requests.OrderByDescending(r => r.CreatedAt);
-                    break;
-                case "status_asc":
-                    requests = requests.OrderBy(r => r.Status);
-                    break;
-                case "status_desc":
-                    requests = requests.OrderByDescending(r => r.Status);
-                    break;
-                default:
-                    requests = requests.OrderBy(r => r.RequestId);
-                    break;
+                requests = TableSorter.Sort<TblSupportRequest>(requests.AsQueryable(), sortColumn, sortOrder);
             }
 
             int totalRequests = requests.Count();
@@ -73,9 +53,12 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             ViewData["CurrentPage"] = page;
             ViewData["TotalPages"] = (int)Math.Ceiling(totalRequests / (double)pageSize);
+            ViewData["SortColumn"] = sortColumn;
             ViewData["SortOrder"] = sortOrder;
+
             return View(paginatedRequests);
         }
+
 
         // GET: TblSupportRequests/Details/5
         public IActionResult Details(int id)
@@ -136,7 +119,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 await _context.SaveChangesAsync();
                 var departmentManager = _context.TblUsers
                     .FirstOrDefault(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.Role.RoleName == "Trưởng phòng");
-
+                _logService.LogActivityAction("Tạo yêu cầu hỗ trợ", "Create", User.Identity.Name);
                 if (departmentManager != null)
                 {
                     _logService.LogNotificationAction(departmentManager.FullName, "Bạn có yêu cầu mới");
@@ -145,6 +128,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
             ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId", tblSupportRequest.CustomerId);
             ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId", tblSupportRequest.DepartmentId);
+            var RequestTitle = _context.TblSupportRequests.Find(tblSupportRequest.RequestId).RequestTitle;
             return View(tblSupportRequest);
         }
 
@@ -184,6 +168,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     _context.Update(supportRequest);
                     await _context.SaveChangesAsync();
+                    _logService.LogActivityAction("Cập nhật yêu cầu hỗ trợ", "Update", User.Identity.Name);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -204,6 +189,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             return View(supportRequest);
         }
+
 
 
         // GET: TblSupportRequests/Delete/5
@@ -237,11 +223,12 @@ namespace admin_sweetsoft_tech_support.Controllers
                 _context.TblSupportRequests.Remove(tblSupportRequest);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Xóa yêu cầu hỗ trợ thành công.";
+                _logService.LogActivityAction("Xóa yêu cầu hỗ trợ", "Delete", User.Identity.Name);
             }
             else
             {
                 TempData["ErrorMessage"] = "Không tìm thấy yêu cầu hỗ trợ.";
-            }
+            }           
             return RedirectToAction(nameof(Index), new { page = currentPage });
         }
 
@@ -365,12 +352,12 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", tblSupportRequest.DepartmentId);
             ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName");
             ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName");
-
+            ViewBag.TransferredBy = new SelectList(_context.TblUsers, "UserId", "FullName", User.Identity.Name);
             return View(requestTransfer);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Transfer(int id, [Bind("TransferId,RequestId,FromDepartmentId,Priority,TransferredBy,TransferredAt,Note,RequestTitle,Product")] TblRequestTransfer requestTransfer, List<int> ToDepartmentId, int currentPage = 1)
+        public async Task<IActionResult> Transfer(int id, [Bind("TransferId,RequestId,FromDepartmentId,Priority,TransferredBy,TransferredAt,Note,RequestTitle,Product")] TblRequestTransfer requestTransfer, List<int> ToDepartmentId, string userName, int currentPage = 1)
         {
             if (id != requestTransfer.RequestId)
             {
@@ -437,6 +424,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                                 _context.Add(newSupportRequest);
                             }
                         }
+                        _logService.LogActivityAction("Chuyển yêu cầu hỗ trợ", "Transfer", User.Identity.Name);
                     }
 
                     await _context.SaveChangesAsync();
@@ -459,9 +447,10 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.FromDepartmentId);
             ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.ToDepartmentId);
             ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName", requestTransfer.TransferredBy);
-
+            ViewBag.TransferredBy = new SelectList(_context.TblUsers, "UserId", "FullName", User.Identity.Name);
             return View(requestTransfer);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateStatus(int id, int status, DateTime? resolvedAt)
@@ -473,13 +462,14 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             supportRequest.Status = (short)status;
-            supportRequest.ResolvedAt = status == 1 ? resolvedAt : null;
+            supportRequest.ResolvedAt = status == 1 ? resolvedAt ?? DateTime.Now : null;
 
             try
             {
                 _context.Update(supportRequest);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Chuyển trạng thái thành công";
+                _logService.LogActivityAction("Cập nhật trạng thái yêu cầu hỗ trợ", "Update", User.Identity.Name);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -492,9 +482,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                     throw;
                 }
             }
-
             return RedirectToAction(nameof(Index));
         }
-        
     }
 }
