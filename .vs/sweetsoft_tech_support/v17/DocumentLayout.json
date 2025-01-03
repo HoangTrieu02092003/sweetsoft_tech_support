@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "D:\\CC\\sweetsoft_tech_support\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|d:\\cc\\sweetsoft_tech_support\\customer_sweetsoft_tech_support\\views\\tblfaqs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|solutionrelative:customer_sweetsoft_tech_support\\views\\tblfaqs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|d:\\cc\\sweetsoft_tech_support\\customer_sweetsoft_tech_support\\wwwroot\\layoutuser\\style\\mystyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|solutionrelative:customer_sweetsoft_tech_support\\wwwroot\\layoutuser\\style\\mystyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|d:\\cc\\sweetsoft_tech_support\\customer_sweetsoft_tech_support\\views\\shared\\_layoutuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|solutionrelative:customer_sweetsoft_tech_support\\views\\shared\\_layoutuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|d:\\cc\\sweetsoft_tech_support\\customer_sweetsoft_tech_support\\views\\tblsupportrequests\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|solutionrelative:customer_sweetsoft_tech_support\\views\\tblsupportrequests\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|d:\\cc\\sweetsoft_tech_support\\customer_sweetsoft_tech_support\\controllers\\tblrequestsprocessingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|solutionrelative:customer_sweetsoft_tech_support\\controllers\\tblrequestsprocessingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|d:\\cc\\sweetsoft_tech_support\\customer_sweetsoft_tech_support\\views\\shared\\_layoutuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|solutionrelative:customer_sweetsoft_tech_support\\views\\shared\\_layoutuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,14 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\Views\\TblFaqs\\Index.cshtml",
-              "RelativeDocumentMoniker": "Customer_sweetsoft_tech_support\\Views\\TblFaqs\\Index.cshtml",
-              "ToolTip": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\Views\\TblFaqs\\Index.cshtml*",
-              "RelativeToolTip": "Customer_sweetsoft_tech_support\\Views\\TblFaqs\\Index.cshtml*",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAowIEAAAAHAAAAAAAAAA==",
+              "Title": "mystyle.css",
+              "DocumentMoniker": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\mystyle.css",
+              "RelativeDocumentMoniker": "Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\mystyle.css",
+              "ToolTip": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\mystyle.css",
+              "RelativeToolTip": "Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\style\\mystyle.css",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAAwIsAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-01-03T16:25:46.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\Views\\TblSupportRequests\\Create.cshtml",
+              "RelativeDocumentMoniker": "Customer_sweetsoft_tech_support\\Views\\TblSupportRequests\\Create.cshtml",
+              "ToolTip": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\Views\\TblSupportRequests\\Create.cshtml",
+              "RelativeToolTip": "Customer_sweetsoft_tech_support\\Views\\TblSupportRequests\\Create.cshtml",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAE8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-31T06:24:51.024Z",
+              "WhenOpened": "2025-01-03T16:25:14.074Z",
               "EditorCaption": ""
             },
             {
@@ -52,16 +69,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "_LayoutUser.cshtml",
               "DocumentMoniker": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\Views\\Shared\\_LayoutUser.cshtml",
               "RelativeDocumentMoniker": "Customer_sweetsoft_tech_support\\Views\\Shared\\_LayoutUser.cshtml",
               "ToolTip": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\Views\\Shared\\_LayoutUser.cshtml",
               "RelativeToolTip": "Customer_sweetsoft_tech_support\\Views\\Shared\\_LayoutUser.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-17T09:03:24.058Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-17T09:03:24.058Z"
             }
           ]
         }
