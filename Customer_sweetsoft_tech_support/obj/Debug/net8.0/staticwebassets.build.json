@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dbo4QiU/juthx5MBQMGoXuig6KkGrJTh8NMrZY5Ingc=",
+  "Hash": "czC44sRRUX6wpaaLdD68ub3aVx1OYDQyuF1cvwuHTi4=",
   "Source": "Customer_sweetsoft_tech_support",
   "BasePath": "_content/Customer_sweetsoft_tech_support",
   "Mode": "Default",
@@ -775,6 +775,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\next53_2on.png"
+    },
+    {
+      "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\next53-white.png",
+      "SourceId": "Customer_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/Customer_sweetsoft_tech_support",
+      "RelativePath": "LayoutUser/img/next53-white.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\next53-white.png"
     },
     {
       "Identity": "D:\\CC\\sweetsoft_tech_support\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\none.png",
