@@ -5,6 +5,7 @@
     int totalPages = (int)ViewData["TotalPages"];
     int currentPage = (int)ViewData["CurrentPage"];
     int stt = 1;
+
 }
 <style>
     table tbody tr:nth-child(odd) {
@@ -14,9 +15,10 @@
     table tbody tr:nth-child(even) {
         background-color: #ffffff;
     }
+
 </style>
 <div class="mt-4">
-    <h1 class="text-center">Quản lý Thông báo</h1>
+    <h1 class="text-center">Quản lý thông báo</h1>
 
     <!-- Form tìm kiếm -->
     <form method="get" class="m-3" id="filterForm">
@@ -34,7 +36,7 @@
                 @Html.GenerateFilterDropdown(
                          id: "filterOption",
                          name: "filterOption",
-                         options: new Dictionary<string, string> {
+                         options: new Dictionary<string, string>{
                 {"day", "Ngày"},
                 {"month", "Tháng"},
                 {"year", "Năm"}
@@ -46,9 +48,9 @@
         </div>
     </form>
 
-    <!-- Danh sách Thông báo -->
+    <!-- Danh sách Audit Logs -->
     <div class="table-responsive mt-4">
-        <table class="table table-striped" id="notificationList">
+        <table class="table table-striped" id="auditLogList">
             <thead>
                 <tr>
                     <th>STT</th>
@@ -60,32 +62,28 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var notification in Model)
+                @foreach (var log in Model)
                 {
                     <tr>
                         <td>@stt</td>
-                        <td>@notification.User</td>
-                        <td>@notification.Content</td>
+                        <td>@log.User</td>
+                        <td>@log.Content</td>
+                        <td>@log.Status</td>
+                        <td>@log.Timestamp</td>
                         <td>
-                            @if (notification.Status == "0" || notification.Status == "") 
-                            {
-                                <span class="bold-text">Chưa xem</span>
-                            }
-                            else
-                            {
-                                <span>Đã xem</span>
-                            }
-                        </td>
-                        <td>@notification.Timestamp</td>
-                        <td>
-                            <button class="btn btn-sm btn-outline-info" onclick="markAsRead('@notification.Timestamp', '@notification.User', '@notification.Content')">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                            <button class="btn btn-sm btn-outline-danger">
-                                <i class="bi bi-trash"></i>
+                            <button class="btn btn-sm btn-info" onclick="toggleDetails('@log.Timestamp')">
+                                Xem
                             </button>
                         </td>
-                    </tr>                 
+                    </tr>
+                    <tr id="details-@log.Timestamp" class="details-row" style="display: none;">
+                        <td colspan="6">
+                            <strong>Chi tiết:</strong><br />
+                            <ul>
+                                <!-- Add other details here -->
+                            </ul>
+                        </td>
+                    </tr>
                     stt++;
                 }
             </tbody>
@@ -126,33 +124,15 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
-        function markAsRead(timestamp, user, content) {
-        const notification = {
-            Timestamp: timestamp,
-            User: user,
-            Content: content,
-            Status: 1 // Đánh dấu là đã đọc
-        };
-
-        fetch('/Notifications/MarkAsRead', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(notification) // Chuyển đối tượng notification thành JSON
-        })
-        .then(response => {
-            if (response.ok) {
-                alert('Thông báo đã được đánh dấu là đã đọc');
-                // Cập nhật lại giao diện nếu cần, ví dụ: disable nút
-            } else {
-                alert('Lỗi: Không thể đánh dấu là đã đọc');
-            }
-        })
-        .catch(error => {
-            console.error('Lỗi:', error);
-        });
+    function toggleDetails(timestamp) {
+        var detailsRow = document.getElementById('details-' + timestamp);
+        if (detailsRow.style.display === 'none') {
+            detailsRow.style.display = 'table-row';
+        } else {
+            detailsRow.style.display = 'none';
+        }
     }
-
 </script>

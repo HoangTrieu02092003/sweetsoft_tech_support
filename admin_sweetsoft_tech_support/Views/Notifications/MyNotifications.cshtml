@@ -28,7 +28,7 @@ else
             <tbody>
                 @foreach (var notification in Model)
                 {
-                    <tr>
+                    <tr >
                         <td>@stt</td>
                         <td>@notification.User</td>
                         <td>@notification.Content</td>
@@ -44,15 +44,12 @@ else
                         </td>
                         <td>@notification.Timestamp.ToString("dd/MM/yyyy HH:mm:ss")</td> <!-- Định dạng ngày tháng -->
                         <td>
-                            <!-- Nút Mark as Read -->
-                            <button class="btn btn-sm btn-outline-info" onclick="markAsRead('@notification.Timestamp', '@notification.User', '@notification.Content')">
-                                <i class="bi bi-eye"></i> Đánh dấu đã xem
-                            </button>
-
                             <!-- Nút Delete -->
-                            <button class="btn btn-sm btn-outline-danger" onclick="deleteNotification('@notification.Timestamp')">
-                                <i class="bi bi-trash"></i> Xóa
-                            </button>
+                            <form asp-action="DeleteNotification" method="post" asp-route-id="@notification.Id">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                    <i class="bi bi-trash"></i> Xóa
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     stt++;

@@ -8,6 +8,20 @@ namespace admin_sweetsoft_tech_support.Attributes
         private static readonly Logger loggerNoti = LogManager.GetLogger("Notifications");
         private static readonly Logger loggerActi = LogManager.GetLogger("Activity");
 
+        public string GenerateUniqueId()
+        {
+            // Lấy thời gian hiện tại (UTC) tính theo mili giây
+            var timestamp = DateTime.UtcNow.ToString("yyyyMMddHHmmssfff");
+
+            // Tạo một giá trị ngẫu nhiên từ 1000 đến 9999 để đảm bảo tính duy nhất
+            var randomValue = new Random().Next(1000, 9999);
+
+            // Kết hợp thời gian và giá trị ngẫu nhiên thành ID
+            var uniqueId = $"{timestamp}{randomValue}";
+
+            return uniqueId;
+        }
+
         // Phương thức ghi log với Action, User và message
         public void LogAuditAction(string action, string user, string message, string module = "", string oldValue = "", string newValue = "")
         {
@@ -31,7 +45,8 @@ namespace admin_sweetsoft_tech_support.Attributes
 
             // Gán các properties vào logEvent
             logEvent.Properties["Status"] = status;
-            logEvent.Properties["User"] = user;
+            logEvent.Properties["Reciver"] = user;
+            logEvent.Properties["Id"] = GenerateUniqueId();
 
             // Ghi log vào file
             loggerNoti.Log(logEvent);

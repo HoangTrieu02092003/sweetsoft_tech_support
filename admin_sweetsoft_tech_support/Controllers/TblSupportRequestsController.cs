@@ -131,6 +131,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 await _context.SaveChangesAsync();
                 var departmentManager = _context.TblUsers
                     .FirstOrDefault(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.Role.RoleName == "Trưởng phòng");
+
                 _logService.LogActivityAction("Tạo yêu cầu hỗ trợ", "Create", User.Identity.Name);
                 if (departmentManager != null)
                 {

@@ -25,14 +25,15 @@ public class UnreadNotificationsViewComponent : ViewComponent
                 foreach (var line in logLines)
                 {
                     var logParts = line.Split(", ");
-
-                    var status = logParts[1];
-                    var userIdLog = logParts[2];
-                    Console.WriteLine($"Status: {status}, UserId: {userIdLog}, Line: {line}");
-
-                    if (userIdLog == userId)
+                    if (logParts.Length >= 5)
                     {
-                        unreadCount++;
+                        var status = logParts[1];
+                        var userIdLog = logParts[2];
+
+                        if (userIdLog == userId && status == "0")
+                        {
+                            unreadCount++;
+                        }
                     }
                 }
             }

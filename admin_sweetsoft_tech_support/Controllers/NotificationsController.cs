@@ -1,21 +1,15 @@
 ﻿using admin_sweetsoft_tech_support.Attributes;
 using admin_sweetsoft_tech_support.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Drawing.Printing;
-using System.Dynamic;
 using System.Globalization;
-using System.Security.AccessControl;
 using System.Security.Claims;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
     public class NotificationsController : Controller
     {
-
-        private readonly string _logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
+        private readonly string _logDirectoryNoti = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
         private readonly RequestContext _context;
 
         public NotificationsController(RequestContext context)
@@ -23,7 +17,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             _context = context;
         }
         // Hiển thị tất cả log
-        public async Task<IActionResult> Index(string date = "", string searchTerm = null, string filterOption = "", int page = 1)
+        public async Task<IActionResult> Index(string date = "", string searchTerm = "", string filterOption = "", int page = 1)
         {
             List<NotificationEntry> logs;
             var pageSize = 5; // số lượng log mỗi trang
@@ -105,20 +99,111 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             return View(logs);
         }
+        // Hiển thị thông báo của người dùng hiện tại
+        public async Task<IActionResult> MyNotifications(string date = "", string filterOption = "")
+        {
+            List<NotificationEntry> logs = new List<NotificationEntry>();
+
+            // Lấy userId của người dùng hiện tại
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+
+            // Đọc các log từ các file (tạo một hàm đọc log từ file)
+            var logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
+            var logFiles = Directory.GetFiles(logDirectory, "*.log", SearchOption.AllDirectories);
+            var allLogs = new List<NotificationEntry>();
+
+            // Đọc thông báo từ tất cả các file log
+            foreach (var file in logFiles)
+            {
+                var fileLogs = await ReadLogFileForMyAsync(file); // Hàm đọc log từ file
+                allLogs.AddRange(fileLogs);
+            }
+
+            // Lọc thông báo của người dùng hiện tại
+            logs = allLogs.Where(log => log.User == currentUserId && log.Status == "0").ToList();
+
+            // Ánh xạ UserId sang FullName
+            foreach (var log in logs)
+            {
+                var userId = log.User; // UserId là string
+                var user = await _context.TblUsers
+                    .Where(u => u.UserId == int.Parse(userId)) // Tìm người dùng từ UserId
+                    .FirstOrDefaultAsync();
+
+                if (user != null)
+                {
+                    log.User = user.FullName; // Chuyển UserId thành tên người dùng
+                }
+                else
+                {
+                    log.User = "Không rõ"; // Xử lý trường hợp không tìm thấy người dùng
+                }
+            }
+
+            ViewData["Date"] = date;
+            ViewData["FilterOption"] = filterOption;
+            return View(logs); // Trả về các log đã được lọc và phân trang cho view
+        }
+
+        // xóa thông báo
+        [HttpPost]
+        public async Task<IActionResult> DeleteNotification(string id)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
+            var logFiles = Directory.GetFiles(logDirectory, "*.log", SearchOption.AllDirectories);
+            bool isDeleted = false; // Biến để kiểm tra có thay đổi nào không
+
+            // Duyệt qua tất cả các file log
+            foreach (var file in logFiles)
+            {
+                var fileLogs = await ReadLogFileForMyAsync(file); // Đọc các log từ file
+
+                // Duyệt qua tất cả các bản ghi và thay đổi status từ "0" thành "1" nếu trùng với id và userId
+                foreach (var log in fileLogs)
+                {
+                    // Kiểm tra nếu log trùng với id và userId, sau đó cập nhật status
+                    if (log.User == currentUserId && log.Id == id && log.Status == "0")
+                    {
+                        log.Status = "1";  // Chuyển status thành "1"
+                        isDeleted = true;  // Đánh dấu là có thay đổi
+                    }
+                }
+
+                // Ghi lại lại file log với các dòng đã thay đổi status
+                var linesToWrite = fileLogs.Select(log => $"{log.Timestamp:dd/MM/yyyy HH:mm}, {log.Status}, {log.User}, {log.Id}, {log.Content}");
+                await System.IO.File.WriteAllLinesAsync(file, linesToWrite);
+            }
+
+            // Nếu có thay đổi, chuyển hướng về MyNotifications, nếu không chuyển về Index
+            if (isDeleted)
+            {
+                return RedirectToAction(nameof(MyNotifications)); // Nếu có thay đổi, về trang MyNotifications
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index)); // Nếu không có bản ghi nào bị thay đổi
+            }
+        }
 
         // Đọc log cho phân trang (Async)
         private async Task<List<NotificationEntry>> ReadLogsForPaginationAsync(int skip, int pageSize)
         {
             var logs = new List<NotificationEntry>();
-            if (!Directory.Exists(_logDirectory))
+            if (!Directory.Exists(_logDirectoryNoti))
             {
                 return logs;
             }
 
-            var logFiles = Directory.GetFiles(_logDirectory, "*.log", SearchOption.AllDirectories);
+            var logFiles = Directory.GetFiles(_logDirectoryNoti, "*.log", SearchOption.AllDirectories);
             foreach (var file in logFiles)
             {
-                var fileLogs = await ReadLogFileAsync(file); // Đọc log file async
+                var fileLogs = await ReadLogFileForIndexAsync(file); // Đọc log file async
                 logs.AddRange(fileLogs);
             }
 
@@ -132,7 +217,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         private async Task<List<NotificationEntry>> ReadLogsForDatePaginationAsync(DateTime date, int skip, int pageSize)
         {
             var logs = new List<NotificationEntry>();
-            var logDirectoryForDate = Path.Combine(_logDirectory, date.ToString("yyyy"), date.ToString("MM"), date.ToString("dd"));
+            var logDirectoryForDate = Path.Combine(_logDirectoryNoti, date.ToString("yyyy"), date.ToString("MM"), date.ToString("dd"));
             if (Directory.Exists(logDirectoryForDate))
             {
                 var logFiles = Directory.GetFiles(logDirectoryForDate, $"{date:yyyy-MM-dd}-*.log");
@@ -140,7 +225,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 foreach (var file in logFiles)
                 {
                     Console.WriteLine(file);
-                    var fileLogs = await ReadLogFileAsync(file);
+                    var fileLogs = await ReadLogFileForIndexAsync(file);
                     logs.AddRange(fileLogs);
                 }
             }
@@ -155,14 +240,14 @@ namespace admin_sweetsoft_tech_support.Controllers
         private async Task<List<NotificationEntry>> ReadLogsByDateAsync(DateTime date)
         {
             var logs = new List<NotificationEntry>();
-            var logDirectoryForDate = Path.Combine(_logDirectory, date.ToString("yyyy"), date.ToString("MM"), date.ToString("dd"));
+            var logDirectoryForDate = Path.Combine(_logDirectoryNoti, date.ToString("yyyy"), date.ToString("MM"), date.ToString("dd"));
             if (Directory.Exists(logDirectoryForDate))
             {
                 var logFiles = Directory.GetFiles(logDirectoryForDate, $"{date:yyyy-MM-dd}-*.log");
 
                 foreach (var file in logFiles)
                 {
-                    var fileLogs = await ReadLogFileAsync(file);
+                    var fileLogs = await ReadLogFileForIndexAsync(file);
                     logs.AddRange(fileLogs);
                 }
             }
@@ -174,7 +259,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         private async Task<List<NotificationEntry>> ReadLogsForMonthPaginationAsync(DateTime month, int skip, int pageSize)
         {
             var logs = new List<NotificationEntry>();
-            var logDirectoryForMonth = Path.Combine(_logDirectory, month.ToString("yyyy"), month.ToString("MM"));
+            var logDirectoryForMonth = Path.Combine(_logDirectoryNoti, month.ToString("yyyy"), month.ToString("MM"));
 
             if (Directory.Exists(logDirectoryForMonth))
             {
@@ -188,7 +273,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
                     foreach (var file in logFiles)
                     {
-                        var fileLogs = await ReadLogFileAsync(file);
+                        var fileLogs = await ReadLogFileForIndexAsync(file);
                         logs.AddRange(fileLogs);
                     }
                 }
@@ -200,12 +285,11 @@ namespace admin_sweetsoft_tech_support.Controllers
                         .ToList();
         }
 
-
         // Đọc log theo tháng (Async)
         private async Task<List<NotificationEntry>> ReadLogsByMonthAsync(DateTime month)
         {
             var logs = new List<NotificationEntry>();
-            var logDirectoryForMonth = Path.Combine(_logDirectory, month.ToString("yyyy"), month.ToString("MM"));
+            var logDirectoryForMonth = Path.Combine(_logDirectoryNoti, month.ToString("yyyy"), month.ToString("MM"));
 
             if (Directory.Exists(logDirectoryForMonth))
             {
@@ -220,7 +304,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                     foreach (var file in logFiles)
                     {
                         Console.WriteLine(file);  // Để debug
-                        var fileLogs = await ReadLogFileAsync(file);
+                        var fileLogs = await ReadLogFileForIndexAsync(file);
                         logs.AddRange(fileLogs);
                     }
                 }
@@ -229,12 +313,11 @@ namespace admin_sweetsoft_tech_support.Controllers
             return logs.OrderByDescending(log => log.Timestamp).ToList();
         }
 
-
         // Đọc log theo năm phân trang (Async)
         private async Task<List<NotificationEntry>> ReadLogsForYearPaginationAsync(DateTime year, int skip, int pageSize)
         {
             var logs = new List<NotificationEntry>();
-            var logDirectoryForYear = Path.Combine(_logDirectory, year.ToString("yyyy"));
+            var logDirectoryForYear = Path.Combine(_logDirectoryNoti, year.ToString("yyyy"));
 
             if (Directory.Exists(logDirectoryForYear))
             {
@@ -253,7 +336,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
                         foreach (var file in logFiles)
                         {
-                            var fileLogs = await ReadLogFileAsync(file);
+                            var fileLogs = await ReadLogFileForIndexAsync(file);
                             logs.AddRange(fileLogs);
                         }
                     }
@@ -270,7 +353,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         private async Task<List<NotificationEntry>> ReadLogsByYearAsync(DateTime year)
         {
             var logs = new List<NotificationEntry>();
-            var logDirectoryForYear = Path.Combine(_logDirectory, year.ToString("yyyy"));
+            var logDirectoryForYear = Path.Combine(_logDirectoryNoti, year.ToString("yyyy"));
 
             if (Directory.Exists(logDirectoryForYear))
             {
@@ -289,7 +372,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
                         foreach (var file in logFiles)
                         {
-                            var fileLogs = await ReadLogFileAsync(file);
+                            var fileLogs = await ReadLogFileForIndexAsync(file);
                             logs.AddRange(fileLogs);
                         }
                     }
@@ -299,14 +382,30 @@ namespace admin_sweetsoft_tech_support.Controllers
             return logs.OrderByDescending(log => log.Timestamp).ToList();
         }
 
-        // Đọc log từ một file (Async)
-        private async Task<List<NotificationEntry>> ReadLogFileAsync(string filePath)
+        // Đọc log từ một file (Async index)
+        private async Task<List<NotificationEntry>> ReadLogFileForIndexAsync(string filePath)
         {
             var logs = new List<NotificationEntry>();
             var lines = await System.IO.File.ReadAllLinesAsync(filePath); // Đọc file async
             foreach (var line in lines)
             {
-                var log = await ParseLogLine(line);
+                var log = await ParseLogLineIndex(line);
+                if (log != null)
+                {
+                    logs.Add(log);
+                }
+            }
+            return logs;
+        }
+
+        // Đọc log từ một file (Async MyNotifications)
+        private async Task<List<NotificationEntry>> ReadLogFileForMyAsync(string filePath)
+        {
+            var logs = new List<NotificationEntry>();
+            var lines = await System.IO.File.ReadAllLinesAsync(filePath); // Đọc file async
+            foreach (var line in lines)
+            {
+                var log = await ParseLogLineNoti(line);
                 if (log != null)
                 {
                     logs.Add(log);
@@ -319,9 +418,9 @@ namespace admin_sweetsoft_tech_support.Controllers
         private async Task<int> CountLogsAsync()
         {
             var totalLogs = 0;
-            if (Directory.Exists(_logDirectory))
+            if (Directory.Exists(_logDirectoryNoti))
             {
-                var logFiles = Directory.GetFiles(_logDirectory, "*.log", SearchOption.AllDirectories);
+                var logFiles = Directory.GetFiles(_logDirectoryNoti, "*.log", SearchOption.AllDirectories);
                 foreach (var file in logFiles)
                 {
                     totalLogs += await CountLinesInFileAsync(file); // Đếm số dòng async
@@ -345,8 +444,8 @@ namespace admin_sweetsoft_tech_support.Controllers
             return lineCount;
         }
 
-        // Phân tích một dòng log
-        private async Task<NotificationEntry> ParseLogLine(string line)
+        // Phân tích một dòng log cho index
+        private async Task<NotificationEntry> ParseLogLineIndex(string line)
         {
             try
             {
@@ -355,13 +454,14 @@ namespace admin_sweetsoft_tech_support.Controllers
                 var user = await _context.TblUsers
                 .Where(u => u.UserId == int.Parse(parts[2]))
                 .FirstOrDefaultAsync();
-                if (parts.Length < 4) return null;
+                if (parts.Length < 5) return null;
                 return new NotificationEntry
                 {
                     Timestamp = DateTime.ParseExact(parts[0], "dd/MM/yyyy HH\\:mm", CultureInfo.InvariantCulture),
                     Status = parts[1],  // Gán giá trị đã chuyển đổi
                     User = user.FullName,
-                    Content = parts[3]
+                    Id = parts[3],
+                    Content = parts[4]
                 };
             }
             catch
@@ -369,82 +469,28 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return null;
             }
         }
-        public async Task<IActionResult> MyNotifications(string date = "", string searchTerm = null, string filterOption = "", int page = 1)
+
+        // Phân tích 1 dòng log cho MyNotifications
+        private async Task<NotificationEntry> ParseLogLineNoti(string line)
         {
-            List<NotificationEntry> logs = new List<NotificationEntry>();
-
-            // Lấy userId của người dùng hiện tại
-            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var pageSize = 5; // Số lượng thông báo mỗi trang
-            var skip = (page - 1) * pageSize;
-
-            if (string.IsNullOrEmpty(currentUserId))
+            try
             {
-                return RedirectToAction("Login", "Admin");
-            }
 
-            // Đọc các log từ các file (tạo một hàm đọc log từ file)
-            var logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
-            var logFiles = Directory.GetFiles(logDirectory, "*.log", SearchOption.AllDirectories);
-            var allLogs = new List<NotificationEntry>();
-
-            // Đọc thông báo từ tất cả các file log
-            foreach (var file in logFiles)
-            {
-                var fileLogs = await ReadLogFileAsync(file); // Hàm đọc log từ file
-                allLogs.AddRange(fileLogs);
-            }
-
-            // Lọc thông báo của người dùng hiện tại
-            logs = allLogs.Where(log => log.User == currentUserId).ToList();
-
-            // Ánh xạ UserId sang FullName
-            foreach (var log in logs)
-            {
-                var userId = log.User; // UserId là string
-                var user = await _context.TblUsers
-                    .Where(u => u.UserId == int.Parse(userId)) // Tìm người dùng từ UserId
-                    .FirstOrDefaultAsync();
-
-                if (user != null)
+                var parts = line.Split(", ");
+                if (parts.Length < 5) return null;
+                return new NotificationEntry
                 {
-                    log.User = user.FullName; // Chuyển UserId thành tên người dùng
-                }
-                else
-                {
-                    log.User = "Không rõ"; // Xử lý trường hợp không tìm thấy người dùng
-                }
+                    Timestamp = DateTime.ParseExact(parts[0], "dd/MM/yyyy HH\\:mm", CultureInfo.InvariantCulture),
+                    Status = parts[1],  // Gán giá trị đã chuyển đổi
+                    User = parts[2],
+                    Id = parts[3],
+                    Content = parts[4]
+                };
             }
-
-            // Lọc theo ngày nếu có
-            if (!string.IsNullOrEmpty(date) && DateTime.TryParse(date, out var parsedDate))
+            catch
             {
-                logs = logs.Where(log => log.Timestamp.Date == parsedDate.Date).ToList();
+                return null;
             }
-
-            // Lọc theo từ khóa tìm kiếm nếu có
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                logs = logs.Where(log =>
-                    log.Content.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                    log.Status.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                    log.Timestamp.ToString().Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
-                ).ToList();
-            }
-
-            // Áp dụng phân trang
-            var totalLogs = logs.Count;
-            var totalPages = (int)Math.Ceiling(totalLogs / (double)pageSize);
-            logs = logs.Skip(skip).Take(pageSize).ToList();
-
-            // Truyền dữ liệu vào View
-            ViewData["SearchTerm"] = searchTerm;
-            ViewData["Date"] = date;
-            ViewData["FilterOption"] = filterOption;
-            ViewData["TotalPages"] = totalPages;
-            ViewData["CurrentPage"] = page;
-
-            return View(logs); // Trả về các log đã được lọc và phân trang cho view
         }
     }
 }

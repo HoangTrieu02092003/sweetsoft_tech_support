@@ -79,6 +79,7 @@ namespace admin_sweetsoft_tech_support.Attributes
                 Layout = "${date:format=dd/MM/yyyy HH\\:mm}, " +
                          "${event-properties:item=Status}, " +
                          "${event-properties:item=Reciver}, " +
+                         "${event-properties:item=Id}, " +
                          "${message}",
                 CreateDirs = true,
                 KeepFileOpen = false

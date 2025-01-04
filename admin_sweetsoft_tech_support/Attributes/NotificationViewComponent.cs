@@ -23,16 +23,19 @@ namespace admin_sweetsoft_tech_support.Attributes
                     foreach (var line in logLines)
                     {
                         var logParts = line.Split(", ");
-
-                        var userIdLog = logParts[2];
-                        var message = logParts[3];
-
-                        if (userIdLog == userId)
+                        if (logParts.Length >= 5)
                         {
-                            logs.Add(new
+                            var status = logParts[1];
+                            var userIdLog = logParts[2];
+                            var message = logParts[4];
+
+                            if (userIdLog == userId && status == "0")
                             {
-                                Message = message,
-                            });
+                                logs.Add(new
+                                {
+                                    Message = message,
+                                });
+                            }
                         }
                     }
                 }
