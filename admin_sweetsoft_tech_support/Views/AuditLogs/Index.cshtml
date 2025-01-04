@@ -70,8 +70,11 @@
                         <td class="d-lg-block d-none">@log.Message</td>
                         <td>@log.Timestamp</td>
                         <td>
-                            <button class="btn btn-sm btn-info" onclick="toggleDetails('@log.Timestamp')">
-                                Xem
+                            <button class="btn btn-sm btn-outline-info" onclick="toggleDetails('@log.Timestamp')">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash"></i>
                             </button>
                         </td>
                     </tr>

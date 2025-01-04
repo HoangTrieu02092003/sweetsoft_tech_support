@@ -1,11 +1,11 @@
-﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblNotification>
+﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.NotificationEntry>
 
 @{
     ViewData["Title"] = "Thông báo của tôi";
     int stt = 1;
 }
 
-<h1>Thông báo của tôi</h1>
+<h1 class="text-center">Thông báo của tôi</h1>
 
 @if (!Model.Any())
 {
@@ -13,50 +13,82 @@
 }
 else
 {
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>STT</th>
-                <th>
-                    <a href="?sortColumn=Message&sortOrder=@(
-                        ViewData["SortOrder"] as string == "asc" &&
-                        ViewData["SortColumn"] as string == "Message" ? "desc" : "asc")">
-                        Nội dung
-                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "Message" ? ViewData["SortOrder"] : "")"></span>
-                    </a>
-                </th>
-                <th>
-                    <a href="?sortColumn=Status&sortOrder=@(
-                        ViewData["SortOrder"] as string == "asc" &&
-                        ViewData["SortColumn"] as string == "Status" ? "desc" : "asc")">
-                        Trạng thái
-                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "Status" ? ViewData["SortOrder"] : "")"></span>
-                    </a>
-                </th>
-                <th>
-                    <a href="?sortColumn=CreatedAt&sortOrder=@(
-                        ViewData["SortOrder"] as string == "asc" &&
-                        ViewData["SortColumn"] as string == "CreatedAt" ? "desc" : "asc")">
-                        Thời gian
-                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "CreatedAt" ? ViewData["SortOrder"] : "")"></span>
-                    </a>
-                </th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var notification in Model)
-            {
-                <tr class="@(notification.Status == 0 ? "bold-text" : "")"
-                    style="cursor: pointer;"
-                    onclick="window.location.href='@Url.Action("Index", "TblSupportRequests")'">
-                    <td>@stt</td>
-                    <td>@notification.Message</td> 
-                    <td>@(notification.Status == 0 ? "Chưa đọc" : "Đã đọc")</td> 
-                    <td>@notification.CreatedAt?.ToString("yyyy-MM-dd HH:mm")</td> 
+    <div class="table-responsive mt-4">
+        <table class="table table-striped" id="notificationList">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Người nhận</th>
+                    <th>Nội dung</th>
+                    <th>Trạng thái</th>
+                    <th>Thời gian</th>
+                    <th>Hành động</th>
                 </tr>
-                stt++;
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var notification in Model)
+                {
+                    <tr>
+                        <td>@stt</td>
+                        <td>@notification.User</td>
+                        <td>@notification.Content</td>
+                        <td>
+                            @if (notification.Status == "0" || string.IsNullOrEmpty(notification.Status))
+                            {
+                                <span class="bold-text">Chưa xem</span>
+                            }
+                            else
+                            {
+                                <span>Đã xem</span>
+                            }
+                        </td>
+                        <td>@notification.Timestamp.ToString("dd/MM/yyyy HH:mm:ss")</td> <!-- Định dạng ngày tháng -->
+                        <td>
+                            <!-- Nút Mark as Read -->
+                            <button class="btn btn-sm btn-outline-info" onclick="markAsRead('@notification.Timestamp', '@notification.User', '@notification.Content')">
+                                <i class="bi bi-eye"></i> Đánh dấu đã xem
+                            </button>
+
+                            <!-- Nút Delete -->
+                            <button class="btn btn-sm btn-outline-danger" onclick="deleteNotification('@notification.Timestamp')">
+                                <i class="bi bi-trash"></i> Xóa
+                            </button>
+                        </td>
+                    </tr>
+                    stt++;
+                    <!-- Tăng số thứ tự -->
+                }
+            </tbody>
+        </table>
+    </div>
 }
+
+<!-- Phân trang nếu có -->
+<div class="pagination mt-3">
+    @if (ViewData["TotalPages"] != null)
+    {
+        var totalPages = (int)ViewData["TotalPages"];
+        var currentPage = (int)ViewData["CurrentPage"];
+        <ul class="pagination">
+            @for (var i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("MyNotifications", new { page = i })">@i</a>
+                </li>
+            }
+        </ul>
+    }
+</div>
+
+<!-- Script xử lý hành động -->
+<script>
+    function markAsRead(timestamp, user, content) {
+        // Logic đánh dấu đã xem, ví dụ gọi API hoặc gửi AJAX request
+        alert('Đánh dấu đã xem: ' + content);
+    }
+
+    function deleteNotification(timestamp) {
+        // Logic xóa thông báo, ví dụ gọi API hoặc gửi AJAX request
+        alert('Xóa thông báo với timestamp: ' + timestamp);
+    }
+</script>

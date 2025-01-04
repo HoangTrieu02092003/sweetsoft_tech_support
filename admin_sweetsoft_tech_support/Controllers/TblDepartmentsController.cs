@@ -91,16 +91,19 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
         // GET: TblDepartments/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int page = 1)
         {
+            int pageSize = 6;  // Số lượng nhân viên mỗi trang
+            int skip = (page - 1) * pageSize;  // Tính số lượng nhân viên cần bỏ qua
+
             if (id == null)
             {
                 return NotFound();
             }
 
-            // Lấy thông tin phòng ban và danh sách nhân viên liên kết
+            // Lấy thông tin phòng ban và danh sách nhân viên liên kết, phân trang danh sách nhân viên
             var tblDepartment = await _context.TblDepartments
-                .Include(d => d.TblUsers) // Include để lấy danh sách nhân viên thuộc phòng ban
+                .Include(d => d.TblUsers)
                 .FirstOrDefaultAsync(d => d.DepartmentId == id);
 
             if (tblDepartment == null)
@@ -108,12 +111,20 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return NotFound();
             }
 
+            // Lấy danh sách nhân viên đã phân trang
+            var totalUsers = tblDepartment.TblUsers.Count();
+            var usersPaged = tblDepartment.TblUsers.Skip(skip).Take(pageSize).ToList();
+
             // Truyền dữ liệu phòng ban vào ViewData
             ViewData["Department"] = tblDepartment;
+            ViewData["UsersPaged"] = usersPaged;
+            ViewData["TotalUsers"] = totalUsers;
+            ViewData["CurrentPage"] = page;
 
-            // Truyền danh sách nhân viên vào ViewData
-            return View(tblDepartment); 
+            // Trả về View cùng với các dữ liệu cần thiết
+            return View(tblDepartment);
         }
+
 
         // POST: TblDepartments/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.

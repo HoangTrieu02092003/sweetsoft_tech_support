@@ -78,7 +78,7 @@ namespace admin_sweetsoft_tech_support.Attributes
                 FileName = Path.Combine(yearMonthDayDirectory, "${date:format=yyyy-MM-dd-HH}.log"),
                 Layout = "${date:format=dd/MM/yyyy HH\\:mm}, " +
                          "${event-properties:item=Status}, " +
-                         "${event-properties:item=User}, " +
+                         "${event-properties:item=Reciver}, " +
                          "${message}",
                 CreateDirs = true,
                 KeepFileOpen = false

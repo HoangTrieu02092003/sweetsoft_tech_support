@@ -1,80 +1,58 @@
-﻿@model Tuple<List<dynamic>, List<dynamic>>
+﻿@model List<admin_sweetsoft_tech_support.Models.NotificationEntry>
+@using admin_sweetsoft_tech_support.Attributes
 @{
     ViewData["Title"] = "Quản lý Thông báo";
-
-    //lấy giá trị phân trang
-    var dbPagination = (Pagination)ViewData["DbPagination"];
-    var filePagination = (Pagination)ViewData["FilePagination"];
-
-    // Lấy giá trị lọc từ ViewData
-    var currentStatus = ViewData["Status"];
-    var searchQuery = ViewData["Search"]?.ToString();
-
+    int totalPages = (int)ViewData["TotalPages"];
+    int currentPage = (int)ViewData["CurrentPage"];
     int stt = 1;
 }
-<h1>Quản lý Thông báo</h1>
-<!-- Tab navigation -->
-<div class="d-flex justify-content-between">
-    <div>
-        <ul class="nav nav-tabs" id="logTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="database-tab" data-bs-toggle="tab" href="#database" role="tab" aria-controls="database" aria-selected="true">Từ database</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="file-tab" data-bs-toggle="tab" href="#file" role="tab" aria-controls="file" aria-selected="false">Từ File</a>
-            </li>
-        </ul>
-    </div>
-</div>
+<style>
+    table tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
 
-<div class="tab-content mt-3" id="logTabsContent">
-    <!-- Tab 1: Cơ sở dữ liệu -->
-    <div class="tab-pane fade show active" id="database" role="tabpanel" aria-labelledby="database-tab">
-        <!-- Form lọc và tìm kiếm -->
-        <form method="get" class="mb-3">
-            <input 
-                type="text" 
-                name="search" 
-                placeholder="Tìm kiếm nội dung" 
-                value="@searchQuery" 
-                class="form-control d-inline-block w-25 mr-2" />
+    table tbody tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+</style>
+<div class="mt-4">
+    <h1 class="text-center">Quản lý Thông báo</h1>
 
-            <select name="status" class="form-control d-inline-block w-25 mr-2">
-                @if (currentStatus == null)
-                {
-                    <option value="" selected>Tất cả</option>
-                }
-                else
-                {
-                    <option value="">Tất cả</option>
-                }
-                @if (currentStatus != null && (int)currentStatus == 1)
-                {
-                    <option value="1" selected>Đã đọc</option>
-                }
-                else
-                {
-                    <option value="1">Đã đọc</option>
-                }
-                @if (currentStatus != null && (int)currentStatus == 0)
-                {
-                    <option value="0" selected>Chưa đọc</option>
-                }
-                else
-                {
-                    <option value="0">Chưa đọc</option>
-                }
-            </select>
+    <!-- Form tìm kiếm -->
+    <form method="get" class="m-3" id="filterForm">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.GenerateFilterTextbox(
+                         id: "searchTerm",
+                         name: "searchTerm",
+                         placeholder: "Tìm kiếm......",
+                         value: ViewData["SearchTerm"]?.ToString() ?? "",
+                         includeCancelButton: false
+                         )
+            </div>
+            <div class="col-md-3">
+                @Html.GenerateFilterDropdown(
+                         id: "filterOption",
+                         name: "filterOption",
+                         options: new Dictionary<string, string> {
+                {"day", "Ngày"},
+                {"month", "Tháng"},
+                {"year", "Năm"}
+                },
+                         selectedValue: ViewData["FilterOption"]?.ToString() ?? "",
+                         includeCancelButton: false
+                         )
+            </div>
+        </div>
+    </form>
 
-            <button type="submit" class="btn btn-primary">Lọc</button>
-        </form>
-
-        <!-- Bảng hiển thị thông báo -->
-        <table class="table table-striped">
+    <!-- Danh sách Thông báo -->
+    <div class="table-responsive mt-4">
+        <table class="table table-striped" id="notificationList">
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Người dùng</th>
+                    <th>Người nhận</th>
                     <th>Nội dung</th>
                     <th>Trạng thái</th>
                     <th>Thời gian</th>
@@ -82,133 +60,99 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var notification in Model.Item1)
+                @foreach (var notification in Model)
                 {
                     <tr>
                         <td>@stt</td>
-                        <td>@notification.User.FullName</td>
-                        <td>@notification.Message</td>
-                        <td>@(notification.Status == 0 ? "Chưa đọc" : "Đã đọc")</td>
-                        <td>@notification.CreatedAt?.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>@notification.User</td>
+                        <td>@notification.Content</td>
                         <td>
-                            <form asp-action="MarkAsRead" method="post" style="display: inline;">
-                                <input type="hidden" name="id" value="@notification.NotificationId" />
-                                <button type="submit" class="btn btn-sm btn-success" @(notification.Status == 1 ? "disabled" : "")>
-                                    <i class="ti ti-check d-lg-none d-block"></i>
-                                    <span class="d-lg-block d-none">Đánh dấu đã đọc</span>
-                                </button>
-                            </form>
-                            <form asp-action="Delete" method="post" style="display: inline;">
-                                <input type="hidden" name="id" value="@notification.NotificationId" />
-                                <button type="submit" class="btn btn-sm btn-danger">
-                                    <i class="bi bi-trash d-lg-none d-block"></i>
-                                    <span class="d-lg-block d-none">Xóa</span>
-                                </button>
-                            </form>
+                            @if (notification.Status == "0" || notification.Status == "") 
+                            {
+                                <span class="bold-text">Chưa xem</span>
+                            }
+                            else
+                            {
+                                <span>Đã xem</span>
+                            }
                         </td>
-                    </tr>
+                        <td>@notification.Timestamp</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-info" onclick="markAsRead('@notification.Timestamp', '@notification.User', '@notification.Content')">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>                 
                     stt++;
                 }
             </tbody>
         </table>
-        <!-- Phân trang -->
-        <div class="d-flex justify-content-center my-4">
-            @if (dbPagination.TotalPages > 1)
-            {
-                <ul class="pagination">
-                    @if (ViewData["DbPagination"] != null)
-                    {
-
-                        if (dbPagination.CurrentPage > 1)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = 1, filePage = filePagination.CurrentPage })">Đầu</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage - 1, filePage = filePagination.CurrentPage })">Trước</a>
-                            </li>
-                        }
-
-                        for (int i = 1; i <= dbPagination.TotalPages; i++)
-                        {
-                            <li class="page-item @(i == dbPagination.CurrentPage ? "active" : "")">
-                                <a class="page-link" href="@Url.Action("Index", new { page = i, filePage = filePagination.CurrentPage })">@i</a>
-                            </li>
-                        }
-
-                        if (dbPagination.CurrentPage < dbPagination.TotalPages)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage + 1, filePage = filePagination.CurrentPage })">Sau</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.TotalPages, filePage = filePagination.CurrentPage })">Cuối</a>
-                            </li>
-                        }
-                    }
-                </ul>
-            }
-        </div>
     </div>
-    <!-- Tab 2: From File -->
-    <div class="tab-pane fade" id="file" role="tabpanel" aria-labelledby="file-tab">
-        <table class="table table-bordered table-striped mt-4">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Người dùng</th>
-                    <th>Nội dung</th>
-                    <th>Trạng thái</th>
-                    <th>Thời gian</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var log in Model.Item2)
-                {
-                    <tr>
-                        <td>@log.User.FullName</td>
-                        <td>@log.Message</td>
-                        <td>@log.Status</td>
-                        <td>@log.CreatedAt?.ToString("dd/MM/yyyy HH:mm")</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        <!-- Phân trang -->
-        <div class="d-flex justify-content-center my-4">
-            @if (filePagination.TotalPages > 1)
+
+    <!-- Phân trang -->
+    <div class="d-flex justify-content-center my-4" id="dbPagination">
+        <ul class="pagination">
+            @if (totalPages > 1)
             {
-                <ul class="pagination">
-                    @if (ViewData["FilePagination"] != null)
-                    {
-                        if (filePagination.CurrentPage > 1)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = 1, activeTab = "file" })">Đầu</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = filePagination.CurrentPage - 1, activeTab = "file" })">Trước</a>
-                            </li>
-                        }
-
-                        for (int i = 1; i <= filePagination.TotalPages; i++)
-                        {
-                            <li class="page-item @(i == filePagination.CurrentPage ? "active" : "")">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = i, activeTab = "file" })">@i</a>
-                            </li>
-                        }
-
-                        if (filePagination.CurrentPage < filePagination.TotalPages)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = filePagination.CurrentPage + 1, activeTab = "file" })">Sau</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = filePagination.TotalPages, activeTab = "file" })">Cuối</a>
-                            </li>
-                        }
-                    }
-                </ul>
+                if (currentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = 1, date = ViewData["Date"] })"><i class="bi bi-chevron-double-left"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, date = ViewData["Date"] })"><i class="bi bi-chevron-left"></i></a>
+                    </li>
+                }
+                for (int i = 1; i <= totalPages; i++)
+                {
+                    <li class="page-item @(i == currentPage ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i, date = ViewData["Date"] })">@i</a>
+                    </li>
+                }
+                if (currentPage < totalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, date = ViewData["Date"] })"><i class="bi bi-chevron-right"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = totalPages, date = ViewData["Date"] })"><i class="bi bi-chevron-double-right"></i></a>
+                    </li>
+                }
             }
-        </div>
+        </ul>
     </div>
 </div>
+
+<script>
+        function markAsRead(timestamp, user, content) {
+        const notification = {
+            Timestamp: timestamp,
+            User: user,
+            Content: content,
+            Status: 1 // Đánh dấu là đã đọc
+        };
+
+        fetch('/Notifications/MarkAsRead', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(notification) // Chuyển đối tượng notification thành JSON
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Thông báo đã được đánh dấu là đã đọc');
+                // Cập nhật lại giao diện nếu cần, ví dụ: disable nút
+            } else {
+                alert('Lỗi: Không thể đánh dấu là đã đọc');
+            }
+        })
+        .catch(error => {
+            console.error('Lỗi:', error);
+        });
+    }
+
+</script>

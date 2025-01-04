@@ -1,54 +1,42 @@
-﻿using admin_sweetsoft_tech_support.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace admin_sweetsoft_tech_support.Attributes
+public class UnreadNotificationsViewComponent : ViewComponent
 {
-    public class UnreadNotificationsViewComponent : ViewComponent
+    public IViewComponentResult Invoke()
     {
-        private readonly RequestContext _context;
-
-        public UnreadNotificationsViewComponent(RequestContext context)
+        var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrEmpty(userId))
         {
-            _context = context;
+            return View(0);
         }
 
-        public IViewComponentResult Invoke()
+        int unreadCount = 0;
+
+        var logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
+
+        if (Directory.Exists(logDirectory))
         {
-            var userId = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var logFiles = Directory.GetFiles(logDirectory, "*.log", SearchOption.AllDirectories);
 
-            int unreadCount = 0;
-
-            if (!string.IsNullOrEmpty(userId))
-            {
-                unreadCount = _context.TblNotifications
-                    .Where(n => n.UserId == int.Parse(userId) && n.Status == 0)
-                    .Count();
-            }
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "notification.log");
-
-            if (File.Exists(filePath))
+            foreach (var filePath in logFiles)
             {
                 var logLines = File.ReadAllLines(filePath);
-
                 foreach (var line in logLines)
                 {
-                    var logParts = line.Split(new string[] { ": " }, StringSplitOptions.None);
+                    var logParts = line.Split(", ");
 
-                    if (logParts.Length == 2)
+                    var status = logParts[1];
+                    var userIdLog = logParts[2];
+                    Console.WriteLine($"Status: {status}, UserId: {userIdLog}, Line: {line}");
+
+                    if (userIdLog == userId)
                     {
-                        var logDetails = logParts[1].Split(", ");
-                        var userIdLog = logDetails.FirstOrDefault(detail => detail.StartsWith("UserId"))?.Split('=')[1].Trim();
-                        var status = logDetails.FirstOrDefault(detail => detail.StartsWith("Status"))?.Split('=')[1].Trim();
-
-                        if (userIdLog == userId && status == "0")
-                        {
-                            unreadCount++;
-                        }
+                        unreadCount++;
                     }
                 }
             }
-            return View(unreadCount);
         }
+        return View(unreadCount);
     }
 }
