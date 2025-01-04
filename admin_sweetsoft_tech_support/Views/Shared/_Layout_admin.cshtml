@@ -87,7 +87,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" asp-action="Index" asp-controller="Notifications" aria-expanded="false">
+                            <a class="sidebar-link" asp-action="Index" asp-controller="Notifications" asp-route-date="@DateTime.Now.ToString("yyyy-MM-dd")" asp-route-filterOption="day" aria-expanded="false">
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
                                 <span class="hide-menu">Quản lý thông báo</span>
                             </a>
@@ -151,11 +151,10 @@
                             </a>
                         </li>
                         <li class="nav-item position-relative">
-                            <a class="nav-link nav-icon-hover" asp-action="MyNotifications" asp-controller="Notifications">
-                                <i class="ti ti-bell-ringing"></i>
-                                @await Component.InvokeAsync("Notification")
+                            <a class="nav-link nav-icon-hover d-flex align-items-center" asp-action="MyNotifications" asp-controller="Notifications">
+                                <span class="notification-count">@await Component.InvokeAsync("UnreadNotifications")</span>
+                                <i class="ti ti-bell-ringing notification-icon"></i>
                             </a>
-                            @await Component.InvokeAsync("UnreadNotifications")
                         </li>
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">

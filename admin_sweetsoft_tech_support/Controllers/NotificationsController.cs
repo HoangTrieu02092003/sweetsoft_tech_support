@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Drawing.Printing;
 using System.Dynamic;
 using System.Globalization;
 using System.Security.AccessControl;
@@ -13,212 +14,437 @@ namespace admin_sweetsoft_tech_support.Controllers
 {
     public class NotificationsController : Controller
     {
+
+        private readonly string _logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
         private readonly RequestContext _context;
 
         public NotificationsController(RequestContext context)
         {
             _context = context;
         }
-
-        // GET: Notifications
-        public async Task<IActionResult> Index(string search, int? status, int page = 1, int filePage = 1)
+        // Hiển thị tất cả log
+        public async Task<IActionResult> Index(string date = "", string searchTerm = null, string filterOption = "", int page = 1)
         {
-            ViewData["Search"] = search;
-            ViewData["Status"] = status;
+            List<NotificationEntry> logs;
+            var pageSize = 5; // số lượng log mỗi trang
+            var skip = (page - 1) * pageSize;
+            var totalLogs = await CountLogsAsync(); // Đếm tổng số log async
 
-            // Truy vấn thông báo
-            var notifications = _context.TblNotifications
-                .Include(n => n.User)
-                .AsQueryable();
 
-            if (!string.IsNullOrEmpty(search))
+            // Kiểm tra filterOption và ngày, xử lý từng trường hợp
+            if (string.IsNullOrEmpty(filterOption))
             {
-                notifications = notifications.Where(n => n.Message.Contains(search));
+                logs = await ReadLogsForPaginationAsync(skip, pageSize);
             }
-
-            if (status.HasValue)
+            else
             {
-                notifications = notifications.Where(u => u.Status == status.Value);
-            }
-
-            var logsFromDb = await notifications.Skip((page - 1) * 10).Take(10).ToListAsync();
-            var logsFromFile = await GetLogsFromFile();
-            var paginatedFileLogs = logsFromFile
-               .Skip((filePage - 1) * 10)
-               .Take(10)
-               .ToList();
-            var logs = logsFromDb.Select(log =>
-            {
-                dynamic logItem = new ExpandoObject();
-                logItem.NotificationId = log.NotificationId;
-                logItem.UserId = log.UserId;
-                logItem.Message = log.Message;
-                logItem.Status = log.Status;
-                logItem.CreatedAt = log.CreatedAt;
-                logItem.User = log.User;
-                return logItem;
-            }).ToList();
-
-            var totalNotification = await notifications.CountAsync();
-
-            // Tính tổng số trang
-            var totalPages = (int)Math.Ceiling((double)totalNotification / 10);
-            var FileTotalPages = (int)Math.Ceiling((double)logsFromFile.Count / 10);
-
-            ViewData["DbPagination"] = new Pagination { CurrentPage = page, TotalPages = totalPages };
-            ViewData["FilePagination"] = new Pagination { CurrentPage = filePage, TotalPages = FileTotalPages };
-            return View(new Tuple<List<dynamic>, List<dynamic>>(logs, paginatedFileLogs));
-        }
-
-        public IActionResult MyNotifications(string sortColumn, string sortOrder)
-        {
-            // Lấy thông tin userId từ người dùng đang đăng nhập
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            if (string.IsNullOrEmpty(userId))
-            {
-                return RedirectToAction("Login", "Admin"); // Chuyển hướng đến trang đăng nhập nếu hết session
-            }
-
-            // Truy vấn thông báo của người dùng từ cơ sở dữ liệu
-            var notifications = _context.TblNotifications
-                .Where(n => n.UserId == int.Parse(userId)).ToList();
-
-            // Lấy thông tin log từ file
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "notification.log");
-
-            if (System.IO.File.Exists(filePath))
-            {
-                var logLines = System.IO.File.ReadAllLines(filePath);
-                var logNotifications = new List<TblNotification>();
-                foreach (var line in logLines)
+                date = DateTime.Today.ToString("yyyy-MM-dd");
+                if (filterOption == "day")
                 {
-                    // Tách các phần từ log
-                    var logParts = line.Split(new string[] { ": " }, StringSplitOptions.None);
-
-                    if (logParts.Length == 2)
+                    if (DateTime.TryParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedDate))
                     {
-                        var dateTime = logParts[0];
-                        var logDetails = logParts[1].Split(", ");
-
-                        var userIdLog = logDetails.FirstOrDefault(detail => detail.StartsWith("UserId"))?.Split('=')[1].Trim();
-                        var message = logDetails.FirstOrDefault(detail => detail.StartsWith("Message"))?.Split('=')[1].Trim();
-                        var status = logDetails.FirstOrDefault(detail => detail.StartsWith("Status"))?.Split('=')[1].Trim();
-
-                        if (userIdLog == userId)
-                        {
-                            DateTime parsedDateTime;
-                            if (DateTime.TryParseExact(dateTime, "MM/dd/yyyy h:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDateTime))
-                            {
-                                logNotifications.Add(new TblNotification 
-                                {
-                                    UserId = int.Parse(userIdLog),
-                                    Message = message,
-                                    Status = short.Parse(status),
-                                    CreatedAt = parsedDateTime,
-                                });
-                            }
-                        }
+                        logs = await ReadLogsForDatePaginationAsync(parsedDate, skip, pageSize);
+                        var dateLogs = await ReadLogsByDateAsync(parsedDate);
+                        totalLogs = dateLogs.Count;
+                    }
+                    else
+                    {
+                        return BadRequest("Invalid date format. Expected format: yyyy-MM-dd.");
                     }
                 }
-
-                notifications.AddRange(logNotifications);
+                else if (filterOption == "month")
+                {
+                    var monthDate = date.Substring(5, 2);
+                    if (DateTime.TryParseExact(monthDate, "MM", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedMonth))
+                    {
+                        logs = await ReadLogsForMonthPaginationAsync(parsedMonth, skip, pageSize);
+                        var monthLogs = await ReadLogsByMonthAsync(parsedMonth);
+                        totalLogs = monthLogs.Count;
+                    }
+                    else
+                    {
+                        return BadRequest("Invalid month format. Expected format: yyyy-MM.");
+                    }
+                }
+                else if (filterOption == "year")
+                {
+                    var yearMonthDate = date.Substring(0, 4);
+                    if (DateTime.TryParseExact(yearMonthDate, "yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedYear))
+                    {
+                        logs = await ReadLogsForYearPaginationAsync(parsedYear, skip, pageSize);
+                        var yearLogs = await ReadLogsByYearAsync(parsedYear);
+                        totalLogs = yearLogs.Count;
+                    }
+                    else
+                    {
+                        return BadRequest("Invalid year format. Expected format: yyyy.");
+                    }
+                }
+                else
+                {
+                    return BadRequest("Invalid filter option.");
+                }
             }
-            if (!string.IsNullOrEmpty(sortColumn))
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                notifications = TableSorter.Sort<TblNotification>(notifications.AsQueryable(), sortColumn, sortOrder);
+                // Lọc logs theo tiêu chí tìm kiếm
+                logs = logs.Where(log =>
+                    log.User.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    log.Content.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    log.Status.ToString().Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    log.Timestamp.ToString().Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
+                    ).ToList();
             }
-            ViewData["SortColumn"] = sortColumn;
-            ViewData["SortOrder"] = sortOrder;
-            ViewBag.Notifications = notifications;
-            return View(notifications);
+
+            var totalPages = (int)Math.Ceiling(totalLogs / (double)pageSize); // Tính tổng số trang
+            ViewData["SearchTerm"] = searchTerm;
+            ViewData["Date"] = date;
+            ViewData["FilterOption"] = filterOption;
+            ViewData["TotalPages"] = totalPages;
+            ViewData["CurrentPage"] = page;
+
+            return View(logs);
         }
 
-        private async Task<List<dynamic>> GetLogsFromFile()
+        // Đọc log cho phân trang (Async)
+        private async Task<List<NotificationEntry>> ReadLogsForPaginationAsync(int skip, int pageSize)
         {
-            var logs = new List<dynamic>();
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "notification.log");
-
-            if (System.IO.File.Exists(filePath))
+            var logs = new List<NotificationEntry>();
+            if (!Directory.Exists(_logDirectory))
             {
-                var logLines = System.IO.File.ReadAllLines(filePath);
+                return logs;
+            }
 
-                foreach (var line in logLines)
+            var logFiles = Directory.GetFiles(_logDirectory, "*.log", SearchOption.AllDirectories);
+            foreach (var file in logFiles)
+            {
+                var fileLogs = await ReadLogFileAsync(file); // Đọc log file async
+                logs.AddRange(fileLogs);
+            }
+
+            return logs.OrderByDescending(log => log.Timestamp)
+                        .Skip(skip) // Bỏ qua số dòng đã đọc
+                        .Take(pageSize) // Lấy số dòng cần thiết cho trang
+                        .ToList();
+        }
+
+        // Đọc log theo ngày phân trang (Async)
+        private async Task<List<NotificationEntry>> ReadLogsForDatePaginationAsync(DateTime date, int skip, int pageSize)
+        {
+            var logs = new List<NotificationEntry>();
+            var logDirectoryForDate = Path.Combine(_logDirectory, date.ToString("yyyy"), date.ToString("MM"), date.ToString("dd"));
+            if (Directory.Exists(logDirectoryForDate))
+            {
+                var logFiles = Directory.GetFiles(logDirectoryForDate, $"{date:yyyy-MM-dd}-*.log");
+
+                foreach (var file in logFiles)
                 {
-                    // Tách các phần từ log
-                    var logParts = line.Split(new string[] { ": " }, StringSplitOptions.None);
-
-                    if (logParts.Length == 2)
-                    {
-                        var dateTime = logParts[0];
-                        var logDetails = logParts[1].Split(", ");
-
-                        var userId = logDetails.FirstOrDefault(detail => detail.StartsWith("UserId"))?.Split('=')[1].Trim();
-                        var message = logDetails.FirstOrDefault(detail => detail.StartsWith("Message"))?.Split('=')[1].Trim();
-                        var status = logDetails.FirstOrDefault(detail => detail.StartsWith("status"))?.Split('=')[1].Trim();
-                        var createByUser = await _context.TblUsers.FindAsync(int.Parse(userId));
-                        var user = createByUser?.FullName;
-                        DateTime parsedDateTime;
-                        if (DateTime.TryParseExact(dateTime, "MM/dd/yyyy h:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDateTime))
-                        {
-                            logs.Add(new
-                            {
-                                UserId = userId,
-                                Message = message,
-                                Status = status,
-                                CreatedAt = parsedDateTime,
-                                User = new { FullName = user },
-                            });
-                        }
-                    }
+                    Console.WriteLine(file);
+                    var fileLogs = await ReadLogFileAsync(file);
+                    logs.AddRange(fileLogs);
                 }
             }
 
+            return logs.OrderByDescending(log => log.Timestamp)
+                        .Skip(skip) // Bỏ qua số dòng đã đọc
+                        .Take(pageSize) // Lấy số dòng cần thiết cho trang
+                        .ToList();
+        }
+
+        // Đọc log theo ngày (Async)
+        private async Task<List<NotificationEntry>> ReadLogsByDateAsync(DateTime date)
+        {
+            var logs = new List<NotificationEntry>();
+            var logDirectoryForDate = Path.Combine(_logDirectory, date.ToString("yyyy"), date.ToString("MM"), date.ToString("dd"));
+            if (Directory.Exists(logDirectoryForDate))
+            {
+                var logFiles = Directory.GetFiles(logDirectoryForDate, $"{date:yyyy-MM-dd}-*.log");
+
+                foreach (var file in logFiles)
+                {
+                    var fileLogs = await ReadLogFileAsync(file);
+                    logs.AddRange(fileLogs);
+                }
+            }
+
+            return logs.OrderByDescending(log => log.Timestamp).ToList();
+        }
+
+        // Đọc log theo tháng phân trang (Async)
+        private async Task<List<NotificationEntry>> ReadLogsForMonthPaginationAsync(DateTime month, int skip, int pageSize)
+        {
+            var logs = new List<NotificationEntry>();
+            var logDirectoryForMonth = Path.Combine(_logDirectory, month.ToString("yyyy"), month.ToString("MM"));
+
+            if (Directory.Exists(logDirectoryForMonth))
+            {
+                // Lấy tất cả thư mục con trong tháng (tức là các ngày từ 01 đến 31)
+                var dayDirectories = Directory.GetDirectories(logDirectoryForMonth);
+
+                foreach (var dayDirectory in dayDirectories)
+                {
+                    // Lấy tất cả tệp log trong thư mục của từng ngày
+                    var logFiles = Directory.GetFiles(dayDirectory, $"{month:yyyy-MM}-{Path.GetFileName(dayDirectory)}-*.log");
+
+                    foreach (var file in logFiles)
+                    {
+                        var fileLogs = await ReadLogFileAsync(file);
+                        logs.AddRange(fileLogs);
+                    }
+                }
+            }
+
+            return logs.OrderByDescending(log => log.Timestamp)
+                        .Skip(skip)
+                        .Take(pageSize)
+                        .ToList();
+        }
+
+
+        // Đọc log theo tháng (Async)
+        private async Task<List<NotificationEntry>> ReadLogsByMonthAsync(DateTime month)
+        {
+            var logs = new List<NotificationEntry>();
+            var logDirectoryForMonth = Path.Combine(_logDirectory, month.ToString("yyyy"), month.ToString("MM"));
+
+            if (Directory.Exists(logDirectoryForMonth))
+            {
+                // Lấy tất cả thư mục con trong tháng (tức là các ngày từ 01 đến 31)
+                var dayDirectories = Directory.GetDirectories(logDirectoryForMonth);
+
+                foreach (var dayDirectory in dayDirectories)
+                {
+                    // Lấy tất cả tệp log trong thư mục của từng ngày
+                    var logFiles = Directory.GetFiles(dayDirectory, $"{month:yyyy-MM}-{Path.GetFileName(dayDirectory)}-*.log");
+
+                    foreach (var file in logFiles)
+                    {
+                        Console.WriteLine(file);  // Để debug
+                        var fileLogs = await ReadLogFileAsync(file);
+                        logs.AddRange(fileLogs);
+                    }
+                }
+            }
+
+            return logs.OrderByDescending(log => log.Timestamp).ToList();
+        }
+
+
+        // Đọc log theo năm phân trang (Async)
+        private async Task<List<NotificationEntry>> ReadLogsForYearPaginationAsync(DateTime year, int skip, int pageSize)
+        {
+            var logs = new List<NotificationEntry>();
+            var logDirectoryForYear = Path.Combine(_logDirectory, year.ToString("yyyy"));
+
+            if (Directory.Exists(logDirectoryForYear))
+            {
+                // Lấy tất cả thư mục con của năm (tức là các tháng từ 01 đến 12)
+                var monthDirectories = Directory.GetDirectories(logDirectoryForYear);
+
+                foreach (var monthDirectory in monthDirectories)
+                {
+                    // Lấy tất cả thư mục con của tháng (tức là các ngày từ 01 đến 31)
+                    var dayDirectories = Directory.GetDirectories(monthDirectory);
+
+                    foreach (var dayDirectory in dayDirectories)
+                    {
+                        // Lấy tất cả tệp log trong thư mục của ngày
+                        var logFiles = Directory.GetFiles(dayDirectory, $"{year:yyyy}-{Path.GetFileName(monthDirectory)}-{Path.GetFileName(dayDirectory)}-*.log");
+
+                        foreach (var file in logFiles)
+                        {
+                            var fileLogs = await ReadLogFileAsync(file);
+                            logs.AddRange(fileLogs);
+                        }
+                    }
+                }
+            }
+
+            return logs.OrderByDescending(log => log.Timestamp)
+                        .Skip(skip)
+                        .Take(pageSize)
+                        .ToList();
+        }
+
+        // theo năm không phân trang
+        private async Task<List<NotificationEntry>> ReadLogsByYearAsync(DateTime year)
+        {
+            var logs = new List<NotificationEntry>();
+            var logDirectoryForYear = Path.Combine(_logDirectory, year.ToString("yyyy"));
+
+            if (Directory.Exists(logDirectoryForYear))
+            {
+                // Lấy tất cả thư mục con của năm (tức là các tháng từ 01 đến 12)
+                var monthDirectories = Directory.GetDirectories(logDirectoryForYear);
+
+                foreach (var monthDirectory in monthDirectories)
+                {
+                    // Lấy tất cả thư mục con của tháng (tức là các ngày từ 01 đến 31)
+                    var dayDirectories = Directory.GetDirectories(monthDirectory);
+
+                    foreach (var dayDirectory in dayDirectories)
+                    {
+                        // Lấy tất cả tệp log trong thư mục của ngày
+                        var logFiles = Directory.GetFiles(dayDirectory, $"{year:yyyy}-{Path.GetFileName(monthDirectory)}-{Path.GetFileName(dayDirectory)}-*.log");
+
+                        foreach (var file in logFiles)
+                        {
+                            var fileLogs = await ReadLogFileAsync(file);
+                            logs.AddRange(fileLogs);
+                        }
+                    }
+                }
+            }
+
+            return logs.OrderByDescending(log => log.Timestamp).ToList();
+        }
+
+        // Đọc log từ một file (Async)
+        private async Task<List<NotificationEntry>> ReadLogFileAsync(string filePath)
+        {
+            var logs = new List<NotificationEntry>();
+            var lines = await System.IO.File.ReadAllLinesAsync(filePath); // Đọc file async
+            foreach (var line in lines)
+            {
+                var log = await ParseLogLine(line);
+                if (log != null)
+                {
+                    logs.Add(log);
+                }
+            }
             return logs;
         }
 
-        public int GetUnreadNotificationsCount()
+        // Đếm tổng số log trong tất cả các file (Async)
+        private async Task<int> CountLogsAsync()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            if (string.IsNullOrEmpty(userId))
+            var totalLogs = 0;
+            if (Directory.Exists(_logDirectory))
             {
-                return 0; // Nếu chưa đăng nhập, trả về 0
+                var logFiles = Directory.GetFiles(_logDirectory, "*.log", SearchOption.AllDirectories);
+                foreach (var file in logFiles)
+                {
+                    totalLogs += await CountLinesInFileAsync(file); // Đếm số dòng async
+                }
+
+            }
+            return totalLogs;
+        }
+
+        // Đếm số dòng trong một file (Async)
+        private async Task<int> CountLinesInFileAsync(string filePath)
+        {
+            var lineCount = 0;
+            using (var reader = new StreamReader(filePath))
+            {
+                while (await reader.ReadLineAsync() != null)
+                {
+                    lineCount++;
+                }
+            }
+            return lineCount;
+        }
+
+        // Phân tích một dòng log
+        private async Task<NotificationEntry> ParseLogLine(string line)
+        {
+            try
+            {
+
+                var parts = line.Split(", ");
+                var user = await _context.TblUsers
+                .Where(u => u.UserId == int.Parse(parts[2]))
+                .FirstOrDefaultAsync();
+                if (parts.Length < 4) return null;
+                return new NotificationEntry
+                {
+                    Timestamp = DateTime.ParseExact(parts[0], "dd/MM/yyyy HH\\:mm", CultureInfo.InvariantCulture),
+                    Status = parts[1],  // Gán giá trị đã chuyển đổi
+                    User = user.FullName,
+                    Content = parts[3]
+                };
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public async Task<IActionResult> MyNotifications(string date = "", string searchTerm = null, string filterOption = "", int page = 1)
+        {
+            List<NotificationEntry> logs = new List<NotificationEntry>();
+
+            // Lấy userId của người dùng hiện tại
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var pageSize = 5; // Số lượng thông báo mỗi trang
+            var skip = (page - 1) * pageSize;
+
+            if (string.IsNullOrEmpty(currentUserId))
+            {
+                return RedirectToAction("Login", "Admin");
             }
 
-            // Đếm số lượng thông báo chưa đọc cho người dùng hiện tại
-            var count = _context.TblNotifications
-                .Where(n => n.UserId == int.Parse(userId) && n.Status == 0)
-                .Count();
+            // Đọc các log từ các file (tạo một hàm đọc log từ file)
+            var logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
+            var logFiles = Directory.GetFiles(logDirectory, "*.log", SearchOption.AllDirectories);
+            var allLogs = new List<NotificationEntry>();
 
-            return count;
-        }
+            // Đọc thông báo từ tất cả các file log
+            foreach (var file in logFiles)
+            {
+                var fileLogs = await ReadLogFileAsync(file); // Hàm đọc log từ file
+                allLogs.AddRange(fileLogs);
+            }
 
-        // POST: Notifications/MarkAsRead
-        [HttpPost]
-        public async Task<IActionResult> MarkAsRead(int id)
-        {
-            var notification = await _context.TblNotifications.FindAsync(id);
-            if (notification == null) return NotFound();
+            // Lọc thông báo của người dùng hiện tại
+            logs = allLogs.Where(log => log.User == currentUserId).ToList();
 
-            notification.Status = 1; // Đánh dấu là "Đã đọc"
-            _context.Update(notification);
-            await _context.SaveChangesAsync();
+            // Ánh xạ UserId sang FullName
+            foreach (var log in logs)
+            {
+                var userId = log.User; // UserId là string
+                var user = await _context.TblUsers
+                    .Where(u => u.UserId == int.Parse(userId)) // Tìm người dùng từ UserId
+                    .FirstOrDefaultAsync();
 
-            return RedirectToAction(nameof(Index));
-        }
+                if (user != null)
+                {
+                    log.User = user.FullName; // Chuyển UserId thành tên người dùng
+                }
+                else
+                {
+                    log.User = "Không rõ"; // Xử lý trường hợp không tìm thấy người dùng
+                }
+            }
 
-        // POST: Notifications/Delete/5
-        [HttpPost]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var notification = await _context.TblNotifications.FindAsync(id);
-            if (notification == null) return NotFound();
+            // Lọc theo ngày nếu có
+            if (!string.IsNullOrEmpty(date) && DateTime.TryParse(date, out var parsedDate))
+            {
+                logs = logs.Where(log => log.Timestamp.Date == parsedDate.Date).ToList();
+            }
 
-            _context.TblNotifications.Remove(notification);
-            await _context.SaveChangesAsync();
+            // Lọc theo từ khóa tìm kiếm nếu có
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                logs = logs.Where(log =>
+                    log.Content.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    log.Status.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    log.Timestamp.ToString().Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
+                ).ToList();
+            }
 
-            return RedirectToAction(nameof(Index));
+            // Áp dụng phân trang
+            var totalLogs = logs.Count;
+            var totalPages = (int)Math.Ceiling(totalLogs / (double)pageSize);
+            logs = logs.Skip(skip).Take(pageSize).ToList();
+
+            // Truyền dữ liệu vào View
+            ViewData["SearchTerm"] = searchTerm;
+            ViewData["Date"] = date;
+            ViewData["FilterOption"] = filterOption;
+            ViewData["TotalPages"] = totalPages;
+            ViewData["CurrentPage"] = page;
+
+            return View(logs); // Trả về các log đã được lọc và phân trang cho view
         }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -19,47 +20,24 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
         // GET: TblFaqs
-        public async Task<IActionResult> Index(string searchTerm, string answerTerm, DateTime? createdFrom, DateTime? createdTo, DateTime? updatedFrom, DateTime? updatedTo, int page = 1)
+        public async Task<IActionResult> Index(string search, DateTime? createdFrom, DateTime? createdTo, DateTime? updatedFrom, DateTime? updatedTo, int page = 1)
         {
             var faqs = _context.TblFaqs.AsQueryable();
-
-            // Lọc theo tên câu hỏi (tìm gần đúng)
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                faqs = faqs.Where(f => f.Question.Contains(searchTerm));
-            }
-
-            // Lọc theo nội dung câu trả lời (tìm gần đúng)
-            if (!string.IsNullOrEmpty(answerTerm))
-            {
-                faqs = faqs.Where(f => f.Answer.Contains(answerTerm));
-            }
-
-            // Lọc theo ngày tạo
-            if (createdFrom.HasValue)
-            {
-                faqs = faqs.Where(f => f.CreatedAt >= createdFrom.Value);
-            }
-            if (createdTo.HasValue)
-            {
-                faqs = faqs.Where(f => f.CreatedAt <= createdTo.Value);
-            }
-
-            // Lọc theo ngày cập nhật
-            if (updatedFrom.HasValue)
-            {
-                faqs = faqs.Where(f => f.UpdatedAt >= updatedFrom.Value);
-            }
-            if (updatedTo.HasValue)
-            {
-                faqs = faqs.Where(f => f.UpdatedAt <= updatedTo.Value);
-            }
 
             // Phân trang
             int pageSize = 6;
             int totalItems = await faqs.CountAsync();
             var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
             var skip = (page - 1) * pageSize;
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                var searchUpper = search.ToUpper();
+                faqs = faqs.Where(f =>
+                    f.Question.Contains(searchUpper) ||
+                    f.Answer.Contains(searchUpper)
+                );
+            }
 
             var pagedFaqs = await faqs
                 .OrderBy(f => f.CreatedAt)
@@ -69,8 +47,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             ViewData["TotalPages"] = totalPages;
             ViewData["CurrentPage"] = page;
-            ViewData["SearchTerm"] = searchTerm;
-            ViewData["AnswerTerm"] = answerTerm;
+            ViewData["search"] = search;
             ViewData["CreatedFrom"] = createdFrom?.ToString("dd-MM-yyyy");
             ViewData["CreatedTo"] = createdTo?.ToString("dd-MM-yyyy");
             ViewData["UpdatedFrom"] = updatedFrom?.ToString("yyyy-MM-dd");

@@ -652,6 +652,7 @@ wwwroot\css\icons\tabler-icons\fonts\tabler-icons.woff2
 wwwroot\css\icons\tabler-icons\tabler-icons.css
 wwwroot\css\Index_SupportRequest.css
 wwwroot\css\index_user.css
+wwwroot\css\sort.css
 wwwroot\css\style.css
 wwwroot\css\styles.css
 wwwroot\css\styles.min.css
@@ -2529,8 +2530,10 @@ wwwroot\images\profile\user-3 (1).jpg
 wwwroot\images\profile\user-3.jpg
 wwwroot\js\app.min.js
 wwwroot\js\dashboard.js
+wwwroot\js\set.js
 wwwroot\js\sidebarmenu.js
 wwwroot\js\site.js
+wwwroot\js\sort.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap.min.css

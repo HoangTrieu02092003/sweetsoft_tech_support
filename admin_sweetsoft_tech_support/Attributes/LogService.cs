@@ -5,6 +5,7 @@ namespace admin_sweetsoft_tech_support.Attributes
     public class LogService
     {
         private static readonly Logger logger = LogManager.GetLogger("AdminSweetsoftTechSupport");
+        private static readonly Logger loggerNoti = LogManager.GetLogger("Notifications");
 
         // Phương thức ghi log với Action, User và message
         public void LogAuditAction(string action, string user, string message, string module = "", string oldValue = "", string newValue = "")
@@ -22,17 +23,17 @@ namespace admin_sweetsoft_tech_support.Attributes
             // Ghi log vào file
             logger.Log(logEvent);
         }
-        public void LogNotificationAction(string user, string message, int status = 0)
+        public void LogNotificationAction(string reciver, string message, string status = "0")
         {
             // Tạo LogEventInfo mới
-            var logEvent = new LogEventInfo(NLog.LogLevel.Info, logger.Name, message);
+            var logEvent = new LogEventInfo(NLog.LogLevel.Info, loggerNoti.Name, message);
 
             // Gán các properties vào logEvent
             logEvent.Properties["Status"] = status;
-            logEvent.Properties["User"] = user;
+            logEvent.Properties["Reciver"] = reciver;
 
             // Ghi log vào file
-            logger.Log(logEvent);
+            loggerNoti.Log(logEvent);
         }
         public void LogActivityAction(string title, string action, string user)
         {

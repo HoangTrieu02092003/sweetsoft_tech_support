@@ -129,9 +129,11 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+            TempData["Name"] = User.Identity?.Name??"Nhân Viên";
+
             // Đăng nhập và lưu thông tin vào Cookie
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
-            _logService.LogAuditAction("Login", User.Identity.Name, "Đăng nhập thành công");
+            _logService.LogAuditAction("Login", TempData["Name"].ToString(), "Đăng nhập thành công");
             TempData["UserId"] = user.UserId;
             TempData["IsAdmin"] = user.IsAdmin == true ? "true" : "false";
             var returnUrl = TempData["ReturnUrl"]?.ToString() ?? Url.Action("Index1", "Report");
@@ -141,9 +143,15 @@ namespace admin_sweetsoft_tech_support.Controllers
         // Đăng xuất (Logout)
         public async Task<IActionResult> Logout()
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            var username = User.Identity.Name;
-            _logService.LogAuditAction("Logout", username, "Đăng xuất thành công");
+            
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                var username = User.Identity.Name;
+                _logService.LogAuditAction("Logout", username, "Đăng xuất thành công");
+                
+            }
+
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
         }

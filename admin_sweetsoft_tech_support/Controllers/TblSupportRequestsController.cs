@@ -139,7 +139,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
                 if (departmentManager != null)
                 {
-                    _logService.LogNotificationAction(departmentManager.FullName, "Bạn có yêu cầu mới");
+                    _logService.LogNotificationAction(departmentManager.UserId.ToString(), "Bạn có yêu cầu mới");
                 }
                 return RedirectToAction(nameof(Index), new { page = currentPage });
             }
