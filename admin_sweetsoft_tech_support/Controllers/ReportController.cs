@@ -122,8 +122,8 @@ namespace admin_sweetsoft_tech_support.Controllers
                 .GroupBy(r => new { r.CreatedAt.Year, r.CreatedAt.Month })
                 .Select(g => new
                 {
-                    Year = g.Key.Year,
-                    Month = g.Key.Month,
+                    g.Key.Year,
+                    g.Key.Month,
                     Count = g.Count()
                 })
                 .ToListAsync();
@@ -134,8 +134,8 @@ namespace admin_sweetsoft_tech_support.Controllers
                 var request = requests.FirstOrDefault(r => r.Year == month.Year && r.Month == month.Month);
                 return new
                 {
-                    Year = month.Year,
-                    Month = month.Month,
+                    month.Year,
+                    month.Month,
                     Count = request?.Count ?? 0 // Nếu không có yêu cầu, set count = 0
                 };
             }).ToList();
@@ -226,7 +226,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return Ok(new { departmentPercentages });
         }
 
-         [HttpGet("api/requests/export-excel")]
+        [HttpGet("api/requests/export-excel")]
         public async Task<IActionResult> ExportSupportRequestsToExcel(DateTime? startDate, DateTime? endDate)
         {
             // Kiểm tra ngày bắt đầu và kết thúc
@@ -250,7 +250,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     r.RequestId,
                     CustomerName = r.Customer.FullName,
-                    DepartmentName = r.Department.DepartmentName,
+                    r.Department.DepartmentName,
                     r.RequestDetails,
                     Status = r.Status == 0 ? "Chưa hoàn thành" :
                              r.Status == 1 ? "Hoàn thành" :
@@ -298,154 +298,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             var excelData = package.GetAsByteArray();
             var fileName = $"SupportRequests_{DateTime.Now:yyyyMMddHHmmss}.xlsx";
             return File(excelData, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
-        }
-
-
-        public async Task<IActionResult> Index()
-        {
-            var requestContext = _context.TblSupportRequests.Include(t => t.Customer).Include(t => t.Department);
-            return View(await requestContext.ToListAsync());
-        }
-
-        // GET: Report/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblSupportRequest = await _context.TblSupportRequests
-                .Include(t => t.Customer)
-                .Include(t => t.Department)
-                .FirstOrDefaultAsync(m => m.RequestId == id);
-            if (tblSupportRequest == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblSupportRequest);
-        }
-
-        // GET: Report/Create
-        public IActionResult Create()
-        {
-            ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId");
-            ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId");
-            return View();
-        }
-
-        // POST: Report/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RequestId,CustomerId,DepartmentId,RequestDetails,Status,CreatedAt,ResolvedAt")] TblSupportRequest tblSupportRequest)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(tblSupportRequest);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId", tblSupportRequest.CustomerId);
-            ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId", tblSupportRequest.DepartmentId);
-            return View(tblSupportRequest);
-        }
-
-        // GET: Report/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblSupportRequest = await _context.TblSupportRequests.FindAsync(id);
-            if (tblSupportRequest == null)
-            {
-                return NotFound();
-            }
-            ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId", tblSupportRequest.CustomerId);
-            ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId", tblSupportRequest.DepartmentId);
-            return View(tblSupportRequest);
-        }
-
-        // POST: Report/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RequestId,CustomerId,DepartmentId,RequestDetails,Status,CreatedAt,ResolvedAt")] TblSupportRequest tblSupportRequest)
-        {
-            if (id != tblSupportRequest.RequestId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(tblSupportRequest);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TblSupportRequestExists(tblSupportRequest.RequestId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId", tblSupportRequest.CustomerId);
-            ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId", tblSupportRequest.DepartmentId);
-            return View(tblSupportRequest);
-        }
-
-        // GET: Report/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblSupportRequest = await _context.TblSupportRequests
-                .Include(t => t.Customer)
-                .Include(t => t.Department)
-                .FirstOrDefaultAsync(m => m.RequestId == id);
-            if (tblSupportRequest == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblSupportRequest);
-        }
-
-        // POST: Report/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var tblSupportRequest = await _context.TblSupportRequests.FindAsync(id);
-            if (tblSupportRequest != null)
-            {
-                _context.TblSupportRequests.Remove(tblSupportRequest);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool TblSupportRequestExists(int id)
-        {
-            return _context.TblSupportRequests.Any(e => e.RequestId == id);
         }
     }
 }
