@@ -29,7 +29,6 @@ namespace admin_sweetsoft_tech_support.Controllers
         //    return View(await requestContext.ToListAsync());
         //}
         [HttpGet]
-        [Route("TblSupportRequests/Index")]
         public IActionResult Index(int? status, string search, string departmentName, string sortColumn, string sortOrder, int page = 1)
         {
             int pageSize = 6;

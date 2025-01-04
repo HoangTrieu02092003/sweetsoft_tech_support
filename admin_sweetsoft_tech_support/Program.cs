@@ -78,87 +78,153 @@ try
 
     app.MapControllerRoute(
     name: "Denied",
-    pattern: "quyen-han",
+    pattern: "Quyền-hạn",
     defaults: new { controller = "Home", action = "AccessDenied" });
 
     app.MapControllerRoute(
         name: "CustomLogin",
-        pattern: "dang-nhap",
+        pattern: "Đăng-nhập",
         defaults: new { controller = "Admin", action = "Login" });
 
     app.MapControllerRoute(
         name: "CustomForgot",
-        pattern: "quen-mat-khau",
+        pattern: "Quên-mật-khẩu",
         defaults: new { controller = "Admin", action = "ForgotPassword" });
 
     app.MapControllerRoute(
         name: "CustomReset",
-        pattern: "dat-lai-mat-khau-{token}",
+        pattern: "Đặt-lại-mật-khẩu-{token}",
         defaults: new { controller = "Admin", action = "ResetPassword" });
 
     app.MapControllerRoute(
         name: "UserList",
-        pattern: "danh-sach-nguoi-dung",
+        pattern: "Danh-sách-người-dùng",
         defaults: new { controller = "TblUsers", action = "Index", page = 1, status = "", search = "" });
+
     app.MapControllerRoute(
         name: "UserList1",
-        pattern: "danh-sach-nguoi-dung/page-{page}/{status}/{search}",
+        pattern: "Danh-sách-người-dùng/page-{page}/{status}/{search}",
         defaults: new { controller = "TblUsers", action = "Index"});
+    
+    app.MapControllerRoute(
+        name: "auditlog",
+        pattern: "Nhật-ký-kiểm-tra",
+        defaults: new { controller = "AuditLogs", action = "Index" });
+
+    app.MapControllerRoute(
+        name: "activity",
+        pattern: "Nhật-ký-yêu-cầu",
+        defaults: new { controller = "ActivityLogs", action = "Index" });
+
+    app.MapControllerRoute(
+        name: "session",
+        pattern: "Quản-lý-phiên",
+        defaults: new { controller = "Sessions", action = "Index" });
+
+    app.MapControllerRoute(
+        name: "notification",
+        pattern: "Quản-lý-thông-báo",
+        defaults: new { controller = "Notifications", action = "Index" });
+    
+    app.MapControllerRoute(
+        name: "myNotification",
+        pattern: "Thông-báo-của-tôi",
+        defaults: new { controller = "Notifications", action = "MyNotifications" });
 
     app.MapControllerRoute(
         name: "UserDetail",
-        pattern: "chi-tiet-nguoi-dung-{id}",
+        pattern: "Chi-tiết-người-dùng-{id}",
         defaults: new { controller = "TblUsers", action = "Details" });
 
     app.MapControllerRoute(
         name: "UserEdit",
-        pattern: "chinh-sua-nguoi-dung-{id}",
+        pattern: "Chỉnh-sửa-người-dùng-{id}",
         defaults: new { controller = "TblUsers", action = "Edit" });
 
     app.MapControllerRoute(
         name: "UserAssign",
-        pattern: "cap-quyen-nguoi-dung-{id}",
+        pattern: "Cấp-quyền-người-dùng-{id}",
         defaults: new { controller = "TblUsers", action = "AssignPermissions" });
 
     app.MapControllerRoute(
         name: "UserAccount",
-        pattern: "ho-so-nguoi-dung",
+        pattern: "Hồ-sơ-người-dùng",
         defaults: new { controller = "TblUsers", action = "MyAccount" });
 
     app.MapControllerRoute(
         name: "UserCreate",
-        pattern: "Them-nguoi-dung",
+        pattern: "Thêm-người-dùng",
         defaults: new { controller = "TblUsers", action = "Create" });
 
     app.MapControllerRoute(
         name: "DepartmentList",
-        pattern: "danh-sach-phong-ban",
+        pattern: "Danh-sách-phòng-ban",
         defaults: new { controller = "TblDepartments", action = "Index" });
 
     app.MapControllerRoute(
         name: "DepartmentEdit",
-        pattern: "chinh-sua-phong-ban-{id}",
+        pattern: "Chỉnh-sửa-phòng-ban-{id}",
         defaults: new { controller = "TblDepartments", action = "Edit" });
 
     app.MapControllerRoute(
         name: "RequetsList",
-        pattern: "danh-sach-yeu-cau",
+        pattern: "Danh-sách-yêu-cầu",
         defaults: new { controller = "TblSupportRequests", action = "Index" });
 
     app.MapControllerRoute(
+        name: "RequetsDetails",
+        pattern: "Chi-tiết-yêu-cầu-{id}",
+        defaults: new { controller = "TblSupportRequests", action = "Details" });
+
+    app.MapControllerRoute(
+        name: "RequetsEdit",
+        pattern: "Chỉnh-sửa-yêu-cầu-{id}",
+        defaults: new { controller = "TblSupportRequests", action = "Edit" });
+
+    app.MapControllerRoute(
+        name: "RequetsTrans",
+        pattern: "Chuyển-giao-yêu-cầu-{id}",
+        defaults: new { controller = "TblSupportRequests", action = "Transfer" });
+
+    app.MapControllerRoute(
+        name: "RequetsCre",
+        pattern: "Thêm-yêu-cầu",
+        defaults: new { controller = "TblSupportRequests", action = "Create" });
+
+    app.MapControllerRoute(
         name: "Reportindex",
-        pattern: "bao-cao",
+        pattern: "Báo-cáo",
         defaults: new { controller = "Report", action = "Index1" });
 
     app.MapControllerRoute(
-        name: "ReportDetails",
-        pattern: "chi-tiet-bao-cao-{customerId}",
-        defaults: new { controller = "Report", action = "ShowRequestDetails" });
+        name: "CustomerList",
+        pattern: "Danh-sách-khách-hàng",
+        defaults: new { controller = "TblCustomers", action = "Index" });
 
     app.MapControllerRoute(
-        name: "CustomerList",
-        pattern: "danh-sach-khach-hang",
-        defaults: new { controller = "TblCustomers", action = "Index" });
+        name: "CustomerCre",
+        pattern: "Thêm-khách-hàng",
+        defaults: new { controller = "TblCustomers", action = "Create" });
+
+    app.MapControllerRoute(
+        name: "CustomerEdit",
+        pattern: "Chỉnh-sửa-khách-hàng-{id}",
+        defaults: new { controller = "TblCustomers", action = "Edit" });
+
+    app.MapControllerRoute(
+        name: "FaqList",
+        pattern: "Danh-sách-Faq",
+        defaults: new { controller = "TblFaqs", action = "Index" });
+
+    app.MapControllerRoute(
+        name: "FaqCre",
+        pattern: "Thêm-Faq",
+        defaults: new { controller = "TblFaqs", action = "Create" });
+
+    app.MapControllerRoute(
+        name: "FaqEdit",
+        pattern: "Chỉnh-sửa-Faq-{id}",
+        defaults: new { controller = "TblFaqs", action = "Edit" });
 
     app.MapControllerRoute(
         name: "default",
