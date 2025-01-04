@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Customer_sweetsoft_tech_support.Models;
 using System.Security.Claims;
 using Newtonsoft.Json;
-using Customer_sweetsoft_tech_support.signalNotifications;
 
 namespace Customer_sweetsoft_tech_support.Controllers
 {
@@ -101,27 +100,55 @@ namespace Customer_sweetsoft_tech_support.Controllers
                         CreatedAt = DateTime.Now,
                         ResolvedAt = null,
                     };
+                    var departmentManager = _context.TblUsers
+                    .FirstOrDefault(u => u.DepartmentId == int.Parse(departmentIds[i]) && u.Role.RoleName == "Trưởng phòng");
+
                     _context.Add(supportRequest);
                     await _context.SaveChangesAsync();
+
+                    var logRequest = new
+                    {
+                        User = departmentManager.UserId.ToString(),
+                        Content = "Có yêu cầu mới",
+                        Status = "0", // 0: chưa xem, 1 đã xem
+                        Timestamp = DateTime.Now
+                    };
+
+                    string adminApiUrl = "http://tech.runasp.net/api/log/write-log";
+                    using (var client = new HttpClient())
+                    {
+                        var response = await client.PostAsJsonAsync(adminApiUrl, logRequest);
+                        if (!response.IsSuccessStatusCode)
+                        {
+                            TempData["ErrorMessage"] = "Gửi thông báo thất bại";
+                        }
+                        else
+                        {
+                            TempData["SuccessMessage"] = "Gửi thông báo thành công!";
+                        }
+                    }
+
                     var requestProcessing = new TblRequestsProcessing
                     {
                         RequestId = supportRequest.RequestId, // Lấy ID của TblSupportRequest vừa lưu
                         DepartmentId = int.Parse(departmentIds[i]),
                         IsCompleted = 0, // Đánh dấu là chưa xử lý
                         ProcessedAt = DateTime.Now,
-                        Note = "Yêu cầu được tạo mới"
+                        Note = "Đang xử lý...."
                     };
 
                     _context.TblRequestsProcessings.Add(requestProcessing);
+                    
                 }
                 await _context.SaveChangesAsync();
-                var departmentManager = _context.TblUsers
-                    .FirstOrDefault(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.Role.RoleName == "Trưởng phòng");
-       
-                var logService = new LogNotificationService();
-                logService.LogNotificationAction(departmentManager?.FullName??"Khách hàng", "Khách hàng tạo yêu cầu mới");
+                
+                
+
+                //var logService = new LogNotificationService();
+                //logService.LogNotificationAction(departmentManager?.FullName??"Khách hàng", "Khách hàng tạo yêu cầu mới");
                 TempData["success"] = "thành công";
-                return RedirectToAction(nameof(Create));
+                
+                return RedirectToAction(nameof(Index),controllerName: "Account");
             }
             ViewData["Customer"] = customer;
             ViewData["Department"] = new SelectList(departments, "DepartmentId", "DepartmentName",tblSupportRequest.DepartmentId);

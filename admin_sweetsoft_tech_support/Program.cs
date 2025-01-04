@@ -41,6 +41,15 @@ try
             options.SlidingExpiration = true;
         });
 
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowSpecificOrigins", builder =>
+        {
+            builder.WithOrigins("http://stechno.runasp.net") // URL của hệ thống khách hàng
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+    });
     // Add services to the container.
     builder.Services.AddControllersWithViews();
     builder.Services.AddScoped<RequestContext>();
@@ -56,7 +65,7 @@ try
         // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
     }
-
+    app.UseCors("AllowSpecificOrigins");
     app.UseHttpsRedirection();
     app.UseStaticFiles();
 

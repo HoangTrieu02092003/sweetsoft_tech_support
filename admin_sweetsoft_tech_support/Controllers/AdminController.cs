@@ -5,11 +5,7 @@ using System.Security.Claims;
 using admin_sweetsoft_tech_support.Models;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using BCrypt.Net;
-using System.Net.Mail;
-using System.Net;
 using admin_sweetsoft_tech_support.Attributes;
-using NLog;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -78,8 +74,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 ViewBag.SiteKey = siteKey;
                 return View();
             }
-            var hasPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
-            if (!BCrypt.Net.BCrypt.Verify(password, hasPassword))
+            if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
             {
                 // Xử lý đăng nhập thất bại
                 user.FailedLoginAttempts = (user.FailedLoginAttempts ?? 0) + 1;
@@ -131,7 +126,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
             // Đăng nhập và lưu thông tin vào Cookie
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
-            _logService.LogAuditAction("Login", User.Identity.Name, "Đăng nhập thành công");
+            await _logService.LogAuditAction("Login", HttpContext.User.Identity.Name, "Đăng nhập thành công");
             TempData["UserId"] = user.UserId;
             TempData["IsAdmin"] = user.IsAdmin == true ? "true" : "false";
             var returnUrl = TempData["ReturnUrl"]?.ToString() ?? Url.Action("Index1", "Report");
@@ -143,7 +138,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var username = User.Identity.Name;
-            _logService.LogAuditAction("Logout", username, "Đăng xuất thành công");
+            await _logService.LogAuditAction("Logout", username, "Đăng xuất thành công");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
         }
