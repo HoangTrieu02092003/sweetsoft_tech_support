@@ -57,6 +57,15 @@
                      includeCancelButton: false
                      )
         </div>
+        <div class="col-lg-3 col-md-8">
+            @Html.GenerateFilterTextbox(
+                     id: "departmentName",
+                     name: "departmentName",
+                     placeholder: "Tìm kiếm phòng ban...",
+                     value: ViewData["DepartmentName"]?.ToString() ?? "",
+                     includeCancelButton: false
+                     )
+        </div>
         <div class="d-lg-none d-block mt-3">
             <button type="submit" class="btn btn-primary w-100">Lọc</button>
         </div>
@@ -174,31 +183,42 @@
         @if (currentPage > 1)
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = 1 })"><i class="bi bi-chevron-double-left"></i></a>
+                <a class="page-link" href="@Url.Action("Index", new { page = 1, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
+                    <i class="bi bi-chevron-double-left"></i>
+                </a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1 })"><i class="bi bi-chevron-left"></i></a>
+                <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
             </li>
         }
 
         @for (int i = 1; i <= totalPages; i++)
         {
             <li class="page-item @(i == currentPage ? "active" : "")">
-                <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = i, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
+                    @i
+                </a>
             </li>
         }
 
         @if (currentPage < totalPages)
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1 })"><i class="bi bi-chevron-right"></i></a>
+                <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = totalPages })"><i class="bi bi-chevron-double-right"></i></a>
+                <a class="page-link" href="@Url.Action("Index", new { page = totalPages, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
+                    <i class="bi bi-chevron-double-right"></i>
+                </a>
             </li>
         }
     </ul>
 </div>
+
 <!-- Modal for selecting status -->
 <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

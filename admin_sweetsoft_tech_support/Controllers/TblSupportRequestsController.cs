@@ -30,35 +30,46 @@ namespace admin_sweetsoft_tech_support.Controllers
         //}
         [HttpGet]
         [Route("TblSupportRequests/Index")]
-        public IActionResult Index(int? status, string sortColumn, string sortOrder, int page = 1)
+        public IActionResult Index(int? status, string search, string departmentName, string sortColumn, string sortOrder, int page = 1)
         {
             int pageSize = 6;
-            var requests = _context.TblSupportRequests
+
+            var query = _context.TblSupportRequests
                 .Include(r => r.Customer)
                 .Include(r => r.Department)
-                .ToList();
+                .AsQueryable();
 
             if (status.HasValue)
-            {
-                requests = requests.Where(r => r.Status == status.Value).ToList();
-            }
+                query = query.Where(r => r.Status == status.Value);
 
-            // Using dynamic sorting
-            if (!string.IsNullOrEmpty(sortColumn))
-            {
-                requests = TableSorter.Sort<TblSupportRequest>(requests.AsQueryable(), sortColumn, sortOrder);
-            }
+            if (!string.IsNullOrEmpty(search))
+                query = query.Where(r => r.RequestTitle.Contains(search));
 
-            int totalRequests = requests.Count();
-            var paginatedRequests = requests.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            if (!string.IsNullOrEmpty(departmentName))
+                query = query.Where(r => r.Department.DepartmentName.Contains(departmentName));
+
+            if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortOrder))
+                query = (IQueryable<TblSupportRequest>)TableSorter.Sort(query, sortColumn, sortOrder);
+            else
+                query = query.OrderByDescending(r => r.CreatedAt);
+
+            int totalRequests = query.Count();
+            var paginatedRequests = query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
 
             ViewData["CurrentPage"] = page;
             ViewData["TotalPages"] = (int)Math.Ceiling(totalRequests / (double)pageSize);
+            ViewData["Status"] = status;
+            ViewData["Search"] = search;
+            ViewData["DepartmentName"] = departmentName;
             ViewData["SortColumn"] = sortColumn;
             ViewData["SortOrder"] = sortOrder;
 
             return View(paginatedRequests);
         }
+
 
 
         // GET: TblSupportRequests/Details/5
