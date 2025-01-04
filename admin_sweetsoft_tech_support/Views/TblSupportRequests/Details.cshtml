@@ -119,11 +119,11 @@
                                 foreach (var transfer in ViewBag.RequestTransfers)
                                 {
                                     <tr style="background-color: #f4f6f9;">
-                                        <td>@transfer.FromDepartment.DepartmentName</td>
-                                        <td>@transfer.ToDepartment.DepartmentName</td>
-                                        <td>@transfer.TransferredByNavigation.FullName</td>
-                                        <td>@transfer.TransferredAt.ToString("dd/MM/yyyy HH:mm")</td>
-                                        <td>@transfer.Note</td>
+                                        <td>@(transfer.FromDepartment?.DepartmentName ?? "Không có dữ liệu")</td>
+                                        <td>@(transfer.ToDepartment?.DepartmentName ?? "Không có dữ liệu")</td>
+                                        <td>@(transfer.TransferredByNavigation?.FullName ?? "Không có dữ liệu")</td>
+                                        <td>@(transfer.TransferredAt?.ToString("dd/MM/yyyy HH:mm") ?? "Không có dữ liệu")</td>
+                                        <td>@(transfer.Note ?? "Không có ghi chú")</td>
                                     </tr>
                                 }
                             }

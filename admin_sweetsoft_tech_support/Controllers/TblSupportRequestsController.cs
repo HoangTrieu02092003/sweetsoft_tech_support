@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using admin_sweetsoft_tech_support.Attributes;
+using Azure.Core;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -237,86 +238,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             return _context.TblSupportRequests.Any(e => e.RequestId == id);
         }
-        //public async Task<IActionResult> Transfer(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var tblSupportRequest = await _context.TblSupportRequests
-        //        .Include(t => t.Customer)
-        //        .Include(t => t.Department)
-        //        .FirstOrDefaultAsync(m => m.RequestId == id);
-        //    if (tblSupportRequest == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var requestTransfer = new TblRequestTransfer
-        //    {
-        //        RequestId = tblSupportRequest.RequestId,
-        //        FromDepartmentId = tblSupportRequest.DepartmentId,
-        //        TransferredAt = DateTime.Now // Set default values as needed
-        //    };
-
-        //    ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestDetails", tblSupportRequest.RequestId);
-        //    ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", tblSupportRequest.DepartmentId);
-        //    ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName");
-        //    ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName");
-
-        //    return View(requestTransfer);
-        //}
-
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Transfer(int id, [Bind("TransferId,RequestId,FromDepartmentId,ToDepartmentId,Priority,TransferredBy,TransferredAt,Note")] TblRequestTransfer requestTransfer)
-        //{
-        //    if (id != requestTransfer.RequestId)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            // Add the new transfer record
-        //            _context.Add(requestTransfer);
-
-        //            // Update the department of the support request
-        //            var supportRequest = await _context.TblSupportRequests.FindAsync(requestTransfer.RequestId);
-        //            if (supportRequest != null)
-        //            {
-        //                supportRequest.DepartmentId = requestTransfer.ToDepartmentId;
-        //                _context.Update(supportRequest);
-        //            }
-
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!TblRequestTransferExists(requestTransfer.TransferId))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-
-        //    ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestDetails", requestTransfer.RequestId);
-        //    ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.FromDepartmentId);
-        //    ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.ToDepartmentId);
-        //    ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName", requestTransfer.TransferredBy);
-
-        //    return View(requestTransfer);
-        //}
-
+        
         private bool TblRequestTransferExists(int id)
         {
             return _context.TblRequestTransfers.Any(e => e.TransferId == id);
@@ -351,8 +273,9 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestTitle", tblSupportRequest.RequestId);
             ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", tblSupportRequest.DepartmentId);
             ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName");
-            ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName");
             ViewBag.TransferredBy = new SelectList(_context.TblUsers, "UserId", "FullName", User.Identity.Name);
+            ViewBag.RequestTitle = tblSupportRequest.RequestTitle;
+            ViewBag.FormDepartment = tblSupportRequest.Department.DepartmentName;
             return View(requestTransfer);
         }
         [HttpPost]
@@ -448,6 +371,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.ToDepartmentId);
             ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName", requestTransfer.TransferredBy);
             ViewBag.TransferredBy = new SelectList(_context.TblUsers, "UserId", "FullName", User.Identity.Name);
+            ViewBag.RequestTitle = supportRequest.RequestTitle;
             return View(requestTransfer);
         }
 
