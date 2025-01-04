@@ -52,17 +52,8 @@
             @Html.GenerateFilterTextbox(
                      id: "search",
                      name: "search",
-                     placeholder: "Tìm kiếm tiêu đề...",
-                     value: ViewData["search"]?.ToString() ?? "",
-                     includeCancelButton: false
-                     )
-        </div>
-        <div class="col-lg-3 col-md-8">
-            @Html.GenerateFilterTextbox(
-                     id: "departmentName",
-                     name: "departmentName",
-                     placeholder: "Tìm kiếm phòng ban...",
-                     value: ViewData["DepartmentName"]?.ToString() ?? "",
+                     placeholder: "Tìm kiếm tiêu đề hoặc phòng ban...",
+                     value: ViewData["Search"]?.ToString() ?? "",
                      includeCancelButton: false
                      )
         </div>
@@ -80,34 +71,56 @@
                 <th>STT</th>
                 <th>
                     <a href="?sortColumn=RequestTitle&sortOrder=@(
-                ViewData["SortOrder"] as string == "asc" &&
-                ViewData["SortColumn"] as string == "RequestTitle" ? "desc" : "asc")">
+            ViewData["SortOrder"] as string == "asc" &&
+            ViewData["SortColumn"] as string == "RequestTitle" ? "desc" : "asc")">
                         Tiêu đề
                         <span class="sort-arrow @(ViewData["SortColumn"] as string == "RequestTitle" ? ViewData["SortOrder"] : "")"></span>
                     </a>
                 </th>
                 <th>
                     <a href="?sortColumn=Status&sortOrder=@(
-                ViewData["SortOrder"] as string == "asc" &&
-                ViewData["SortColumn"] as string == "Status" ? "desc" : "asc")">
+            ViewData["SortOrder"] as string == "asc" &&
+            ViewData["SortColumn"] as string == "Status" ? "desc" : "asc")">
                         Trạng thái
                         <span class="sort-arrow @(ViewData["SortColumn"] as string == "Status" ? ViewData["SortOrder"] : "")"></span>
                     </a>
                 </th>
                 <th>
                     <a href="?sortColumn=CreatedAt&sortOrder=@(
-                ViewData["SortOrder"] as string == "asc" &&
-                ViewData["SortColumn"] as string == "CreatedAt" ? "desc" : "asc")">
+            ViewData["SortOrder"] as string == "asc" &&
+            ViewData["SortColumn"] as string == "CreatedAt" ? "desc" : "asc")">
                         Ngày tạo
                         <span class="sort-arrow @(ViewData["SortColumn"] as string == "CreatedAt" ? ViewData["SortOrder"] : "")"></span>
                     </a>
                 </th>
-                <th>Ngày giải quyết</th>
-                <th>Khách hàng</th>
-                <th>Phòng ban</th>
+                <th>
+                    <a href="?sortColumn=ResolvedAt&sortOrder=@(
+            ViewData["SortOrder"] as string == "asc" &&
+            ViewData["SortColumn"] as string == "ResolvedAt" ? "desc" : "asc")">
+                        Ngày giải quyết
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "ResolvedAt" ? ViewData["SortOrder"] : "")"></span>
+                    </a>
+                </th>
+                <th>
+                    <a href="?sortColumn=CustomerFullName&sortOrder=@(
+            ViewData["SortOrder"] as string == "asc" &&
+            ViewData["SortColumn"] as string == "CustomerFullName" ? "desc" : "asc")">
+                        Khách hàng
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "CustomerFullName" ? ViewData["SortOrder"] : "")"></span>
+                    </a>
+                </th>
+                <th>
+                    <a href="?sortColumn=DepartmentName&sortOrder=@(
+            ViewData["SortOrder"] as string == "asc" &&
+            ViewData["SortColumn"] as string == "DepartmentName" ? "desc" : "asc")">
+                        Phòng ban
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "DepartmentName" ? ViewData["SortOrder"] : "")"></span>
+                    </a>
+                </th>
                 <th>Hành động</th>
             </tr>
         </thead>
+
 
         <tbody>
             @if (Model.Any())

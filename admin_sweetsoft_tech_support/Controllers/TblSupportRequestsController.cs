@@ -29,46 +29,69 @@ namespace admin_sweetsoft_tech_support.Controllers
         //    return View(await requestContext.ToListAsync());
         //}
         [HttpGet]
-        [Route("TblSupportRequests/Index")]
-        public IActionResult Index(int? status, string search, string departmentName, string sortColumn, string sortOrder, int page = 1)
+        public IActionResult Index(int? status, string search, string sortColumn, string sortOrder, int page = 1)
         {
             int pageSize = 6;
-
             var query = _context.TblSupportRequests
                 .Include(r => r.Customer)
                 .Include(r => r.Department)
                 .AsQueryable();
 
+            // Lọc dữ liệu
             if (status.HasValue)
                 query = query.Where(r => r.Status == status.Value);
 
+            // Lọc theo tìm kiếm
             if (!string.IsNullOrEmpty(search))
-                query = query.Where(r => r.RequestTitle.Contains(search));
+            {
+                string lowerSearch = search.ToLower();
+                query = query.Where(r =>
+                    r.RequestTitle.ToLower().Contains(lowerSearch) || // Tìm theo tiêu đề
+                    r.Department.DepartmentName.ToLower().Contains(lowerSearch)); // Tìm theo phòng ban
+            }
+            // Sắp xếp dữ liệu
+            switch (sortColumn)
+            {
+                case "RequestTitle":
+                    query = sortOrder == "asc" ? query.OrderBy(r => r.RequestTitle) : query.OrderByDescending(r => r.RequestTitle);
+                    break;
+                case "Status":
+                    query = sortOrder == "asc" ? query.OrderBy(r => r.Status) : query.OrderByDescending(r => r.Status);
+                    break;
+                case "CreatedAt":
+                    query = sortOrder == "asc" ? query.OrderBy(r => r.CreatedAt) : query.OrderByDescending(r => r.CreatedAt);
+                    break;
+                case "ResolvedAt":
+                    query = sortOrder == "asc" ? query.OrderBy(r => r.ResolvedAt) : query.OrderByDescending(r => r.ResolvedAt);
+                    break;
+                case "CustomerFullName":
+                    query = sortOrder == "asc" ? query.OrderBy(r => r.Customer.FullName) : query.OrderByDescending(r => r.Customer.FullName);
+                    break;
+                case "DepartmentName":
+                    query = sortOrder == "asc" ? query.OrderBy(r => r.Department.DepartmentName) : query.OrderByDescending(r => r.Department.DepartmentName);
+                    break;
+                default:
+                    query = query.OrderByDescending(r => r.CreatedAt); // Mặc định sắp xếp theo ngày tạo giảm dần
+                    break;
+            }
 
-            if (!string.IsNullOrEmpty(departmentName))
-                query = query.Where(r => r.Department.DepartmentName.Contains(departmentName));
-
-            if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortOrder))
-                query = (IQueryable<TblSupportRequest>)TableSorter.Sort(query, sortColumn, sortOrder);
-            else
-                query = query.OrderByDescending(r => r.CreatedAt);
-
+            // Phân trang
             int totalRequests = query.Count();
             var paginatedRequests = query
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
 
+            // Truyền dữ liệu sang View
             ViewData["CurrentPage"] = page;
             ViewData["TotalPages"] = (int)Math.Ceiling(totalRequests / (double)pageSize);
-            ViewData["Status"] = status;
-            ViewData["Search"] = search;
-            ViewData["DepartmentName"] = departmentName;
             ViewData["SortColumn"] = sortColumn;
             ViewData["SortOrder"] = sortOrder;
+            ViewData["Search"] = search;
 
             return View(paginatedRequests);
         }
+
 
 
 
