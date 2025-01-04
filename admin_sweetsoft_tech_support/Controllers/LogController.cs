@@ -21,34 +21,46 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             if (request == null)
             {
-                return BadRequest("Dữ liệu log không hợp lệ.");
+                return BadRequest(new { message = "Dữ liệu log không hợp lệ." });
             }
+
             try
             {
-                DateTime date = DateTime.Now;
-                string adminLogPath = Path.Combine(Directory.GetCurrentDirectory(), "Notifications",date.Year.ToString(), date.ToString("MM"),date.ToString("dd"));
-
-                // Tạo thư mục nếu chưa có
-                if (!Directory.Exists(adminLogPath))
+                // Xử lý Id và Timestamp tự động nếu không có
+                if (string.IsNullOrEmpty(request.Id))
                 {
-                    Directory.CreateDirectory(adminLogPath);
+                    request.Id = _logService.GenerateUniqueId();
                 }
 
-                // Định dạng đường dẫn log file
-                string logFilePath = Path.Combine(adminLogPath, $"{DateTime.Now.ToString("yyyy-MM-dd-HH")}.log");
-
-                // Ghi log vào file
-                using (StreamWriter writer = new StreamWriter(logFilePath, append: true))
+                if (request.Timestamp == default(DateTime))
                 {
-                    _logService.LogNotificationAction(request.User, request.Content, request.Status);
-                    //return Ok(new { message = "Log saved successfully!" });
+                    request.Timestamp = DateTime.UtcNow;
                 }
 
-                return Ok(new { message = $"Log saved successfully! {request.User},{request.Status},{request.Content}" });
+                // Ghi log
+                _logService.LogNotificationAction(request.User, request.Content, request.Status);
+
+                // Trả về kết quả
+                return Ok(new
+                {
+                    message = "Log saved successfully!",
+                    logDetails = new
+                    {
+                        User = request.User,
+                        Status = request.Status,
+                        Id = request.Id,
+                        Content = request.Content,
+                        Timestamp = request.Timestamp
+                    }
+                });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while writing the log" });
+                return StatusCode(500, new
+                {
+                    message = "An error occurred while writing the log",
+                    error = ex.Message
+                });
             }
         }
     }

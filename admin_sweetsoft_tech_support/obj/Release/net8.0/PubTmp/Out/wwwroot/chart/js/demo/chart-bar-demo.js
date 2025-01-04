@@ -1,5 +1,5 @@
 ﻿document.getElementById('filterButton').addEventListener('click', function (event) {
-    event.preventDefault();  // Ngăn chặn reload trang khi nhấn nút
+    event.preventDefault(); // Ngăn chặn reload trang khi nhấn nút
 
     // Lấy giá trị từ form ngày bắt đầu và kết thúc
     const startDate = document.getElementById("startDate").value || getCurrentYearStartDate();
@@ -12,13 +12,13 @@
 // Hàm lấy ngày đầu tiên của năm hiện tại
 function getCurrentYearStartDate() {
     const currentYear = new Date().getFullYear();
-    return `${currentYear}-01-01`;  // Định dạng yyyy-mm-dd
+    return `${currentYear}-01-01`; // Định dạng yyyy-mm-dd
 }
 
 // Hàm lấy ngày cuối cùng của năm hiện tại
 function getCurrentYearEndDate() {
     const currentYear = new Date().getFullYear();
-    return `${currentYear}-12-31`;  // Định dạng yyyy-mm-dd
+    return `${currentYear}-12-31`; // Định dạng yyyy-mm-dd
 }
 
 async function fetchData(startDate, endDate) {
@@ -30,7 +30,7 @@ async function fetchData(startDate, endDate) {
 
         const response = await fetch(url); // Gọi API từ controller mới
         const data = await response.json(); // Parse dữ liệu JSON
-        console.log("API from status",data); // Kiểm tra dữ liệu trả về
+        console.log("API from status", data); // Kiểm tra dữ liệu trả về
         return data;
     } catch (error) {
         console.error("Error fetching data:", error);
@@ -49,7 +49,7 @@ async function createChart(startDate, endDate) {
     }
 
     // Tạo một mảng đếm theo trạng thái và khởi tạo với 0
-    const statusCounts = { 1: 0, 2: 0, 3: 0, 4: 0 };
+    const statusCounts = { 0: 0, 1: 0, 2: 0 };
 
     // Gán giá trị từ API trả về
     data.requests.forEach(request => {
@@ -69,26 +69,23 @@ async function createChart(startDate, endDate) {
     myBarChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Chưa xủ lý', 'Đang xử lý', 'Đã xử lý', 'Không xử lý được'], // Trục X
+            labels: ['Chưa hoàn thành', 'Hoàn thành', 'Không xử lý được'], // Trục X
             datasets: [{
                 label: "Number of Requests",
                 backgroundColor: [
-                    "rgba(255, 99, 132, 0.5)",   // Pending
-                    "rgba(255, 159, 64, 0.5)",   // Processing
-                    "rgba(121, 28, 181, 0.5)",   // Completed
-                    "rgba(75, 192, 192, 0.5)"    // Cannot be Resolved
+                    "rgba(255, 99, 132, 0.5)", // Chưa hoàn thành
+                    "rgba(75, 192, 192, 0.5)", // Hoàn thành
+                    "rgba(255, 159, 64, 0.5)"  // Không xử lý được
                 ],
                 borderColor: [
                     "rgba(255, 99, 132, 1)",
-                    "rgba(255, 159, 64, 1)",
-                    "rgba(121, 28, 181, 1)",
-                    "rgba(75, 192, 192, 1)"
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(255, 159, 64, 1)"
                 ],
                 data: [
-                    statusCounts[1], // Pending
-                    statusCounts[2], // Processing
-                    statusCounts[3], // Completed
-                    statusCounts[4]  // Cannot be Resolved
+                    statusCounts[0], // Chưa hoàn thành
+                    statusCounts[1], // Hoàn thành
+                    statusCounts[2]  // Không xử lý được
                 ],
                 borderWidth: 1
             }]
@@ -121,7 +118,6 @@ async function createChart(startDate, endDate) {
         }
     });
 }
-
 
 // Gọi createChart khi trang tải để hiển thị dữ liệu mặc định của năm hiện tại
 createChart(getCurrentYearStartDate(), getCurrentYearEndDate());

@@ -111,6 +111,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
                         User = departmentManager.UserId.ToString(),
                         Content = "Có yêu cầu mới",
                         Status = "0", // 0: chưa xem, 1 đã xem
+                        Id = GenerateUniqueId(),
                         Timestamp = DateTime.Now
                     };
 
@@ -154,6 +155,20 @@ namespace Customer_sweetsoft_tech_support.Controllers
             ViewData["Department"] = new SelectList(departments, "DepartmentId", "DepartmentName",tblSupportRequest.DepartmentId);
             TempData["error"] = "Tạo yêu cầu thất bại";
             return View(tblSupportRequest);
+        }
+
+        public string GenerateUniqueId()
+        {
+            // Lấy thời gian hiện tại (UTC) tính theo mili giây
+            var timestamp = DateTime.UtcNow.ToString("yyyyMMddHHmmssfff");
+
+            // Tạo một giá trị ngẫu nhiên từ 1000 đến 9999 để đảm bảo tính duy nhất
+            var randomValue = new Random().Next(1000, 9999);
+
+            // Kết hợp thời gian và giá trị ngẫu nhiên thành ID
+            var uniqueId = $"{timestamp}{randomValue}";
+
+            return uniqueId;
         }
     }
 }
