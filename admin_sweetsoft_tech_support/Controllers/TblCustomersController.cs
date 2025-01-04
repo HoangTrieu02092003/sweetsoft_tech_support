@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using OfficeOpenXml;
 using admin_sweetsoft_tech_support.Attributes;
+using System.Security.Claims;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -23,6 +24,12 @@ namespace admin_sweetsoft_tech_support.Controllers
 
         public async Task<IActionResult> Index(int? page, int? Status, string SearchTerm)
         {
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
+            }
             // Mặc định trang hiện tại là 1 nếu chưa có
             int currentPage = page ?? 1;
 

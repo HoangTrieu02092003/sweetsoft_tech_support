@@ -13,26 +13,48 @@ public class SessionValidationMiddleware
 
     public async Task InvokeAsync(HttpContext context, RequestContext dbContext)
     {
+        if (context.Request.Path.StartsWithSegments("/dang-nhap"))
+        {
+            await _next(context);
+            return;
+        }
+
         var userIdClaim = context.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
         if (!string.IsNullOrEmpty(userIdClaim) && int.TryParse(userIdClaim, out var userId))
         {
             var session = await dbContext.TblSessions.FirstOrDefaultAsync(s => s.UserId == userId && s.ExpiresAt > DateTime.Now);
 
-            if (session == null && !context.Request.Path.StartsWithSegments("/Admin/Login"))
+            if (session == null)
             {
-                context.Response.Redirect("/Admin/Login");
-                return;
+                if (context.Request.Cookies.TryGetValue("UserSessionToken", out var sessionToken) && !string.IsNullOrEmpty(sessionToken))
+                {
+                    var cookieSession = await dbContext.TblSessions.FirstOrDefaultAsync(s => s.SessionToken == sessionToken);
+
+                    if (cookieSession != null)
+                    {
+                        cookieSession.ExpiresAt = DateTime.Now.AddHours(2);
+                        dbContext.Update(cookieSession);
+                        await dbContext.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        context.Response.Redirect("/dang-nhap");
+                        return;
+                    }
+                }
+                else
+                {
+                    context.Response.Redirect("/dang-nhap");
+                    return;
+                }
             }
 
-            if (session != null)
+            if (session != null && (session.ExpiresAt - DateTime.Now)?.TotalMinutes < 10)
             {
-                if ((session.ExpiresAt - DateTime.Now)?.TotalMinutes < 10)
-                {
-                    session.ExpiresAt = DateTime.Now.AddHours(2);
-                    dbContext.Update(session);
-                    await dbContext.SaveChangesAsync();
-                }
+                session.ExpiresAt = DateTime.Now.AddHours(2);
+                dbContext.Update(session);
+                await dbContext.SaveChangesAsync();
             }
         }
 

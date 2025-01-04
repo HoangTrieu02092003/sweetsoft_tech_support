@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using admin_sweetsoft_tech_support.Attributes;
+using Azure.Core;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -29,53 +30,47 @@ namespace admin_sweetsoft_tech_support.Controllers
         //}
         [HttpGet]
         [Route("TblSupportRequests/Index")]
-        public IActionResult Index(int? status, int page = 1, string sortOrder = "")
+        public IActionResult Index(int? status, string search, string departmentName, string sortColumn, string sortOrder, int page = 1)
         {
             int pageSize = 6;
-            var requests = _context.TblSupportRequests
+
+            var query = _context.TblSupportRequests
                 .Include(r => r.Customer)
                 .Include(r => r.Department)
                 .AsQueryable();
 
             if (status.HasValue)
-            {
-                requests = requests.Where(r => r.Status == status.Value);
-            }
+                query = query.Where(r => r.Status == status.Value);
 
-            // Sorting logic
-            switch (sortOrder)
-            {
-                case "title_asc":
-                    requests = requests.OrderBy(r => r.RequestTitle);
-                    break;
-                case "title_desc":
-                    requests = requests.OrderByDescending(r => r.RequestTitle);
-                    break;
-                case "date_asc":
-                    requests = requests.OrderBy(r => r.CreatedAt);
-                    break;
-                case "date_desc":
-                    requests = requests.OrderByDescending(r => r.CreatedAt);
-                    break;
-                case "status_asc":
-                    requests = requests.OrderBy(r => r.Status);
-                    break;
-                case "status_desc":
-                    requests = requests.OrderByDescending(r => r.Status);
-                    break;
-                default:
-                    requests = requests.OrderBy(r => r.RequestId);
-                    break;
-            }
+            if (!string.IsNullOrEmpty(search))
+                query = query.Where(r => r.RequestTitle.Contains(search));
 
-            int totalRequests = requests.Count();
-            var paginatedRequests = requests.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            if (!string.IsNullOrEmpty(departmentName))
+                query = query.Where(r => r.Department.DepartmentName.Contains(departmentName));
+
+            if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortOrder))
+                query = (IQueryable<TblSupportRequest>)TableSorter.Sort(query, sortColumn, sortOrder);
+            else
+                query = query.OrderByDescending(r => r.CreatedAt);
+
+            int totalRequests = query.Count();
+            var paginatedRequests = query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
 
             ViewData["CurrentPage"] = page;
             ViewData["TotalPages"] = (int)Math.Ceiling(totalRequests / (double)pageSize);
+            ViewData["Status"] = status;
+            ViewData["Search"] = search;
+            ViewData["DepartmentName"] = departmentName;
+            ViewData["SortColumn"] = sortColumn;
             ViewData["SortOrder"] = sortOrder;
+
             return View(paginatedRequests);
         }
+
+
 
         // GET: TblSupportRequests/Details/5
         public IActionResult Details(int id)
@@ -151,6 +146,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 var departmentManager = _context.TblUsers
                     .FirstOrDefault(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.Role.RoleName == "Trưởng phòng");
 
+                _logService.LogActivityAction("Tạo yêu cầu hỗ trợ", "Create", User.Identity.Name);
                 if (departmentManager != null)
                 {
                     _logService.LogNotificationAction(departmentManager.UserId.ToString(), "Bạn có yêu cầu mới");
@@ -159,6 +155,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
             ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId", tblSupportRequest.CustomerId);
             ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId", tblSupportRequest.DepartmentId);
+            var RequestTitle = _context.TblSupportRequests.Find(tblSupportRequest.RequestId).RequestTitle;
             return View(tblSupportRequest);
         }
 
@@ -198,6 +195,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     _context.Update(supportRequest);
                     await _context.SaveChangesAsync();
+                    _logService.LogActivityAction("Cập nhật yêu cầu hỗ trợ", "Update", User.Identity.Name);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -218,6 +216,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             return View(supportRequest);
         }
+
 
 
         // GET: TblSupportRequests/Delete/5
@@ -251,11 +250,12 @@ namespace admin_sweetsoft_tech_support.Controllers
                 _context.TblSupportRequests.Remove(tblSupportRequest);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Xóa yêu cầu hỗ trợ thành công.";
+                _logService.LogActivityAction("Xóa yêu cầu hỗ trợ", "Delete", User.Identity.Name);
             }
             else
             {
                 TempData["ErrorMessage"] = "Không tìm thấy yêu cầu hỗ trợ.";
-            }
+            }           
             return RedirectToAction(nameof(Index), new { page = currentPage });
         }
 
@@ -264,86 +264,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             return _context.TblSupportRequests.Any(e => e.RequestId == id);
         }
-        //public async Task<IActionResult> Transfer(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var tblSupportRequest = await _context.TblSupportRequests
-        //        .Include(t => t.Customer)
-        //        .Include(t => t.Department)
-        //        .FirstOrDefaultAsync(m => m.RequestId == id);
-        //    if (tblSupportRequest == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var requestTransfer = new TblRequestTransfer
-        //    {
-        //        RequestId = tblSupportRequest.RequestId,
-        //        FromDepartmentId = tblSupportRequest.DepartmentId,
-        //        TransferredAt = DateTime.Now // Set default values as needed
-        //    };
-
-        //    ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestDetails", tblSupportRequest.RequestId);
-        //    ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", tblSupportRequest.DepartmentId);
-        //    ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName");
-        //    ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName");
-
-        //    return View(requestTransfer);
-        //}
-
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Transfer(int id, [Bind("TransferId,RequestId,FromDepartmentId,ToDepartmentId,Priority,TransferredBy,TransferredAt,Note")] TblRequestTransfer requestTransfer)
-        //{
-        //    if (id != requestTransfer.RequestId)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            // Add the new transfer record
-        //            _context.Add(requestTransfer);
-
-        //            // Update the department of the support request
-        //            var supportRequest = await _context.TblSupportRequests.FindAsync(requestTransfer.RequestId);
-        //            if (supportRequest != null)
-        //            {
-        //                supportRequest.DepartmentId = requestTransfer.ToDepartmentId;
-        //                _context.Update(supportRequest);
-        //            }
-
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!TblRequestTransferExists(requestTransfer.TransferId))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-
-        //    ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestDetails", requestTransfer.RequestId);
-        //    ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.FromDepartmentId);
-        //    ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.ToDepartmentId);
-        //    ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName", requestTransfer.TransferredBy);
-
-        //    return View(requestTransfer);
-        //}
-
+        
         private bool TblRequestTransferExists(int id)
         {
             return _context.TblRequestTransfers.Any(e => e.TransferId == id);
@@ -378,13 +299,14 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestTitle", tblSupportRequest.RequestId);
             ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", tblSupportRequest.DepartmentId);
             ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName");
-            ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName");
-
+            ViewBag.TransferredBy = new SelectList(_context.TblUsers, "UserId", "FullName", User.Identity.Name);
+            ViewBag.RequestTitle = tblSupportRequest.RequestTitle;
+            ViewBag.FormDepartment = tblSupportRequest.Department.DepartmentName;
             return View(requestTransfer);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Transfer(int id, [Bind("TransferId,RequestId,FromDepartmentId,Priority,TransferredBy,TransferredAt,Note,RequestTitle,Product")] TblRequestTransfer requestTransfer, List<int> ToDepartmentId, int currentPage = 1)
+        public async Task<IActionResult> Transfer(int id, [Bind("TransferId,RequestId,FromDepartmentId,Priority,TransferredBy,TransferredAt,Note,RequestTitle,Product")] TblRequestTransfer requestTransfer, List<int> ToDepartmentId, string userName, int currentPage = 1)
         {
             if (id != requestTransfer.RequestId)
             {
@@ -451,6 +373,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                                 _context.Add(newSupportRequest);
                             }
                         }
+                        _logService.LogActivityAction("Chuyển yêu cầu hỗ trợ", "Transfer", User.Identity.Name);
                     }
 
                     await _context.SaveChangesAsync();
@@ -473,9 +396,11 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.FromDepartmentId);
             ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.ToDepartmentId);
             ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName", requestTransfer.TransferredBy);
-
+            ViewBag.TransferredBy = new SelectList(_context.TblUsers, "UserId", "FullName", User.Identity.Name);
+            ViewBag.RequestTitle = supportRequest.RequestTitle;
             return View(requestTransfer);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateStatus(int id, int status, DateTime? resolvedAt)
@@ -487,13 +412,14 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             supportRequest.Status = (short)status;
-            supportRequest.ResolvedAt = status == 1 ? resolvedAt : null;
+            supportRequest.ResolvedAt = status == 1 ? resolvedAt ?? DateTime.Now : null;
 
             try
             {
                 _context.Update(supportRequest);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Chuyển trạng thái thành công";
+                _logService.LogActivityAction("Cập nhật trạng thái yêu cầu hỗ trợ", "Update", User.Identity.Name);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -506,9 +432,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                     throw;
                 }
             }
-
             return RedirectToAction(nameof(Index));
         }
-        
     }
 }

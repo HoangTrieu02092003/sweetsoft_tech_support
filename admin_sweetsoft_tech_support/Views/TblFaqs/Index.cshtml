@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblFaq>
+@using admin_sweetsoft_tech_support.Attributes
 
 @{
     ViewData["Title"] = "Quản lý FAQs";
@@ -130,7 +131,6 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }
-
 @if (TempData["ErrorMessage"] != null)
 {
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -138,8 +138,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }
+<!-- Ẩn thông báo -->
 <script>
-    // Tự động ẩn thông báo sau 5 giây
     setTimeout(() => {
         const alerts = document.querySelectorAll('.alert');
         alerts.forEach(alert => {
@@ -155,16 +155,12 @@
     <form method="get">
         <div class="row align-items-end">
             <div class="col-md-3">
-                <div class="form-group">
-                    <label for="searchTerm" class="form-label">Tìm kiếm câu hỏi</label>
-                    <input type="text" id="searchTerm" name="searchTerm" class="form-control" value="@ViewData["SearchTerm"]">
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="answerTerm" class="form-label">Tìm kiếm câu trả lời</label>
-                    <input type="text" id="answerTerm" name="answerTerm" class="form-control" value="@ViewData["AnswerTerm"]">
-                </div>
+                @Html.GenerateFilterTextbox(
+                         id: "search",
+                         name: "search",
+                         includeCancelButton: false,
+                         value: ViewData["search"]?.ToString() ?? ""
+                         )
             </div>
             <div class="col-md-3">
                 <div class="form-group">
@@ -179,7 +175,7 @@
                 </div>
             </div>
             <div class="mt-2 text-end">
-                <button type="submit" class="btn btn-info"><i class="bi bi-search"></i> Tìm kiếm</button>
+                <button type="submit" class="btn btn-info d-block d-md-none"><i class="bi bi-search"></i> Tìm kiếm</button>
             </div>
         </div>
     </form>

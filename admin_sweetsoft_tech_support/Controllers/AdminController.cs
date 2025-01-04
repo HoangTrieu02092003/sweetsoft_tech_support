@@ -5,7 +5,11 @@ using System.Security.Claims;
 using admin_sweetsoft_tech_support.Models;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using BCrypt.Net;
+using System.Net.Mail;
+using System.Net;
 using admin_sweetsoft_tech_support.Attributes;
+using NLog;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -74,6 +78,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 ViewBag.SiteKey = siteKey;
                 return View();
             }
+
             if (!BCrypt.Net.BCrypt.Verify(password, user.Password))
             {
                 // Xử lý đăng nhập thất bại
@@ -119,14 +124,24 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Name, user.FullName),
-                new Claim(ClaimTypes.Email, user.Email)
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim("IsAdmin", user.IsAdmin.ToString())
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
             // Đăng nhập và lưu thông tin vào Cookie
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
-            await _logService.LogAuditAction("Login", HttpContext.User.Identity.Name, "Đăng nhập thành công");
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme, 
+                claimsPrincipal,
+                new AuthenticationProperties
+                {
+                    IsPersistent = true, // Lưu cookie trên máy người dùng
+                    ExpiresUtc = DateTime.UtcNow.AddDays(7), // Cookie hết hạn sau 7 ngày
+                    AllowRefresh = true
+                });
+            var name = claimsPrincipal.Identity?.Name;
+            _logService.LogAuditAction("Login", name, "Đăng nhập thành công");
             TempData["UserId"] = user.UserId;
             TempData["IsAdmin"] = user.IsAdmin == true ? "true" : "false";
             var returnUrl = TempData["ReturnUrl"]?.ToString() ?? Url.Action("Index1", "Report");
@@ -138,7 +153,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var username = User.Identity.Name;
-            await _logService.LogAuditAction("Logout", username, "Đăng xuất thành công");
+            _logService.LogAuditAction("Logout", username, "Đăng xuất thành công");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
         }
@@ -252,17 +267,22 @@ namespace admin_sweetsoft_tech_support.Controllers
         // Hàm gửi email
         private async Task SendEmailAsync(string toEmail, string subject, string body)
         {
+            var emailSettings = _configuration.GetSection("EmailSettings");
+            var smtpServer = emailSettings["SmtpServer"];
+            var port = int.Parse(emailSettings["Port"]);
+            var fromEmail = emailSettings["FromEmail"];
+            var password = emailSettings["Password"];
             // Cấu hình SMTP client (ví dụ: Gmail SMTP)
-            using var client = new System.Net.Mail.SmtpClient("smtp.gmail.com")
+            using var client = new SmtpClient(smtpServer)
             {
-                Port = 587,
-                Credentials = new System.Net.NetworkCredential("nhantrung890@gmail.com", "mika juyt thab rbit"),
+                Port = port,
+                Credentials = new NetworkCredential(fromEmail, password),
                 EnableSsl = true,
             };
 
-            var mailMessage = new System.Net.Mail.MailMessage
+            var mailMessage = new MailMessage
             {
-                From = new System.Net.Mail.MailAddress("nhantrung890@gmail.com", "Support Team"),
+                From = new MailAddress(fromEmail, "Support Team"),
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true,

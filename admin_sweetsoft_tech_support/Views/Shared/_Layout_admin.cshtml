@@ -67,32 +67,33 @@
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
                                 <span class="hide-menu">Báo cáo</span>
                             </a>
-                        <li class="nav-small-cap">
+                        <li class="nav-small-cap" style="@(User.Claims.FirstOrDefault(c => c.Type == "IsAdmin")?.Value == "True" ? "" : "display:none")">
                             <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
                             <span class="hide-menu">Quản lý log</span>
                         </li>
 
                         <!-- Thêm phần mình làm ở đây nhen mn -->
                         
-                        <li class="sidebar-item">
+                        <li class="sidebar-item" style="@(User.Claims.FirstOrDefault(c => c.Type == "IsAdmin")?.Value == "True" ? "" : "display:none")">
                             <a class="sidebar-link" asp-action="Index" asp-controller="AuditLogs" asp-route-date="@DateTime.Now.ToString("yyyy-MM-dd")" asp-route-filterOption="day" aria-expanded="false">
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
                                 <span class="hide-menu">Quản lý nhật ký kiểm tra</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+
+                        <li class="sidebar-item" style="@(User.Claims.FirstOrDefault(c => c.Type == "IsAdmin")?.Value == "True" ? "" : "display:none")">
                             <a class="sidebar-link" asp-action="Index" asp-controller="Sessions" aria-expanded="false">
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
                                 <span class="hide-menu">Quản lý Session</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                        <li class="sidebar-item" style="@(User.Claims.FirstOrDefault(c => c.Type == "IsAdmin")?.Value == "True" ? "" : "display:none")">
                             <a class="sidebar-link" asp-action="Index" asp-controller="Notifications" aria-expanded="false">
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
                                 <span class="hide-menu">Quản lý thông báo</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                        <li class="sidebar-item" style="@(User.Claims.FirstOrDefault(c => c.Type == "IsAdmin")?.Value == "True" ? "" : "display:none")">
                             <a class="sidebar-link" asp-action="Index" asp-controller="ActivityLogs" aria-expanded="false">
                                 <span><iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon></span>
                                 <span class="hide-menu">Nhật ký yêu cầu hỗ trợ</span>

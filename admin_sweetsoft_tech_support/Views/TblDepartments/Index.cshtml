@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblDepartment>
 @using admin_sweetsoft_tech_support.Attributes
+@{
+    ViewData["Title"] = "Quản lý Phòng Ban";
+    int stt = 1;
+}
 
 <html>
 <head>
@@ -11,45 +15,45 @@
 
     <style>
         .header {
-            color: #6a1b9a;
-            font-size: 24px;
-            font-weight: bold;
+        color: #6a1b9a;
+        font-size: 24px;
+        font-weight: bold;
         }
 
         /* Responsive design adjustments */
         @@media (max-width: 576px) {
-            .action-btn
+        .action-btn
 
         {
-            padding: 5px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        padding: 5px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         }
 
 
         .action-text {
-            display: none; /* Ẩn văn bản trên nút khi thu nhỏ */
+        display: none; /* Ẩn văn bản trên nút khi thu nhỏ */
         }
 
         .btn-group .btn {
-            width: 35px; /* Giảm kích thước nút */
-            height: 35px;
-            font-size: 1rem;
+        width: 35px; /* Giảm kích thước nút */
+        height: 35px;
+        font-size: 1rem;
         }
 
         }
 
         .header {
-            color: #6a1b9a;
+        color: #6a1b9a;
         }
 
         .table {
-            font-size: 0.9rem; /* Điều chỉnh kích thước chữ */
+        font-size: 0.9rem; /* Điều chỉnh kích thước chữ */
         }
         th {
-            white-space:nowrap;
+        white-space:nowrap;
         }
     </style>
 </head>
@@ -79,11 +83,11 @@
     <script>
         // Tự động ẩn thông báo sau 5 giây
         setTimeout(() => {
-            const alerts = document.querySelectorAll('.alert');
-            alerts.forEach(alert => {
-                alert.classList.remove('show'); // Ẩn alert
-                alert.addEventListener('transitionend', () => alert.remove()); // Loại bỏ khỏi DOM sau khi ẩn
-            });
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+        alert.classList.remove('show'); // Ẩn alert
+        alert.addEventListener('transitionend', () => alert.remove()); // Loại bỏ khỏi DOM sau khi ẩn
+        });
         }, 5000); // 5000ms = 5 giây
     </script>
     <div class="d-flex justify-content-between">
@@ -100,35 +104,39 @@
     </div>
 
     <div class="mb-4">
-    <!-- Form tìm kiếm -->
-    <form method="get" class="row g-2">
-        <div class="col-md-3">
-            @Html.GenerateFilterTextbox(
-                id: "search",
-                name: "search",
-                includeCancelButton:false,
-                value: ViewData["search"]?.ToString()??""
-            )
-        </div>
+        <!-- Form tìm kiếm -->
+        <form method="get" class="row g-2">
             <div class="col-md-3">
-                @Html.GenerateFilterDropdown(
-                         id: "status",
-                         name: "status",
-                         includeCancelButton: false,
-                         options: new Dictionary<string, string> {
-                             {"0","Tạm dừng"},
-                             {"1","Hoạt động"}
-                         },
-                         selectedValue: ViewData["status"]?.ToString() ?? ""
+                @Html.GenerateFilterTextbox(
+                             id: "search",
+                             name: "search",
+                             includeCancelButton:false,
+                             value: ViewData["search"]?.ToString()??""
                          )
             </div>
-    </form>
+            <div class="col-md-3">
+                @Html.GenerateFilterDropdown(
+                                     id: "status",
+                                     name: "status",
+                                     includeCancelButton: false,
+                                     options: new Dictionary<string, string> {
+                            {"0","Tạm dừng"},
+                            {"1","Hoạt động"}
+                        },
+                                     selectedValue: ViewData["status"]?.ToString() ?? ""
+                                     )
+            </div>
+            <div class="mt-2 text-end">
+                <button type="submit" class="btn btn-info d-block d-md-none"><i class="bi bi-search"></i> Tìm kiếm</button>
+            </div>
+        </form>
     </div>
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
+                    <th>STT</th>
                     <th>Tên phòng ban</th>
                     <th class="text-center">Trạng thái</th>
                     <th class="text-center">Số lượng thành viên</th>
@@ -139,6 +147,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>@stt</td>
                         <td>@Html.DisplayFor(modelItem => item.DepartmentName)</td>
                         <td class="text-center">
                             <span class="badge @(item.Status == 1 ? "bg-success" : "bg-danger")">
@@ -159,6 +168,7 @@
                             </div>
                         </td>
                     </tr>
+                    stt++;
                     <!-- Modal delete -->
                     <div class="modal fade" id="deleteModal-@item.DepartmentId" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
