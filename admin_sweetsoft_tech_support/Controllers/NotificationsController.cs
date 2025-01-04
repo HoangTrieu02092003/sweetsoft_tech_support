@@ -23,6 +23,12 @@ namespace admin_sweetsoft_tech_support.Controllers
         // GET: Notifications
         public async Task<IActionResult> Index(string search, int? status, int page = 1, int filePage = 1)
         {
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
+            }
             ViewData["Search"] = search;
             ViewData["Status"] = status;
 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
+using System.Security.Claims;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -21,6 +22,12 @@ namespace admin_sweetsoft_tech_support.Controllers
         // GET: TblDepartments
         public async Task<IActionResult> Index(int page = 1)
         {
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
+            }
             int pageSize = 6; // Số lượng phòng ban trên mỗi trang
             int skip = (page - 1) * pageSize;
 

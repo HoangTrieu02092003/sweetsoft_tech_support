@@ -73,7 +73,7 @@ namespace admin_sweetsoft_tech_support.Attributes
             }
 
             var config = LogManager.Configuration ?? new LoggingConfiguration();
-            var fileTarget = new FileTarget("file")
+            var fileTarget = new FileTarget("NotificationsFile")
             {
                 FileName = Path.Combine(yearMonthDayDirectory, "${date:format=yyyy-MM-dd-HH}.log"),
                 Layout = "${date:format=dd/MM/yyyy HH\\:mm}, " +
@@ -86,7 +86,7 @@ namespace admin_sweetsoft_tech_support.Attributes
 
             config.AddTarget(fileTarget);
 
-            var rule = new LoggingRule("AdminSweetsoftTechSupport", NLog.LogLevel.Info, fileTarget);
+            var rule = new LoggingRule("Notifications", NLog.LogLevel.Info, fileTarget);
             config.LoggingRules.Add(rule);
 
 
@@ -115,7 +115,7 @@ namespace admin_sweetsoft_tech_support.Attributes
             }
 
             var config = LogManager.Configuration ?? new LoggingConfiguration();
-            var fileTarget = new FileTarget("file")
+            var fileTarget = new FileTarget("ActivityFile")
             {
                 FileName = Path.Combine(yearMonthDayDirectory, "${date:format=yyyy-MM-dd-HH}.log"),
                 Layout = "${date:format=dd/MM/yyyy HH\\:mm}, " +
@@ -128,7 +128,7 @@ namespace admin_sweetsoft_tech_support.Attributes
 
             config.AddTarget(fileTarget);
 
-            var rule = new LoggingRule("AdminSweetsoftTechSupport", NLog.LogLevel.Info, fileTarget);
+            var rule = new LoggingRule("Activity", NLog.LogLevel.Info, fileTarget);
             config.LoggingRules.Add(rule);
 
 

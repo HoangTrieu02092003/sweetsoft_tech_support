@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
+using System.Security.Claims;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -21,6 +17,12 @@ namespace admin_sweetsoft_tech_support.Controllers
         // GET: TblFaqs
         public async Task<IActionResult> Index(string searchTerm, string answerTerm, DateTime? createdFrom, DateTime? createdTo, DateTime? updatedFrom, DateTime? updatedTo, int page = 1)
         {
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
+            }
             var faqs = _context.TblFaqs.AsQueryable();
 
             // Lọc theo tên câu hỏi (tìm gần đúng)

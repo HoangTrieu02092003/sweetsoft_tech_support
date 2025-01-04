@@ -39,6 +39,7 @@ try
             options.AccessDeniedPath = "/dang-nhap"; // Nếu không có quyền, chuyển đến trang đăng nhập
             options.ExpireTimeSpan = TimeSpan.FromDays(7);
             options.SlidingExpiration = true;
+            options.Cookie.SameSite = SameSiteMode.Strict;
         });
 
     // Add services to the container.
