@@ -53,11 +53,10 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     RequestId = r.RequestId,
                     RequestDetails = r.RequestDetails,
-                    Status = r.Status == 1 ? "Pending" :
-                             r.Status == 2 ? "Processing" :
-                             r.Status == 3 ? "Completed" :
-                             r.Status == 4 ? "Cannot be Resolved" :
-                             "Unknown",
+                    Status = r.Status == 0 ? "Chưa hoàn thành" :
+                             r.Status == 1 ? "Hoàn thành" :
+                             r.Status == 2 ? "Không xử lý được" :
+                             "Không xác định",
 
                     CreatedAt = r.CreatedAt
                 }).ToList() // Lấy danh sách chi tiết các yêu cầu
@@ -77,11 +76,11 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     RequestId = r.RequestId,
                     RequestDetails = r.RequestDetails,
-                    Status = r.Status == 1 ? "Pending" :
-                             r.Status == 2 ? "Processing" :
-                             r.Status == 3 ? "Completed" :
-                             r.Status == 4 ? "Cannot be Resolved" :
-                             "Unknown",
+                    Status = r.Status == 0 ? "Chưa hoàn thành" :
+                             r.Status == 1 ? "Hoàn thành" :
+                             r.Status == 2 ? "Không xử lý được" :
+                             "Không xác định",
+
                     CreatedAt = r.CreatedAt
                 })
                 .ToListAsync();
@@ -253,11 +252,10 @@ namespace admin_sweetsoft_tech_support.Controllers
                     CustomerName = r.Customer.FullName,
                     DepartmentName = r.Department.DepartmentName,
                     r.RequestDetails,
-                    Status = r.Status == 1 ? "Chưa xử lý" :
-                             r.Status == 2 ? "Đang xử lý" :
-                             r.Status == 3 ? "Đã xử lý" :
-                             r.Status == 4 ? "Không xử lý được" :
-                             "Unknown",
+                    Status = r.Status == 0 ? "Chưa hoàn thành" :
+                             r.Status == 1 ? "Hoàn thành" :
+                             r.Status == 2 ? "Không xử lý được" :
+                             "Không xác định",
                     r.CreatedAt
                 })
                 .ToListAsync();
