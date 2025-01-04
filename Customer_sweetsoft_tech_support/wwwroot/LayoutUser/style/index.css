@@ -1483,10 +1483,9 @@ body.navShow {
 /*inner1_start*/
 .rem12 {
     width: 12rem;
-    margin: 0 auto;
+    margin: 0 0 0 12%;
     position: relative;
 }
-
 .inner_main {
     padding-top: 1.8rem;
     margin-top: -1.8rem;
@@ -1662,11 +1661,15 @@ body.navShow {
 
 
 @media screen and (max-width: 800px) {
-    .inner_main .rem12 {
+    .inner_main {
         width: 100%;
         padding: 25px;
     }
-
+    .rem12 {
+        width: 100%;
+        margin: 0;
+        position: relative;
+    }
         .inner_main .rem12 .zb_nr .zc {
             width: 100%;
         }
