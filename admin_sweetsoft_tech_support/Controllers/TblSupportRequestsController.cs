@@ -22,34 +22,31 @@ namespace admin_sweetsoft_tech_support.Controllers
             _logService = logService;
         }
 
-        //// GET: TblSupportRequests
-        //public async Task<IActionResult> Index()
-        //{
-        //    var requestContext = _context.TblSupportRequests.Include(t => t.Customer).Include(t => t.Department);
-        //    return View(await requestContext.ToListAsync());
-        //}
         [HttpGet]
-        [Route("TblSupportRequests/Index")]
-        public IActionResult Index(int? status, string search, string departmentName, string sortColumn, string sortOrder, int page = 1)
+        public IActionResult Index(int? status, string search, string sortColumn, string sortOrder, int page = 1)
         {
             int pageSize = 6;
 
             var query = _context.TblSupportRequests
                 .Include(r => r.Customer)
                 .Include(r => r.Department)
+                .Where(r => r.IsDelete == false)
                 .AsQueryable();
 
             if (status.HasValue)
                 query = query.Where(r => r.Status == status.Value);
 
             if (!string.IsNullOrEmpty(search))
-                query = query.Where(r => r.RequestTitle.Contains(search));
-
-            if (!string.IsNullOrEmpty(departmentName))
-                query = query.Where(r => r.Department.DepartmentName.Contains(departmentName));
+            {
+                var lower = search.ToLower();
+                query = query.Where(r =>
+                r.RequestTitle.ToLower().Contains(search) ||
+                r.Department.DepartmentName.ToLower().Contains(search)
+                );
+            }
 
             if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortOrder))
-                query = (IQueryable<TblSupportRequest>)TableSorter.Sort(query, sortColumn, sortOrder);
+                query = TableSorter.Sort(query, sortColumn, sortOrder);
             else
                 query = query.OrderByDescending(r => r.CreatedAt);
 
@@ -63,7 +60,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["TotalPages"] = (int)Math.Ceiling(totalRequests / (double)pageSize);
             ViewData["Status"] = status;
             ViewData["Search"] = search;
-            ViewData["DepartmentName"] = departmentName;
             ViewData["SortColumn"] = sortColumn;
             ViewData["SortOrder"] = sortOrder;
 
@@ -71,7 +67,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
 
-
+        [PermissionAuthorize("Quản lý yêu cầu hỗ trợ")]
         // GET: TblSupportRequests/Details/5
         public IActionResult Details(int id)
         {
@@ -97,6 +93,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(supportRequest);
         }
 
+        [PermissionAuthorize("Quản lý yêu cầu hỗ trợ")]
         // GET: TblSupportRequests/Create
         public IActionResult Create()
         {
@@ -132,7 +129,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 var departmentManager = _context.TblUsers
                     .FirstOrDefault(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.Role.RoleName == "Trưởng phòng");
 
-                _logService.LogActivityAction("Tạo yêu cầu hỗ trợ", "Create", User.Identity.Name);
+                _logService.LogActivityAction("Tạo yêu cầu hỗ trợ", "Thêm", User.Identity.Name);
                 if (departmentManager != null)
                 {
                     _logService.LogNotificationAction(departmentManager.UserId.ToString(), "Bạn có yêu cầu mới");
@@ -145,7 +142,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblSupportRequest);
         }
 
-
+        [PermissionAuthorize("Quản lý yêu cầu hỗ trợ")]
         public IActionResult Edit(int id)
         {
             var supportRequest = _context.TblSupportRequests.Find(id);
@@ -181,7 +178,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     _context.Update(supportRequest);
                     await _context.SaveChangesAsync();
-                    _logService.LogActivityAction("Cập nhật yêu cầu hỗ trợ", "Update", User.Identity.Name);
+                    _logService.LogActivityAction("Cập nhật yêu cầu hỗ trợ", "Sửa", User.Identity.Name);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -203,40 +200,22 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(supportRequest);
         }
 
-
-
-        // GET: TblSupportRequests/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblSupportRequest = await _context.TblSupportRequests
-                .Include(t => t.Customer)
-                .Include(t => t.Department)
-                .FirstOrDefaultAsync(m => m.RequestId == id);
-            if (tblSupportRequest == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblSupportRequest);
-        }
-
+        [PermissionAuthorize("Quản lý yêu cầu hỗ trợ")]
         // POST: TblSupportRequests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id, int currentPage = 1)
         {
-            var tblSupportRequest = await _context.TblSupportRequests.FindAsync(id);
+            var tblSupportRequest = await _context.TblSupportRequests
+                .FindAsync(id);
             if (tblSupportRequest != null)
             {
-                _context.TblSupportRequests.Remove(tblSupportRequest);
+                tblSupportRequest.IsDelete = true; // Đánh dấu là đã xóa
+
+                _context.Update(tblSupportRequest);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Xóa yêu cầu hỗ trợ thành công.";
-                _logService.LogActivityAction("Xóa yêu cầu hỗ trợ", "Delete", User.Identity.Name);
+                _logService.LogActivityAction("Xóa yêu cầu hỗ trợ", "Xóa", User.Identity.Name);
             }
             else
             {
@@ -256,9 +235,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return _context.TblRequestTransfers.Any(e => e.TransferId == id);
         }
 
-
-
-
+        [PermissionAuthorize("Giải quyết yêu cầu")]
         public async Task<IActionResult> Transfer(int? id)
         {
             if (id == null)
@@ -387,11 +364,13 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(requestTransfer);
         }
 
+        [PermissionAuthorize("Giải quyết yêu cầu")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateStatus(int id, int status, DateTime? resolvedAt)
         {
             var supportRequest = await _context.TblSupportRequests.FindAsync(id);
+            var processing = await _context.TblRequestsProcessings.FirstOrDefaultAsync(p => p.RequestId == id);
             if (supportRequest == null)
             {
                 return NotFound();
@@ -403,6 +382,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             try
             {
                 _context.Update(supportRequest);
+                _context.TblRequestsProcessings.Update(processing);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Chuyển trạng thái thành công";
                 _logService.LogActivityAction("Cập nhật trạng thái yêu cầu hỗ trợ", "Update", User.Identity.Name);

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using admin_sweetsoft_tech_support.Attributes;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -56,7 +57,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(pagedFaqs);
         }
 
-
+        [PermissionAuthorize("Quản lý faq")]
         // GET: TblFaqs/Create
         public IActionResult Create()
         {
@@ -103,6 +104,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblFaq);
         }
 
+        [PermissionAuthorize("Quản lý faq")]
         // GET: TblFaqs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -176,25 +178,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblFaq);
         }
 
-
-        // GET: TblFaqs/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblFaq = await _context.TblFaqs
-                .FirstOrDefaultAsync(m => m.FaqId == id);
-            if (tblFaq == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblFaq);
-        }
-
+        [PermissionAuthorize("Quản lý faq")]
         // POST: TblFaqs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "D:\\HocTap\\N4\\TTCN\\Git\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\views\\home\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\home\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\views\\report\\index1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\views\\report\\index1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\attributes\\permissionauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\attributes\\permissionauthorizeattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\wwwroot\\chart\\js\\demo\\chart-bar-demo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\wwwroot\\chart\\js\\demo\\chart-bar-demo.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\controllers\\tblfaqscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\controllers\\tblfaqscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\controllers\\tbluserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\controllers\\tbluserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,54 +30,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PermissionAuthorizeAttribute.cs",
+              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Attributes\\PermissionAuthorizeAttribute.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Attributes\\PermissionAuthorizeAttribute.cs",
+              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Attributes\\PermissionAuthorizeAttribute.cs*",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Attributes\\PermissionAuthorizeAttribute.cs*",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABAAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-05T01:07:50.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccessDenied.cshtml",
+              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Views\\Home\\AccessDenied.cshtml",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\Home\\AccessDenied.cshtml",
+              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Views\\Home\\AccessDenied.cshtml",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\Home\\AccessDenied.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAB4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-05T01:07:07.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAmwDkAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-05T01:02:54.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "chart-bar-demo.js",
-              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\chart\\js\\demo\\chart-bar-demo.js",
-              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\wwwroot\\chart\\js\\demo\\chart-bar-demo.js",
-              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\chart\\js\\demo\\chart-bar-demo.js",
-              "RelativeToolTip": "admin_sweetsoft_tech_support\\wwwroot\\chart\\js\\demo\\chart-bar-demo.js",
-              "ViewState": "AQIAAGQAAAAAAAAAAAAkwEcAAABDAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-01-04T12:45:36.695Z",
+              "Title": "TblFaqsController.cs",
+              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\TblFaqsController.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\TblFaqsController.cs",
+              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\TblFaqsController.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Controllers\\TblFaqsController.cs",
+              "ViewState": "AQIAALUAAAAAAAAAAAAswLQAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-05T00:50:46.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TblUsersController.cs",
+              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\TblUsersController.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\TblUsersController.cs",
+              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\TblUsersController.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Controllers\\TblUsersController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwFoAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-05T00:49:05.379Z",
               "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ReportController.cs",
-              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\ReportController.cs",
-              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\ReportController.cs",
-              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\ReportController.cs*",
-              "RelativeToolTip": "admin_sweetsoft_tech_support\\Controllers\\ReportController.cs*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T12:35:17.215Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index1.cshtml",
-              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Views\\Report\\Index1.cshtml",
-              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Views\\Report\\Index1.cshtml",
-              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Views\\Report\\Index1.cshtml*",
-              "RelativeToolTip": "admin_sweetsoft_tech_support\\Views\\Report\\Index1.cshtml*",
-              "ViewState": "AQIAAKYAAAAAAAAAAAAgwHYAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-04T12:34:49.414Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         },

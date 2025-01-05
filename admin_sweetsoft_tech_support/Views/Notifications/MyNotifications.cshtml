@@ -20,9 +20,7 @@ else
                     <th>STT</th>
                     <th>Người nhận</th>
                     <th>Nội dung</th>
-                    <th>Trạng thái</th>
                     <th>Thời gian</th>
-                    <th>Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,25 +30,7 @@ else
                         <td>@stt</td>
                         <td>@notification.User</td>
                         <td>@notification.Content</td>
-                        <td>
-                            @if (notification.Status == "0" || string.IsNullOrEmpty(notification.Status))
-                            {
-                                <span class="bold-text">Chưa xem</span>
-                            }
-                            else
-                            {
-                                <span>Đã xem</span>
-                            }
-                        </td>
-                        <td>@notification.Timestamp.ToString("dd/MM/yyyy HH:mm:ss")</td> <!-- Định dạng ngày tháng -->
-                        <td>
-                            <!-- Nút Delete -->
-                            <form asp-action="DeleteNotification" method="post" asp-route-id="@notification.Id">
-                                <button type="submit" class="btn btn-sm btn-outline-danger">
-                                    <i class="bi bi-trash"></i> Xóa
-                                </button>
-                            </form>
-                        </td>
+                        <td>@notification.Timestamp.ToString("dd/MM/yyyy HH:mm:ss")</td>
                     </tr>
                     stt++;
                     <!-- Tăng số thứ tự -->
@@ -76,16 +56,3 @@ else
         </ul>
     }
 </div>
-
-<!-- Script xử lý hành động -->
-<script>
-    function markAsRead(timestamp, user, content) {
-        // Logic đánh dấu đã xem, ví dụ gọi API hoặc gửi AJAX request
-        alert('Đánh dấu đã xem: ' + content);
-    }
-
-    function deleteNotification(timestamp) {
-        // Logic xóa thông báo, ví dụ gọi API hoặc gửi AJAX request
-        alert('Xóa thông báo với timestamp: ' + timestamp);
-    }
-</script>

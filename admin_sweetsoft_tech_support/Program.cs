@@ -90,10 +90,6 @@ try
     app.MapControllerRoute(
         name: "UserList",
         pattern: "danh-sach-nguoi-dung",
-        defaults: new { controller = "TblUsers", action = "Index", page = 1, status = "", search = "" });
-    app.MapControllerRoute(
-        name: "UserList1",
-        pattern: "danh-sach-nguoi-dung/page-{page}/{status}/{search}",
         defaults: new { controller = "TblUsers", action = "Index"});
 
     app.MapControllerRoute(

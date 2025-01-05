@@ -52,17 +52,8 @@
             @Html.GenerateFilterTextbox(
                      id: "search",
                      name: "search",
-                     placeholder: "Tìm kiếm tiêu đề...",
+                     placeholder: "Tìm kiếm...",
                      value: ViewData["search"]?.ToString() ?? "",
-                     includeCancelButton: false
-                     )
-        </div>
-        <div class="col-lg-3 col-md-8">
-            @Html.GenerateFilterTextbox(
-                     id: "departmentName",
-                     name: "departmentName",
-                     placeholder: "Tìm kiếm phòng ban...",
-                     value: ViewData["DepartmentName"]?.ToString() ?? "",
                      includeCancelButton: false
                      )
         </div>
