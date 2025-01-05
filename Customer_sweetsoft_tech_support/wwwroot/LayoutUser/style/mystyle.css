@@ -141,7 +141,9 @@
         color: white;
         background-color: #6510ad;
     }
-}
+    .inner_main .rem12 .dqwz {
+        margin-bottom: 5%;
+    }
 
 table {
     border-collapse: collapse;
