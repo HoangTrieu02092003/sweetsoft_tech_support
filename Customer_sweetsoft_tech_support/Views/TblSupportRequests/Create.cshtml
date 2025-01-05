@@ -1,0 +1,256 @@
+﻿@model Customer_sweetsoft_tech_support.Models.TblSupportRequest
+@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    var customer = (Customer_sweetsoft_tech_support.Models.TblCustomer)ViewData["Customer"];
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>Thêm Yêu Cầu</title>
+    <style>
+
+
+        .containerrr {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .headerrr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .headerrr img {
+                height: 50px;
+            }
+
+            .headerrr .infooo {
+                text-align: right;
+            }
+
+        .formm {
+            padding: 0 20px 20px 20px;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            .form-group input, .form-group textarea, .form-group select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                max-width: -webkit-fill-available;
+            }
+
+        .form-actionss {
+            text-align: right;
+        }
+
+        .add-buttonn, .submit-buttonn {
+            padding: 10px 20px;
+            white-space: nowrap;
+            font-size: 15px;
+            color: black;
+            background-color: white;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        
+            .add-buttonn:hover, .submit-buttonn:hover{
+                color: white;
+                background-color: #6510ad;
+                transition: .5s;
+            }
+
+        .remove-buttonn {
+            padding: 10px 15px;
+            white-space: nowrap;
+            font-size: 15px;
+            color: black;
+            background-color: white;
+            border: 1px solid black;
+            cursor: pointer;
+            margin-top: .2rem;
+        }
+
+            .remove-buttonn:hover{
+                color: white;
+                background-color: #6510ad;
+                transition: .5s;
+            }
+
+        .section-title {
+            font-weight: bold;
+        }
+
+        .d-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: .4rem 0;
+        }
+
+        textarea {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            overflow: hidden;
+            resize: vertical;
+            height:1.5rem;
+        }
+
+        .g-recaptcha {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="show">
+    <div class="inner_bn">
+        <img src="~/layoutuser/img/inner.jpg" />
+    </div>
+    <div class="inner_main">
+        <div class="rem12">
+            <div class="dqwz">
+                <a href="@Url.Action("Index", "Home")">Trang Chủ</a>
+                /
+                <a href="@Url.Action("Index", "TblSupportRequests")">Gửi Yêu Cầu</a>
+            </div>
+            @if (ViewData.ModelState[""]?.Errors.Count > 0)
+            {
+                <div class="alert alert-danger">
+                    @foreach (var error in ViewData.ModelState[""]!.Errors)
+                    {
+                        <p class="mb-0">@error.ErrorMessage</p>
+                    }
+                </div>
+            }
+            @if (TempData["error"] != null)
+            {
+                <div class="alert alert-danger text-black">
+                    @TempData["error"]
+                    <button type="button" class="close"></button>
+                </div>
+            }
+            @if (TempData["success"] != null)
+            {
+                <div class="alert alert-success text-black">
+                    @TempData["success"]
+                    <button type="button" class="close "></button>
+                </div>
+            }
+            <div class="zb_nr">
+                <div class="containerrr">
+                    <form id="requestForm" class="formm" method="post" asp-action="Create">
+                        <div class="d-flex justify-content-between">
+                            <h2 class="section-title">PHIẾU GỬI YÊU CẦU</h2>
+                            <p style="border:1px solid black; padding: 5px 10px; border-radius: 4px;">@DateTime.Now.ToString("dd/MM/yyyy")</p>
+                        </div>
+
+                        <p class="section-title" style="margin-bottom:30px; margin-top:20px;">Thông tin người yêu cầu</p>
+                        <div class="form-group-inlinee">
+                            <div class="form-group">
+                                <label for="name">Họ tên (*)</label>
+                                <input type="text" id="name" name="name" value="@customer.FullName" readonly>
+                                <input type="hidden" id="customerId" name="CustomerId" value="@customer.CustomerId">
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Đơn vị (*)</label>
+                                <input type="text" id="company" name="company" value="@customer.Company" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group-inlinee">
+                            <div class="form-group">
+                                <label for="email">Email (*)</label>
+                                <input type="email" id="email" name="email" value="@customer.Email" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Số điện thoại (*)</label>
+                                <input type="tel" id="phone" name="phone" value="@customer.Phone" readonly>
+                            </div>
+                        </div>
+
+                        <div class="d-flex">
+                            <p class="section-title">Thông tin yêu cầu</p>
+                            <button type="button" class="add-buttonn" onclick="addRequestFields()">+ Thêm</button>
+                        </div>
+                        <div id="requestDetails">
+                            <div class="form-group request-entry">
+                                <label for="projectName">Tên dự án (*)</label>
+                                <input type="text" id="projectName" name="Product" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="DepartmentId">Phòng ban</label>
+                                <select id="DepartmentId" name="DepartmentId[]" class="form-control" asp-items="@ViewBag.Department" required></select>
+                                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Tiêu đề (*)</label>
+                                <input type="text" id="title" name="RequestTitle[]" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Mô tả (*)</label>
+                                <textarea class="textareaaa" id="description" name="RequestDetails[]" wrap="soft" required></textarea>
+                            </div>
+                            <input type="hidden" name="Status" value="0" />
+                            <input type="hidden" name="IsDelete" value="false" />
+                            <input type="hidden" name="CreatedAt" value="@DateTime.Now" />
+                            <input type="hidden" name="ResolvedAt" value="" />
+                        </div>
+
+                        <!-- Google reCAPTCHA -->
+                        <div class="g-recaptcha" data-sitekey="@ViewBag.SiteKey" data-callback="verifyCaptcha"></div>
+                        <input type="hidden" id="recaptchaResponse" name="g-recaptcha-response" />
+
+                        <div class="form-actionss">
+                            <button type="submit" class="submit-buttonn" style="margin-top: .4rem">Gửi yêu cầu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<script>
+
+    function addRequestFields() {
+        const requestDetailsDiv = document.getElementById("requestDetails");
+        const newRequest = document.createElement("div");
+        newRequest.classList.add("form-group", "request-entry");
+
+        newRequest.innerHTML = `
+                <hr style="margin: .2rem 0;border: none; border-top: 2px dashed #ddd; "/>
+            <label for="DepartmentId">Phòng ban</label>
+            <select name="DepartmentId[]" class="form-control">${document.querySelector("#DepartmentId").innerHTML}</select>
+                <label style="margin-top: .2rem" for="title">Tiêu đề (*)</label>
+            <input type="text" name="RequestTitle[]" required>
+                <label style="margin-top: .2rem" for="description">Mô tả (*)</label>
+                    <textarea class="textareaaa" name="RequestDetails[]" wrap="soft" required></textarea>
+            <button type="button" class="remove-buttonn" onclick="this.parentElement.remove()">Xóa</button>
+
+        `;
+
+        requestDetailsDiv.appendChild(newRequest);
+    }
+
+</script>
