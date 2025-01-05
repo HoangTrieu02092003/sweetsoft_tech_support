@@ -105,7 +105,6 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
         [PermissionAuthorize("Quản lý phòng ban")]
-        // GET: TblDepartments/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -113,9 +112,10 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return NotFound();
             }
 
-            // Lấy thông tin phòng ban và danh sách nhân viên liên kết
+            // Lấy thông tin phòng ban và danh sách nhân viên liên kết, bao gồm thông tin Role
             var tblDepartment = await _context.TblDepartments
-                .Include(d => d.TblUsers) // Include để lấy danh sách nhân viên thuộc phòng ban
+                .Include(d => d.TblUsers) // Lấy danh sách nhân viên
+                    .ThenInclude(u => u.Role) // Bao gồm thông tin Role của từng nhân viên
                 .FirstOrDefaultAsync(d => d.DepartmentId == id);
 
             if (tblDepartment == null)
@@ -126,8 +126,8 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Truyền dữ liệu phòng ban vào ViewData
             ViewData["Department"] = tblDepartment;
 
-            // Truyền danh sách nhân viên vào ViewData
-            return View(tblDepartment); 
+            // Truyền danh sách nhân viên vào ViewData (có thông tin Role)
+            return View(tblDepartment);
         }
 
         // POST: TblDepartments/Edit/5
