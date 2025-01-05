@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using admin_sweetsoft_tech_support.Attributes;
 using Azure.Core;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -203,7 +205,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     _context.Update(supportRequest);
                     await _context.SaveChangesAsync();
-                    _logService.LogActivityAction("Cập nhật yêu cầu hỗ trợ", "Update", User.Identity.Name);
+                    _logService.LogActivityAction("Cập nhật yêu cầu hỗ trợ", "Cập nhật", User.Identity.Name);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -258,7 +260,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 _context.TblSupportRequests.Remove(tblSupportRequest);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Xóa yêu cầu hỗ trợ thành công.";
-                _logService.LogActivityAction("Xóa yêu cầu hỗ trợ", "Delete", User.Identity.Name);
+                _logService.LogActivityAction("Xóa yêu cầu hỗ trợ", "Xoá", User.Identity.Name);
             }
             else
             {
@@ -381,7 +383,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                                 _context.Add(newSupportRequest);
                             }
                         }
-                        _logService.LogActivityAction("Chuyển yêu cầu hỗ trợ", "Transfer", User.Identity.Name);
+                        _logService.LogActivityAction("Chuyển yêu cầu hỗ trợ", "Chuyển giao", User.Identity.Name);
                     }
 
                     await _context.SaveChangesAsync();
@@ -409,11 +411,35 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(requestTransfer);
         }
 
+        [PermissionAuthorize("Giải quyết yêu cầu")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateStatus(int id, int status, DateTime? resolvedAt)
+        public async Task<IActionResult> UpdateStatus(int id, int status, DateTime? resolvedAt, string note)
         {
             var supportRequest = await _context.TblSupportRequests.FindAsync(id);
+            var processing = await _context.TblRequestsProcessings.FirstOrDefaultAsync(p => p.RequestId == id);
+            var customer = await _context.TblCustomers.FindAsync(supportRequest.CustomerId);
+            if (processing == null)
+            {
+                processing = new TblRequestsProcessing
+                {
+                    RequestId = id,
+                    DepartmentId = supportRequest.DepartmentId, // Gán DepartmentId từ TblSupportRequest
+                    IsCompleted = 1,
+                    ProcessedAt = resolvedAt ?? DateTime.Now,
+                    Note = note
+                };
+                _context.TblRequestsProcessings.Add(processing);
+            }
+            else
+            {
+                processing.IsCompleted = 1;
+                processing.ProcessedAt = resolvedAt ?? DateTime.Now;
+                processing.Note = note;
+                processing.DepartmentId = supportRequest.DepartmentId; // Cập nhật lại DepartmentId nếu cần
+                _context.TblRequestsProcessings.Update(processing);
+            }
+            await _context.SaveChangesAsync();
             if (supportRequest == null)
             {
                 return NotFound();
@@ -422,12 +448,31 @@ namespace admin_sweetsoft_tech_support.Controllers
             supportRequest.Status = (short)status;
             supportRequest.ResolvedAt = status == 1 ? resolvedAt ?? DateTime.Now : null;
 
+            if (status == 1)
+            {
+                processing.IsCompleted = 1;
+                processing.ProcessedAt = resolvedAt ?? DateTime.Now;
+                processing.Note = note;
+            }
+
             try
             {
                 _context.Update(supportRequest);
+                _context.TblRequestsProcessings.Update(processing);
                 await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Chuyển trạng thái thành công";
                 _logService.LogActivityAction("Cập nhật trạng thái yêu cầu hỗ trợ", "Update", User.Identity.Name);
+                // Gửi email thông báo
+                string email = customer.Email; // Lấy địa chỉ email của khách hàng từ TblSupportRequest
+                string resetLink = ""; // Lấy hoặc tạo link đặt lại mật khẩu (hoặc thông tin chi tiết cần thiết khác)
+                if (status == 1)
+                {
+                    await SendEmailAsync(email, "Thông báo trạng thái yêu cầu hỗ trợ", $"Yêu cầu của bạn đã được giải quyết. Chi tiết: {note}");
+                }
+                if (status == 2)
+                {
+                    await SendEmailAsync(email, "Thông báo trạng thái yêu cầu hỗ trợ", $"Yêu cầu của bạn không xử lý được. Chi tiết: {note}");
+                }
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -441,6 +486,29 @@ namespace admin_sweetsoft_tech_support.Controllers
                 }
             }
             return RedirectToAction(nameof(Index));
+        }
+        // Hàm gửi email
+        private async Task SendEmailAsync(string toEmail, string subject, string body)
+        {
+            // Cấu hình SMTP client (ví dụ: Gmail SMTP)
+            using var client = new System.Net.Mail.SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new System.Net.NetworkCredential("nhantrung890@gmail.com", "mika juyt thab rbit"),
+                EnableSsl = true,
+            };
+
+            var mailMessage = new System.Net.Mail.MailMessage
+            {
+                From = new System.Net.Mail.MailAddress("nhantrung890@gmail.com", "Support Team"),
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true,
+            };
+
+            mailMessage.To.Add(toEmail);
+
+            await client.SendMailAsync(mailMessage);
         }
     }
 }
