@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using System.Security.Claims;
+using admin_sweetsoft_tech_support.Attributes;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -33,6 +34,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             // Lấy danh sách phòng ban theo phân trang
             var departments = await _context.TblDepartments
+                .Where(d => d.IsDelete == false)
                 .OrderBy(d => d.DepartmentName) // Sắp xếp theo tên phòng ban
                 .Skip(skip) // Bỏ qua các mục trước đó
                 .Take(pageSize) // Lấy số mục cho trang hiện tại
@@ -58,6 +60,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(departments);
         }
 
+        [PermissionAuthorize("Quản lý phòng ban")]
         // GET: TblDepartments/Create
         public IActionResult Create()
         {
@@ -90,6 +93,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblDepartment);
         }
 
+        [PermissionAuthorize("Quản lý phòng ban")]
         // GET: TblDepartments/Edit/5
         public async Task<IActionResult> Edit(int? id, int page = 1)
         {
@@ -169,6 +173,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblDepartment);
         }
 
+        [PermissionAuthorize("Quản lý phòng ban")]
         // GET: TblDepartments/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -196,17 +201,9 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             if (tblDepartment != null)
             {
-                // Kiểm tra nếu phòng ban còn người dùng liên quan
-                bool hasUsers = await _context.TblUsers.AnyAsync(u => u.DepartmentId == id);
-                if (hasUsers)
-                {
-                    // Lưu thông báo lỗi vào TempData
-                    TempData["ErrorMessage"] = "Không thể xóa vì phòng ban còn người dùng hoặc yêu cầu liên quan. Vui lòng xử lý trước khi xóa!";
-                    return RedirectToAction(nameof(Index)); // Trở lại trang danh sách phòng ban
-                }
+                tblDepartment.IsDelete = true; // Đánh dấu là đã xóa
 
-                // Xóa phòng ban nếu không có người dùng liên quan
-                _context.TblDepartments.Remove(tblDepartment);
+                _context.Update(tblDepartment);
                 await _context.SaveChangesAsync();
 
                 // Lưu thông báo thành công vào TempData

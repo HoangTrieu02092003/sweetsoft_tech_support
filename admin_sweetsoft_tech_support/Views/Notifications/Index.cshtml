@@ -56,9 +56,7 @@
                     <th>STT</th>
                     <th>Người nhận</th>
                     <th>Nội dung</th>
-                    <th>Trạng thái</th>
                     <th>Thời gian</th>
-                    <th>Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -68,13 +66,7 @@
                         <td>@stt</td>
                         <td>@log.User</td>
                         <td>@log.Content</td>
-                        <td>@log.Status</td>
                         <td>@log.Timestamp</td>
-                        <td>
-                            <button class="btn btn-sm btn-info" onclick="toggleDetails('@log.Timestamp')">
-                                Xem
-                            </button>
-                        </td>
                     </tr>
                     <tr id="details-@log.Timestamp" class="details-row" style="display: none;">
                         <td colspan="6">
@@ -123,16 +115,3 @@
         </ul>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-    function toggleDetails(timestamp) {
-        var detailsRow = document.getElementById('details-' + timestamp);
-        if (detailsRow.style.display === 'none') {
-            detailsRow.style.display = 'table-row';
-        } else {
-            detailsRow.style.display = 'none';
-        }
-    }
-</script>

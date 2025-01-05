@@ -2,7 +2,6 @@
 @using admin_sweetsoft_tech_support.Attributes
 @{
     ViewData["Title"] = "Quản Lý Nhân Viên";
-    int stt = 1;
 }
 
 @if (TempData["ErrorMessage"] != null)
@@ -12,7 +11,6 @@
     </div>
 }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link href="~/css/index_user.css" rel="stylesheet">
 <style>
     .email-content {
@@ -48,7 +46,7 @@
     </a>
 </div>
 
-<form method="get" action="@Url.Action("Index", "TblUsers")" class="m-3" id="filterForm">
+<form method="get" class="m-3" id="filterForm">
     <div class="row">
         <h5 class="">
             Bộ tìm kiếm
@@ -56,8 +54,8 @@
         <div class="col-lg-3 col-md-8">
 
             @Html.GenerateFilterDropdown(
-                     id: "status",
-                     name: "status",
+                     id: "Status",
+                     name: "Status",
                      options: new Dictionary<string, string>
                     {
                         {"1", "Hoạt động"},
@@ -71,10 +69,10 @@
         <div class="col-lg-3 col-md-8">
             @Html.GenerateFilterTextbox(
                      id: "search",
-                     name: "search",
+                     name: "Search",
                      placeholder: "Tìm kiếm......",
-                     value: ViewData["search"]?.ToString() ?? "",
-                     includeCancelButton: true
+                     value: ViewData["Search"]?.ToString() ?? "",
+                     includeCancelButton: false
                      )
         </div>
         <div class="d-lg-none d-block mt-3">
@@ -90,21 +88,50 @@
         <thead>
             <tr>
                 <th>STT</th>
-                <th class="custom-header">Tên người dùng</th>
-                <th>Email</th>
+                <th class="custom-header">
+                    <a href="?sortColumn=FullName&sortOrder=@(
+                ViewData["SortOrder"] as string == "asc" &&
+                ViewData["SortColumn"] as string == "FullName" ? "desc" : "asc")">
+                        Tên người dùng
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "FullName" ? ViewData["SortOrder"] : "")"></span>
+                    </a>
+                </th>
+                <th>
+                    <a href="?sortColumn=Email&sortOrder=@(
+                ViewData["SortOrder"] as string == "asc" &&
+                ViewData["SortColumn"] as string == "Email" ? "desc" : "asc")">
+                        Email
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "Email" ? ViewData["SortOrder"] : "")"></span>
+                    </a>
+                </th>
                 <th>Số điện thoại</th>
-                <th>Trạng thái</th>
+                <th>
+                    <a href="?sortColumn=Status&sortOrder=@(
+                ViewData["SortOrder"] as string == "asc" &&
+                ViewData["SortColumn"] as string == "Status" ? "desc" : "asc")">
+                        Trạng thái
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "Status" ? ViewData["SortOrder"] : "")"></span>
+                    </a>
+                </th>
                 <th>Phòng ban</th>
                 <th>Nhóm quyền</th>
-                <th>Đăng nhập lần cuối</th>
+                <th>
+                    <a href="?sortColumn=LastLogin&sortOrder=@(
+                ViewData["SortOrder"] as string == "asc" &&
+                ViewData["SortColumn"] as string == "LastLogin" ? "desc" : "asc")">
+                        Đăng nhập lần cuối
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "LastLogin" ? ViewData["SortOrder"] : "")"></span>
+                    </a>
+                </th>
                 <th>Hành động</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @for (int i = 0; i < Model.Count(); i++)
             {
-                <tr class="custom-row">
-                    <td>@stt</td>
+                var item = Model.ElementAt(i);
+                <tr>
+                    <td class="text-center">@((ViewData["CurrentPage"] != null ? ((int)ViewData["CurrentPage"] - 1) * 6 + (i + 1) : i + 1))</td>
                     <td>@item.FullName</td>
                     <td class="email-content">@item.Email</td>
                     <td>@item.Phone</td>
@@ -128,7 +155,6 @@
                         </button>
                     </td>
                 </tr>
-                stt++;
             }
         </tbody>
     </table>
@@ -165,12 +191,12 @@
         @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] > 1)
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = 1, status = ViewBag.Status, search = ViewBag.search })">
+                <a class="page-link" href="@Url.Action("Index", new { page = 1, status = ViewBag.Status, search = ViewBag.search, sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
                     <i class="bi bi-chevron-double-left"></i>
                 </a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1, status = ViewBag.Status, role = ViewBag.Role })">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1, status = ViewBag.Status, search = ViewBag.search, sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
                     <i class="bi bi-chevron-left"></i>
                 </a>
             </li>
@@ -182,7 +208,7 @@
             for (int i = 1; i <= totalPages; i++)
             {
                 <li class="page-item @(i == (int)ViewData["CurrentPage"] ? "active" : "")">
-                    <a class="page-link" href="@Url.Action("Index", new { page = i, status = ViewBag.Status, role = ViewBag.Role })">@i</a>
+                    <a class="page-link" href="@Url.Action("Index", new { page = i, Status = ViewData["Status"], search = ViewBag.search, sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">@i</a>
                 </li>
             }
         }
@@ -190,21 +216,15 @@
         @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1, status = ViewBag.Status, role = ViewBag.Role })">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1, status = ViewBag.Status, search = ViewBag.search, sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
                     <i class="bi bi-chevron-right"></i>
                 </a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"], status = ViewBag.Status, role = ViewBag.Role })">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"], status = ViewBag.Status, search = ViewBag.search, sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
                     <i class="bi bi-chevron-double-right"></i>
                 </a>
             </li>
         }
     </ul>
 </div>
-
-<script>
-    function submitForm() {
-        document.getElementById('filterForm').submit();
-    }
-</script>

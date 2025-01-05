@@ -1,9 +1,4 @@
-﻿
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
@@ -22,7 +17,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index(int? page, int? Status, string SearchTerm)
+        public async Task<IActionResult> Index(int? page, string Status, string SearchTerm, string sortColumn, string sortOrder)
         {
             var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
@@ -34,16 +29,21 @@ namespace admin_sweetsoft_tech_support.Controllers
             int currentPage = page ?? 1;
 
             // Truy vấn cơ sở dữ liệu và lọc theo trạng thái
-            var customersQuery = _context.TblCustomers.AsQueryable();
+            var customersQuery = _context.TblCustomers
+                .Where(c => c.IsDelete == false)
+                .AsQueryable();
 
-            if (Status.HasValue)
+            if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortOrder))
+                customersQuery = TableSorter.Sort(customersQuery, sortColumn, sortOrder);
+
+            if (!string.IsNullOrEmpty(Status))
             {
                 // Lọc theo trạng thái
-                if (Status.Value == 1) // Kích hoạt
+                if (Status == "1") // Kích hoạt
                 {
                     customersQuery = customersQuery.Where(c => c.Status == 1);
                 }
-                else if (Status.Value == 0) // Ngừng kích hoạt
+                else if (Status == "0") // Ngừng kích hoạt
                 {
                     customersQuery = customersQuery.Where(c => c.Status == 0);
                 }
@@ -52,7 +52,8 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Lọc theo từ khóa tìm kiếm
             if (!string.IsNullOrEmpty(SearchTerm))
             {
-                customersQuery = customersQuery.Where(c => c.FullName.Contains(SearchTerm) || c.Email.Contains(SearchTerm));
+                var lower = SearchTerm.ToLower();
+                customersQuery = customersQuery.Where(c => c.FullName.ToLower().Contains(SearchTerm) || c.Email.ToLower().Contains(SearchTerm));
             }
 
             // Phân trang
@@ -60,12 +61,13 @@ namespace admin_sweetsoft_tech_support.Controllers
             var totalItems = await customersQuery.CountAsync(); // Sử dụng CountAsync thay vì Count
             var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
             var customers = await customersQuery
-                .OrderBy(c => c.FullName) // Sắp xếp theo tên
                 .Skip((currentPage - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync(); // Sử dụng ToListAsync thay vì ToList
 
             // Thêm các ViewData cho phân trang, lọc trạng thái và từ khóa tìm kiếm
+            ViewData["SortColumn"] = sortColumn;
+            ViewData["SortOrder"] = sortOrder;
             ViewData["CurrentPage"] = currentPage;
             ViewData["TotalPages"] = totalPages;
             ViewData["Status"] = Status;
@@ -92,26 +94,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             return RedirectToAction(nameof(Index));
-        }
-
-        // GET: TblCustomers/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblCustomer = await _context.TblCustomers
-                .Include(t => t.CreatedByNavigation)
-                .Include(t => t.UpdatedByNavigation)
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
-            if (tblCustomer == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblCustomer);
         }
 
         [PermissionAuthorize("Quản lý khách hàng")]
@@ -266,7 +248,10 @@ namespace admin_sweetsoft_tech_support.Controllers
             var tblCustomer = await _context.TblCustomers.FindAsync(id);
             if (tblCustomer != null)
             {
-                _context.TblCustomers.Remove(tblCustomer);
+                tblCustomer.IsDelete = true; // Đánh dấu là đã xóa
+                tblCustomer.UpdatedAt = DateTime.Now; // Cập nhật ngày chỉnh sửa
+
+                _context.Update(tblCustomer);
                 await _context.SaveChangesAsync();
 
                 // Thêm thông báo thành công vào TempData
@@ -276,13 +261,10 @@ namespace admin_sweetsoft_tech_support.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
         private bool TblCustomerExists(int id)
         {
             return _context.TblCustomers.Any(e => e.CustomerId == id);
         }
-
-
 
         // Action để xuất danh sách khách hàng ra file Excel
         public async Task<IActionResult> ExportToExcel()
@@ -290,6 +272,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             var customers = await _context.TblCustomers
                 .Include(t => t.CreatedByNavigation)
                 .Include(t => t.UpdatedByNavigation)
+                .Where(c => c.IsDelete == false)
                 .ToListAsync();
 
             // Sử dụng EPPlus để tạo file Excel

@@ -235,10 +235,10 @@
         @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"]! > 1)
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = 1 })">Đầu</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = 1 })"><i class="bi bi-chevron-double-left"></i></a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"]! - 1 })">Trước</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"]! - 1 })"><i class="bi bi-chevron-left"></i></a>
             </li>
         }
 
@@ -256,10 +256,10 @@
         @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"]! < (int)ViewData["TotalPages"]!)
         {
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"]! + 1 })">Sau</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"]! + 1 })"><i class="bi bi-chevron-right"></i></a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"]! })">Cuối</a>
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"]! })"><i class="bi bi-chevron-double-right"></i></a>
             </li>
         }
     </ul>

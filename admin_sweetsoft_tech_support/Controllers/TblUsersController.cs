@@ -19,21 +19,33 @@ namespace admin_sweetsoft_tech_support.Controllers
             _logService = logService;
         }
         // GET: TblUsers
-        public async Task<IActionResult> Index(string status, string search, int page = 1)
+        [HttpGet]
+        public async Task<IActionResult> Index(string status, string search, string sortColumn, string sortOrder, int page = 1)
         {
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
+            }
 
             var users = _context.TblUsers
+                .Where(u => u.IsDelete == false)
                 .Include(u => u.Role)
                 .Include(u => u.Department)
                 .AsQueryable();
-
-            if (status == "1")
+            if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortOrder))
+                users = TableSorter.Sort(users, sortColumn, sortOrder).AsQueryable();
+            if (!string.IsNullOrEmpty(status))
             {
-                users = users.Where(u => u.Status == 1);
-            }
-            else if (status == "0")
-            {
-                users = users.Where(u => u.Status == 0);
+                if (status == "1")
+                {
+                    users = users.Where(u => u.Status == 1);
+                }
+                else if (status == "0")
+                {
+                    users = users.Where(u => u.Status == 0);
+                }
             }
             //tìm kiếm 
             if (!string.IsNullOrEmpty(search))
@@ -41,29 +53,24 @@ namespace admin_sweetsoft_tech_support.Controllers
                 // Lọc logs theo tiêu chí tìm kiếm
                 var lowerSearch = search.ToLower();
                 users = users.Where(u =>
-                    u.FullName.ToLower().Contains(lowerSearch) ||
-                    u.Email.ToLower().Contains(lowerSearch) ||
-                    u.Phone.ToLower().Contains(lowerSearch) ||
-                    (u.Department != null && u.Department.DepartmentName.ToLower().Contains(lowerSearch))||
-                    (u.Role != null && u.Role.RoleName.ToLower().Contains(lowerSearch))
+                    u.FullName != null && u.FullName.ToLower().Contains(lowerSearch) ||
+                    u.Email != null && u.Email.ToLower().Contains(lowerSearch) ||
+                    u.Phone != null && u.Phone.ToLower().Contains(lowerSearch) ||
+                    u.Department != null && u.Department != null && u.Department.DepartmentName.ToLower().Contains(lowerSearch)||
+                    u.Role != null && u.Role.RoleName.ToLower().Contains(lowerSearch)
                     );
             }
             var pageSize = 6; // số lượng người dùng mỗi trang
             var skip = (page - 1) * pageSize;
-            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
-            {
-                TempData["ReturnUrl"] = Request.Path.ToString();
-                return RedirectToAction("Login", "Admin");
-            }
-            var requestContext = users
+            
+            var requestContext = await users
                 .Where(u => u.UserId != currentUserId)
                 .Include(t => t.CreatedUserNavigation)
                 .Include(t => t.Department)
                 .Include(t => t.Role)
                 .Include(t => t.UpdatedUserNavigation)
                 .Skip(skip) // bỏ qua dữ liệu đã xem ở các trang trước
-                .Take(pageSize);
+                .Take(pageSize).ToListAsync();
 
             var totalUsers = await users.CountAsync();
 
@@ -71,11 +78,13 @@ namespace admin_sweetsoft_tech_support.Controllers
             var totalPages = (int)Math.Ceiling(totalUsers / (double)pageSize);
 
             // Chuyển dữ liệu sang View
+            ViewData["SortColumn"] = sortColumn;
+            ViewData["SortOrder"] = sortOrder;
             ViewData["TotalPages"] = totalPages;
             ViewData["CurrentPage"] = page;
-            ViewData["status"] = status ?? "";  // Giữ giá trị của status nếu có, nếu không thì để trống
-            ViewData["search"] = search ?? "";
-            return View(await requestContext.ToListAsync());
+            ViewData["Status"] = status;
+            ViewData["Search"] = search;
+            return View( requestContext);
         }
 
         [PermissionAuthorize("Quản lý nhân viên")]
@@ -120,6 +129,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblUser);
         }
 
+        [PermissionAuthorize("Quản lý nhân viên")]
         // GET: TblUsers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -238,6 +248,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblUser);
         }
 
+        [PermissionAuthorize("Quản lý quyền truy cập")]
         // GET: Users/AssignPermission/5
         public async Task<IActionResult> AssignPermissions(int? id)
         {
@@ -326,52 +337,19 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(user); // Trả về view với thông tin người dùng
         }
 
-
-        // GET: TblUsers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblUser = await _context.TblUsers
-                .Include(t => t.CreatedUserNavigation)
-                .Include(t => t.Department)
-                .Include(t => t.Role)
-                .Include(t => t.UpdatedUserNavigation)
-                .FirstOrDefaultAsync(m => m.UserId == id);
-            if (tblUser == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblUser);
-        }
-
+        [PermissionAuthorize("Quản lý nhân viên")]
         // POST: TblUsers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var currentUserId = TempData["UserId"] as int?;
-            var isAdmin = TempData["IsAdmin"] as string == "true";
-            if (currentUserId == null || !isAdmin)
-            {
-                // Nếu không phải admin, chuyển hướng về danh sách với thông báo lỗi
-                TempData["ErrorMessage"] = "Bạn không có quyền xóa người dùng.";
-                return RedirectToAction(nameof(Index));
-            }
-
             var tblUser = await _context.TblUsers.FindAsync(id);
             if (tblUser != null)
             {
-                _context.TblUsers.Remove(tblUser);
+                tblUser.IsDelete = true; // Đánh dấu là đã xóa
+
+                _context.Update(tblUser);
                 await _context.SaveChangesAsync();
-            }
-            else
-            {
-                TempData["ErrorMessage"] = "Người dùng không tồn tại.";
             }
 
             return RedirectToAction(nameof(Index));

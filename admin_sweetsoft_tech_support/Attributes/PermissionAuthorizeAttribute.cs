@@ -40,7 +40,7 @@ namespace admin_sweetsoft_tech_support.Attributes
                 if (user == null || !user.TblUserPermissions.Any(p => p.Permission.PermissionName == _permission))
                 {
                     context.HttpContext.Response.StatusCode = StatusCodes.Status403Forbidden;
-                    context.Result = new RedirectToActionResult("AccessDenied", "Home", null);
+                    context.Result = new RedirectToActionResult("AccessDenied", "Home", new { permission = _permission });
                 }
             }
         }
