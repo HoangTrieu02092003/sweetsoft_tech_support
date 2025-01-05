@@ -128,19 +128,19 @@
                                             </tr>
                                             <tr>
                                                 <td style="white-space: nowrap;">Họ và tên</td>
-                                                <td class="tdName"><input class="Name" style="width:100%;" name="FullName" value="@Model.FullName" data-original="" /></td>
+                                                <td class="tdName"><input class="Name" style="width:100%;" name="FullName" value="@Model.FullName" required /></td>
                                             </tr>
                                             <tr>
                                                 <td style="white-space: nowrap;">Công Ty</td>
-                                                <td class="tdNameCT"><input class="NameCT" style="width:100%;" name="Company" value="@Model.Company" data-original="" /></td>
+                                                <td class="tdNameCT"><input class="NameCT" style="width:100%;" name="Company" value="@Model.Company" /></td>
                                             </tr>
                                             <tr>
                                                 <td style="white-space: nowrap;">Địa chỉ Email</td>
-                                                <td><input style="width:100%;" name="Email" value="@Model.Email" /></td>
+                                                <td><input style="width:100%;" name="Email" value="@Model.Email" required /></td>
                                             </tr>
                                             <tr>
                                                 <td style="white-space: nowrap;">Số điện thoại</td>
-                                                <td><input style="width:100%;" name="Phone" value="@Model.Phone" /></td>
+                                                <td><input style="width:100%;" name="Phone" value="@Model.Phone" required /></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2" style="text-align:right; white-space: nowrap; border:none">
@@ -211,7 +211,7 @@
                             </tr>
                             <tr>
                                 <td style="white-space: nowrap;">Họ và tên</td>
-                                <td class="tdName"><input class="Name" style="width:100%;" name="FullName" value="@Model.FullName" data-original="" /></td>
+                                <td class="tdName"><input class="Name" style="width:100%;" name="FullName" value="@Model.FullName"  required/></td>
                             </tr>
                             <tr>
                                 <td style="white-space: nowrap;">Công Ty</td>
@@ -219,11 +219,11 @@
                             </tr>
                             <tr>
                                 <td style="white-space: nowrap;">Địa chỉ Email</td>
-                                <td><input style="width:100%;" name="Email" value="@Model.Email" /></td>
+                                <td><input style="width:100%;" name="Email" value="@Model.Email" required /></td>
                             </tr>
                             <tr>
                                 <td style="white-space: nowrap;">Số điện thoại</td>
-                                <td><input style="width:100%;" name="Phone" value="@Model.Phone" /></td>
+                                <td><input style="width:100%;" name="Phone" value="@Model.Phone" required /></td>
                             </tr>
                             <tr>
                                 <td colspan="2" style="text-align:right; white-space: nowrap; border:none">
@@ -231,7 +231,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td height="50" align="right" class="tdline" colspan="2" style="word-break: break-all; white-space: nowrap;">
+                                <td height="50" align="right" class="tdline" colspan="2" style="word-break: break-all; white-space: nowrap; border: none;">
                                     (Dữ liệu được cập nhật lần cuối cùng vào @Model.UpdatedAt?.ToString("dd/MM/yyyy HH:mm"))
                                 </td>
                             </tr>

@@ -1682,6 +1682,7 @@ body.navShow {
             display: block;
             width: 70px;
             height: 42px;
+            margin: 5px;
         }
 
         .inner_main .rem12 .zb_nr .zc {

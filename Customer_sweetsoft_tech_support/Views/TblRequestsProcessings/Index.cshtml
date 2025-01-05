@@ -99,7 +99,10 @@
                                     </div>
                                 </div>
                                 <div class="details" id="details-@item.ProcessId">
-                                    <p>@item.Request.RequestDetails</p>
+                                    <p><strong>Câu hỏi: </strong>@item.Request.RequestDetails</p>
+                                    <p><strong>----------------------------------</strong></p>
+                                    <p><strong>Hỗ Trợ:</strong></p>
+                                    <p>@item.Note</p>
                                 </div>
                             </div>
                         }
@@ -155,6 +158,13 @@
             details.style.maxHeight = details.scrollHeight + 'px'; 
             details.style.padding = '0 15px';
             icon.style.transform = 'rotate(180deg)';
+
+            setTimeout(() => {
+                const rect = details.getBoundingClientRect();
+                const offset = rect.top + window.scrollY - 22.08;
+                window.scrollTo({ top: offset, behavior: 'smooth' });
+            }, 300);
+
         } else { 
             details.style.maxHeight = '0px'; 
             details.style.padding = '0 15px'; 

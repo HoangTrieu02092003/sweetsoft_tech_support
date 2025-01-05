@@ -133,7 +133,17 @@
     .inner_main .rem12 .zb_nr .zc ul li {
         margin: 11.5px 0 10px 0;
     }
-}
+    .add-buttonn, .submit-buttonn {
+        color: white;
+        background-color: #6510ad;
+    }
+    .remove-buttonn {
+        color: white;
+        background-color: #6510ad;
+    }
+    .inner_main .rem12 .dqwz {
+        margin-bottom: 5%;
+    }
 
 table {
     border-collapse: collapse;
