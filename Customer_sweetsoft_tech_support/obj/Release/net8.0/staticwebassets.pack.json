@@ -117,6 +117,14 @@
       "PackagePath": "staticwebassets\\LayoutUser\\img\\kyniem17nam.jpg"
     },
     {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\logo.jpg",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\logo.jpg"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\logo.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\logo.png"
+    },
+    {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\map.jpg",
       "PackagePath": "staticwebassets\\LayoutUser\\img\\map.jpg"
     },
@@ -131,6 +139,10 @@
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\navA.png",
       "PackagePath": "staticwebassets\\LayoutUser\\img\\navA.png"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\next53-white.png",
+      "PackagePath": "staticwebassets\\LayoutUser\\img\\next53-white.png"
     },
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\next53.png",
