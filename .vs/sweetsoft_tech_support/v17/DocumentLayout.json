@@ -3,11 +3,16 @@
   "WorkspaceRootPath": "D:\\HocTap\\N4\\TTCN\\Git\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\controllers\\tbluserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\controllers\\tbluserscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\8.0.302\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\controllers\\tblsupportrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\controllers\\tblsupportrequestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\admin_sweetsoft_tech_support\\controllers\\tbldepartmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E00244A-A89E-44DF-84F5-8F6FEEC1B48A}|admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj|solutionrelative:admin_sweetsoft_tech_support\\controllers\\tbldepartmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,35 +22,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "admin_sweetsoft_tech_support",
-              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj",
-              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj",
-              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj",
-              "RelativeToolTip": "admin_sweetsoft_tech_support\\admin_sweetsoft_tech_support.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-05T03:45:24.531Z",
+              "Title": "TblUsersController.cs",
+              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\TblUsersController.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\TblUsersController.cs",
+              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\TblUsersController.cs*",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Controllers\\TblUsersController.cs*",
+              "ViewState": "AQIAALEAAAAAAAAAAAAkwKgAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-05T14:53:22.556Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Microsoft.PackageDependencyResolution.targets",
-              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "ViewState": "AQIAAPIAAAAAAAAAAAAIwAkBAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-01-05T03:43:53.147Z",
+              "Title": "TblSupportRequestsController.cs",
+              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\TblSupportRequestsController.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\TblSupportRequestsController.cs",
+              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\TblSupportRequestsController.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Controllers\\TblSupportRequestsController.cs",
+              "ViewState": "AQIAAIQAAAAAAAAAAAAowGQAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-05T14:39:42.327Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TblDepartmentsController.cs",
+              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\TblDepartmentsController.cs",
+              "RelativeDocumentMoniker": "admin_sweetsoft_tech_support\\Controllers\\TblDepartmentsController.cs",
+              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\Controllers\\TblDepartmentsController.cs",
+              "RelativeToolTip": "admin_sweetsoft_tech_support\\Controllers\\TblDepartmentsController.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAUwCQAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-05T14:38:04.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Bookmark",

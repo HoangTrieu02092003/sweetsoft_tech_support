@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Customer_sweetsoft_tech_support.Models;
 
@@ -10,7 +11,7 @@ public partial class TblSupportRequest
     public int? CustomerId { get; set; }
 
     public int? DepartmentId { get; set; }
-
+    [RegularExpression(@"^[\p{L} ]+$", ErrorMessage = "Tên chỉ được chứa chữ cái và khoảng trắng.")]
     public string RequestTitle { get; set; } = null!;
 
     public string Product { get; set; } = null!;

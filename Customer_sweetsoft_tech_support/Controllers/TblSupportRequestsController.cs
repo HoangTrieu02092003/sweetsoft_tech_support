@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Customer_sweetsoft_tech_support.Models;
 using System.Security.Claims;
 using Newtonsoft.Json;
@@ -149,7 +144,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
                 //logService.LogNotificationAction(departmentManager?.FullName??"Khách hàng", "Khách hàng tạo yêu cầu mới");
                 TempData["success"] = "thành công";
                 
-                return RedirectToAction(nameof(Index),controllerName: "Account");
+                return RedirectToAction(nameof(Index),controllerName: "TblRequestsProcessings");
             }
             ViewData["Customer"] = customer;
             ViewData["Department"] = new SelectList(departments, "DepartmentId", "DepartmentName",tblSupportRequest.DepartmentId);

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace admin_sweetsoft_tech_support.Models;
 
@@ -7,12 +6,20 @@ public partial class TblUser
 {
     public int UserId { get; set; }
 
+    [Required(ErrorMessage = "Tên không được để trống.")]
+    [RegularExpression(@"^[\p{L} ]+$", ErrorMessage = "Tên chỉ được chứa chữ cái và khoảng trắng.")]
+    [StringLength(50, MinimumLength = 3, ErrorMessage = "Tên phải từ 3 đến 50 ký tự.")]
     public string FullName { get; set; } = null!;
 
+    [Required(ErrorMessage = "Email không được để trống.")]
+    [EmailAddress(ErrorMessage = "Email không hợp lệ.")]
     public string Email { get; set; } = null!;
 
+    [Required(ErrorMessage = "Số điện thoại không được để trống.")]
+    [RegularExpression(@"^\d{10}$", ErrorMessage = "Số điện thoại phải chứa 10 chữ số.")]
     public string Phone { get; set; } = null!;
-
+    [Required(ErrorMessage = "Tên đăng nhập không được để trống.")]
+    [RegularExpression(@"^[a-zA-Z0-9_]{5,20}$", ErrorMessage = "Tên đăng nhập phải từ 5 đến 20 ký tự, chỉ chứa chữ cái, số và dấu gạch dưới.")]
     public string Username { get; set; } = null!;
 
     public string Password { get; set; } = null!;
@@ -66,4 +73,24 @@ public partial class TblUser
     public virtual ICollection<TblUserPermission> TblUserPermissions { get; set; } = new List<TblUserPermission>();
 
     public virtual TblUser? UpdatedUserNavigation { get; set; }
+
+    public object ToLogData()
+    {
+        return new
+        {
+            this.UserId,
+            this.FullName,
+            this.Email,
+            this.Phone,
+            this.Username,
+            this.RoleId,
+            this.DepartmentId,
+            this.Status,
+            this.IsAdmin,
+            this.CreatedUser,
+            this.CreatedAt,
+            this.UpdatedUser,
+            this.UpdatedAt
+        };
+    }
 }

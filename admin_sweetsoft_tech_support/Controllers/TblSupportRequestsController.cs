@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using admin_sweetsoft_tech_support.Attributes;
-using Azure.Core;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -105,7 +98,10 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId");
             ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId");
             ViewBag.CustomerId = new SelectList(_context.TblCustomers, "CustomerId", "FullName");
-            ViewBag.DepartmentId = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName");
+            ViewBag.DepartmentId = new SelectList(
+            _context.TblDepartments.Where(d => d.IsDelete == false),
+            "DepartmentId",
+            "DepartmentName");
             return View();
         }
 
@@ -142,7 +138,8 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return RedirectToAction(nameof(Index), new { page = currentPage });
             }
             ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId", tblSupportRequest.CustomerId);
-            ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId", tblSupportRequest.DepartmentId);
+            ViewData["DepartmentId"] = new SelectList(
+            _context.TblDepartments.Where(d => d.IsDelete == false),"DepartmentId","DepartmentName",tblSupportRequest.DepartmentId);
             var RequestTitle = _context.TblSupportRequests.Find(tblSupportRequest.RequestId).RequestTitle;
             return View(tblSupportRequest);
         }
@@ -157,7 +154,11 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             ViewBag.CustomerId = new SelectList(_context.TblCustomers, "CustomerId", "FullName", supportRequest.CustomerId);
-            ViewBag.DepartmentId = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", supportRequest.DepartmentId);
+            ViewData["DepartmentId"] = new SelectList(
+            _context.TblDepartments.Where(d => d.IsDelete == false),
+            "DepartmentId",
+            "DepartmentName",
+            supportRequest.DepartmentId);
 
             return View(supportRequest);
         }
@@ -200,7 +201,11 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             ViewBag.CustomerId = new SelectList(_context.TblCustomers, "CustomerId", "FullName", supportRequest.CustomerId);
-            ViewBag.DepartmentId = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", supportRequest.DepartmentId);
+            ViewData["DepartmentId"] = new SelectList(
+            _context.TblDepartments.Where(d => d.IsDelete == false),
+            "DepartmentId",
+            "DepartmentName",
+            supportRequest.DepartmentId);
 
             return View(supportRequest);
         }
@@ -383,7 +388,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     RequestId = id,
                     DepartmentId = supportRequest.DepartmentId, // Gán DepartmentId từ TblSupportRequest
-                    IsCompleted = 1,
+                    IsCompleted = 0,
                     ProcessedAt = resolvedAt ?? DateTime.Now,
                     Note = note
                 };
@@ -391,7 +396,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
             else
             {
-                processing.IsCompleted = 1;
+                processing.IsCompleted = 0;
                 processing.ProcessedAt = resolvedAt ?? DateTime.Now;
                 processing.Note = note;
                 processing.DepartmentId = supportRequest.DepartmentId; // Cập nhật lại DepartmentId nếu cần
@@ -412,7 +417,12 @@ namespace admin_sweetsoft_tech_support.Controllers
                 processing.ProcessedAt = resolvedAt ?? DateTime.Now;
                 processing.Note = note;
             }
-
+            if (status == 2)
+            {
+                processing.IsCompleted = 2;
+                processing.ProcessedAt = resolvedAt ?? DateTime.Now;
+                processing.Note = note;
+            }
             try
             {
                 _context.Update(supportRequest);

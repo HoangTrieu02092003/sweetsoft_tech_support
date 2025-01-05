@@ -122,7 +122,12 @@
         justify-content: flex-end;
     }
 </style>
-
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
 <div class="container w-100 d-flex justify-content-center">
     <div class="col-12 col-md-10 col-lg-8">
         <div class="container-custom">
@@ -139,25 +144,25 @@
 
                 <div class="form-group">
                     <label asp-for="FullName" class="control-label text-dark">Họ và tên</label>
-                    <input asp-for="FullName" class="form-control" />
+                    <input asp-for="FullName" class="form-control" required/>
                     <span asp-validation-for="FullName" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="Email" class="control-label text-dark">Email</label>
-                    <input asp-for="Email" class="form-control" />
+                    <input asp-for="Email" class="form-control" required />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="Phone" class="control-label text-dark">Số điện thoại</label>
-                    <input asp-for="Phone" class="form-control" />
+                    <input asp-for="Phone" class="form-control" required />
                     <span asp-validation-for="Phone" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="Username" class="control-label text-dark">Tên đăng nhập</label>
-                    <input asp-for="Username" class="form-control" />
+                    <input asp-for="Username" class="form-control" required />
                     <span asp-validation-for="Username" class="text-danger"></span>
                 </div>
 

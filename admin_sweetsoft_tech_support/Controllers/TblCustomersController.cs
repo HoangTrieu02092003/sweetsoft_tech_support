@@ -110,17 +110,17 @@ namespace admin_sweetsoft_tech_support.Controllers
         public async Task<IActionResult> Create([Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Username,Password,Status,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedUser,CreatedAt,UpdatedUser,UpdatedAt")] TblCustomer tblCustomer)
         {
             // Kiểm tra sự trùng lặp của Username
-            bool isUsernameExist = await _context.TblCustomers.AnyAsync(c => c.Username == tblCustomer.Username);
+            bool isUsernameExist = await _context.TblCustomers.AnyAsync(c => c.Username == tblCustomer.Username && c.IsDelete == false);
             if (isUsernameExist)
             {
-                ModelState.AddModelError("Username", "Username đã tồn tại. Vui lòng chọn một tên khác.");
+                TempData["ErrorMessage"] = "Username đã tồn tại. Vui lòng chọn một tên khác.";
             }
 
             // Kiểm tra sự trùng lặp của Email
-            bool isEmailExist = await _context.TblCustomers.AnyAsync(c => c.Email == tblCustomer.Email);
+            bool isEmailExist = await _context.TblCustomers.AnyAsync(c => c.Email == tblCustomer.Email && c.IsDelete == false);
             if (isEmailExist)
             {
-                ModelState.AddModelError("Email", "Email đã tồn tại. Vui lòng sử dụng một email khác.");
+                TempData["ErrorMessage"] = "Email đã tồn tại. Vui lòng sử dụng một email khác.";
             }
 
             // Nếu có lỗi trong ModelState, trả lại form để người dùng sửa
@@ -193,6 +193,19 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 try
                 {
+                    bool isUsernameExist = await _context.TblCustomers.AnyAsync(c => c.Username == tblCustomer.Username && c.CustomerId != id);
+                    if (isUsernameExist)
+                    {
+                        TempData["ErrorMessage"] = "Username đã tồn tại. Vui lòng chọn một tên khác.";
+                    }
+
+                    // Kiểm tra sự trùng lặp của Email
+                    bool isEmailExist = await _context.TblCustomers.AnyAsync(c => c.Email == tblCustomer.Email && c.CustomerId != id);
+                    if (isEmailExist)
+                    {
+                        TempData["ErrorMessage"] = "Email đã tồn tại. Vui lòng sử dụng một email khác.";
+                    }
+
                     var existingCustomer = await _context.TblCustomers.FindAsync(id);
                     if (existingCustomer != null)
                     {

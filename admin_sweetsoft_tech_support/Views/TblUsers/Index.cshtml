@@ -4,10 +4,16 @@
     ViewData["Title"] = "Quản Lý Nhân Viên";
 }
 
-@if (TempData["ErrorMessage"] != null)
+@if (TempData["Error"] != null)
 {
     <div class="alert alert-danger">
-        @TempData["ErrorMessage"]
+        @TempData["Error"]
+    </div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
     </div>
 }
 

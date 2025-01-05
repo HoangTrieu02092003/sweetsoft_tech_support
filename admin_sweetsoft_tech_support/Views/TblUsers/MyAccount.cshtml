@@ -120,7 +120,18 @@
         justify-content: flex-end;
     }
 </style>
-
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Success"]
+    </div>
+}
 <div class="container w-100 d-flex justify-content-center">
     <div class="col-12 col-md-10 col-lg-8">
         <div class="container-custom">
@@ -248,6 +259,7 @@
         // Thay đổi readonly thành editable cho tất cả các trường
         inputs.forEach(function (input) {
             input.removeAttribute('readonly');
+            input.setAttribute('required', 'required');
         });
 
         // Ẩn nút Edit và hiển thị nút Save

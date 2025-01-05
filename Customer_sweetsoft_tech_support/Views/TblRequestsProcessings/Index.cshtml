@@ -8,6 +8,70 @@
 <html style="font-size: 95px;">
 <head>
     <title>Theo dõi yêu cầu</title>
+    <style>
+        .container {
+            width: 100%;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+            .row .toggle-icon {
+                font-size: 18px;
+                margin-right: 10px;
+                user-select: none;
+                transition: transform 0.3s ease;
+            }
+
+        .main-content {
+            width: 95%;
+        }
+
+        .main-contentt {
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 10px;
+        }
+
+            .main-contentt p {
+                margin: 0;
+                font-size: inherit;
+                white-space: nowrap;
+            }
+
+            .main-contentt .status {
+                color: green;
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+        .details {
+            max-height: 0;
+            overflow: hidden;
+            font-size: 14px;
+            background-color: #f8f8f8;
+            border-top: 1px solid #ddd;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+            .details p {
+                margin: 10px 0;
+            }
+    </style>
 </head>
 
 <body class="show">
@@ -89,7 +153,13 @@
                                     <div class="main-content">
                                         <div class="main-contentt">
                                             <p><b>@item.Request.RequestTitle được gửi đi ngày @item.Request.CreatedAt.ToString("dd/MM/yyyy")</b></p>
-                                            <span class="status">@(item.IsCompleted==0?"chưa hoàn thành":"Hoàn thành")</span>
+                                            <span class="status">
+                                                @(item.IsCompleted == 0
+                                                    ? "Chưa hoàn thành"
+                                                    : item.IsCompleted == 1
+                                                    ? "Hoàn thành"
+                                                    : "Không xử lý được")
+                                            </span>
                                         </div>
                                         <hr />
                                         <div class="main-contentt" style="padding-top:10px;">

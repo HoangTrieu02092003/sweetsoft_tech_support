@@ -92,7 +92,10 @@ namespace admin_sweetsoft_tech_support.Controllers
         public IActionResult Create()
         {
             ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId");
-            ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName");
+            ViewBag.DepartmentId = new SelectList(
+            _context.TblDepartments.Where(d => d.IsDelete == false),
+            "DepartmentId",
+            "DepartmentName");
             ViewData["RoleId"] = new SelectList(_context.TblRoles, "RoleId", "RoleName");
             ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId");
             return View();
@@ -107,6 +110,23 @@ namespace admin_sweetsoft_tech_support.Controllers
         {
             if (ModelState.IsValid)
             {
+                var existingEmail = await _context.TblUsers
+                    .FirstOrDefaultAsync(c => c.Email == tblUser.Email);
+
+                var existingUsername = await _context.TblUsers
+                    .FirstOrDefaultAsync(c => c.Username == tblUser.Username);
+
+                if (existingEmail != null && existingEmail.IsDelete == true)
+                {
+                    _context.TblUsers.Remove(existingEmail); // Xóa bản ghi cũ để tránh trùng lặp
+                    await _context.SaveChangesAsync();
+                }
+
+                if (existingUsername != null && existingUsername.IsDelete == true)
+                {
+                    _context.TblUsers.Remove(existingUsername); // Xóa bản ghi cũ để tránh trùng lặp
+                    await _context.SaveChangesAsync();
+                }
                 var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
                 tblUser.Password = BCrypt.Net.BCrypt.HashPassword("Password123"); // Mã hóa mật khẩu mặc định
                 tblUser.Status = 1;
@@ -119,13 +139,39 @@ namespace admin_sweetsoft_tech_support.Controllers
                 tblUser.UpdatedAt = DateTime.Now; // Mặc định là ngày hiện tại
                 _context.Add(tblUser);
                 await _context.SaveChangesAsync();
-                _logService.LogAuditAction("Thêm",User.Identity.Name, $"Thêm thành công nhân viên {tblUser.FullName}","Nhân viên", " ", Newtonsoft.Json.JsonConvert.SerializeObject(tblUser));
+
+
+                _logService.LogAuditAction("Thêm",User.Identity.Name, $"Thêm thành công nhân viên {tblUser.FullName}","Nhân viên", " ", Newtonsoft.Json.JsonConvert.SerializeObject(tblUser.ToLogData()));
+                TempData["Success"] = "Thêm nhân viên thành công";
                 return RedirectToAction(nameof(Index));
             }
+            else
+            {
+                var existingEmail = await _context.TblUsers
+                    .FirstOrDefaultAsync(c => c.Email == tblUser.Email);
+
+                var existingUsername = await _context.TblUsers
+                    .FirstOrDefaultAsync(c => c.Username == tblUser.Username);
+                if(existingEmail != null && existingEmail.IsDelete == false)
+                {
+                    TempData["Error"] = "Email đã tồn tại trong hệ thống. Vui lòng sử dụng email khác!";
+                    return View(tblUser);
+                }
+
+                if (existingUsername != null && existingUsername.IsDelete == false)
+                {
+                    TempData["Error"] = "Username đã tồn tại trong hệ thống. Vui lòng sử dụng tên khác!";
+                    return View(tblUser);
+                }
+            }
             ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblUser.CreatedUser);
-            ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", tblUser.DepartmentId);
+            ViewData["DepartmentId"] = new SelectList(
+                _context.TblDepartments.Where(d => d.IsDelete == false),
+                "DepartmentId",
+                "DepartmentName",tblUser.DepartmentId );
             ViewData["RoleId"] = new SelectList(_context.TblRoles, "RoleId", "RoleName", tblUser.RoleId);
             ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblUser.UpdatedUser);
+            TempData["Error"] = "Thêm nhân viên thất bại";
             return View(tblUser);
         }
 
@@ -156,7 +202,12 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             ViewBag.createdUser = tblUser.CreatedUserNavigation?.FullName ?? "N/A";
             ViewBag.updatedUser = tblUser.UpdatedUserNavigation?.FullName ?? "N/A";
-            ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", tblUser.DepartmentId);
+            ViewData["DepartmentId"] = new SelectList(
+                _context.TblDepartments.Where(d => d.IsDelete == false),
+                "DepartmentId",
+                "DepartmentName", 
+                tblUser.DepartmentId
+            );
             ViewData["RoleId"] = new SelectList(_context.TblRoles, "RoleId", "RoleName", tblUser.RoleId);
             return View(tblUser);
         }
@@ -176,11 +227,44 @@ namespace admin_sweetsoft_tech_support.Controllers
             if (ModelState.IsValid)
             {
                 var existingUser = await _context.TblUsers.FindAsync(id);
+                
+
                 if (existingUser == null)
                 {
                     return NotFound();
                 }
+                // Kiểm tra email có trùng không (ngoại trừ chính đối tượng đang được sửa)
+                var duplicateEmailUser = await _context.TblUsers
+                    .FirstOrDefaultAsync(u => u.Email == tblUser.Email && u.UserId != id);
+                var duplicateUsername = await _context.TblUsers
+                    .FirstOrDefaultAsync(u => u.Username == tblUser.Username && u.UserId != id);
 
+                if (duplicateEmailUser != null)
+                {
+                    if (duplicateEmailUser.IsDelete == false)
+                    {
+                        // Nếu email đã tồn tại và không bị xóa, không cho phép đổi
+                        TempData["Error"] = "Email đã tồn tại trong hệ thống. Vui lòng sử dụng email khác!";
+                        return View(tblUser);
+                    }
+                    else
+                    {
+                        await _context.SaveChangesAsync();
+                    }
+                }
+                if (duplicateUsername != null)
+                {
+                    if (duplicateUsername.IsDelete == false)
+                    {
+                        // Nếu email đã tồn tại và không bị xóa, không cho phép đổi
+                        TempData["Error"] = "Username đã tồn tại trong hệ thống. Vui lòng sử dụng tên khác!";
+                        return View(tblUser);
+                    }
+                    else
+                    {
+                        await _context.SaveChangesAsync();
+                    }
+                }
                 // Lưu giá trị cũ và thay đổi
                 var oldValue = new Dictionary<string, object>();
                 var changes = new Dictionary<string, object>();
@@ -237,7 +321,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                         throw;
                     }
                 }
-
+                TempData["Success"] = "Sửa nhân viên thành công";
                 return RedirectToAction(nameof(Index));
             }
 
@@ -245,6 +329,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId", tblUser.DepartmentId);
             ViewData["RoleId"] = new SelectList(_context.TblRoles, "RoleId", "RoleId", tblUser.RoleId);
             ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblUser.UpdatedUser);
+            ViewData["Error"] = "Sửa nhân viên thất bại";
             return View(tblUser);
         }
 
@@ -272,14 +357,23 @@ namespace admin_sweetsoft_tech_support.Controllers
                 .ToListAsync();
             var assignedPermissionIds = existingPermissions.Select(up => up.PermissionId).ToList();
 
-            var requestPermissions = allPermissions.Where(p => p.PermissionId == 1 || p.PermissionId == 2).ToList();
-            var managementPermissions = allPermissions.Where(p => p.PermissionId != 1 && p.PermissionId != 2).ToList();
+            var requestPermissions = allPermissions
+        .Where(p => p.PermissionName.ToLower().Contains("yêu cầu", StringComparison.OrdinalIgnoreCase))
+        .ToList();
 
+            var managementPermissions = allPermissions
+                .Where(p => p.PermissionName.ToLower().Contains("quản lý", StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            var otherPermissions = allPermissions
+                .Where(p => !requestPermissions.Contains(p) && !managementPermissions.Contains(p))
+                .ToList();
             ViewBag.username = user.FullName;
             ViewBag.RequestPermissions = requestPermissions;
             ViewBag.ManagementPermissions = managementPermissions;
+            ViewBag.OtherPermissions = otherPermissions;
             ViewBag.AssignedPermissions = assignedPermissionIds;
-
+            
             return View();
         }
 
@@ -299,20 +393,33 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Thêm quyền mới nếu có
             if (selectedPermissions != null && selectedPermissions.Any())
             {
+                
                 foreach (var permissionId in selectedPermissions)
                 {
-                    var userPermission = new TblUserPermission
+                    // Tìm tên quyền dựa trên permissionId
+                    var permissionName = _context.TblPermissions
+                        .Where(p => p.PermissionId == permissionId)
+                        .Select(p => p.PermissionName.ToLower())
+                        .FirstOrDefault();
+
+                    if (!string.IsNullOrEmpty(permissionName))
                     {
-                        UserId = id,
-                        PermissionId = permissionId
-                    };
-                    _context.TblUserPermissions.Add(userPermission);
+                        var userPermission = new TblUserPermission
+                        {
+                            UserId = id,
+                            PermissionId = permissionId
+                        };
+                        _context.TblUserPermissions.Add(userPermission);
+
+                        // Ghi log với tên quyền
+                        _logService.LogNotificationAction(id.ToString(), $"Bạn đã được cấp quyền {permissionName}");
+                    }
                 }
             }
 
             await _context.SaveChangesAsync();
 
-            TempData["SuccessMessage"] = "Quyền của người dùng đã được cập nhật thành công.";
+            TempData["Success"] = "Quyền của người dùng đã được cập nhật thành công.";
             return RedirectToAction(nameof(Index)); // Điều hướng về danh sách người dùng
         }
 
@@ -333,7 +440,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 return NotFound();
             }
-
+            TempData["Success"] = "Cập nhật thành công";
             return View(user); // Trả về view với thông tin người dùng
         }
 
@@ -351,7 +458,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 _context.Update(tblUser);
                 await _context.SaveChangesAsync();
             }
-
+            TempData["Success"] = "Xóa nhân viên thành công";
             return RedirectToAction(nameof(Index));
         }
 

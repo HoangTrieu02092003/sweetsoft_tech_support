@@ -62,7 +62,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
             }
 
             var user = await _context.TblCustomers
-                .Where(u => u.Username == username && u.Status == 1)
+                .Where(u => u.Username == username && u.Status == 1 && u.IsDelete == false)
                 .Select(u => new { u.CustomerId, u.FullName, u.Email, u.Password })
                 .FirstOrDefaultAsync();
 
@@ -139,7 +139,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
                 return View();
             }
 
-            var user = await _context.TblCustomers.FirstOrDefaultAsync(u => u.Email == email);
+            var user = await _context.TblCustomers.FirstOrDefaultAsync(u => u.Email == email && u.IsDelete == false);
             if (user == null)
             {
                 ViewBag.SiteKey = siteKey;
@@ -263,44 +263,77 @@ namespace Customer_sweetsoft_tech_support.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register([Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Username,Password,Status,IsDelete,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedBy,CreatedAt,UpdatedBy,UpdatedAt")] TblCustomer tblCustomer)
         {
-            if (ModelState.IsValid)
-            {
-                var siteKey = _configuration["ReCaptcha:SiteKey"];
-                ViewBag.SiteKey = siteKey;
-
-                // Thiết lập thông tin cho khách hàng
-                tblCustomer.Status = 0;
-                tblCustomer.IsDelete = false;
-                tblCustomer.Password = BCrypt.Net.BCrypt.HashPassword(tblCustomer.Password);
-                tblCustomer.ResetToken = null;
-                tblCustomer.ResetTokenExpiry = null;
-                tblCustomer.CreatedBy = 1;
-                tblCustomer.CreatedAt = DateTime.Now;
-                tblCustomer.UpdatedBy = 1;
-                tblCustomer.UpdatedAt = DateTime.Now;
-                string token = Guid.NewGuid().ToString();
-                tblCustomer.Token = token;
-                tblCustomer.TokenExpiry = DateTime.Now.AddMinutes(30);
-
-                // Lưu khách hàng vào cơ sở dữ liệu
-                _context.Add(tblCustomer);
-                await _context.SaveChangesAsync();
-
-                // Tạo liên kết xác nhận
-                string link = Url.Action("ConfirmRegistration", "Custommer", new { token }, Request.Scheme)!;
-
-                // Gửi email xác nhận
-                await SendEmailAsync(tblCustomer.Email, "Xác nhận đăng ký tài khoản", $"Vui lòng nhấp vào link sau để kích hoạt tài khoản: <a href='{link}'>{link}</a>");
-
-                // Hiển thị thông báo thành công
-                TempData["Message"] = "Đăng ký thành công! Vui lòng kiểm tra email để kích hoạt tài khoản.";
-                return RedirectToAction("Register");
+            var siteKey = _configuration["ReCaptcha:SiteKey"];
+            if (string.IsNullOrWhiteSpace(tblCustomer.Email) && 
+                string.IsNullOrWhiteSpace(tblCustomer.Username) && 
+                string.IsNullOrWhiteSpace(tblCustomer.FullName) && 
+                string.IsNullOrWhiteSpace(tblCustomer.Phone) && 
+                string.IsNullOrWhiteSpace(tblCustomer.TaxCode) && 
+                string.IsNullOrWhiteSpace(tblCustomer.Company) && 
+                string.IsNullOrWhiteSpace(tblCustomer.Password)) 
+            { 
+                TempData["Error"] = "Các trường không được để trống!"; 
+                ViewBag.SiteKey = siteKey; return View(tblCustomer); 
             }
-            else
+            var existingCustomer = await _context.TblCustomers
+                    .FirstOrDefaultAsync(c => c.Email == tblCustomer.Email);
+
+            var existingUsername = await _context.TblCustomers
+                .FirstOrDefaultAsync(c => c.Username == tblCustomer.Username);
+
+
+            if (existingCustomer != null && existingCustomer.IsDelete == true)
             {
-                TempData["Error"] = "Có lỗi xảy ra, vui lòng kiểm tra lại thông tin!";
+                _context.TblCustomers.Remove(existingCustomer); // Xóa bản ghi cũ để tránh trùng lặp
+                await _context.SaveChangesAsync();
+            }
+
+            if (existingUsername != null && existingUsername.IsDelete == true)
+            {
+                _context.TblCustomers.Remove(existingUsername); // Xóa bản ghi cũ để tránh trùng lặp
+                await _context.SaveChangesAsync();
+            }
+
+            if (existingCustomer != null && existingCustomer.IsDelete == false)
+            {
+                TempData["Error"] = "Email đã tồn tại trong hệ thống. Vui lòng sử dụng email khác!";
+                ViewBag.SiteKey = siteKey;
                 return View(tblCustomer);
             }
+
+            if (existingUsername != null && existingUsername.IsDelete == false)
+            {
+                TempData["Error"] = "Username đã tồn tại trong hệ thống. Vui lòng sử dụng tên khác!";
+                ViewBag.SiteKey = siteKey;
+                return View(tblCustomer);
+            }
+            // Thiết lập thông tin cho khách hàng
+            tblCustomer.Status = 0;
+            tblCustomer.IsDelete = false;
+            tblCustomer.Password = BCrypt.Net.BCrypt.HashPassword(tblCustomer.Password);
+            tblCustomer.ResetToken = null;
+            tblCustomer.ResetTokenExpiry = null;
+            tblCustomer.CreatedBy = 1;
+            tblCustomer.CreatedAt = DateTime.Now;
+            tblCustomer.UpdatedBy = 1;
+            tblCustomer.UpdatedAt = DateTime.Now;
+            string token = Guid.NewGuid().ToString();
+            tblCustomer.Token = token;
+            tblCustomer.TokenExpiry = DateTime.Now.AddMinutes(30);
+
+            // Lưu khách hàng vào cơ sở dữ liệu
+            _context.Add(tblCustomer);
+            await _context.SaveChangesAsync();
+
+            // Tạo liên kết xác nhận
+            string link = Url.Action("ConfirmRegistration", "Custommer", new { token }, Request.Scheme)!;
+
+            // Gửi email xác nhận
+            await SendEmailAsync(tblCustomer.Email, "Xác nhận đăng ký tài khoản", $"Vui lòng nhấp vào link sau để kích hoạt tài khoản: <a href='{link}'>{link}</a>");
+
+            // Hiển thị thông báo thành công
+            TempData["Message"] = "Đăng ký thành công! Vui lòng kiểm tra email để kích hoạt tài khoản.";
+            return RedirectToAction("Register");
         }
 
         // Phương thức xử lý xác nhận đăng ký
