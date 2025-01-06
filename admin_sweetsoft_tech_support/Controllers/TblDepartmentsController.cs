@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using System.Security.Claims;
 using admin_sweetsoft_tech_support.Attributes;
+using OfficeOpenXml;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -41,7 +42,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 .ToListAsync();
 
             // Tính tổng số phòng ban
-            int totalDepartments = await _context.TblDepartments.CountAsync();
+            int totalDepartments = await _context.TblDepartments.Where(u => u.IsDelete == false).CountAsync();
 
             // Tính tổng số trang
             int totalPages = (int)Math.Ceiling(totalDepartments / (double)pageSize);
@@ -212,6 +213,81 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             return RedirectToAction(nameof(Index)); // Trở lại trang danh sách phòng ban
+        }
+
+        public IActionResult ExportToExcel(int id)
+        {
+            Console.WriteLine(id);
+
+            // Lấy danh sách người dùng với thông tin về Role và Department
+            var users = _context.TblUsers
+                .Where(u => u.DepartmentId == id && u.IsDelete == false)
+                .Include(u => u.Role)  // Lấy thông tin Role từ bảng TblRoles
+                .Include(u => u.Department)  // Lấy thông tin Department từ bảng TblDepartments
+                .ToList();
+
+            // Lấy tên phòng ban
+            var departmentName = _context.TblDepartments
+                .Where(u => u.DepartmentId == id)
+                .Select(u => u.DepartmentName)
+                .FirstOrDefault();
+
+            // Tạo file Excel
+            using (var package = new ExcelPackage())
+            {
+                var worksheet = package.Workbook.Worksheets.Add("Danh sách nhân viên");
+
+                // Thiết lập tiêu đề cho bảng
+                worksheet.Cells[1, 1].Value = $"Danh sách nhân viên - Phòng ban: {departmentName}";
+                worksheet.Cells[1, 1, 1, 6].Merge = true;
+                worksheet.Cells[1, 1].Style.Font.Size = 16;
+                worksheet.Cells[1, 1].Style.Font.Bold = true;
+                worksheet.Cells[1, 1].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                worksheet.Cells[1, 1].Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+
+                // Thiết lập tiêu đề cho các cột
+                worksheet.Cells[2, 1].Value = "Tên nhân viên";
+                worksheet.Cells[2, 2].Value = "Email";
+                worksheet.Cells[2, 3].Value = "Số điện thoại";
+                worksheet.Cells[2, 4].Value = "Trạng thái";
+                worksheet.Cells[2, 5].Value = "Nhóm quyền";
+                worksheet.Cells[2, 6].Value = "Bộ phận";
+
+                // Điền dữ liệu
+                int row = 3;
+                foreach (var user in users)
+                {
+                    worksheet.Cells[row, 1].Value = user.FullName;
+                    worksheet.Cells[row, 2].Value = user.Email;
+                    worksheet.Cells[row, 3].Value = user.Phone;
+                    worksheet.Cells[row, 4].Value = user.Status == 1 ? "Hoạt động" : "Tạm dừng";
+                    worksheet.Cells[row, 5].Value = user.Role?.RoleName;  // Hiển thị tên role (nếu có)
+                    worksheet.Cells[row, 6].Value = user.Department?.DepartmentName;  // Hiển thị tên phòng ban (nếu có)
+                    row++;
+                }
+
+                // Tạo viền cho bảng
+                var range = worksheet.Cells[2, 1, row - 1, 6]; // Tạo phạm vi từ dòng tiêu đề đến dòng cuối
+
+                // Cài đặt viền cho toàn bộ phạm vi
+                range.Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                range.Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                range.Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                range.Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+
+                // Điều chỉnh chiều rộng cột cho phù hợp với nội dung
+                worksheet.Cells.AutoFitColumns();
+
+                // Tạo và trả về file Excel
+                var stream = new MemoryStream();
+                package.SaveAs(stream);
+                stream.Position = 0;
+
+                var fileName = $"Nhân Viên {departmentName}.xlsx";
+                var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
+                return File(stream, contentType, fileName);
+            }
         }
 
         private bool TblDepartmentExists(int id)

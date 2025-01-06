@@ -264,12 +264,12 @@ namespace Customer_sweetsoft_tech_support.Controllers
         public async Task<IActionResult> Register([Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Username,Password,Status,IsDelete,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedBy,CreatedAt,UpdatedBy,UpdatedAt")] TblCustomer tblCustomer)
         {
             var siteKey = _configuration["ReCaptcha:SiteKey"];
-            if (string.IsNullOrWhiteSpace(tblCustomer.Email) && 
-                string.IsNullOrWhiteSpace(tblCustomer.Username) && 
-                string.IsNullOrWhiteSpace(tblCustomer.FullName) && 
-                string.IsNullOrWhiteSpace(tblCustomer.Phone) && 
-                string.IsNullOrWhiteSpace(tblCustomer.TaxCode) && 
-                string.IsNullOrWhiteSpace(tblCustomer.Company) && 
+            if (string.IsNullOrWhiteSpace(tblCustomer.Email) || 
+                string.IsNullOrWhiteSpace(tblCustomer.Username) || 
+                string.IsNullOrWhiteSpace(tblCustomer.FullName) || 
+                string.IsNullOrWhiteSpace(tblCustomer.Phone) || 
+                string.IsNullOrWhiteSpace(tblCustomer.TaxCode) || 
+                string.IsNullOrWhiteSpace(tblCustomer.Company) || 
                 string.IsNullOrWhiteSpace(tblCustomer.Password)) 
             { 
                 TempData["Error"] = "Các trường không được để trống!"; 

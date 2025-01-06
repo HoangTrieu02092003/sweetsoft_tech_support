@@ -64,7 +64,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             var skip = (page - 1) * pageSize;
             
             var requestContext = await users
-                .Where(u => u.UserId != currentUserId)
+                .Where(u => u.UserId != currentUserId && u.IsDelete == false)
                 .Include(t => t.CreatedUserNavigation)
                 .Include(t => t.Department)
                 .Include(t => t.Role)
