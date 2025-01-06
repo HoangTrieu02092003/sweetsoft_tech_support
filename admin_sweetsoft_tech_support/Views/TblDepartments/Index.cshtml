@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblDepartment>
 @using admin_sweetsoft_tech_support.Attributes
+
 @{
-    ViewData["Title"] = "Quản lý Phòng Ban";
     int stt = 1;
 }
 
@@ -20,21 +20,47 @@
         font-weight: bold;
         }
 
+        th {
+        white-space: nowrap;
+        }
+
+        th, td {
+        text-align: center;
+        vertical-align: middle;
+        }
+
+        /* Cố định chiều rộng cột STT */
+        th:first-child, td:first-child {
+        width: 50px;
+        min-width: 50px;
+        max-width: 50px;
+        }
+
         /* Responsive design adjustments */
         @@media (max-width: 576px) {
-        .action-btn
+        .badge {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%; /* Biến badge thành hình tròn */
+        padding: 0;
+        text-indent: -9999px; /* Ẩn text trong badge */
+        }
 
-        {
+        .badge.bg-success {
+        background-color: green !important; /* Màu xanh */
+        }
+
+        .badge.bg-danger {
+        background-color: red !important; /* Màu đỏ */
+        }
+
+        .action-btn {
         padding: 5px;
         text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
-        }
-
-
-        .action-text {
-        display: none; /* Ẩn văn bản trên nút khi thu nhỏ */
         }
 
         .btn-group .btn {
@@ -116,18 +142,15 @@
             </div>
             <div class="col-md-3">
                 @Html.GenerateFilterDropdown(
-                                     id: "status",
-                                     name: "status",
-                                     includeCancelButton: false,
-                                     options: new Dictionary<string, string> {
-                            {"0","Tạm dừng"},
-                            {"1","Hoạt động"}
-                        },
-                                     selectedValue: ViewData["status"]?.ToString() ?? ""
-                                     )
-            </div>
-            <div class="mt-2 text-end">
-                <button type="submit" class="btn btn-info d-block d-md-none"><i class="bi bi-search"></i> Tìm kiếm</button>
+                                  id: "status",
+                                  name: "status",
+                                  includeCancelButton: false,
+                                  options: new Dictionary<string, string> {
+                             {"0","Tạm dừng"},
+                             {"1","Hoạt động"}
+                         },
+                                  selectedValue: ViewData["status"]?.ToString() ?? ""
+                                  )
             </div>
         </form>
     </div>
@@ -139,7 +162,7 @@
                     <th>STT</th>
                     <th>Tên phòng ban</th>
                     <th class="text-center">Trạng thái</th>
-                    <th class="text-center">Số lượng thành viên</th>
+                    <th class="text-center d-none d-md-table-cell">Số lượng thành viên</th>
                     <th class="text-center">Hành động</th>
                 </tr>
             </thead>
@@ -154,7 +177,7 @@
                                 @(item.Status == 1 ? "Hoạt động" : "Tạm dừng")
                             </span>
                         </td>
-                        <td class ="text-center">@ViewBag.MemberCounts[item.DepartmentId]</td>
+                        <td class="text-center d-none d-md-table-cell">@ViewBag.MemberCounts[item.DepartmentId]</td>
                         <td class="text-center">
                             <div>
                                 <a class="btn btn-outline-info btn-sm" asp-action="Edit" asp-route-id="@item.DepartmentId">
@@ -166,9 +189,8 @@
                                     <span class="action-text"></span>
                                 </button>
                             </div>
-                        </td>
-                    </tr>
-                    stt++;
+                        </td>                      
+                    </tr>                   
                     <!-- Modal delete -->
                     <div class="modal fade" id="deleteModal-@item.DepartmentId" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -189,7 +211,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                   
+                    </div>
+                    stt++;
                 }
             </tbody>
         </table>

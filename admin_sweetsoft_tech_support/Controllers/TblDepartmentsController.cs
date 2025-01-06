@@ -107,7 +107,8 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             // Lấy thông tin phòng ban và danh sách nhân viên liên kết, phân trang danh sách nhân viên
             var tblDepartment = await _context.TblDepartments
-                .Include(d => d.TblUsers)
+                .Include(d => d.TblUsers) // Lấy danh sách nhân viên
+                    .ThenInclude(u => u.Role) // Bao gồm thông tin Role của từng nhân viên
                 .FirstOrDefaultAsync(d => d.DepartmentId == id);
 
             if (tblDepartment == null)
@@ -125,7 +126,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["TotalUsers"] = totalUsers;
             ViewData["CurrentPage"] = page;
 
-            // Trả về View cùng với các dữ liệu cần thiết
+            // Truyền danh sách nhân viên vào ViewData (có thông tin Role)
             return View(tblDepartment);
         }
 
