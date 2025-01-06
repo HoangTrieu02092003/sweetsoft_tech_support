@@ -404,18 +404,11 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             supportRequest.Status = (short)status;
-            supportRequest.ResolvedAt = status == 1 ? resolvedAt ?? DateTime.Now : null;
+            supportRequest.ResolvedAt = (status == 1 || status == 2) ? resolvedAt ?? DateTime.Now : null;
 
-            if (status == 1)
+            if (status == 1 || status == 2)
             {
-                processing.IsCompleted = 1;
-                processing.ProcessedAt = resolvedAt ?? DateTime.Now;
-                processing.Note = note;
-            }
-            supportRequest.ResolvedAt = status == 2 ? resolvedAt ?? DateTime.Now : null;
-            if (status == 2)
-            {
-                processing.IsCompleted = 2;
+                processing.IsCompleted = (short?)status;
                 processing.ProcessedAt = resolvedAt ?? DateTime.Now;
                 processing.Note = note;
             }
