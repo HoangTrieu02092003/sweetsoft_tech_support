@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\HocTap\\N4\\TTCN\\Git\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\customer_sweetsoft_tech_support\\views\\tblrequestsprocessings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|solutionrelative:customer_sweetsoft_tech_support\\views\\tblrequestsprocessings\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|d:\\hoctap\\n4\\ttcn\\git\\customer_sweetsoft_tech_support\\controllers\\custommercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD26CDB0-9DEE-4390-993D-8800E53EE0AF}|Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj|solutionrelative:customer_sweetsoft_tech_support\\controllers\\custommercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,34 +9,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Views\\TblRequestsProcessings\\Index.cshtml",
-              "RelativeDocumentMoniker": "Customer_sweetsoft_tech_support\\Views\\TblRequestsProcessings\\Index.cshtml",
-              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Views\\TblRequestsProcessings\\Index.cshtml",
-              "RelativeToolTip": "Customer_sweetsoft_tech_support\\Views\\TblRequestsProcessings\\Index.cshtml",
-              "ViewState": "AQIAADkAAAAAAAAAAAAwwEgAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-06T02:32:00.846Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CustommerController.cs",
-              "DocumentMoniker": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Controllers\\CustommerController.cs",
-              "RelativeDocumentMoniker": "Customer_sweetsoft_tech_support\\Controllers\\CustommerController.cs",
-              "ToolTip": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Controllers\\CustommerController.cs",
-              "RelativeToolTip": "Customer_sweetsoft_tech_support\\Controllers\\CustommerController.cs",
-              "ViewState": "AQIAAHMAAAAAAAAAAAAswLIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T01:11:59.968Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
