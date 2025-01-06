@@ -106,7 +106,8 @@
                     @foreach (var item in Model)
                     {
                         <div class="card">
-                            <img src="@(item.FaqThumbnail != null ? item.FaqThumbnail : "/layoutuser/img/faq.jpg")" alt="FAQ Thumbnail" class="card-img-top" />
+                            <img src="@(item.FaqThumbnail != null ? $"http://tech.runasp.net/{item.FaqThumbnail}" : "http://tech.runasp.net/assets/images/faqs/faq1.jpg")"
+                                 alt="FAQ Thumbnail" class="card-img-top" />
                             <div class="card-body">
                                 <h5 class="card-title">@item.Question</h5>
                                 <p class="card-text">
