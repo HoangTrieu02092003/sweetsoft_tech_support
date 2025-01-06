@@ -15,9 +15,6 @@ public partial class RequestContext : DbContext
     {
     }
 
-    public virtual DbSet<TblActivityLog> TblActivityLogs { get; set; }
-
-    public virtual DbSet<TblAuditLog> TblAuditLogs { get; set; }
 
     public virtual DbSet<TblCustomer> TblCustomers { get; set; }
 
@@ -25,27 +22,14 @@ public partial class RequestContext : DbContext
 
     public virtual DbSet<TblFaq> TblFaqs { get; set; }
 
-    public virtual DbSet<TblLog> TblLogs { get; set; }
-
-    public virtual DbSet<TblNotification> TblNotifications { get; set; }
-
-    public virtual DbSet<TblPermission> TblPermissions { get; set; }
-
-    public virtual DbSet<TblRequestTransfer> TblRequestTransfers { get; set; }
 
     public virtual DbSet<TblRequestsProcessing> TblRequestsProcessings { get; set; }
 
     public virtual DbSet<TblRole> TblRoles { get; set; }
 
-    public virtual DbSet<TblRolePermission> TblRolePermissions { get; set; }
-
-    public virtual DbSet<TblSession> TblSessions { get; set; }
-
     public virtual DbSet<TblSupportRequest> TblSupportRequests { get; set; }
 
     public virtual DbSet<TblUser> TblUsers { get; set; }
-
-    public virtual DbSet<TblUserPermission> TblUserPermissions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -53,55 +37,6 @@ public partial class RequestContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<TblActivityLog>(entity =>
-        {
-            entity.HasKey(e => e.ActivityId).HasName("PK__TblActiv__482FBD6338E5E2F4");
-
-            entity.Property(e => e.ActivityId).HasColumnName("activity_id");
-            entity.Property(e => e.Action)
-                .HasMaxLength(100)
-                .HasColumnName("action");
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("created_at");
-            entity.Property(e => e.RequestId).HasColumnName("request_id");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-
-            entity.HasOne(d => d.Request).WithMany(p => p.TblActivityLogs)
-                .HasForeignKey(d => d.RequestId)
-                .HasConstraintName("FK__TblActivi__reque__7B5B524B");
-
-            entity.HasOne(d => d.User).WithMany(p => p.TblActivityLogs)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__TblActivi__user___7C4F7684");
-        });
-
-        modelBuilder.Entity<TblAuditLog>(entity =>
-        {
-            entity.HasKey(e => e.AuditId).HasName("PK__TblAudit__5AF33E33A703F4F9");
-
-            entity.Property(e => e.AuditId).HasColumnName("audit_id");
-            entity.Property(e => e.ActionType)
-                .HasMaxLength(50)
-                .HasColumnName("action_type");
-            entity.Property(e => e.ChangedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("changed_at");
-            entity.Property(e => e.ChangedBy).HasColumnName("changed_by");
-            entity.Property(e => e.NewValue).HasColumnName("new_value");
-            entity.Property(e => e.OldValue).HasColumnName("old_value");
-            entity.Property(e => e.RecordId).HasColumnName("record_id");
-            entity.Property(e => e.TableName)
-                .HasMaxLength(100)
-                .HasColumnName("table_name");
-
-            entity.HasOne(d => d.ChangedByNavigation).WithMany(p => p.TblAuditLogs)
-                .HasForeignKey(d => d.ChangedBy)
-                .HasConstraintName("FK__TblAuditL__chang__5441852A");
-        });
-
         modelBuilder.Entity<TblCustomer>(entity =>
         {
             entity.HasKey(e => e.CustomerId).HasName("PK__TblCusto__CD65CB854D1567CE");
@@ -210,95 +145,6 @@ public partial class RequestContext : DbContext
                 .HasColumnName("updated_at");
         });
 
-        modelBuilder.Entity<TblLog>(entity =>
-        {
-            entity.HasKey(e => e.LogId).HasName("PK__TblLogs__9E2397E0BFCA3E10");
-
-            entity.Property(e => e.LogId).HasColumnName("log_id");
-            entity.Property(e => e.Action)
-                .HasMaxLength(255)
-                .HasColumnName("action");
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("created_at");
-            entity.Property(e => e.Description).HasColumnName("description");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-
-            entity.HasOne(d => d.User).WithMany(p => p.TblLogs)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__TblLogs__user_id__5070F446");
-        });
-
-        modelBuilder.Entity<TblNotification>(entity =>
-        {
-            entity.HasKey(e => e.NotificationId).HasName("PK__TblNotif__E059842F632490C5");
-
-            entity.Property(e => e.NotificationId).HasColumnName("notification_id");
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("created_at");
-            entity.Property(e => e.Message)
-                .HasMaxLength(255)
-                .HasColumnName("message");
-            entity.Property(e => e.Status)
-                .HasDefaultValue((short)0)
-                .HasColumnName("status");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-
-            entity.HasOne(d => d.User).WithMany(p => p.TblNotifications)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__TblNotifi__user___778AC167");
-        });
-
-        modelBuilder.Entity<TblPermission>(entity =>
-        {
-            entity.HasKey(e => e.PermissionId).HasName("PK__TblPermi__E5331AFA0C3EF036");
-
-            entity.Property(e => e.PermissionId).HasColumnName("permission_id");
-            entity.Property(e => e.Description).HasColumnName("description");
-            entity.Property(e => e.PermissionName)
-                .HasMaxLength(100)
-                .HasColumnName("permission_name");
-        });
-
-        modelBuilder.Entity<TblRequestTransfer>(entity =>
-        {
-            entity.HasKey(e => e.TransferId).HasName("PK__TblReque__78E6FD336ED61611");
-
-            entity.ToTable("TblRequest_Transfers");
-
-            entity.Property(e => e.TransferId).HasColumnName("transfer_id");
-            entity.Property(e => e.FromDepartmentId).HasColumnName("from_department_id");
-            entity.Property(e => e.Note).HasColumnName("note");
-            entity.Property(e => e.Priority)
-                .HasDefaultValue((short)1)
-                .HasColumnName("priority");
-            entity.Property(e => e.RequestId).HasColumnName("request_id");
-            entity.Property(e => e.ToDepartmentId).HasColumnName("to_department_id");
-            entity.Property(e => e.TransferredAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("transferred_at");
-            entity.Property(e => e.TransferredBy).HasColumnName("transferred_by");
-
-            entity.HasOne(d => d.FromDepartment).WithMany(p => p.TblRequestTransferFromDepartments)
-                .HasForeignKey(d => d.FromDepartmentId)
-                .HasConstraintName("FK__TblReques__from___693CA210");
-
-            entity.HasOne(d => d.Request).WithMany(p => p.TblRequestTransfers)
-                .HasForeignKey(d => d.RequestId)
-                .HasConstraintName("FK__TblReques__reque__68487DD7");
-
-            entity.HasOne(d => d.ToDepartment).WithMany(p => p.TblRequestTransferToDepartments)
-                .HasForeignKey(d => d.ToDepartmentId)
-                .HasConstraintName("FK__TblReques__to_de__6A30C649");
-
-            entity.HasOne(d => d.TransferredByNavigation).WithMany(p => p.TblRequestTransfers)
-                .HasForeignKey(d => d.TransferredBy)
-                .HasConstraintName("FK__TblReques__trans__6B24EA82");
-        });
 
         modelBuilder.Entity<TblRequestsProcessing>(entity =>
         {
@@ -336,47 +182,6 @@ public partial class RequestContext : DbContext
                 .HasColumnName("role_name");
         });
 
-        modelBuilder.Entity<TblRolePermission>(entity =>
-        {
-            entity.HasKey(e => e.RolePermissionId).HasName("PK__TblRole___B1E85A10A93635B9");
-
-            entity.ToTable("TblRole_Permissions");
-
-            entity.Property(e => e.RolePermissionId).HasColumnName("role_permission_id");
-            entity.Property(e => e.PermissionId).HasColumnName("permission_id");
-            entity.Property(e => e.RoleId).HasColumnName("role_id");
-
-            entity.HasOne(d => d.Permission).WithMany(p => p.TblRolePermissions)
-                .HasForeignKey(d => d.PermissionId)
-                .HasConstraintName("FK__TblRole_P__permi__48CFD27E");
-
-            entity.HasOne(d => d.Role).WithMany(p => p.TblRolePermissions)
-                .HasForeignKey(d => d.RoleId)
-                .HasConstraintName("FK__TblRole_P__role___47DBAE45");
-        });
-
-        modelBuilder.Entity<TblSession>(entity =>
-        {
-            entity.HasKey(e => e.SessionId).HasName("PK__TblSessi__69B13FDC8152E8BB");
-
-            entity.Property(e => e.SessionId).HasColumnName("session_id");
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("created_at");
-            entity.Property(e => e.ExpiresAt)
-                .HasColumnType("datetime")
-                .HasColumnName("expires_at");
-            entity.Property(e => e.SessionToken)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("session_token");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-
-            entity.HasOne(d => d.User).WithMany(p => p.TblSessions)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__TblSessio__user___5812160E");
-        });
 
         modelBuilder.Entity<TblSupportRequest>(entity =>
         {
@@ -490,24 +295,6 @@ public partial class RequestContext : DbContext
                 .HasConstraintName("FK__TblUsers__update__44FF419A");
         });
 
-        modelBuilder.Entity<TblUserPermission>(entity =>
-        {
-            entity.HasKey(e => e.UserPermissionId).HasName("PK__TblUser___D98F4819B67C79EA");
-
-            entity.ToTable("TblUser_Permissions");
-
-            entity.Property(e => e.UserPermissionId).HasColumnName("user_permission_id");
-            entity.Property(e => e.PermissionId).HasColumnName("permission_id");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-
-            entity.HasOne(d => d.Permission).WithMany(p => p.TblUserPermissions)
-                .HasForeignKey(d => d.PermissionId)
-                .HasConstraintName("FK__TblUser_P__permi__4CA06362");
-
-            entity.HasOne(d => d.User).WithMany(p => p.TblUserPermissions)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__TblUser_P__user___4BAC3F29");
-        });
 
         OnModelCreatingPartial(modelBuilder);
     }

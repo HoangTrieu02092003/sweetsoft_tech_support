@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("26817d7d-7da4-43c8-9cf3-2011ad7b5709")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Customer_sweetsoft_tech_support")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9dd180a8e60a353908f2d80c49635b7675e66aa4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5135b1939eac447d9f12e8cb17e4ba4a95c41dca")]
 [assembly: System.Reflection.AssemblyProductAttribute("Customer_sweetsoft_tech_support")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Customer_sweetsoft_tech_support")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -4,7 +4,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5299"
@@ -13,16 +13,16 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://techSupport"
+      "applicationUrl": "https://localhost:7252;https://techSupport"
     },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       }
     }
   },

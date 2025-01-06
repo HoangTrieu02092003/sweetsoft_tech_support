@@ -13,10 +13,6 @@ public partial class TblDepartment
 
     public bool? IsDelete { get; set; }
 
-    public virtual ICollection<TblRequestTransfer> TblRequestTransferFromDepartments { get; set; } = new List<TblRequestTransfer>();
-
-    public virtual ICollection<TblRequestTransfer> TblRequestTransferToDepartments { get; set; } = new List<TblRequestTransfer>();
-
     public virtual ICollection<TblRequestsProcessing> TblRequestsProcessings { get; set; } = new List<TblRequestsProcessing>();
 
     public virtual ICollection<TblSupportRequest> TblSupportRequests { get; set; } = new List<TblSupportRequest>();

@@ -45,7 +45,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
-                TempData["ReturnUrl"] = Url.Action("Create", "TblSupportRequests");
+                TempData["ReturnUrl"] = Url.RouteUrl("addRequest");
                 return RedirectToAction("Login", "Custommer");
             }
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -100,16 +100,75 @@ namespace Customer_sweetsoft_tech_support.Controllers
                         CreatedAt = DateTime.Now,
                         ResolvedAt = null,
                     };
+                    var departmentManager = _context.TblUsers
+                    .FirstOrDefault(u => u.DepartmentId == int.Parse(departmentIds[i]) && u.Role.RoleName == "Trưởng phòng");
+
                     _context.Add(supportRequest);
+                    await _context.SaveChangesAsync();
+
+                    var logRequest = new
+                    {
+                        User = departmentManager.UserId.ToString(),
+                        Content = "Có yêu cầu mới",
+                        Status = "0", // 0: chưa xem, 1 đã xem
+                        Id = GenerateUniqueId(),
+                        Timestamp = DateTime.Now
+                    };
+
+                    string adminApiUrl = "http://tech.runasp.net/api/log/write-log";
+                    using (var client = new HttpClient())
+                    {
+                        var response = await client.PostAsJsonAsync(adminApiUrl, logRequest);
+                        if (!response.IsSuccessStatusCode)
+                        {
+                            TempData["ErrorMessage"] = "Gửi thông báo thất bại";
+                        }
+                        else
+                        {
+                            TempData["SuccessMessage"] = "Gửi thông báo thành công!";
+                        }
+                    }
+
+                    var requestProcessing = new TblRequestsProcessing
+                    {
+                        RequestId = supportRequest.RequestId, // Lấy ID của TblSupportRequest vừa lưu
+                        DepartmentId = int.Parse(departmentIds[i]),
+                        IsCompleted = 0, // Đánh dấu là chưa xử lý
+                        ProcessedAt = DateTime.Now,
+                        Note = "Đang xử lý...."
+                    };
+
+                    _context.TblRequestsProcessings.Add(requestProcessing);
+                    
                 }
                 await _context.SaveChangesAsync();
+                
+                
+
+                //var logService = new LogNotificationService();
+                //logService.LogNotificationAction(departmentManager?.FullName??"Khách hàng", "Khách hàng tạo yêu cầu mới");
                 TempData["success"] = "thành công";
-                return RedirectToAction(nameof(Create));
+                
+                return RedirectToAction(nameof(Index),controllerName: "Account");
             }
             ViewData["Customer"] = customer;
             ViewData["Department"] = new SelectList(departments, "DepartmentId", "DepartmentName",tblSupportRequest.DepartmentId);
             TempData["error"] = "Tạo yêu cầu thất bại";
             return View(tblSupportRequest);
+        }
+
+        public string GenerateUniqueId()
+        {
+            // Lấy thời gian hiện tại (UTC) tính theo mili giây
+            var timestamp = DateTime.UtcNow.ToString("yyyyMMddHHmmssfff");
+
+            // Tạo một giá trị ngẫu nhiên từ 1000 đến 9999 để đảm bảo tính duy nhất
+            var randomValue = new Random().Next(1000, 9999);
+
+            // Kết hợp thời gian và giá trị ngẫu nhiên thành ID
+            var uniqueId = $"{timestamp}{randomValue}";
+
+            return uniqueId;
         }
     }
 }

@@ -19,7 +19,7 @@
             width: 80%;
             height: auto;
         }
-        
+
         .notification-tooltip {
             line-height: 2.5;
             padding: 0 3px;
@@ -153,8 +153,8 @@
                         </li>
                         <li class="nav-item position-relative">
                             <a class="nav-link nav-icon-hover" asp-action="MyNotifications" asp-controller="Notifications">
-                                <i class="ti ti-bell-ringing"></i>
                                 @await Component.InvokeAsync("Notification")
+                                <i class="ti ti-bell-ringing"></i>
                             </a>
                             @await Component.InvokeAsync("UnreadNotifications")
                         </li>

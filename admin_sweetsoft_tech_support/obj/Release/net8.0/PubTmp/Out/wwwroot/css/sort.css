@@ -1,0 +1,21 @@
+﻿.bold-text {
+    font-weight: bold;
+}
+a {
+    color: black;
+}
+a:hover{
+    color: #333;
+}
+.sort-arrow {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.sort-arrow.asc::after {
+    content: "▲";
+}
+
+.sort-arrow.desc::after {
+    content: "▼";
+}

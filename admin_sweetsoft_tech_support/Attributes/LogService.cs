@@ -38,7 +38,7 @@ namespace admin_sweetsoft_tech_support.Attributes
             // Ghi log vào file
             logger.Log(logEvent);
         }
-        public void LogNotificationAction(string user, string message, int status = 0)
+        public void LogNotificationAction(string user, string message, string status = "0")
         {
             // Tạo LogEventInfo mới
             var logEvent = new LogEventInfo(NLog.LogLevel.Info, loggerNoti.Name, message);

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using Newtonsoft.Json;
 using report.Models;
+using System.Security.Claims;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -23,6 +24,12 @@ namespace admin_sweetsoft_tech_support.Controllers
         // GET: Report
         public async Task<IActionResult> Index1(ReportFilterModel filter)
         {
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
+            }
             // Khởi tạo truy vấn cơ sở dữ liệu
             var query = _context.TblSupportRequests
                 .Include(r => r.Customer) // Liên kết với bảng khách hàng

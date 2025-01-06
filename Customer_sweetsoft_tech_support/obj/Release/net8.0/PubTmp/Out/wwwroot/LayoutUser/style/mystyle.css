@@ -1,0 +1,227 @@
+﻿@media (min-width: 801px) {
+    .ztrkt a img {
+        margin-bottom: .8rem;
+    }
+    .inner_main .rem12 .zb_nr .yc .contentt {
+        margin-top: -.29rem;
+    }
+    .index-research {
+        margin-bottom: 1rem;
+    }
+    .inner_main .rem12 .zb_nr .con .section h1{
+        display: none;
+    }
+    .inner_main .rem12 .zb_nr .tableAccount {
+        display: none;
+    }
+    .inner_main .rem12 .zb_nr .h1Account{
+        display: none;
+    }
+    .inner_main .rem12 .zb_nr .yccc {
+        margin-top: .25rem;
+    }
+        .inner_main .rem12 .zb_nr .yccc .btn {
+            width: 1.5rem;
+            height: .4rem;
+            white-space: nowrap;
+            font-size: inherit;
+            color: black;
+            background-color: white;
+            border: 1px solid black;
+        }
+
+            .inner_main .rem12 .zb_nr .yccc .btn:hover {
+                color: white;
+                background-color: #6510ad;
+            }
+    .inner_main .rem12 .zb_nr .ycc .btn {
+        width: 1.3rem;
+        height: .4rem;
+        white-space: nowrap;
+        font-size: 15px;
+        color: black;
+        background-color: white;
+        border: 1px solid black;
+    }
+        .inner_main .rem12 .zb_nr .ycc .btn:hover {
+            color: white;
+            background-color: #6510ad;
+            transition: .5s;
+        }
+
+    .remove-buttonn {
+        width: 11%;
+        height: .4rem;
+    }
+}
+
+@media (min-width: 1130px) {
+    .iindex-campus-life {
+        min-height: 5.5rem;
+    }
+    .pp-title h2 {
+        padding-top: .6rem;
+    }
+}
+
+@media (min-width: 801px) and (max-width: 1500px) {
+    .pp-title h2 {
+        padding-top: 1rem;
+    }
+}
+@media (min-width: 851px) and (max-width: 900px) {
+    .iindex-campus-life {
+        margin-top: 1rem;
+    }
+}
+@media (min-width: 801px) and (max-width: 851px) {
+    .iindex-campus-life {
+        margin-top: 2rem;
+    }
+}
+@media (min-width: 901px) and (max-width: 1000px) {
+    .iindex-campus-life {
+        margin-top: .5rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .iindex-video img {
+        margin-bottom: 1rem;
+    }
+
+    .inner_main .rem12 .zb_nr .ycc {
+        display: none;
+    }
+
+
+    .inner_main .rem12 .zb_nr .yccc .btn {
+        width: 2rem;
+        height: .5rem;
+        white-space: nowrap;
+        font-size: .17rem;
+        color: white;
+        background-color: #6510ad;
+    }
+
+        .inner_main .rem12 .zb_nr .yccc .btn:hover {
+            color: white;
+            background-color: #6510ad;
+        }
+
+    .inner_main .rem12 .zb_nr .yccc p {
+        font-size: .17rem;
+    }
+
+    .inner_main .rem12 .zb_nr .tableAccount .btn {
+        width: 2rem;
+        height: .5rem;
+        white-space: nowrap;
+        font-size: inherit;
+        color: white;
+        background-color: #6510ad;
+        border: 1px solid black;
+    }
+
+    .alert-success {
+        margin-bottom : 1rem;
+    }
+
+    .textareaaa {
+        height: 3rem;
+    }
+    .inner_main .rem12 .zb_nr .zc ul li {
+        margin: 11.5px 0 10px 0;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.h1Account {
+    margin-bottom: .25rem;
+    margin-top: -.4rem;
+}
+
+
+.container {
+    width: 100%;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+    .row .toggle-icon {
+        font-size: 18px;
+        margin-right: 10px;
+        user-select: none;
+        transition: transform 0.3s ease;
+    }
+
+.main-content{
+    width: 95%;
+}
+
+.main-contentt {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+}
+
+    .main-contentt p {
+        margin: 0;
+        font-size: inherit;
+        white-space: nowrap;
+    }
+    
+    .main-contentt .status {
+        color: green;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+.details {
+    max-height: 0;
+    overflow: hidden;
+    font-size: 14px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #ddd;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.details p {
+    margin: 10px 0;
+}
+
+@media screen and (min-width: 801px) {
+    .form-group-inlinee {
+        display: flex;
+        gap: 20px;
+    }
+
+        .form-group-inlinee .form-group {
+            flex: 1;
+        }
+}

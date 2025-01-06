@@ -1,0 +1,76 @@
+.g-head .btn-list .search .input input{width:85%;}
+/*重保搜索隐藏代码*/
+
+/*
+.g-head .btn-list .search{
+display:none;
+}
+.g-nav2 .btn-list .search {
+    display:none;
+}
+
+*/
+
+.inner_main .rem12 .zb_nr .yc p{    margin-bottom: .15rem;}
+.pb_sys_style1 .p_no_d,.pb_sys_style2 .p_no_d,.pb_sys_style3 .p_no_d,.pb_sys_style4 .p_no_d{border: 1px solid #5d14b0 !important;color: #fff;background-color: #5e13b0 !important;}
+.index-flash li h2 {
+    max-width: 13rem;}
+ 
+.index-events .wal{
+    padding-top: 0.1rem !important;
+    padding-bottom: .6rem;
+
+}
+.ztrkt{
+    width: 100%;
+}
+
+.ztrkt a{}
+    .ztrkt a img {
+        width: 33%;
+        padding: 4%;
+    }
+@media screen and (max-width: 800px){
+    .ztrkt a img {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+    .ztrkt {
+        width: 100%;
+        text-align: center;
+        display: inline-flex;
+    }
+
+}
+
+
+@media screen and (max-width: 800px){
+.index-research .wal a.p-more {
+    width: 2.0rem;
+    top: 1rem;position: inherit;
+    display: flex;
+    margin-right: 25px;
+ float: right;}
+.index-research .dots{
+border-bottom:0px;}
+
+}
+  .spp{
+      position:relative;}
+    .spp a>img{
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    width: 2rem;
+    z-index: 9;}
+
+.tpp{display:none;}
+
+@media screen and (max-width: 800px){
+.tpp{
+display:block !important;}
+.spp{
+display:none !important;}
+
+}
