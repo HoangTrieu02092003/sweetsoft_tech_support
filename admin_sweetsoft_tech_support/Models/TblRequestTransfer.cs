@@ -17,6 +17,8 @@ public partial class TblRequestTransfer
 
     public int? TransferredBy { get; set; }
 
+    public int? TransferredHandle { get; set; }
+
     public DateTime TransferredAt { get; set; }
 
     public string? Note { get; set; }
