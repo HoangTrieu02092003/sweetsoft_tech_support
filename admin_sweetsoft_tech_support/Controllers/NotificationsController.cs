@@ -125,7 +125,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             // Lọc thông báo của người dùng hiện tại
-            logs = allLogs.Where(log => log.User == currentUserId && log.Status == "0").ToList();
+            logs = allLogs.Where(log => log.User == currentUserId && log.isDelete == "0").ToList();
 
             // Ánh xạ UserId sang FullName
             foreach (var log in logs)
@@ -150,33 +150,33 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(logs); // Trả về các log đã được lọc và phân trang cho view
         }
 
-        // xóa thông báo
+        // Xóa thông báo (MyNotification)
         [HttpPost]
         public async Task<IActionResult> DeleteNotification(string id)
         {
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
             var logFiles = Directory.GetFiles(logDirectory, "*.log", SearchOption.AllDirectories);
-            bool isDeleted = false; // Biến để kiểm tra có thay đổi nào không
+            var isDeleted = false;
 
             // Duyệt qua tất cả các file log
             foreach (var file in logFiles)
             {
                 var fileLogs = await ReadLogFileForMyAsync(file); // Đọc các log từ file
 
-                // Duyệt qua tất cả các bản ghi và thay đổi status từ "0" thành "1" nếu trùng với id và userId
+                // Duyệt qua tất cả các bản ghi và thay đổi isDelete từ "0" thành "1" nếu trùng với isDelete và userId
                 foreach (var log in fileLogs)
-                {
+                {                    
                     // Kiểm tra nếu log trùng với id và userId, sau đó cập nhật status
-                    if (log.User == currentUserId && log.Id == id && log.Status == "0")
-                    {
-                        log.Status = "1";  // Chuyển status thành "1"
-                        isDeleted = true;  // Đánh dấu là có thay đổi
+                    if (log.User == currentUserId && log.Id == id && log.isDelete == "0")
+                    {                        
+                        log.isDelete = "1";
+                        isDeleted = true;
                     }
                 }
 
                 // Ghi lại lại file log với các dòng đã thay đổi status
-                var linesToWrite = fileLogs.Select(log => $"{log.Timestamp:dd/MM/yyyy HH:mm}, {log.Status}, {log.User}, {log.Id}, {log.Content}");
+                var linesToWrite = fileLogs.Select(log => $"{log.Timestamp:dd/MM/yyyy HH:mm}, {log.Status}, {log.User}, {log.Id}, {log.Title}, {log.isDelete}, {log.Content}");
                 await System.IO.File.WriteAllLinesAsync(file, linesToWrite);
             }
 
@@ -187,10 +187,49 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(Index)); // Nếu không có bản ghi nào bị thay đổi
+                return RedirectToAction(nameof(Index),controllerName:"ReportController"); // Nếu không có bản ghi nào bị thay đổi
             }
         }
 
+        // Đã xem thông báo (MyNotification)
+        [HttpPost]
+        public async Task<IActionResult> MarkAsRead(string id)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
+            var logFiles = Directory.GetFiles(logDirectory, "*.log", SearchOption.AllDirectories);
+            var isViewed = false;
+            // Duyệt qua tất cả các file log
+            foreach (var file in logFiles)
+            {
+                var fileLogs = await ReadLogFileForMyAsync(file); // Đọc các log từ file
+
+                // Duyệt qua tất cả các bản ghi và thay đổi status từ "0" thành "1" nếu trùng với status và userId
+                foreach (var log in fileLogs)
+                {
+                    // Kiểm tra nếu log trùng với id và userId, sau đó cập nhật status
+                    if (log.Id == id && log.Status == "0")
+                    {
+                        
+                        log.Status = "1";
+                        isViewed = true;
+                    }
+                }
+
+                // Ghi lại lại file log với các dòng đã thay đổi status
+                var linesToWrite = fileLogs.Select(log => $"{log.Timestamp:dd/MM/yyyy HH:mm}, {log.Status}, {log.User}, {log.Id}, {log.Title}, {log.isDelete}, {log.Content}");
+                await System.IO.File.WriteAllLinesAsync(file, linesToWrite);
+            }
+
+            // Nếu có thay đổi, chuyển hướng về MyNotifications, nếu không chuyển về Index
+            if (isViewed)
+            {
+                return RedirectToAction(nameof(MyNotifications)); // Nếu có thay đổi, về trang MyNotifications
+            }
+            return RedirectToAction(nameof(MyNotifications)); // Nếu không có bản ghi nào bị thay đổi
+        }
+
+       
         // Đọc log cho phân trang (Async)
         private async Task<List<NotificationEntry>> ReadLogsForPaginationAsync(int skip, int pageSize)
         {
@@ -454,14 +493,16 @@ namespace admin_sweetsoft_tech_support.Controllers
                 var user = await _context.TblUsers
                 .Where(u => u.UserId == int.Parse(parts[2]))
                 .FirstOrDefaultAsync();
-                if (parts.Length < 5) return null;
+                if (parts.Length < 7) return null;
                 return new NotificationEntry
                 {
                     Timestamp = DateTime.ParseExact(parts[0], "dd/MM/yyyy HH\\:mm", CultureInfo.InvariantCulture),
                     Status = parts[1],  // Gán giá trị đã chuyển đổi
                     User = user.FullName,
                     Id = parts[3],
-                    Content = parts[4]
+                    Title = parts[4],
+                    isDelete = parts[5],
+                    Content = parts[6]
                 };
             }
             catch
@@ -477,14 +518,16 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
 
                 var parts = line.Split(", ");
-                if (parts.Length < 5) return null;
+                if (parts.Length < 7) return null;
                 return new NotificationEntry
                 {
                     Timestamp = DateTime.ParseExact(parts[0], "dd/MM/yyyy HH\\:mm", CultureInfo.InvariantCulture),
                     Status = parts[1],  // Gán giá trị đã chuyển đổi
                     User = parts[2],
                     Id = parts[3],
-                    Content = parts[4]
+                    Title = parts[4],
+                    isDelete = parts[5],
+                    Content = parts[6]
                 };
             }
             catch

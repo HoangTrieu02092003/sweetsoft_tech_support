@@ -318,14 +318,17 @@ namespace admin_sweetsoft_tech_support.Controllers
             try
             {
                 var parts = line.Split(", ");
-                if (parts.Length < 4) return new ActivityLogEntry();
+                if (parts.Length < 7) return new ActivityLogEntry();
 
                 return new ActivityLogEntry
                 {
                     Timestamp = DateTime.ParseExact(parts[0], "dd/MM/yyyy HH\\:mm", CultureInfo.InvariantCulture),
-                    Title = parts[1],
-                    Action = parts[2],
-                    User = parts[3]
+                    Id = parts[1],
+                    Title = parts[2],
+                    Action = parts[3],
+                    User = parts[4],
+                    OldValue = parts[5],
+                    NewValue = parts[6],
                 };
             }
             catch

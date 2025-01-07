@@ -224,20 +224,20 @@ h1 {
 }
 
 h2, h3, h4, h5 {
-    font-weight: bold;
+    font-family: 'SourceSansPro-Bold';
 }
 
 h5 {
     font-size: .12rem;
 }
 
-textarea, input, select {
+textarea, input {
     background: transparent;
-    font-size: inherit;
+    font-size: 12px;
+    font-family: "SourceSansPro-Regular", "微软雅黑";
     color: #888;
     outline: none;
     border: 0;
-    white-space: nowrap;
 }
 
 em {
@@ -500,6 +500,7 @@ img {
             bottom: 0;
             background: url('../img/navA.png') center no-repeat;
             background-size: .31rem;
+
         }
 
 .g-nav {
@@ -522,7 +523,7 @@ img {
         line-height: .62rem;
         font-size: .22rem;
         color: #fff;
-        font-weight: bold;
+        font-family: 'SourceSansPro-Bold';
         padding-right: .2rem;
     }
 
@@ -1283,7 +1284,7 @@ body.navShow {
             content: "";
             display: block;
             position: absolute;
-            left: .8rem;
+            left: 0;
             top: 0;
             right: -1.06rem;
             background: url("../img/img1068.jpg") center no-repeat;
@@ -1306,7 +1307,7 @@ body.navShow {
             display: block;
             position: absolute;
             z-index: 1;
-            left: .8rem;
+            left: 0;
             right: -2.42rem;
             top: 0.5rem;
             bottom: 0;
@@ -1347,7 +1348,7 @@ body.navShow {
             line-height: .48rem;
             font-family: 'SourceSansPro-Bold';
             padding-left: .35rem;
-            background: url("../img/img28.png") right center no-repeat;
+            background: url("../image/img28.png") right center no-repeat;
             background-size: .28rem;
         }
 
@@ -1413,11 +1414,11 @@ body.navShow {
             }
 
                 .index-campus-life .img-list .arrow a.prev {
-                    background-image: url("../img/prev53-white.png");
+                    background-image: url("../image/prev53-white.png");
                 }
 
                 .index-campus-life .img-list .arrow a.next {
-                    background-image: url("../img/next53-white.png");
+                    background-image: url("../image/next53-white.png");
                 }
 
 .index-video {
@@ -1437,7 +1438,7 @@ body.navShow {
         right: 0;
         top: 0;
         bottom: 0;
-        background: url("../img/btn99.png") center no-repeat;
+        background: url("../image/btn99.png") center no-repeat;
         background-size: .99rem;
         cursor: pointer;
     }
@@ -1483,9 +1484,10 @@ body.navShow {
 /*inner1_start*/
 .rem12 {
     width: 12rem;
-    margin: 0 0 0 12%;
+    margin: 0 auto;
     position: relative;
 }
+
 .inner_main {
     padding-top: 1.8rem;
     margin-top: -1.8rem;
@@ -1531,7 +1533,7 @@ body.navShow {
     line-height: .24rem;
     color: #979797;
     text-indent: 28px;
-    background: url(../img/inner_dqwz.png) no-repeat left center;
+    background: url("../img/inner_dqwz.png") no-repeat left center;
     z-index: 13;
     position: absolute;
     top: -.47rem;
@@ -1547,7 +1549,7 @@ body.navShow {
     content: '';
     display: block;
     height: 1.4rem;
-    background: url(../img/dqwz_bg.png) no-repeat;
+    background: url("../img/dqwz_bg.png") no-repeat;
     position: absolute;
     top: -.69rem;
     left: -0.67rem;
@@ -1563,7 +1565,7 @@ body.navShow {
 
     .inner_main .rem12 .zb_nr .zc {
         width: 2.5rem;
-        margin-top: .1rem;
+        margin-top: .43rem;
     }
 
         .inner_main .rem12 .zb_nr .zc .listmore {
@@ -1661,15 +1663,11 @@ body.navShow {
 
 
 @media screen and (max-width: 800px) {
-    .inner_main {
+    .inner_main .rem12 {
         width: 100%;
         padding: 25px;
     }
-    .rem12 {
-        width: 100%;
-        margin: 0;
-        position: relative;
-    }
+
         .inner_main .rem12 .zb_nr .zc {
             width: 100%;
         }
@@ -1682,7 +1680,6 @@ body.navShow {
             display: block;
             width: 70px;
             height: 42px;
-            margin: 5px;
         }
 
         .inner_main .rem12 .zb_nr .zc {
@@ -1707,7 +1704,7 @@ body.navShow {
                 }
 
                 .inner_main .rem12 .zb_nr .zc ul li a {
-                    font-size: .2rem;
+                    font-size: .4rem;
                     line-height: .96rem;
                 }
 
@@ -2014,7 +2011,7 @@ body.navShow {
 
 @media screen and (max-width: 800px) {
     .inner_main .rem12 .zb_nr .zc {
-        width: 100%;
+        display: none;
     }
 
         .inner_main .rem12 .zb_nr .zc ul li ul {
@@ -2089,7 +2086,7 @@ body.navShow {
             width: 25%;
             display: block;
             position: relative;
-            background: url(../img/inner8_dian.jpg) no-repeat left center;
+            background: url(../image/inner8_dian.jpg) no-repeat left center;
             padding-left: 15px;
             margin-bottom: .2rem;
             margin-top: .2rem;
@@ -2838,7 +2835,7 @@ body.navShow {
 
         .ab_part1 ul li .nr_bt {
             margin: -.52rem .3rem 0 0;
-            background: url(../img/ab_li_nr_bg.png) no-repeat -7px top;
+            background: url(../image/ab_li_nr_bg.png) no-repeat -7px top;
             position: relative;
         }
 
@@ -2914,7 +2911,7 @@ body.navShow {
     }
 
         .ab_part1 ul li .nr_bt {
-            background: url(../img/ab_li_nr_bg.png) no-repeat -200px top;
+            background: url(../image/ab_li_nr_bg.png) no-repeat -200px top;
         }
 
     .inner_bn .lm_box {
@@ -3098,7 +3095,7 @@ body.navShow {
             }
 
         .pc-slide .view .arrow-left {
-            background: url(../img/ll2.png) no-repeat right center;
+            background: url(../image/ll2.png) no-repeat right center;
             position: absolute;
             left: 10px;
             top: 50%;
@@ -3110,7 +3107,7 @@ body.navShow {
         }
 
         .pc-slide .view .arrow-right {
-            background: url(../img/rr22.png) no-repeat right center;
+            background: url(../image/rr22.png) no-repeat right center;
             position: absolute;
             right: 10px;
             top: 50%;
@@ -3142,7 +3139,7 @@ body.navShow {
         }
         /* .pc-slide .preview .slide6 {width: 82px;} */
         .pc-slide .preview .arrow-left {
-            background: url(../img/lla.png) no-repeat left bottom;
+            background: url(../image/lla.png) no-repeat left bottom;
             position: absolute;
             left: 10px;
             bottom: 0.2rem;
@@ -3152,7 +3149,7 @@ body.navShow {
         }
 
         .pc-slide .preview .arrow-right {
-            background: url(../img/rra.png) no-repeat right bottom;
+            background: url(../image/rra.png) no-repeat right bottom;
             position: absolute;
             left: auto;
             right: 10px;
@@ -3537,7 +3534,7 @@ body.navShow {
 
 
 .Alumni_part2_big {
-    background: url(../img/ad_part45_bg.jpg) no-repeat top center;
+    background: url(../image/ad_part45_bg.jpg) no-repeat top center;
 }
 
     .Alumni_part2_big .pc-slide {
@@ -4465,7 +4462,7 @@ body.navShow {
         }
 
         .organizaBox .tabjgBox .jgBoxTitle:nth-child(1) p {
-            background: url(../img/szIc.png) no-repeat left center;
+            background: url(../image/szIc.png) no-repeat left center;
             padding-left: 0.3rem;
             background-size: contain;
         }
@@ -4496,7 +4493,7 @@ body.navShow {
             }
 
             .organizaBox .tabjgBox .jgBoxTitle.cur:nth-child(1) p {
-                background: url(../img/szIcOn.png) no-repeat left center #791cb5;
+                background: url(../image/szIcOn.png) no-repeat left center #791cb5;
                 background-size: contain;
             }
 
@@ -4571,13 +4568,13 @@ body.navShow {
                         color: #791cb5;
                         font-weight: normal;
                         line-height: 0.45rem;
-                        background: url(../img/lj.png) no-repeat right 0.1rem;
+                        background: url(../image/lj.png) no-repeat right 0.1rem;
                         padding-right: 0.15rem;
                         display: inline-block;
                     }
 
                         .organizaBox .orgaCon dl .ddBox dd h3 a:hover {
-                            background: url(../img/lj01.png) no-repeat right 0.1rem;
+                            background: url(../image/lj01.png) no-repeat right 0.1rem;
                             color: #000000;
                         }
 
@@ -4625,12 +4622,12 @@ body.navShow {
             }
 
                 .organizaBox .orgaCon dl .ddBox dd h4 a.link {
-                    background: url(../img/link03.png) no-repeat right 0.2rem;
+                    background: url(../image/link03.png) no-repeat right 0.2rem;
                     padding-right: 0.25rem;
                 }
 
                     .organizaBox .orgaCon dl .ddBox dd h4 a.link:hover {
-                        background: url(../img/lj.png) no-repeat right 0.2rem;
+                        background: url(../image/lj.png) no-repeat right 0.2rem;
                         color: #791CB5;
                     }
 
@@ -4638,24 +4635,24 @@ body.navShow {
         }
 
         .organizaBox .orgaCon dl .ddBox dd .p1 a i {
-            background: url(../img/lj01.png) no-repeat right 0.1rem;
+            background: url(../image/lj01.png) no-repeat right 0.1rem;
             padding-right: 0.15rem;
         }
 
         .organizaBox .orgaCon dl .ddBox dd .p1 a:hover i {
-            background: url(../img/lj.png) no-repeat right 0.1rem;
+            background: url(../image/lj.png) no-repeat right 0.1rem;
             color: #791cb5;
         }
 
         .organizaBox .orgaCon dl .ddBox dd .p2 a i {
             color: #791cb5;
             display: inline-block;
-            background: url(../img/lj.png) no-repeat right 0.1rem;
+            background: url(../image/lj.png) no-repeat right 0.1rem;
             padding-right: 0.15rem;
         }
 
         .organizaBox .orgaCon dl .ddBox dd .p2 a:hover i {
-            background: url(../img/lj01.png) no-repeat right 0.1rem;
+            background: url(../image/lj01.png) no-repeat right 0.1rem;
             color: #000000;
         }
 
@@ -4693,12 +4690,12 @@ body.navShow {
 
 @media(max-width: 800px) {
     .organizaBox .orgaCon dl .ddBox dd h4 a.link {
-        background: url(../img/link03.png) no-repeat right 0.3rem;
+        background: url(../image/link03.png) no-repeat right 0.3rem;
         padding-right: 0.25rem;
     }
 
         .organizaBox .orgaCon dl .ddBox dd h4 a.link:hover {
-            background: url(../img/lj.png) no-repeat right 0.3rem;
+            background: url(../image/lj.png) no-repeat right 0.3rem;
             color: #791CB5;
         }
 
@@ -4971,7 +4968,7 @@ body.navShow {
         width: 100%;
         height: 100%;
         position: absolute;
-        background: url(../img/inner_bn_zz.png) no-repeat center bottom;
+        background: url(../image/inner_bn_zz.png) no-repeat center bottom;
         background-size: 100%;
         bottom: 0;
         z-index: 10;
@@ -5147,7 +5144,7 @@ b, p, div, span {
         }
 
         .ad_part5::before {
-            background: url(../img/z_sj_bg1.jpg) no-repeat;
+            background: url(../image/z_sj_bg1.jpg) no-repeat;
             width: 120%;
             position: absolute;
             content: "";
@@ -5366,7 +5363,7 @@ b, p, div, span {
         width: 120%;
         padding: 0 10%;
         margin-left: -10%;
-        background: url(../img/z_sj_bg1.jpg) no-repeat;
+        background: url(../image/z_sj_bg1.jpg) no-repeat;
         background-size: 100%;
     }
 
@@ -5535,7 +5532,7 @@ b, p, div, span {
     .organizaBox .swiper-slide .sj_szmd {
         display: block;
         padding: 55px 0 0;
-        background: url(../img/sj_szt_bg.png) no-repeat left top;
+        background: url(../image/sj_szt_bg.png) no-repeat left top;
         background-size: 55px;
         margin-top: .58rem;
     }
@@ -5719,13 +5716,13 @@ b, p, div, span {
                         }
 
                         .yxszBox .yxszCon .setL .zsul li a[href] {
-                            background: url(../img/lj.png) no-repeat top right;
+                            background: url(../image/lj.png) no-repeat top right;
                             padding-right: 20px;
                         }
 
                             .yxszBox .yxszCon .setL .zsul li a[href]:hover {
                                 color: #9d37ac;
-                                background: url(../img/lj.png) no-repeat top right;
+                                background: url(../image/lj.png) no-repeat top right;
                             }
 
             .yxszBox .yxszCon .setL .hsul li {
@@ -5746,13 +5743,13 @@ b, p, div, span {
                     }
 
                     .yxszBox .yxszCon .setL .hsul li a[href] {
-                        background: url(../img/lj01.png) no-repeat top right;
+                        background: url(../image/lj01.png) no-repeat top right;
                         padding-right: 20px;
                     }
 
                         .yxszBox .yxszCon .setL .hsul li a[href]:hover {
                             color: #9d37ac;
-                            background: url(../img/lj.png) no-repeat top right;
+                            background: url(../image/lj.png) no-repeat top right;
                         }
 
             .yxszBox .yxszCon .setL .zsh4 {
@@ -5775,11 +5772,11 @@ b, p, div, span {
 
             .yxszBox .yxszCon .setL h4 a[href]:hover {
                 color: #9d37ac;
-                background: url(../img/lj.png) no-repeat top right;
+                background: url(../image/lj.png) no-repeat top right;
             }
 
             .yxszBox .yxszCon .setL .zsh4 a[href] {
-                background: url(../img/lj.png) no-repeat top right;
+                background: url(../image/lj.png) no-repeat top right;
                 padding-right: 20px;
             }
 
@@ -5788,13 +5785,13 @@ b, p, div, span {
                 }
 
             .yxszBox .yxszCon .setL .xth4 a[href] {
-                background: url(../img/lj.png) no-repeat top right;
+                background: url(../image/lj.png) no-repeat top right;
                 padding-right: 25px;
             }
 
         .yxszBox .yxszCon .setR .xth4 a[href]:hover {
             color: #9d37ac;
-            background: url(../img/lj.png) no-repeat top right;
+            background: url(../image/lj.png) no-repeat top right;
         }
 
         .yxszBox .yxszCon .setR {
@@ -5861,7 +5858,7 @@ b, p, div, span {
                         }
 
                         .yxszBox .yxszCon .setR .zsul li a[href] {
-                            background: url(../img/lj.png) no-repeat top right;
+                            background: url(../image/lj.png) no-repeat top right;
                             padding-right: 20px;
                         }
 
@@ -5885,13 +5882,13 @@ b, p, div, span {
                     }
 
                     .yxszBox .yxszCon .setR .hsul li a[href] {
-                        background: url(../img/lj.png) no-repeat top right;
+                        background: url(../image/lj.png) no-repeat top right;
                         padding-right: 20px;
                     }
 
                         .yxszBox .yxszCon .setR .hsul li a[href]:hover {
                             color: #9d37ac;
-                            background: url(../img/lj.png) no-repeat top right;
+                            background: url(../image/lj.png) no-repeat top right;
                         }
 
             .yxszBox .yxszCon .setR .zsh4 {
@@ -5914,27 +5911,27 @@ b, p, div, span {
 
             .yxszBox .yxszCon .setR h4 a[href]:hover {
                 color: #9d37ac;
-                background: url(../img/lj.png) no-repeat top right;
+                background: url(../image/lj.png) no-repeat top right;
             }
 
             .yxszBox .yxszCon .setR .zsh4 a[href] {
-                background: url(../img/lj.png) no-repeat top right;
+                background: url(../image/lj.png) no-repeat top right;
                 padding-right: 20px;
             }
 
                 .yxszBox .yxszCon .setR .zsh4 a[href]:hover {
                     color: #9d37ac;
-                    background: url(../img/lj.png) no-repeat top right;
+                    background: url(../image/lj.png) no-repeat top right;
                 }
 
             .yxszBox .yxszCon .setR .xth4 a[href] {
-                background: url(../img/lj.png) no-repeat top right;
+                background: url(../image/lj.png) no-repeat top right;
                 padding-right: 25px;
             }
 
                 .yxszBox .yxszCon .setR .xth4 a[href]:hover {
                     color: #9d37ac;
-                    background: url(../img/lj.png) no-repeat top right;
+                    background: url(../image/lj.png) no-repeat top right;
                 }
 
 
@@ -6048,13 +6045,13 @@ b, p, div, span {
                         }
 
                         .yxszConMobile .MCon .zsul li a[href] {
-                            background: url(../img/lj.png) no-repeat top right;
+                            background: url(../image/lj.png) no-repeat top right;
                             padding-right: 0.35rem;
                         }
 
                             .yxszConMobile .MCon .zsul li a[href]:hover {
                                 color: #9d37ac;
-                                background: url(../img/lj.png) no-repeat top right;
+                                background: url(../image/lj.png) no-repeat top right;
                             }
 
             .yxszConMobile .MCon .hsul li {
@@ -6073,13 +6070,13 @@ b, p, div, span {
                     }
 
                     .yxszConMobile .MCon .hsul li a[href] {
-                        background: url(../img/lj01.png) no-repeat top right;
+                        background: url(../image/lj01.png) no-repeat top right;
                         padding-right: 0.35rem;
                     }
 
                         .yxszConMobile .MCon .hsul li a[href]:hover {
                             color: #9d37ac;
-                            background: url(../img/lj.png) no-repeat top right;
+                            background: url(../image/lj.png) no-repeat top right;
                         }
 
             .yxszConMobile .MCon h4 {
@@ -6100,20 +6097,20 @@ b, p, div, span {
 
             .yxszConMobile .MCon h4 a[href]:hover {
                 color: #9d37ac;
-                background: url(../img/lj.png) no-repeat top right;
+                background: url(../image/lj.png) no-repeat top right;
             }
 
             .yxszConMobile .MCon .zsh4 a[href] {
-                background: url(../img/lj.png) no-repeat top right;
+                background: url(../image/lj.png) no-repeat top right;
                 padding-right: 0.35rem;
             }
 
                 .yxszConMobile .MCon .zsh4 a[href]:hover {
-                    color: #9d37ac;
+                    color: ##9d37ac;
                 }
 
             .yxszConMobile .MCon .xth4 a[href] {
-                background: url(../img/link03.png) no-repeat top right;
+                background: url(../image/link03.png) no-repeat top right;
                 padding-right: 0.35rem;
             }
 }

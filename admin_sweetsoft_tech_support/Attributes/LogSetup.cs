@@ -51,6 +51,7 @@ namespace admin_sweetsoft_tech_support.Attributes
             LogManager.Configuration = config;
             LogManager.ReconfigExistingLoggers();
         }
+
         public static void CreateLogNotificationDirectories()
         {
             string logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
@@ -80,6 +81,8 @@ namespace admin_sweetsoft_tech_support.Attributes
                          "${event-properties:item=Status}, " +
                          "${event-properties:item=Reciver}, " +
                          "${event-properties:item=Id}, " +
+                         "${event-properties:item=Title}, " +
+                         "${event-properties:item=isDelete}, " +
                          "${message}",
                 CreateDirs = true,
                 KeepFileOpen = false
@@ -94,6 +97,7 @@ namespace admin_sweetsoft_tech_support.Attributes
             LogManager.Configuration = config;
             LogManager.ReconfigExistingLoggers();
         }
+
         public static void CreateLogActivityDirectories()
         {
             string logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Activitys");
@@ -120,9 +124,12 @@ namespace admin_sweetsoft_tech_support.Attributes
             {
                 FileName = Path.Combine(yearMonthDayDirectory, "${date:format=yyyy-MM-dd-HH}.log"),
                 Layout = "${date:format=dd/MM/yyyy HH\\:mm}, " +
+                         "${event-properties:item=Id}, " +
                          "${event-properties:item=Title}, " +
                          "${event-properties:item=Action}, " +
-                         "${event-properties:item=User}, ",
+                         "${event-properties:item=User}, " +
+                         "${event-properties:item=OldValue}, " +
+                         "${event-properties:item=NewValue}, ",
                 CreateDirs = true,
                 KeepFileOpen = false
             };

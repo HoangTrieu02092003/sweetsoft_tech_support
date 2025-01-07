@@ -16,8 +16,7 @@
 }
 
 @media (max-width: 768px) {
-    .btn-outline-dark, .btn-warning
-    {
+    .btn-outline-dark, .btn-warning {
         font-size: 0.6rem;
         min-width: 40%;
     }
@@ -25,5 +24,4 @@
     .form-check-label {
         font-size: 0.9rem;
     }
-
 }

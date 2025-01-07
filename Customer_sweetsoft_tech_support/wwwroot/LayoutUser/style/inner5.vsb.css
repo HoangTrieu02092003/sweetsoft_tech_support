@@ -41,8 +41,5 @@ display:none;
     background-image: -ms-linear-gradient(0deg, rgba(255,255,255,.5), #fff);
     background-image: -o-linear-gradient(0deg, rgba(255,255,255,.5), #fff);
     background-image: linear-gradient(0deg, rgba(255,255,255,.5), #fff);}
-.inner_main .rem12 .zb_nr .con .section h1 {
-    line-height: .38rem;
-    margin-top: -.2rem;
-}
+.inner_main .rem12 .zb_nr .con .section h1{    line-height: .38rem;}
 .inner_main .rem12 .yc .con table td.tdborder,.current .box .p2{    word-break: break-word !important;}

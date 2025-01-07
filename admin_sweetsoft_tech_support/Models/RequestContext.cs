@@ -41,17 +41,17 @@ public partial class RequestContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=LAPTOP-EAQCI85G;Initial Catalog=Request;Integrated Security=True;Encrypt=True;Trust Server Certificate=True;");
+        => optionsBuilder.UseSqlServer("Data Source=MSI;Initial Catalog=Request;Integrated Security=True;Trust Server Certificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TblCustomer>(entity =>
         {
-            entity.HasKey(e => e.CustomerId).HasName("PK__TblCusto__CD65CB85FC3CDB4E");
+            entity.HasKey(e => e.CustomerId).HasName("PK__TblCusto__CD65CB854C219404");
 
-            entity.HasIndex(e => e.Email, "UQ__TblCusto__AB6E6164F1C8E114").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__TblCusto__AB6E616429298E3D").IsUnique();
 
-            entity.HasIndex(e => e.Username, "UQ__TblCusto__F3DBC572657ECC09").IsUnique();
+            entity.HasIndex(e => e.Username, "UQ__TblCusto__F3DBC57225FBBA26").IsUnique();
 
             entity.Property(e => e.CustomerId).HasColumnName("customer_id");
             entity.Property(e => e.Company)
@@ -118,7 +118,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblDepartment>(entity =>
         {
-            entity.HasKey(e => e.DepartmentId).HasName("PK__TblDepar__C22324222D80DB27");
+            entity.HasKey(e => e.DepartmentId).HasName("PK__TblDepar__C2232422A8BE3B27");
 
             entity.Property(e => e.DepartmentId).HasColumnName("department_id");
             entity.Property(e => e.DepartmentName)
@@ -132,7 +132,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblFaq>(entity =>
         {
-            entity.HasKey(e => e.FaqId).HasName("PK__TblFaqs__66734BAF032A4195");
+            entity.HasKey(e => e.FaqId).HasName("PK__TblFaqs__66734BAF2A28811D");
 
             entity.Property(e => e.FaqId).HasColumnName("faq_id");
             entity.Property(e => e.Answer).HasColumnName("answer");
@@ -155,7 +155,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblPermission>(entity =>
         {
-            entity.HasKey(e => e.PermissionId).HasName("PK__TblPermi__E5331AFA9718BECC");
+            entity.HasKey(e => e.PermissionId).HasName("PK__TblPermi__E5331AFA6EA2EF4E");
 
             entity.Property(e => e.PermissionId).HasColumnName("permission_id");
             entity.Property(e => e.Description).HasColumnName("description");
@@ -166,7 +166,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblRequestTransfer>(entity =>
         {
-            entity.HasKey(e => e.TransferId).HasName("PK__TblReque__78E6FD337084706A");
+            entity.HasKey(e => e.TransferId).HasName("PK__TblReque__78E6FD33D1C23874");
 
             entity.ToTable("TblRequest_Transfers");
 
@@ -206,7 +206,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblRequestsProcessing>(entity =>
         {
-            entity.HasKey(e => e.ProcessId).HasName("PK__TblReque__9446C3E19128EAFC");
+            entity.HasKey(e => e.ProcessId).HasName("PK__TblReque__9446C3E1FE7CDBA8");
 
             entity.ToTable("TblRequests_Processing");
 
@@ -232,7 +232,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblRole>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__TblRoles__760965CC87F53EA7");
+            entity.HasKey(e => e.RoleId).HasName("PK__TblRoles__760965CC721226D6");
 
             entity.Property(e => e.RoleId).HasColumnName("role_id");
             entity.Property(e => e.RoleName)
@@ -242,7 +242,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblRolePermission>(entity =>
         {
-            entity.HasKey(e => e.RolePermissionId).HasName("PK__TblRole___B1E85A1042FC522C");
+            entity.HasKey(e => e.RolePermissionId).HasName("PK__TblRole___B1E85A10C43138C0");
 
             entity.ToTable("TblRole_Permissions");
 
@@ -261,7 +261,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblSession>(entity =>
         {
-            entity.HasKey(e => e.SessionId).HasName("PK__TblSessi__69B13FDCD446409F");
+            entity.HasKey(e => e.SessionId).HasName("PK__TblSessi__69B13FDCCC91EF50");
 
             entity.Property(e => e.SessionId).HasColumnName("session_id");
             entity.Property(e => e.CreatedAt)
@@ -284,7 +284,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblSupportRequest>(entity =>
         {
-            entity.HasKey(e => e.RequestId).HasName("PK__TblSuppo__18D3B90FBB855E1C");
+            entity.HasKey(e => e.RequestId).HasName("PK__TblSuppo__18D3B90F8EED0736");
 
             entity.ToTable("TblSupport_Requests");
 
@@ -320,11 +320,11 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblUser>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__TblUsers__B9BE370F0CDCE1DE");
+            entity.HasKey(e => e.UserId).HasName("PK__TblUsers__B9BE370F4F805DAB");
 
-            entity.HasIndex(e => e.Email, "UQ__TblUsers__AB6E6164F2DF3A28").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__TblUsers__AB6E6164032C69DE").IsUnique();
 
-            entity.HasIndex(e => e.Username, "UQ__TblUsers__F3DBC572E358C267").IsUnique();
+            entity.HasIndex(e => e.Username, "UQ__TblUsers__F3DBC5726E512D9F").IsUnique();
 
             entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.CreatedAt)
@@ -399,7 +399,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblUserPermission>(entity =>
         {
-            entity.HasKey(e => e.UserPermissionId).HasName("PK__TblUser___D98F4819537FAE61");
+            entity.HasKey(e => e.UserPermissionId).HasName("PK__TblUser___D98F481923977216");
 
             entity.ToTable("TblUser_Permissions");
 

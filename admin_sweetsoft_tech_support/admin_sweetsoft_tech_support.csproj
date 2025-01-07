@@ -54,7 +54,6 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Notifications\2025\01\04\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
