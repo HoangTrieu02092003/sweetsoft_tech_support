@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "ContainingType": "admin_sweetsoft_tech_support.Controllers.LogController",
+    "Method": "WriteLog",
+    "RelativePath": "api/Log/write-log",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "admin_sweetsoft_tech_support.Models.NotificationEntry",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

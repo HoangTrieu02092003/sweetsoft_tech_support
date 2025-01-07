@@ -1,40 +1,93 @@
-﻿
-    document.addEventListener("DOMContentLoaded", function () {
+﻿document.addEventListener("DOMContentLoaded", function () {
     const chatOverlay = document.getElementById("chatOverlay");
     const closeChatButton = document.getElementById("closeChat");
     const chatBody = document.getElementById("chatBody");
     const chatTitle = document.getElementById("chatTitle");
     const requestIdInput = document.getElementById("requestIdInput");
-        // Xử lý mở khung chat
-        document.querySelectorAll(".open-chat").forEach(button => {
-        button.addEventListener("click", function () {
+
+    // Xử lý mở chat box
+    document.querySelectorAll(".open-chat").forEach(button => {
+        button.addEventListener("click", function (e) {
+            e.stopPropagation();
             const requestId = this.getAttribute("data-request-id");
             const title = this.getAttribute("data-title");
 
-            // Cập nhật tiêu đề khung chat và ID yêu cầu
             chatTitle.textContent = `${title}`;
             requestIdInput.value = requestId;
 
-            // Xóa nội dung chat cũ và tải nội dung mới
             chatBody.innerHTML = "<p>Đang tải...</p>";
-            fetch(`/TblRequestsProcessings/GetFeedbacks?requestId=${requestId}`)
-                .then(response => response.text())
-                .then(html => {
-                    chatBody.innerHTML = html;
-                })
-                .catch(err => {
-                    chatBody.innerHTML = "<p>Lỗi khi tải phản hồi!</p>";
-                });
+            loadChatMessages(requestId);
 
-            // Hiển thị khung chat
             chatOverlay.classList.remove("hidden");
-            setTimeout(() => chatOverlay.classList.add("visible"), 10); // Thêm hiệu ứng trượt
+            setTimeout(() => chatOverlay.classList.add("visible"), 10);
         });
-        });
+    });
 
-    // Xử lý đóng khung chat
+    // Hàm tải tin nhắn chat
+    function loadChatMessages(requestId) {
+        fetch(`/TblRequestsProcessings/GetFeedbacks?requestId=${requestId}`)
+            .then(response => response.text())
+            .then(html => {
+                chatBody.innerHTML = html;
+                scrollToBottom();
+            })
+            .catch(err => {
+                chatBody.innerHTML = "<p>Lỗi khi tải phản hồi!</p>";
+            });
+    }
+
+    // Hàm cuộn xuống cuối chat box
+    function scrollToBottom() {
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    // Xử lý đóng chat box
     closeChatButton.addEventListener("click", function () {
         chatOverlay.classList.remove("visible");
-            setTimeout(() => chatOverlay.classList.add("hidden"), 300); // Chờ hiệu ứng chạy xong
+        setTimeout(() => chatOverlay.classList.add("hidden"), 300);
+    });
+
+    // Xử lý form submit
+    const chatForm = document.querySelector(".chat-form");
+    const messageInput = document.getElementById("messageInput");
+
+    chatForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(chatForm);
+        const requestId = requestIdInput.value;
+
+        fetch(chatForm.action, {
+            method: "POST",
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) throw new Error("Lỗi khi gửi tin nhắn");
+                return response.text();
+            })
+            .then(html => {
+                // Cập nhật nội dung chat và cuộn xuống
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');  // Chuyển chuỗi HTML thành đối tượng DOM
+                const chatContent = doc.querySelector('.chatBody'); // Tìm phần tử với class "chat-content"
+                chatBody.innerHTML = chatContent ? chatContent.innerHTML : ""; 
+                loadChatMessages(requestId);
+                messageInput.value = "";
+                messageInput.style.height = "24px";
+                scrollToBottom();
+
+
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                chatBody.innerHTML += "<p>Lỗi khi gửi tin nhắn!</p>";
+            });
+    });
+
+    // Xử lý auto-resize cho textarea
+    messageInput.addEventListener("input", function () {
+        this.style.height = "24px";
+        const newHeight = Math.min(this.scrollHeight, 100);
+        this.style.height = newHeight + "px";
     });
 });
