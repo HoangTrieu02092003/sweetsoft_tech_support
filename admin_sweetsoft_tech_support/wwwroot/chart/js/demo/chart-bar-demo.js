@@ -72,11 +72,10 @@ async function createChart(startDate, endDate) {
     myBarChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Chưa xủ lý', 'Đang xử lý', 'Đã xử lý', 'Không xử lý được'], // Trục X
+            labels: ['Đang xử lý', 'Đã xử lý', 'Không xử lý được'], // Trục X
             datasets: [{
                 label: "Number of Requests",
                 backgroundColor: [
-                    "rgba(255, 99, 132, 0.5)",   // Pending
                     "rgba(255, 159, 64, 0.5)",   // Processing
                     "rgba(121, 28, 181, 0.5)",   // Completed
                     "rgba(75, 192, 192, 0.5)"    // Cannot be Resolved
@@ -91,7 +90,6 @@ async function createChart(startDate, endDate) {
                     statusCounts[1], // Pending
                     statusCounts[2], // Processing
                     statusCounts[3], // Completed
-                    statusCounts[4]  // Cannot be Resolved
                 ],
                 borderWidth: 1
             }]

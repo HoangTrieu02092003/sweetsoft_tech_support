@@ -73,7 +73,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(reportData);
         }
 
-<<<<<<< HEAD
         public async Task<IActionResult> ShowRequestDetails(int customerId)
         {
             // Lấy tất cả các yêu cầu của khách hàng theo CustomerId
@@ -96,8 +95,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Trả về view với danh sách yêu cầu chi tiết
             return View(requests);
         }
-=======
->>>>>>> fa464a014619a2177d227f89bddd56d069192394
 
         [HttpGet("api/requests/monthly")]
         public async Task<IActionResult> GetMonthlyRequestSummary(DateTime? startDate, DateTime? endDate)
@@ -319,9 +316,5 @@ namespace admin_sweetsoft_tech_support.Controllers
             var excelData = package.GetAsByteArray();
             return File(excelData, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> fa464a014619a2177d227f89bddd56d069192394
     }
 }
