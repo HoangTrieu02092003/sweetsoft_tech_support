@@ -40,7 +40,6 @@ async function fetchData(startDate, endDate) {
 let myBarChart; // Khai báo biến toàn cục để lưu biểu đồ hiện tại
 
 async function createChart(startDate, endDate) {
-    // Gọi fetchData với startDate và endDate
     const data = await fetchData(startDate, endDate);
 
     if (!data || !data.requests) {
@@ -49,7 +48,8 @@ async function createChart(startDate, endDate) {
     }
 
     // Tạo một mảng đếm theo trạng thái và khởi tạo với 0
-    const statusCounts = { 1: 0, 2: 0, 3: 0, 4: 0 };
+
+    const statusCounts = { 0: 0, 1: 0, 2: 0 };
 
     // Gán giá trị từ API trả về
     data.requests.forEach(request => {
@@ -65,7 +65,10 @@ async function createChart(startDate, endDate) {
         myBarChart.destroy();
     }
 
-    // Tạo biểu đồ mới
+    // Tính giá trị lớn nhất của dữ liệu và thêm khoảng đệm
+    const maxValue = Math.max(...Object.values(statusCounts));
+    const suggestedMax = maxValue + Math.ceil(maxValue * 0.1); // Thêm 10% khoảng trống
+
     myBarChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -80,7 +83,7 @@ async function createChart(startDate, endDate) {
                 ],
                 borderColor: [
                     "rgba(255, 99, 132, 1)",
-                    "rgba(255, 159, 64, 1)",
+ 
                     "rgba(121, 28, 181, 1)",
                     "rgba(75, 192, 192, 1)"
                 ],
@@ -96,29 +99,32 @@ async function createChart(startDate, endDate) {
         options: {
             maintainAspectRatio: false,
             scales: {
-                yAxes: [{
+                y: {
+                    beginAtZero: true,
+                    suggestedMax: suggestedMax, // Tăng giới hạn trục y
                     ticks: {
-                        beginAtZero: true,
                         stepSize: 2
                     }
-                }]
+                }
             },
-            legend: { display: false },
-            hover: {
-                mode: 'nearest', // Bật hover (có thể là 'index' hoặc 'nearest')
-                intersect: true  // Chỉ hiển thị hover khi trỏ trực tiếp vào điểm dữ liệu
-            },
-            tooltips: {
-                enabled: true,  // Bật tooltips
-                mode: 'index',  // Hiển thị tooltip cho tất cả dataset tại vị trí x
-                intersect: false, // Cho phép hiển thị tooltip ngay cả khi không hover trực tiếp vào cột
-                callbacks: {
-                    label: function (tooltipItem, data) {
-                        return `${data.datasets[tooltipItem.datasetIndex].label}: ${tooltipItem.yLabel}`;
+            plugins: {
+                legend: {
+                    display: false // Tắt hiển thị chú thích
+                },
+                tooltip: {
+                    enabled: false // Tắt tooltip
+                },
+                datalabels: {
+                    anchor: 'end', // Vị trí hiển thị
+                    align: 'end', // Căn chỉnh
+                    formatter: (value) => value, // Hiển thị giá trị
+                    font: {
+                        weight: 'bold' // Kiểu chữ
                     }
                 }
             }
-        }
+        },
+        plugins: [ChartDataLabels] // Bật plugin ChartDataLabels
     });
 }
 
