@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "z2gfL0+KVnNVJtAS+5v7mihDuaZfGjnZWQLHor4C5fs=",
+  "Hash": "WLm2D9fwjvFWADSHH/WyG+w2EPg61/uBwtvvR56LV9U=",
   "Source": "Customer_sweetsoft_tech_support",
   "BasePath": "_content/Customer_sweetsoft_tech_support",
   "Mode": "Default",
@@ -756,6 +756,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\logo.png"
+    },
+    {
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\logo-removebg.png",
+      "SourceId": "Customer_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/Customer_sweetsoft_tech_support",
+      "RelativePath": "LayoutUser/img/logo-removebg.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\logo-removebg.png"
     },
     {
       "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\map.jpg",
