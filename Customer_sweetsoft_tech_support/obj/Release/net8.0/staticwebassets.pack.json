@@ -421,10 +421,6 @@
       "PackagePath": "staticwebassets\\css\\customer.css"
     },
     {
-      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\css\\request.css",
-      "PackagePath": "staticwebassets\\css\\request.css"
-    },
-    {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

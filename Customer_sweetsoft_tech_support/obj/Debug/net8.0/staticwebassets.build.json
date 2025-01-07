@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WLm2D9fwjvFWADSHH/WyG+w2EPg61/uBwtvvR56LV9U=",
+  "Hash": "BVvgVsOseudfN2xGWz+zjE5bhKhN0EV5BIpVLB7ftss=",
   "Source": "Customer_sweetsoft_tech_support",
   "BasePath": "_content/Customer_sweetsoft_tech_support",
   "Mode": "Default",
@@ -91,25 +91,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\chatbox.css"
-    },
-    {
-      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\css\\request.css",
-      "SourceId": "Customer_sweetsoft_tech_support",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
-      "BasePath": "_content/Customer_sweetsoft_tech_support",
-      "RelativePath": "css/request.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\request.css"
     },
     {
       "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\css\\site.css",
