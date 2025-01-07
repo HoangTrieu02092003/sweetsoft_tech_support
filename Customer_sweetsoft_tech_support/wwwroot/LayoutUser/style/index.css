@@ -1636,7 +1636,7 @@ body.navShow {
 
     .inner_main .rem12 .zb_nr .yc {
         width: 9rem;
-        margin-top: .5rem;
+        margin-top: .3rem;
     }
 
         .inner_main .rem12 .zb_nr .yc p {
@@ -1715,13 +1715,19 @@ body.navShow {
             left: 2px;
         }
 
+    .inner_main .rem1212::before {
+        margin-top: .4rem;
+    }
+
         .inner_main .rem12 .zb_nr .yc p {
             font-size: .36rem;
             line-height: .6rem;
             margin-bottom: .7rem;
         }
 
-
+    .inner_main .rem12 .zb_nr .yccc .container p {
+        line-height: .25rem;
+    }
 
 
         .inner_main .rem12 .zb_nr .zc .listmore .close {
@@ -2015,6 +2021,13 @@ body.navShow {
 @media screen and (max-width: 800px) {
     .inner_main .rem12 .zb_nr .zc {
         width: 100%;
+        /*hoainamedit*/
+        margin-top: .3rem;
+    }
+
+    .inner_main .rem12 .zb_nr .zccc {
+        margin-top: .8rem;
+        margin-bottom: .2rem;
     }
 
         .inner_main .rem12 .zb_nr .zc ul li ul {

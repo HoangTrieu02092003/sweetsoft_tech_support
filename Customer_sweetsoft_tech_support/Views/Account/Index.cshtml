@@ -78,21 +78,58 @@
         <img src="~/layoutuser/img/inner2.jpg" />
     </div>
     <div class="inner_main">
-        <div class="rem12">
-            <div class="dqwz">
+        <div class="rem12 rem1212">
+            <div class="dqwz dqwzz">
                 <a href="@Url.Action("Index", "Home")">Trang Chủ</a>
                 /
                 <a href="@Url.Action("Index", "Account")">Tài Khoản</a>
             </div>
 
             <div class="zb_nr">
-                <div class="zc fl">
+                <div class="zc zccc fl">
+                    <div class="listmore" id="leftlistmore" style="border-bottom: 1px solid rgb(221, 221, 221); margin-bottom: 0px;">
+                        <i class="icon-dot-3" style="display: block;"></i>
+                        <i class="close" style="display: none;"></i>
+                    </div>
                     <ul>
                         <li class="on">
                             <a href="javascript:void(0)">Tài Khoản</a>
                         </li>
+                        <li>
+                            <a href="javascript:void(0)">Đổi Mật Khẩu</a>
+                        </li>
                     </ul>
                 </div>
+                <script>
+                        var inner_dh_kg = 0;
+                    $(".inner_main .rem12 .zb_nr .zc .listmore i").click(function () {
+                        if (inner_dh_kg == 0) {
+                            $(".inner_main .rem12 .zb_nr .zc ul")[0].style.display = "block";
+                            $(".inner_main .rem12 .zb_nr .zc .listmore")[0].style.borderBottom = '0';
+                            $(".inner_main .rem12 .zb_nr .zc .listmore")[0].style.marginBottom = "-2px";
+                            $(".inner_main .rem12 .zb_nr .zc .listmore .close")[0].style.display = "block";
+                            $(".inner_main .rem12 .zb_nr .zc .listmore .icon-dot-3")[0].style.display = "none";
+                            inner_dh_kg = 1;
+                        } else {
+                            $(".inner_main .rem12 .zb_nr .zc ul")[0].style.display = "none";
+                            $(".inner_main .rem12 .zb_nr .zc .listmore")[0].style.borderBottom = '1px solid #ddd';
+                            $(".inner_main .rem12 .zb_nr .zc .listmore")[0].style.marginBottom = "0";
+                            $(".inner_main .rem12 .zb_nr .zc .listmore .close")[0].style.display = "none";
+                            $(".inner_main .rem12 .zb_nr .zc .listmore .icon-dot-3")[0].style.display = "block";
+                            inner_dh_kg = 0;
+                        }
+
+                    })
+                </script>
+
+                <script>
+                    $(function () {
+                        $('.inner_main .rem12 .zb_nr .zc ul li ul li a').click(function () {
+                            $('html,body').animate({ scrollTop: ($($(this).attr('href')).offset().top - 138) }, 500);
+                        });
+                    });
+
+                </script>
                 @if (TempData["SuccessMessage"] != null)
                 {
                     <div class="alert alert-success">
@@ -117,14 +154,10 @@
                             <div id="vsb_content_12383_u91">
                                 <div id="vsb_content">
                                     <form asp-action="Edit" asp-route-id="@Model.CustomerId" method="post">
-                                        <table>
+                                        <table class="Account">
                                             <tr>
                                                 <td style="white-space: nowrap;">Tài khoản hỗ trợ</td>
                                                 <td style="background-color: #d4d3d3" ;><input style="width:100%;" name="Username" value="@Model.Username" readonly /></td>
-                                            </tr>
-                                            <tr>
-                                                <td>ID</td>
-                                                <td style="background-color: #d4d3d3;"><input style="width:100%;" name="CustomerId" value="@Model.CustomerId" readonly /></td>
                                             </tr>
                                             <tr>
                                                 <td style="white-space: nowrap;">Họ và tên</td>
@@ -133,6 +166,10 @@
                                             <tr>
                                                 <td style="white-space: nowrap;">Công Ty</td>
                                                 <td class="tdNameCT"><input class="NameCT" style="width:100%;" name="Company" value="@Model.Company" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mã số thuế</td>
+                                                <td><input style="width:100%;" name="TaxCode" value="@Model.TaxCode" /></td>
                                             </tr>
                                             <tr>
                                                 <td style="white-space: nowrap;">Địa chỉ Email</td>
@@ -144,7 +181,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="2" style="text-align:right; white-space: nowrap; border:none">
-                                                    <button class="btn" type="submit">Thay đổi</button>
+                                                    <button class="btn" type="submit">THAY ĐỔI</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -188,10 +225,29 @@
                                             <tr hidden>
                                                 <td><input style="width:100%;" name="UpdatedAt" value="@Model.UpdatedAt" /></td>
                                             </tr>
-
                                         </table>
                                     </form>
-
+                                    <form asp-action="" asp-route-id="" method="post">
+                                            <table class="Password" style="display: none;">
+                                                <tr>
+                                                    <td style="white-space: nowrap;">Nhập mật khẩu cũ</td>
+                                                    <td><input style="width:100%;" name="" value=""/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="white-space: nowrap;">Nhập mật khẩu mới</td>
+                                                    <td><input style="width:100%;" name="" value=""/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="white-space: nowrap;">Nhập lại mật khẩu mới</td>
+                                                    <td><input style="width:100%;" name="" value=""/></td>
+                                                </tr>
+                                            <tr>
+                                                <td colspan="2" style="text-align:right; white-space: nowrap; border:none">
+                                                    <button class="btn" type="submit">THAY ĐỔI</button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -206,16 +262,16 @@
                                 <td style="background-color: #d4d3d3;"><input style="width:100%; " name="Username" value="@Model.Username" readonly /></td>
                             </tr>
                             <tr>
-                                <td>ID</td>
-                                <td style="background-color: #d4d3d3;"><input style="width:100%;" name="CustomerId" value="@Model.CustomerId" readonly /></td>
-                            </tr>
-                            <tr>
                                 <td style="white-space: nowrap;">Họ và tên</td>
                                 <td class="tdName"><input class="Name" style="width:100%;" name="FullName" value="@Model.FullName"  required/></td>
                             </tr>
                             <tr>
                                 <td style="white-space: nowrap;">Công Ty</td>
                                 <td class="tdNameCT"><input class="NameCT" style="width:100%;" name="Company" value="@Model.Company" data-original="" /></td>
+                            </tr>
+                            <tr>
+                                <td>Mã số thuế</td>
+                                <td><input style="width:100%;" name="CustomerId" value="@Model.TaxCode" /></td>
                             </tr>
                             <tr>
                                 <td style="white-space: nowrap;">Địa chỉ Email</td>
@@ -227,7 +283,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" style="text-align:right; white-space: nowrap; border:none">
-                                    <button class="btn" type="submit">Thay đổi</button>
+                                    <button class="btn" type="submit">THAY ĐỔI</button>
                                 </td>
                             </tr>
                             <tr>
@@ -274,10 +330,64 @@
 
                         </table>
                     </form>
+                    <form asp-action="" asp-route-id="" method="post">
+                        <table class="tablePassword" style="display: none;">
+                            <tr>
+                                <td style="white-space: nowrap;">Nhập mật khẩu cũ</td>
+                                <td><input style="width:100%;" name="" value="" /></td>
+                            </tr>
+                            <tr>
+                                <td style="white-space: nowrap;">Nhập mật khẩu mới</td>
+                                <td><input style="width:100%;" name="" value="" /></td>
+                            </tr>
+                            <tr>
+                                <td style="white-space: nowrap;">Nhập lại mật khẩu mới</td>
+                                <td><input style="width:100%;" name="" value="" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:right; white-space: nowrap; border:none">
+                                    <button class="btn" type="submit">THAY ĐỔI</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
-                <div class="clear"></div>
             </div>
         </div>
     </div>
 </body>
 </html>
+
+<!--Js xử lý đổi mật khẩu-->
+<script>
+    $(document).ready(function () {
+        // When an <li> is clicked
+        $("ul li a").click(function () {
+            // Remove "on" class from all <li> elements
+            $("ul li").removeClass("on");
+
+            // Add "on" class to the clicked <li>
+            $(this).parent().addClass("on");
+
+            // Hide both tables initially
+            $(".Account").hide();
+            $(".Password").hide();
+            $(".tableAccount").hide();
+            $(".tablePassword").hide();
+
+            // Show the corresponding table based on the clicked <li>
+            if ($(this).text() === "Tài Khoản") {
+                if ($(window).width() <= 800) {
+                    $(".tableAccount").show();
+                }
+                else { $(".Account").show(); }
+                
+            } else if ($(this).text() === "Đổi Mật Khẩu") {
+                if ($(window).width() <= 800) {
+                    $(".tablePassword").show();
+                }
+                else { $(".Password").show(); }
+            }
+        });
+    });
+</script>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
     <meta name="renderer" content="webkit">
-    <link rel="shortcut icon" type="image/png" href="~/layoutuser/img/logo.png">
+    <link rel="shortcut icon" type="image/png" href="~/layoutuser/img/logo-removebg.png">
 	<link href="~/layoutuser/style/index.css" rel="stylesheet" />
 	<link href="~/layoutuser/style/mystyle.css" rel="stylesheet" />
     <link href="~/layoutuser/style/phone.css" rel="stylesheet" media="screen and (max-width: 800px)" />
@@ -42,7 +42,7 @@
                     }
                     else
                     {
-                        <li><span class="d-lg-block d-none" style="color: #e2ca5b;">Chào, @User.Identity.Name</span></li>
+                        <li><a href="@Url.Action("Index", "Account")" class="d-lg-block d-none" style="color: #e2ca5b;">Chào, @User.Identity.Name</a></li>
                         <li><a asp-action="Logout" asp-controller="Custommer">Đăng Xuất</a></li>
                     }
 
@@ -64,19 +64,6 @@
                         <a class="name" href="@Url.Action("Index", "Home")" title="Trang Chủ">Trang Chủ</a>
                     </li>
                     <li>
-                        <a class="name" href="@Url.Action("Index", "Account")" title="Tài Khoản">Tài Khoản</a>
-                        @* Các mục con nằm ở đây *@
-                        @* <div class="list">
-                            <dl>
-                                <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
-                                <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
-                                <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
-                                <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
-                                <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
-                            </dl>
-                        </div> *@
-                    </li>
-                    <li>
                         <a class="name" href="@Url.Action("Create", "TblSupportRequests")" title="Gửi Yêu Cầu">Gửi Yêu Cầu</a>
                     </li>
                     <li>
@@ -88,6 +75,19 @@
                     <li>
                         <a class="name" href="@Url.Action("Index", "Contact")" title="Liên Hệ">Liên Hệ</a>
                     </li>
+                    <li>
+                        <a class="name" href="@Url.Action("Index", "Account")" title="Tài Khoản">Tài Khoản</a>
+                        @* Các mục con nằm ở đây *@
+                        @* <div class="list">
+                        <dl>
+                        <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
+                        <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
+                        <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
+                        <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
+                        <dd><a href="javascript:void(0)" title="Lorem">Lorem</a></dd>
+                        </dl>
+                        </div> *@
+                    </li>
                 </ul>
             </div>
         </div>
@@ -97,16 +97,6 @@
             <ul>
                 <li>
                     <h2><a href="@Url.Action("Index", "Home")" title="Trang Chủ">Trang Chủ</a></h2>
-                </li>
-                <li>
-                    <h2 @* class="h2" *@><a class="name" href="@Url.Action("Index", "Account")" title="Tài Khoản">Tài Khoản</a></h2>
-                    @* <div class="list">
-                        <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
-                        <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
-                        <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
-                        <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
-                        <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
-                    </div> *@
                 </li>
                 <li>
                     <h2><a class="name" href="@Url.Action("Create", "TblSupportRequests")" title="Gửi Yêu Cầu">Gửi Yêu Cầu</a></h2>
@@ -125,6 +115,16 @@
                         <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
                         <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
                         <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
+                    </div> *@
+                </li>
+                <li>
+                    <h2 @* class="h2" *@><a class="name" href="@Url.Action("Index", "Account")" title="Tài Khoản">Tài Khoản</a></h2>
+                    @* <div class="list">
+                    <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
+                    <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
+                    <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
+                    <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
+                    <h3><a href="javascript:void(0)" title="Lorem">Lorem</a></h3>
                     </div> *@
                 </li>
             </ul>

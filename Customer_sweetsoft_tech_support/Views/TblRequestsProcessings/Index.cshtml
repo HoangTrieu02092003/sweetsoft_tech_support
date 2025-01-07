@@ -2,76 +2,13 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    String color = "";
 }
 
 <!DOCTYPE html>
 <html style="font-size: 95px;">
 <head>
     <title>Theo dõi yêu cầu</title>
-    <style>
-        .container {
-            width: 100%;
-            margin: 20px auto;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-            overflow: hidden;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .row {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-            cursor: pointer;
-        }
-
-            .row .toggle-icon {
-                font-size: 18px;
-                margin-right: 10px;
-                user-select: none;
-                transition: transform 0.3s ease;
-            }
-
-        .main-content {
-            width: 95%;
-        }
-
-        .main-contentt {
-            flex-grow: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-left: 10px;
-        }
-
-            .main-contentt p {
-                margin: 0;
-                font-size: inherit;
-                white-space: nowrap;
-            }
-
-            .main-contentt .status {
-                color: green;
-                font-size: 13px;
-                white-space: nowrap;
-            }
-
-        .details {
-            max-height: 0;
-            overflow: hidden;
-            font-size: 14px;
-            background-color: #f8f8f8;
-            border-top: 1px solid #ddd;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-        }
-
-            .details p {
-                margin: 10px 0;
-            }
-    </style>
 </head>
 
 <body class="show">
@@ -139,9 +76,9 @@
                 </script>
 
                 <div class="yc yccc fr">
-                    <form asp-action="Create" style="margin-bottom: .5rem;" method="get" asp-controller="TblSupportRequests">
+                    <form asp-action="Create" style="margin-bottom: .2rem;" method="get" asp-controller="TblSupportRequests">
                         <button type="submit" class="btn">
-                            GỬI YÊU CẦU <i style="margin-left: .1rem;" class="fa-solid fa-arrow-right"></i>
+                            GỬI YÊU CẦU MỚI <i style="margin-left: .1rem;" class="fa-solid fa-arrow-right"></i>
                         </button>
                     </form>
 
@@ -153,11 +90,24 @@
                                     <div class="main-content">
                                         <div class="main-contentt">
                                             <p><b>@item.Request.RequestTitle được gửi đi ngày @item.Request.CreatedAt.ToString("dd/MM/yyyy")</b></p>
-                                            <span class="status">@(item.IsCompleted==0?"chưa hoàn thành":"Hoàn thành")</span>
+                                        @{
+                                            color = item.IsCompleted == 0
+                                              ? "#e2ca5b"
+                                              : item.IsCompleted == 1
+                                              ? "green"
+                                              : "red";
+                                        }
+                                        <p class="status" style="color: @color;">
+                                                @(item.IsCompleted == 0
+                                                    ? "Chưa hoàn thành"
+                                                    : item.IsCompleted == 1
+                                                    ? "Hoàn thành"
+                                                    : "Không xử lý được")
+                                            </p>
                                         </div>
                                         <hr />
                                         <div class="main-contentt" style="padding-top:10px;">
-                                            <p>Mã Phiếu: <b>@item.Request.RequestId</b> | Phòng ban xử lý yêu cầu: <b>@item.Department.DepartmentName</b></p>
+                                            <p>Mã Phiếu: <b>@item.Request.RequestId</b> | Phòng ban xử lý : <b>@item.Department.DepartmentName</b></p>
                                             <p>@(item.ProcessedAt?.ToString("dd-MM-yyy HH:mm") ?? "-- -- --")</p>
                                         </div>
                                     </div>
@@ -176,7 +126,14 @@
                             requests.forEach(request => {
                                 const statusSpan = request.querySelector('.status');
                                 let statusText = statusSpan.textContent.trim();
-                                let currentStatus = statusText === 'chưa hoàn thành' ? 0 : (statusText === 'Hoàn thành' ? 1 : 2);
+                                if ( statusText === 'Chưa hoàn thành' ){
+                                    currentStatus = 0;
+                                }
+                                else if ( statusText === 'Hoàn thành'){
+                                    currentStatus = 1;
+                                }
+                                else { currentStatus = 2; }
+
                                 if (status === null || currentStatus === status) {
                                     request.style.display = 'block';
                                 } else {
@@ -215,26 +172,42 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     function toggleContent(processId) { 
-        const details = document.getElementById(`details-${processId}`); 
-        const icon = document.querySelector(`.toggle-icon[data-id='${processId}']`);
-        
-        if (details.style.maxHeight === '0px' || !details.style.maxHeight) { 
-            details.style.maxHeight = details.scrollHeight + 'px'; 
-            details.style.padding = '0 15px';
-            icon.style.transform = 'rotate(180deg)';
+    const details = document.getElementById(`details-${processId}`); 
+    const icon = document.querySelector(`.toggle-icon[data-id='${processId}']`);
+    const allDetails = document.querySelectorAll('[id^="details-"]');
+    const allIcons = document.querySelectorAll('.toggle-icon');
 
-            setTimeout(() => {
-                const rect = details.getBoundingClientRect();
-                const offset = rect.top + window.scrollY - 22.08;
-                window.scrollTo({ top: offset, behavior: 'smooth' });
-            }, 300);
 
-        } else { 
-            details.style.maxHeight = '0px'; 
-            details.style.padding = '0 15px'; 
-            icon.style.transform = 'rotate(0deg)';
-        } 
-    }
+    allDetails.forEach(detail => {
+        if (detail !== details) {
+            detail.style.maxHeight = '0px';
+            detail.style.padding = '0 15px';
+        }
+    });
 
+    allIcons.forEach(otherIcon => {
+        if (otherIcon !== icon) {
+            otherIcon.style.transform = 'rotate(0deg)';
+        }
+    });
+
+
+    if (details.style.maxHeight === '0px' || !details.style.maxHeight) { 
+        details.style.maxHeight = details.scrollHeight + 'px'; 
+        details.style.padding = '0 15px';
+        icon.style.transform = 'rotate(180deg)';
+
+        setTimeout(() => {
+            const rect = details.getBoundingClientRect();
+            const offset = rect.top + window.scrollY - 250;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+        }, 300);
+
+    } else { 
+        details.style.maxHeight = '0px'; 
+        details.style.padding = '0 15px'; 
+        icon.style.transform = 'rotate(0deg)';
+    } 
+}
 </script>
 
