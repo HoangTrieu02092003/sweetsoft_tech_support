@@ -1,190 +1,189 @@
-﻿@model Tuple<List<dynamic>, List<dynamic>>
+﻿@model Tuple<List<admin_sweetsoft_tech_support.Models.ActivityLogEntry>, List<object>>
+@using admin_sweetsoft_tech_support.Attributes
 @{
-    ViewData["Title"] = "Nhật ký xử lý yêu cầu";
-    var currentId = ViewData["userId"];
-    var searchQuery = ViewData["Search"];
-
-    //lấy giá trị phân trang
-    var dbPagination = (Pagination)ViewData["DbPagination"];
-    var filePagination = (Pagination)ViewData["FilePagination"];
+    ViewData["Title"] = "Quản lý Activity Logs";
+    int totalPages = (int)ViewData["TotalPages"];
+    int currentPage = (int)ViewData["CurrentPage"];
     int stt = 1;
 }
+<style>
+    table tbody tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
 
-<h1>Nhật ký hoạt động</h1>
-<!-- Tab navigation -->
-<div class="d-flex justify-content-between">
-    <div>
-        <ul class="nav nav-tabs" id="logTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="database-tab" data-bs-toggle="tab" href="#database" role="tab" aria-controls="database" aria-selected="true">Từ database</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="file-tab" data-bs-toggle="tab" href="#file" role="tab" aria-controls="file" aria-selected="false">Từ File</a>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="tab-content mt-3" id="logTabsContent">
-    <!-- Tab 1: Cơ sở dữ liệu -->
-    <div class="tab-pane fade show active" id="database" role="tabpanel" aria-labelledby="database-tab">
-        <form method="get" class="mb-3">
-            <input type="text"
-                   name="search"
-                   placeholder="Tìm kiếm nội dung"
-                   value="@searchQuery"
-                   class="form-control d-inline-block w-25 mr-2" />
-            <select name="userId" class="form-control d-inline-block w-25 mr-2">
-                @if (currentId == null)
-                {
-                    <option value="" selected>Tất cả</option>
-                }
-                else
-                {
-                    <option value="">Tất cả</option>
-                }
-                @foreach (var user in ViewData["Users"] as IEnumerable<admin_sweetsoft_tech_support.Models.TblUser>)
-                {
-                    @if (currentId != null && (int)currentId == user.UserId)
-                    {
-                        <option value="@user.UserId" selected>@user.FullName</option>
-                    }
-                    else
-                    {
-                        <option value="@user.UserId">@user.FullName</option>
-                    }
-                }
-            </select>
-            <button type="submit" class="btn btn-primary">Lọc</button>
-        </form>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Người dùng</th>
-                        <th>Yêu cầu</th>
-                        <th>Hành động</th>
-                        <th>Thời gian</th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var log in Model.Item1)
-                    {
-                        <tr>
-                            <td>@stt</td>
-                            <td>@log.User?.FullName</td>
-                            <td>@log.Request?.RequestId</td>
-                            <td>@log.Action</td>
-                            <td>@log.CreatedAt?.ToString("dd/MM/yyyy HH:mm")</td>
-                            <td>
-                                <form asp-action="Delete" method="post" style="display: inline;">
-                                    <input type="hidden" name="id" value="@log.ActivityId" />
-                                    <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
-                                </form>
-                            </td>
-                        </tr>
-                        stt++;
-                    }
-                </tbody>
-            </table>
-        <!-- Phân trang -->
-        <div class="d-flex justify-content-center my-4">
-            @if (dbPagination.TotalPages > 1)
-            {
-                <ul class="pagination">
-                    @if (ViewData["DbPagination"] != null)
-                    {
+    table tbody tr:nth-child(even) {
+        background-color: #ffffff;
+    }
 
-                        if (dbPagination.CurrentPage > 1)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = 1, filePage = filePagination.CurrentPage })">Đầu</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage - 1, filePage = filePagination.CurrentPage })">Trước</a>
-                            </li>
-                        }
+    .sort-arrow.asc:after {
+        content: " ▲";
+    }
 
-                        for (int i = 1; i <= dbPagination.TotalPages; i++)
-                        {
-                            <li class="page-item @(i == dbPagination.CurrentPage ? "active" : "")">
-                                <a class="page-link" href="@Url.Action("Index", new { page = i, filePage = filePagination.CurrentPage })">@i</a>
-                            </li>
-                        }
+    .sort-arrow.desc:after {
+        content: " ▼";
+    }
 
-                        if (dbPagination.CurrentPage < dbPagination.TotalPages)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage + 1, filePage = filePagination.CurrentPage })">Sau</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.TotalPages, filePage = filePagination.CurrentPage })">Cuối</a>
-                            </li>
-                        }
-                    }
-                </ul>
-            }
+</style>
+<div class="mt-4">
+    <h1 class="text-center">Quản lý nhật ký yêu cầu hỗ trợ</h1>
+
+    <!-- Form tìm kiếm -->
+    <form method="get" class="m-3" id="filterForm">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.GenerateFilterTextbox(
+                         id: "searchTerm",
+                         name: "searchTerm",
+                         placeholder: "Tìm kiếm......",
+                         value: ViewData["SearchTerm"]?.ToString() ?? "",
+                         includeCancelButton: false
+                         )
+            </div>
+            <div class="col-md-3">
+                @Html.GenerateFilterDropdown(
+                         id: "filterOption",
+                         name: "filterOption",
+                         options: new Dictionary<string, string>{
+                {"day", "Ngày"},
+                {"month", "Tháng"},
+                {"year", "Năm"}
+                },
+                         selectedValue: ViewData["FilterOption"]?.ToString() ?? "",
+                         includeCancelButton: false
+                         )
+            </div>
         </div>
-    </div>
-    <!-- Tab 2: From File -->
-    <div class="tab-pane fade" id="file" role="tabpanel" aria-labelledby="file-tab">
-        <table class="table table-bordered table-striped mt-4">
-            <thead class="thead-dark">
+    </form>
+
+    <!-- Danh sách Activity Logs -->
+    <div class="table-responsive mt-4">
+        <table class="table table-striped" id="activityLogList">
+            <thead>
                 <tr>
-                    <th>Người dùng</th>
-                    <th>Yêu cầu</th>
-                    <th>Hành động</th>
-                    <th>Thời gian</th>
+                    <th>STT</th>
+                    <th>
+                        <a href="?sortColumn=Title&sortOrder=@(
+                ViewData["SortOrder"] as string == "asc" &&
+                ViewData["SortColumn"] as string == "Title" ? "desc" : "asc")">
+                            Tiêu đề yêu cầu
+                            <span class="sort-arrow @(ViewData["SortColumn"] as string == "Title" ? ViewData["SortOrder"] : "")"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sortColumn=Action&sortOrder=@(
+                ViewData["SortOrder"] as string == "asc" &&
+                ViewData["SortColumn"] as string == "Action" ? "desc" : "asc")">
+                            Hành động
+                            <span class="sort-arrow @(ViewData["SortColumn"] as string == "Action" ? ViewData["SortOrder"] : "")"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sortColumn=User&sortOrder=@(
+                ViewData["SortOrder"] as string == "asc" &&
+                ViewData["SortColumn"] as string == "User" ? "desc" : "asc")">
+                            Người thực hiện
+                            <span class="sort-arrow @(ViewData["SortColumn"] as string == "User" ? ViewData["SortOrder"] : "")"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="?sortColumn=Timestamp&sortOrder=@(
+                ViewData["SortOrder"] as string == "asc" &&
+                ViewData["SortColumn"] as string == "Timestamp" ? "desc" : "asc")">
+                            Thời gian
+                            <span class="sort-arrow @(ViewData["SortColumn"] as string == "Timestamp" ? ViewData["SortOrder"] : "")"></span>
+                        </a>
+                    </th>
+                    <th class="text-center">
+                        Hành động
+                    </th>
                 </tr>
             </thead>
+
             <tbody>
-                @foreach (var log in Model.Item2)
+                @foreach (var log in Model.Item1)
                 {
                     <tr>
-                        <td>@log.User.FullName</td>
-                        <td>@log.Request.RequestId</td>
+                        <td>@stt</td>
+                        <td>@log.Title</td>
                         <td>@log.Action</td>
-                        <td>@log.CreatedAt?.ToString("dd/MM/yyyy HH:mm")</td>
-                    </tr>
+                        <td>@log.User</td>
+                        <td>@log.Timestamp</td>
+                        <td class="text-center">
+                            <button type="submit" class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailModal-@log.Id">
+                                <i class="ti ti-eye-check"></i>
+                            </button>
+                        </td>
+                        <div class="modal fade" id="detailModal-@log.Id" tabindex="-1" aria-labelledby="detailModalLabel-@log.Id" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="detailModalLabel-@log.Id">Chi tiết nhật ký</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong>Tiêu đề:</strong> @log.Title</p>
+                                        <p><strong>Hành động:</strong> @log.Action</p>
+                                        <p><strong>Người thực hiện:</strong> @log.User</p>
+                                        <p><strong>Thời gian:</strong> @log.Timestamp.ToString("dd/MM/yyyy HH:mm:ss")</p>
+                                        <p><strong>Dữ liệu cũ:</strong> @log.OldValue</p>
+                                        <p><strong>Dữ liệu mới:</strong> @log.NewValue</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tr>                   
+                    stt++;
                 }
             </tbody>
         </table>
-        <!-- Phân trang -->
-        <div class="d-flex justify-content-center my-4">
-            @if (filePagination.TotalPages > 1)
+    </div>
+
+    <!-- Phân trang -->
+    <div class="d-flex justify-content-center my-4" id="dbPagination">
+        <ul class="pagination">
+            @if (totalPages > 1)
             {
-                <ul class="pagination">
-                    @if (ViewData["FilePagination"] != null)
-                    {
-                        if (filePagination.CurrentPage > 1)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = 1, activeTab = "file" })">Đầu</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = filePagination.CurrentPage - 1, activeTab = "file" })">Trước</a>
-                            </li>
-                        }
-
-                        for (int i = 1; i <= filePagination.TotalPages; i++)
-                        {
-                            <li class="page-item @(i == filePagination.CurrentPage ? "active" : "")">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = i, activeTab = "file" })">@i</a>
-                            </li>
-                        }
-
-                        if (filePagination.CurrentPage < filePagination.TotalPages)
-                        {
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = filePagination.CurrentPage + 1, activeTab = "file" })">Sau</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="@Url.Action("Index", new { page = dbPagination.CurrentPage, filePage = filePagination.TotalPages, activeTab = "file" })">Cuối</a>
-                            </li>
-                        }
-                    }
-                </ul>
+                if (currentPage > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = 1, date = ViewData["Date"] })"><i class="bi bi-chevron-double-left"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, date = ViewData["Date"] })"><i class="bi bi-chevron-left"></i></a>
+                    </li>
+                }
+                for (int i = 1; i <= totalPages; i++)
+                {
+                    <li class="page-item @(i == currentPage ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = i, date = ViewData["Date"] })">@i</a>
+                    </li>
+                }
+                if (currentPage < totalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, date = ViewData["Date"] })"><i class="bi bi-chevron-right"></i></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { page = totalPages, date = ViewData["Date"] })"><i class="bi bi-chevron-double-right"></i></a>
+                    </li>
+                }
             }
-        </div>
+        </ul>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function toggleDetails(timestamp) {
+        var detailsRow = document.getElementById('details-' + timestamp);
+        if (detailsRow.style.display === 'none') {
+            detailsRow.style.display = 'table-row';
+        } else {
+            detailsRow.style.display = 'none';
+        }
+    }
+</script>

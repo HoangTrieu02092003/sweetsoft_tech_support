@@ -17,7 +17,7 @@
 
 </style>
 <div class="mt-4">
-    <h1 class="text-center">Quản lý Nhật ký Kiểm tra</h1>
+    <h1 class="text-center">Quản lý nhật ký Kiểm tra</h1>
 
     <!-- Form tìm kiếm -->
     <form method="get" class="m-3" id="filterForm">
@@ -55,9 +55,9 @@
                     <th>STT</th>
                     <th>Hành động</th>
                     <th>Người thực hiện</th>
-                    <th class="d-lg-block d-none">message</th>
+                    <th class="d-lg-block d-none">Nội dung</th>
                     <th>Thời gian</th>
-                    <th>Hành động</th>
+                    <th class="text-center">Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,9 +69,9 @@
                         <td>@log.User</td>
                         <td class="d-lg-block d-none">@log.Message</td>
                         <td>@log.Timestamp</td>
-                        <td>
-                            <button class="btn btn-sm btn-info" onclick="toggleDetails('@log.Timestamp')">
-                                Xem
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-outline-info" onclick="toggleDetails('@log.Timestamp')">
+                                <i class="bi bi-eye"></i>
                             </button>
                         </td>
                     </tr>
@@ -82,7 +82,6 @@
                                 <li class="d-lg-none d-block"><strong>Message:</strong> @log.Message</li>
                                 <li><strong>Dữ liệu cũ:</strong> @log.OldValue</li>
                                 <li><strong>Dữ liệu mới:</strong> @log.NewValue</li>
-                                <!-- Add other details here -->
                             </ul>
                         </td>
                     </tr>

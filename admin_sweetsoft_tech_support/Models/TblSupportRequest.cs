@@ -29,8 +29,6 @@ public partial class TblSupportRequest
 
     public virtual TblDepartment? Department { get; set; }
 
-    public virtual ICollection<TblActivityLog> TblActivityLogs { get; set; } = new List<TblActivityLog>();
-
     public virtual ICollection<TblRequestTransfer> TblRequestTransfers { get; set; } = new List<TblRequestTransfer>();
 
     public virtual ICollection<TblRequestsProcessing> TblRequestsProcessings { get; set; } = new List<TblRequestsProcessing>();

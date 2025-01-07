@@ -1,65 +1,85 @@
 ﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblDepartment>
+@using admin_sweetsoft_tech_support.Attributes
+
 @{
-    ViewData["Title"] = "Quản lý phòng ban";
+    int stt = 1;
 }
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
         .header {
-            color: #6a1b9a;
-            font-size: 24px;
-            font-weight: bold;
+        color: #6a1b9a;
+        font-size: 24px;
+        font-weight: bold;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+        th {
+        white-space: nowrap;
         }
 
-            table th, table td {
-                border: 1px solid #ddd;
-                padding: 10px;
-                text-align: left;
-            }
+        th, td {
+        text-align: center;
+        vertical-align: middle;
+        }
 
-            table th {
-                background-color: #f4f4f4;
-            }
+        /* Cố định chiều rộng cột STT */
+        th:first-child, td:first-child {
+        width: 50px;
+        min-width: 50px;
+        max-width: 50px;
+        }
+
         /* Responsive design adjustments */
         @@media (max-width: 576px) {
-            .action-btn
-
-        {
-            padding: 5px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .badge {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%; /* Biến badge thành hình tròn */
+        padding: 0;
+        text-indent: -9999px; /* Ẩn text trong badge */
         }
 
-        .action-text {
-            display: none; /* Ẩn văn bản trên nút khi thu nhỏ */
+        .badge.bg-success {
+        background-color: green !important; /* Màu xanh */
+        }
+
+        .badge.bg-danger {
+        background-color: red !important; /* Màu đỏ */
+        }
+
+        .action-btn {
+        padding: 5px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         }
 
         .btn-group .btn {
-            width: 35px; /* Giảm kích thước nút */
-            height: 35px;
-            font-size: 1rem;
+        width: 35px; /* Giảm kích thước nút */
+        height: 35px;
+        font-size: 1rem;
         }
 
         }
 
         .header {
-            color: #6a1b9a;
+        color: #6a1b9a;
         }
 
         .table {
-            font-size: 0.9rem; /* Điều chỉnh kích thước chữ */
+        font-size: 0.9rem; /* Điều chỉnh kích thước chữ */
+        }
+        th {
+        white-space:nowrap;
         }
     </style>
 </head>
@@ -80,14 +100,20 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     }
+
+    @{
+        var searchName = ViewData["SearchName"] as string ?? "";
+        var searchStatus = ViewData["SearchStatus"] as int?;
+        var sortOrder = ViewData["SortOrder"] as string ?? "name";
+    }
     <script>
         // Tự động ẩn thông báo sau 5 giây
         setTimeout(() => {
-            const alerts = document.querySelectorAll('.alert');
-            alerts.forEach(alert => {
-                alert.classList.remove('show'); // Ẩn alert
-                alert.addEventListener('transitionend', () => alert.remove()); // Loại bỏ khỏi DOM sau khi ẩn
-            });
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+        alert.classList.remove('show'); // Ẩn alert
+        alert.addEventListener('transitionend', () => alert.remove()); // Loại bỏ khỏi DOM sau khi ẩn
+        });
         }, 5000); // 5000ms = 5 giây
     </script>
     <div class="d-flex justify-content-between">
@@ -96,49 +122,47 @@
         </div>
 
         <div>
-            <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#createModal">
-                <i class="bi bi-plus-circle"></i> Tạo mới
+            <a class="btn-create btn btn-warning" data-bs-toggle="modal" data-bs-target="#createModal">
+                <i class="bi bi-plus-circle"></i> 
+                <span class="d-lg-inline-block d-none">Tạo mới</span>
             </a>
         </div>
-        <!-- Modal Create -->
-        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="createModalLabel">Tạo mới phòng ban</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form asp-action="Create" method="post">
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="newDepartmentName" class="form-label">Tên phòng ban</label>
-                                <input type="text" id="newDepartmentName" name="DepartmentName" class="form-control" required />
-                            </div>
-                            <div class="mb-3">
-                                <label for="newStatus" class="form-label">Trạng thái</label>
-                                <select id="newStatus" name="Status" class="form-select" required>
-                                    <option value="1">Hoạt động</option>
-                                    <option value="0">Tạm dừng</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer d-flex justify-content-between">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-arrow-left"></i> Hủy</button>
-                            <button type="submit" class="btn btn-warning"><i class="bi bi-plus-circle"></i> Tạo mới</button>
-                        </div>
-                    </form>
-                </div>
+    </div>
+
+    <div class="mb-4">
+        <!-- Form tìm kiếm -->
+        <form method="get" class="row g-2">
+            <div class="col-md-3">
+                @Html.GenerateFilterTextbox(
+                             id: "search",
+                             name: "search",
+                             includeCancelButton:false,
+                             value: ViewData["search"]?.ToString()??""
+                         )
             </div>
-        </div>
+            <div class="col-md-3">
+                @Html.GenerateFilterDropdown(
+                                  id: "status",
+                                  name: "status",
+                                  includeCancelButton: false,
+                                  options: new Dictionary<string, string> {
+                             {"0","Tạm dừng"},
+                             {"1","Hoạt động"}
+                         },
+                                  selectedValue: ViewData["status"]?.ToString() ?? ""
+                                  )
+            </div>
+        </form>
     </div>
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
-            <thead class="table-primary">
+            <thead>
                 <tr>
+                    <th>STT</th>
                     <th>Tên phòng ban</th>
-                    <th>Trạng thái</th>
-                    <th>Số lượng thành viên</th>
+                    <th class="text-center">Trạng thái</th>
+                    <th class="text-center d-none d-md-table-cell">Số lượng thành viên</th>
                     <th class="text-center">Hành động</th>
                 </tr>
             </thead>
@@ -146,26 +170,27 @@
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>@stt</td>
                         <td>@Html.DisplayFor(modelItem => item.DepartmentName)</td>
-                        <td>
-                            <span class="@(item.Status == 1 ? "text-success" : "text-danger")">
-                                @(item.Status == 1 ? "Đang hoạt động" : "Tạm dừng")
+                        <td class="text-center">
+                            <span class="badge @(item.Status == 1 ? "bg-success" : "bg-danger")">
+                                @(item.Status == 1 ? "Hoạt động" : "Tạm dừng")
                             </span>
                         </td>
-                        <td>@ViewBag.MemberCounts[item.DepartmentId]</td>
+                        <td class="text-center d-none d-md-table-cell">@ViewBag.MemberCounts[item.DepartmentId]</td>
                         <td class="text-center">
-                            <div class="btn-group">
-                                <a class="btn btn-outline-info btn-sm action-btn" asp-action="Edit" asp-route-id="@item.DepartmentId">
+                            <div>
+                                <a class="btn btn-outline-info btn-sm" asp-action="Edit" asp-route-id="@item.DepartmentId">
                                     <i class="bi bi-pencil-square"></i>
-                                    <span class="action-text">Chỉnh sửa</span>
+                                   
                                 </a>
-                                <button class="btn btn-outline-danger btn-sm action-btn" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.DepartmentId">
+                                <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.DepartmentId">
                                     <i class="bi bi-trash"></i>
-                                    <span class="action-text">Xóa</span>
+                                    
                                 </button>
                             </div>
-                        </td>
-                    </tr>
+                        </td>                      
+                    </tr>                   
                     <!-- Modal delete -->
                     <div class="modal fade" id="deleteModal-@item.DepartmentId" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -186,7 +211,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                   
+                    </div>
+                    stt++;
                 }
             </tbody>
         </table>
@@ -225,6 +251,36 @@
                 </li>
             }
         </ul>
+    </div>
+    <!-- Modal Create -->
+    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="createModalLabel">Tạo mới phòng ban</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form asp-action="Create" method="post">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="newDepartmentName" class="form-label">Tên phòng ban</label>
+                            <input type="text" id="newDepartmentName" name="DepartmentName" class="form-control" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="newStatus" class="form-label">Trạng thái</label>
+                            <select id="newStatus" name="Status" class="form-select" required>
+                                <option value="1">Hoạt động</option>
+                                <option value="0">Tạm dừng</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-arrow-left"></i> Quay lại</button>
+                        <button type="submit" class="btn btn-warning"><i class="bi bi-plus-circle"></i> Tạo mới</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 </html>

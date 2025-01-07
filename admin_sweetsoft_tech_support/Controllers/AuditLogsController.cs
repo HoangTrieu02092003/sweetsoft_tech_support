@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch.Internal;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace admin_sweetsoft_tech_support.Controllers
@@ -14,6 +15,12 @@ namespace admin_sweetsoft_tech_support.Controllers
         // Hiển thị tất cả log
         public async Task<IActionResult> Index(string date = "", string searchTerm = null, string filterOption = "", int page = 1)
         {
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
+            }
             List<AuditLogEntry> logs;
             var pageSize = 5; // số lượng log mỗi trang
             var skip = (page - 1) * pageSize;

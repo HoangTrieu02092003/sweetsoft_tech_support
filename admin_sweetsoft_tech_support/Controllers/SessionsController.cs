@@ -17,6 +17,12 @@ namespace admin_sweetsoft_tech_support.Controllers
         // Danh sách Sessions
         public async Task<IActionResult> Index(string name, string status, int page = 1)
         {
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
+            }
             var sessions = _context.TblSessions
                 .Include(s => s.User)
                 .AsQueryable();

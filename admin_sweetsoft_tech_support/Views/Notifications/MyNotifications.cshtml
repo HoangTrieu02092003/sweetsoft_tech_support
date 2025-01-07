@@ -1,11 +1,11 @@
-﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblNotification>
+﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.NotificationEntry>
 
 @{
     ViewData["Title"] = "Thông báo của tôi";
     int stt = 1;
 }
 
-<h1>Thông báo của tôi</h1>
+<h1 class="text-center">Thông báo của tôi</h1>
 
 @if (!Model.Any())
 {
@@ -13,50 +13,98 @@
 }
 else
 {
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>STT</th>
-                <th>
-                    <a href="?sortColumn=Message&sortOrder=@(
-                        ViewData["SortOrder"] as string == "asc" &&
-                        ViewData["SortColumn"] as string == "Message" ? "desc" : "asc")">
-                        Nội dung
-                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "Message" ? ViewData["SortOrder"] : "")"></span>
-                    </a>
-                </th>
-                <th>
-                    <a href="?sortColumn=Status&sortOrder=@(
-                        ViewData["SortOrder"] as string == "asc" &&
-                        ViewData["SortColumn"] as string == "Status" ? "desc" : "asc")">
-                        Trạng thái
-                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "Status" ? ViewData["SortOrder"] : "")"></span>
-                    </a>
-                </th>
-                <th>
-                    <a href="?sortColumn=CreatedAt&sortOrder=@(
-                        ViewData["SortOrder"] as string == "asc" &&
-                        ViewData["SortColumn"] as string == "CreatedAt" ? "desc" : "asc")">
-                        Thời gian
-                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "CreatedAt" ? ViewData["SortOrder"] : "")"></span>
-                    </a>
-                </th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var notification in Model)
-            {
-                <tr class="@(notification.Status == 0 ? "bold-text" : "")"
-                    style="cursor: pointer;"
-                    onclick="window.location.href='@Url.Action("Index", "TblSupportRequests")'">
-                    <td>@stt</td>
-                    <td>@notification.Message</td> 
-                    <td>@(notification.Status == 0 ? "Chưa đọc" : "Đã đọc")</td> 
-                    <td>@notification.CreatedAt?.ToString("yyyy-MM-dd HH:mm")</td> 
+    <div class="table-responsive mt-4">
+        <table class="table table-striped" id="notificationList">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th class="text-center">Người nhận</th>
+                    <th class="text-center">Nội dung</th>
+                    <th class="text-center d-none d-md-table-cell">Thời gian</th>
+                    <th class="text-center">Trạng thái</th>
+                    <th class="text-center">Hành động</th>
                 </tr>
-                stt++;
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var myNoti in Model)
+                {
+                    <tr >
+                        <td>@stt</td>
+                        <td class="text-center">@myNoti.User</td>
+                        <td class="text-center">@myNoti.Title</td>
+                        <td class="text-center d-none d-md-table-cell">@myNoti.Timestamp.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                        <td class="text-center">
+                            @if (myNoti.Status == "1")
+                            {
+                                @:Đã xem
+                            }
+                            else
+                            {
+                                <strong>Chưa xem</strong>
+                            }
+                        </td>
+                        <td class="text-center">    
+                            <div class="d-inline-flex gap-2">
+                                <button type="submit" class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailModal-@myNoti.Id">
+                                    <i class="ti ti-eye-check"></i>
+                                </button>
+                                <form asp-action="DeleteNotification" asp-route-id="@myNoti.Id" method="post" style="display:inline-block" onsubmit="return confirmDelete();">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                        <i class="ti ti-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    stt++;
+                    //Modal chi tiết
+                    <div class="modal fade" id="detailModal-@myNoti.Id" tabindex="-1" aria-labelledby="detailModalLabel-@myNoti.Id" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="detailModalLabel-@myNoti.Id">Chi tiết thông báo</h3>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><strong>Người nhận:</strong> @myNoti.User</p>
+                                    <p><strong>Tiêu đề:</strong> @myNoti.Title</p>
+                                    <p><strong>Nội dung:</strong> @myNoti.Content</p>
+                                    <p><strong>Thời gian:</strong> @myNoti.Timestamp</p>
+                                    <p><strong>Trạng thái:</strong> @(myNoti.Status == "1" ? "Đã xem" : "Chưa xem")</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <form asp-action="MarkAsRead" asp-route-id="@myNoti.Id" method="post">
+                                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </tbody>
+        </table>
+    </div>
 }
+
+<!-- Phân trang nếu có -->
+<div class="pagination mt-3">
+    @if (ViewData["TotalPages"] != null)
+    {
+        var totalPages = (int)ViewData["TotalPages"];
+        var currentPage = (int)ViewData["CurrentPage"];
+        <ul class="pagination">
+            @for (var i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("MyNotifications", new { page = i })">@i</a>
+                </li>
+            }
+        </ul>
+    }
+</div>
+
+<script>
+    function confirmDelete() {
+        return confirm("Bạn có chắc chắn muốn xóa thông báo này không?");
+    }
+</script>

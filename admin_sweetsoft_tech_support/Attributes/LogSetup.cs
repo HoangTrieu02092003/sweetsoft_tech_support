@@ -51,6 +51,7 @@ namespace admin_sweetsoft_tech_support.Attributes
             LogManager.Configuration = config;
             LogManager.ReconfigExistingLoggers();
         }
+
         public static void CreateLogNotificationDirectories()
         {
             string logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
@@ -73,12 +74,15 @@ namespace admin_sweetsoft_tech_support.Attributes
             }
 
             var config = LogManager.Configuration ?? new LoggingConfiguration();
-            var fileTarget = new FileTarget("file")
+            var fileTarget = new FileTarget("NotificationsFile")
             {
                 FileName = Path.Combine(yearMonthDayDirectory, "${date:format=yyyy-MM-dd-HH}.log"),
                 Layout = "${date:format=dd/MM/yyyy HH\\:mm}, " +
                          "${event-properties:item=Status}, " +
-                         "${event-properties:item=User}, " +
+                         "${event-properties:item=Reciver}, " +
+                         "${event-properties:item=Id}, " +
+                         "${event-properties:item=Title}, " +
+                         "${event-properties:item=isDelete}, " +
                          "${message}",
                 CreateDirs = true,
                 KeepFileOpen = false
@@ -86,13 +90,14 @@ namespace admin_sweetsoft_tech_support.Attributes
 
             config.AddTarget(fileTarget);
 
-            var rule = new LoggingRule("AdminSweetsoftTechSupport", NLog.LogLevel.Info, fileTarget);
+            var rule = new LoggingRule("Notifications", NLog.LogLevel.Info, fileTarget);
             config.LoggingRules.Add(rule);
 
 
             LogManager.Configuration = config;
             LogManager.ReconfigExistingLoggers();
         }
+
         public static void CreateLogActivityDirectories()
         {
             string logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Activitys");
@@ -115,20 +120,23 @@ namespace admin_sweetsoft_tech_support.Attributes
             }
 
             var config = LogManager.Configuration ?? new LoggingConfiguration();
-            var fileTarget = new FileTarget("file")
+            var fileTarget = new FileTarget("ActivityFile")
             {
                 FileName = Path.Combine(yearMonthDayDirectory, "${date:format=yyyy-MM-dd-HH}.log"),
                 Layout = "${date:format=dd/MM/yyyy HH\\:mm}, " +
+                         "${event-properties:item=Id}, " +
                          "${event-properties:item=Title}, " +
                          "${event-properties:item=Action}, " +
-                         "${event-properties:item=User}, ",
+                         "${event-properties:item=User}, " +
+                         "${event-properties:item=OldValue}, " +
+                         "${event-properties:item=NewValue}, ",
                 CreateDirs = true,
                 KeepFileOpen = false
             };
 
             config.AddTarget(fileTarget);
 
-            var rule = new LoggingRule("AdminSweetsoftTechSupport", NLog.LogLevel.Info, fileTarget);
+            var rule = new LoggingRule("Activity", NLog.LogLevel.Info, fileTarget);
             config.LoggingRules.Add(rule);
 
 

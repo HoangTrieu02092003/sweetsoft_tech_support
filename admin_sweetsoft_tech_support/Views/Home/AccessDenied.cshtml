@@ -1,4 +1,12 @@
-﻿<div class="d-flex justify-content-center align-items-center w-100 bg-light">
+﻿<style>
+    form button.btn-link {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
+</style>
+<div class="d-flex justify-content-center align-items-center w-100 bg-light">
     <div class="text-center">
         <!-- Hình ảnh minh họa lỗi -->
         <img src="~/assets/images/blog/bug.jpg" alt="Error" class="img-fluid" style="max-width: 300px;">
@@ -19,7 +27,16 @@
         </div>
 
         <div class="mt-3">
-            <p>Hoặc bạn có thể <a asp-action="Logout" asp-controller="Admin">Xin cấp quyền</a> nếu cần.</p>
+            <p class="text-center mt-3">
+                Hoặc bạn có thể
+                <form method="post" asp-action="RequestPermission" asp-controller="Home" class="d-inline-block">
+                    <input type="hidden" name="requestedPermission" value="@ViewData["permission"]" />
+                    <button type="submit" class="btn-link btn-sm">
+                        Xin cấp quyền
+                    </button>
+                </form>
+                nếu cần.
+            </p>
         </div>
     </div>
 </div>

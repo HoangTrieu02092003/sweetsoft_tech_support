@@ -2,7 +2,9 @@
 
 @if (Model.Any())
 {
-    <div class="notification-tooltip">
-        @Model.FirstOrDefault()?.Message
-    </div>
+    <span class="notification-tooltip">@Model.FirstOrDefault()?.Message</span>
+}
+else
+{
+    <span class="notification-tooltip">Không có thông báo nào</span>
 }

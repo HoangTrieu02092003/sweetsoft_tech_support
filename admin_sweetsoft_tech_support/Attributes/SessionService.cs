@@ -15,7 +15,7 @@ namespace admin_sweetsoft_tech_support.Attributes
         //tạo mới
         public async Task CreateSessionAsync(int userId, string sessionToken, int expiresInHours = 2)
         {
-            // Xóa tất cả các phiên cũ trước khi tạo phiên mới
+            //Xóa tất cả các phiên cũ trước khi tạo phiên mới
             var existingSessions = await _context.TblSessions.Where(s => s.UserId == userId).ToListAsync();
             if (existingSessions.Any())
             {

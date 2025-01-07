@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblCustomer>
+@using admin_sweetsoft_tech_support.Attributes
 
 @{
     ViewData["Title"] = "Quản lý Khách hàng";
@@ -11,64 +12,174 @@
         @TempData["ErrorMessage"]
     </div>
 }
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+}
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<link href="~/css/index_user.css" rel="stylesheet">
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @successMessage
+    </div>
+}
 
-<div class="d-flex justify-content-between align-items-center mb-0">
-    <h1 class="my-4" style="color: #6a1b9a; font-size: 24px;">Quản lý Khách hàng</h1>
-    <div>
+
+<style>
+
+    .email-content {
+        max-width: 150px; /* Giới hạn chiều rộng của email */
+        white-space: nowrap; /* Không xuống dòng */
+        overflow: hidden; /* Ẩn phần vượt quá */
+        text-overflow: ellipsis; /* Thêm dấu ba chấm */
+    }
+
+    th {
+        white-space: nowrap; /* Đảm bảo tiêu đề không bị xuống dòng */
+    }
+
+    @@media (max-width: 400px) {
+        .btn-responsive .btn span {
+            display: none; /* Hide text inside buttons */
+        }
+
+        .btn-responsive .btn i {
+            font-size: 10px; /* Increase icon size */
+        }
+
+        .btn-responsive .btn {
+            padding: 1.0rem; /* Adjust button size */
+        }
+    }
+
+    }
+</style>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <!-- Tiêu đề -->
+    <h1 class="my-0" style="color: #6a1b9a; font-size: 24px; white-space: nowrap;">Quản lý Khách hàng</h1>
+
+    <!-- Các nút hành động -->
+    <div class="d-flex gap-2 btn-responsive">
         <a asp-action="ExportToExcel" class="btn btn-success text-white">
-            <i class="bi bi-file-earmark-excel"></i> Xuất file
+            <i class="bi bi-file-earmark-excel"></i> <span>Xuất file</span>
         </a>
         <a asp-action="Create" class="btn btn-warning text-dark">
-            <i class="bi bi-plus-circle"></i> Tạo mới
+            <i class="bi bi-plus-circle"></i> <span>Tạo mới</span>
         </a>
     </div>
 </div>
 
-<!-- Table for displaying customer information -->
-<table class="table table-bordered table-striped mx-auto">
-    <thead>
-        <tr class="text-center">
-            <th scope="col">Họ và tên</th>
-            <th scope="col">Email</th>
-            <th scope="col" class="text-center">Số điện thoại</th>
-            <th scope="col" style="width: 200px;">Trạng thái</th>
-            <th scope="col" class="text-center">Hành động</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+
+
+<form method="get" class="m-3" id="filterForm">
+    <div class="row">
+        <h5 class="">
+            Bộ tìm kiếm
+        </h5>
+        <div class="col-lg-3 col-md-8">
+
+            @Html.GenerateFilterDropdown(
+                     id: "status",
+                     name: "status",
+                     options: new Dictionary<string, string>
+            {
+            {"1", "Đã kích hoạt"},
+            {"0", "Chưa kích hoạt"}
+            },
+                     placeholder: "-- Trạng thái --",
+                     selectedValue: ViewData["status"]?.ToString() ?? "",
+                     includeCancelButton: false
+                     )
+        </div>
+        <div class="col-lg-3 col-md-8">
+            @Html.GenerateFilterTextbox(
+                     id: "SearchTerm",
+                     name: "SearchTerm",
+                     placeholder: "Tìm kiếm......",
+                     value: ViewData["SearchTerm"]?.ToString() ?? "",
+                     includeCancelButton: false
+                     )
+        </div>
+        <div class="d-lg-none d-block mt-3">
+            <button type="submit" class="btn btn-primary w-100">Lọc</button>
+        </div>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td class="text-left">@item.FullName</td>
-                <td class="text-left">@item.Email</td>
-                <td class="text-center">@item.Phone</td>
-                <td class="text-center" style="width: 200px;">
-                    <span class="badge @((item.Status == 1) ? "bg-success" : "bg-danger")">
-                        @(item.Status == 1 ? "Kích hoạt" : "Chưa kích hoạt")
-                    </span>
-                </td>
-                <td class="text-center">
-                    <a asp-action="Edit" asp-route-id="@item.CustomerId" class="btn btn-outline-primary">
-                        <i class="bi bi-pencil-square"></i> <span></span>
+                <th>STT</th>
+                <th>
+                    <a href="?sortColumn=FullName&sortOrder=@(
+                ViewData["SortOrder"] as string == "asc" &&
+                ViewData["SortColumn"] as string == "FullName" ? "desc" : "asc")">
+                        Tên Khách hàng
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "FullName" ? ViewData["SortOrder"] : "")"></span>
                     </a>
-                    <form method="post" asp-action="ToggleActivation" asp-route-customerId="@item.CustomerId" class="d-inline" onsubmit="return toggleActivationAndNotify(event, this);">
-                        <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#activationModal-@item.CustomerId" onclick="return confirmDeactivation(@item.CustomerId)">
-                            <i class="bi bi-gear"></i>
-                            <span>@((item.Status == 1) ? "Hủy kích hoạt" : "Kích hoạt")</span>
-                        </button>
-                    </form>
-                    <button class="btn btn-outline-danger " data-bs-toggle="modal" data-bs-target="#deleteModal-@item.CustomerId">
-                        <i class="bi bi-trash"></i> <span></span>
-                    </button>
-                </td>
+                </th>
+                <th>
+                    <a href="?sortColumn=Email&sortOrder=@(
+                ViewData["SortOrder"] as string == "asc" &&
+                ViewData["SortColumn"] as string == "Email" ? "desc" : "asc")">
+                        Email
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "Email" ? ViewData["SortOrder"] : "")"></span>
+                    </a>
+                </th>
+                <th class="text-center">Số điện thoại</th>
+                <th class="text-center">
+                    <a href="?sortColumn=Status&sortOrder=@(
+                ViewData["SortOrder"] as string == "asc" &&
+                ViewData["SortColumn"] as string == "Status" ? "desc" : "asc")">
+                        Trạng thái
+                        <span class="sort-arrow @(ViewData["SortColumn"] as string == "Status" ? ViewData["SortOrder"] : "")"></span>
+                    </a>
+                </th>
+                <th class="text-center">Hành động</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @if (Model.Any())
+            {
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    var item = Model.ElementAt(i);
+                    <tr>
+                        <td class="text-center">@((ViewData["CurrentPage"] != null ? ((int)ViewData["CurrentPage"] - 1) * 6 + (i + 1) : i + 1))</td>
+                        <td style="white-space: nowrap;">@item.FullName</td>
+                        <td style="white-space: nowrap;">@item.Email</td>
+                        <td class="text-center" style="white-space: nowrap;">@item.Phone</td>
+                        <td class="text-center" style="white-space: nowrap;">
+                            <span class="badge @((item.Status == 1) ? "bg-success" : "bg-danger")">
+                                @(item.Status == 1 ? "Kích hoạt" : "Ngừng kích hoạt")
+                            </span>
+                        </td>
+                        <td class="text-center" style="white-space: nowrap;">
+                            <a asp-action="Edit" asp-route-id="@item.CustomerId" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <form method="post" asp-action="ToggleActivation" asp-route-customerId="@item.CustomerId" class="d-inline" onsubmit="return toggleActivationAndNotify(event, this);">
+                                <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#activationModal-@item.CustomerId">
+                                    <i class="bi bi-gear"></i>
+                                </button>
+                            </form>
+                            <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.CustomerId">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center text-muted">Không tìm thấy khách hàng nào phù hợp.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 <!-- Modal for Activation/Deactivation Confirmation -->
 @foreach (var item in Model)
@@ -82,7 +193,7 @@
                 </div>
                 <div class="modal-body">
                     Bạn có chắc chắn muốn
-                    <strong>@((item.Status == 1) ? "Hủy kích hoạt" : "Kích hoạt")</strong> người dùng này không?
+                    <strong>@((item.Status == 1) ? "Ngừng kích hoạt" : "Kích hoạt")</strong> người dùng này không?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
@@ -116,43 +227,48 @@
             </div>
         </div>
     </div>
-   
+
 }
+<!-- Phân trang -->
+<div class="d-flex justify-content-center my-4">
+    <ul class="pagination">
+        @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = 1, Status = ViewData["Status"], SearchTerm = ViewBag.SearchTerm, sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"]})">
+                    <i class="bi bi-chevron-double-left"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1, Status = ViewData["Status"], SearchTerm = ViewBag.SearchTerm, sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            </li>
+        }
 
-@if (Model.Count() >= 5)
-{
-    <div class="d-flex justify-content-center my-4">
-        <ul class="pagination">
-            @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] > 1)
+        @if (ViewData["TotalPages"] != null)
+        {
+            int totalPages = (int)ViewData["TotalPages"];
+            for (int i = 1; i <= totalPages; i++)
             {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = 1 })">Đầu</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1 })">Trước</a>
+                <li class="page-item @(i == (int)ViewData["CurrentPage"] ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i, Status = ViewData["Status"], SearchTerm = ViewBag.SearchTerm, sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"]})">@i</a>
                 </li>
             }
+        }
 
-            @if (ViewData["TotalPages"] != null)
-            {
-                int totalPages = (int)ViewData["TotalPages"];
-                for (int i = 1; i <= totalPages; i++)
-                {
-                    <li class="page-item @(i == (int)ViewData["CurrentPage"] ? "active" : "")">
-                        <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
-                    </li>
-                }
-            }
-
-            @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
-            {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1 })">Sau</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"] })">Cuối</a>
-                </li>
-            }
-        </ul>
-    </div>
-}
+        @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1, Status = ViewData["Status"], SearchTerm = ViewBag.SearchTerm, sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"]})">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"], Status = ViewData["Status"],SearchTerm = ViewBag.SearchTerm, sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
+                    <i class="bi bi-chevron-double-right"></i>
+                </a>
+            </li>
+        }
+    </ul>
+</div>

@@ -1,127 +1,340 @@
 ﻿using admin_sweetsoft_tech_support.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch.Internal;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Dynamic;
+using System.Globalization;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
     public class ActivityLogsController : Controller
     {
-        private readonly RequestContext _context;
+        private readonly string _logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Activitys");
 
-        public ActivityLogsController(RequestContext context)
+        // Hiển thị tất cả log
+        public async Task<IActionResult> Index(string? date = "", string? searchTerm = null, string filterOption = "", int page = 1)
         {
-            _context = context;
-        }
-
-        // GET: ActivityLogs
-        public async Task<IActionResult> Index(string search, int? userId, int page = 1, int filePage = 1)
-        {
-            var logs = _context.TblActivityLogs
-                .Include(l => l.User)
-                .Include(l => l.Request)
-                .AsQueryable();
-
-            if (!string.IsNullOrEmpty(search))
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
             {
-                logs = logs.Where(l => l.Action.Contains(search));
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
             }
+            List<ActivityLogEntry> logs;
+            var pageSize = 5; // số lượng log mỗi trang
+            var skip = (page - 1) * pageSize;
+            var totalLogs = await CountLogsAsync(); // Đếm tổng số log async
 
-            if (userId.HasValue)
+            if (string.IsNullOrEmpty(filterOption))
             {
-                logs = logs.Where(l => l.UserId == userId.Value);
+                logs = await ReadLogsForPaginationAsync(skip, pageSize);
             }
-            var logsFromDb = await logs.Skip((page - 1) * 10).Take(10).ToListAsync();
-            var logsFromFile = await GetLogsFromFile();
-            var paginatedFileLogs = logsFromFile
-              .Skip((filePage - 1) * 10)
-              .Take(10)
-              .ToList();
-            var logsActivity = logsFromDb.Select(log =>
+            else
             {
-                dynamic logItem = new ExpandoObject();
-                logItem.ActivityId = log.ActivityId;
-                logItem.RequestId = log.RequestId;
-                logItem.UserId = log.UserId;
-                logItem.Action = log.Action;
-                logItem.CreatedAt = log.CreatedAt;
-                logItem.User = log.User;
-                logItem.Request = log.Request;
-                return logItem;
-            }).ToList();
-
-            var totalLog = await logs.CountAsync();
-
-            // Tính tổng số trang
-            var totalPages = (int)Math.Ceiling((double)totalLog / 10);
-            var FileTotalPages = (int)Math.Ceiling((double)logsFromFile.Count / 10);
-
-            ViewData["DbPagination"] = new Pagination { CurrentPage = page, TotalPages = totalPages };
-            ViewData["FilePagination"] = new Pagination { CurrentPage = filePage, TotalPages = FileTotalPages };
-
-            ViewData["Search"] = search;
-            ViewData["userId"] = userId;
-            ViewData["Users"] = await _context.TblUsers.ToListAsync();
-
-            return View(new Tuple<List<dynamic>, List<dynamic>>(logsActivity, paginatedFileLogs));
-        }
-
-        private async Task<List<dynamic>> GetLogsFromFile()
-        {
-            var logs = new List<dynamic>();
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "activity.log");
-
-            if (System.IO.File.Exists(filePath))
-            {
-                var logLines = System.IO.File.ReadAllLines(filePath);
-
-                foreach (var line in logLines)
+                date = DateTime.Today.ToString("yyyy-MM-dd");
+                if (filterOption == "day")
                 {
-                    // Tách các phần từ log
-                    var logParts = line.Split(new string[] { ": " }, StringSplitOptions.None);
-
-                    if (logParts.Length == 2)
+                    if (DateTime.TryParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedDate))
                     {
-                        var dateTime = logParts[0];
-                        var logDetails = logParts[1].Split(", ");
+                        logs = await ReadLogsForDatePaginationAsync(parsedDate, skip, pageSize);
+                        var dateLogs = await ReadLogsByDateAsync(parsedDate);
+                        totalLogs = dateLogs.Count;
+                    }
+                    else
+                    {
+                        return BadRequest("Invalid date format. Expected format: yyyy-MM-dd.");
+                    }
+                }
+                else if (filterOption == "month")
+                {
+                    var monthDate = date.Substring(5, 2);
+                    if (DateTime.TryParseExact(monthDate, "MM", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedMonth))
+                    {
+                        logs = await ReadLogsForMonthPaginationAsync(parsedMonth, skip, pageSize);
+                        var monthLogs = await ReadLogsByMonthAsync(parsedMonth);
+                        totalLogs = monthLogs.Count;
+                    }
+                    else
+                    {
+                        return BadRequest("Invalid month format. Expected format: yyyy-MM.");
+                    }
+                }
+                else if (filterOption == "year")
+                {
+                    var yearMonthDate = date.Substring(0, 4);
+                    if (DateTime.TryParseExact(yearMonthDate, "yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedYear))
+                    {
+                        logs = await ReadLogsForYearPaginationAsync(parsedYear, skip, pageSize);
+                        var yearLogs = await ReadLogsByYearAsync(parsedYear);
+                        totalLogs = yearLogs.Count;
+                    }
+                    else
+                    {
+                        return BadRequest("Invalid year format. Expected format: yyyy.");
+                    }
+                }
+                else
+                {
+                    return BadRequest("Invalid filter option.");
+                }
+            }
 
-                        var userId = logDetails.FirstOrDefault(detail => detail.StartsWith("UserId"))?.Split('=')[1].Trim();
-                        var requestId = logDetails.FirstOrDefault(detail => detail.StartsWith("RequestId"))?.Split('=')[1].Trim();
-                        var action = logDetails.FirstOrDefault(detail => detail.StartsWith("Action"))?.Split('=')[1].Trim();
-                        var createByUser = await _context.TblUsers.FindAsync(int.Parse(userId));
-                        var user = createByUser?.FullName;
-                        var requestNavigater = await _context.TblSupportRequests.FindAsync(int.Parse(requestId));
-                        var request = requestNavigater?.RequestId;
-                        logs.Add(new
-                        {
-                            UserId = userId,
-                            Message = requestId,
-                            Status = action,
-                            CreatedAt = DateTime.Parse(dateTime),
-                            User = new { FullName = user },
-                            Request = new { RequestId = request },
-                        });
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                logs = logs.Where(log =>
+                    log.User.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    log.Action.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    log.Title?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) == true)
+                    .ToList();
+            }
+
+            var totalPages = (int)Math.Ceiling(totalLogs / (double)pageSize);
+            ViewData["SearchTerm"] = searchTerm;
+            ViewData["Date"] = date;
+            ViewData["FilterOption"] = filterOption;
+            ViewData["TotalPages"] = totalPages;
+            ViewData["CurrentPage"] = page;
+
+            return View(Tuple.Create(logs, new List<object>()));
+        }
+
+        private async Task<List<ActivityLogEntry>> ReadLogsForPaginationAsync(int skip, int pageSize)
+        {
+            var logs = new List<ActivityLogEntry>();
+            if (!Directory.Exists(_logDirectory))
+            {
+                return logs;
+            }
+
+            var logFiles = Directory.GetFiles(_logDirectory, "*.log", SearchOption.AllDirectories);
+            foreach (var file in logFiles)
+            {
+                var fileLogs = await ReadLogFileAsync(file);
+                logs.AddRange(fileLogs);
+            }
+
+            return logs.OrderByDescending(log => log.Timestamp)
+                        .Skip(skip)
+                        .Take(pageSize)
+                        .ToList();
+        }
+
+        private async Task<List<ActivityLogEntry>> ReadLogsForDatePaginationAsync(DateTime date, int skip, int pageSize)
+        {
+            var logs = new List<ActivityLogEntry>();
+            var logDirectoryForDate = Path.Combine(_logDirectory, date.ToString("yyyy"), date.ToString("MM"), date.ToString("dd"));
+            if (Directory.Exists(logDirectoryForDate))
+            {
+                var logFiles = Directory.GetFiles(logDirectoryForDate, $"{date:yyyy-MM-dd}-*.log");
+
+                foreach (var file in logFiles)
+                {
+                    var fileLogs = await ReadLogFileAsync(file);
+                    logs.AddRange(fileLogs);
+                }
+            }
+
+            return logs.OrderByDescending(log => log.Timestamp)
+                        .Skip(skip)
+                        .Take(pageSize)
+                        .ToList();
+        }
+
+        private async Task<List<ActivityLogEntry>> ReadLogsByDateAsync(DateTime date)
+        {
+            var logs = new List<ActivityLogEntry>();
+            var logDirectoryForDate = Path.Combine(_logDirectory, date.ToString("yyyy"), date.ToString("MM"), date.ToString("dd"));
+            if (Directory.Exists(logDirectoryForDate))
+            {
+                var logFiles = Directory.GetFiles(logDirectoryForDate, $"{date:yyyy-MM-dd}-*.log");
+
+                foreach (var file in logFiles)
+                {
+                    var fileLogs = await ReadLogFileAsync(file);
+                    logs.AddRange(fileLogs);
+                }
+            }
+
+            return logs.OrderByDescending(log => log.Timestamp).ToList();
+        }
+
+        private async Task<List<ActivityLogEntry>> ReadLogsForMonthPaginationAsync(DateTime month, int skip, int pageSize)
+        {
+            var logs = new List<ActivityLogEntry>();
+            var logDirectoryForMonth = Path.Combine(_logDirectory, month.ToString("yyyy"), month.ToString("MM"));
+
+            if (Directory.Exists(logDirectoryForMonth))
+            {
+                var dayDirectories = Directory.GetDirectories(logDirectoryForMonth);
+
+                foreach (var dayDirectory in dayDirectories)
+                {
+                    var logFiles = Directory.GetFiles(dayDirectory, $"{month:yyyy-MM}-{Path.GetFileName(dayDirectory)}-*.log");
+
+                    foreach (var file in logFiles)
+                    {
+                        var fileLogs = await ReadLogFileAsync(file);
+                        logs.AddRange(fileLogs);
                     }
                 }
             }
 
+            return logs.OrderByDescending(log => log.Timestamp)
+                        .Skip(skip)
+                        .Take(pageSize)
+                        .ToList();
+        }
+
+        private async Task<List<ActivityLogEntry>> ReadLogsByMonthAsync(DateTime month)
+        {
+            var logs = new List<ActivityLogEntry>();
+            var logDirectoryForMonth = Path.Combine(_logDirectory, month.ToString("yyyy"), month.ToString("MM"));
+
+            if (Directory.Exists(logDirectoryForMonth))
+            {
+                var dayDirectories = Directory.GetDirectories(logDirectoryForMonth);
+
+                foreach (var dayDirectory in dayDirectories)
+                {
+                    var logFiles = Directory.GetFiles(dayDirectory, $"{month:yyyy-MM}-{Path.GetFileName(dayDirectory)}-*.log");
+
+                    foreach (var file in logFiles)
+                    {
+                        var fileLogs = await ReadLogFileAsync(file);
+                        logs.AddRange(fileLogs);
+                    }
+                }
+            }
+
+            return logs.OrderByDescending(log => log.Timestamp).ToList();
+        }
+
+        private async Task<List<ActivityLogEntry>> ReadLogsForYearPaginationAsync(DateTime year, int skip, int pageSize)
+        {
+            var logs = new List<ActivityLogEntry>();
+            var logDirectoryForYear = Path.Combine(_logDirectory, year.ToString("yyyy"));
+
+            if (Directory.Exists(logDirectoryForYear))
+            {
+                var monthDirectories = Directory.GetDirectories(logDirectoryForYear);
+
+                foreach (var monthDirectory in monthDirectories)
+                {
+                    var dayDirectories = Directory.GetDirectories(monthDirectory);
+
+                    foreach (var dayDirectory in dayDirectories)
+                    {
+                        var logFiles = Directory.GetFiles(dayDirectory, $"{year:yyyy}-{Path.GetFileName(monthDirectory)}-{Path.GetFileName(dayDirectory)}-*.log");
+
+                        foreach (var file in logFiles)
+                        {
+                            var fileLogs = await ReadLogFileAsync(file);
+                            logs.AddRange(fileLogs);
+                        }
+                    }
+                }
+            }
+
+            return logs.OrderByDescending(log => log.Timestamp)
+                        .Skip(skip)
+                        .Take(pageSize)
+                        .ToList();
+        }
+
+        private async Task<List<ActivityLogEntry>> ReadLogsByYearAsync(DateTime year)
+        {
+            var logs = new List<ActivityLogEntry>();
+            var logDirectoryForYear = Path.Combine(_logDirectory, year.ToString("yyyy"));
+
+            if (Directory.Exists(logDirectoryForYear))
+            {
+                var monthDirectories = Directory.GetDirectories(logDirectoryForYear);
+
+                foreach (var monthDirectory in monthDirectories)
+                {
+                    var dayDirectories = Directory.GetDirectories(monthDirectory);
+
+                    foreach (var dayDirectory in dayDirectories)
+                    {
+                        var logFiles = Directory.GetFiles(dayDirectory, $"{year:yyyy}-{Path.GetFileName(monthDirectory)}-{Path.GetFileName(dayDirectory)}-*.log");
+
+                        foreach (var file in logFiles)
+                        {
+                            var fileLogs = await ReadLogFileAsync(file);
+                            logs.AddRange(fileLogs);
+                        }
+                    }
+                }
+            }
+
+            return logs.OrderByDescending(log => log.Timestamp).ToList();
+        }
+
+        private async Task<List<ActivityLogEntry>> ReadLogFileAsync(string filePath)
+        {
+            var logs = new List<ActivityLogEntry>();
+            var lines = await System.IO.File.ReadAllLinesAsync(filePath);
+            foreach (var line in lines)
+            {
+                var log = ParseLogLine(line);
+                if (log != null)
+                {
+                    logs.Add(log);
+                }
+            }
             return logs;
         }
 
-        // POST: ActivityLogs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        private async Task<int> CountLogsAsync()
         {
-            var activityLog = await _context.TblActivityLogs.FindAsync(id);
-
-            if (activityLog != null)
+            var totalLogs = 0;
+            if (Directory.Exists(_logDirectory))
             {
-                _context.TblActivityLogs.Remove(activityLog);
-                await _context.SaveChangesAsync();
+                var logFiles = Directory.GetFiles(_logDirectory, "*.log", SearchOption.AllDirectories);
+                foreach (var file in logFiles)
+                {
+                    totalLogs += await CountLinesInFileAsync(file);
+                }
             }
+            return totalLogs;
+        }
 
-            return RedirectToAction(nameof(Index));
+        private async Task<int> CountLinesInFileAsync(string filePath)
+        {
+            var lineCount = 0;
+            using (var reader = new StreamReader(filePath))
+            {
+                while (await reader.ReadLineAsync() != null)
+                {
+                    lineCount++;
+                }
+            }
+            return lineCount;
+        }
+
+        private ActivityLogEntry? ParseLogLine(string line)
+        {
+            try
+            {
+                var parts = line.Split(", ");
+                if (parts.Length < 7) return new ActivityLogEntry();
+
+                return new ActivityLogEntry
+                {
+                    Timestamp = DateTime.ParseExact(parts[0], "dd/MM/yyyy HH\\:mm", CultureInfo.InvariantCulture),
+                    Id = parts[1],
+                    Title = parts[2],
+                    Action = parts[3],
+                    User = parts[4],
+                    OldValue = parts[5],
+                    NewValue = parts[6],
+                };
+            }
+            catch
+            {
+                return new ActivityLogEntry();
+            }
         }
     }
 }

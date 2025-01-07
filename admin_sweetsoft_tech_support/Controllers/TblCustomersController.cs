@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using OfficeOpenXml;
+using admin_sweetsoft_tech_support.Attributes;
+using System.Security.Claims;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -19,26 +17,67 @@ namespace admin_sweetsoft_tech_support.Controllers
             _context = context;
         }
 
-        // GET: TblCustomers
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Index(int? page, string Status, string SearchTerm, string sortColumn, string sortOrder)
         {
-            int pageSize = 6;
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
+            }
+            // Mặc định trang hiện tại là 1 nếu chưa có
+            int currentPage = page ?? 1;
 
-            var query = _context.TblCustomers.Include(t => t.CreatedByNavigation).Include(t => t.UpdatedByNavigation);
+            // Truy vấn cơ sở dữ liệu và lọc theo trạng thái
+            var customersQuery = _context.TblCustomers
+                .Where(c => c.IsDelete == false)
+                .AsQueryable();
 
-            var totalCount = await query.CountAsync();
+            if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortOrder))
+                customersQuery = TableSorter.Sort(customersQuery, sortColumn, sortOrder);
 
-            var customers = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+            if (!string.IsNullOrEmpty(Status))
+            {
+                // Lọc theo trạng thái
+                if (Status == "1") // Kích hoạt
+                {
+                    customersQuery = customersQuery.Where(c => c.Status == 1);
+                }
+                else if (Status == "0") // Ngừng kích hoạt
+                {
+                    customersQuery = customersQuery.Where(c => c.Status == 0);
+                }
+            }
 
-            ViewData["TotalPages"] = (int)Math.Ceiling(totalCount / (double)pageSize);
-            ViewData["CurrentPage"] = page;
+            // Lọc theo từ khóa tìm kiếm
+            if (!string.IsNullOrEmpty(SearchTerm))
+            {
+                var lower = SearchTerm.ToLower();
+                customersQuery = customersQuery.Where(c => c.FullName.ToLower().Contains(SearchTerm) || c.Email.ToLower().Contains(SearchTerm));
+            }
 
-            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
-            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
+            // Phân trang
+            int pageSize = 6; // Số lượng khách hàng trên mỗi trang
+            var totalItems = await customersQuery.CountAsync(); // Sử dụng CountAsync thay vì Count
+            var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+            var customers = await customersQuery
+                .Skip((currentPage - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync(); // Sử dụng ToListAsync thay vì ToList
+
+            // Thêm các ViewData cho phân trang, lọc trạng thái và từ khóa tìm kiếm
+            ViewData["SortColumn"] = sortColumn;
+            ViewData["SortOrder"] = sortOrder;
+            ViewData["CurrentPage"] = currentPage;
+            ViewData["TotalPages"] = totalPages;
+            ViewData["Status"] = Status;
+            ViewData["SearchTerm"] = SearchTerm;
 
             return View(customers);
         }
 
+
+        [PermissionAuthorize("Quản lý khách hàng")]
         [HttpPost]
         public async Task<IActionResult> ToggleActivation(int customerId)
         {
@@ -57,26 +96,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: TblCustomers/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblCustomer = await _context.TblCustomers
-                .Include(t => t.CreatedByNavigation)
-                .Include(t => t.UpdatedByNavigation)
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
-            if (tblCustomer == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblCustomer);
-        }
-
+        [PermissionAuthorize("Quản lý khách hàng")]
         // GET: TblCustomers/Create
         public IActionResult Create()
         {
@@ -85,12 +105,9 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View();
         }
 
-        // POST: TblCustomers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Product,Username,Password,Status,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedUser,CreatedAt,UpdatedUser,UpdatedAt")] TblCustomer tblCustomer)
+        public async Task<IActionResult> Create([Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Username,Password,Status,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedUser,CreatedAt,UpdatedUser,UpdatedAt")] TblCustomer tblCustomer)
         {
             // Kiểm tra sự trùng lặp của Username
             bool isUsernameExist = await _context.TblCustomers.AnyAsync(c => c.Username == tblCustomer.Username);
@@ -109,18 +126,28 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Nếu có lỗi trong ModelState, trả lại form để người dùng sửa
             if (!ModelState.IsValid)
             {
+                tblCustomer.CreatedAt = DateTime.Now; // Mặc định là ngày hiện tại
+                tblCustomer.UpdatedAt = DateTime.Now; // Mặc định là ngày hiện tại
                 ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
                 ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName");
                 return View(tblCustomer);
             }
 
-            // Nếu không có lỗi, thêm khách hàng vào cơ sở dữ liệu
+            
             tblCustomer.Status = 0;
+            tblCustomer.CreatedAt = DateTime.Now;
+            tblCustomer.UpdatedAt = DateTime.Now;
             _context.Add(tblCustomer);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            // Thêm thông báo thành công vào TempData
+            TempData["SuccessMessage"] = "Khách hàng đã được thêm thành công!";
+
+            return RedirectToAction(nameof(Index)); // Chuyển hướng đến trang Index
         }
 
+
+        [PermissionAuthorize("Quản lý khách hàng")]
         // GET: TblCustomers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -129,31 +156,33 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return NotFound();
             }
 
-            // Truy vấn thông tin khách hàng và các yêu cầu hỗ trợ liên quan
+            // Fetch the customer and include support requests with department info
             var tblCustomer = await _context.TblCustomers
-                                            .Include(c => c.TblSupportRequests) // Bao gồm dữ liệu yêu cầu hỗ trợ
-                                            .Include(c => c.CreatedByNavigation)
-                                            .Include(c => c.UpdatedByNavigation)
-                                            .FirstOrDefaultAsync(m => m.CustomerId == id);
+                                             .Include(c => c.TblSupportRequests)
+                                                 .ThenInclude(sr => sr.Department) // Include the Department
+                                             .Include(c => c.CreatedByNavigation)
+                                             .Include(c => c.UpdatedByNavigation)
+                                             .FirstOrDefaultAsync(m => m.CustomerId == id);
 
             if (tblCustomer == null)
             {
                 return NotFound();
             }
 
-            // Truyền dữ liệu Customer và yêu cầu hỗ trợ vào View
+            // Pass creator and updater information to ViewBag
+            ViewBag.CreatedUser = tblCustomer.CreatedByNavigation?.FullName ?? "N/A";
+            ViewBag.UpdatedUser = tblCustomer.UpdatedByNavigation?.FullName ?? "N/A";
+
+            // Pass related data for other options
             ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.CreatedBy);
             ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.UpdatedBy);
 
-            return View(tblCustomer); // Trả lại View với dữ liệu khách hàng và các yêu cầu hỗ trợ
+            return View(tblCustomer);
         }
 
-        // POST: TblCustomers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Product,Username,Password,Status,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedUser,CreatedAt,UpdatedUser,UpdatedAt")] TblCustomer tblCustomer, List<TblSupportRequest> updatedSupportRequests)
+        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Username,Password,Status,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedUser,CreatedAt,UpdatedUser,UpdatedAt")] TblCustomer tblCustomer)
         {
             if (id != tblCustomer.CustomerId)
             {
@@ -164,22 +193,31 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 try
                 {
-                    // Cập nhật thông tin khách hàng
-                    _context.Update(tblCustomer);
-
-                    // Cập nhật các yêu cầu hỗ trợ
-                    foreach (var supportRequest in updatedSupportRequests)
+                    var existingCustomer = await _context.TblCustomers.FindAsync(id);
+                    if (existingCustomer != null)
                     {
-                        var existingRequest = await _context.TblSupportRequests.FindAsync(supportRequest.RequestId);
-                        if (existingRequest != null)
-                        {
-                            existingRequest.RequestDetails = supportRequest.RequestDetails; // Ví dụ, cập nhật chi tiết yêu cầu
-                            existingRequest.Status = supportRequest.Status; // Cập nhật trạng thái yêu cầu
+                        // Cập nhật các thông tin khách hàng
+                        existingCustomer.FullName = tblCustomer.FullName;
+                        existingCustomer.Email = tblCustomer.Email;
+                        existingCustomer.Phone = tblCustomer.Phone;
+                        existingCustomer.TaxCode = tblCustomer.TaxCode;
+                        existingCustomer.Company = tblCustomer.Company;
+                        existingCustomer.Username = tblCustomer.Username;
+                        existingCustomer.Password = tblCustomer.Password;
+                        existingCustomer.Status = tblCustomer.Status;
 
-                        }
+                        // Thiết lập ngày cập nhật là ngày hiện tại
+                        existingCustomer.UpdatedAt = DateTime.Now;
+
+                        _context.Update(existingCustomer);
+                        await _context.SaveChangesAsync();
+
+                        TempData["SuccessMessage"] = "Thông tin khách hàng đã được cập nhật thành công!";
                     }
-
-                    await _context.SaveChangesAsync();
+                    else
+                    {
+                        TempData["ErrorMessage"] = "Khách hàng không tồn tại!";
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -192,13 +230,16 @@ namespace admin_sweetsoft_tech_support.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.CreatedBy);
-            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblCustomer.UpdatedBy);
+
+            ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.CreatedBy);
+            ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.UpdatedBy);
             return View(tblCustomer);
         }
 
+        [PermissionAuthorize("Quản lý khách hàng")]
         // POST: TblCustomers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -207,10 +248,16 @@ namespace admin_sweetsoft_tech_support.Controllers
             var tblCustomer = await _context.TblCustomers.FindAsync(id);
             if (tblCustomer != null)
             {
-                _context.TblCustomers.Remove(tblCustomer);
+                tblCustomer.IsDelete = true; // Đánh dấu là đã xóa
+                tblCustomer.UpdatedAt = DateTime.Now; // Cập nhật ngày chỉnh sửa
+
+                _context.Update(tblCustomer);
+                await _context.SaveChangesAsync();
+
+                // Thêm thông báo thành công vào TempData
+                TempData["SuccessMessage"] = "Khách hàng đã được xóa thành công!";
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
@@ -225,6 +272,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             var customers = await _context.TblCustomers
                 .Include(t => t.CreatedByNavigation)
                 .Include(t => t.UpdatedByNavigation)
+                .Where(c => c.IsDelete == false)
                 .ToListAsync();
 
             // Sử dụng EPPlus để tạo file Excel
@@ -253,8 +301,8 @@ namespace admin_sweetsoft_tech_support.Controllers
                     worksheet.Cells[i + 2, 3].Value = customer.Email;
                     worksheet.Cells[i + 2, 4].Value = customer.Phone;
                     worksheet.Cells[i + 2, 5].Value = customer.Status == 1 ? "Active" : "Inactive";
-                    worksheet.Cells[i + 2, 6].Value = customer.CreatedAt?.ToString("yyyy-MM-dd HH:mm:ss");
-                    worksheet.Cells[i + 2, 7].Value = customer.UpdatedAt?.ToString("yyyy-MM-dd HH:mm:ss");
+                    worksheet.Cells[i + 2, 6].Value = customer.CreatedAt?.ToString("dd/MM/yyyy HH:mm"); 
+                    worksheet.Cells[i + 2, 7].Value = customer.UpdatedAt?.ToString("dd/MM/yyyy HH:mm"); 
                 }
 
                 // Tự động căn chỉnh kích thước cột
