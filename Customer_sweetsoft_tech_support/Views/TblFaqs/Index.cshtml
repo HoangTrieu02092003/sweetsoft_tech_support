@@ -102,6 +102,7 @@
                 <a href="@Url.Action("Index", "TblFaqs")">FAQs</a>
             </div>
             <div class="zb_nr">
+                <p class="faqscontent" style="font-size: .4rem;white-space: nowrap; color: #6510ad; text-align:center; padding-top: 2%;"><b>Chúng tôi có thể giúp gì được cho bạn ?</b></p>
                 <div class="card-container">
                     @foreach (var item in Model)
                     {
@@ -115,7 +116,6 @@
                                 </p>
                                 <div class="btn-container">
                                     <a asp-action="Details" asp-route-id="@item.FaqId" class="btn btn-primary" style="font-weight: bold;">
-
                                         Xem <i class="bi bi-arrow-right"></i>
                                     </a>
                                 </div>
@@ -124,7 +124,6 @@
                     }
                 </div>
             </div>
-
         </div>
     </div>
 </body>

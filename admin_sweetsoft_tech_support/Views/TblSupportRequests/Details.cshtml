@@ -60,8 +60,7 @@
                                     {
                                         0 => "Chưa hoàn thành",
                                         1 => "Hoàn thành",
-                                        2 => "Không xử lý được",
-                                        _ => "Không xác định"
+                                        2 => "Không xử lý được",                                    
                                     };
                                 }
                                 @statusText
@@ -97,9 +96,12 @@
                     <p class="mb-0 text-center flex-grow-1" style="color: #6a1b9a; font-weight: bold;">
                         <i class="bi bi-list"></i> Lịch sử Chuyển giao Yêu cầu
                     </p>
-                    <a asp-action="Transfer" asp-route-id="@Model.RequestId" class="btn btn-warning btn-sm text-dark">
-                        <i class="bi bi-arrow-right-circle"></i> Chuyển giao
-                    </a>
+                    @if (Model.Status == 0)
+                    {
+                        <a asp-action="Transfer" asp-route-id="@Model.RequestId" class="btn btn-warning btn-sm text-dark">
+                            <i class="bi bi-arrow-right-circle"></i> Chuyển giao
+                        </a>
+                    }   
                 </div>
 
                 <div class="card-body">

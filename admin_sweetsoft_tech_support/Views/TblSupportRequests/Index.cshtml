@@ -335,9 +335,9 @@
 
         function submitStatusForm() {
             var form = document.getElementById('statusForm');
-            var status = document.getElementById('status').value;        
-                form.appendChild(createHiddenInput('resolvedAt', new Date().toISOString()));
-                form.appendChild(createHiddenInput('note', document.getElementById('note').value));            
+            var status = document.getElementById('status').value;
+            form.appendChild(createHiddenInput('resolvedAt', new Date().toISOString()));
+            form.appendChild(createHiddenInput('note', document.getElementById('note').value));
             form.submit();
         }
 
@@ -348,17 +348,6 @@
             input.name = name;
             input.value = value;
             return input;
-        }
-        function submitStatusForm() {
-            var form = document.getElementById('statusForm');
-            var status = document.getElementById('status').value;
-
-            if (status == 1) {
-                form.appendChild(createHiddenInput('resolvedAt', new Date().toISOString()));
-            } else {
-                form.appendChild(createHiddenInput('resolvedAt', ''));
-            }
-            form.submit();
         }
     </script>
 }

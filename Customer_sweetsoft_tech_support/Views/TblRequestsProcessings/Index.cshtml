@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    String color = "";
 }
 
 <!DOCTYPE html>
@@ -49,53 +50,57 @@
                 </div>
 
                 <div class="yc yccc fr">
-                    <form asp-action="Create" style="margin-bottom: .5rem;" method="get" asp-controller="TblSupportRequests">
+                    <form asp-action="Create" style="margin-bottom: .2rem;" method="get" asp-controller="TblSupportRequests">
                         <button type="submit" class="btn">
-                            GỬI YÊU CẦU <i style="margin-left: .1rem;" class="fa-solid fa-arrow-right"></i>
+                            GỬI YÊU CẦU MỚI <i style="margin-left: .1rem;" class="fa-solid fa-arrow-right"></i>
                         </button>
                     </form>
 
                     @foreach(var item in Model)
                         {
-                            <div style="display: flex; justify-content: space-around">
-                                <div class="container">
-                                    <div class="row" onclick="toggleContent(@item.ProcessId)">
-                                        <i class="fas fa-chevron-down toggle-icon" data-id="@item.ProcessId"></i>
-                                        <div class="main-content">
-                                            <div class="main-contentt">
-                                                <p><b>@item.Request.RequestTitle được gửi đi ngày @item.Request.CreatedAt.ToString("dd/MM/yyyy")</b></p>
-                                                <span class="status">
-                                                    @(item.IsCompleted == 0
-                                                        ? "Đang xử lý"
-                                                        : item.IsCompleted == 1
-                                                        ? "Hoàn thành"
-                                                        : "Không xử lý được")
-                                                </span>
-                                            </div>
-                                                <hr />
-                                            
-                                            <div class="main-contentt" style="padding-top:10px;">
-                                                <p>Mã Phiếu: <b>@item.Request.RequestId</b> | Phòng ban xử lý yêu cầu: <b>@item.Department.DepartmentName</b></p>
-                                                <p>@(item.ProcessedAt?.ToString("dd-MM-yyy HH:mm") ?? "-- -- --")</p>
-                                            </div>
+                            <div class="container">
+                                <div class="row" onclick="toggleContent(@item.ProcessId)">
+                                    <i class="fas fa-chevron-down toggle-icon" data-id="@item.ProcessId"></i>
+                                    <div class="main-content">
+                                        <div class="main-contentt">
+                                            <p><b>@item.Request.RequestTitle được gửi đi ngày @item.Request.CreatedAt.ToString("dd/MM/yyyy")</b></p>
+                                        @{
+                                            color = item.IsCompleted == 0
+                                              ? "#e2ca5b"
+                                              : item.IsCompleted == 1
+                                              ? "green"
+                                              : "red";
+                                        }
+                                        <p class="status" style="color: @color;">
+                                                @(item.IsCompleted == 0
+                                                    ? "Chưa hoàn thành"
+                                                    : item.IsCompleted == 1
+                                                    ? "Hoàn thành"
+                                                    : "Không xử lý được")
+                                            </p>
+                                        </div>
+                                        <hr />
+                                        <div class="main-contentt" style="padding-top:10px;">
+                                            <p>Mã Phiếu: <b>@item.Request.RequestId</b> | Phòng ban xử lý : <b>@item.Department.DepartmentName</b></p>
+                                            <p>@(item.ProcessedAt?.ToString("dd-MM-yyy HH:mm") ?? "-- -- --")</p>
                                         </div>
                                     </div>
-                                    <div class="details" id="details-@item.ProcessId">
-                                        <p><strong>Câu hỏi: </strong>@item.Request.RequestDetails</p>
-                                        <p><strong>----------------------------------</strong></p>
-                                        <p><strong>Hỗ Trợ:</strong></p>
-                                        <p>@item.Note</p>
-                                    </div>
                                 </div>
-                               <div>
-                                    
-                                    <button class="chat-button open-chat @(item.IsCompleted == 0?"d-block":"d-none")"
-                                            data-request-id="@item.RequestId"
-                                            data-title="@item.Request.RequestTitle">
-                                            <span class="bi bi-chat-dots"></span>
-                                        </button>
-                               </div>
-                           </div>
+                                <div class="details" id="details-@item.ProcessId">
+                                    <p><strong>Câu hỏi: </strong>@item.Request.RequestDetails</p>
+                                    <p><strong>----------------------------------</strong></p>
+                                    <p><strong>Hỗ Trợ:</strong></p>
+                                    <p>@item.Note</p>
+                                </div>
+                                <div>
+     
+     <button class="chat-button open-chat @(item.IsCompleted == 0?"d-block":"d-none")"
+             data-request-id="@item.RequestId"
+             data-title="@item.Request.RequestTitle">
+             <span class="bi bi-chat-dots"></span>
+         </button>
+</div>
+                            </div>
                         }
 
                     <script>
@@ -104,7 +109,14 @@
                             requests.forEach(request => {
                                 const statusSpan = request.querySelector('.status');
                                 let statusText = statusSpan.textContent.trim();
-                                let currentStatus = statusText === 'Đang xử lý' ? 0 : (statusText === 'Hoàn thành' ? 1 : 2);
+                                if ( statusText === 'Chưa hoàn thành' ){
+                                    currentStatus = 0;
+                                }
+                                else if ( statusText === 'Hoàn thành'){
+                                    currentStatus = 1;
+                                }
+                                else { currentStatus = 2; }
+
                                 if (status === null || currentStatus === status) {
                                     request.style.display = 'block';
                                 } else {

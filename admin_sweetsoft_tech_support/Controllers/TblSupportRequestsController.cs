@@ -521,6 +521,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 processing.ProcessedAt = resolvedAt ?? DateTime.Now;
                 processing.Note = note;
             }
+            supportRequest.ResolvedAt = status == 2 ? resolvedAt ?? DateTime.Now : null;
             if (status == 2)
             {
                 processing.IsCompleted = 2;
