@@ -323,7 +323,7 @@
                                             <tr class="table-row">
                                                 <td>@request.Department?.DepartmentName</td>
                                                 <td>@request.RequestDetails</td>
-                                                <td>@(request.Status == 1 ? "Đã xử lý" : "Chưa xử lý")</td>
+                                                <td>@(request.Status == 1 ? "Đã xử lý" : request.Status == 0? "Chưa xử lý":request.Status==2?"Không xử lý được":"Không xác định")</td>
                                                 <td>@request.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
                                                 <td>@(request.ResolvedAt.HasValue ? request.ResolvedAt.Value.ToString("dd/MM/yyyy HH:mm") : "N/A")</td>
                                             </tr>

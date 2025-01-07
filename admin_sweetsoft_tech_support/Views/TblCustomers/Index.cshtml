@@ -83,6 +83,7 @@
                      name: "status",
                      options: new Dictionary<string, string>
             {
+            {"2", "Khóa"},
             {"1", "Đã kích hoạt"},
             {"0", "Chưa kích hoạt"}
             },
@@ -152,7 +153,7 @@
                         <td class="text-center" style="white-space: nowrap;">@item.Phone</td>
                         <td class="text-center" style="white-space: nowrap;">
                             <span class="badge @((item.Status == 1) ? "bg-success" : "bg-danger")">
-                                @(item.Status == 1 ? "Kích hoạt" : "Ngừng kích hoạt")
+                                @(item.Status == 1 ? "Kích hoạt" : item.Status == 0? "Chưa kích hoạt":"Khóa")
                             </span>
                         </td>
                         <td class="text-center" style="white-space: nowrap;">
@@ -193,13 +194,13 @@
                 </div>
                 <div class="modal-body">
                     Bạn có chắc chắn muốn
-                    <strong>@((item.Status == 1) ? "Ngừng kích hoạt" : "Kích hoạt")</strong> người dùng này không?
+                    <strong>@((item.Status == 0||item.Status==2) ? "Kích hoạt" : "Khóa")</strong> người dùng này không?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
                     <form method="post" asp-action="ToggleActivation" asp-route-customerId="@item.CustomerId" class="d-inline">
                         <button type="submit" class="btn btn-info">
-                            @((item.Status == 1) ? "Hủy kích hoạt" : "Kích hoạt")
+                            @((item.Status == 1) ? "Khóa" : "Kích hoạt")
                         </button>
                     </form>
                 </div>

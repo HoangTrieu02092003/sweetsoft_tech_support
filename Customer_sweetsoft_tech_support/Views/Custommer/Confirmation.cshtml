@@ -1,0 +1,147 @@
+﻿@{
+    ViewData["Title"] = "Xác nhận đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Đặt nền và font chữ cho toàn trang */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    /* Tiêu đề chính */
+    h2 {
+        text-align: center;
+        color: #6a0dad; /* Màu tím */
+        font-size: 1.5rem; /* Kích thước chữ lớn hơn để dễ đọc */
+        margin-top: 20px;
+    }
+
+    .distance {
+        display: flex;
+        flex-direction: column; /* Đặt các phần tử bên trong theo chiều dọc */
+        align-items: center; /* Căn giữa theo chiều ngang */
+        justify-content: center; /* Căn giữa theo chiều dọc */
+        height: 100vh; /* Chiều cao bằng toàn bộ màn hình */
+        margin: 0; /* Loại bỏ khoảng cách mặc định */
+    }
+
+
+    /* Container chính của form */
+    .form-container {
+        border-radius: 10px;
+        max-width: 10%;
+        margin: 0 auto;
+    }
+
+    /* Phần thông báo */
+    .alert {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    /* Input email */
+    input[type="email"] {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #6a0dad; /* Màu tím khi focus */
+        }
+
+    /* Nút gửi */
+    button {
+        text-align: center;
+        padding: 12px;
+        background-color: #f1c40f; /* Màu vàng */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: 0, auto;
+    }
+
+        button:hover {
+            background-color: #f39c12; /* Màu vàng đậm khi hover */
+        }
+
+        button:disabled {
+            background-color: #e1e1e1;
+            cursor: not-allowed;
+        }
+
+    /* Phần thông tin thêm */
+    p {
+        font-size: 1rem;
+        text-align: center;
+        color: #333;
+    }
+</style>
+
+@{
+    ViewData["Title"] = "Xác nhận đăng ký";
+}
+
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+<div class="distance">
+    <h2>Xác nhận đăng ký</h2>
+    @if (ViewBag.Email != null)
+    {
+        <p>Email của bạn: @ViewBag.Email</p>
+        <form method="post" asp-action="ResendEmail" class="form-container">
+            <button type="submit" class="btn btn-primary">
+                <span class="d-lg-block d-none">Gửi lại email xác nhận</span>
+                <span class="d-lg-none">Gửi lại</span>
+            </button>
+        </form>
+    }
+    else
+    {
+        <p>Email chưa được lưu. Vui lòng nhập lại email của bạn:</p>
+        <form method="post" asp-action="ResendEmail">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Tiếp tục</button>
+        </form>
+    }
+</div>

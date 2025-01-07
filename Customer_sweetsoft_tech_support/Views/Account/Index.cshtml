@@ -100,8 +100,9 @@
                         </li>
                     </ul>
                 </div>
+
                 <script>
-                        var inner_dh_kg = 0;
+                    var inner_dh_kg = 0;
                     $(".inner_main .rem12 .zb_nr .zc .listmore i").click(function () {
                         if (inner_dh_kg == 0) {
                             $(".inner_main .rem12 .zb_nr .zc ul")[0].style.display = "block";
@@ -118,32 +119,25 @@
                             $(".inner_main .rem12 .zb_nr .zc .listmore .icon-dot-3")[0].style.display = "block";
                             inner_dh_kg = 0;
                         }
-
-                    })
-                </script>
-
-                <script>
-                    $(function () {
-                        $('.inner_main .rem12 .zb_nr .zc ul li ul li a').click(function () {
-                            $('html,body').animate({ scrollTop: ($($(this).attr('href')).offset().top - 138) }, 500);
-                        });
                     });
-
                 </script>
                 @if (TempData["SuccessMessage"] != null)
                 {
-                    <div class="alert alert-success">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
                         @TempData["SuccessMessage"]
-                        <button type="button" class="close" onclick="this.parentElement.style.display='none';">&times;</button>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-
                 }
 
                 @if (TempData["ErrorMessage"] != null)
                 {
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         @TempData["ErrorMessage"]
-                        <button type="button" class="close" onclick="this.parentElement.style.display='none';">&times;</button>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 }
 
@@ -156,7 +150,9 @@
                                     <form asp-action="Edit" asp-route-id="@Model.CustomerId" method="post">
                                         <table class="Account">
                                             <tr>
-                                                <td style="white-space: nowrap;">Tài khoản hỗ trợ</td>
+                                                <td style="white-space: nowrap;">
+                                                    Tài khoản hỗ trợ
+                                                </td>
                                                 <td style="background-color: #d4d3d3" ;><input style="width:100%;" name="Username" value="@Model.Username" readonly /></td>
                                             </tr>
                                             <tr>
@@ -169,7 +165,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Mã số thuế</td>
-                                                <td><input style="width:100%;" name="TaxCode" value="@Model.TaxCode" /></td>
+                                                <td><input style="width:100%;" name="TaxCode" value="@Model.TaxCode" required/></td>
                                             </tr>
                                             <tr>
                                                 <td style="white-space: nowrap;">Địa chỉ Email</td>
@@ -227,19 +223,19 @@
                                             </tr>
                                         </table>
                                     </form>
-                                    <form asp-action="" asp-route-id="" method="post">
+                                    <form asp-action="ChangePassword" asp-route-id="@Model.CustomerId" asp-route-controller="Account" method="post">
                                             <table class="Password" style="display: none;">
                                                 <tr>
                                                     <td style="white-space: nowrap;">Nhập mật khẩu cũ</td>
-                                                    <td><input style="width:100%;" name="" value=""/></td>
+                                                <td><input style="width:100%;" name="OldPassword" required/></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="white-space: nowrap;">Nhập mật khẩu mới</td>
-                                                    <td><input style="width:100%;" name="" value=""/></td>
+                                                <td><input style="width:100%;" name="NewPassword" required /></td>
                                                 </tr>
                                                 <tr>
                                                     <td style="white-space: nowrap;">Nhập lại mật khẩu mới</td>
-                                                    <td><input style="width:100%;" name="" value=""/></td>
+                                                <td><input style="width:100%;" name="ConfirmPassword" required /></td>
                                                 </tr>
                                             <tr>
                                                 <td colspan="2" style="text-align:right; white-space: nowrap; border:none">
@@ -330,7 +326,7 @@
 
                         </table>
                     </form>
-                    <form asp-action="" asp-route-id="" method="post">
+                    <form asp-action="ChangePassword" asp-route-id="@Model.CustomerId" method="post">
                         <table class="tablePassword" style="display: none;">
                             <tr>
                                 <td style="white-space: nowrap;">Nhập mật khẩu cũ</td>
@@ -360,6 +356,14 @@
 
 <!--Js xử lý đổi mật khẩu-->
 <script>
+    $(document).ready(function () {
+        var activeTab = sessionStorage.getItem('activeTab');
+        if (activeTab) {
+            $(".inner_main .rem12 .zb_nr .zc ul li").removeClass('on');  // Xóa lớp 'on' của tất cả các tab
+            $(".inner_main .rem12 .zb_nr .zc ul li").eq(activeTab).addClass('on');  // Thêm lớp 'on' cho tab đã chọn
+        }
+    });
+
     $(document).ready(function () {
         // When an <li> is clicked
         $("ul li a").click(function () {

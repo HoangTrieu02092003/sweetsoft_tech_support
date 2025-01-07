@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Customer_sweetsoft_tech_support.Controllers
 {
@@ -33,51 +35,111 @@ namespace Customer_sweetsoft_tech_support.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FullName,Email,Phone,TaxCode,Username,Password,Status,IsDelete,ResetToken,ResetTokenExpiry,Token,TokenExpiry,Company,UpdatedAt,UpdatedBy,CreateAt,CreateBy")] TblCustomer tblCustomer)
+        public async Task<IActionResult> Edit(int id, string fullname, string company, string taxCode, string Email, string phone)
         {
-            if (id != tblCustomer.CustomerId)
+            var customerId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            if (id != customerId)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            try
             {
-                try
+                var existingCustomer = await _context.TblCustomers.FindAsync(id);
+                if (existingCustomer == null)
                 {
-                    var existingCustomer = await _context.TblCustomers.FindAsync(id);
-                    if (existingCustomer == null)
-                    {
-                        return NotFound();
-                    }
-
-                    // Cập nhật các trường thay đổi
-                    existingCustomer.FullName = tblCustomer.FullName;
-                    existingCustomer.Email = tblCustomer.Email;
-                    existingCustomer.Phone = tblCustomer.Phone;
-                    existingCustomer.TaxCode = tblCustomer.TaxCode;
-                    existingCustomer.Company = tblCustomer.Company;
-                    existingCustomer.UpdatedAt = DateTime.Now;
-
-                    _context.Update(existingCustomer);
-                    await _context.SaveChangesAsync();
-                    TempData["SuccessMessage"] = "Cập nhật thông tin thành công!";
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TblCustomerExists(tblCustomer.CustomerId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+
+                // Cập nhật các trường thay đổi
+                existingCustomer.FullName = fullname;
+                existingCustomer.Email = Email;
+                existingCustomer.Phone = phone;
+                existingCustomer.TaxCode = taxCode;
+                existingCustomer.Company = company;
+                existingCustomer.UpdatedAt = DateTime.Now;
+
+                _context.Update(existingCustomer);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Cập nhật thông tin thành công!";
             }
-            TempData["ErrorMessage"] = "Cập nhật thông tin thất bại. Vui lòng kiểm tra lại dữ liệu.";
-            // Trả về view với dữ liệu nếu ModelState không hợp lệ
-            return View("Index", tblCustomer);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TblCustomerExists(customerId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public IActionResult ChangePassword(int id, string oldPassword, string newPassword, string confirmPassword)
+        {
+            try
+            {
+                // Kiểm tra xem người dùng có tồn tại không
+                var user = _context.TblCustomers.FirstOrDefault(u => u.CustomerId == id);
+                if (user == null)
+                {
+                    TempData["ErrorMessage"] = "Người dùng không tồn tại.";
+                    RedirectToAction("Index");
+                }
+
+                // Kiểm tra mật khẩu cũ
+                else if (!VerifyPasswordHash(oldPassword, user.Password))
+                {
+                    TempData["ErrorMessage"] = "Mật khẩu cũ không chính xác.";
+                    RedirectToAction("Index");
+                }
+
+                // Kiểm tra mật khẩu mới và xác nhận mật khẩu có khớp không
+                else if (newPassword != confirmPassword)
+                {
+                    TempData["ErrorMessage"] = "Mật khẩu mới và xác nhận mật khẩu không khớp.";
+                    RedirectToAction("Index");
+                }
+
+                // Kiểm tra độ mạnh của mật khẩu mới (ví dụ: sử dụng thư viện Regular Expressions)
+                else if (!IsValidPassword(newPassword))
+                {
+                    TempData["ErrorMessage"] = "Mật khẩu mới không đủ mạnh. Vui lòng sử dụng ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt.";
+                    RedirectToAction("Index");
+                }
+
+                else
+                {
+                    TempData["SuccessMessage"] = "Thay đổi mật khẩu thành công.";
+                    user.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
+                    _context.Update(user);
+                    _context.SaveChanges();
+                }
+                
+                return RedirectToAction("Index"); ;
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi thay đổi mật khẩu. Vui lòng thử lại sau.";
+                return View(nameof(Index));
+            }
+        }
+
+        // Hàm kiểm tra độ mạnh của mật khẩu
+        private bool IsValidPassword(string password)
+        {
+            // Sử dụng biểu thức chính quy để kiểm tra
+            var regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$");
+            return regex.IsMatch(password);
+        }
+
+        // Phương thức kiểm tra hash mật khẩu
+        private bool VerifyPasswordHash(string password, string storedHash)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, storedHash);
         }
 
         private bool TblCustomerExists(int id)

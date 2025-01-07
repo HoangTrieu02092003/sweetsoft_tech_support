@@ -112,6 +112,7 @@
                                 <th>Đến Phòng ban</th>
                                 <th>Người Chuyển giao</th>
                                 <th>Thời gian Chuyển giao</th>
+                                <th>Người xử lý</th>
                                 <th>Ghi chú</th>
                             </tr>
                         </thead>
@@ -125,6 +126,7 @@
                                         <td>@(transfer.ToDepartment?.DepartmentName ?? "Không có dữ liệu")</td>
                                         <td>@(transfer.TransferredByNavigation?.FullName ?? "Không có dữ liệu")</td>
                                         <td>@(transfer.TransferredAt?.ToString("dd/MM/yyyy HH:mm") ?? "Không có dữ liệu")</td>
+                                        <td>@(transfer.TransferredHandleNavigation?.FullName ?? "Không có dữ liệu")</td>
                                         <td>@(transfer.Note ?? "Không có ghi chú")</td>
                                     </tr>
                                 }

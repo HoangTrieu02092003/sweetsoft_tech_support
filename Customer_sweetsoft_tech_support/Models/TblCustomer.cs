@@ -15,6 +15,7 @@ public partial class TblCustomer
 
     [Required(ErrorMessage = "Email không được để trống.")]
     [EmailAddress(ErrorMessage = "Email không hợp lệ.")]
+    [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Email không hợp lệ.")]
     public string Email { get; set; } = null!;
 
     [Required(ErrorMessage = "Số điện thoại không được để trống.")]

@@ -1,0 +1,117 @@
+﻿@{
+    ViewData["Title"] = "Nhập lại Email";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Màu nền nhẹ */
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh; /* Đảm bảo form luôn căn giữa theo chiều dọc */
+        padding: 10px;
+    }
+
+    .h3{
+        max-width: 20%;
+        margin-right: 50px;
+    }
+
+    h3 {
+        text-align: center;
+        color: #6a0dad; /* Màu tím */
+        font-size: 1.5rem; /* Kích thước chữ lớn hơn */
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    input[type="email"]:focus {
+        outline: none;
+        border-color: #6a0dad; /* Màu tím khi focus */
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #f1c40f; /* Màu vàng */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #f39c12; /* Màu vàng đậm khi hover */
+    }
+
+    p {
+        font-size: 0.9rem;
+        text-align: center;
+        color: #666;
+        margin-top: 10px;
+    }
+
+    /* Responsive: Đảm bảo hiển thị tốt trên thiết bị nhỏ */
+    @@media (max-width: 600px) {
+        h3 {
+            font-size: 1.2rem;
+        }
+
+        button {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+
+<div class="container">
+    <div class="h3">
+        <h3>Vui lòng nhập lại email để tiếp tục xác nhận đăng ký</h3>
+    </div>
+
+    <form method="post" asp-action="EnterEmail">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="Email" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Tiếp tục</button>
+    </form>
+
+</div>

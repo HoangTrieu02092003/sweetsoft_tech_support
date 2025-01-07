@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Customer_sweetsoft_tech_support.Controllers
 {
@@ -12,6 +13,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
     {
         private readonly RequestContext _context;
         private readonly IConfiguration _configuration;
+        private static DateTime? _lastSentTime = null;
 
         public CustommerController(RequestContext context, IConfiguration configuration)
         {
@@ -263,6 +265,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register([Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Username,Password,Status,IsDelete,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedBy,CreatedAt,UpdatedBy,UpdatedAt")] TblCustomer tblCustomer)
         {
+            HttpContext.Session.SetString("Email", tblCustomer.Email);
             var siteKey = _configuration["ReCaptcha:SiteKey"];
             if (string.IsNullOrWhiteSpace(tblCustomer.Email) || 
                 string.IsNullOrWhiteSpace(tblCustomer.Username) || 
@@ -332,8 +335,85 @@ namespace Customer_sweetsoft_tech_support.Controllers
             await SendEmailAsync(tblCustomer.Email, "Xác nhận đăng ký tài khoản", $"Vui lòng nhấp vào link sau để kích hoạt tài khoản: <a href='{link}'>{link}</a>");
 
             // Hiển thị thông báo thành công
+            TempData["Email"] = tblCustomer.Email;
             TempData["Message"] = "Đăng ký thành công! Vui lòng kiểm tra email để kích hoạt tài khoản.";
-            return RedirectToAction("Register");
+            return RedirectToAction("Confirmation");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResendEmail()
+        {
+            var email = TempData["Email"];
+            var emailDb = _context.TblCustomers.FirstOrDefault(x => x.Email == email);
+            if (email == null)
+            {
+                TempData["ErrorMessage"] = "Không tìm thấy email. Vui lòng đăng ký lại.";
+                return RedirectToAction("Register");
+            }
+
+            // Kiểm tra thời gian gửi lại email (60 giây)
+            if (_lastSentTime.HasValue && (DateTime.Now - _lastSentTime.Value).TotalSeconds < 60)
+            {
+                TempData["ErrorMessage"] = "Bạn phải đợi ít nhất 60 giây để gửi lại email.";
+                return RedirectToAction("Confirmation");
+            }
+
+            // Gửi lại email xác nhận
+            string token = Guid.NewGuid().ToString();
+            string link = Url.Action("ConfirmRegistration", "Custommer", new { token }, Request.Scheme)!;
+
+            // Gửi email xác nhận
+            await SendEmailAsync(emailDb.Email, "Xác nhận đăng ký tài khoản", $"Vui lòng nhấp vào link sau để kích hoạt tài khoản: <a href='{link}'>{link}</a>");
+
+            _lastSentTime = DateTime.Now; // Cập nhật thời gian gửi
+
+            TempData["SuccessMessage"] = "Email xác nhận đã được gửi lại.";
+            return RedirectToAction("Confirmation");
+        }
+        public IActionResult Confirmation()
+        {
+            var email = TempData["Email"];
+            TempData["Email"] = email;
+            ViewBag.Email = email;
+            if (email == null)
+            {
+                return RedirectToAction("EnterEmail");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult EnterEmail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EnterEmail(string email)
+        {
+            var emailDb = _context.TblCustomers.FirstOrDefault(t => t.Email == email);
+
+            if (emailDb == null)
+            {
+                // Hiển thị thông báo lỗi nếu email trống hoặc không hợp lệ
+                TempData["Error"] = "không tồn tại trong hệ thống";
+                return View();
+            }
+            // Kiểm tra trạng thái tài khoản
+            if (emailDb.Status == 2) // 2: khóa
+            {
+                TempData["Error"] = "Tài khoản của bạn đã bị khóa.";
+                return RedirectToAction("Login"); // Điều hướng về trang Login
+            }
+            else if (emailDb.Status == 1) // 1: đã kích hoạt
+            {
+                TempData["Success"] = "Tài khoản đã được kích hoạt.";
+                return RedirectToAction("Login");
+            }
+            TempData["Email"] = emailDb.Email;
+            return RedirectToAction("Confirmation");
         }
 
         // Phương thức xử lý xác nhận đăng ký

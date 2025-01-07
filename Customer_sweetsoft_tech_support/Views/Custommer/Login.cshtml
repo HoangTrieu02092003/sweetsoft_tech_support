@@ -137,13 +137,17 @@
     <div class="login-container">
         <h2 class="login-title text-center">Đăng nhập</h2>
 
-        @if (ViewData.ModelState[""]?.Errors.Count > 0)
+        @if (TempData["Error"] != null)
         {
             <div class="alert alert-danger">
-                @foreach (var error in ViewData.ModelState[""]!.Errors)
-                {
-                    <p class="mb-0">@error.ErrorMessage</p>
-                }
+                @TempData["Error"]
+            </div>
+        }
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Success"]
             </div>
         }
 
@@ -182,6 +186,11 @@
             <div class="card">
                 <a asp-action="Register">
                     <i class="fas fa-user-plus"></i> Đăng ký
+                </a>
+            </div>
+            <div class="card">
+                <a asp-action="Confirmation">
+                    <i class="fa-solid fa-hand"></i></i> Kích hoạt
                 </a>
             </div>
         </div>

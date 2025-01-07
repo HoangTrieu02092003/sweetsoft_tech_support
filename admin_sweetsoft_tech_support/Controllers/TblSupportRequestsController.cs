@@ -117,6 +117,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 .Include(t => t.FromDepartment)
                 .Include(t => t.ToDepartment)
                 .Include(t => t.TransferredByNavigation)
+                .Include(t => t.TransferredHandleNavigation)
                 .ToList();
 
             return View(supportRequest);

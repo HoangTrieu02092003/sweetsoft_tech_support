@@ -43,6 +43,10 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     customersQuery = customersQuery.Where(c => c.Status == 1);
                 }
+                else if (Status == "2") // Khóa
+                {
+                    customersQuery = customersQuery.Where(c => c.Status == 2);
+                }
                 else if (Status == "0") // Ngừng kích hoạt
                 {
                     customersQuery = customersQuery.Where(c => c.Status == 0);
@@ -77,22 +81,23 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
 
-        [PermissionAuthorize("Quản lý khách hàng")]
         [HttpPost]
         public async Task<IActionResult> ToggleActivation(int customerId)
         {
             var customer = await _context.TblCustomers.FindAsync(customerId);
 
-            if (customer != null)
+            Console.WriteLine(customer.Status);
+            //đổi trạng thái
+            if (customer.Status == 0 || customer.Status == 2)
             {
-                customer.Status = (short)(customer.Status == 1 ? 0 : 1);
-
-                _context.Update(customer);
-                await _context.SaveChangesAsync();
-
-                TempData["SuccessMessage"] = "Trạng thái đã được thay đổi.";
+                customer.Status = 1; // Chuyển về trạng thái đã kích hoạt
             }
-
+            else if (customer.Status == 1)
+            {
+                customer.Status = 2; // Chuyển về trạng thái bị khóa
+            }
+            _context.Update(customer);
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
@@ -147,7 +152,6 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
 
-        [PermissionAuthorize("Quản lý khách hàng")]
         // GET: TblCustomers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
