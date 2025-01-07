@@ -28,12 +28,19 @@ namespace Customer_sweetsoft_tech_support.Controllers
                 return RedirectToAction("Login", "Custommer");
             }
             var id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var requestContext = _context.TblRequestsProcessings
+            var requestContext = await _context.TblRequestsProcessings
                 .Where(t => t.Request.CustomerId == int.Parse(id))
                 .Include(t => t.Department)
-                .Include(t => t.Request);
+                .Include(t => t.Request)
+                .Select(t => new
+                {
+                    RequestProcessing = t,
+                    HasUnreadFeedback = _context.TblRequestFeedbacks
+                        .Any(f => f.RequestId == t.Request.RequestId && f.IsRead == false)
+                })
+                .ToListAsync();
 
-            return View(await requestContext.ToListAsync());
+            return View(requestContext);
         }
 
         [HttpPost]
@@ -67,6 +74,17 @@ namespace Customer_sweetsoft_tech_support.Controllers
         //
         public IActionResult GetFeedbacks(int requestId)
         {
+            var unreadFeedbacks = _context.TblRequestFeedbacks
+                                .Where(f => f.RequestId == requestId && f.IsRead == false)
+                                .ToList();
+
+            foreach (var feedback in unreadFeedbacks)
+            {
+                feedback.IsRead = true;
+            }
+
+            _context.SaveChanges();
+
             var feedbacks = _context.TblRequestFeedbacks
                 .Where(f => f.RequestId == requestId)
                 .OrderBy(f => f.CreatedAt)
@@ -74,6 +92,23 @@ namespace Customer_sweetsoft_tech_support.Controllers
 
             return PartialView("_FeedbacksPartial", feedbacks);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> MarkAsRead(int requestId)
+        {
+            var feedbacks = await _context.TblRequestFeedbacks
+                .Where(f => f.RequestId == requestId && f.IsRead == false)
+                .ToListAsync();
+
+            if (feedbacks.Any())
+            {
+                feedbacks.ForEach(f => f.IsRead = true);
+                await _context.SaveChangesAsync();
+            }
+
+            return Ok(new { success = true });
+        }
+
 
         // GET: TblRequestsProcessings/Details/5
         public async Task<IActionResult> Details(int? id)

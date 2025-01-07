@@ -1,8 +1,8 @@
-﻿@model IEnumerable<Customer_sweetsoft_tech_support.Models.TblRequestsProcessing>
+﻿@model IEnumerable<dynamic>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
-    String color = "";
+    string color = "";
 }
 
 <!DOCTYPE html>
@@ -26,17 +26,18 @@
             border: none;
             font-size : .22rem;
         }
-        .chat-button::after {
-        content: "";
-        position: absolute;
-        right: 8px;
-        width: .1rem;
-        height: .1rem;
-        background-color: #28a745;
-        border-radius: 50%;
-        border: 1px solid #fff;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-    }
+
+            .chat-button.has-unread-feedback::after {
+                content: "";
+                position: absolute;
+                right: 8px;
+                width: .1rem;
+                height: .1rem;
+                background-color: #28a745;
+                border-radius: 50%;
+                border: 1px solid #fff;
+                box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+            }
 
         .chat-container {
             display: flex;
@@ -137,44 +138,49 @@
 
                     @foreach(var item in Model)
                         {
+                        var request = item.RequestProcessing;
+                        var hasUnreadFeedback = item.HasUnreadFeedback;
                             <div class="containerrequest">
-                                <div class="row" onclick="toggleContent(@item.ProcessId)">
-                                    <i class="fas fa-chevron-down toggle-icon" data-id="@item.ProcessId"></i>
+                            <div class="row" onclick="toggleContent(@request.ProcessId)">
+                                <i class="fas fa-chevron-down toggle-icon" data-id="@request.ProcessId"></i>
                                     <div class="main-content">
                                         <div class="main-contentt">
-                                            <p><b>@item.Request.RequestTitle được gửi đi ngày @item.Request.CreatedAt.ToString("dd/MM/yyyy")</b></p>
+                                        <p><b>@request.Request.RequestTitle được gửi đi ngày @request.Request.CreatedAt.ToString("dd/MM/yyyy")</b></p>
                                             @{
-                                                color = item.IsCompleted == 0
+                                            color = request.IsCompleted == 0
                                                   ? "#e2ca5b"
-                                                  : item.IsCompleted == 1
+                                                    : request.IsCompleted == 1
                                                   ? "green"
                                                   : "red";
                                             }
                                             <p class="status" style="color: @color;">
-                                                @(item.IsCompleted == 0
+                                            @(request.IsCompleted == 0
                                                     ? "Chưa hoàn thành"
-                                                    : item.IsCompleted == 1
+                                                : request.IsCompleted == 1
                                                     ? "Hoàn thành"
                                                     : "Không xử lý được")
                                             </p>
                                         </div>
                                         <hr />
                                         <div class="main-contentt" style="padding-top:10px;">
-                                            <p>Mã Phiếu: <b>@item.Request.RequestId</b> | Phòng ban xử lý : <b>@item.Department.DepartmentName</b></p>
-                                            <p>@(item.ProcessedAt?.ToString("dd-MM-yyy HH:mm") ?? "-- -- --")</p>
+                                        <p>Mã Phiếu: <b>@request.Request.RequestId</b> | Phòng ban xử lý : <b>@request.Department.DepartmentName</b></p>
+                                        <p>@(request.ProcessedAt?.ToString("dd-MM-yyy HH:mm") ?? "-- -- --")</p>
                                         </div>
                                     </div>
                                     <div>
-                                    <button class="chat-button open-chat d-block" data-request-id="@item.RequestId" data-title="@item.Request.RequestTitle" onclick="openChat(event);">
-                                        <span class="bi bi-chat-dots"></span>
-                                    </button>
+                                    @if (request.IsCompleted == 0) // Điều kiện trạng thái là "Đang xử lý"
+                                    {
+                                        <button class="chat-button open-chat d-block @(hasUnreadFeedback ?"has-unread-feedback":"")" data-request-id="@request.RequestId" data-title="@request.Request.RequestTitle" onclick="openChat(event);">
+                                            <span class="bi bi-chat-dots"></span>
+                                        </button>
+                                    }
                                     </div>
                                 </div>
-                                <div class="details" id="details-@item.ProcessId">
-                                    <p><strong>Câu hỏi: </strong>@item.Request.RequestDetails</p>
+                            <div class="details" id="details-@request.ProcessId">
+                                <p><strong>Câu hỏi: </strong>@request.Request.RequestDetails</p>
                                     <p><strong>----------------------------------</strong></p>
                                     <p><strong>Hỗ Trợ:</strong></p>
-                                    <p>@item.Note</p>
+                                <p>@request.Note</p>
                                 </div>
                             </div>
                         }

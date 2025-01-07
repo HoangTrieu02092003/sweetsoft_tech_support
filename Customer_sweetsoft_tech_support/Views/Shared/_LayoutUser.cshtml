@@ -43,7 +43,7 @@
                     }
                     else
                     {
-                        <li><a href="@Url.Action("Index", "Account")" class="d-lg-block d-none" style="color: #e2ca5b;">Chào, @User.Identity.Name</a></li>
+                        <li><a asp-action="Index" asp-controller="Account" class="d-lg-block d-none" style="color: #e2ca5b;">Chào, @User.Identity.Name</a></li>
                         <li><a asp-action="Logout" asp-controller="Custommer">Đăng Xuất</a></li>
                     }
 

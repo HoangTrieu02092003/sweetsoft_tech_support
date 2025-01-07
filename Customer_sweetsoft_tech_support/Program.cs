@@ -46,56 +46,66 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "account",
-    pattern: "Tài-khoản",
+    pattern: "Tai-khoan",
     defaults: new { controller = "Account", action = "Index" });
 
 app.MapControllerRoute(
     name: "addRequest",
-    pattern: "Gửi-yêu-cầu",
+    pattern: "Gui-yeu-cau",
     defaults: new { controller = "TblSupportRequests", action = "Create" });
 
 app.MapControllerRoute(
     name: "followingRequest",
-    pattern: "Theo-dõi-yêu-cầu",
+    pattern: "Theo-doi-yeu-cau",
     defaults: new { controller = "TblRequestsProcessings", action = "Index" });
 
 
 app.MapControllerRoute(
     name: "FaqList",
-    pattern: "Câu-hỏi-thường-gặp",
+    pattern: "Cau-hoi-thuong-gap",
     defaults: new { controller = "TblFaqs", action = "Index" });
 
 app.MapControllerRoute(
     name: "FaqDetails",
-    pattern: "Chi-tiết-faq-{id}",
+    pattern: "Chi-tiet-faq-{id}",
     defaults: new { controller = "TblFaqs", action = "Details" });
 
 app.MapControllerRoute(
     name: "contact",
-    pattern: "Thông-tin-liên-hệ",
+    pattern: "Thong-tin-lien-he",
     defaults: new { controller = "Contact", action = "Index" });
 
 app.MapControllerRoute(
     name: "login",
-    pattern: "Đăng-nhập",
+    pattern: "Dang-nhap",
     defaults: new { controller = "Custommer", action = "Login" });
 
 app.MapControllerRoute(
     name: "register",
-    pattern: "Đăng-ký",
+    pattern: "Dang-ky",
     defaults: new { controller = "Custommer", action = "Register" });
 
 
 app.MapControllerRoute(
     name: "contact",
-    pattern: "Quên-mật-khẩu",
+    pattern: "Quen-mat-khau",
     defaults: new { controller = "Custommer", action = "ForgotPassword" });
 
 
 app.MapControllerRoute(
     name: "contact",
-    pattern: "Đặt-lại-mật-khẩu",
+    pattern: "Dat-lai-mat-khau",
     defaults: new { controller = "Custommer", action = "ResetPassword" });
+
+app.MapControllerRoute(
+    name: "email",
+    pattern: "Kich-hoat-tai-khoan",
+    defaults: new { controller = "Custommer", action = "EnterEmail" });
+
+app.MapControllerRoute(
+    name: "confirm",
+    pattern: "Gui-lai-email",
+    defaults: new { controller = "Custommer", action = "Confirmation" });
 
 
 app.MapControllerRoute(

@@ -15,7 +15,7 @@
     <WebStackScaffolding_DbContextTypeFullName>Customer_sweetsoft_tech_support.Models.RequestContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
-    <NameOfLastUsedPublishProfile>D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\Properties\PublishProfiles\site15489-WebDeploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>D:\HocTap\N4\TTCN\Git\Customer_sweetsoft_tech_support\Properties\PublishProfiles\site15489-WebDeploy1.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
