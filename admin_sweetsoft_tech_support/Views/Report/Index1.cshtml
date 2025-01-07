@@ -1,5 +1,5 @@
-﻿@{
-    ViewData["Title"] = "Index1";
+﻿﻿﻿@{
+    ViewData["Title"] = "Báo Cáo";
     Layout = "~/Views/Shared/_Layout_admin.cshtml";
 }
 
@@ -23,14 +23,10 @@
           rel="stylesheet">
 
     <!-- Custom styles for this template-->
-
     <link href="~/chart/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="~/assets/css/styles.min.css" rel="stylesheet" />
-    <style>
-        a:hover{
-            text-decoration: none;
-        }
-    </style>
+
+
 
 </head>
 
@@ -47,10 +43,12 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-flex justify-content-between align-items-center" style="margin-top: 20px;">
-                        <h1 class="h3 mb-2 text-gray-800">Báo cáo thống kê</h1>
+                        @* <h1 class="h3 mb-2 text-gray-800; font-size: 36px;">Báo cáo thống kê</h1> *@
+                        <h1 class="my-0" style="color: #6a1b9a; font-size: 30px; white-space: nowrap;">Báo cáo thống kê</h1>
+
                         <button id="exportButton" class="btn btn-success" style=" background-color: #791cb5;border: none;">Xuất file</button>
-                    </div>                    
-                    
+                    </div>
+
                     <!-- Form để nhập bộ lọc thống kê -->
                     <div class="col-xl-8 col-lg-7">
                         <form id="reportFilterForm">
@@ -81,8 +79,6 @@
                                         <canvas id="myAreaChart"></canvas>
                                     </div>
                                     <hr>
-                                    @* Styling for the area chart can be found in the *@
-                                    @* <code>/js/demo/chart-area-demo.js</code> file. *@
                                 </div>
                             </div>
 
@@ -122,35 +118,10 @@
                     </div>
 
                 </div>
-                <!-- /.container-fluid -->
-               @* <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Tên khách hàng</th>
-                                <th>Tổng số yêu cầu</th>
-                                <th>Chi tiết</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@item.CustomerName</td>
-                                    <td>@item.TotalRequests</td>
-                                    <td>
-                                        <!-- Liên kết đến trang chi tiết -->
-                                        <a href="@Url.Action("ShowRequestDetails", new { customerId = item.CustomerId })" class="btn btn-info">Chi tiết yêu cầu</a>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>*@
 
             </div>
             <!-- End of Main Content -->
-           
+
         </div>
         <!-- End of Content Wrapper -->
     </div>
@@ -160,7 +131,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-   
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="~/chart/vendor/jquery/jquery.min.js"></script>
@@ -179,13 +150,17 @@
     <script src="~/chart/js/demo/chart-area-demo.js"></script>
     <script src="~/chart/js/demo/chart-pie-demo.js"></script>
     <script src="~/chart/js/demo/chart-bar-demo.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
     <script>
         // Đoạn mã sau khi thêm dữ liệu mới qua Ajax hoặc API
         function reloadTable() {
             $.ajax({
                 url: '/Report/Index1', // URL của controller trả về dữ liệu mới
                 type: 'GET',
-                success: function(response) {
+                success: function (response) {
                     // Cập nhật lại bảng dữ liệu
                     $('#table-container').html(response); // Cập nhật lại HTML của bảng
                 }
@@ -220,5 +195,3 @@
 </body>
 
 </html>
-
-

@@ -1,24 +1,9 @@
-﻿document.getElementById("filterButton").addEventListener("click", async function (event) {
-    event.preventDefault(); // Ngăn không cho hành động mặc định
+﻿const vietnameseMonths = [
+    "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+    "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"
+];
 
-    // Lấy giá trị ngày bắt đầu và ngày kết thúc từ các input
-    const startDate = document.getElementById("startDate").value;
-    const endDate = document.getElementById("endDate").value;
-
-    // Nếu không có ngày, hiển thị 12 tháng trong năm hiện tại
-    if (!startDate || !endDate) {
-        await renderDefaultChart();
-    } else {
-        // Kiểm tra nếu ngày bắt đầu và ngày kết thúc hợp lệ
-        if (new Date(startDate) > new Date(endDate)) {
-            alert("Start date cannot be later than end date.");
-            return;
-        }
-        // Gọi hàm để fetch và render biểu đồ với dữ liệu mới
-        await fetchAndRenderChart(startDate, endDate, false);
-    }
-});
-
+// Hàm vẽ biểu đồ với dữ liệu
 async function fetchAndRenderChart(startDate, endDate, isDefault) {
     try {
         const response = await fetch(`/api/requests/monthly?startDate=${startDate}&endDate=${endDate}`);
@@ -29,7 +14,7 @@ async function fetchAndRenderChart(startDate, endDate, isDefault) {
         const data = await response.json();
 
         if (!data.monthlySummary || data.monthlySummary.length === 0) {
-            alert("No data available for the selected date range.");
+            alert("Không có dữ liệu trong khoảng thời gian này");
             return;
         }
 
@@ -39,7 +24,7 @@ async function fetchAndRenderChart(startDate, endDate, isDefault) {
         if (isDefault) {
             const currentYear = new Date().getFullYear();
             for (let i = 1; i <= 12; i++) {
-                labels.push(new Date(currentYear, i - 1).toLocaleString('default', { month: 'long' }));
+                labels.push(vietnameseMonths[i - 1]);
                 counts.push(0);
             }
         } else {
@@ -47,7 +32,7 @@ async function fetchAndRenderChart(startDate, endDate, isDefault) {
             const end = new Date(endDate);
             const months = getMonthsBetween(start, end);
 
-            labels = months.map(month => month.toLocaleString('default', { month: 'long' }));
+            labels = months.map(month => vietnameseMonths[month.getMonth()]);
             counts = new Array(months.length).fill(0);
 
             data.monthlySummary.forEach(item => {
@@ -72,10 +57,10 @@ async function fetchAndRenderChart(startDate, endDate, isDefault) {
 
     } catch (error) {
         console.error("Error fetching data:", error);
-        alert("An error occurred while fetching data.");
     }
 }
 
+// Hàm vẽ biểu đồ mặc định với dữ liệu của năm hiện tại
 async function renderDefaultChart() {
     const currentYear = new Date().getFullYear();
     const defaultStartDate = `${currentYear}-01-01`;
@@ -85,7 +70,7 @@ async function renderDefaultChart() {
     let counts = [];
 
     for (let i = 1; i <= 12; i++) {
-        labels.push(new Date(currentYear, i - 1).toLocaleString('default', { month: 'long' }));
+        labels.push(vietnameseMonths[i - 1]);
         counts.push(0);
     }
 
@@ -100,7 +85,7 @@ async function renderDefaultChart() {
         if (data.monthlySummary && data.monthlySummary.length > 0) {
             data.monthlySummary.forEach(item => {
                 const monthIndex = labels.findIndex(label =>
-                    new Date(currentYear, item.month - 1).toLocaleString('default', { month: 'long' }) === label
+                    vietnameseMonths[item.month - 1] === label
                 );
                 if (monthIndex !== -1) {
                     counts[monthIndex] = item.count;
@@ -111,10 +96,11 @@ async function renderDefaultChart() {
         drawChart(labels, counts);
     } catch (error) {
         console.error("Error fetching default data:", error);
-        alert("An error occurred while fetching default data.");
+        alert("Mời bạn nhập ngày bắt đầu và kết thúc.");
     }
 }
 
+// Hàm lấy các tháng trong khoảng thời gian từ startDate đến endDate
 function getMonthsBetween(startDate, endDate) {
     const months = [];
     const start = new Date(startDate);
@@ -128,6 +114,7 @@ function getMonthsBetween(startDate, endDate) {
     return months;
 }
 
+// Hàm vẽ biểu đồ với labels và counts
 function drawChart(labels, data) {
     const ctx = document.getElementById("myAreaChart").getContext("2d");
 
@@ -149,7 +136,7 @@ function drawChart(labels, data) {
                 pointHitRadius: 10,
                 pointBorderWidth: 2,
                 data: data,
-            }],
+            }]
         },
         options: {
             maintainAspectRatio: false,
@@ -173,7 +160,27 @@ function drawChart(labels, data) {
     });
 }
 
-let myLineChart;
+// Xử lý sự kiện nhấn nút để lọc dữ liệu
+document.getElementById("filterButton").addEventListener("click", async function (event) {
+    event.preventDefault(); // Ngăn không cho hành động mặc định
+
+    // Lấy giá trị ngày bắt đầu và ngày kết thúc từ các input
+    const startDate = document.getElementById("startDate").value;
+    const endDate = document.getElementById("endDate").value;
+
+    // Nếu không có ngày, hiển thị 12 tháng trong năm hiện tại
+    if (!startDate || !endDate) {
+        await renderDefaultChart();
+    } else {
+        // Kiểm tra nếu ngày bắt đầu và ngày kết thúc hợp lệ
+        if (new Date(startDate) > new Date(endDate)) {
+            alert("Ngày bắt đầu không thể trễ hơn ngày kết thúc");
+            return;
+        }
+        // Gọi hàm để fetch và render biểu đồ với dữ liệu mới
+        await fetchAndRenderChart(startDate, endDate, false);
+    }
+});
 
 // Tự động vẽ biểu đồ mặc định khi trang tải
 window.addEventListener("DOMContentLoaded", async function () {
