@@ -36,6 +36,45 @@ namespace Customer_sweetsoft_tech_support.Controllers
             return View(await requestContext.ToListAsync());
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SendMessage(int requestId, string message, int toUserId)
+        {
+
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                return RedirectToAction("Index", new { requestId });
+            }
+
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            var newFeedback = new TblRequestFeedback
+            {
+                RequestId = requestId,
+                FromUserId = null,
+                FromCustomerId = userId,
+                ToUserId = null,
+                ToCustomerId = null,
+                Feedback = message,
+                FeedbackType = 2,
+                CreatedAt = DateTime.Now,
+                IsRead = false
+            };
+            _context.TblRequestFeedbacks.Add(newFeedback);
+            _context.SaveChanges();
+            return RedirectToAction("Index", new { requestId });
+        }
+        //
+        public IActionResult GetFeedbacks(int requestId)
+        {
+            var feedbacks = _context.TblRequestFeedbacks
+                .Where(f => f.RequestId == requestId)
+                .OrderBy(f => f.CreatedAt)
+                .ToList();
+
+            return PartialView("_FeedbacksPartial", feedbacks);
+        }
+
         // GET: TblRequestsProcessings/Details/5
         public async Task<IActionResult> Details(int? id)
         {

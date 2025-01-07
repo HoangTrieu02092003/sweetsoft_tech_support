@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace admin_sweetsoft_tech_support.Models;
 
@@ -18,8 +20,7 @@ public partial class TblUser
     [Required(ErrorMessage = "Số điện thoại không được để trống.")]
     [RegularExpression(@"^\d{10}$", ErrorMessage = "Số điện thoại phải chứa 10 chữ số.")]
     public string Phone { get; set; } = null!;
-    [Required(ErrorMessage = "Tên đăng nhập không được để trống.")]
-    [RegularExpression(@"^[a-zA-Z0-9_]{5,20}$", ErrorMessage = "Tên đăng nhập phải từ 5 đến 20 ký tự, chỉ chứa chữ cái, số và dấu gạch dưới.")]
+
     public string Username { get; set; } = null!;
 
     public string Password { get; set; } = null!;
@@ -66,7 +67,13 @@ public partial class TblUser
 
     public virtual ICollection<TblCustomer> TblCustomerUpdatedByNavigations { get; set; } = new List<TblCustomer>();
 
-    public virtual ICollection<TblRequestTransfer> TblRequestTransfers { get; set; } = new List<TblRequestTransfer>();
+    public virtual ICollection<TblRequestFeedback> TblRequestFeedbackFromUsers { get; set; } = new List<TblRequestFeedback>();
+
+    public virtual ICollection<TblRequestFeedback> TblRequestFeedbackToUsers { get; set; } = new List<TblRequestFeedback>();
+
+    public virtual ICollection<TblRequestTransfer> TblRequestTransferTransferredByNavigations { get; set; } = new List<TblRequestTransfer>();
+
+    public virtual ICollection<TblRequestTransfer> TblRequestTransferTransferredHandleNavigations { get; set; } = new List<TblRequestTransfer>();
 
     public virtual ICollection<TblSession> TblSessions { get; set; } = new List<TblSession>();
 

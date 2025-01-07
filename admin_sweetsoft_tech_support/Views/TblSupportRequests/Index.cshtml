@@ -21,7 +21,7 @@
 }
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link href="~/css/Index_SupportRequest.css" rel="stylesheet">
-
+<script src="~/js/chatbox.js"></script>
 
 <div class="d-flex justify-content-between align-items-center mb-0">
     <h1 class="my-4" style="color: #6a1b9a; font-size: 24px;">Quản lý Yêu cầu Hỗ trợ</h1>
@@ -134,7 +134,7 @@
                         <td>@item.RequestTitle</td>
                         <td>
                             <span class="badge @((item.Status == 0 ? "bg-warning" : item.Status == 1 ? "bg-success" : "bg-danger"))">
-                                @(item.Status == 0 ? "Chưa hoàn thành" : item.Status == 1 ? "Hoàn thành" : "Không xử lý được")
+                                @(item.Status == 0 ? "Chưa hoàn thành" : item.Status == 1 ? "Hoàn thành" : item.Status== 2 ?"Không xử lý được":"Không xác định")
                             </span>
                         </td>
                         <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
@@ -148,27 +148,34 @@
                             <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.RequestId">
                                 <i class="bi bi-trash"></i>
                             </button>
-                            @if (item.Status != 1 && item.Status != 2)
-{
-    <a asp-action="Transfer" asp-route-id="@item.RequestId" class="btn btn-outline-secondary btn-sm">
-                                <i class="bi bi-arrow-right-circle"></i>
-                            </a>
-                            <form method="post" class="d-inline" onsubmit="openStatusModal(event, @item.RequestId)">
-                                <button type="submit" class="btn btn-outline-success btn-sm">
-                                    <i class="bi bi-check-circle"></i>
+                            @if (item.Status == 0)
+                            {
+                                <a asp-action="Transfer" asp-route-id="@item.RequestId" class="btn btn-outline-secondary btn-sm">
+                                    <i class="bi bi-arrow-right-circle"></i>
+                                </a>
+                                <button class="btn btn-outline-dark btn-sm open-chat"
+                                        data-request-id="@item.RequestId"
+                                        data-customer-id="@item.CustomerId"
+                                        data-title="@item.RequestTitle"
+                                        data-customer="@item.Customer.FullName">
+                                    <i class="bi bi-chat-dots"></i>
                                 </button>
-                            </form>
-
-}
-else
-{
-    @* <button class="btn btn-outline-success btn-sm" disabled>
-        <i class="bi bi-check-circle"></i>
-    </button> *@
-}
+                                <form method="post" class="d-inline" onsubmit="openStatusModal(event, @item.RequestId)">
+                                    <button type="submit" class="btn btn-outline-success btn-sm">
+                                        <i class="bi bi-check-circle"></i>
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                @* <button class="btn btn-outline-success btn-sm" disabled>
+                                    <i class="bi bi-check-circle"></i>
+                                </button> *@
+                            }
 
                         </td>
                     </tr>
+                    // modal
                     <div class="modal fade" id="deleteModal-@item.RequestId" tabindex="-1" aria-labelledby="deleteModalLabel-@item.RequestId" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -200,6 +207,46 @@ else
             }
         </tbody>
     </table>
+    <div id="chatOverlay" class="chat-overlay hidden">
+        <div class="chat-content">
+            <div class="chat-header">
+                <h4 id="chatTitle">Phản hồi</h4>
+                <button id="closeChat" class="btn btn-close"></button>
+            </div>
+            <div id="chatBody" class="chat-body">
+                <!-- Nội dung phản hồi sẽ được load động -->
+            </div>
+            <form asp-action="SendMessage" asp-controller="TblSupportRequests" method="post">
+                <input type="hidden" id="requestIdInput" name="RequestId" />
+                <input type="hidden" id="ToCustomerIdInput" name="ToCustomerId" />
+
+                <!-- Radio buttons for FeedbackType -->
+                <div>
+                    <label>
+                        <input type="radio" id="FeedbackTypeInput1" name="FeedbackType" value="1" />
+                        Gửi khách hàng
+                    </label>
+                    <label>
+                        <input type="radio" id="FeedbackTypeInput2" name="FeedbackType" value="3" />
+                        Gửi cho nhân viên
+                    </label>
+                </div>
+                <div style="display: none;" id="select">
+                    <label for="ToUserIdInput">Chọn nhân viên:</label>
+                    <select id="ToUserIdInput" name="ToUserId" class="form-control">
+                        <option value="">Chọn nhân viên</option>
+                        @foreach (var employee in ViewBag.Employees as SelectList)
+                        {
+                            <option value="@employee.Value">@employee.Text</option>
+                        }
+                    </select>
+                </div>
+                <textarea id="messageInput" name="message" class="form-control" placeholder="Nhập tin nhắn..." required></textarea>
+                
+                <button type="submit" class="btn btn-primary mt-2">Gửi</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 <!-- Pagination -->

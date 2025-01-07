@@ -10129,6 +10129,10 @@
       "PackagePath": "staticwebassets\\js\\app.min.js"
     },
     {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\js\\chatbox.js",
+      "PackagePath": "staticwebassets\\js\\chatbox.js"
+    },
+    {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\js\\dashboard.js",
       "PackagePath": "staticwebassets\\js\\dashboard.js"
     },

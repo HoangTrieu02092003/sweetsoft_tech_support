@@ -229,6 +229,22 @@
       "PackagePath": "staticwebassets\\LayoutUser\\jquery\\ajax.js"
     },
     {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\jquery\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\LayoutUser\\jquery\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\LayoutUser\\jquery\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\LayoutUser\\jquery\\bootstrap.bundle.min.js.map"
+    },
+    {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\jquery\\centerCutImg.js",
       "PackagePath": "staticwebassets\\LayoutUser\\jquery\\centerCutImg.js"
     },
@@ -393,8 +409,16 @@
       "PackagePath": "staticwebassets\\LayoutUser\\video\\VBCGE0238.mp4"
     },
     {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\css\\chatbox.css",
+      "PackagePath": "staticwebassets\\css\\chatbox.css"
+    },
+    {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\css\\customer.css",
       "PackagePath": "staticwebassets\\css\\customer.css"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\css\\request.css",
+      "PackagePath": "staticwebassets\\css\\request.css"
     },
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\css\\site.css",
@@ -403,6 +427,14 @@
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\js\\app.min.js",
+      "PackagePath": "staticwebassets\\js\\app.min.js"
+    },
+    {
+      "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\js\\chatbox.js",
+      "PackagePath": "staticwebassets\\js\\chatbox.js"
     },
     {
       "Id": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\js\\customer.js",

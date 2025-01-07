@@ -24,7 +24,7 @@ public partial class TblCustomer
     [Required(ErrorMessage = "Mã số thuế không được để trống.")]
     [RegularExpression(@"^\d{10}(-\d{3})?$", ErrorMessage = "Mã số thuế phải gồm 10 chữ số hoặc 13 chữ số (định dạng 0123456789 hoặc 0123456789-001).")]
     public string? TaxCode { get; set; }
-    [RegularExpression(@"^[\p{L} ]+$", ErrorMessage = "Tên chỉ được chứa chữ cái và khoảng trắng.")]
+
     public string? Company { get; set; }
 
     [Required(ErrorMessage = "Tên đăng nhập không được để trống.")]
@@ -55,6 +55,10 @@ public partial class TblCustomer
     public DateTime? UpdatedAt { get; set; }
 
     public virtual TblUser? CreatedByNavigation { get; set; }
+
+    public virtual ICollection<TblRequestFeedback> TblRequestFeedbackFromCustomers { get; set; } = new List<TblRequestFeedback>();
+
+    public virtual ICollection<TblRequestFeedback> TblRequestFeedbackToCustomers { get; set; } = new List<TblRequestFeedback>();
 
     public virtual ICollection<TblSupportRequest> TblSupportRequests { get; set; } = new List<TblSupportRequest>();
 

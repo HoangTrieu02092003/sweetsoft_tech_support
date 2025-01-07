@@ -22,25 +22,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 builder.Services.AddScoped<RequestContext>();
 
-//var date = DateTime.Now;
-//string adminLogPath = Path.GetFullPath(Path.Combine(@"C:\inetpub\wwwroot\myWebsite\Admin\Notifications", $"{date.Year}/{date.Month:D2}/{date.Day:D2}"));
-//var normalizedPath = Path.GetFullPath(adminLogPath);
-//// Tạo thư mục nếu chưa tồn tại
-//if (!Directory.Exists(normalizedPath))
-//{
-//    Directory.CreateDirectory(normalizedPath);
-//}
-
-//string logFilePath = Path.Combine(normalizedPath, $"{date:yyyy-MM-dd-HH}.log");
-
-//// Tạo file log nếu chưa có
-//if (!File.Exists(logFilePath))
-//{
-//    using (var stream = File.Create(logFilePath))
-//    {
-//        // Đóng file ngay sau khi tạo
-//    }
-//}
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

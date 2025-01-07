@@ -17,6 +17,8 @@ public partial class TblRequestTransfer
 
     public int? TransferredBy { get; set; }
 
+    public int? TransferredHandle { get; set; }
+
     public DateTime TransferredAt { get; set; }
 
     public string? Note { get; set; }
@@ -28,4 +30,6 @@ public partial class TblRequestTransfer
     public virtual TblDepartment? ToDepartment { get; set; }
 
     public virtual TblUser? TransferredByNavigation { get; set; }
+
+    public virtual TblUser? TransferredHandleNavigation { get; set; }
 }

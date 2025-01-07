@@ -4,8 +4,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>26817d7d-7da4-43c8-9cf3-2011ad7b5709</UserSecretsId>
+    <!--<UserSecretsId>26817d7d-7da4-43c8-9cf3-2011ad7b5709</UserSecretsId>-->
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\js\request.js" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
@@ -14,6 +18,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Features" Version="4.12.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Features" Version="4.12.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.12.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
@@ -38,11 +43,13 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Custommer\ForgotPassword.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Custommer\ResetPassword.cshtml" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\request.js" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Views\Custommer\ForgotPassword.cshtml" />
     <None Include="Views\Custommer\ResetPassword.cshtml" />
+    <None Include="wwwroot\js\request.js" />
   </ItemGroup>
 
   <ItemGroup>

@@ -87,7 +87,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View( requestContext);
         }
 
-        [PermissionAuthorize("Quản lý nhân viên")]
         // GET: TblUsers/Create
         public IActionResult Create()
         {
@@ -175,7 +174,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblUser);
         }
 
-        [PermissionAuthorize("Quản lý nhân viên")]
         // GET: TblUsers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -333,7 +331,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblUser);
         }
 
-        [PermissionAuthorize("Quản lý quyền truy cập")]
         // GET: Users/AssignPermission/5
         public async Task<IActionResult> AssignPermissions(int? id)
         {
@@ -444,7 +441,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(user); // Trả về view với thông tin người dùng
         }
 
-        [PermissionAuthorize("Quản lý nhân viên")]
         // POST: TblUsers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

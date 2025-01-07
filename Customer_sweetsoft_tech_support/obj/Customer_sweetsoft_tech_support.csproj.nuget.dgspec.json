@@ -60,6 +60,10 @@
               "target": "Package",
               "version": "[3.3.4, )"
             },
+            "Microsoft.CodeAnalysis.CSharp.Features": {
+              "target": "Package",
+              "version": "[4.12.0, )"
+            },
             "Microsoft.CodeAnalysis.Features": {
               "target": "Package",
               "version": "[4.12.0, )"

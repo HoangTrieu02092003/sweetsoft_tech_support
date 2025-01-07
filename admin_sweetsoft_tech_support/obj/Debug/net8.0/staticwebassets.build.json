@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hKqp70peD6f81fXQ4aHgeiUWf13s1MIRIsEMevt+5Ts=",
+  "Hash": "zMbBbkLxQxprBI/EHKr0nzvKKAmQ/1kM3uyhuIOl9tc=",
   "Source": "admin_sweetsoft_tech_support",
   "BasePath": "_content/admin_sweetsoft_tech_support",
   "Mode": "Default",
@@ -48142,6 +48142,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\app.min.js"
+    },
+    {
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\js\\chatbox.js",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "js/chatbox.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\chatbox.js"
     },
     {
       "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\js\\dashboard.js",

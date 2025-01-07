@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uAdSqDuN6g8=",
+  "dgSpecHash": "CbA7N+NOdvY=",
   "success": true,
   "projectFilePath": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\Customer_sweetsoft_tech_support.csproj",
   "expectedPackageFiles": [
@@ -40,6 +40,7 @@
     "C:\\Users\\NHAN\\.nuget\\packages\\microsoft.codeanalysis.analyzerutilities\\3.3.0\\microsoft.codeanalysis.analyzerutilities.3.3.0.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\microsoft.codeanalysis.common\\4.12.0\\microsoft.codeanalysis.common.4.12.0.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.12.0\\microsoft.codeanalysis.csharp.4.12.0.nupkg.sha512",
+    "C:\\Users\\NHAN\\.nuget\\packages\\microsoft.codeanalysis.csharp.features\\4.12.0\\microsoft.codeanalysis.csharp.features.4.12.0.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\microsoft.codeanalysis.csharp.workspaces\\4.12.0\\microsoft.codeanalysis.csharp.workspaces.4.12.0.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\microsoft.codeanalysis.elfie\\1.0.0\\microsoft.codeanalysis.elfie.1.0.0.nupkg.sha512",
     "C:\\Users\\NHAN\\.nuget\\packages\\microsoft.codeanalysis.features\\4.12.0\\microsoft.codeanalysis.features.4.12.0.nupkg.sha512",

@@ -8,9 +8,6 @@ public partial class TblCustomer
 {
     public int CustomerId { get; set; }
 
-    [Required(ErrorMessage = "Tên không được để trống.")]
-    [RegularExpression(@"^[\p{L} ]+$", ErrorMessage = "Tên chỉ được chứa chữ cái và khoảng trắng.")]
-    [StringLength(50, MinimumLength = 3, ErrorMessage = "Tên phải từ 3 đến 50 ký tự.")]
     public string FullName { get; set; } = null!;
 
     [Required(ErrorMessage = "Email không được để trống.")]
@@ -55,6 +52,10 @@ public partial class TblCustomer
     public DateTime? UpdatedAt { get; set; }
 
     public virtual TblUser? CreatedByNavigation { get; set; }
+
+    public virtual ICollection<TblRequestFeedback> TblRequestFeedbackFromCustomers { get; set; } = new List<TblRequestFeedback>();
+
+    public virtual ICollection<TblRequestFeedback> TblRequestFeedbackToCustomers { get; set; } = new List<TblRequestFeedback>();
 
     public virtual ICollection<TblSupportRequest> TblSupportRequests { get; set; } = new List<TblSupportRequest>();
 

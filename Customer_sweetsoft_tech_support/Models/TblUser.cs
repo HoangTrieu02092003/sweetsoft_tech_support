@@ -25,6 +25,8 @@ public partial class TblUser
 
     public bool? IsAdmin { get; set; }
 
+    public bool? IsDelete { get; set; }
+
     public string? ResetToken { get; set; }
 
     public DateTime? ResetTokenExpiry { get; set; }
@@ -56,5 +58,10 @@ public partial class TblUser
     public virtual ICollection<TblCustomer> TblCustomerCreatedByNavigations { get; set; } = new List<TblCustomer>();
 
     public virtual ICollection<TblCustomer> TblCustomerUpdatedByNavigations { get; set; } = new List<TblCustomer>();
+
+    public virtual ICollection<TblRequestFeedback> TblRequestFeedbackFromUsers { get; set; } = new List<TblRequestFeedback>();
+
+    public virtual ICollection<TblRequestFeedback> TblRequestFeedbackToUsers { get; set; } = new List<TblRequestFeedback>();
+
     public virtual TblUser? UpdatedUserNavigation { get; set; }
 }
