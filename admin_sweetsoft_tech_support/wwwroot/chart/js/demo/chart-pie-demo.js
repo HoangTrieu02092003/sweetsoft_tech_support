@@ -62,27 +62,42 @@ async function createOrUpdatePieChart(startDate, endDate) {
         },
         options: {
             maintainAspectRatio: false,
-            tooltips: {
-                backgroundColor: "rgb(255,255,255)",
-                bodyFontColor: "#858796",
-                borderColor: '#dddfeb',
-                borderWidth: 1,
-                xPadding: 15,
-                yPadding: 15,
-                displayColors: false,
-                caretPadding: 10,
-            },
-            legend: {
-                display: true,
-                position: 'bottom', 
-                labels: {
-                    fontColor: '#333',
-                    fontSize: 12,
-                    boxWidth: 20
+            plugins: {
+                tooltip: {
+                    enabled: false, // Tắt tooltip
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom',
+                    labels: {
+                        fontColor: '#333',
+                        fontSize: 12,
+                        boxWidth: 20
+                    }
+                },
+                datalabels: {
+                    color: 'white',
+                    font: {
+                        weight: 'bold',
+                        size: 12,
+                    },
+                    formatter: (value, context) => {
+                        return `${value.toFixed(1)}%`; // Hiển thị phần trăm với 2 chữ số thập phân
+                    },
+                    anchor: 'center', // Căn giữa phần trăm trong vòng tròn
+                    align: 'center', // Căn giữa theo trục X và Y
+                    offset: 0 // Không cần khoảng cách
                 }
             },
-            cutoutPercentage: 70 // Tùy chỉnh phần rỗng bên trong
-        }
+            cutoutPercentage: 70, // Tùy chỉnh phần rỗng bên trong
+            hover: {
+                mode: null, // Tắt hover
+            },
+            tooltips: {
+                enabled: false, // Tắt tooltips
+            },
+        },
+        plugins: [ChartDataLabels] // Bật plugin ChartDataLabels
     });
 }
 
