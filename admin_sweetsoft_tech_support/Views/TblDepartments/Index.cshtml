@@ -1,9 +1,5 @@
 ﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblDepartment>
 @using admin_sweetsoft_tech_support.Attributes
-@{
-    ViewData["Title"] = "Quản lý Phòng Ban";
-    int stt = 1;
-}
 
 
 <html>
@@ -148,19 +144,38 @@
             </div>
             <div class="col-md-3">
                 @Html.GenerateFilterDropdown(
-                                     id: "status",
-                                     name: "status",
-                                     includeCancelButton: false,
-                                     options: new Dictionary<string, string> {
-                            {"0","Tạm dừng"},
-                            {"1","Hoạt động"}
-                        },
-                                     selectedValue: ViewData["status"]?.ToString() ?? ""
-                                     )
+                                  id: "status",
+                                  name: "status",
+                                  includeCancelButton: false,
+                                  options: new Dictionary<string, string> {
+                             {"0","Tạm dừng"},
+                             {"1","Hoạt động"}
+                         },
+                                  selectedValue: ViewData["status"]?.ToString() ?? ""
+                                  )
             </div>
-            <div class="mt-2 text-end">
-                <button type="submit" class="btn btn-info d-block d-md-none"><i class="bi bi-search"></i> Tìm kiếm</button>
+=========
+            <div class="col-md-3">
+                @Html.GenerateFilterTextbox(
+                             id: "search",
+                             name: "search",
+                             includeCancelButton:false,
+                             value: ViewData["search"]?.ToString()??""
+                         )
             </div>
+            <div class="col-md-3">
+                @Html.GenerateFilterDropdown(
+                                  id: "status",
+                                  name: "status",
+                                  includeCancelButton: false,
+                                  options: new Dictionary<string, string> {
+                             {"0","Tạm dừng"},
+                             {"1","Hoạt động"}
+                         },
+                                  selectedValue: ViewData["status"]?.ToString() ?? ""
+                                  )
+            </div>
+>>>>>>>>> Temporary merge branch 2
         </form>
     </div>
 
@@ -176,14 +191,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@stt</td>
-                        <td>@Html.DisplayFor(modelItem => item.DepartmentName)</td>
-                        <td class="text-center">
-                            <span class="badge @(item.Status == 1 ? "bg-success" : "bg-danger")">
-                                @(item.Status == 1 ? "Hoạt động" : "Tạm dừng")
+                        </td>
+                    </tr>
+                    stt++;
                             </span>
                         </td>
                         <td class="text-center d-none d-md-table-cell">@ViewBag.MemberCounts[item.DepartmentId]</td>
@@ -191,16 +201,21 @@
                             <div>
                                 <a class="btn btn-outline-info btn-sm" asp-action="Edit" asp-route-id="@item.DepartmentId">
                                     <i class="bi bi-pencil-square"></i>
-                                    <span class="action-text"></span>
+                                   
                                 </a>
                                 <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.DepartmentId">
                                     <i class="bi bi-trash"></i>
-                                    <span class="action-text"></span>
+                                    
                                 </button>
                             </div>
+<<<<<<<<< Temporary merge branch 1
                         </td>
                     </tr>
                     stt++;
+=========
+                        </td>                      
+                    </tr>                   
+>>>>>>>>> Temporary merge branch 2
                     <!-- Modal delete -->
                     <div class="modal fade" id="deleteModal-@item.DepartmentId" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                         <div class="modal-dialog">

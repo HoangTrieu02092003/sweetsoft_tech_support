@@ -25,7 +25,7 @@
 
 </style>
 <div class="mt-4">
-    <h1 class="text-center">Quản lý Nhật ký Hoạt động</h1>
+    <h1 class="text-center">Quản lý nhật ký yêu cầu hỗ trợ</h1>
 
     <!-- Form tìm kiếm -->
     <form method="get" class="m-3" id="filterForm">
@@ -93,6 +93,9 @@
                             <span class="sort-arrow @(ViewData["SortColumn"] as string == "Timestamp" ? ViewData["SortOrder"] : "")"></span>
                         </a>
                     </th>
+                    <th class="text-center">
+                        Hành động
+                    </th>
                 </tr>
             </thead>
 
@@ -104,7 +107,33 @@
                         <td>@log.Title</td>
                         <td>@log.Action</td>
                         <td>@log.User</td>
-                        <td>@log.Timestamp</td>                    
+                        <td>@log.Timestamp</td>
+                        <td class="text-center">
+                            <button type="submit" class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailModal-@log.Id">
+                                <i class="ti ti-eye-check"></i>
+                            </button>
+                        </td>
+                        <div class="modal fade" id="detailModal-@log.Id" tabindex="-1" aria-labelledby="detailModalLabel-@log.Id" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="detailModalLabel-@log.Id">Chi tiết nhật ký</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p><strong>Tiêu đề:</strong> @log.Title</p>
+                                        <p><strong>Hành động:</strong> @log.Action</p>
+                                        <p><strong>Người thực hiện:</strong> @log.User</p>
+                                        <p><strong>Thời gian:</strong> @log.Timestamp.ToString("dd/MM/yyyy HH:mm:ss")</p>
+                                        <p><strong>Dữ liệu cũ:</strong> @log.OldValue</p>
+                                        <p><strong>Dữ liệu mới:</strong> @log.NewValue</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </tr>                   
                     stt++;
                 }

@@ -18,22 +18,68 @@ else
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Người nhận</th>
-                    <th>Nội dung</th>
-                    <th>Thời gian</th>
+                    <th class="text-center">Người nhận</th>
+                    <th class="text-center">Nội dung</th>
+                    <th class="text-center d-none d-md-table-cell">Thời gian</th>
+                    <th class="text-center">Trạng thái</th>
+                    <th class="text-center">Hành động</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var notification in Model)
+                @foreach (var myNoti in Model)
                 {
                     <tr >
                         <td>@stt</td>
-                        <td>@notification.User</td>
-                        <td>@notification.Content</td>
-                        <td>@notification.Timestamp.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                        <td class="text-center">@myNoti.User</td>
+                        <td class="text-center">@myNoti.Title</td>
+                        <td class="text-center d-none d-md-table-cell">@myNoti.Timestamp.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                        <td class="text-center">
+                            @if (myNoti.Status == "1")
+                            {
+                                @:Đã xem
+                            }
+                            else
+                            {
+                                <strong>Chưa xem</strong>
+                            }
+                        </td>
+                        <td class="text-center">    
+                            <div class="d-inline-flex gap-2">
+                                <button type="submit" class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailModal-@myNoti.Id">
+                                    <i class="ti ti-eye-check"></i>
+                                </button>
+                                <form asp-action="DeleteNotification" asp-route-id="@myNoti.Id" method="post" style="display:inline-block" onsubmit="return confirmDelete();">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                        <i class="ti ti-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
                     </tr>
                     stt++;
-                    <!-- Tăng số thứ tự -->
+                    //Modal chi tiết
+                    <div class="modal fade" id="detailModal-@myNoti.Id" tabindex="-1" aria-labelledby="detailModalLabel-@myNoti.Id" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="detailModalLabel-@myNoti.Id">Chi tiết thông báo</h3>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><strong>Người nhận:</strong> @myNoti.User</p>
+                                    <p><strong>Tiêu đề:</strong> @myNoti.Title</p>
+                                    <p><strong>Nội dung:</strong> @myNoti.Content</p>
+                                    <p><strong>Thời gian:</strong> @myNoti.Timestamp</p>
+                                    <p><strong>Trạng thái:</strong> @(myNoti.Status == "1" ? "Đã xem" : "Chưa xem")</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <form asp-action="MarkAsRead" asp-route-id="@myNoti.Id" method="post">
+                                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 }
             </tbody>
         </table>
@@ -56,3 +102,9 @@ else
         </ul>
     }
 </div>
+
+<script>
+    function confirmDelete() {
+        return confirm("Bạn có chắc chắn muốn xóa thông báo này không?");
+    }
+</script>

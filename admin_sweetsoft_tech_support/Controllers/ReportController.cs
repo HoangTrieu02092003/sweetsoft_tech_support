@@ -99,23 +99,22 @@ namespace admin_sweetsoft_tech_support.Controllers
         [HttpGet("api/requests/monthly")]
         public async Task<IActionResult> GetMonthlyRequestSummary(DateTime? startDate, DateTime? endDate)
         {
-            // Lấy ngày mặc định nếu không có tham số startDate và endDate
+            // Lấy ngày hiện tại
             var now = DateTime.Now;
-            var defaultStartDate = new DateTime(now.Year, 1, 1); // Ngày đầu tiên của năm hiện tại
-            var defaultEndDate = new DateTime(now.Year, 12, 31); // Ngày cuối cùng của năm hiện tại
 
-            startDate ??= defaultStartDate; // Gán giá trị mặc định nếu không cung cấp startDate
-            endDate ??= defaultEndDate;     // Gán giá trị mặc định nếu không cung cấp endDate
+            // Nếu không cung cấp startDate và endDate, gán giá trị mặc định cho cả hai
+            var defaultStartDate = new DateTime(now.Year, 1, 1); // Ngày đầu tiên của năm hiện tại
+            var defaultEndDate = now;                           // Ngày hiện tại
 
             // Đảm bảo startDate <= endDate
             if (startDate > endDate)
             {
-                return BadRequest("Start date cannot be later than end date.");
+                return BadRequest("Ngày bắt đầu không thể trễ hơn ngày kết thúc");
             }
 
             // Danh sách tất cả các tháng trong khoảng thời gian từ startDate đến endDate
             var months = new List<(int Year, int Month)>();
-            var current = startDate.Value;
+            var current = new DateTime(startDate.Value.Year, startDate.Value.Month, 1);
 
             while (current <= endDate.Value)
             {
@@ -152,6 +151,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
 
+
         [HttpGet("api/requests/status-summary")]
         public async Task<IActionResult> GetStatusRequest(DateTime? startDate, DateTime? endDate)
         {
@@ -166,7 +166,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Kiểm tra ngày hợp lệ
             if (startDate.HasValue && endDate.HasValue && startDate.Value > endDate.Value)
             {
-                return BadRequest("Start date cannot be later than end date.");
+                return BadRequest("Ngày bắt đầu không thể trễ hơn ngày kết thúc.");
             }
 
             IQueryable<TblSupportRequest> query = _context.TblSupportRequests;
@@ -275,35 +275,45 @@ namespace admin_sweetsoft_tech_support.Controllers
             using var package = new OfficeOpenXml.ExcelPackage();
             var worksheet = package.Workbook.Worksheets.Add("SupportRequests");
 
+            // Thêm tiêu đề "Thống kê yêu cầu"
+            worksheet.Cells[1, 1].Value = $"Thống kê yêu cầu ";
+            worksheet.Cells[1, 1, 1, 7].Merge = true; // Gộp các cột từ 1 đến 7
+            worksheet.Cells[1, 1].Style.Font.Size = 14;
+            worksheet.Cells[1, 1].Style.Font.Bold = true;
+            worksheet.Cells[1, 1].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
             // Thiết lập tiêu đề cột
-            worksheet.Cells[1, 1].Value = "STT";
-            worksheet.Cells[1, 2].Value = "Mã yêu cầu";
-            worksheet.Cells[1, 3].Value = "Tên khách hàng";
-            worksheet.Cells[1, 4].Value = "Tên bộ phận";
-            worksheet.Cells[1, 5].Value = "Thông tin yêu cầu";
-            worksheet.Cells[1, 6].Value = "Trạng thái";
-            worksheet.Cells[1, 7].Value = "Ngày tạo";
+            worksheet.Cells[2, 1].Value = "STT";
+            worksheet.Cells[2, 2].Value = "Mã yêu cầu";
+            worksheet.Cells[2, 3].Value = "Tên khách hàng";
+            worksheet.Cells[2, 4].Value = "Bộ phận tiếp nhận";
+            worksheet.Cells[2, 5].Value = "Thông tin yêu cầu";
+            worksheet.Cells[2, 6].Value = "Ngày tạo";
+            worksheet.Cells[2, 7].Value = "Trạng thái";
 
             // Đổ dữ liệu vào Excel
             for (int i = 0; i < supportRequests.Count; i++)
             {
                 var request = supportRequests[i];
-                worksheet.Cells[i + 2, 1].Value = i + 1; // STT
-                worksheet.Cells[i + 2, 2].Value = request.RequestId;
-                worksheet.Cells[i + 2, 3].Value = request.CustomerName;
-                worksheet.Cells[i + 2, 4].Value = request.DepartmentName;
-                worksheet.Cells[i + 2, 5].Value = request.RequestDetails;
-                worksheet.Cells[i + 2, 6].Value = request.Status;
-                worksheet.Cells[i + 2, 7].Value = request.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss");
+                worksheet.Cells[i + 3, 1].Value = i + 1; // STT
+                worksheet.Cells[i + 3, 2].Value = request.RequestId;
+                worksheet.Cells[i + 3, 3].Value = request.CustomerName;
+                worksheet.Cells[i + 3, 4].Value = request.DepartmentName;
+                worksheet.Cells[i + 3, 5].Value = request.RequestDetails;
+                worksheet.Cells[i + 3, 6].Value = request.CreatedAt.ToString("yyyy-MM-dd ");
+                worksheet.Cells[i + 3, 7].Value = request.Status;
+
             }
 
             // Định dạng bảng
-            worksheet.Cells[1, 1, 1, 7].Style.Font.Bold = true; // Tiêu đề in đậm
-            worksheet.Cells[1, 1, supportRequests.Count + 1, 7].AutoFitColumns(); // Tự động chỉnh độ rộng cột
+            worksheet.Cells[2, 1, 2, 7].Style.Font.Bold = true; // Tiêu đề cột in đậm
+            worksheet.Cells[1, 1, supportRequests.Count + 2, 7].AutoFitColumns(); // Tự động chỉnh độ rộng cột
+
+            // Tên file theo khoảng thời gian
+            var fileName = $"Thống kê yêu cầu từ {startDate:yyyy-MM-dd} đến {endDate:yyyy-MM-dd}.xlsx";
 
             // Trả về file Excel
             var excelData = package.GetAsByteArray();
-            var fileName = $"SupportRequests_{DateTime.Now:yyyyMMddHHmmss}.xlsx";
             return File(excelData, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
     }

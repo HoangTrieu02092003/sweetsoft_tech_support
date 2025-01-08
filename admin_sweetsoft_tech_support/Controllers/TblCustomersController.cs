@@ -81,6 +81,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
 
+        [PermissionAuthorize("Quản lý tài khoản khách hàng")]
         [HttpPost]
         public async Task<IActionResult> ToggleActivation(int customerId)
         {
@@ -101,7 +102,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [PermissionAuthorize("Quản lý khách hàng")]
+        [PermissionAuthorize("Tạo khách hàng")]
         // GET: TblCustomers/Create
         public IActionResult Create()
         {
@@ -152,6 +153,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
 
+        [PermissionAuthorize("Sửa khách hàng")]
         // GET: TblCustomers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -256,7 +258,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblCustomer);
         }
 
-        [PermissionAuthorize("Quản lý khách hàng")]
+        [PermissionAuthorize("Xóa khách hàng")]
         // POST: TblCustomers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

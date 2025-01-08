@@ -38,7 +38,7 @@ namespace admin_sweetsoft_tech_support.Attributes
             // Ghi log vào file
             logger.Log(logEvent);
         }
-        public void LogNotificationAction(string user, string message, string status = "0")
+        public void LogNotificationAction(string user, string title, string message, string isDelete = "0", string status = "0")
         {
             // Tạo LogEventInfo mới
             var logEvent = new LogEventInfo(NLog.LogLevel.Info, loggerNoti.Name, message);
@@ -47,19 +47,26 @@ namespace admin_sweetsoft_tech_support.Attributes
             logEvent.Properties["Status"] = status;
             logEvent.Properties["Reciver"] = user;
             logEvent.Properties["Id"] = GenerateUniqueId();
+            logEvent.Properties["Title"] = title;
+            logEvent.Properties["isDelete"] = isDelete;
+
 
             // Ghi log vào file
             loggerNoti.Log(logEvent);
         }
-        public void LogActivityAction(string title, string action, string user)
+        public void LogActivityAction(string title, string action, string user, string oldvalue ="", string newvalue = "")
         {
             // Tạo LogEventInfo mới
             var logEvent = new LogEventInfo(NLog.LogLevel.Info, loggerActi.Name, title);
 
             // Gán các properties vào logEvent
+            logEvent.Properties["Id"] = GenerateUniqueId();
             logEvent.Properties["Title"] = title;
             logEvent.Properties["Action"] = action;
             logEvent.Properties["User"] = user;
+            logEvent.Properties["OldValue"] = oldvalue;
+            logEvent.Properties["NewValue"] = newvalue;
+            
 
             // Ghi log vào file
             loggerActi.Log(logEvent);

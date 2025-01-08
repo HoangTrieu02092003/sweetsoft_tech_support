@@ -27,10 +27,11 @@ public class UnreadNotificationsViewComponent : ViewComponent
                     var logParts = line.Split(", ");
                     if (logParts.Length >= 5)
                     {
-                        var status = logParts[1];
+                        var isDelete = logParts[5];
+                        var statusLog = logParts[1];
                         var userIdLog = logParts[2];
 
-                        if (userIdLog == userId && status == "0")
+                        if (userIdLog == userId && isDelete == "0" && statusLog == "0")
                         {
                             unreadCount++;
                         }

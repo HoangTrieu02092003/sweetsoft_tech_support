@@ -1,4 +1,5 @@
-﻿﻿@{
+
+﻿﻿﻿@{
     ViewData["Title"] = "Báo Cáo";
     Layout = "~/Views/Shared/_Layout_admin.cshtml";
 }
@@ -43,7 +44,9 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-flex justify-content-between align-items-center" style="margin-top: 20px;">
-                        <h1 class="h3 mb-2 text-gray-800">Báo cáo thống kê</h1>
+                        @* <h1 class="h3 mb-2 text-gray-800; font-size: 36px;">Báo cáo thống kê</h1> *@
+                        <h1 class="my-0" style="color: #6a1b9a; font-size: 30px; white-space: nowrap;">Báo cáo thống kê</h1>
+
                         <button id="exportButton" class="btn btn-success" style=" background-color: #791cb5;border: none;">Xuất file</button>
                     </div>
 
@@ -148,6 +151,10 @@
     <script src="~/chart/js/demo/chart-area-demo.js"></script>
     <script src="~/chart/js/demo/chart-pie-demo.js"></script>
     <script src="~/chart/js/demo/chart-bar-demo.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
     <script>
         // Đoạn mã sau khi thêm dữ liệu mới qua Ajax hoặc API
         function reloadTable() {

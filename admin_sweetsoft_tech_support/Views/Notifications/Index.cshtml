@@ -55,8 +55,10 @@
                 <tr>
                     <th>STT</th>
                     <th>Người nhận</th>
-                    <th>Nội dung</th>
-                    <th>Thời gian</th>
+                    <th>Nội dung</th>   
+                    <th class="text-center">Thời gian</th>
+                    <th class="text-center">Trạng thái</th>
+                    <th class="text-center">Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -65,18 +67,47 @@
                     <tr>
                         <td>@stt</td>
                         <td>@log.User</td>
-                        <td>@log.Content</td>
-                        <td>@log.Timestamp</td>
-                    </tr>
-                    <tr id="details-@log.Timestamp" class="details-row" style="display: none;">
-                        <td colspan="6">
-                            <strong>Chi tiết:</strong><br />
-                            <ul>
-                                <!-- Add other details here -->
-                            </ul>
+                        <td>@log.Title</td>
+                        <td class="text-center">@log.Timestamp</td>
+                        <td class="text-center">
+                            @if (log.Status == "1")
+                            {
+                                @:Đã xem
+                            }
+                            else
+                            {
+                                <strong>Chưa xem</strong>
+                            }
                         </td>
-                    </tr>
+                        <td class="text-center">
+                            <div>                               
+                                <button type="submit" class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailModal-@log.Id">
+                                    <i class="ti ti-eye-check"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>                    
                     stt++;
+                    <div class="modal fade" id="detailModal-@log.Id" tabindex="-1" aria-labelledby="detailModalLabel-@log.Id" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="detailModalLabel-@log.Id">Chi tiết thông báo</h3>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><strong>Người nhận:</strong> @log.User</p>
+                                    <p><strong>Tiêu đề:</strong> @log.Title</p>
+                                    <p><strong>Nội dung:</strong> @log.Content</p>
+                                    <p><strong>Thời gian:</strong> @log.Timestamp</p>
+                                    <p><strong>Trạng thái:</strong      > @(log.Status == "1" ? "Đã xem" : "Chưa xem")</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 }
             </tbody>
         </table>

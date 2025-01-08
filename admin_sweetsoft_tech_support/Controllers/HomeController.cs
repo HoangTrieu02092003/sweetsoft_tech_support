@@ -46,8 +46,8 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 // Gửi thông báo đến quản lý bộ phận
                 _logService.LogNotificationAction(
-                    admin.UserId.ToString(),
-                    $"Bạn có yêu cầu cấp quyền mới từ người dùng {User.Identity.Name} với quyền: {requestedPermission}"
+                    admin.UserId.ToString(),$"Yêu cầu cấp quyền",
+                    $"Yêu cầu cấp quyền từ {User.Identity.Name} với quyền: {requestedPermission}"
                 );
 
                 TempData["SuccessMessage"] = "Yêu cầu cấp quyền đã được gửi thành công.";

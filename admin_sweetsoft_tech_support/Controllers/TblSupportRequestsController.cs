@@ -97,6 +97,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
 
+        [PermissionAuthorize("Sửa yêu cầu hỗ trợ")]
         // GET: TblSupportRequests/Details/5
         public IActionResult Details(int id)
         {
@@ -123,6 +124,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(supportRequest);
         }
 
+        [PermissionAuthorize("Tạo yêu cầu hỗ trợ")]
         // GET: TblSupportRequests/Create
         public IActionResult Create()
         {
@@ -179,7 +181,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 _logService.LogActivityAction("Tạo yêu cầu hỗ trợ", "Thêm", User.Identity.Name);
                 if (departmentManager != null)
                 {
-                    _logService.LogNotificationAction(departmentManager.UserId.ToString(), "Bạn có yêu cầu mới");
+                    _logService.LogNotificationAction(departmentManager.UserId.ToString(),"Có yêu cầu mới", "Bạn có yêu cầu mới từ khách hàng");
                 }
                 return RedirectToAction(nameof(Index), new { page = currentPage });
             }
@@ -190,6 +192,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblSupportRequest);
         }
 
+        [PermissionAuthorize("Sửa yêu cầu hỗ trợ")]
         public IActionResult Edit(int id)
         {
             var supportRequest = _context.TblSupportRequests.Find(id);
@@ -225,11 +228,49 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                var existingRequest = await _context.TblSupportRequests.FindAsync(id);
+
+                // Lưu giá trị cũ và thay đổi
+                var oldValue = new Dictionary<string, object>();
+                var changes = new Dictionary<string, object>();
+
+                // Lấy danh sách các thuộc tính cần quan tâm (lọc bỏ các navigation properties không cần thiết)
+                var properties = typeof(TblSupportRequest).GetProperties()
+                    .Where(p => !p.PropertyType.Name.Contains("ICollection")) // Loại bỏ navigation collections
+                    .ToList();
+
+                foreach (var property in properties)
                 {
+                    var oldPropValue = property.GetValue(existingRequest);
+                    var newPropValue = property.GetValue(supportRequest);
+
+                    // Nếu giá trị thay đổi, lưu vào log
+                    if (newPropValue != null && !Equals(oldPropValue, newPropValue))
+                    {
+                        oldValue[property.Name] = oldPropValue;
+                        changes[property.Name] = newPropValue;
+
+                        // Cập nhật giá trị mới vào existingUser
+                        property.SetValue(existingRequest, newPropValue);
+                    }
+                }
+                try
+                {                   
                     _context.Update(supportRequest);
                     await _context.SaveChangesAsync();
                     _logService.LogActivityAction("Cập nhật yêu cầu hỗ trợ", "Cập nhật", User.Identity.Name);
+
+                    // Ghi log chỉ khi có thay đổi
+                    if (changes.Count > 0)
+                    {
+                        _logService.LogActivityAction(
+                            "Sửa",
+                            $"Sửa yêu cầu {supportRequest.RequestTitle} thành công",
+                            User.Identity.Name,
+                            Newtonsoft.Json.JsonConvert.SerializeObject(oldValue),
+                            Newtonsoft.Json.JsonConvert.SerializeObject(changes)
+                        );
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -255,6 +296,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(supportRequest);
         }
 
+        [PermissionAuthorize("Xóa yêu cầu hỗ trợ")]
         // POST: TblSupportRequests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -289,6 +331,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return _context.TblRequestTransfers.Any(e => e.TransferId == id);
         }
 
+        [PermissionAuthorize("Chuyển giao yêu cầu")]
         public async Task<IActionResult> Transfer(int? id)
         {
             if (id == null)
@@ -493,7 +536,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     RequestId = id,
                     DepartmentId = supportRequest.DepartmentId, // Gán DepartmentId từ TblSupportRequest
-                    IsCompleted = 0,
+                    IsCompleted = 1,
                     ProcessedAt = resolvedAt ?? DateTime.Now,
                     Note = note
                 };
@@ -501,7 +544,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
             else
             {
-                processing.IsCompleted = 0;
+                processing.IsCompleted = 1;
                 processing.ProcessedAt = resolvedAt ?? DateTime.Now;
                 processing.Note = note;
                 processing.DepartmentId = supportRequest.DepartmentId; // Cập nhật lại DepartmentId nếu cần

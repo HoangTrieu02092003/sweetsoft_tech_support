@@ -36,11 +36,13 @@ namespace admin_sweetsoft_tech_support.Attributes
                     .Include(u => u.TblUserPermissions)
                     .ThenInclude(up => up.Permission)
                     .FirstOrDefault(u => u.FullName == username);
-
-                if (user == null || !user.TblUserPermissions.Any(p => p.Permission.PermissionName == _permission))
+                if (user.IsAdmin == false)
                 {
-                    context.HttpContext.Response.StatusCode = StatusCodes.Status403Forbidden;
-                    context.Result = new RedirectToActionResult("AccessDenied", "Home", new { permission = _permission });
+                    if (user == null || !user.TblUserPermissions.Any(p => p.Permission.PermissionName == _permission))
+                    {
+                        context.HttpContext.Response.StatusCode = StatusCodes.Status403Forbidden;
+                        context.Result = new RedirectToActionResult("AccessDenied", "Home", new { permission = _permission });
+                    }
                 }
             }
         }

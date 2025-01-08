@@ -13,7 +13,7 @@ public class SessionValidationMiddleware
 
     public async Task InvokeAsync(HttpContext context, RequestContext dbContext)
     {
-        if (context.Request.Path.StartsWithSegments("/Đăng-nhập"))
+        if (context.Request.Path.StartsWithSegments("/dang-nhap"))
         {
             await _next(context);
             return;
@@ -39,13 +39,13 @@ public class SessionValidationMiddleware
                     }
                     else
                     {
-                        context.Response.Redirect("/Đăng-nhập");
+                        context.Response.Redirect("/dang-nhap");
                         return;
                     }
                 }
                 else
                 {
-                    context.Response.Redirect("/Đăng-nhập");
+                    context.Response.Redirect("/dang-nhap");
                     return;
                 }
             }

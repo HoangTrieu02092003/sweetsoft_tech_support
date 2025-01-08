@@ -87,6 +87,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View( requestContext);
         }
 
+        [PermissionAuthorize("Tạo nhân viên")]
         // GET: TblUsers/Create
         public IActionResult Create()
         {
@@ -174,6 +175,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblUser);
         }
 
+        [PermissionAuthorize("Sửa nhân viên")]
         // GET: TblUsers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -331,6 +333,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblUser);
         }
 
+        [PermissionAuthorize("Cấp quyền người dùng")]
         // GET: Users/AssignPermission/5
         public async Task<IActionResult> AssignPermissions(int? id)
         {
@@ -354,21 +357,17 @@ namespace admin_sweetsoft_tech_support.Controllers
                 .ToListAsync();
             var assignedPermissionIds = existingPermissions.Select(up => up.PermissionId).ToList();
 
-            var requestPermissions = allPermissions
-        .Where(p => p.PermissionName.ToLower().Contains("yêu cầu", StringComparison.OrdinalIgnoreCase))
-        .ToList();
+            var createPer = allPermissions.Where(p => p.PermissionName.Contains("Thêm") || p.PermissionName.Contains("Tạo")).ToList();
+            var editPer = allPermissions.Where(p => p.PermissionName.Contains("Sửa")).ToList();
+            var deletePer = allPermissions.Where(p => p.PermissionName.Contains("Xóa")).ToList();
+            var otherPer = allPermissions.Where(p => !p.PermissionName.Contains("Thêm") && !p.PermissionName.Contains("Tạo") && !p.PermissionName.Contains("Sửa") && !p.PermissionName.Contains("Xóa")).ToList();
 
-            var managementPermissions = allPermissions
-                .Where(p => p.PermissionName.ToLower().Contains("quản lý", StringComparison.OrdinalIgnoreCase))
-                .ToList();
 
-            var otherPermissions = allPermissions
-                .Where(p => !requestPermissions.Contains(p) && !managementPermissions.Contains(p))
-                .ToList();
             ViewBag.username = user.FullName;
-            ViewBag.RequestPermissions = requestPermissions;
-            ViewBag.ManagementPermissions = managementPermissions;
-            ViewBag.OtherPermissions = otherPermissions;
+            ViewBag.CreatePer = createPer;
+            ViewBag.EditPer = editPer;
+            ViewBag.DeletePer = deletePer;
+            ViewBag.otherPer = otherPer;
             ViewBag.AssignedPermissions = assignedPermissionIds;
             
             return View();
@@ -441,6 +440,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(user); // Trả về view với thông tin người dùng
         }
 
+        [PermissionAuthorize("Xóa nhân viên")]
         // POST: TblUsers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
