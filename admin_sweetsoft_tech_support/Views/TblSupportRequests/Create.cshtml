@@ -67,27 +67,22 @@
                                 </div>
                             </div>
 
-                            <div class="list-group-item bg-light border-0">
+                            <!-- Ẩn Trạng thái và mặc định giá trị là 0 -->
+                            <div class="list-group-item bg-light border-0" style="display:none;">
                                 <div class="form-group">
-                                    <label asp-for="Status" class="control-label text-dark">Trạng thái</label>
-                                    <select asp-for="Status" class="form-control">
-                                        <option value="0">Chưa hoàn thành</option>
-                                        <option value="1">Hoàn thành</option>
-                                        <option value="2">Không xử lý được</option>
-                                    </select>
+                                    <input asp-for="Status" value="0" />
                                     <span asp-validation-for="Status" class="text-danger"></span>
                                 </div>
                             </div>
-
-                            <div class="list-group-item bg-light border-0">
+                            <div class="list-group-item bg-light border-0" style="display:none;">
                                 <div class="form-group">
                                     <label asp-for="CreatedAt" class="control-label text-dark">Ngày tạo</label>
                                     <input asp-for="CreatedAt" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" readonly />
                                     <span asp-validation-for="CreatedAt" class="text-danger"></span>
                                 </div>
                             </div>
-
-                            <div class="list-group-item bg-light border-0">
+                            <!-- Ngày giải quyết ẩn -->
+                            <div class="list-group-item bg-light border-0" style="display:none;">
                                 <div class="form-group">
                                     <label asp-for="ResolvedAt" class="control-label text-dark">Ngày giải quyết</label>
                                     <input asp-for="ResolvedAt" class="form-control" readonly placeholder="Chưa có thông tin" />

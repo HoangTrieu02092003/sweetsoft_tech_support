@@ -79,6 +79,10 @@
                             <p>@Model.CreatedAt.ToString("dd/MM/yyyy")</p>
                         </div>
                         <div class="list-group-item bg-light border-0">
+                            <strong>Người xử lý:</strong>
+                            <p>@ViewBag.HandleBy</p>
+                        </div>
+                        <div class="list-group-item bg-light border-0">
                             <strong>Ngày giải quyết:</strong>
                             <p>@(Model.ResolvedAt?.ToString("dd/MM/yyyy") ?? "Chưa giải quyết")</p>
                         </div>
