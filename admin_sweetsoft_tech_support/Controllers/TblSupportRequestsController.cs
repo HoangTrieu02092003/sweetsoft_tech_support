@@ -463,7 +463,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         //Feedback
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult SendMessage(int requestId, string message, int toCustomerId, int toUserId, short feedbackType)
+        public IActionResult SendMessage(int requestId, string message, int toCustomerId, int toUserId)
         {
             
             if (string.IsNullOrWhiteSpace(message))
@@ -473,8 +473,6 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             TblRequestFeedback newFeedback = null;
-            if (feedbackType == 1)
-            {
                 newFeedback = new TblRequestFeedback
                 {
                     RequestId = requestId,
@@ -483,26 +481,10 @@ namespace admin_sweetsoft_tech_support.Controllers
                     ToUserId = null,
                     ToCustomerId = toCustomerId,
                     Feedback = message,
-                    FeedbackType = feedbackType,
+                    FeedbackType = 1,
                     CreatedAt = DateTime.Now,
                     IsRead = false
                 };
-            }
-            else if (feedbackType == 3) 
-            {
-                newFeedback = new TblRequestFeedback
-                {
-                    RequestId = requestId,
-                    FromUserId = userId,
-                    FromCustomerId = null,
-                    ToUserId = toUserId,
-                    ToCustomerId = null,
-                    Feedback = message,
-                    FeedbackType = feedbackType,
-                    CreatedAt = DateTime.Now,
-                    IsRead = false
-                };
-            }
             if (newFeedback != null)
             {
                 _context.TblRequestFeedbacks.Add(newFeedback);
