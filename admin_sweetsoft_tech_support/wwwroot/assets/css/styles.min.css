@@ -16579,7 +16579,6 @@ textarea.form-control-lg {
   gap: 5px;
   margin-bottom: 2px;
   font-weight: 400;
-  text-decoration: none;
 }
 .sidebar-nav ul .sidebar-item .sidebar-link span:first-child {
   display: -webkit-box;
@@ -16592,10 +16591,11 @@ textarea.form-control-lg {
       flex-shrink: 0;
   font-size: 21px;
 }
-.sidebar-nav ul .sidebar-item .sidebar-link:hover {
-  background-color: rgba(41, 82, 255, 0.1);
-  color: #2952ff;
-}
+    .sidebar-nav ul .sidebar-item .sidebar-link:hover {
+        background-color: rgba(41, 82, 255, 0.1);
+        color: #2952ff;
+        text-decoration: none;
+    }
 .sidebar-nav ul .sidebar-item .sidebar-link:hover.has-arrow::after {
   border-color: #2952ff;
 }

@@ -17,7 +17,10 @@
 
             chatBody.innerHTML = "<p>Đang tải...</p>";
             loadChatMessages(requestId);
+            //
+            document.body.classList.add('chat-open');
 
+            //đánh dấu đã xem feedback
             markFeedbackAsRead(requestId);
 
             chatOverlay.classList.remove("hidden");
@@ -47,6 +50,7 @@
     closeChatButton.addEventListener("click", function () {
         chatOverlay.classList.remove("visible");
         setTimeout(() => chatOverlay.classList.add("hidden"), 300);
+        document.body.classList.remove('chat-open')
     });
 
     // Xử lý form submit

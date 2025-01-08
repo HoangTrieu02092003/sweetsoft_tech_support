@@ -16,65 +16,78 @@
         @successMessage
     </div>
 }
+
 @if (!string.IsNullOrEmpty(errorMessage))
 {
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-error" role="alert">
         @errorMessage
     </div>
 }
+
 <style>
     h1 {
         font-family: 'Poppins', sans-serif;
         font-weight: bold;
         color: #6a1b9a;
     }
+
     .list-group-item {
         border: none;
         padding: 10px;
         background-color: #f4f6f9;
         margin-bottom: 10px;
     }
-    .list-group-item strong {
-        color: #6a1b9a;
-    }
+
+        .list-group-item strong {
+            color: #6a1b9a;
+        }
+
     .card-header {
         font-size: 1.25rem;
         background-color: #ffc107;
         color: #6a1b9a !important;
     }
+
     .btn-warning {
         background-color: #ffc107;
         color: #6a1b9a;
     }
-    .btn-warning:hover {
-        background-color: #e0a800;
-        color: #fff;
-    }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+            color: #fff;
+        }
+
     .btn-outline-dark {
         border-color: #6a1b9a;
         color: #6a1b9a;
     }
-    .btn-outline-dark:hover {
-        background-color: #6a1b9a;
-        color: #fff;
-    }
+
+        .btn-outline-dark:hover {
+            background-color: #6a1b9a;
+            color: #fff;
+        }
+
     .card-footer {
         background-color: #fff;
         border-top: 1px solid #ddd;
         padding-top: 15px;
     }
+
     body {
         font-family: 'Poppins', sans-serif;
         background-color: #f4f7fc;
         margin: 0;
         padding: 0;
     }
+
     .container-custom {
         background-color: #ffffff;
         padding: 30px;
         border-radius: 12px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+
     .section-header {
         background-color: #6a1b9a;
         color: #fff;
@@ -83,13 +96,16 @@
         border-radius: 10px;
         margin-bottom: 20px;
     }
+
     .form-group {
         margin-bottom: 20px;
     }
-    .form-group label {
-        font-weight: 600;
-        color: #555;
-    }
+
+        .form-group label {
+            font-weight: 600;
+            color: #555;
+        }
+
     .form-control {
         border-radius: 8px;
         padding: 12px;
@@ -97,10 +113,12 @@
         border: 1px solid #ccc;
         transition: border-color 0.3s ease;
     }
-    .form-control:focus {
-        border-color: #6a1b9a;
-        box-shadow: 0 0 5px rgba(106, 27, 154, 0.5);
-    }
+
+        .form-control:focus {
+            border-color: #6a1b9a;
+            box-shadow: 0 0 5px rgba(106, 27, 154, 0.5);
+        }
+
     .btn-back {
         background-color: #e0e0e0;
         border: none;
@@ -113,9 +131,11 @@
         margin-bottom: 20px;
         transition: background-color 0.3s;
     }
-    .btn-back:hover {
-        background-color: #bdbdbd;
-    }
+
+        .btn-back:hover {
+            background-color: #bdbdbd;
+        }
+
     .btn-submit {
         background-color: #6a1b9a;
         color: white;
@@ -126,48 +146,58 @@
         width: 100%;
         transition: background-color 0.3s;
     }
-    .btn-submit:hover {
-        background-color: #5a1a89;
-    }
+
+        .btn-submit:hover {
+            background-color: #5a1a89;
+        }
+
     .form-group span {
         font-size: 12px;
         color: #d32f2f;
     }
+
     .d-flex {
         display: flex;
         justify-content: flex-end;
     }
+
     .table th, .table td {
         text-align: center;
         vertical-align: middle;
     }
+
     .table-header {
         background-color: #ffc107;
         color: #6a1b9a;
         font-weight: bold;
     }
+
     .table-row:nth-child(even) {
         background-color: #f8f9fa;
     }
+
     .nav-tabs {
         border-bottom: 2px solid #6a1b9a;
     }
-    .nav-tabs .nav-link {
-        color: #6a1b9a;
-        font-weight: bold;
-        border: 1px solid transparent;
-        border-radius: 0;
-        transition: all 0.3s ease;
-    }
-    .nav-tabs .nav-link.active {
-        color: #fff;
-        background-color: #6a1b9a;
-        border-color: #6a1b9a #6a1b9a #fff;
-    }
-    .nav-tabs .nav-link:hover {
-        background-color: #f4f6f9;
-        color: #6a1b9a;
-    }
+
+        .nav-tabs .nav-link {
+            color: #6a1b9a;
+            font-weight: bold;
+            border: 1px solid transparent;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+            .nav-tabs .nav-link.active {
+                color: #fff;
+                background-color: #6a1b9a;
+                border-color: #6a1b9a #6a1b9a #fff;
+            }
+
+            .nav-tabs .nav-link:hover {
+                background-color: #f4f6f9;
+                color: #6a1b9a;
+            }
 </style>
 
 <div class="container">
@@ -210,7 +240,7 @@
                                     <div class="list-group-item bg-light border-0">
                                         <div class="form-group">
                                             <label asp-for="FullName" class="control-label text-dark">Họ và tên</label>
-                                            <input asp-for="FullName" class="form-control" required />
+                                            <input asp-for="FullName" class="form-control" />
                                             <span asp-validation-for="FullName" class="text-danger"></span>
                                         </div>
                                     </div>
@@ -218,7 +248,7 @@
                                     <div class="list-group-item bg-light border-0">
                                         <div class="form-group">
                                             <label asp-for="Email" class="control-label text-dark">Email</label>
-                                            <input asp-for="Email" class="form-control" required />
+                                            <input asp-for="Email" class="form-control" />
                                             <span asp-validation-for="Email" class="text-danger"></span>
                                         </div>
                                     </div>
@@ -226,7 +256,7 @@
                                     <div class="list-group-item bg-light border-0">
                                         <div class="form-group">
                                             <label asp-for="Phone" class="control-label text-dark">Số điện thoại</label>
-                                            <input asp-for="Phone" class="form-control" required />
+                                            <input asp-for="Phone" class="form-control" />
                                             <span asp-validation-for="Phone" class="text-danger"></span>
                                         </div>
                                     </div>
@@ -234,7 +264,7 @@
                                     <div class="list-group-item bg-light border-0">
                                         <div class="form-group">
                                             <label asp-for="TaxCode" class="control-label text-dark">Mã số thuế</label>
-                                            <input asp-for="TaxCode" class="form-control" required />
+                                            <input asp-for="TaxCode" class="form-control" />
                                             <span asp-validation-for="TaxCode" class="text-danger"></span>
                                         </div>
                                     </div>
@@ -249,13 +279,21 @@
 
                                     <div class="list-group-item bg-light border-0">
                                         <div class="form-group">
-                                            <label asp-for="Username" class="control-label text-dark">Tên đăng nhập</label>
-                                            <input asp-for="Username" class="form-control" required />
-                                            <span asp-validation-for="Username" class="text-danger"></span>
+                                            <label asp-for="Status" class="control-label text-dark">Trạng thái</label>
+                                            <select asp-for="Status" class="form-control" asp-items="ViewBag.StatusList"></select>
+                                            <span asp-validation-for="Status" class="text-danger"></span>
                                         </div>
                                     </div>
 
                                     <div class="list-group-item bg-light border-0">
+                                        <div class="form-group">
+                                            <label asp-for="Username" class="control-label text-dark">Tên đăng nhập</label>
+                                            <input asp-for="Username" class="form-control" />
+                                            <span asp-validation-for="Username" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="list-group-item bg-light border-0" hidden>
                                         <div class="form-group">
                                             <label asp-for="Password" class="control-label text-dark">Mật khẩu</label>
                                             <input asp-for="Password" class="form-control" />
@@ -266,7 +304,7 @@
                                     <div class="list-group-item bg-light border-0">
                                         <div class="form-group">
                                             <label asp-for="CreatedBy" class="control-label text-dark">Người tạo</label>
-                                            <select asp-for="CreatedBy" class="form-control" asp-items="ViewBag.CreatedUser"></select>
+                                            <select asp-for="CreatedBy" class="form-control" asp-items="ViewBag.CreatedUser" disabled></select>
                                             <span asp-validation-for="CreatedBy" class="text-danger"></span>
                                         </div>
                                     </div>
@@ -274,15 +312,15 @@
                                     <div class="list-group-item bg-light border-0">
                                         <div class="form-group">
                                             <label asp-for="CreatedAt" class="control-label text-dark">Ngày tạo</label>
-                                            <input type="text" class="form-control" readonly 
-                                                   value="@Model.CreatedAt?.ToString("dd/MM/yyyy HH:mm")" />
+                                            <input type="text" class="form-control" readonly
+                                                   value="@Model.CreatedAt?.ToString("dd/MM/yyyy HH:mm:ss")" />
                                         </div>
                                     </div>
 
                                     <div class="list-group-item bg-light border-0">
-                                        <div class="form-group">
+                                        <div class="form-group" >
                                             <label asp-for="UpdatedBy" class="control-label text-dark">Người cập nhật</label>
-                                            <select asp-for="UpdatedBy" class="form-control" asp-items="ViewBag.UpdatedUser"></select>
+                                            <select asp-for="UpdatedBy" class="form-control" asp-items="ViewBag.UpdatedUser" disabled></select>
                                             <span asp-validation-for="UpdatedBy" class="text-danger"></span>
                                         </div>
                                     </div>
@@ -290,8 +328,8 @@
                                     <div class="list-group-item bg-light border-0">
                                         <div class="form-group">
                                             <label asp-for="UpdatedAt" class="control-label text-dark">Ngày cập nhật</label>
-                                            <input type="text" class="form-control" readonly 
-                                                   value="@Model.UpdatedAt?.ToString("dd/MM/yyyy HH:mm")" />
+                                            <input type="text" class="form-control" readonly
+                                                   value="@Model.UpdatedAt?.ToString("dd/MM/yyyy HH:mm:ss")" />
                                         </div>
                                     </div>
                                 </div>
@@ -323,9 +361,9 @@
                                             <tr class="table-row">
                                                 <td>@request.Department?.DepartmentName</td>
                                                 <td>@request.RequestDetails</td>
-                                                <td>@(request.Status == 1 ? "Đã xử lý" : request.Status == 0? "Chưa xử lý":request.Status==2?"Không xử lý được":"Không xác định")</td>
-                                                <td>@request.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
-                                                <td>@(request.ResolvedAt.HasValue ? request.ResolvedAt.Value.ToString("dd/MM/yyyy HH:mm") : "N/A")</td>
+                                                <td>@(request.Status == 1 ? "Đã xử lý" : request.Status == 0 ? "Chưa xử lý": request.Status == 2 ? "Không xử lý được" : "Không xác định")</td>
+                                                <td>@request.CreatedAt.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                                                <td>@(request.ResolvedAt.HasValue ? request.ResolvedAt.Value.ToString("dd/MM/yyyy HH:mm:ss") : "N/A")</td>
                                             </tr>
                                         }
                                     </tbody>

@@ -408,7 +408,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                         _context.TblUserPermissions.Add(userPermission);
 
                         // Ghi log với tên quyền
-                        _logService.LogNotificationAction(id.ToString(), $"Bạn đã được cấp quyền {permissionName}");
+                        _logService.LogNotificationAction(id.ToString(),"" ,$"Bạn đã được cấp quyền {permissionName}");
                     }
                 }
             }

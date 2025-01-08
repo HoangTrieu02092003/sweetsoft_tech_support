@@ -183,6 +183,15 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.CreatedBy);
             ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "FullName", tblCustomer.UpdatedBy);
 
+            //option status
+            ViewBag.StatusList = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "1", Text = "Kích hoạt" },
+                new SelectListItem { Value = "0", Text = "Hủy kích hoạt" },
+                new SelectListItem { Value = "2", Text = "Khóa" }
+            };
+
+
             return View(tblCustomer);
         }
 
