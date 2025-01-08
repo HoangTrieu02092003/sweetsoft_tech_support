@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using admin_sweetsoft_tech_support.Attributes;
 using System.Security.Claims;
+using Azure.Core;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
@@ -119,6 +120,26 @@ namespace admin_sweetsoft_tech_support.Controllers
                 .Include(t => t.TransferredByNavigation)
                 .Include(t => t.TransferredHandleNavigation)
                 .ToList();
+            var departmentManager = _context.TblUsers
+            .FirstOrDefault(u => u.DepartmentId == supportRequest.DepartmentId && u.RoleId == 2);
+
+            if (departmentManager != null)
+            {
+                if (supportRequest.HandleByNavigation != null)
+                {
+                    ViewBag.HandleBy = supportRequest.HandleByNavigation.FullName;
+                }
+                else
+                {
+                    supportRequest.HandleBy = departmentManager.UserId;
+                    ViewBag.HandleBy = departmentManager.FullName; // Lấy tên đầy đủ từ bảng TblUsers
+                }
+            }
+            else
+            {
+                supportRequest.HandleBy = _context.TblUsers.FirstOrDefault(u => u.RoleId == 1)?.UserId; // Gán quản trị viên
+                ViewBag.HandleBy = _context.TblUsers.FirstOrDefault(u => u.RoleId == 1)?.FullName; // Lấy tên đầy đủ của quản trị viên
+            }
 
             return View(supportRequest);
         }
@@ -156,25 +177,37 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             if (ModelState.IsValid)
             {
+                var departmentManager = _context.TblUsers
+                    .FirstOrDefault(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.RoleId == 2);
+
+                if (departmentManager != null)
+                {
+                    tblSupportRequest.HandleBy = departmentManager.UserId;
+                }
+                else
+                {
+                    tblSupportRequest.HandleBy = null; 
+                    _logService.LogActivityAction(
+                        $"Không tìm thấy trưởng phòng cho DepartmentId: {tblSupportRequest.DepartmentId}",
+                        "Tạo yêu cầu hỗ trợ",
+                        User.Identity.Name);
+                }
+
                 _context.Add(tblSupportRequest);
                 await _context.SaveChangesAsync();
 
                 int newRequestId = tblSupportRequest.RequestId;
 
-                // Thêm bản ghi vào TblRequestsProcessing
                 var requestProcessing = new TblRequestsProcessing
                 {
                     RequestId = newRequestId,
                     DepartmentId = tblSupportRequest.DepartmentId,
-                    IsCompleted = 0, // Mặc định là chưa hoàn thành
+                    IsCompleted = 0,
                     ProcessedAt = null,
                     Note = "Chưa xử lý...."
                 };
                 _context.TblRequestsProcessings.Add(requestProcessing);
                 await _context.SaveChangesAsync();
-
-                var departmentManager = _context.TblUsers
-                    .FirstOrDefault(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.Role.RoleName == "Trưởng phòng");
 
                 _logService.LogActivityAction("Tạo yêu cầu hỗ trợ", "Thêm", User.Identity.Name);
                 if (departmentManager != null)
@@ -183,27 +216,27 @@ namespace admin_sweetsoft_tech_support.Controllers
                 }
                 return RedirectToAction(nameof(Index), new { page = currentPage });
             }
+
             ViewData["CustomerId"] = new SelectList(_context.TblCustomers, "CustomerId", "CustomerId", tblSupportRequest.CustomerId);
             ViewData["DepartmentId"] = new SelectList(
-            _context.TblDepartments.Where(d => d.IsDelete == false),"DepartmentId","DepartmentName",tblSupportRequest.DepartmentId);
-            var RequestTitle = _context.TblSupportRequests.Find(tblSupportRequest.RequestId).RequestTitle;
+                _context.TblDepartments.Where(d => d.IsDelete == false), "DepartmentId", "DepartmentName", tblSupportRequest.DepartmentId);
             return View(tblSupportRequest);
         }
 
+
+
         public IActionResult Edit(int id)
         {
+            // Tìm yêu cầu hỗ trợ từ CSDL
             var supportRequest = _context.TblSupportRequests.Find(id);
             if (supportRequest == null)
             {
                 return NotFound();
             }
 
+            // Truyền danh sách khách hàng và phòng ban vào ViewBag
             ViewBag.CustomerId = new SelectList(_context.TblCustomers, "CustomerId", "FullName", supportRequest.CustomerId);
-            ViewData["DepartmentId"] = new SelectList(
-            _context.TblDepartments.Where(d => d.IsDelete == false),
-            "DepartmentId",
-            "DepartmentName",
-            supportRequest.DepartmentId);
+            ViewBag.DepartmentId = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", supportRequest.DepartmentId);
 
             return View(supportRequest);
         }
@@ -211,14 +244,14 @@ namespace admin_sweetsoft_tech_support.Controllers
         // POST: TblSupportRequests/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RequestId,RequestTitle,Product,RequestDetails,Status,CustomerId,DepartmentId,CreatedAt,ResolvedAt")] TblSupportRequest supportRequest, int currentPage = 1)
+        public async Task<IActionResult> Edit(int id, TblSupportRequest updatedRequest, int currentPage = 1)
         {
-            if (id != supportRequest.RequestId)
+            if (id != updatedRequest.RequestId)
             {
                 return NotFound();
             }
 
-            if (string.IsNullOrEmpty(supportRequest.RequestTitle))
+            if (string.IsNullOrEmpty(updatedRequest.RequestTitle))
             {
                 ModelState.AddModelError("RequestTitle", "RequestTitle is required.");
             }
@@ -227,13 +260,34 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 try
                 {
-                    _context.Update(supportRequest);
+                    // Lấy dữ liệu gốc từ CSDL
+                    var existingRequest = _context.TblSupportRequests.AsNoTracking().FirstOrDefault(r => r.RequestId == id);
+                    if (existingRequest == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Chỉ cập nhật các trường được thay đổi từ view
+                    existingRequest.RequestTitle = updatedRequest.RequestTitle;
+                    existingRequest.Product = updatedRequest.Product;
+                    existingRequest.RequestDetails = updatedRequest.RequestDetails;
+                    existingRequest.Status = updatedRequest.Status;
+                    existingRequest.CustomerId = updatedRequest.CustomerId;
+                    existingRequest.DepartmentId = updatedRequest.DepartmentId;
+
+                    // Cập nhật vào CSDL
+                    _context.Update(existingRequest);
                     await _context.SaveChangesAsync();
+
+                    // Ghi nhật ký hành động
                     _logService.LogActivityAction("Cập nhật yêu cầu hỗ trợ", "Cập nhật", User.Identity.Name);
+
+                    // Chuyển hướng sau khi lưu thành công
+                    return RedirectToAction(nameof(Index), new { page = currentPage });
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TblSupportRequestExists(supportRequest.RequestId))
+                    if (!TblSupportRequestExists(updatedRequest.RequestId))
                     {
                         return NotFound();
                     }
@@ -242,18 +296,15 @@ namespace admin_sweetsoft_tech_support.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index), new { page = currentPage });
             }
 
-            ViewBag.CustomerId = new SelectList(_context.TblCustomers, "CustomerId", "FullName", supportRequest.CustomerId);
-            ViewData["DepartmentId"] = new SelectList(
-            _context.TblDepartments.Where(d => d.IsDelete == false),
-            "DepartmentId",
-            "DepartmentName",
-            supportRequest.DepartmentId);
+            // Nếu ModelState không hợp lệ, truyền lại dữ liệu cho view
+            ViewBag.CustomerId = new SelectList(_context.TblCustomers, "CustomerId", "FullName", updatedRequest.CustomerId);
+            ViewBag.DepartmentId = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", updatedRequest.DepartmentId);
 
-            return View(supportRequest);
+            return View(updatedRequest);
         }
+
 
         // POST: TblSupportRequests/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -289,6 +340,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return _context.TblRequestTransfers.Any(e => e.TransferId == id);
         }
 
+        [PermissionAuthorize("Giải quyết yêu cầu")]
         public async Task<IActionResult> Transfer(int? id)
         {
             if (id == null)
@@ -311,18 +363,27 @@ namespace admin_sweetsoft_tech_support.Controllers
                 FromDepartmentId = tblSupportRequest.DepartmentId,
                 TransferredAt = DateTime.Now // Set default values as needed
             };
+            var departments = await _context.TblDepartments
+            .Where(d => d.DepartmentId != tblSupportRequest.DepartmentId) // Loại bỏ phòng ban hiện tại
+            .ToListAsync();
+            var departmentManager = await _context.TblUsers
+            .FirstOrDefaultAsync(u => u.DepartmentId == tblSupportRequest.DepartmentId && u.Role.RoleId == 1);
+
 
             ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestTitle", tblSupportRequest.RequestId);
             ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", tblSupportRequest.DepartmentId);
-            ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName");
-            ViewBag.TransferredBy = new SelectList(_context.TblUsers, "UserId", "FullName", User.Identity.Name);
+            ViewData["ToDepartmentId"] = new SelectList(departments, "DepartmentId", "DepartmentName"); ViewBag.TransferredBy = new SelectList(_context.TblUsers, "UserId", "FullName", User.Identity.Name);
             ViewBag.RequestTitle = tblSupportRequest.RequestTitle;
             ViewBag.FormDepartment = tblSupportRequest.Department.DepartmentName;
+            ViewBag.TransferredBy = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            ViewBag.TransferredHandle = departmentManager?.UserId ?? 0; // Set to 0 if no manager found
             return View(requestTransfer);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Transfer(int id, [Bind("TransferId,RequestId,FromDepartmentId,Priority,TransferredBy,TransferredAt,Note,RequestTitle,Product")] TblRequestTransfer requestTransfer, List<int> ToDepartmentId, string userName, int currentPage = 1)
+        public async Task<IActionResult> Transfer(int id,
+            [Bind("TransferId,RequestId,FromDepartmentId,Priority,TransferredBy,TransferredAt,Note,RequestTitle,Product,TransferredHandle")]
+            TblRequestTransfer requestTransfer, List<int> ToDepartmentId, string userName, int currentPage = 1)
         {
             if (id != requestTransfer.RequestId)
             {
@@ -345,6 +406,19 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     foreach (var toDepartmentId in ToDepartmentId)
                     {
+                        // Tìm trưởng phòng của phòng ban dựa trên ID phòng ban và role = 2 (trưởng phòng)
+                        var departmentHead = await _context.TblUsers
+                            .Where(u => u.DepartmentId == toDepartmentId && u.RoleId == 2) // Role = 2 là trưởng phòng
+                            .Select(u => u.UserId) // Lấy UserId (ID của trưởng phòng)
+                            .FirstOrDefaultAsync();
+
+                        if (departmentHead == 0)
+                        {
+                            // Nếu không tìm thấy trưởng phòng, có thể xử lý lỗi hoặc thông báo
+                            ModelState.AddModelError("", "Không tìm thấy trưởng phòng cho phòng ban này.");
+                            return View(requestTransfer); // Hoặc trả về thông báo lỗi phù hợp
+                        }
+
                         var transfer = new TblRequestTransfer
                         {
                             RequestId = requestTransfer.RequestId,
@@ -353,23 +427,26 @@ namespace admin_sweetsoft_tech_support.Controllers
                             Priority = requestTransfer.Priority,
                             TransferredBy = requestTransfer.TransferredBy,
                             TransferredAt = requestTransfer.TransferredAt,
-                            Note = requestTransfer.Note
+                            Note = requestTransfer.Note,
+                            TransferredHandle = departmentHead // Gán trưởng phòng vào TransferredHandle
                         };
 
                         _context.Add(transfer);
 
-                        // Update the existing support request for the first department
+                        // Cập nhật yêu cầu hỗ trợ trong TblSupportRequest
                         if (toDepartmentId == ToDepartmentId.First())
                         {
                             if (supportRequest != null)
                             {
+                                // Cập nhật HandleBy trong TblSupportRequest với ID trưởng phòng
                                 supportRequest.DepartmentId = toDepartmentId;
                                 supportRequest.RequestTitle = supportRequest.RequestTitle;
                                 supportRequest.Product = supportRequest.Product;
+                                supportRequest.HandleBy = departmentHead; // Gán trưởng phòng vào HandleBy
                                 _context.Update(supportRequest);
                             }
                         }
-                        // Create a new support request for subsequent departments
+                        // Tạo mới yêu cầu hỗ trợ cho các phòng ban sau
                         else if (ToDepartmentId.Count > 1)
                         {
                             if (supportRequest != null)
@@ -381,14 +458,16 @@ namespace admin_sweetsoft_tech_support.Controllers
                                     RequestDetails = supportRequest.RequestDetails,
                                     Product = supportRequest.Product,
                                     RequestTitle = supportRequest.RequestTitle,
-                                    Status = 0, // Assuming 0 is the default status
+                                    Status = 0, // Trạng thái mặc định
                                     CreatedAt = DateTime.Now,
-                                    ResolvedAt = null
+                                    ResolvedAt = null,
+                                    HandleBy = departmentHead // Gán trưởng phòng vào HandleBy
                                 };
 
                                 _context.Add(newSupportRequest);
                             }
                         }
+
                         _logService.LogActivityAction("Chuyển yêu cầu hỗ trợ", "Chuyển giao", User.Identity.Name);
                     }
 
@@ -410,9 +489,10 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestTitle", requestTransfer.RequestId);
             ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.FromDepartmentId);
-            ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.ToDepartmentId);
+            ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName"); // Danh sách phòng ban đã lọc
             ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName", requestTransfer.TransferredBy);
-            ViewBag.TransferredBy = new SelectList(_context.TblUsers, "UserId", "FullName", User.Identity.Name);
+            //ViewBag.TransferredBy = new SelectList(_context.TblUsers, "UserId", "FullName", User.Identity.Name);
+            ViewBag.TransferredBy = new SelectList(_context.TblUsers.Select(u => new { u.UserId, u.FullName }), "Id", "UserName");
             ViewBag.RequestTitle = supportRequest.RequestTitle;
             return View(requestTransfer);
         }
@@ -468,7 +548,6 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             return RedirectToAction("Index", new { requestId });
         }
-        //
         public IActionResult GetFeedbacks(int requestId)
         {
             var feedbacks = _context.TblRequestFeedbacks
@@ -479,7 +558,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return PartialView("_FeedbacksPartial", feedbacks);
         }
 
-        //
+        [PermissionAuthorize("Giải quyết yêu cầu")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateStatus(int id, int status, DateTime? resolvedAt, string note)
@@ -493,7 +572,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     RequestId = id,
                     DepartmentId = supportRequest.DepartmentId, // Gán DepartmentId từ TblSupportRequest
-                    IsCompleted = 0,
+                    IsCompleted = 1,
                     ProcessedAt = resolvedAt ?? DateTime.Now,
                     Note = note
                 };
@@ -501,7 +580,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
             else
             {
-                processing.IsCompleted = 0;
+                processing.IsCompleted = 1;
                 processing.ProcessedAt = resolvedAt ?? DateTime.Now;
                 processing.Note = note;
                 processing.DepartmentId = supportRequest.DepartmentId; // Cập nhật lại DepartmentId nếu cần
@@ -514,18 +593,11 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             supportRequest.Status = (short)status;
-            supportRequest.ResolvedAt = status == 1 ? resolvedAt ?? DateTime.Now : null;
+            supportRequest.ResolvedAt = (status == 1 || status == 2) ? resolvedAt ?? DateTime.Now : null;
 
-            if (status == 1)
+            if (status == 1 || status == 2)
             {
-                processing.IsCompleted = 1;
-                processing.ProcessedAt = resolvedAt ?? DateTime.Now;
-                processing.Note = note;
-            }
-            supportRequest.ResolvedAt = status == 2 ? resolvedAt ?? DateTime.Now : null;
-            if (status == 2)
-            {
-                processing.IsCompleted = 2;
+                processing.IsCompleted = (short?)status;
                 processing.ProcessedAt = resolvedAt ?? DateTime.Now;
                 processing.Note = note;
             }
@@ -584,5 +656,81 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             await client.SendMailAsync(mailMessage);
         }
+        // GET: SupportRequest/TransferToEmployee/{id}
+        [HttpGet]
+        public async Task<IActionResult> TransferToEmployee(int id)
+        {
+            // Lấy yêu cầu hỗ trợ dựa trên ID
+            var supportRequest = await _context.TblSupportRequests
+                .Include(r => r.Department)
+                .FirstOrDefaultAsync(r => r.RequestId == id);
+
+            if (supportRequest == null)
+            {
+                return NotFound(); // Nếu yêu cầu không tồn tại, trả về lỗi NotFound
+            }
+
+            // Lấy danh sách nhân viên trong phòng ban
+            var employees = await _context.TblUsers
+                .Where(u => u.DepartmentId == supportRequest.DepartmentId && u.RoleId == 4) // Role 4 là nhân viên
+                .ToListAsync();
+
+            ViewBag.SupportRequest = supportRequest;
+            ViewBag.Employees = employees; // Pass the list of employees directly
+
+            return View();
+        }
+
+        // POST: SupportRequest/TransferToEmployee/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> TransferToEmployee(int id, int employeeId,
+    [Bind("TransferId,RequestId,FromDepartmentId,Priority,TransferredBy,TransferredAt,Note,RequestTitle,Product,TransferredHandle")]
+    TblRequestTransfer requestTransfer)
+        {
+            // Kiểm tra tính hợp lệ của requestTransfer
+            if (id != requestTransfer.RequestId)
+            {
+                return BadRequest("Request ID mismatch.");
+            }
+
+            // Lấy yêu cầu hỗ trợ
+            var supportRequest = await _context.TblSupportRequests
+                .Include(r => r.Department)
+                .FirstOrDefaultAsync(r => r.RequestId == id);
+
+            if (supportRequest == null)
+            {
+                return NotFound();
+            }
+
+            // Cập nhật yêu cầu hỗ trợ với nhân viên mới
+            supportRequest.HandleBy = employeeId;
+            // Lưu thay đổi vào cơ sở dữ liệu
+            _context.Update(supportRequest);
+            await _context.SaveChangesAsync();
+            // Tạo đối tượng chuyển giao mới
+            var transfer = new TblRequestTransfer
+            {
+                RequestId = requestTransfer.RequestId,
+                FromDepartmentId = requestTransfer.FromDepartmentId,
+                ToDepartmentId = requestTransfer.FromDepartmentId, // Có thể cần cập nhật lại nếu có thông tin phòng ban đích
+                Priority = requestTransfer.Priority,
+                TransferredBy = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value), // Người chuyển giao là người đang thực hiện
+                TransferredAt = DateTime.Now,
+                Note = requestTransfer.Note,
+                TransferredHandle = employeeId // Gán nhân viên mới vào TransferredHandle
+            };
+
+            // Thêm đối tượng chuyển giao vào cơ sở dữ liệu
+            _context.Add(transfer);
+            await _context.SaveChangesAsync();
+
+            // Log hành động
+            _logService.LogActivityAction("Chuyển yêu cầu hỗ trợ", "Chuyển giao cho nhân viên", User.Identity.Name);
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
