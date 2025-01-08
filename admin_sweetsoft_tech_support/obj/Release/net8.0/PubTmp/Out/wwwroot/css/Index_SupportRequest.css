@@ -49,3 +49,56 @@ h1 {
     display: inline-flex;
     align-items: center;
 }
+/*chat box*/
+.chat-overlay {
+    position: fixed;
+    top: 30%;
+    right: -400px;
+    width: 400px;
+    height: 70%;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease-in-out;
+    z-index: 1050;
+}
+
+    .chat-overlay.visible {
+        right: 0; /* Hiển thị khung chat khi thêm lớp .visible */
+    }
+
+.chat-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px 20px;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.chat-body {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
+@media (max-width: 800px) {
+    .chat-overlay {
+        width: 100%;
+        height: 60%;
+        top: 40%;
+    }
+}
+

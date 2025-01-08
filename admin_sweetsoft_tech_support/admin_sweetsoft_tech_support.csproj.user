@@ -15,7 +15,7 @@
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
     <WebStackScaffolding_LayoutPageFile>~/Views/Shared/_Layout_admin.cshtml</WebStackScaffolding_LayoutPageFile>
-    <NameOfLastUsedPublishProfile>D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\Properties\PublishProfiles\site15441-WebDeploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>D:\HocTap\N4\TTCN\Git\admin_sweetsoft_tech_support\Properties\PublishProfiles\site15650-WebDeploy1.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

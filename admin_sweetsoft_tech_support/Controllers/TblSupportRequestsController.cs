@@ -102,6 +102,15 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(paginatedRequests);
         }
 
+        [HttpGet] public IActionResult CheckUnreadFeedbacks() 
+        { 
+            var requests = _context.TblSupportRequests
+                .Where(r => r.IsDelete == false)
+                .Select(r => new { 
+                    r.RequestId, 
+                    HasUnreadFeedback = r.TblRequestFeedbacks.Any(f => f.IsRead == false) 
+                }).ToList(); return Json(requests); 
+        }
 
         [PermissionAuthorize("Sửa yêu cầu hỗ trợ")]
         // GET: TblSupportRequests/Details/5

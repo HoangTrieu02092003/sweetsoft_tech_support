@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KGKvfEFGIHqXtw0hXfylwATjOIViJk6kdMwDzixitgQ=",
+  "Hash": "oijCA947HfIGrYeE1qXTx0gVUwH4kTsf35/hHfC8kRY=",
   "Source": "admin_sweetsoft_tech_support",
   "BasePath": "_content/admin_sweetsoft_tech_support",
   "Mode": "Default",
@@ -48144,6 +48144,25 @@
       "OriginalItemSpec": "wwwroot\\js\\app.min.js"
     },
     {
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\js\\chatbox.js",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "js/chatbox.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\chatbox.js"
+    },
+    {
       "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\js\\dashboard.js",
       "SourceId": "admin_sweetsoft_tech_support",
       "SourceType": "Discovered",
@@ -48161,6 +48180,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\dashboard.js"
+    },
+    {
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\js\\jquery.min.js",
+      "SourceId": "admin_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/admin_sweetsoft_tech_support",
+      "RelativePath": "js/jquery.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jquery.min.js"
     },
     {
       "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\js\\set.js",

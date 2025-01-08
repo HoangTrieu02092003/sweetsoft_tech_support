@@ -17,11 +17,17 @@
 
             chatBody.innerHTML = "<p>Đang tải...</p>";
             loadChatMessages(requestId);
+            //
+            document.body.classList.add('chat-open');
 
+            //đánh dấu đã xem feedback
             markFeedbackAsRead(requestId);
 
             chatOverlay.classList.remove("hidden");
             setTimeout(() => chatOverlay.classList.add("visible"), 10);
+
+            // Start polling for new feedbacks
+            startPolling(requestId);
         });
     });
 
@@ -47,6 +53,10 @@
     closeChatButton.addEventListener("click", function () {
         chatOverlay.classList.remove("visible");
         setTimeout(() => chatOverlay.classList.add("hidden"), 300);
+        document.body.classList.remove('chat-open');
+
+        // Stop polling when chat is closed
+        stopPolling();
     });
 
     // Xử lý form submit
@@ -72,7 +82,7 @@
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, 'text/html');  // Chuyển chuỗi HTML thành đối tượng DOM
                 const chatContent = doc.querySelector('.chatBody'); // Tìm phần tử với class "chat-content"
-                chatBody.innerHTML = chatContent ? chatContent.innerHTML : ""; 
+                chatBody.innerHTML = chatContent ? chatContent.innerHTML : "";
                 loadChatMessages(requestId);
                 messageInput.value = "";
                 messageInput.style.height = "24px";
@@ -92,11 +102,20 @@
         const newHeight = Math.min(this.scrollHeight, 100);
         this.style.height = newHeight + "px";
     });
+
+    // Hàm polling để tải lại tin nhắn chat mỗi 5 giây
+    let pollingInterval;
+
+    function startPolling(requestId) {
+        pollingInterval = setInterval(() => loadChatMessages(requestId), 5000);
+    }
+
+    function stopPolling() {
+        clearInterval(pollingInterval);
+    }
+
 });
 
-
-
-////
 // Hàm gọi AJAX để cập nhật trạng thái đã đọc
 function markFeedbackAsRead(requestId) {
     fetch(`/TblRequestsProcessings/MarkAsRead?requestId=${requestId}`, {
