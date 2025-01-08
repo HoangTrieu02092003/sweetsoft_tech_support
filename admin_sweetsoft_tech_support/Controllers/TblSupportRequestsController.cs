@@ -72,7 +72,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
 
-        [PermissionAuthorize("Quản lý yêu cầu hỗ trợ")]
+        [PermissionAuthorize("Sửa yêu cầu hỗ trợ")]
         // GET: TblSupportRequests/Details/5
         public IActionResult Details(int id)
         {
@@ -98,7 +98,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(supportRequest);
         }
 
-        [PermissionAuthorize("Quản lý yêu cầu hỗ trợ")]
+        [PermissionAuthorize("Tạo yêu cầu hỗ trợ")]
         // GET: TblSupportRequests/Create
         public IActionResult Create()
         {
@@ -147,7 +147,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblSupportRequest);
         }
 
-        [PermissionAuthorize("Quản lý yêu cầu hỗ trợ")]
+        [PermissionAuthorize("Sửa yêu cầu hỗ trợ")]
         public IActionResult Edit(int id)
         {
             var supportRequest = _context.TblSupportRequests.Find(id);
@@ -243,7 +243,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(supportRequest);
         }
 
-        [PermissionAuthorize("Quản lý yêu cầu hỗ trợ")]
+        [PermissionAuthorize("Xóa yêu cầu hỗ trợ")]
         // POST: TblSupportRequests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -278,7 +278,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return _context.TblRequestTransfers.Any(e => e.TransferId == id);
         }
 
-        [PermissionAuthorize("Giải quyết yêu cầu")]
+        [PermissionAuthorize("Chuyển giao yêu cầu")]
         public async Task<IActionResult> Transfer(int? id)
         {
             if (id == null)

@@ -99,25 +99,25 @@
                 if (currentPage > 1)
                 {
                     <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = 1, date = ViewData["Date"] })"><i class="bi bi-chevron-double-left"></i></a>
+                        <a class="page-link" href="@Url.Action("Index", new { page = 1, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"]})"><i class="bi bi-chevron-double-left"></i></a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, date = ViewData["Date"] })"><i class="bi bi-chevron-left"></i></a>
+                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"] })"><i class="bi bi-chevron-left"></i></a>
                     </li>
                 }
                 for (int i = 1; i <= totalPages; i++)
                 {
                     <li class="page-item @(i == currentPage ? "active" : "")">
-                        <a class="page-link" href="@Url.Action("Index", new { page = i, date = ViewData["Date"] })">@i</a>
+                        <a class="page-link" href="@Url.Action("Index", new { page = i, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"] })">@i</a>
                     </li>
                 }
                 if (currentPage < totalPages)
                 {
                     <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, date = ViewData["Date"] })"><i class="bi bi-chevron-right"></i></a>
+                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"] })"><i class="bi bi-chevron-right"></i></a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = totalPages, date = ViewData["Date"] })"><i class="bi bi-chevron-double-right"></i></a>
+                        <a class="page-link" href="@Url.Action("Index", new { page = totalPages, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"] })"><i class="bi bi-chevron-double-right"></i></a>
                     </li>
                 }
             }

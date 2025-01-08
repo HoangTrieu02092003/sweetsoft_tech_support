@@ -57,7 +57,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(pagedFaqs);
         }
 
-        [PermissionAuthorize("Quản lý faq")]
+        [PermissionAuthorize("Thêm faq")]
         // GET: TblFaqs/Create
         public IActionResult Create()
         {
@@ -104,7 +104,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblFaq);
         }
 
-        [PermissionAuthorize("Quản lý faq")]
+        [PermissionAuthorize("Sửa faq")]
         // GET: TblFaqs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -178,7 +178,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblFaq);
         }
 
-        [PermissionAuthorize("Quản lý faq")]
+        [PermissionAuthorize("Xóa faq")]
         // POST: TblFaqs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

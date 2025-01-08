@@ -2,8 +2,10 @@
 @{
     ViewBag.Title = "Cấp quyền cho người dùng";
 
-    var requestPermissions = ViewBag.RequestPermissions as List<admin_sweetsoft_tech_support.Models.TblPermission>;
-    var managementPermissions = ViewBag.ManagementPermissions as List<admin_sweetsoft_tech_support.Models.TblPermission>;
+    var createPer = ViewBag.CreatePer as List<admin_sweetsoft_tech_support.Models.TblPermission>;
+    var editPer = ViewBag.EditPer as List<admin_sweetsoft_tech_support.Models.TblPermission>;
+    var deletePer = ViewBag.DeletePer as List<admin_sweetsoft_tech_support.Models.TblPermission>;
+    var ortherPer = ViewBag.OtherPer as List<admin_sweetsoft_tech_support.Models.TblPermission>;
 }
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <link href="~/css/assignPermission.css" rel="stylesheet">
@@ -17,12 +19,12 @@
 
                 <!-- Yêu cầu -->
                 <div class="form-group mb-4">
-                    <a class="btn" style="color: #6a1b9a;" data-bs-toggle="collapse" data-bs-target="#requestPermissionsSection" aria-expanded="false" aria-controls="requestPermissionsSection">
-                        Yêu cầu <i class="bi bi-plus"></i>
+                    <a class="btn" style="color: #6a1b9a;" data-bs-toggle="collapse" data-bs-target="#createSection" aria-expanded="false" aria-controls="requestPermissionsSection">
+                        Thêm <i class="bi bi-plus"></i>
                     </a>
-                    <div id="requestPermissionsSection" class="collapse mt-2">
+                    <div id="createSection" class="collapse mt-2">
                         <div class="row">
-                            @foreach (var permission in requestPermissions!)
+                            @foreach (var permission in createPer!)
                             {
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-check m-2">
@@ -40,12 +42,56 @@
 
                 <!-- Quản lý -->
                 <div class="form-group mb-4">
-                    <a class="btn" style="color: #6a1b9a;" data-bs-toggle="collapse" data-bs-target="#managementPermissionsSection" aria-expanded="false" aria-controls="managementPermissionsSection">
-                        Quản lý <i class="bi bi-plus"></i>
+                    <a class="btn" style="color: #6a1b9a;" data-bs-toggle="collapse" data-bs-target="#editSection" aria-expanded="false" aria-controls="managementPermissionsSection">
+                        Sửa <i class="bi bi-plus"></i>
                     </a>
-                    <div id="managementPermissionsSection" class="collapse mt-2">
+                    <div id="editSection" class="collapse mt-2">
                         <div class="row">
-                            @foreach (var permission in managementPermissions!)
+                            @foreach (var permission in editPer!)
+                            {
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-check m-2">
+                                        <input class="form-check-input" type="checkbox"
+                                               name="selectedPermissions"
+                                               value="@permission.PermissionId"
+                                        @(ViewBag.AssignedPermissions.Contains(permission.PermissionId) ? "checked" : "") />
+                                        <label class="form-check-label">@permission.PermissionName</label>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                @* xóa *@
+                <div class="form-group mb-4">
+                    <a class="btn" style="color: #6a1b9a;" data-bs-toggle="collapse" data-bs-target="#deleteSection" aria-expanded="false" aria-controls="managementPermissionsSection">
+                        Xóa <i class="bi bi-plus"></i>
+                    </a>
+                    <div id="deleteSection" class="collapse mt-2">
+                        <div class="row">
+                            @foreach (var permission in deletePer!)
+                            {
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-check m-2">
+                                        <input class="form-check-input" type="checkbox"
+                                               name="selectedPermissions"
+                                               value="@permission.PermissionId"
+                                        @(ViewBag.AssignedPermissions.Contains(permission.PermissionId) ? "checked" : "") />
+                                        <label class="form-check-label">@permission.PermissionName</label>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                @* khác *@
+                <div class="form-group mb-4">
+                    <a class="btn" style="color: #6a1b9a;" data-bs-toggle="collapse" data-bs-target="#ortherSection" aria-expanded="false" aria-controls="managementPermissionsSection">
+                        Khác <i class="bi bi-plus"></i>
+                    </a>
+                    <div id="ortherSection" class="collapse mt-2">
+                        <div class="row">
+                            @foreach (var permission in ortherPer!)
                             {
                                 <div class="col-md-6 col-lg-4">
                                     <div class="form-check m-2">

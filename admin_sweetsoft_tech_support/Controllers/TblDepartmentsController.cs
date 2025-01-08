@@ -60,7 +60,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(departments);
         }
 
-        [PermissionAuthorize("Quản lý phòng ban")]
+        [PermissionAuthorize("Tạo phòng ban")]
         // GET: TblDepartments/Create
         public IActionResult Create()
         {
@@ -93,7 +93,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblDepartment);
         }
 
-        [PermissionAuthorize("Quản lý phòng ban")]
+        [PermissionAuthorize("Sửa phòng ban")]
         // GET: TblDepartments/Edit/5
         public async Task<IActionResult> Edit(int? id, int page = 1)
         {
@@ -174,7 +174,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(tblDepartment);
         }
 
-        [PermissionAuthorize("Quản lý phòng ban")]
+        [PermissionAuthorize("Xóa phòng ban")]
         // GET: TblDepartments/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
