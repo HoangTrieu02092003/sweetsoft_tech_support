@@ -29,7 +29,13 @@ namespace admin_sweetsoft_tech_support.Controllers
             var query = _context.TblSupportRequests
                 .Include(r => r.Customer)
                 .Include(r => r.Department)
+                .Include(r => r.TblRequestFeedbacks)
                 .Where(r => r.IsDelete == false)
+                .Select(r => new
+                {
+                    SupportRequest = r,
+                    HasUnreadFeedback = r.TblRequestFeedbacks.Any(f => f.IsRead == false) 
+                })
                 .AsQueryable();
 
             if (currentUser != null)
@@ -40,33 +46,33 @@ namespace admin_sweetsoft_tech_support.Controllers
                 }
                 else if (currentUser.Role != null && currentUser.Role.RoleName == "Trưởng phòng")
                 {
-                    query = query.Where(r => r.DepartmentId == currentUser.DepartmentId);
+                    query = query.Where(r => r.SupportRequest.DepartmentId == currentUser.DepartmentId);
                 }
                 else
                 {
-                    query = query.Where(r => r.TblRequestTransfers
+                    query = query.Where(r => r.SupportRequest.TblRequestTransfers
                                    .Any(rt => rt.TransferredHandle == currentUser.UserId));
                 }
             }
 
             // Lọc dữ liệu
             if (status.HasValue)
-                query = query.Where(r => r.Status == status.Value);
+                query = query.Where(r => r.SupportRequest.Status == status.Value);
 
             // Lọc theo tìm kiếm
             if (!string.IsNullOrEmpty(search))
             {
                 var lower = search.ToLower();
                 query = query.Where(r =>
-                r.RequestTitle.ToLower().Contains(search) ||
-                r.Department.DepartmentName.ToLower().Contains(search)
+                r.SupportRequest.RequestTitle.ToLower().Contains(search) ||
+                r.SupportRequest.Department.DepartmentName.ToLower().Contains(search)
                 );
             }
 
             if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortOrder))
                 query = TableSorter.Sort(query, sortColumn, sortOrder);
             else
-                query = query.OrderByDescending(r => r.CreatedAt);
+                query = query.OrderByDescending(r => r.SupportRequest.CreatedAt);
 
             int totalRequests = query.Count();
             var paginatedRequests = query
@@ -503,7 +509,22 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             return PartialView("_FeedbacksPartial", feedbacks);
         }
+        //đánh dấu đã đọc
+        [HttpPost]
+        public async Task<IActionResult> MarkAsRead(int requestId)
+        {
+            var feedbacks = await _context.TblRequestFeedbacks
+                .Where(f => f.RequestId == requestId && f.IsRead == false)
+                .ToListAsync();
 
+            if (feedbacks.Any())
+            {
+                feedbacks.ForEach(f => f.IsRead = true);
+                await _context.SaveChangesAsync();
+            }
+
+            return Ok(new { success = true });
+        }
         //
         [HttpPost]
         [ValidateAntiForgeryToken]

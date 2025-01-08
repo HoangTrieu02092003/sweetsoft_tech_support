@@ -22,6 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
             chatBody.innerHTML = "<p>Đang tải...</p>";
             loadChatMessages(requestId);
 
+            //
+            markFeedbackAsRead(requestId);
+            document.body.classList.add('chat-open');
+            //
             chatOverlay.classList.remove("hidden");
             setTimeout(() => chatOverlay.classList.add("visible"), 10);
         });
@@ -44,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     closeChatButton.addEventListener("click", function () {
         chatOverlay.classList.remove("visible");
         setTimeout(() => chatOverlay.classList.add("hidden"), 300);
+        document.body.classList.remove('chat-open');
     });
 
     // Xử lý form gửi tin nhắn
@@ -81,3 +86,24 @@ document.addEventListener("DOMContentLoaded", function () {
         this.style.height = newHeight + "px";
     });
 });
+
+
+// Hàm gọi AJAX để cập nhật trạng thái đã đọc
+function markFeedbackAsRead(requestId) {
+    fetch(`/TblSupportRequests/MarkAsRead?requestId=${requestId}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": document.querySelector('input[name="__RequestVerificationToken"]').value
+        }
+    })
+        .then(response => {
+            if (!response.ok) throw new Error("Failed to mark feedback as read");
+            // Nếu thành công, xóa lớp "has-unread-feedback" khỏi button
+            const button = document.querySelector(`button[data-request-id="${requestId}"]`);
+            if (button) {
+                button.classList.remove("blinking");
+            }
+        })
+        .catch(error => console.error("Error marking feedback as read:", error));
+}

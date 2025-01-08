@@ -1,4 +1,4 @@
-﻿@model IEnumerable<admin_sweetsoft_tech_support.Models.TblSupportRequest>
+﻿@model IEnumerable<dynamic>
 @using admin_sweetsoft_tech_support.Attributes
 @{
     ViewData["Title"] = "Quản lý Yêu cầu Hỗ trợ";
@@ -7,46 +7,50 @@
 }
 
 <style>
-             textare
-    a {
+             textarea {
              white-space: pre-wrap;
 
              overflow-wrap: break-word;
              overflow: hidden;
          }
-         .chat-button {
-             margin-bottom: .1rem;
-             margin-left: .15rem;
-             background: #fff;
-             border: none;
-             font-size : .22rem;
-         }
-         .chat-button::after {
-         content: "";
-         position: absolute;
-         right: 8px;
-         width: .1rem;
-         height: .1rem;
-         background-color: #28a745;
-         border-radius: 50%;
-         border: 1px solid #fff;
-         box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-     }
+         /*=========================*/
+         @@keyframes blink {
+        0%, 100% {
+            background-color: #fff;
+            color: #000;
+        }
+        50% {
+            background-color: #000;
+            color: #fff;
+        }
+}
 
+.btn.blinking {
+    animation: blink 1s infinite;
+}
+
+/* Khi hover vào icon đang nhấp nháy, dừng animation */
+.btn.blinking:hover {
+    animation: none;
+    background-color: #000;
+    color: #fff;
+}
+
+/*==-=============================*/
          .chat-container {
              display: flex;
              justify-content: center;
              width: 100%;
          }
 
-         .chat-form {
-             display: flex;
-             align-items: center;
-             border-radius: 20px;
-             padding: 5px;
-             width: 100%;
-             gap: 10px;
-         }
+    .chat-form {
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #ddd;
+        padding: 5px;
+        width: 100%;
+        gap: 10px;
+    }
 
          .chat-textarea {
              flex-grow: 1;
@@ -84,6 +88,10 @@
              .send-button i {
                  pointer-events: none;
              }
+
+    body.chat-open {
+        overflow: hidden;
+    }
 
 </style>
 
@@ -211,38 +219,40 @@
                 int stt = 1;
                 foreach (var item in Model)
                 {
+                    var request = item.SupportRequest;
+                    var hasUnreadFeedback = item.HasUnreadFeedback;
                     <tr>
                         <td>@stt</td>
-                        <td>@item.RequestTitle</td>
+                        <td>@request.RequestTitle</td>
                         <td>
-                            <span class="badge @((item.Status == 0 ? "bg-warning" : item.Status == 1 ? "bg-success" : "bg-danger"))">
-                                @(item.Status == 0 ? "Chưa hoàn thành" : item.Status == 1 ? "Hoàn thành" : item.Status== 2 ?"Không xử lý được":"Không xác định")
+                            <span class="badge @((request.Status == 0 ? "bg-warning" : request.Status == 1 ? "bg-success" : "bg-danger"))">
+                                @(request.Status == 0 ? "Chưa hoàn thành" : request.Status == 1 ? "Hoàn thành" : request.Status == 2 ? "Không xử lý được" : "Không xác định")
                             </span>
                         </td>
-                        <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
-                        <td>@(item.ResolvedAt?.ToString("dd/MM/yyyy") ?? "Chưa giải quyết")</td>
-                        <td>@item.Customer?.FullName</td>
-                        <td>@item.Department?.DepartmentName</td>
+                        <td>@request.CreatedAt.ToString("dd/MM/yyyy")</td>
+                        <td>@(request.ResolvedAt?.ToString("dd/MM/yyyy") ?? "Chưa giải quyết")</td>
+                        <td>@request.Customer?.FullName</td>
+                        <td>@request.Department?.DepartmentName</td>
                         <td>
-                            <a asp-action="Details" asp-route-id="@item.RequestId" class="btn btn-outline-info btn-sm">
+                            <a asp-action="Details" asp-route-id="@request.RequestId" class="btn btn-outline-info btn-sm">
                                 <i class="bi bi-eye"></i>
                             </a>
-                            <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.RequestId">
+                            <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@request.RequestId">
                                 <i class="bi bi-trash"></i>
                             </button>
-                            @if (item.Status == 0)
+                            @if (request.Status == 0)
                             {
-                                <a asp-action="Transfer" asp-route-id="@item.RequestId" class="btn btn-outline-secondary btn-sm">
+                                <a asp-action="Transfer" asp-route-id="@request.RequestId" class="btn btn-outline-secondary btn-sm">
                                     <i class="bi bi-arrow-right-circle"></i>
                                 </a>
-                                <button class="btn btn-outline-dark btn-sm open-chat"
-                                        data-request-id="@item.RequestId"
-                                        data-customer-id="@item.CustomerId"
-                                        data-title="@item.RequestTitle"
-                                        data-customer="@item.Customer.FullName">
+                                <button class="btn btn-outline-dark btn-sm @(hasUnreadFeedback ? "blinking" : "") open-chat"
+                                        data-request-id="@request.RequestId"
+                                        data-customer-id="@request.CustomerId"
+                                        data-title="@request.RequestTitle"
+                                        data-customer="@request.Customer.FullName">
                                     <i class="bi bi-chat-dots"></i>
                                 </button>
-                                <form method="post" class="d-inline" onsubmit="openStatusModal(event, @item.RequestId)">
+                                <form method="post" class="d-inline" onsubmit="openStatusModal(event, @request.RequestId)">
                                     <button type="submit" class="btn btn-outline-success btn-sm">
                                         <i class="bi bi-check-circle"></i>
                                     </button>
@@ -258,11 +268,11 @@
                         </td>
                     </tr>
                     // modal
-                    <div class="modal fade" id="deleteModal-@item.RequestId" tabindex="-1" aria-labelledby="deleteModalLabel-@item.RequestId" aria-hidden="true">
+                    <div class="modal fade" id="deleteModal-@request.RequestId" tabindex="-1" aria-labelledby="deleteModalLabel-@request.RequestId" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteModalLabel-@item.RequestId">Xác nhận xóa yêu cầu hỗ trợ</h5>
+                                    <h5 class="modal-title" id="deleteModalLabel-@request.RequestId">Xác nhận xóa yêu cầu hỗ trợ</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -271,7 +281,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
                                     <!-- Form Xóa -->
-                                    <form method="post" asp-action="Delete" asp-route-id="@item.RequestId">
+                                    <form method="post" asp-action="Delete" asp-route-id="@request.RequestId">
                                         <button type="submit" class="btn btn-danger">Xóa</button>
                                     </form>
                                 </div>
