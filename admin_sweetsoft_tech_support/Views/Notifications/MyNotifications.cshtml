@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Thông báo của tôi";
+    int totalPages = (int)ViewData["TotalPages"];
+    int currentPage = (int)ViewData["CurrentPage"];
     int stt = 1;
 }
 
@@ -9,7 +11,7 @@
 
 @if (!Model.Any())
 {
-    <p>Không có thông báo nào.</p>
+    <h5>Hiện tại chưa có thông báo nào.</h5>
 }
 else
 {
@@ -86,21 +88,38 @@ else
     </div>
 }
 
-<!-- Phân trang nếu có -->
-<div class="pagination mt-3">
-    @if (ViewData["TotalPages"] != null)
-    {
-        var totalPages = (int)ViewData["TotalPages"];
-        var currentPage = (int)ViewData["CurrentPage"];
-        <ul class="pagination">
-            @for (var i = 1; i <= totalPages; i++)
+
+<!-- Phân trang -->
+<div class="d-flex justify-content-center my-4" id="dbPagination">
+    <ul class="pagination">
+        @if (totalPages > 1)
+        {
+            if (currentPage > 1)
             {
-                <li class="page-item @(i == currentPage ? "active" : "")">
-                    <a class="page-link" href="@Url.Action("MyNotifications", new { page = i })">@i</a>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("MyNotifications", new { page = 1, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"]})"><i class="bi bi-chevron-double-left"></i></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("MyNotifications", new { page = currentPage - 1, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"] })"><i class="bi bi-chevron-left"></i></a>
                 </li>
             }
-        </ul>
-    }
+            for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("MyNotifications", new { page = i, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"] })">@i</a>
+                </li>
+            }
+            if (currentPage < totalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("MyNotifications", new { page = currentPage + 1, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"] })"><i class="bi bi-chevron-right"></i></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("MyNotifications", new { page = totalPages, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"] })"><i class="bi bi-chevron-double-right"></i></a>
+                </li>
+            }
+        }
+    </ul>
 </div>
 
 <script>

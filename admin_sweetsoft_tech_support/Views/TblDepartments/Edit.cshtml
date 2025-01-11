@@ -123,12 +123,15 @@
         <div id="tab2" class="tab-content">
             <h4>Danh sách nhân viên thuộc phòng ban: @((ViewData["Department"] as admin_sweetsoft_tech_support.Models.TblDepartment).DepartmentName)</h4>
             <form asp-action="create" asp-controller="TblUsers" method="get">
-                <button class="create-btn btn btn-outline-info btn-sm">
-                    <i class="bi bi-plus-circle"></i>
-                    <span class="d-lg-inline-block d-none">
-                        Thêm NV
-                    </span>
-                </button>
+                <div style="display: flex; justify-content: space-between;">
+                    <div>&nbsp;</div>
+                    <button class="create-btn btn btn-outline-info btn-sm">
+                        <i class="bi bi-plus-circle"></i>
+                        <span class="d-lg-inline-block d-none">
+                            Thêm NV
+                        </span>
+                    </button>
+                </div>
             </form>
             <div class="table-responsive">
                 <table>

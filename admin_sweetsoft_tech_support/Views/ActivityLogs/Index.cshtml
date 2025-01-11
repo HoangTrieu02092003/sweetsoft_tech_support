@@ -34,7 +34,7 @@
                 @Html.GenerateFilterTextbox(
                          id: "searchTerm",
                          name: "searchTerm",
-                         placeholder: "Tìm kiếm......",
+                         placeholder: "Tìm kiếm ...",
                          value: ViewData["SearchTerm"]?.ToString() ?? "",
                          includeCancelButton: false
                          )
@@ -44,9 +44,9 @@
                          id: "filterOption",
                          name: "filterOption",
                          options: new Dictionary<string, string>{
-                {"day", "Ngày"},
-                {"month", "Tháng"},
-                {"year", "Năm"}
+                {"day", "Ngày hiện tại"},
+                {"month", "Tháng hiện tại"},
+                {"year", "Năm hiện tại"}
                 },
                          selectedValue: ViewData["FilterOption"]?.ToString() ?? "",
                          includeCancelButton: false
@@ -107,7 +107,7 @@
                         <td>@log.Title</td>
                         <td>@log.Action</td>
                         <td>@log.User</td>
-                        <td>@log.Timestamp</td>
+                        <td>@log.Timestamp.ToString("dd/MM/yyyy HH:mm")</td>
                         <td class="text-center">
                             <button type="submit" class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailModal-@log.Id">
                                 <i class="ti ti-eye-check"></i>
@@ -149,25 +149,25 @@
                 if (currentPage > 1)
                 {
                     <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = 1, date = ViewData["Date"] })"><i class="bi bi-chevron-double-left"></i></a>
+                        <a class="page-link" href="@Url.Action("Index", new { page = 1, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"]})"><i class="bi bi-chevron-double-left"></i></a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, date = ViewData["Date"] })"><i class="bi bi-chevron-left"></i></a>
+                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"] })"><i class="bi bi-chevron-left"></i></a>
                     </li>
                 }
                 for (int i = 1; i <= totalPages; i++)
                 {
                     <li class="page-item @(i == currentPage ? "active" : "")">
-                        <a class="page-link" href="@Url.Action("Index", new { page = i, date = ViewData["Date"] })">@i</a>
+                        <a class="page-link" href="@Url.Action("Index", new { page = i, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"] })">@i</a>
                     </li>
                 }
                 if (currentPage < totalPages)
                 {
                     <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, date = ViewData["Date"] })"><i class="bi bi-chevron-right"></i></a>
+                        <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"] })"><i class="bi bi-chevron-right"></i></a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="@Url.Action("Index", new { page = totalPages, date = ViewData["Date"] })"><i class="bi bi-chevron-double-right"></i></a>
+                        <a class="page-link" href="@Url.Action("Index", new { page = totalPages, date = ViewData["Date"], filterOption = ViewData["FilterOption"], searchTerm = ViewData["SearchTerm"] })"><i class="bi bi-chevron-double-right"></i></a>
                     </li>
                 }
             }

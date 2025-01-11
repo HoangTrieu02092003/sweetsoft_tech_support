@@ -117,9 +117,10 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(logs);
         }
         // Hiển thị thông báo của người dùng hiện tại
-        public async Task<IActionResult> MyNotifications(string date = "", string filterOption = "")
+        public async Task<IActionResult> MyNotifications(string date = "", string filterOption = "", int page = 1)
         {
-            List<NotificationEntry> logs = new List<NotificationEntry>();
+            var pageSize = 5; // Số thông báo mỗi trang
+            var skip = (page - 1) * pageSize;
 
             // Lấy userId của người dùng hiện tại
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -129,7 +130,6 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return RedirectToAction("Login", "Admin");
             }
 
-            // Đọc các log từ các file (tạo một hàm đọc log từ file)
             var logDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Notifications");
             var logFiles = Directory.GetFiles(logDirectory, "*.log", SearchOption.AllDirectories);
             var allLogs = new List<NotificationEntry>();
@@ -137,34 +137,40 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Đọc thông báo từ tất cả các file log
             foreach (var file in logFiles)
             {
-                var fileLogs = await ReadLogFileForMyAsync(file); // Hàm đọc log từ file
+                var fileLogs = await ReadLogFileForMyAsync(file);
                 allLogs.AddRange(fileLogs);
             }
 
             // Lọc thông báo của người dùng hiện tại
-            logs = allLogs.Where(log => log.User == currentUserId && log.isDelete == "0").ToList();
+            var logs = allLogs
+                .Where(log => log.User == currentUserId && log.isDelete == "0")
+                .OrderByDescending(log => log.Timestamp)
+                .Skip(skip)
+                .Take(pageSize)
+                .ToList();
+
+            // Tổng số thông báo
+            var totalLogs = allLogs.Count(log => log.User == currentUserId && log.isDelete == "0");
+            var totalPages = (int)Math.Ceiling(totalLogs / (double)pageSize);
 
             // Ánh xạ UserId sang FullName
             foreach (var log in logs)
             {
-                var userId = log.User; // UserId là string
+                var userId = log.User;
                 var user = await _context.TblUsers
-                    .Where(u => u.UserId == int.Parse(userId)) // Tìm người dùng từ UserId
+                    .Where(u => u.UserId == int.Parse(userId))
                     .FirstOrDefaultAsync();
 
-                if (user != null)
-                {
-                    log.User = user.FullName; // Chuyển UserId thành tên người dùng
-                }
-                else
-                {
-                    log.User = "Không rõ"; // Xử lý trường hợp không tìm thấy người dùng
-                }
+                log.User = user != null ? user.FullName : "Không rõ";
             }
 
+            // Gửi dữ liệu về View
             ViewData["Date"] = date;
             ViewData["FilterOption"] = filterOption;
-            return View(logs); // Trả về các log đã được lọc và phân trang cho view
+            ViewData["TotalPages"] = totalPages;
+            ViewData["CurrentPage"] = page;
+
+            return View(logs);
         }
 
         // Xóa thông báo (MyNotification)
