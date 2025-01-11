@@ -38,7 +38,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 }
 
                 // Ghi log
-                _logService.LogNotificationAction(request.User, request.Content, request.Status);
+                _logService.LogNotificationAction(request.User, request.Title, request.Content, request.Status);
 
                 // Trả về kết quả
                 return Ok(new

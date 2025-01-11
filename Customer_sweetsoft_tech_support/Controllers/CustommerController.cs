@@ -58,7 +58,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
 
             if (!isCaptchaValid)
             {
-                ModelState.AddModelError("", "Mã xác thực không hợp lệ.");
+                TempData["Error"] = "Mã xác thực không hợp lệ.";
                 ViewBag.SiteKey = siteKey;
                 return View();
             }
@@ -70,7 +70,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
 
             if (user == null)
             {
-                ModelState.AddModelError(string.Empty, "Username không tồn tại hoặc chưa kích hoạt tài khoản");
+                TempData["Error"] =  "Username không tồn tại hoặc chưa kích hoạt tài khoản";
                 ViewBag.SiteKey = siteKey;
                 return View();
             }
@@ -434,6 +434,17 @@ namespace Customer_sweetsoft_tech_support.Controllers
                 return RedirectToAction("Register");
             }
 
+            // Kiểm tra thời gian hết hạn của token
+            if (customer.TokenExpiry < DateTime.Now)
+            {
+                // Token đã hết hạn, xóa token và thời gian hết hạn
+                customer.Token = null;
+                customer.TokenExpiry = null;
+                await _context.SaveChangesAsync();
+
+                TempData["Error"] = "Token đã hết hạn! Vui lòng đăng ký lại hoặc liên hệ quản trị viên.";
+                return RedirectToAction("Register");
+            }
             // Kích hoạt tài khoản
             customer.Status = 1; // Kích hoạt
             customer.Token = null; // Xóa token sau khi xác nhận
