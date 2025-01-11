@@ -148,7 +148,7 @@
                     </td>
                     <td>@item.Department.DepartmentName</td>
                     <td>@item.Role!.RoleName</td>
-                    <td>@(item.LastLogin?.ToString("dd/MM/yyyy") ?? "N/A")</td>
+                    <td>@(item.LastLogin?.ToString("dd/MM/yyyy HH:mm") ?? "N/A")</td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-outline-primary btn-sm">
                             <i class="bi bi-pencil-square"></i>

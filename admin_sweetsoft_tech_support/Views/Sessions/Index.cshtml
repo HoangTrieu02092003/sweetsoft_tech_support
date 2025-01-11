@@ -32,7 +32,7 @@
                 @Html.GenerateFilterTextbox(
                     id: "name",
                     name: "name",
-                    placeholder: "Tìm theo tên....",
+                    placeholder: "Tìm kiếm ...",
                     value: ViewData["name"]?.ToString() ?? "",
                     includeCancelButton: false
                 )
@@ -81,8 +81,8 @@
                             @session.SessionToken
                         </div>
                     </td>
-                    <td>@session.CreatedAt?.ToString("yyyy-MM-dd HH:mm")</td>
-                    <td>@session.ExpiresAt?.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@session.CreatedAt?.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@session.ExpiresAt?.ToString("dd/MM/yyyy HH:mm")</td>
                     <td>
                         @if (session.ExpiresAt > DateTime.Now)
                         {
@@ -111,38 +111,36 @@
 
 <!-- Phân trang -->
 <div class="d-flex justify-content-center my-4">
-    @if ((int)ViewData["CurrentPage"] > 1){
-        <ul class="pagination">
-            @if (ViewData["CurrentPage"] != null)
-            {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = 1, status = ViewBag.Status, role = ViewBag.Role })">Đầu</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1, status = ViewBag.Status, role = ViewBag.Role })">Trước</a>
-                </li>
-            }
+    <ul class="pagination">
+        @if ((int)ViewData["CurrentPage"] > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = 1, name = ViewData["name"], status = ViewData["status"] })"><i class="bi bi-chevron-double-left"></i></a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] - 1, name = ViewData["name"], status = ViewData["status"] })"><i class="bi bi-chevron-left"></i></a>
+            </li>
+        }
 
-            @if (ViewData["TotalPages"] != null)
+        @if (ViewData["TotalPages"] != null)
+        {
+            int totalPages = (int)ViewData["TotalPages"];
+            for (int i = 1; i <= totalPages; i++)
             {
-                int totalPages = (int)ViewData["TotalPages"];
-                for (int i = 1; i <= totalPages; i++)
-                {
-                    <li class="page-item @(i == (int)ViewData["CurrentPage"] ? "active" : "")">
-                        <a class="page-link" href="@Url.Action("Index", new { page = i, status = ViewBag.Status, role = ViewBag.Role })">@i</a>
-                    </li>
-                }
+                <li class="page-item @(i == (int)ViewData["CurrentPage"] ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i, name = ViewData["name"], status = ViewData["status"] })">@i</a>
+                </li>
             }
+        }
 
-            @if (ViewData["CurrentPage"] != null && (int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
-            {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1, status = ViewBag.Status, role = ViewBag.Role })">Sau</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"], status = ViewBag.Status, role = ViewBag.Role })">Cuối</a>
-                </li>
-            }
-        </ul>
-    }
+        @if ((int)ViewData["CurrentPage"] < (int)ViewData["TotalPages"])
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["CurrentPage"] + 1, name = ViewData["name"], status = ViewData["status"] })"><i class="bi bi-chevron-right"></i></a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { page = (int)ViewData["TotalPages"], name = ViewData["name"], status = ViewData["status"] })"><i class="bi bi-chevron-double-right"></i></a>
+            </li>
+        }
+    </ul>
 </div>

@@ -237,99 +237,105 @@
                                 <input type="hidden" asp-for="CustomerId" />
 
                                 <div class="list-group">
-                                    <div class="list-group-item bg-light border-0">
-                                        <div class="form-group">
-                                            <label asp-for="FullName" class="control-label text-dark">Họ và tên</label>
-                                            <input asp-for="FullName" class="form-control" />
-                                            <span asp-validation-for="FullName" class="text-danger"></span>
-                                        </div>
-                                    </div>
+                                    <div class="row d-flex justify-content-around">
+                                        <div class="col-6">
+                                            <div class="border-0">
+                                                <div class="form-group">
+                                                    <label asp-for="FullName" class="control-label text-dark">Họ và tên</label>
+                                                    <input asp-for="FullName" class="form-control" />
+                                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                                </div>
+                                            </div>
 
-                                    <div class="list-group-item bg-light border-0">
-                                        <div class="form-group">
-                                            <label asp-for="Email" class="control-label text-dark">Email</label>
-                                            <input asp-for="Email" class="form-control" />
-                                            <span asp-validation-for="Email" class="text-danger"></span>
-                                        </div>
-                                    </div>
+                                            <div class="border-0">
+                                                <div class="form-group">
+                                                    <label asp-for="Email" class="control-label text-dark">Email</label>
+                                                    <input asp-for="Email" class="form-control" />
+                                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                                </div>
+                                            </div>
 
-                                    <div class="list-group-item bg-light border-0">
-                                        <div class="form-group">
-                                            <label asp-for="Phone" class="control-label text-dark">Số điện thoại</label>
-                                            <input asp-for="Phone" class="form-control" />
-                                            <span asp-validation-for="Phone" class="text-danger"></span>
-                                        </div>
-                                    </div>
+                                            <div class="border-0">
+                                                <div class="form-group">
+                                                    <label asp-for="Phone" class="control-label text-dark">Số điện thoại</label>
+                                                    <input asp-for="Phone" class="form-control" />
+                                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                                </div>
+                                            </div>
 
-                                    <div class="list-group-item bg-light border-0">
-                                        <div class="form-group">
-                                            <label asp-for="TaxCode" class="control-label text-dark">Mã số thuế</label>
-                                            <input asp-for="TaxCode" class="form-control" />
-                                            <span asp-validation-for="TaxCode" class="text-danger"></span>
-                                        </div>
-                                    </div>
+                                            <div class="border-0">
+                                                <div class="form-group">
+                                                    <label asp-for="TaxCode" class="control-label text-dark">Mã số thuế</label>
+                                                    <input asp-for="TaxCode" class="form-control" />
+                                                    <span asp-validation-for="TaxCode" class="text-danger"></span>
+                                                </div>
+                                            </div>
 
-                                    <div class="list-group-item bg-light border-0">
-                                        <div class="form-group">
-                                            <label asp-for="Company" class="control-label text-dark">Công ty</label>
-                                            <input asp-for="Company" class="form-control" />
-                                            <span asp-validation-for="Company" class="text-danger"></span>
-                                        </div>
-                                    </div>
+                                            <div class="border-0">
+                                                <div class="form-group">
+                                                    <label asp-for="Company" class="control-label text-dark">Công ty</label>
+                                                    <input asp-for="Company" class="form-control" />
+                                                    <span asp-validation-for="Company" class="text-danger"></span>
+                                                </div>
+                                            </div>
 
-                                    <div class="list-group-item bg-light border-0">
-                                        <div class="form-group">
-                                            <label asp-for="Status" class="control-label text-dark">Trạng thái</label>
-                                            <select asp-for="Status" class="form-control" asp-items="ViewBag.StatusList"></select>
-                                            <span asp-validation-for="Status" class="text-danger"></span>
+                                            <div class="border-0">
+                                                <div class="form-group">
+                                                    <label asp-for="Username" class="control-label text-dark">Tên đăng nhập</label>
+                                                    <input asp-for="Username" class="form-control" />
+                                                    <span asp-validation-for="Username" class="text-danger"></span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="list-group-item bg-light border-0">
-                                        <div class="form-group">
-                                            <label asp-for="Username" class="control-label text-dark">Tên đăng nhập</label>
-                                            <input asp-for="Username" class="form-control" />
-                                            <span asp-validation-for="Username" class="text-danger"></span>
-                                        </div>
-                                    </div>
+                                        <div class="col-6 d-block">
+                                            <div class="border-0">
+                                                <div class="form-group">
+                                                    <label asp-for="Status" class="control-label text-dark">Trạng thái</label>
+                                                    <select asp-for="Status" class="form-control" asp-items="ViewBag.StatusList"></select>
+                                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                                </div>
+                                            </div>
 
-                                    <div class="list-group-item bg-light border-0" hidden>
-                                        <div class="form-group">
-                                            <label asp-for="Password" class="control-label text-dark">Mật khẩu</label>
-                                            <input asp-for="Password" class="form-control" />
-                                            <span asp-validation-for="Password" class="text-danger"></span>
-                                        </div>
-                                    </div>
+                                            <div class="border-0" hidden>
+                                                <div class="form-group">
+                                                    <label asp-for="Password" class="control-label text-dark">Mật khẩu</label>
+                                                    <input asp-for="Password" class="form-control" />
+                                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                                </div>
+                                            </div>
 
-                                    <div class="list-group-item bg-light border-0">
-                                        <div class="form-group">
-                                            <label asp-for="CreatedBy" class="control-label text-dark">Người tạo</label>
-                                            <select asp-for="CreatedBy" class="form-control" asp-items="ViewBag.CreatedUser" disabled></select>
-                                            <span asp-validation-for="CreatedBy" class="text-danger"></span>
-                                        </div>
-                                    </div>
+                                            <div class="border-0">
+                                                <div class="form-group">
+                                                    <label asp-for="CreatedBy" class="control-label text-dark">Người tạo</label>
+                                                    <select asp-for="CreatedBy" class="form-control" asp-items="ViewBag.CreatedUser" disabled></select>
+                                                    <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                                                </div>
+                                            </div>
 
-                                    <div class="list-group-item bg-light border-0">
-                                        <div class="form-group">
-                                            <label asp-for="CreatedAt" class="control-label text-dark">Ngày tạo</label>
-                                            <input type="text" class="form-control" readonly
-                                                   value="@Model.CreatedAt?.ToString("dd/MM/yyyy HH:mm:ss")" />
-                                        </div>
-                                    </div>
+                                            <div class="border-0">
+                                                <div class="form-group">
+                                                    <label asp-for="CreatedAt" class="control-label text-dark">Ngày tạo</label>
+                                                    <input type="text" class="form-control" disabled
+                                                           value="@Model.CreatedAt?.ToString("dd/MM/yyyy HH:mm")" />
+                                                </div>
+                                            </div>
 
-                                    <div class="list-group-item bg-light border-0">
-                                        <div class="form-group" >
-                                            <label asp-for="UpdatedBy" class="control-label text-dark">Người cập nhật</label>
-                                            <select asp-for="UpdatedBy" class="form-control" asp-items="ViewBag.UpdatedUser" disabled></select>
-                                            <span asp-validation-for="UpdatedBy" class="text-danger"></span>
-                                        </div>
-                                    </div>
+                                            <div class="border-0">
+                                                <div class="form-group">
+                                                    <label asp-for="UpdatedBy" class="control-label text-dark">Người cập nhật</label>
+                                                    <select asp-for="UpdatedBy" class="form-control" asp-items="ViewBag.UpdatedUser" disabled></select>
+                                                    <span asp-validation-for="UpdatedBy" class="text-danger"></span>
+                                                </div>
+                                            </div>
 
-                                    <div class="list-group-item bg-light border-0">
-                                        <div class="form-group">
-                                            <label asp-for="UpdatedAt" class="control-label text-dark">Ngày cập nhật</label>
-                                            <input type="text" class="form-control" readonly
-                                                   value="@Model.UpdatedAt?.ToString("dd/MM/yyyy HH:mm:ss")" />
+                                            <div class="border-0">
+                                                <div class="form-group">
+                                                    <label asp-for="UpdatedAt" class="control-label text-dark">Ngày cập nhật</label>
+                                                    <input type="text" class="form-control" disabled
+                                                           value="@Model.UpdatedAt?.ToString("dd/MM/yyyy HH:mm")" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
