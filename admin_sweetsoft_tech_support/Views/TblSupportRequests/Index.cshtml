@@ -1,9 +1,10 @@
 ﻿@model IEnumerable<dynamic>
-@using admin_sweetsoft_tech_support.Attributes
+@using admin_sweetsoft_tech_support.Attributes  
 @{
     ViewData["Title"] = "Quản lý Yêu cầu Hỗ trợ";
     int currentPage = ViewData["CurrentPage"] as int? ?? 1;
     int totalPages = ViewData["TotalPages"] as int? ?? 1;
+    
 }
 
 <style>
@@ -23,6 +24,7 @@
             background-color: #000;
             color: #fff;
         }
+
 }
 
 .btn.blinking {
@@ -36,6 +38,22 @@
     color: #fff;
 }
 
+.move-up { 
+    animation: moveUp 1s ease-in-out; 
+} 
+@@keyframes moveUp 
+{ 
+    from 
+    {
+        transform: translateY(20px); 
+        opacity: 0; 
+    } 
+    to 
+    { 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+}
 /*==-=============================*/
          .chat-container {
              display: flex;
@@ -213,7 +231,7 @@
         </thead>
 
 
-        <tbody>
+        <tbody id="request-list">
             @if (Model.Any())
             {
                 int stt = 1;
@@ -234,18 +252,19 @@
                         <td>@request.Customer?.FullName</td>
                         <td>@request.Department?.DepartmentName</td>
                         <td>
-                            <a asp-action="Details" asp-route-id="@request.RequestId" class="btn btn-outline-info btn-sm">
+                            <a asp-action="Details" asp-route-id="@request.RequestId" class="btn btn-outline-info btn-sm" title="Xem chi tiết">
                                 <i class="bi bi-eye"></i>
                             </a>
-                            <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@request.RequestId">
-                                <i class="bi bi-trash"></i>
-                            </button>
                             @if (request.Status == 0)
                             {
-                                <a asp-action="Transfer" asp-route-id="@request.RequestId" class="btn btn-outline-secondary btn-sm">
-                                    <i class="bi bi-arrow-right-circle"></i>
-                                </a>
+                                if ((bool)ViewData["IsAdmin"])
+                                {
+                                    <a asp-action="Transfer" asp-route-id="@request.RequestId" class="btn btn-outline-secondary btn-sm" title="chuyển giao phòng ban">
+                                        <i class="bi bi-arrow-right-circle"></i>
+                                    </a>
+                                }
                                 <button class="btn btn-outline-dark btn-sm @(hasUnreadFeedback ? "blinking" : "") open-chat"
+                                        title = "gửi trả lời"
                                         data-request-id="@request.RequestId"
                                         data-customer-id="@request.CustomerId"
                                         data-title="@request.RequestTitle"
@@ -253,13 +272,21 @@
                                     <i class="bi bi-chat-dots"></i>
                                 </button>
                                 <form method="post" class="d-inline" onsubmit="openStatusModal(event, @request.RequestId)">
-                                    <button type="submit" class="btn btn-outline-success btn-sm">
+                                    <button type="submit" class="btn btn-outline-success btn-sm" Title = "hoàn thành yêu cầu">
                                         <i class="bi bi-check-circle"></i>
                                     </button>
                                 </form>
-                                <a asp-action="TransferToEmployee" asp-route-id="@item.RequestId" class="btn btn-outline-info btn-sm">
-                                    <i class="bi bi-arrow-right"></i>
-                                </a>
+
+                                if ((bool)ViewData["IsAdmin"] || (bool)ViewData["IsDepartmentManager"]) { 
+                                    <a asp-action="TransferToEmployee" asp-route-id="@item.RequestId" class="btn btn-outline-info btn-sm" title="chuyển giao nhân viên">
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                }
+                            }
+                            @if ((bool)ViewData["IsAdmin"]){
+                                <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@request.RequestId" title="Xóa">
+                                    <i class="bi bi-trash"></i>
+                                </button>
                             }
                         </td>
                     </tr>
@@ -339,41 +366,43 @@
 <!-- Pagination -->
 <div class="d-flex justify-content-center my-4">
     <ul class="pagination">
-        @if (currentPage > 1)
-        {
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = 1, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
-                    <i class="bi bi-chevron-double-left"></i>
-                </a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
-                    <i class="bi bi-chevron-left"></i>
-                </a>
-            </li>
-        }
+        @if(totalPages > 1){
+            @if (currentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = 1, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
+                        <i class="bi bi-chevron-double-left"></i>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage - 1, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                </li>
+        
+            }
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
+                        @i
+                    </a>
+                </li>
+            }
 
-        @for (int i = 1; i <= totalPages; i++)
-        {
-            <li class="page-item @(i == currentPage ? "active" : "")">
-                <a class="page-link" href="@Url.Action("Index", new { page = i, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
-                    @i
-                </a>
-            </li>
-        }
-
-        @if (currentPage < totalPages)
-        {
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
-                    <i class="bi bi-chevron-right"></i>
-                </a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("Index", new { page = totalPages, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
-                    <i class="bi bi-chevron-double-right"></i>
-                </a>
-            </li>
+            @if (currentPage < totalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = currentPage + 1, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = totalPages, status = ViewData["Status"], search = ViewData["Search"], departmentName = ViewData["DepartmentName"], sortColumn = ViewData["SortColumn"], sortOrder = ViewData["SortOrder"] })">
+                        <i class="bi bi-chevron-double-right"></i>
+                    </a>
+                </li>
+            }
         }
     </ul>
 </div>

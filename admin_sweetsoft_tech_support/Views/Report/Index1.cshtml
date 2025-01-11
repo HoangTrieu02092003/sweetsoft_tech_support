@@ -33,6 +33,13 @@
 
 <body id="page-top">
 
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            <p class="mb-0">@TempData["ErrorMessage"]</p>
+        </div>
+    }
+
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Content Wrapper -->

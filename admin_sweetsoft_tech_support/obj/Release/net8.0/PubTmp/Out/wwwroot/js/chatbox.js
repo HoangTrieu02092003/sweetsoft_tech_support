@@ -124,3 +124,25 @@ function markFeedbackAsRead(requestId) {
         })
         .catch(error => console.error("Error marking feedback as read:", error));
 }
+
+//hàm check đã đọc chưa
+function checkForNewFeedback() {
+    fetch('/TblSupportRequests/CheckForNewFeedback')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(requestId => {
+                var button = document.querySelector(`button[data-request-id='${requestId}']`);
+                if (button) {
+                    button.classList.add("blinking"); // Thêm lớp để làm nổi bật yêu cầu
+
+                    // Di chuyển hàng lên đầu bảng
+                    var row = button.closest('tr');
+                    var tbody = row.parentNode;
+                    tbody.insertBefore(row, tbody.firstChild); 
+                }
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+setInterval(checkForNewFeedback, 3000); // Kiểm tra mỗi 30 giây

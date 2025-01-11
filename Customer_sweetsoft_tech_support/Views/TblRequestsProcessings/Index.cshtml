@@ -96,6 +96,22 @@
             overflow: hidden;
         }
 
+        .move-up {
+            animation: moveUp 1s ease-in-out;
+        }
+
+        @@keyframes moveUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
     </style>
 </head>
 
@@ -138,12 +154,13 @@
                             GỬI YÊU CẦU MỚI <i style="margin-left: .1rem;" class="fa-solid fa-arrow-right"></i>
                         </button>
                     </form>
-
+                    <div id="request-list">
                     @foreach(var item in Model)
                         {
                         var request = item.RequestProcessing;
                         var hasUnreadFeedback = item.HasUnreadFeedback;
-                            <div class="containerrequest">
+                            if (request != null){
+                                <div class="containerrequest" style="margin-bottom:.2rem;">
                             <div class="row" onclick="toggleContent(@request.ProcessId)">
                                 <i class="fas fa-chevron-down toggle-icon" data-id="@request.ProcessId"></i>
                                     <div class="main-content">
@@ -156,7 +173,7 @@
                                                   ? "green"
                                                   : "red";
                                             }
-                                            <p class="status" style="color: @color;">
+                                            <p class="status" style="color: @color; font-weight: bold;">
                                             @(request.IsCompleted == 0
                                                     ? "Chưa hoàn thành"
                                                 : request.IsCompleted == 1
@@ -173,21 +190,29 @@
                                     <div>
                                     @if (request.IsCompleted == 0) // Điều kiện trạng thái là "Đang xử lý"
                                     {
-                                        <button class="chat-button open-chat d-block @(hasUnreadFeedback ?"has-unread-feedback":"")" data-request-id="@request.RequestId" data-title="@request.Request.RequestTitle" onclick="openChat(event);">
+                                        <button class="chat-button open-chat d-block @(hasUnreadFeedback ? "has-unread-feedback" : "")" data-request-id="@request.RequestId" data-title="@request.Request.RequestTitle" onclick="openChat(event);">
                                             <span class="bi bi-chat-dots"></span>
                                         </button>
                                     }
                                     </div>
                                 </div>
-                            <div class="details" id="details-@request.ProcessId">
-                                <p><strong>Câu hỏi: </strong>@request.Request.RequestDetails</p>
-                                    <p><strong>----------------------------------</strong></p>
-                                    <p><strong>Hỗ Trợ:</strong></p>
-                                <p>@request.Note</p>
+                                <div class="details" id="details-@request.ProcessId">
+                                    <p><strong>Câu hỏi: </strong>@request.Request.RequestDetails</p>
+                                    @if(request.IsCompleted != 0)
+                                    {
+                                        <p><strong>----------------------------------</strong></p>
+                                        <p><strong>Hỗ Trợ:</strong></p>
+                                        <p>@request.Note</p>
+                                    }
                                 </div>
-                            </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <p>Không có lịch sử như tìm kiếm!</p>
+                            }
                         }
-
+                        </div>
                     <script>
                         function filterRequests(status) {
                             const requests = document.querySelectorAll('.containerrequest');
@@ -271,5 +296,3 @@
 </body>
 </html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-

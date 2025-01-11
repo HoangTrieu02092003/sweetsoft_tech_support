@@ -25,7 +25,7 @@ public class UnreadNotificationsViewComponent : ViewComponent
                 foreach (var line in logLines)
                 {
                     var logParts = line.Split(", ");
-                    if (logParts.Length < 6)
+                    if (logParts.Length <= 7)
                     {
                         var isDelete = logParts[5];
                         var statusLog = logParts[1];

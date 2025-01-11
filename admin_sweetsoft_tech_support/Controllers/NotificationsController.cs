@@ -19,6 +19,23 @@ namespace admin_sweetsoft_tech_support.Controllers
         // Hiển thị tất cả log
         public async Task<IActionResult> Index(string date = "", string searchTerm = "", string filterOption = "", int page = 1)
         {
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
+            }
+
+            var userRole = _context.TblUsers
+                 .Where(u => u.UserId == currentUserId)
+                 .FirstOrDefault();
+
+            // Kiểm tra nếu người dùng không phải là admin
+            if (userRole.IsAdmin == false)
+            {
+                TempData["ErrorMessage"] = "Tài khoản hiện tại không có quyền vào trang này.";
+                return RedirectToAction("Index1", "Report");
+            }
             List<NotificationEntry> logs;
             var pageSize = 5; // số lượng log mỗi trang
             var skip = (page - 1) * pageSize;

@@ -63,5 +63,7 @@ public partial class TblUser
 
     public virtual ICollection<TblRequestFeedback> TblRequestFeedbackToUsers { get; set; } = new List<TblRequestFeedback>();
 
+    public virtual ICollection<TblSupportRequest> TblSupportRequests { get; set; } = new List<TblSupportRequest>();
+
     public virtual TblUser? UpdatedUserNavigation { get; set; }
 }

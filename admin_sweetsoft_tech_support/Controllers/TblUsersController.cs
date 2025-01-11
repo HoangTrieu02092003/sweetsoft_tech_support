@@ -34,8 +34,10 @@ namespace admin_sweetsoft_tech_support.Controllers
                 .Include(u => u.Role)
                 .Include(u => u.Department)
                 .AsQueryable();
+            // tìm theo table
             if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortOrder))
                 users = TableSorter.Sort(users, sortColumn, sortOrder).AsQueryable();
+            // tìm thoe trạng thái
             if (!string.IsNullOrEmpty(status))
             {
                 if (status == "1")
@@ -47,7 +49,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                     users = users.Where(u => u.Status == 0);
                 }
             }
-            //tìm kiếm 
+            //tìm kiếm kiểu text 
             if (!string.IsNullOrEmpty(search))
             {
                 // Lọc logs theo tiêu chí tìm kiếm
@@ -62,9 +64,10 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
             var pageSize = 6; // số lượng người dùng mỗi trang
             var skip = (page - 1) * pageSize;
-            
+            var userAdmin = _context.TblUsers.FirstOrDefault(u => u.IsAdmin == true);
+
             var requestContext = await users
-                .Where(u => u.UserId != currentUserId && u.IsDelete == false)
+                .Where(u => u.UserId != userAdmin.UserId && u.IsDelete == false)
                 .Include(t => t.CreatedUserNavigation)
                 .Include(t => t.Department)
                 .Include(t => t.Role)

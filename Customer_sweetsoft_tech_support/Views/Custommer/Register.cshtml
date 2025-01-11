@@ -154,7 +154,21 @@
                 <label asp-for="Phone">Số điện thoại</label>
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
+            <div class="form-floating-label">
+                <input asp-for="Username" placeholder="" required pattern="[A-Za-z0-9_]{5,20}" title="Tên đăng nhập phải từ 5 đến 20 ký tự, chỉ chứa chữ cái, số và dấu gạch dưới." />
+                <label asp-for="Username">Tên đăng nhập</label>
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
 
+            <div class="form-floating-label">
+                <input asp-for="Password" type="password" placeholder="" required />
+                <label asp-for="Password">Mật khẩu</label>
+                <span class="input-group-text" id="togglePassword">
+                    <i class="fas fa-eye"></i>
+                </span>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <lable class="d-flex justify-content-center mb-2">-----------Có thể bỏ qua--------------</lable>
             <div class="form-group">
                 <div class="form-floating-label form-item">
                     <input asp-for="TaxCode" placeholder="" required
@@ -169,21 +183,6 @@
                     <label asp-for="Company">Công ty</label>
                     <span asp-validation-for="Company" class="text-danger"></span>
                 </div>
-            </div>
-
-            <div class="form-floating-label">
-                <input asp-for="Username" placeholder="" required pattern="[A-Za-z0-9_]{5,20}" title="Tên đăng nhập phải từ 5 đến 20 ký tự, chỉ chứa chữ cái, số và dấu gạch dưới." />
-                <label asp-for="Username">Tên đăng nhập</label>
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-
-            <div class="form-floating-label">
-                <input asp-for="Password" type="password" placeholder="" required />
-                <label asp-for="Password">Mật khẩu</label>
-                <span class="input-group-text" id="togglePassword">
-                    <i class="fas fa-eye"></i>
-                </span>
-                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
             <!-- Google reCAPTCHA -->

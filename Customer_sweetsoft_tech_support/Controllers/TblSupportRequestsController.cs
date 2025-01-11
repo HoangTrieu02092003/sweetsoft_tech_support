@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Customer_sweetsoft_tech_support.Models;
 using System.Security.Claims;
 using Newtonsoft.Json;
+using System.Net.Mail;
+using System.Net;
 
 namespace Customer_sweetsoft_tech_support.Controllers
 {
@@ -83,6 +85,9 @@ namespace Customer_sweetsoft_tech_support.Controllers
 
                 for (int i = 0; i < requestTitles.Count; i++)
                 {
+                    var departmentManager = _context.TblUsers
+                    .FirstOrDefault(u => u.DepartmentId == int.Parse(departmentIds[i]) && u.Role.RoleName == "Trưởng phòng");
+
                     var supportRequest = new TblSupportRequest
                     {
                         CustomerId = customer.CustomerId,
@@ -91,26 +96,29 @@ namespace Customer_sweetsoft_tech_support.Controllers
                         RequestDetails = requestDetails[i],
                         Product = tblSupportRequest.Product, // Giữ thông tin sản phẩm từ yêu cầu ban đầu
                         Status = 0,
+                        HandleBy = departmentManager.UserId,
                         IsDelete = false,
                         CreatedAt = DateTime.Now,
                         ResolvedAt = null,
                     };
-                    var departmentManager = _context.TblUsers
-                    .FirstOrDefault(u => u.DepartmentId == int.Parse(departmentIds[i]) && u.Role.RoleName == "Trưởng phòng");
+                    
 
                     _context.Add(supportRequest);
+                    SendEmailAsync(departmentManager.Email,"Có yêu cầu mới",$"Khách hàng {customer.FullName} vừa gửi yêu cầu {tblSupportRequest.RequestTitle}");
                     await _context.SaveChangesAsync();
 
                     var logRequest = new
                     {
                         User = departmentManager.UserId.ToString(),
-                        Content = "Có yêu cầu mới",
+                        Title = "Có yêu cầu mới",
+                        Content = $"Bạn có yêu cầu mới từ khách hàng {customer.FullName}",
                         Status = "0", // 0: chưa xem, 1 đã xem
                         Id = GenerateUniqueId(),
+                        isDelete = "0", // chưa xóa
                         Timestamp = DateTime.Now
                     };
 
-                    string adminApiUrl = "http://tech.runasp.net/api/log/write-log";
+                    string adminApiUrl = "http://admintech.runasp.net/api/log/write-log";
                     using (var client = new HttpClient())
                     {
                         var response = await client.PostAsJsonAsync(adminApiUrl, logRequest);
@@ -150,6 +158,34 @@ namespace Customer_sweetsoft_tech_support.Controllers
             ViewData["Department"] = new SelectList(departments, "DepartmentId", "DepartmentName",tblSupportRequest.DepartmentId);
             TempData["error"] = "Tạo yêu cầu thất bại";
             return View(tblSupportRequest);
+        }
+
+        private async Task SendEmailAsync(string toEmail, string subject, string body)
+        {
+            var emailSettings = _configuration.GetSection("EmailSettings");
+            var smtpServer = emailSettings["SmtpServer"];
+            var port = int.Parse(emailSettings["Port"]);
+            var fromEmail = emailSettings["FromEmail"];
+            var password = emailSettings["Password"];
+            // Cấu hình SMTP client (ví dụ: Gmail SMTP)
+            using var client = new SmtpClient(smtpServer)
+            {
+                Port = port,
+                Credentials = new NetworkCredential(fromEmail, password),
+                EnableSsl = true,
+            };
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress(fromEmail, "New Request"),
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true,
+            };
+
+            mailMessage.To.Add(toEmail);
+
+            await client.SendMailAsync(mailMessage);
         }
 
         public string GenerateUniqueId()

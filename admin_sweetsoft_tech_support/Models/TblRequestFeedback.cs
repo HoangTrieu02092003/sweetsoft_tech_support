@@ -21,7 +21,9 @@ public partial class TblRequestFeedback
 
     public short FeedbackType { get; set; }
 
-    public bool? IsRead { get; set; }
+    public bool? IsReadByCustomer { get; set; }
+
+    public bool? IsReadByUser { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

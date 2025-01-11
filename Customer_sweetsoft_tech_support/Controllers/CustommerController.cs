@@ -106,7 +106,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
             }
 
             ViewBag.SiteKey = siteKey;
-            ModelState.AddModelError(string.Empty, "Mật khẩu sai.");
+            TempData["Error"] = "Mật khẩu sai.";
             return View();
         }
 
@@ -136,7 +136,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
             var isCaptchaValid = await Validate(recaptchaSecretKey, recaptchaResponseValue);
             if (!isCaptchaValid)
             {
-                ModelState.AddModelError("", "Mã xác thực không hợp lệ.");
+                TempData["Error"] = "Mã xác thực không hợp lệ.";
                 ViewBag.SiteKey = siteKey;
                 return View();
             }
@@ -145,7 +145,7 @@ namespace Customer_sweetsoft_tech_support.Controllers
             if (user == null)
             {
                 ViewBag.SiteKey = siteKey;
-                ModelState.AddModelError(string.Empty, "Email không tồn tại");
+                TempData["Error"] = "Email không tồn tại";
                 return View();
             }
 
@@ -263,21 +263,21 @@ namespace Customer_sweetsoft_tech_support.Controllers
         // Phương thức xử lý đăng ký với POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register([Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Username,Password,Status,IsDelete,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedBy,CreatedAt,UpdatedBy,UpdatedAt")] TblCustomer tblCustomer)
+        public async Task<IActionResult> Register([Bind("CustomerId,FullName,Email,Phone,Username,Password")] TblCustomer tblCustomer)
         {
-            HttpContext.Session.SetString("Email", tblCustomer.Email);
+            if(tblCustomer.Email != null)
+                HttpContext.Session.SetString("Email", tblCustomer.Email);
             var siteKey = _configuration["ReCaptcha:SiteKey"];
             if (string.IsNullOrWhiteSpace(tblCustomer.Email) || 
                 string.IsNullOrWhiteSpace(tblCustomer.Username) || 
                 string.IsNullOrWhiteSpace(tblCustomer.FullName) || 
                 string.IsNullOrWhiteSpace(tblCustomer.Phone) || 
-                string.IsNullOrWhiteSpace(tblCustomer.TaxCode) || 
-                string.IsNullOrWhiteSpace(tblCustomer.Company) || 
                 string.IsNullOrWhiteSpace(tblCustomer.Password)) 
             { 
                 TempData["Error"] = "Các trường không được để trống!"; 
-                ViewBag.SiteKey = siteKey; return View(tblCustomer); 
-            }
+                ViewBag.SiteKey = siteKey; 
+                return View(tblCustomer); 
+            }   
             var existingCustomer = await _context.TblCustomers
                     .FirstOrDefaultAsync(c => c.Email == tblCustomer.Email);
 

@@ -19,13 +19,15 @@ namespace admin_sweetsoft_tech_support.Controllers
         private readonly SessionService _sessionService;
         private readonly LogService _logService;
         private readonly IConfiguration _configuration;
+        private readonly EmailHelper _emailHelper;
 
-        public AdminController(RequestContext context, LogService logService, SessionService sessionService, IConfiguration configuration)
+        public AdminController(RequestContext context, LogService logService, SessionService sessionService, IConfiguration configuration, EmailHelper emailHelper)
         {
             _context = context;
             _logService = logService;
             _configuration = configuration;
             _sessionService = sessionService;
+            _emailHelper = emailHelper;
         }
 
         private async Task<bool> Validate(string secretKey, string recaptchaResponse)
@@ -151,7 +153,12 @@ namespace admin_sweetsoft_tech_support.Controllers
         // Đăng xuất (Logout)
         public async Task<IActionResult> Logout()
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
+            }
             var username = User.Identity.Name;
             _logService.LogAuditAction("Logout", username, "Đăng xuất thành công");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -200,7 +207,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             // Gửi email
             string resetLink = Url.Action("ResetPassword", "Admin", new { token = resetToken }, Request.Scheme)!;
-            await SendEmailAsync(email, "Đặt lại mật khẩu", $"Nhấp vào link sau để đặt lại mật khẩu: <a href='{resetLink}'>{resetLink}</a>");
+            await _emailHelper.SendEmailAsync(email, "Đặt lại mật khẩu", $"Nhấp vào link sau để đặt lại mật khẩu: <a href='{resetLink}'>{resetLink}</a>");
 
             return RedirectToAction("Login");
         }
@@ -262,35 +269,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             _context.TblUsers.Update(user);
             await _context.SaveChangesAsync();
             return RedirectToAction("Login");
-        }
-
-        // Hàm gửi email
-        private async Task SendEmailAsync(string toEmail, string subject, string body)
-        {
-            var emailSettings = _configuration.GetSection("EmailSettings");
-            var smtpServer = emailSettings["SmtpServer"];
-            var port = int.Parse(emailSettings["Port"]);
-            var fromEmail = emailSettings["FromEmail"];
-            var password = emailSettings["Password"];
-            // Cấu hình SMTP client (ví dụ: Gmail SMTP)
-            using var client = new SmtpClient(smtpServer)
-            {
-                Port = port,
-                Credentials = new NetworkCredential(fromEmail, password),
-                EnableSsl = true,
-            };
-
-            var mailMessage = new MailMessage
-            {
-                From = new MailAddress(fromEmail, "Support Team"),
-                Subject = subject,
-                Body = body,
-                IsBodyHtml = true,
-            };
-
-            mailMessage.To.Add(toEmail);
-
-            await client.SendMailAsync(mailMessage);
         }
     }
 }

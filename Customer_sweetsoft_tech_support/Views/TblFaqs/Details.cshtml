@@ -18,7 +18,7 @@
              <!-- Chi tiết bài viết -->
             <div class="post-detail">
                 <div class="post-image-container">
-                    <img style="flex: 1" src="@(Model.FaqThumbnail == null ? "/layoutuser/img/faq.jpg" : Model.FaqThumbnail)" alt="@Model.Question" class="post-image" />
+                    <img style="flex: 1" src="@(Model.FaqThumbnail == null ? "http://admintech.runasp.net/assets/images/faqs/faq1.jpg" : $"http://admintech.runasp.net/{Model.FaqThumbnail}")" alt="@Model.Question" class="post-image" />
                 </div>
                 <div class="post-content">
                     <h1>@Model.Question</h1>

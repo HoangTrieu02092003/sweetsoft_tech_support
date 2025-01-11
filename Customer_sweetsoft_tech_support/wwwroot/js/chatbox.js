@@ -135,3 +135,23 @@ function markFeedbackAsRead(requestId) {
         })
         .catch(error => console.error("Error marking feedback as read:", error));
 }
+// hàm kiểm tra xem có đọc chưa
+function checkForNewFeedback() {
+    fetch('/TblRequestsProcessings/CheckForNewFeedback')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(requestId => {
+                var button = document.querySelector(`button[data-request-id='${requestId}']`);
+                if (button) {
+                    button.classList.add("has-unread-feedback");
+
+                    var requestItem = button.closest('.containerrequest');
+                    var container = document.getElementById('request-list');
+                    container.insertBefore(requestItem, container.firstChild);
+                }
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+setInterval(checkForNewFeedback, 3000); // Kiểm tra mỗi 3 giây

@@ -33,17 +33,17 @@ public partial class RequestContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=db12358.databaseasp.net; Database=db12358; User Id=db12358; Password=Y#p3=5Zg9Rm%; Encrypt=False; MultipleActiveResultSets=True;");
+        => optionsBuilder.UseSqlServer("Server=db12409.databaseasp.net; Database=db12409; User Id=db12409; Password=e@5CK9i#%A2r; Encrypt=False; MultipleActiveResultSets=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TblCustomer>(entity =>
         {
-            entity.HasKey(e => e.CustomerId).HasName("PK__TblCusto__CD65CB859525CF1B");
+            entity.HasKey(e => e.CustomerId).HasName("PK__TblCusto__CD65CB8509252D33");
 
-            entity.HasIndex(e => e.Email, "UQ__TblCusto__AB6E6164612D0EC0").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__TblCusto__AB6E61642B900BEA").IsUnique();
 
-            entity.HasIndex(e => e.Username, "UQ__TblCusto__F3DBC572D8A403FA").IsUnique();
+            entity.HasIndex(e => e.Username, "UQ__TblCusto__F3DBC57246CACE23").IsUnique();
 
             entity.Property(e => e.CustomerId).HasColumnName("customer_id");
             entity.Property(e => e.Company)
@@ -110,7 +110,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblDepartment>(entity =>
         {
-            entity.HasKey(e => e.DepartmentId).HasName("PK__TblDepar__C2232422EAC7869C");
+            entity.HasKey(e => e.DepartmentId).HasName("PK__TblDepar__C22324227FA73693");
 
             entity.Property(e => e.DepartmentId).HasColumnName("department_id");
             entity.Property(e => e.DepartmentName)
@@ -124,7 +124,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblFaq>(entity =>
         {
-            entity.HasKey(e => e.FaqId).HasName("PK__TblFaqs__66734BAFA423898C");
+            entity.HasKey(e => e.FaqId).HasName("PK__TblFaqs__66734BAF00B852D9");
 
             entity.Property(e => e.FaqId).HasColumnName("faq_id");
             entity.Property(e => e.Answer).HasColumnName("answer");
@@ -147,7 +147,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblRequestFeedback>(entity =>
         {
-            entity.HasKey(e => e.FeedbackId).HasName("PK__TblReque__7A6B2B8C4D72B22A");
+            entity.HasKey(e => e.FeedbackId).HasName("PK__TblReque__7A6B2B8C647CED3F");
 
             entity.ToTable("TblRequest_Feedbacks");
 
@@ -160,38 +160,41 @@ public partial class RequestContext : DbContext
             entity.Property(e => e.FeedbackType).HasColumnName("feedback_type");
             entity.Property(e => e.FromCustomerId).HasColumnName("from_customer_id");
             entity.Property(e => e.FromUserId).HasColumnName("from_user_id");
-            entity.Property(e => e.IsRead)
+            entity.Property(e => e.IsReadByCustomer)
                 .HasDefaultValue(false)
-                .HasColumnName("is_read");
+                .HasColumnName("is_read_by_customer");
+            entity.Property(e => e.IsReadByUser)
+                .HasDefaultValue(false)
+                .HasColumnName("is_read_by_user");
             entity.Property(e => e.RequestId).HasColumnName("request_id");
             entity.Property(e => e.ToCustomerId).HasColumnName("to_customer_id");
             entity.Property(e => e.ToUserId).HasColumnName("to_user_id");
 
             entity.HasOne(d => d.FromCustomer).WithMany(p => p.TblRequestFeedbackFromCustomers)
                 .HasForeignKey(d => d.FromCustomerId)
-                .HasConstraintName("FK__TblReques__from___71D1E811");
+                .HasConstraintName("FK__TblReques__from___72C60C4A");
 
             entity.HasOne(d => d.FromUser).WithMany(p => p.TblRequestFeedbackFromUsers)
                 .HasForeignKey(d => d.FromUserId)
-                .HasConstraintName("FK__TblReques__from___70DDC3D8");
+                .HasConstraintName("FK__TblReques__from___71D1E811");
 
             entity.HasOne(d => d.Request).WithMany(p => p.TblRequestFeedbacks)
                 .HasForeignKey(d => d.RequestId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TblReques__reque__6FE99F9F");
+                .HasConstraintName("FK__TblReques__reque__70DDC3D8");
 
             entity.HasOne(d => d.ToCustomer).WithMany(p => p.TblRequestFeedbackToCustomers)
                 .HasForeignKey(d => d.ToCustomerId)
-                .HasConstraintName("FK__TblReques__to_cu__73BA3083");
+                .HasConstraintName("FK__TblReques__to_cu__74AE54BC");
 
             entity.HasOne(d => d.ToUser).WithMany(p => p.TblRequestFeedbackToUsers)
                 .HasForeignKey(d => d.ToUserId)
-                .HasConstraintName("FK__TblReques__to_us__72C60C4A");
+                .HasConstraintName("FK__TblReques__to_us__73BA3083");
         });
 
         modelBuilder.Entity<TblRequestsProcessing>(entity =>
         {
-            entity.HasKey(e => e.ProcessId).HasName("PK__TblReque__9446C3E15B5ABDFD");
+            entity.HasKey(e => e.ProcessId).HasName("PK__TblReque__9446C3E1797B8BCA");
 
             entity.ToTable("TblRequests_Processing");
 
@@ -217,7 +220,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblRole>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__TblRoles__760965CC9A12B7E6");
+            entity.HasKey(e => e.RoleId).HasName("PK__TblRoles__760965CCC50DC4A3");
 
             entity.Property(e => e.RoleId).HasColumnName("role_id");
             entity.Property(e => e.RoleName)
@@ -227,7 +230,7 @@ public partial class RequestContext : DbContext
 
         modelBuilder.Entity<TblSupportRequest>(entity =>
         {
-            entity.HasKey(e => e.RequestId).HasName("PK__TblSuppo__18D3B90F980F3869");
+            entity.HasKey(e => e.RequestId).HasName("PK__TblSuppo__18D3B90F03211FFD");
 
             entity.ToTable("TblSupport_Requests");
 
@@ -237,6 +240,9 @@ public partial class RequestContext : DbContext
                 .HasColumnName("created_at");
             entity.Property(e => e.CustomerId).HasColumnName("customer_id");
             entity.Property(e => e.DepartmentId).HasColumnName("department_id");
+            entity.Property(e => e.HandleBy)
+                .HasDefaultValue(1)
+                .HasColumnName("handle_by");
             entity.Property(e => e.IsDelete)
                 .HasDefaultValue(false)
                 .HasColumnName("is_delete");
@@ -259,15 +265,20 @@ public partial class RequestContext : DbContext
             entity.HasOne(d => d.Department).WithMany(p => p.TblSupportRequests)
                 .HasForeignKey(d => d.DepartmentId)
                 .HasConstraintName("FK__TblSuppor__depar__5CD6CB2B");
+
+            entity.HasOne(d => d.HandleByNavigation).WithMany(p => p.TblSupportRequests)
+                .HasForeignKey(d => d.HandleBy)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("FK_SupportRequests_HandleBy");
         });
 
         modelBuilder.Entity<TblUser>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__TblUsers__B9BE370F78F94392");
+            entity.HasKey(e => e.UserId).HasName("PK__TblUsers__B9BE370F4573D453");
 
-            entity.HasIndex(e => e.Email, "UQ__TblUsers__AB6E61646791A1E8").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__TblUsers__AB6E616445880C29").IsUnique();
 
-            entity.HasIndex(e => e.Username, "UQ__TblUsers__F3DBC572C80E810B").IsUnique();
+            entity.HasIndex(e => e.Username, "UQ__TblUsers__F3DBC572D7EA22D6").IsUnique();
 
             entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.CreatedAt)

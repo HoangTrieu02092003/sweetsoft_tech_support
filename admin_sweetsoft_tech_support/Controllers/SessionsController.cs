@@ -23,6 +23,16 @@ namespace admin_sweetsoft_tech_support.Controllers
                 TempData["ReturnUrl"] = Request.Path.ToString();
                 return RedirectToAction("Login", "Admin");
             }
+            var userRole = _context.TblUsers
+                 .Where(u => u.UserId == currentUserId)
+                 .FirstOrDefault();
+
+            // Kiểm tra nếu người dùng không phải là admin
+            if (userRole.IsAdmin == false)
+            {
+                TempData["ErrorMessage"] = "Tài khoản hiện tại không có quyền vào trang này.";
+                return RedirectToAction("Index1", "Report");
+            }
             var sessions = _context.TblSessions
                 .Include(s => s.User)
                 .AsQueryable();

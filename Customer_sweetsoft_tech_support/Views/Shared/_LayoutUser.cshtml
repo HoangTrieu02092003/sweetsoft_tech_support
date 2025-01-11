@@ -52,8 +52,8 @@
                     &nbsp;
                 </div>&nbsp;&nbsp;&nbsp;
                 <div class="search">
-                    <form action="" method="post" style="display: inline">
-                        <div class="input"><input name="showkeycode" id="showkeycode268431"></div>
+                    <form asp-action="Index" asp-controller="TblRequestsProcessings" method="get" style="display: inline">
+                        <div class="input"><input name="query" placeholder="tìm kiếm yêu cầu" value="@ViewContext.HttpContext.Request.Query["query"]" id="showkeycode268431"></div>
                         <div class="p-ico btn"><i class="fa-solid fa-magnifying-glass"></i><input type="submit" value=""></div>
                     </form>
                 </div>
@@ -184,8 +184,8 @@
                 </ul>
             </div>
             <div class="info">
-                <div class="col">
-                    <p>©2024 SweetSoft </p><p>Đường dây nóng An ninh Mạng : <a href="">0692194053</a></p>
+                <div class="col" style="font-weight: bold;">
+                    <p>©@(DateTime.Now.Year) SweetSoft </p><p>Đường dây nóng An ninh Mạng : <a asp-action="Index" asp-controller="Contact">0692194053</a></p>
                 </div>
                 <div class="list">
                     <ul>

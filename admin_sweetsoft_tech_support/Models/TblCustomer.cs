@@ -8,6 +8,9 @@ public partial class TblCustomer
 {
     public int CustomerId { get; set; }
 
+    [Required(ErrorMessage = "Tên không được để trống.")]
+    [RegularExpression(@"^[\p{L} ]+$", ErrorMessage = "Tên chỉ được chứa chữ cái và khoảng trắng.")]
+    [StringLength(50, MinimumLength = 3, ErrorMessage = "Tên phải từ 3 đến 50 ký tự.")]
     public string FullName { get; set; } = null!;
 
     [Required(ErrorMessage = "Email không được để trống.")]
@@ -18,8 +21,6 @@ public partial class TblCustomer
     [RegularExpression(@"^\d{10}$", ErrorMessage = "Số điện thoại phải chứa 10 chữ số.")]
     public string Phone { get; set; } = null!;
 
-    [Required(ErrorMessage = "Mã số thuế không được để trống.")]
-    [RegularExpression(@"^\d{10}(-\d{3})?$", ErrorMessage = "Mã số thuế phải gồm 10 chữ số hoặc 13 chữ số (định dạng 0123456789 hoặc 0123456789-001).")]
     public string? TaxCode { get; set; }
 
     [RegularExpression(@"^[\p{L} ]+$", ErrorMessage = "Tên chỉ được chứa chữ cái và khoảng trắng.")]

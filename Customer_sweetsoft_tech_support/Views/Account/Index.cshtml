@@ -224,26 +224,39 @@
                                         </table>
                                     </form>
                                     <form asp-action="ChangePassword" asp-route-id="@Model.CustomerId" asp-route-controller="Account" method="post">
-                                            <table class="Password" style="display: none;">
-                                                <tr>
-                                                    <td style="white-space: nowrap;">Nhập mật khẩu cũ</td>
-                                                <td><input style="width:100%;" name="OldPassword" required/></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="white-space: nowrap;">Nhập mật khẩu mới</td>
-                                                <td><input style="width:100%;" name="NewPassword" required /></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="white-space: nowrap;">Nhập lại mật khẩu mới</td>
-                                                <td><input style="width:100%;" name="ConfirmPassword" required /></td>
-                                                </tr>
+                                        <table class="Password" style="display: none;">
                                             <tr>
-                                                <td colspan="2" style="text-align:right; white-space: nowrap; border:none">
+                                                <td style="white-space: nowrap; font-weight: bold;">Nhập mật khẩu cũ</td>
+                                                <td>
+                                                    <input type="password" style="width:100%; " id="oldPassword" name="OldPassword" placeholder="Mật khẩu cũ" required />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;  font-weight: bold;">Nhập mật khẩu mới</td>
+                                                <td>
+                                                    <input type="password" style="width:100%;" id="newPassword" name="NewPassword" placeholder="Mật khẩu mới" required />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="white-space: nowrap;  font-weight: bold;">Nhập lại mật khẩu mới</td>
+                                                <td>
+                                                    <input type="password" style="width:100%;" id="confirmPassword" name="ConfirmPassword" placeholder="Xác nhận mật khẩu" required />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border:none">
+                                                    <label>
+                                                        <input type="checkbox" id="togglePasswords" />
+                                                        Hiển thị mật khẩu
+                                                    </label>
+                                                </td>
+                                                <td style="text-align:right; white-space: nowrap; border:none">
                                                     <button class="btn" type="submit">THAY ĐỔI</button>
                                                 </td>
                                             </tr>
                                         </table>
                                     </form>
+
                                 </div>
                             </div>
                         </div>
@@ -329,19 +342,25 @@
                     <form asp-action="ChangePassword" asp-route-id="@Model.CustomerId" method="post">
                         <table class="tablePassword" style="display: none;">
                             <tr>
-                                <td style="white-space: nowrap;">Nhập mật khẩu cũ</td>
-                                <td><input style="width:100%;" name="" value="" /></td>
+                                <td style="white-space: nowrap;  font-weight: bold;">Nhập mật khẩu cũ</td>
+                                <td><input type="password" style="width:100%;" id="oldPassword1" name="OldPassword" placeholder="Mật khẩu cũ" /></td>
                             </tr>
                             <tr>
-                                <td style="white-space: nowrap;">Nhập mật khẩu mới</td>
-                                <td><input style="width:100%;" name="" value="" /></td>
+                                <td style="white-space: nowrap;  font-weight: bold;">Nhập mật khẩu mới</td>
+                                <td><input type="password" style="width:100%;" id="newPassword1" name="NewPassword" placeholder="Mật khẩu mới" /></td>
                             </tr>
                             <tr>
-                                <td style="white-space: nowrap;">Nhập lại mật khẩu mới</td>
-                                <td><input style="width:100%;" name="" value="" /></td>
+                                <td style="white-space: nowrap;  font-weight: bold;">Nhập lại mật khẩu mới</td>
+                                <td><input type="password" style="width:100%;" id="confirmPassword1" name="ConfirmPassword" placeholder="Xác nhận mật khẩu" /></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align:right; white-space: nowrap; border:none">
+                                <td style="border:none">
+                                    <label>
+                                        <input type="checkbox" id="togglePasswords1" />
+                                        Hiển thị mật khẩu
+                                    </label>
+                                </td>
+                                <td style="text-align:right; white-space: nowrap; border:none">
                                     <button class="btn" type="submit">THAY ĐỔI</button>
                                 </td>
                             </tr>
@@ -365,21 +384,24 @@
     });
 
     $(document).ready(function () {
-        // When an <li> is clicked
+        // Khi nhấn vào tab, lưu trạng thái thẻ li được chọn vào localStorage
         $("ul li a").click(function () {
-            // Remove "on" class from all <li> elements
+            // Xóa class 'on' khỏi tất cả các thẻ li
             $("ul li").removeClass("on");
 
-            // Add "on" class to the clicked <li>
+            // Gán class 'on' cho thẻ li hiện tại
             $(this).parent().addClass("on");
 
-            // Hide both tables initially
+            // Lưu trạng thái thẻ li hiện tại vào localStorage
+            localStorage.setItem('activeTab', $(this).text().trim());
+
+            // Ẩn tất cả bảng
             $(".Account").hide();
             $(".Password").hide();
             $(".tableAccount").hide();
             $(".tablePassword").hide();
 
-            // Show the corresponding table based on the clicked <li>
+            //// Hiện bảng tương ứng
             if ($(this).text() === "Tài Khoản") {
                 if ($(window).width() <= 800) {
                     $(".tableAccount").show();
@@ -393,5 +415,99 @@
                 else { $(".Password").show(); }
             }
         });
+    });
+
+    // Khi trang được load lại, kiểm tra trạng thái thẻ li
+    document.addEventListener('DOMContentLoaded', () => {
+        const activeTab = localStorage.getItem('activeTab')||"Tài Khoản";
+        const liElements = document.querySelectorAll('.zc ul li');
+        const tables = {
+            "Tài Khoản": {
+                desktop: '.Account',
+                mobile: '.tableAccount'
+            },
+            "Đổi Mật Khẩu": {
+                desktop: '.Password',
+                mobile: '.tablePassword'
+            }
+        };
+
+        // Reset trạng thái của tất cả thẻ li và bảng
+        liElements.forEach(li => li.classList.remove('on'));
+        for (let key in tables) {
+            document.querySelector(tables[key].desktop).style.display = 'none';
+            document.querySelector(tables[key].mobile).style.display = 'none';
+        }
+
+        // Kích hoạt lại thẻ li và bảng tương ứng
+        if (activeTab && tables[activeTab]) {
+            const activeLi = [...liElements].find(li => li.textContent.trim() === activeTab);
+            if (activeLi) activeLi.classList.add('on');
+            
+            if (window.innerWidth > 800) {
+                document.querySelector(tables[activeTab].desktop).style.display = '';
+            } else {
+                document.querySelector(tables[activeTab].mobile).style.display = '';
+            }
+        } else {
+            // Mặc định hiển thị bảng Tài Khoản
+            document.querySelector('.zc ul li').classList.add('on');
+            if (window.innerWidth > 800) {
+                document.querySelector('.Account').style.display = '';
+            } else {
+                document.querySelector('.tableAccount').style.display = '';
+            }
+        }
+    });
+
+    // Đổi trạng thái bảng khi nhấn thẻ li
+    document.querySelectorAll('.zc ul li').forEach(li => {
+        li.addEventListener('click', () => {
+            document.querySelectorAll('.zc ul li').forEach(li => li.classList.remove('on'));
+            li.classList.add('on');
+
+            // Hiện bảng phù hợp với kích thước màn hình
+            const text = li.textContent.trim();
+            for (let key in tables) {
+                document.querySelector(tables[key].desktop).style.display = 'none';
+                document.querySelector(tables[key].mobile).style.display = 'none';
+            }
+
+            if (tables[text]) {
+if (window.innerWidth > 800) {
+                    document.querySelector(tables[text].desktop).style.display = '';
+                } else {
+                    document.querySelector(tables[text].mobile).style.display = '';
+                }
+            }
+        });
+    });
+
+    // hiện/ẩn Password
+
+    //desktop
+    const togglePasswords = document.querySelector('#togglePasswords');
+    const passwordFields = [
+        document.querySelector('#oldPassword'),
+        document.querySelector('#newPassword'),
+        document.querySelector('#confirmPassword')
+    ];
+
+    togglePasswords.addEventListener('change', () => {
+        const type = togglePasswords.checked ? 'text' : 'password';
+        passwordFields.forEach(field => field.setAttribute('type', type));
+    });
+
+    //mobile
+    const togglePasswords1 = document.querySelector('#togglePasswords1');
+    const passwordFields1 = [
+        document.querySelector('#oldPassword1'),
+        document.querySelector('#newPassword1'),
+        document.querySelector('#confirmPassword1')
+    ];
+
+    togglePasswords1.addEventListener('change', () => {
+        const type = togglePasswords1.checked ? 'text' : 'password';
+        passwordFields1.forEach(field => field.setAttribute('type', type));
     });
 </script>

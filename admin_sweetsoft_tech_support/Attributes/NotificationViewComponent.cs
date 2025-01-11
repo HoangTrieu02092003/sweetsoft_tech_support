@@ -23,7 +23,7 @@ namespace admin_sweetsoft_tech_support.Attributes
                     foreach (var line in logLines)
                     {
                         var logParts = line.Split(", ");
-                        if (logParts.Length >= 5)
+                        if (logParts.Length <= 7)
                         {
                             var status = logParts[1];
                             var userIdLog = logParts[2];

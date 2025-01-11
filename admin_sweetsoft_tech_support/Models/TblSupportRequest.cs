@@ -25,9 +25,13 @@ public partial class TblSupportRequest
 
     public DateTime? ResolvedAt { get; set; }
 
+    public int? HandleBy { get; set; }
+
     public virtual TblCustomer? Customer { get; set; }
 
     public virtual TblDepartment? Department { get; set; }
+
+    public virtual TblUser? HandleByNavigation { get; set; }
 
     public virtual ICollection<TblRequestFeedback> TblRequestFeedbacks { get; set; } = new List<TblRequestFeedback>();
 

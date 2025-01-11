@@ -82,14 +82,13 @@ async function createChart(startDate, endDate) {
                 ],
                 borderColor: [
                     "rgba(255, 99, 132, 1)",
- 
                     "rgba(121, 28, 181, 1)",
                     "rgba(75, 192, 192, 1)"
                 ],
                 data: [
-                    statusCounts[1], // Pending
-                    statusCounts[2], // Processing
-                    statusCounts[3], // Completed
+                    statusCounts[0], // Pending
+                    statusCounts[1], // Processing
+                    statusCounts[2], // Completed
                 ],
                 borderWidth: 1
             }]

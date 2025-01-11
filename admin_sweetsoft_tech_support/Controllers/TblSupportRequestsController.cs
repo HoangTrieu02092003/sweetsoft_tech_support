@@ -12,19 +12,27 @@ namespace admin_sweetsoft_tech_support.Controllers
     {
         private readonly RequestContext _context;
         private readonly LogService _logService;
+        private readonly EmailHelper _emailHelper;
 
-        public TblSupportRequestsController(RequestContext context, LogService logService)
+        public TblSupportRequestsController(RequestContext context, LogService logService, EmailHelper emailHelper)
         {
             _context = context;
             _logService = logService;
+            _emailHelper = emailHelper;
         }
 
         [HttpGet]
         public IActionResult Index(int? status, string search, string sortColumn, string sortOrder, int page = 1)
         {
+            var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(currentUserIdString) || !int.TryParse(currentUserIdString, out int currentUserId))
+            {
+                TempData["ReturnUrl"] = Request.Path.ToString();
+                return RedirectToAction("Login", "Admin");
+            }
             var currentUser = _context.TblUsers
                 .Include(u => u.Role)
-                .FirstOrDefault(u => u.UserId == int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+                .FirstOrDefault(u => u.UserId == int.Parse(currentUserIdString));
 
             int pageSize = 6;
             var query = _context.TblSupportRequests
@@ -35,7 +43,14 @@ namespace admin_sweetsoft_tech_support.Controllers
                 .Select(r => new
                 {
                     SupportRequest = r,
-                    HasUnreadFeedback = r.TblRequestFeedbacks.Any(f => f.IsRead == false) 
+                    r.RequestId,
+                    r.Status,
+                    r.RequestTitle,
+                    r.CreatedAt,
+                    r.ResolvedAt,
+                    CustomerFullName = r.Customer.FullName,
+                    r.Department.DepartmentName,
+                    HasUnreadFeedback = r.TblRequestFeedbacks.Any(f => f.RequestId == r.RequestId && f.IsReadByUser == false)
                 })
                 .AsQueryable();
 
@@ -45,14 +60,13 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     query = query;
                 }
-                else if (currentUser.Role != null && currentUser.Role.RoleName == "Trưởng phòng")
+                else if (currentUser.Role != null && currentUser.RoleId == 2 || currentUser.RoleId == 3)
                 {
                     query = query.Where(r => r.SupportRequest.DepartmentId == currentUser.DepartmentId);
                 }
                 else
                 {
-                    query = query.Where(r => r.SupportRequest.TblRequestTransfers
-                                   .Any(rt => rt.TransferredHandle == currentUser.UserId));
+                    query = query.Where(r => r.SupportRequest.HandleBy == currentUser.UserId);
                 }
             }
 
@@ -73,9 +87,13 @@ namespace admin_sweetsoft_tech_support.Controllers
             if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortOrder))
                 query = TableSorter.Sort(query, sortColumn, sortOrder);
             else
-                query = query.OrderByDescending(r => r.SupportRequest.CreatedAt);
+            { 
+                //xếp theo thời gian tạo yêu cầu, nếu có feedback mới thì đẩy feedback đó lên
+              query = query.OrderByDescending(r => r.HasUnreadFeedback) 
+                    .ThenByDescending(r => r.SupportRequest.CreatedAt); 
+            }
 
-            int totalRequests = query.Count();
+                int totalRequests = query.Count();
             var paginatedRequests = query
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
@@ -94,6 +112,11 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Truyền dữ liệu sang View
             ViewData["CurrentPage"] = page;
             ViewData["TotalPages"] = (int)Math.Ceiling(totalRequests / (double)pageSize);
+            // dữ liệu quyền
+            ViewData["IsAdmin"] = currentUser?.IsAdmin ?? false;
+            ViewData["IsDepartmentManager"] = currentUser?.RoleId == 2 || currentUser?.RoleId == 3;
+            ViewData["IsRegularUser"] = !(currentUser?.IsAdmin ?? false) && currentUser?.RoleId != 2 && currentUser?.RoleId != 3;
+            // dữ liệu tìm kiếm
             ViewData["Status"] = status;
             ViewData["Search"] = search;
             ViewData["SortColumn"] = sortColumn;
@@ -103,15 +126,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(paginatedRequests);
         }
 
-        [HttpGet] public IActionResult CheckUnreadFeedbacks() 
-        { 
-            var requests = _context.TblSupportRequests
-                .Where(r => r.IsDelete == false)
-                .Select(r => new { 
-                    r.RequestId, 
-                    HasUnreadFeedback = r.TblRequestFeedbacks.Any(f => f.IsRead == false) 
-                }).ToList(); return Json(requests); 
-        }
 
         [PermissionAuthorize("Sửa yêu cầu hỗ trợ")]
         // GET: TblSupportRequests/Details/5
@@ -274,7 +288,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             if (ModelState.IsValid)
             {
-                var existingRequest = await _context.TblSupportRequests.FindAsync(id);
+                var existingRequest = _context.TblSupportRequests.AsNoTracking().FirstOrDefault(r => r.RequestId == id);
 
                 // Lưu giá trị cũ và thay đổi
                 var oldValue = new Dictionary<string, object>();
@@ -288,7 +302,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 foreach (var property in properties)
                 {
                     var oldPropValue = property.GetValue(existingRequest);
-                    var newPropValue = property.GetValue(supportRequest);
+                    var newPropValue = property.GetValue(updatedRequest);
 
                     // Nếu giá trị thay đổi, lưu vào log
                     if (newPropValue != null && !Equals(oldPropValue, newPropValue))
@@ -303,7 +317,6 @@ namespace admin_sweetsoft_tech_support.Controllers
                 try
                 {
                     // Lấy dữ liệu gốc từ CSDL
-                    var existingRequest = _context.TblSupportRequests.AsNoTracking().FirstOrDefault(r => r.RequestId == id);
                     if (existingRequest == null)
                     {
                         return NotFound();
@@ -329,7 +342,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                     {
                         _logService.LogActivityAction(
                             "Sửa",
-                            $"Sửa yêu cầu {supportRequest.RequestTitle} thành công",
+                            $"Sửa yêu cầu {updatedRequest.RequestTitle} thành công",
                             User.Identity.Name,
                             Newtonsoft.Json.JsonConvert.SerializeObject(oldValue),
                             Newtonsoft.Json.JsonConvert.SerializeObject(changes)
@@ -380,7 +393,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             return RedirectToAction(nameof(Index), new { page = currentPage });
         }
 
-
         private bool TblSupportRequestExists(int id)
         {
             return _context.TblSupportRequests.Any(e => e.RequestId == id);
@@ -391,7 +403,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return _context.TblRequestTransfers.Any(e => e.TransferId == id);
         }
 
-        [PermissionAuthorize("Chuyển giao yêu cầu")]
+        [PermissionAuthorize("Chuyển giao yêu cầu cho phòng ban")]
         public async Task<IActionResult> Transfer(int? id)
         {
             if (id == null)
@@ -481,9 +493,8 @@ namespace admin_sweetsoft_tech_support.Controllers
                             Note = requestTransfer.Note,
                             TransferredHandle = departmentHead // Gán trưởng phòng vào TransferredHandle
                         };
-
+                        
                         _context.Add(transfer);
-
                         // Cập nhật yêu cầu hỗ trợ trong TblSupportRequest
                         if (toDepartmentId == ToDepartmentId.First())
                         {
@@ -514,11 +525,36 @@ namespace admin_sweetsoft_tech_support.Controllers
                                     ResolvedAt = null,
                                     HandleBy = departmentHead // Gán trưởng phòng vào HandleBy
                                 };
-
+                               
                                 _context.Add(newSupportRequest);
                             }
                         }
-
+                        var text = "";
+                        if (transfer.Priority == 1)
+                        {
+                            text = "mức độ thấp";
+                        }
+                        else if (transfer.Priority == 2)
+                        {
+                            text = "mức độ trung bình";
+                        }
+                        else if (transfer.Priority == 3)
+                        {
+                            text = "mức độ cao (gấp)";
+                        }
+                        var toEmail = _context.TblUsers
+                            .Where(x => x.UserId == departmentHead)
+                            .Select(x => x.Email)
+                            .FirstOrDefault();
+                        if (!string.IsNullOrEmpty(toEmail))
+                        {
+                            await _emailHelper.SendEmailAsync(toEmail, "Yêu cầu mới", $"yêu cầu mới cần được giải quyết{text}");
+                            _logService.LogNotificationAction(departmentHead.ToString(), "Yêu cầu được chuyển giao", "Phòng ban mới nhận được một yêu cầu mới");
+                        }
+                        else
+                        {
+                            _logService.LogNotificationAction(departmentHead.ToString(), "Lỗi gửi email", "Không có địa chỉ email cho trưởng phòng.");
+                        }
                         _logService.LogActivityAction("Chuyển yêu cầu hỗ trợ", "Chuyển giao", User.Identity.Name);
                     }
 
@@ -547,7 +583,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             ViewBag.RequestTitle = supportRequest.RequestTitle;
             return View(requestTransfer);
         }
-
         //Feedback
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -571,7 +606,8 @@ namespace admin_sweetsoft_tech_support.Controllers
                     Feedback = message,
                     FeedbackType = 1,
                     CreatedAt = DateTime.Now,
-                    IsRead = false
+                    IsReadByCustomer = false,
+                    IsReadByUser = true
                 };
             if (newFeedback != null)
             {
@@ -581,6 +617,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             return RedirectToAction("Index", new { requestId });
         }
+        //lấy các feedback
         public IActionResult GetFeedbacks(int requestId)
         {
             var feedbacks = _context.TblRequestFeedbacks
@@ -595,18 +632,30 @@ namespace admin_sweetsoft_tech_support.Controllers
         public async Task<IActionResult> MarkAsRead(int requestId)
         {
             var feedbacks = await _context.TblRequestFeedbacks
-                .Where(f => f.RequestId == requestId && f.IsRead == false)
+                .Where(f => f.RequestId == requestId && f.IsReadByUser == false)
                 .ToListAsync();
 
             if (feedbacks.Any())
             {
-                feedbacks.ForEach(f => f.IsRead = true);
+                feedbacks.ForEach(f => f.IsReadByUser = true);
                 await _context.SaveChangesAsync();
             }
 
             return Ok(new { success = true });
         }
         //
+        //xem đã đọc feedback chưa
+        [HttpGet]
+        public async Task<IActionResult> CheckForNewFeedback()
+        {
+            var id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var hasUnreadFeedback = await _context.TblRequestFeedbacks
+                .Where(f => f.IsReadByUser == false)
+                .Select(f => f.RequestId).ToListAsync();
+            return Json(hasUnreadFeedback);
+        }
+
+        //giải quyết yêu cầu
         [PermissionAuthorize("Giải quyết yêu cầu")]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -636,6 +685,9 @@ namespace admin_sweetsoft_tech_support.Controllers
                 _context.TblRequestsProcessings.Update(processing);
             }
             await _context.SaveChangesAsync();
+
+            var feedbacks = _context.TblRequestFeedbacks.Where(f => f.RequestId == id); 
+            _context.TblRequestFeedbacks.RemoveRange(feedbacks);
             if (supportRequest == null)
             {
                 return NotFound();
@@ -659,14 +711,13 @@ namespace admin_sweetsoft_tech_support.Controllers
                 _logService.LogActivityAction("Cập nhật trạng thái yêu cầu hỗ trợ", "Update", User.Identity.Name);
                 // Gửi email thông báo
                 string email = customer.Email; // Lấy địa chỉ email của khách hàng từ TblSupportRequest
-                string resetLink = ""; // Lấy hoặc tạo link đặt lại mật khẩu (hoặc thông tin chi tiết cần thiết khác)
                 if (status == 1)
                 {
-                    await SendEmailAsync(email, "Thông báo trạng thái yêu cầu hỗ trợ", $"Yêu cầu của bạn đã được giải quyết. Chi tiết: {note}");
+                    await _emailHelper.SendEmailAsync(email, "Thông báo trạng thái yêu cầu hỗ trợ", $"Yêu cầu của bạn đã được giải quyết. Chi tiết: {note}");
                 }
                 if (status == 2)
                 {
-                    await SendEmailAsync(email, "Thông báo trạng thái yêu cầu hỗ trợ", $"Yêu cầu của bạn không xử lý được. Chi tiết: {note}");
+                    await _emailHelper.SendEmailAsync(email, "Thông báo trạng thái yêu cầu hỗ trợ", $"Yêu cầu của bạn không xử lý được. Chi tiết: {note}");
                 }
             }
             catch (DbUpdateConcurrencyException)
@@ -682,29 +733,8 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-        // Hàm gửi email
-        private async Task SendEmailAsync(string toEmail, string subject, string body)
-        {
-            // Cấu hình SMTP client (ví dụ: Gmail SMTP)
-            using var client = new System.Net.Mail.SmtpClient("smtp.gmail.com")
-            {
-                Port = 587,
-                Credentials = new System.Net.NetworkCredential("nhantrung890@gmail.com", "mika juyt thab rbit"),
-                EnableSsl = true,
-            };
-
-            var mailMessage = new System.Net.Mail.MailMessage
-            {
-                From = new System.Net.Mail.MailAddress("nhantrung890@gmail.com", "Support Team"),
-                Subject = subject,
-                Body = body,
-                IsBodyHtml = true,
-            };
-
-            mailMessage.To.Add(toEmail);
-
-            await client.SendMailAsync(mailMessage);
-        }
+        
+        [PermissionAuthorize("Chuyển giao yêu cầu cho nhân viên")]        
         // GET: SupportRequest/TransferToEmployee/{id}
         [HttpGet]
         public async Task<IActionResult> TransferToEmployee(int id)
@@ -774,7 +804,10 @@ namespace admin_sweetsoft_tech_support.Controllers
             // Thêm đối tượng chuyển giao vào cơ sở dữ liệu
             _context.Add(transfer);
             await _context.SaveChangesAsync();
-
+            //gửi mail
+            var emmployHandle = _context.TblUsers
+                .FirstOrDefault(u => u.UserId == employeeId);
+            _emailHelper.SendEmailAsync(emmployHandle.Email,"Yêu cầu mới",$"giải quyết yêu cầu {supportRequest.RequestTitle} cho khách hàng.");
             // Log hành động
             _logService.LogActivityAction("Chuyển yêu cầu hỗ trợ", "Chuyển giao cho nhân viên", User.Identity.Name);
 
