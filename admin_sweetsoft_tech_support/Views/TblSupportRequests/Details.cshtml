@@ -8,18 +8,21 @@
 
 <div class="container mt-4">
     <!-- Tabs -->
-    <ul class="nav nav-tabs" id="detailsTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="request-details-tab" data-bs-toggle="tab" data-bs-target="#request-details" type="button" role="tab" aria-controls="request-details" aria-selected="true">
-                <i class="bi bi-info-circle"></i> Chi tiết Yêu cầu
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="transfer-history-tab" data-bs-toggle="tab" data-bs-target="#transfer-history" type="button" role="tab" aria-controls="transfer-history" aria-selected="false">
-                <i class="bi bi-list"></i> Lịch sử Chuyển giao
-            </button>
-        </li>
-    </ul>
+    <div class="d-flex justify-content-center">
+        <ul class="nav nav-tabs" id="detailsTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="request-details-tab" data-bs-toggle="tab" data-bs-target="#request-details" type="button" role="tab" aria-controls="request-details" aria-selected="true">
+                    <i class="bi bi-info-circle"></i> Chi tiết yêu cầu
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="transfer-history-tab" data-bs-toggle="tab" data-bs-target="#transfer-history" type="button" role="tab" aria-controls="transfer-history" aria-selected="false">
+                    <i class="bi bi-list"></i> Lịch sử chuyển giao
+                </button>
+            </li>
+        </ul>
+    </div>
+
 
     <!-- Tab content -->
     <div class="tab-content mt-3">
@@ -33,58 +36,61 @@
                     <p class="mb-0 text-center flex-grow-1" style="color: #6a1b9a; font-weight: bold;">
                         <i class="bi bi-info-circle"></i> Thông tin yêu cầu hỗ trợ
                     </p>
-                    <a asp-action="Edit" asp-route-id="@Model.RequestId" class="btn btn-warning btn-sm text-dark">
-                        <i class="bi bi-pencil-square"></i> Sửa
-                    </a>
+                    @if (Model.Status == 0)
+                    {
+                        <a asp-action="Edit" asp-route-id="@Model.RequestId" class="btn btn-warning btn-sm text-dark">
+                            <i class="bi bi-pencil-square"></i> Sửa
+                        </a>
+                    }      
                 </div>
 
                 <div class="card-body">
                     <div class="list-group">
-                        <div class="list-group-item bg-light border-0">
+                        <div class="list-group-item info-item">
                             <strong>Tiêu đề yêu cầu:</strong>
-                            <p>@Html.DisplayFor(model => model.RequestTitle)</p>
+                            <span>@Html.DisplayFor(model => model.RequestTitle)</span>
                         </div>
-                        <div class="list-group-item bg-light border-0">
+                        <div class="list-group-item info-item">
                             <strong>Sản phẩm:</strong>
-                            <p>@Html.DisplayFor(model => model.Product)</p>
+                            <span>@Html.DisplayFor(model => model.Product)</span>
                         </div>
-                        <div class="list-group-item bg-light border-0">
+                        <div class="list-group-item info-item">
                             <strong>Chi tiết yêu cầu:</strong>
-                            <p>@Html.DisplayFor(model => model.RequestDetails)</p>
+                            <span>@Html.DisplayFor(model => model.RequestDetails)</span>
                         </div>
-                        <div class="list-group-item bg-light border-0">
+                        <div class="list-group-item info-item">
                             <strong>Trạng thái:</strong>
-                            <p>
+                            <span>
                                 @{
                                     string statusText = Model.Status switch
                                     {
                                         0 => "Chưa hoàn thành",
                                         1 => "Hoàn thành",
-                                        2 => "Không xử lý được",                                    
+                                        2 => "Không xử lý được",
                                     };
                                 }
                                 @statusText
-                            </p>
+                            </span>
                         </div>
-                        <div class="list-group-item bg-light border-0">
+                        <div class="list-group-item info-item">
                             <strong>Khách hàng:</strong>
-                            <p>@ViewBag.CustomerName</p>
+                            <span>@ViewBag.CustomerName</span>
                         </div>
-                        <div class="list-group-item bg-light border-0">
+                        <div class="list-group-item info-item">
                             <strong>Phòng ban:</strong>
-                            <p>@ViewBag.DepartmentName</p>
+                            <span>@ViewBag.DepartmentName</span>
                         </div>
-                        <div class="list-group-item bg-light border-0">
+                        <div class="list-group-item info-item">
                             <strong>Ngày tạo:</strong>
-                            <p>@Model.CreatedAt.ToString("dd/MM/yyyy")</p>
+                            <span>@Model.CreatedAt.ToString("dd/MM/yyyy HH\\:mm")</span>
                         </div>
-                        <div class="list-group-item bg-light border-0">
+                        <div class="list-group-item info-item">
                             <strong>Người xử lý:</strong>
-                            <p>@ViewBag.HandleBy</p>
+                            <span>@ViewBag.HandleBy</span>
                         </div>
-                        <div class="list-group-item bg-light border-0">
+                        <div class="list-group-item info-item">
                             <strong>Ngày giải quyết:</strong>
-                            <p>@(Model.ResolvedAt?.ToString("dd/MM/yyyy") ?? "Chưa giải quyết")</p>
+                            <span>@(Model.ResolvedAt?.ToString("dd/MM/yyyy HH\\:mm") ?? "Chưa giải quyết")</span>
                         </div>
                     </div>
                 </div>
@@ -98,12 +104,15 @@
                         <i class="bi bi-arrow-left"></i> Quay lại danh sách
                     </a>
                     <p class="mb-0 text-center flex-grow-1" style="color: #6a1b9a; font-weight: bold;">
-                        <i class="bi bi-list"></i> Lịch sử Chuyển giao Yêu cầu
+                        <i class="bi bi-list"></i> Lịch sử chuyển giao Yêu cầu
                     </p>
                     @if (Model.Status == 0)
                     {
                         <a asp-action="Transfer" asp-route-id="@Model.RequestId" class="btn btn-warning btn-sm text-dark">
-                            <i class="bi bi-arrow-right-circle"></i> Chuyển giao
+                            <i class="bi bi-arrow-right-circle"></i> Chuyển giao đến phòng ban
+                        </a>
+                        <a asp-action="TransferToEmployee" asp-route-id="@Model.RequestId" class="btn btn-warning btn-sm text-dark">
+                            <i class="bi bi-person-circle"></i> Chuyển giao đến nhân viên
                         </a>
                     }   
                 </div>
@@ -126,8 +135,8 @@
                                 foreach (var transfer in ViewBag.RequestTransfers)
                                 {
                                     <tr style="background-color: #f4f6f9;">
-                                        <td>@(transfer.FromDepartment?.DepartmentName ?? "Không có dữ liệu")</td>
-                                        <td>@(transfer.ToDepartment?.DepartmentName ?? "Không có dữ liệu")</td>
+                                        <td>@(transfer.FromDepartment?.DepartmentName ?? "")</td>
+                                        <td>@(transfer.ToDepartment?.DepartmentName ?? "")</td>
                                         <td>@(transfer.TransferredByNavigation?.FullName ?? "Không có dữ liệu")</td>
                                         <td>@(transfer.TransferredAt?.ToString("dd/MM/yyyy HH:mm") ?? "Không có dữ liệu")</td>
                                         <td>@(transfer.TransferredHandleNavigation?.FullName ?? "Không có dữ liệu")</td>

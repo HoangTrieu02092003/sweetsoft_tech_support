@@ -137,22 +137,16 @@
                                 @(item.Status == 0 ? "Chưa hoàn thành" : item.Status == 1 ? "Hoàn thành" : item.Status== 2 ?"Không xử lý được":"Không xác định")
                             </span>
                         </td>
-                        <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
-                        <td>@(item.ResolvedAt?.ToString("dd/MM/yyyy") ?? "Chưa giải quyết")</td>
+                        <td>@item.CreatedAt.ToString("dd/MM/yyyy HH\\:mm")</td>
+                        <td>@(item.ResolvedAt?.ToString("dd/MM/yyyy HH\\:mm") ?? "Chưa giải quyết")</td>
                         <td>@item.Customer?.FullName</td>
                         <td>@item.Department?.DepartmentName</td>
                         <td>
                             <a asp-action="Details" asp-route-id="@item.RequestId" class="btn btn-outline-info btn-sm">
                                 <i class="bi bi-eye"></i>
-                            </a>
-                            <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.RequestId">
-                                <i class="bi bi-trash"></i>
-                            </button>
+                            </a>                          
                             @if (item.Status == 0)
-                            {
-                                <a asp-action="Transfer" asp-route-id="@item.RequestId" class="btn btn-outline-secondary btn-sm">
-                                    <i class="bi bi-arrow-right-circle"></i>
-                                </a>
+                            {                              
                                 <button class="btn btn-outline-dark btn-sm open-chat"
                                         data-request-id="@item.RequestId"
                                         data-customer-id="@item.CustomerId"
@@ -165,10 +159,10 @@
                                         <i class="bi bi-check-circle"></i>
                                     </button>
                                 </form>
-                                <a asp-action="TransferToEmployee" asp-route-id="@item.RequestId" class="btn btn-outline-info btn-sm">
-                                    <i class="bi bi-arrow-right"></i>
-                                </a>
                             }
+                            <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.RequestId">
+                                <i class="bi bi-trash"></i>
+                            </button>
                         </td>
                     </tr>
                     // modal

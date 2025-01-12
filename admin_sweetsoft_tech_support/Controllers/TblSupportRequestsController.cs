@@ -382,8 +382,8 @@ namespace admin_sweetsoft_tech_support.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Transfer(int id,
-            [Bind("TransferId,RequestId,FromDepartmentId,Priority,TransferredBy,TransferredAt,Note,RequestTitle,Product,TransferredHandle")]
-            TblRequestTransfer requestTransfer, List<int> ToDepartmentId, string userName, int currentPage = 1)
+    [Bind("TransferId,RequestId,FromDepartmentId,Priority,TransferredBy,TransferredAt,Note,RequestTitle,Product,TransferredHandle")]
+    TblRequestTransfer requestTransfer, List<int> ToDepartmentId, string userName, int currentPage = 1)
         {
             if (id != requestTransfer.RequestId)
             {
@@ -406,17 +406,17 @@ namespace admin_sweetsoft_tech_support.Controllers
                 {
                     foreach (var toDepartmentId in ToDepartmentId)
                     {
-                        // Tìm trưởng phòng của phòng ban dựa trên ID phòng ban và role = 2 (trưởng phòng)
+                        // Find the department head based on DepartmentId and role = 2 (department head)
                         var departmentHead = await _context.TblUsers
-                            .Where(u => u.DepartmentId == toDepartmentId && u.RoleId == 2) // Role = 2 là trưởng phòng
-                            .Select(u => u.UserId) // Lấy UserId (ID của trưởng phòng)
+                            .Where(u => u.DepartmentId == toDepartmentId && u.RoleId == 2) // Role = 2 is department head
+                            .Select(u => u.UserId) // Get UserId (ID of the department head)
                             .FirstOrDefaultAsync();
 
                         if (departmentHead == 0)
                         {
-                            // Nếu không tìm thấy trưởng phòng, có thể xử lý lỗi hoặc thông báo
-                            ModelState.AddModelError("", "Không tìm thấy trưởng phòng cho phòng ban này.");
-                            return View(requestTransfer); // Hoặc trả về thông báo lỗi phù hợp
+                            // If no department head is found, handle the error or notify
+                            ModelState.AddModelError("", "No department head found for this department.");
+                            return View(requestTransfer); // Or return an appropriate error message
                         }
 
                         var transfer = new TblRequestTransfer
@@ -428,25 +428,25 @@ namespace admin_sweetsoft_tech_support.Controllers
                             TransferredBy = requestTransfer.TransferredBy,
                             TransferredAt = requestTransfer.TransferredAt,
                             Note = requestTransfer.Note,
-                            TransferredHandle = departmentHead // Gán trưởng phòng vào TransferredHandle
+                            TransferredHandle = departmentHead // Assign department head to TransferredHandle
                         };
 
                         _context.Add(transfer);
 
-                        // Cập nhật yêu cầu hỗ trợ trong TblSupportRequest
+                        // Update the support request in TblSupportRequest
                         if (toDepartmentId == ToDepartmentId.First())
                         {
                             if (supportRequest != null)
                             {
-                                // Cập nhật HandleBy trong TblSupportRequest với ID trưởng phòng
+                                // Update HandleBy in TblSupportRequest with the department head ID
                                 supportRequest.DepartmentId = toDepartmentId;
                                 supportRequest.RequestTitle = supportRequest.RequestTitle;
                                 supportRequest.Product = supportRequest.Product;
-                                supportRequest.HandleBy = departmentHead; // Gán trưởng phòng vào HandleBy
+                                supportRequest.HandleBy = departmentHead; // Assign department head to HandleBy
                                 _context.Update(supportRequest);
                             }
                         }
-                        // Tạo mới yêu cầu hỗ trợ cho các phòng ban sau
+                        // Create a new support request for subsequent departments
                         else if (ToDepartmentId.Count > 1)
                         {
                             if (supportRequest != null)
@@ -458,17 +458,29 @@ namespace admin_sweetsoft_tech_support.Controllers
                                     RequestDetails = supportRequest.RequestDetails,
                                     Product = supportRequest.Product,
                                     RequestTitle = supportRequest.RequestTitle,
-                                    Status = 0, // Trạng thái mặc định
+                                    Status = 0, // Default status
                                     CreatedAt = DateTime.Now,
                                     ResolvedAt = null,
-                                    HandleBy = departmentHead // Gán trưởng phòng vào HandleBy
+                                    HandleBy = departmentHead // Assign department head to HandleBy
                                 };
 
                                 _context.Add(newSupportRequest);
                             }
                         }
 
-                        _logService.LogActivityAction("Chuyển yêu cầu hỗ trợ", "Chuyển giao", User.Identity.Name);
+                        // Add a new record to TblRequestsProcessing
+                        var requestProcessing = new TblRequestsProcessing
+                        {
+                            RequestId = requestTransfer.RequestId,
+                            DepartmentId = toDepartmentId,
+                            IsCompleted = 0, // Default to not completed
+                            ProcessedAt = DateTime.Now,
+                            Note = requestTransfer.Note
+                        };
+
+                        _context.Add(requestProcessing);
+
+                        _logService.LogActivityAction("Transfer support request", "Transfer", User.Identity.Name);
                     }
 
                     await _context.SaveChangesAsync();
@@ -489,11 +501,10 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             ViewData["RequestId"] = new SelectList(_context.TblSupportRequests, "RequestId", "RequestTitle", requestTransfer.RequestId);
             ViewData["FromDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName", requestTransfer.FromDepartmentId);
-            ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName"); // Danh sách phòng ban đã lọc
+            ViewData["ToDepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentName"); // Filtered department list
             ViewData["TransferredBy"] = new SelectList(_context.TblUsers, "UserId", "FullName", requestTransfer.TransferredBy);
-            //ViewBag.TransferredBy = new SelectList(_context.TblUsers, "UserId", "FullName", User.Identity.Name);
-            ViewBag.TransferredBy = new SelectList(_context.TblUsers.Select(u => new { u.UserId, u.FullName }), "Id", "UserName");
-            ViewBag.RequestTitle = supportRequest.RequestTitle;
+            ViewBag.TransferredBy = new SelectList(_context.TblUsers.Select(u => new { u.UserId, u.FullName }), "UserId", "FullName");
+            ViewBag.RequestTitle = supportRequest?.RequestTitle;
             return View(requestTransfer);
         }
 
