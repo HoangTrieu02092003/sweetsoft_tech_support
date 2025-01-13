@@ -247,8 +247,8 @@
                                 @(request.Status == 0 ? "Chưa hoàn thành" : request.Status == 1 ? "Hoàn thành" : request.Status == 2 ? "Không xử lý được" : "Không xác định")
                             </span>
                         </td>
-                        <td>@request.CreatedAt.ToString("dd/MM/yyyy")</td>
-                        <td>@(request.ResolvedAt?.ToString("dd/MM/yyyy") ?? "Chưa giải quyết")</td>
+                        <td>@request.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@(request.ResolvedAt?.ToString("dd/MM/yyyy HH:mm") ?? "Chưa giải quyết")</td>
                         <td>@request.Customer?.FullName</td>
                         <td>@request.Department?.DepartmentName</td>
                         <td>
@@ -257,12 +257,7 @@
                             </a>
                             @if (request.Status == 0)
                             {
-                                if ((bool)ViewData["IsAdmin"])
-                                {
-                                    <a asp-action="Transfer" asp-route-id="@request.RequestId" class="btn btn-outline-secondary btn-sm" title="chuyển giao phòng ban">
-                                        <i class="bi bi-arrow-right-circle"></i>
-                                    </a>
-                                }
+                                
                                 <button class="btn btn-outline-dark btn-sm @(hasUnreadFeedback ? "blinking" : "") open-chat"
                                         title = "gửi trả lời"
                                         data-request-id="@request.RequestId"
@@ -277,11 +272,6 @@
                                     </button>
                                 </form>
 
-                                if ((bool)ViewData["IsAdmin"] || (bool)ViewData["IsDepartmentManager"]) { 
-                                    <a asp-action="TransferToEmployee" asp-route-id="@item.RequestId" class="btn btn-outline-info btn-sm" title="chuyển giao nhân viên">
-                                        <i class="bi bi-arrow-right"></i>
-                                    </a>
-                                }
                             }
                             @if ((bool)ViewData["IsAdmin"]){
                                 <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-@request.RequestId" title="Xóa">

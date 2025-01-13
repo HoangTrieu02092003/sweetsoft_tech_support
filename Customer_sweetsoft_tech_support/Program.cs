@@ -17,8 +17,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LoginPath = "/dang-nhap";
         options.LogoutPath = "/Custommer/Logout"; 
         options.AccessDeniedPath = "/dang-nhap"; 
-        options.ExpireTimeSpan = TimeSpan.FromDays(30);
         options.SlidingExpiration = true;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.None;
     });
 builder.Services.AddSession(options =>
 {
@@ -31,6 +31,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
+    //builder.WebHost.UseUrls("https://stechno.runasp.net");
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseDeveloperExceptionPage();

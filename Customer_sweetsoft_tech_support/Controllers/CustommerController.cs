@@ -284,19 +284,6 @@ namespace Customer_sweetsoft_tech_support.Controllers
             var existingUsername = await _context.TblCustomers
                 .FirstOrDefaultAsync(c => c.Username == tblCustomer.Username);
 
-
-            if (existingCustomer != null && existingCustomer.IsDelete == true)
-            {
-                _context.TblCustomers.Remove(existingCustomer); // Xóa bản ghi cũ để tránh trùng lặp
-                await _context.SaveChangesAsync();
-            }
-
-            if (existingUsername != null && existingUsername.IsDelete == true)
-            {
-                _context.TblCustomers.Remove(existingUsername); // Xóa bản ghi cũ để tránh trùng lặp
-                await _context.SaveChangesAsync();
-            }
-
             if (existingCustomer != null && existingCustomer.IsDelete == false)
             {
                 TempData["Error"] = "Email đã tồn tại trong hệ thống. Vui lòng sử dụng email khác!";
@@ -316,9 +303,9 @@ namespace Customer_sweetsoft_tech_support.Controllers
             tblCustomer.Password = BCrypt.Net.BCrypt.HashPassword(tblCustomer.Password);
             tblCustomer.ResetToken = null;
             tblCustomer.ResetTokenExpiry = null;
-            tblCustomer.CreatedBy = 1;
+            tblCustomer.CreatedBy = null;
             tblCustomer.CreatedAt = DateTime.Now;
-            tblCustomer.UpdatedBy = 1;
+            tblCustomer.UpdatedBy = null;
             tblCustomer.UpdatedAt = DateTime.Now;
             string token = Guid.NewGuid().ToString();
             tblCustomer.Token = token;
@@ -340,37 +327,6 @@ namespace Customer_sweetsoft_tech_support.Controllers
             return RedirectToAction("Confirmation");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ResendEmail()
-        {
-            var email = TempData["Email"];
-            var emailDb = _context.TblCustomers.FirstOrDefault(x => x.Email == email);
-            if (email == null)
-            {
-                TempData["ErrorMessage"] = "Không tìm thấy email. Vui lòng đăng ký lại.";
-                return RedirectToAction("Register");
-            }
-
-            // Kiểm tra thời gian gửi lại email (60 giây)
-            if (_lastSentTime.HasValue && (DateTime.Now - _lastSentTime.Value).TotalSeconds < 60)
-            {
-                TempData["ErrorMessage"] = "Bạn phải đợi ít nhất 60 giây để gửi lại email.";
-                return RedirectToAction("Confirmation");
-            }
-
-            // Gửi lại email xác nhận
-            string token = Guid.NewGuid().ToString();
-            string link = Url.Action("ConfirmRegistration", "Custommer", new { token }, Request.Scheme)!;
-
-            // Gửi email xác nhận
-            await SendEmailAsync(emailDb.Email, "Xác nhận đăng ký tài khoản", $"Vui lòng nhấp vào link sau để kích hoạt tài khoản: <a href='{link}'>{link}</a>");
-
-            _lastSentTime = DateTime.Now; // Cập nhật thời gian gửi
-
-            TempData["SuccessMessage"] = "Email xác nhận đã được gửi lại.";
-            return RedirectToAction("Confirmation");
-        }
         public IActionResult Confirmation()
         {
             var email = TempData["Email"];
@@ -381,6 +337,46 @@ namespace Customer_sweetsoft_tech_support.Controllers
                 return RedirectToAction("EnterEmail");
             }
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResendEmail()
+        {
+            var email = TempData["Email"];
+            var emailDb = _context.TblCustomers.FirstOrDefault(x => x.Email == email);
+            if (email == null)
+            {
+                TempData["Error"] = "Không tìm thấy email. Vui lòng đăng ký lại.";
+                return RedirectToAction("Register");
+            }
+
+            // Kiểm tra thời gian gửi lại email (60 giây)
+            if (_lastSentTime.HasValue && (DateTime.Now - _lastSentTime.Value).TotalSeconds < 60)
+            {
+                TempData["Error"] = "Bạn phải đợi ít nhất 60 giây để gửi lại email.";
+                return RedirectToAction("Confirmation");
+            }
+
+            // Gửi lại email xác nhận
+
+            // Tạo token và tokenExpiry (thời gian hết hạn token)
+            string token = Guid.NewGuid().ToString();
+            DateTime tokenExpiry = DateTime.Now.AddMinutes(30);  // Token có hiệu lực trong 30 phút
+
+            // Lưu token và tokenExpiry vào cơ sở dữ liệu (thêm vào khách hàng hoặc bảng phụ)
+            emailDb.Token = token;
+            emailDb.TokenExpiry = tokenExpiry;
+            _context.SaveChanges();
+            string link = Url.Action("ConfirmRegistration", "Custommer", new { token }, Request.Scheme)!;
+
+            // Gửi email xác nhận
+            await SendEmailAsync(emailDb.Email, "Xác nhận đăng ký tài khoản", $"Vui lòng nhấp vào link sau để kích hoạt tài khoản: <a href='{link}'>{link}</a>");
+
+            _lastSentTime = DateTime.Now; // Cập nhật thời gian gửi
+
+            TempData["Success"] = "Email xác nhận đã được gửi lại.";
+            return RedirectToAction("Confirmation");
         }
 
         [HttpGet]
@@ -434,17 +430,6 @@ namespace Customer_sweetsoft_tech_support.Controllers
                 return RedirectToAction("Register");
             }
 
-            // Kiểm tra thời gian hết hạn của token
-            if (customer.TokenExpiry < DateTime.Now)
-            {
-                // Token đã hết hạn, xóa token và thời gian hết hạn
-                customer.Token = null;
-                customer.TokenExpiry = null;
-                await _context.SaveChangesAsync();
-
-                TempData["Error"] = "Token đã hết hạn! Vui lòng đăng ký lại hoặc liên hệ quản trị viên.";
-                return RedirectToAction("Register");
-            }
             // Kích hoạt tài khoản
             customer.Status = 1; // Kích hoạt
             customer.Token = null; // Xóa token sau khi xác nhận

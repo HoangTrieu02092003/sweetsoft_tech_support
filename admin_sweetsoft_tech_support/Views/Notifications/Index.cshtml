@@ -99,7 +99,7 @@
                                     <p><strong>Người nhận:</strong> @log.User</p>
                                     <p><strong>Tiêu đề:</strong> @log.Title</p>
                                     <p><strong>Nội dung:</strong> @log.Content</p>
-                                    <p><strong>Thời gian:</strong> @log.Timestamp</p>
+                                    <p><strong>Thời gian:</strong> @log.Timestamp.ToString("dd/MM/yyyy HH:mm")</p>
                                     <p><strong>Trạng thái:</strong      > @(log.Status == "1" ? "Đã xem" : "Chưa xem")</p>
                                 </div>
                                 <div class="modal-footer">

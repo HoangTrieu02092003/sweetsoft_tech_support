@@ -362,18 +362,19 @@ namespace admin_sweetsoft_tech_support.Controllers
             try
             {
                 var parts = line.Split(", ");
-                if (parts.Length < 7) return null;
+                if (parts.Length < 8) return null;
 
                 return new AuditLogEntry
                 {
                     Timestamp = DateTime.ParseExact(parts[0], "dd/MM/yyyy HH\\:mm", CultureInfo.InvariantCulture),
-                    
+
                     Action = parts[1],
                     User = parts[2],
                     Module = string.IsNullOrWhiteSpace(parts[3]) ? null : parts[3],
                     OldValue = string.IsNullOrWhiteSpace(parts[4]) ? null : parts[4],
                     NewValue = string.IsNullOrWhiteSpace(parts[5]) ? null : parts[5],
-                    Message = parts[6]
+                    Message = parts[6],
+                    id = parts[7]
                 };
             }
             catch

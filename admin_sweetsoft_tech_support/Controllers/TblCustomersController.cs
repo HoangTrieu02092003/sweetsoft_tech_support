@@ -5,18 +5,22 @@ using admin_sweetsoft_tech_support.Models;
 using OfficeOpenXml;
 using admin_sweetsoft_tech_support.Attributes;
 using System.Security.Claims;
+using System.Threading.Channels;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
     public class TblCustomersController : Controller
     {
         private readonly RequestContext _context;
+        private readonly LogService _logService;
 
-        public TblCustomersController(RequestContext context)
+        public TblCustomersController(RequestContext context, LogService logService)
         {
             _context = context;
+            _logService = logService;
         }
 
+        // danh sách khách hàng
         public async Task<IActionResult> Index(int? page, string Status, string SearchTerm, string sortColumn, string sortOrder)
         {
             var currentUserIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -80,7 +84,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             return View(customers);
         }
 
-
         [PermissionAuthorize("Quản lý tài khoản khách hàng")]
         [HttpPost]
         public async Task<IActionResult> ToggleActivation(int customerId)
@@ -115,6 +118,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Username,Password,Status,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedUser,CreatedAt,UpdatedUser,UpdatedAt")] TblCustomer tblCustomer)
         {
+            var currentName = User.Identity.Name;
             // Kiểm tra sự trùng lặp của Username
             bool isUsernameExist = await _context.TblCustomers.AnyAsync(c => c.Username == tblCustomer.Username && c.IsDelete == false);
             if (isUsernameExist)
@@ -139,7 +143,9 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return View(tblCustomer);
             }
 
-            
+            //thêm thông báo
+            _logService.LogAuditAction("Thêm khách hàng",currentName,"Thêm khách hàng thành công","Khách hàng","", Newtonsoft.Json.JsonConvert.SerializeObject(tblCustomer));
+
             tblCustomer.Status = 0;
             tblCustomer.CreatedAt = DateTime.Now;
             tblCustomer.UpdatedAt = DateTime.Now;
@@ -199,6 +205,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FullName,Email,Phone,TaxCode,Company,Username,Password,Status,ResetToken,ResetTokenExpiry,Token,TokenExpiry,CreatedUser,CreatedAt,UpdatedUser,UpdatedAt")] TblCustomer tblCustomer)
         {
+            var currentName = User.Identity.Name;
             if (id != tblCustomer.CustomerId)
             {
                 return NotFound();
@@ -233,10 +240,36 @@ namespace admin_sweetsoft_tech_support.Controllers
                         existingCustomer.Username = tblCustomer.Username;
                         existingCustomer.Password = tblCustomer.Password;
                         existingCustomer.Status = tblCustomer.Status;
-
-                        // Thiết lập ngày cập nhật là ngày hiện tại
                         existingCustomer.UpdatedAt = DateTime.Now;
 
+                        var existing = _context.TblCustomers.AsNoTracking().FirstOrDefault(r => r.CustomerId == id);
+
+                        // Lưu giá trị cũ và thay đổi
+                        var oldValue = new Dictionary<string, object>();
+                        var changes = new Dictionary<string, object>();
+
+                        // Lấy danh sách các thuộc tính cần quan tâm (lọc bỏ các navigation properties không cần thiết)
+                        var properties = typeof(TblCustomer).GetProperties()
+                            .Where(p => !p.PropertyType.Name.Contains("ICollection")) // Loại bỏ navigation collections
+                            .ToList();
+
+                        foreach (var property in properties)
+                        {
+                            var oldPropValue = property.GetValue(existing);
+                            var newPropValue = property.GetValue(tblCustomer);
+
+                            // Nếu giá trị thay đổi, lưu vào log
+                            if (newPropValue != null && !Equals(oldPropValue, newPropValue))
+                            {
+                                oldValue[property.Name] = oldPropValue;
+                                changes[property.Name] = newPropValue;
+
+                                // Cập nhật giá trị mới vào existingUser
+                                property.SetValue(existing, newPropValue);
+                            }
+                        }
+
+                        _logService.LogAuditAction("Sửa khách hàng", currentName, "Sửa khách hàng thành công", "Khách hàng", Newtonsoft.Json.JsonConvert.SerializeObject(oldValue), Newtonsoft.Json.JsonConvert.SerializeObject(changes));
                         _context.Update(existingCustomer);
                         await _context.SaveChangesAsync();
 
@@ -273,6 +306,7 @@ namespace admin_sweetsoft_tech_support.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var currentName = User.Identity.Name;
             var tblCustomer = await _context.TblCustomers.FindAsync(id);
             if (tblCustomer != null)
             {
@@ -281,6 +315,8 @@ namespace admin_sweetsoft_tech_support.Controllers
 
                 _context.Update(tblCustomer);
                 await _context.SaveChangesAsync();
+
+                _logService.LogAuditAction("Xóa khách hàng", currentName, "Xóa khách hàng thành công", "Khách hàng", Newtonsoft.Json.JsonConvert.SerializeObject(tblCustomer), "");
 
                 // Thêm thông báo thành công vào TempData
                 TempData["SuccessMessage"] = "Khách hàng đã được xóa thành công!";

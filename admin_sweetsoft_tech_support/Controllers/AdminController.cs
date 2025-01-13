@@ -143,7 +143,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                     AllowRefresh = true
                 });
             var name = claimsPrincipal.Identity?.Name;
-            _logService.LogAuditAction("Login", name, "Đăng nhập thành công");
+            _logService.LogAuditAction("Đăng nhập", name, "Đăng nhập thành công");
             TempData["UserId"] = user.UserId;
             TempData["IsAdmin"] = user.IsAdmin == true ? "true" : "false";
             var returnUrl = TempData["ReturnUrl"]?.ToString() ?? Url.Action("Index1", "Report");
@@ -160,7 +160,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 return RedirectToAction("Login", "Admin");
             }
             var username = User.Identity.Name;
-            _logService.LogAuditAction("Logout", username, "Đăng xuất thành công");
+            _logService.LogAuditAction("Đăng xuất", username, "Đăng xuất thành công");
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login");
         }

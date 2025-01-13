@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "g4fYUk2B3AZjr/j/0h/Ne2S8OkAa3B1lX/GFLoI0/8M=",
+  "Hash": "hQYJoxYtknRDT5klU2GwOjKMKv0zJpSTDNj0LNoBxhM=",
   "Source": "admin_sweetsoft_tech_support",
   "BasePath": "_content/admin_sweetsoft_tech_support",
   "Mode": "Default",
@@ -47935,12 +47935,12 @@
       "OriginalItemSpec": "wwwroot\\images\\logos\\logo-light.svg"
     },
     {
-      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\images\\logos\\seodashlogo.png",
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\images\\logos\\logo-removebg.png",
       "SourceId": "admin_sweetsoft_tech_support",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\",
       "BasePath": "_content/admin_sweetsoft_tech_support",
-      "RelativePath": "images/logos/seodashlogo.png",
+      "RelativePath": "images/logos/logo-removebg.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -47951,7 +47951,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\logos\\seodashlogo.png"
+      "OriginalItemSpec": "wwwroot\\images\\logos\\logo-removebg.png"
     },
     {
       "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\admin_sweetsoft_tech_support\\wwwroot\\images\\products\\s1.jpg",

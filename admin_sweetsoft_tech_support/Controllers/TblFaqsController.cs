@@ -8,16 +8,19 @@ using Microsoft.EntityFrameworkCore;
 using admin_sweetsoft_tech_support.Models;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using admin_sweetsoft_tech_support.Attributes;
+using System.Threading.Channels;
 
 namespace admin_sweetsoft_tech_support.Controllers
 {
     public class TblFaqsController : Controller
     {
         private readonly RequestContext _context;
+        private readonly LogService _logService;
 
-        public TblFaqsController(RequestContext context)
+        public TblFaqsController(RequestContext context, LogService logService)
         {
             _context = context;
+            _logService = logService;
         }
 
         // GET: TblFaqs
@@ -93,6 +96,7 @@ namespace admin_sweetsoft_tech_support.Controllers
 
                     _context.Add(tblFaq);
                     await _context.SaveChangesAsync();
+                    _logService.LogAuditAction("Thêm faq",User.Identity.Name,"Thêm faq thành công","Faqs","", Newtonsoft.Json.JsonConvert.SerializeObject(tblFaq));
                     TempData["SuccessMessage"] = "FAQ đã được tạo mới thành công.";
                     return RedirectToAction(nameof(Index));
                 }
@@ -157,8 +161,36 @@ namespace admin_sweetsoft_tech_support.Controllers
                         _context.Entry(tblFaq).Property(x => x.FaqThumbnail).IsModified = false;
                     }
 
+                    var existing = _context.TblFaqs.AsNoTracking().FirstOrDefault(r => r.FaqId == id);
+
+                    // Lưu giá trị cũ và thay đổi
+                    var oldValue = new Dictionary<string, object>();
+                    var changes = new Dictionary<string, object>();
+
+                    // Lấy danh sách các thuộc tính cần quan tâm (lọc bỏ các navigation properties không cần thiết)
+                    var properties = typeof(TblFaq).GetProperties()
+                        .Where(p => !p.PropertyType.Name.Contains("ICollection")) // Loại bỏ navigation collections
+                        .ToList();
+
+                    foreach (var property in properties)
+                    {
+                        var oldPropValue = property.GetValue(existing);
+                        var newPropValue = property.GetValue(tblFaq);
+
+                        // Nếu giá trị thay đổi, lưu vào log
+                        if (newPropValue != null && !Equals(oldPropValue, newPropValue))
+                        {
+                            oldValue[property.Name] = oldPropValue;
+                            changes[property.Name] = newPropValue;
+
+                            // Cập nhật giá trị mới vào existingUser
+                            property.SetValue(existing, newPropValue);
+                        }
+                    }
+
                     _context.Update(tblFaq);
                     await _context.SaveChangesAsync();
+                    _logService.LogAuditAction("Sửa faq",User.Identity.Name,"Sửa faq thành công","Faq", Newtonsoft.Json.JsonConvert.SerializeObject(oldValue), Newtonsoft.Json.JsonConvert.SerializeObject(changes));
                     TempData["SuccessMessage"] = "FAQ đã được chỉnh sửa thành công.";
                     return RedirectToAction(nameof(Index));
                 }
@@ -189,6 +221,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 _context.TblFaqs.Remove(tblFaq);
                 await _context.SaveChangesAsync();
+                _logService.LogAuditAction("Xóa faq", User.Identity.Name,"Xóa faq thành công","Faq", Newtonsoft.Json.JsonConvert.SerializeObject(tblFaq),"");
                 TempData["SuccessMessage"] = "FAQ đã được xóa thành công.";
             }
             else

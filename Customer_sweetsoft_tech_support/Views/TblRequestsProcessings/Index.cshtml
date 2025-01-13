@@ -161,9 +161,9 @@
                         var hasUnreadFeedback = item.HasUnreadFeedback;
                             if (request != null){
                                 <div class="containerrequest" style="margin-bottom:.2rem;">
-                            <div class="row" onclick="toggleContent(@request.ProcessId)">
-                                <i class="fas fa-chevron-down toggle-icon" data-id="@request.ProcessId"></i>
-                                    <div class="main-content">
+                                    <div class="row" onclick="toggleContent(@request.ProcessId)">
+                                        <i class="fas fa-chevron-down toggle-icon" data-id="@request.ProcessId"></i>
+                                        <div class="main-content">
                                         <div class="main-contentt">
                                         <p><b>@request.Request.RequestTitle được gửi đi ngày @request.Request.CreatedAt.ToString("dd/MM/yyyy")</b></p>
                                             @{
@@ -196,15 +196,15 @@
                                     }
                                     </div>
                                 </div>
-                                <div class="details" id="details-@request.ProcessId">
-                                    <p><strong>Câu hỏi: </strong>@request.Request.RequestDetails</p>
-                                    @if(request.IsCompleted != 0)
-                                    {
-                                        <p><strong>----------------------------------</strong></p>
-                                        <p><strong>Hỗ Trợ:</strong></p>
-                                        <p>@request.Note</p>
-                                    }
-                                </div>
+                                    <div class="details" id="details-@request.ProcessId">
+                                        <p><strong>Câu hỏi: </strong>@request.Request.RequestDetails</p>
+                                        @if(request.IsCompleted != 0)
+                                        {
+                                            <p><strong>----------------------------------</strong></p>
+                                            <p><strong>Hỗ Trợ:</strong></p>
+                                            <p>@request.Note</p>
+                                        }
+                                    </div>
                                 </div>
                             }
                             else

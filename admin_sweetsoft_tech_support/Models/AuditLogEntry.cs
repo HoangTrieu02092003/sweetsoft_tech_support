@@ -3,6 +3,7 @@
     public class AuditLogEntry
     {
         public DateTime Timestamp { get; set; }
+        public string id { get; set; }
         public string Action { get; set; }
         public string User { get; set; }
         public string Module { get; set; }

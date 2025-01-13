@@ -54,10 +54,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Admin/ResedtPassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVzZWR0UGFzc3dvcmQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/Admin/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVzZXRQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -150,10 +146,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsU3VwcG9ydFJlcXVlc3RzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/TblSupportRequests/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsU3VwcG9ydFJlcXVlc3RzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/TblSupportRequests/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsU3VwcG9ydFJlcXVlc3RzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -168,6 +160,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/TblSupportRequests/Transfer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsU3VwcG9ydFJlcXVlc3RzXFRyYW5zZmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/TblSupportRequests/TransferToEmployee.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGJsU3VwcG9ydFJlcXVlc3RzXFRyYW5zZmVyVG9FbXBsb3llZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HocTap/N4/TTCN/Git/admin_sweetsoft_tech_support/Views/TblUsers/AssignPermissions.cshtml]

@@ -70,21 +70,33 @@
                         <td class="d-lg-block d-none">@log.Message</td>
                         <td>@log.Timestamp.ToString("dd/MM/yyyy HH:mm")</td>
                         <td class="text-center">
-                            <button class="btn btn-sm btn-outline-info" onclick="toggleDetails('@log.Timestamp')">
+                            <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#detailModal-@log.id">
                                 <i class="bi bi-eye"></i>
                             </button>
                         </td>
                     </tr>
-                    <tr id="details-@log.Timestamp" class="details-row" style="display: none;">
-                        <td colspan="6">
-                            <strong>Chi tiết:</strong><br />
-                            <ul>
-                                <li class="d-lg-none d-block"><strong>Message:</strong> @log.Message</li>
-                                <li><strong>Dữ liệu cũ:</strong> @log.OldValue</li>
-                                <li><strong>Dữ liệu mới:</strong> @log.NewValue</li>
-                            </ul>
-                        </td>
-                    </tr>
+                    <div class="modal fade" id="detailModal-@log.id" tabindex="-1" aria-labelledby="detailModalLabel-@log.id" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="detailModalLabel-@log.id">Chi tiết nhật ký</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><strong>Hành động:</strong> @log.Action</p>
+                                    <p><strong>Người thực hiện:</strong> @log.User</p>
+                                    <p><strong>Nội dung:</strong> @log.Message</p>
+                                    <p><strong>Chỉnh sửa bảng:</strong> @log.Module</p>
+                                    <p><strong>Thời gian:</strong> @log.Timestamp.ToString("dd/MM/yyyy HH:mm")</p>
+                                    <p><strong>Dữ liệu cũ:</strong> @log.OldValue</p>
+                                    <p><strong>Dữ liệu mới:</strong> @log.NewValue</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     stt++;
                 }
             </tbody>
@@ -124,16 +136,3 @@
         </ul>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script>
-    function toggleDetails(timestamp) {
-        var detailsRow = document.getElementById('details-' + timestamp);
-        if (detailsRow.style.display === 'none') {
-            detailsRow.style.display = 'table-row';
-        } else {
-            detailsRow.style.display = 'none';
-        }
-    }
-</script>

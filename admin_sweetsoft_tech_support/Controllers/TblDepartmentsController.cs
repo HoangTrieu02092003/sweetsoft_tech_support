@@ -15,10 +15,12 @@ namespace admin_sweetsoft_tech_support.Controllers
     public class TblDepartmentsController : Controller
     {
         private readonly RequestContext _context;
+        private readonly LogService _logService;
 
-        public TblDepartmentsController(RequestContext context)
+        public TblDepartmentsController(RequestContext context, LogService logService)
         {
             _context = context;
+            _logService = logService;
         }
 
         // GET: TblDepartments
@@ -75,14 +77,17 @@ namespace admin_sweetsoft_tech_support.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DepartmentId,DepartmentName,Status")] TblDepartment tblDepartment)
         {
+            var currentName = User.Identity.Name;
             if (ModelState.IsValid)
             {
+
                 try
                 {
                     _context.Add(tblDepartment);
                     await _context.SaveChangesAsync();
                     // Thêm thông báo thành công
                     TempData["SuccessMessage"] = "Phòng ban đã được tạo thành công!";
+                    _logService.LogAuditAction("Thêm phòng ban", currentName, "Thêm mới phòng ban thành công","Phòng ban","", Newtonsoft.Json.JsonConvert.SerializeObject(tblDepartment));
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception)
@@ -91,6 +96,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                     TempData["ErrorMessage"] = "Có lỗi xảy ra khi tạo phòng ban. Vui lòng thử lại!";
                 }
             }
+
             return View(tblDepartment);
         }
 
@@ -116,7 +122,6 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 return NotFound();
             }
-
             // Lấy danh sách nhân viên đã phân trang
             var totalUsers = tblDepartment.TblUsers.Count();
             var usersPaged = tblDepartment.TblUsers.Skip(skip).Take(pageSize).ToList();
@@ -137,9 +142,10 @@ namespace admin_sweetsoft_tech_support.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DepartmentId,DepartmentName,Status")] TblDepartment tblDepartment)
+        public async Task<IActionResult> Edit(int id, [Bind("DepartmentId,DepartmentName,Status,IsDelete")] TblDepartment tblDepartment)
         {
-            
+            var currentName = User.Identity.Name;
+
             if (id != tblDepartment.DepartmentId)
             {
                 return NotFound();
@@ -149,6 +155,44 @@ namespace admin_sweetsoft_tech_support.Controllers
             {
                 try
                 {
+                    var existing = _context.TblDepartments.AsNoTracking().FirstOrDefault(r => r.DepartmentId == id);
+
+                    // Lưu giá trị cũ và thay đổi
+                    var oldValue = new Dictionary<string, object>();
+                    var changes = new Dictionary<string, object>();
+
+                    // Lấy danh sách các thuộc tính cần quan tâm (lọc bỏ các navigation properties không cần thiết)
+                    var properties = typeof(TblDepartment).GetProperties()
+                        .Where(p => !p.PropertyType.Name.Contains("ICollection")) // Loại bỏ navigation collections
+                        .ToList();
+
+                    foreach (var property in properties)
+                    {
+                        var oldPropValue = property.GetValue(existing);
+                        var newPropValue = property.GetValue(tblDepartment);
+
+                        // Nếu giá trị thay đổi, lưu vào log
+                        if (newPropValue != null && !Equals(oldPropValue, newPropValue))
+                        {
+                            oldValue[property.Name] = oldPropValue;
+                            changes[property.Name] = newPropValue;
+
+                            // Cập nhật giá trị mới vào existingUser
+                            property.SetValue(existing, newPropValue);
+                        }
+                    }
+
+
+
+                    _logService.LogAuditAction(
+                            "Sửa phòng ban",
+                            currentName,
+                            "Sửa phòng ban thành công","Phòng ban", 
+                            Newtonsoft.Json.JsonConvert.SerializeObject(oldValue), 
+                            Newtonsoft.Json.JsonConvert.SerializeObject(changes)
+                        );
+
+                    tblDepartment.IsDelete = false;
                     _context.Update(tblDepartment);
                     await _context.SaveChangesAsync();
                     // Thêm thông báo thành công
@@ -176,31 +220,13 @@ namespace admin_sweetsoft_tech_support.Controllers
         }
 
         [PermissionAuthorize("Xóa phòng ban")]
-        // GET: TblDepartments/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tblDepartment = await _context.TblDepartments
-                .FirstOrDefaultAsync(m => m.DepartmentId == id);
-            if (tblDepartment == null)
-            {
-                return NotFound();
-            }
-
-            return View(tblDepartment);
-        }
-
         // POST: TblDepartments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var tblDepartment = await _context.TblDepartments.FindAsync(id);
-
+            var currentName = User.Identity.Name;
             if (tblDepartment != null)
             {
                 tblDepartment.IsDelete = true; // Đánh dấu là đã xóa
@@ -209,6 +235,13 @@ namespace admin_sweetsoft_tech_support.Controllers
                 await _context.SaveChangesAsync();
 
                 // Lưu thông báo thành công vào TempData
+                _logService.LogAuditAction(
+                    "Thêm phòng ban",
+                    currentName, 
+                    "Thêm mới phòng ban thành công", 
+                    "Phòng ban", 
+                    Newtonsoft.Json.JsonConvert.SerializeObject(tblDepartment), ""
+                    );
                 TempData["SuccessMessage"] = "Phòng ban đã được xóa thành công!";
             }
 

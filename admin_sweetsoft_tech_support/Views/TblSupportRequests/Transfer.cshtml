@@ -1,7 +1,7 @@
 ﻿@model admin_sweetsoft_tech_support.Models.TblRequestTransfer
 
 @{
-    ViewData["Title"] = "Transfer";
+    ViewData["Title"] = "Chuyển giao phòng ban";
     var currentUserId = ViewBag.CurrentUserId; // Assuming you pass the current user ID via ViewBag
 }
 <style>
@@ -37,7 +37,7 @@
 
     .btn-warning {
         background-color: var(--warning-color);
-        color: var(--text-color-light);
+        color: var (--text-color-light);
         border-radius: 5px;
     }
 
@@ -70,18 +70,11 @@
         <div class="col-12 col-md-8 offset-md-2">
             <div class="card border-0 shadow-lg">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <a asp-action="Index" class="btn btn-outline-light btn-sm">
+                    <a asp-action="Details" asp-route-id="@Model.RequestId" class="btn btn-outline-light btn-sm">
                         <i class="bi bi-arrow-left"></i> Quay lại
                     </a>
-                    <p class="mb-0 text-center flex-grow-1" style="font-size: 24px; margin: 0;">Chuyển giao yêu cầu</p>
-                    <div class="form-group mb-0">
-                        <label class="control-label text-light">Ngày chuyển</label>
-                        <label class="form-control bg-transparent border-0 text-light">@DateTime.Now.ToString("dd/MM/yyyy")</label>
-                        <input type="hidden" asp-for="TransferredAt" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-                        <span asp-validation-for="TransferredAt" class="text-danger"></span>
-                    </div>
+                    <p class="mb-0 text-center flex-grow-1" style="font-size: 24px; margin: 0;">Chuyển giao yêu cầu cho phòng ban</p>
                 </div>
-
 
                 <div class="card-body" style="background-color: var(--background-color);">
                     <form asp-action="Transfer" method="post">
@@ -93,8 +86,6 @@
                                 <input type="hidden" asp-for="RequestId" value="@Model.RequestId" />
                             </div>
                         </div>
-
-
 
                         <div class="form-group">
                             <label class="control-label text-dark">Phòng ban chuyển từ</label>
@@ -108,7 +99,6 @@
                                 <input type="hidden" asp-for="TransferredBy" value="@ViewBag.TransferredBy" />
                             </div>
                         </div>
-
 
                         <div id="toDepartmentContainer">
                             <div class="flex-container">
@@ -186,9 +176,9 @@
                         var flexItem = button.closest('.flex-container');
                         flexItem.remove();
                     }
-                    else {
-						alert('Không thể xóa phòng ban cuối cùng');
-					}
+                    // else {
+                    //     alert('Không thể xóa phòng ban cuối cùng');
+                    // }
                 });
             });
         }

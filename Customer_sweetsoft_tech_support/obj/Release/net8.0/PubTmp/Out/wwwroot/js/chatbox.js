@@ -26,7 +26,7 @@
             chatOverlay.classList.remove("hidden");
             setTimeout(() => chatOverlay.classList.add("visible"), 10);
 
-            // Start polling for new feedbacks
+            // bắt đầu check xem có tin nhắn mới không
             startPolling(requestId);
         });
     });

@@ -52,7 +52,10 @@ namespace Customer_sweetsoft_tech_support.Controllers
             ViewBag.SiteKey = siteKey;
             // Truyền dữ liệu vàoViewData
             ViewData["Customer"] = customer;
-            ViewData["Department"] = new SelectList(departments, "DepartmentId", "DepartmentName");
+            ViewBag.Department = new SelectList(
+            _context.TblDepartments.Where(d => d.IsDelete == false && d.Status == 1),
+            "DepartmentId",
+            "DepartmentName");
             return View();
         }
 
@@ -155,7 +158,8 @@ namespace Customer_sweetsoft_tech_support.Controllers
                 return RedirectToAction(nameof(Index),controllerName: "TblRequestsProcessings");
             }
             ViewData["Customer"] = customer;
-            ViewData["Department"] = new SelectList(departments, "DepartmentId", "DepartmentName",tblSupportRequest.DepartmentId);
+            ViewData["Department"] = new SelectList(
+               _context.TblDepartments.Where(d => d.IsDelete == false && d.Status == 1), "DepartmentId", "DepartmentName", tblSupportRequest.DepartmentId);
             TempData["error"] = "Tạo yêu cầu thất bại";
             return View(tblSupportRequest);
         }

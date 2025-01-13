@@ -34,6 +34,7 @@ namespace admin_sweetsoft_tech_support.Attributes
             logEvent.Properties["Module"] = module;
             logEvent.Properties["OldValue"] = oldValue;
             logEvent.Properties["NewValue"] = newValue;
+            logEvent.Properties["Id"] = GenerateUniqueId();
 
             // Ghi log vào file
             logger.Log(logEvent);

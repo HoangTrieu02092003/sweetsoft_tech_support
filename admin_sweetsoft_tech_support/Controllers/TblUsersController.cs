@@ -5,6 +5,7 @@ using admin_sweetsoft_tech_support.Models;
 using System.Security.Claims;
 using admin_sweetsoft_tech_support.Attributes;
 using System.Data;
+using System.Threading.Channels;
 namespace admin_sweetsoft_tech_support.Controllers
 {
     
@@ -144,7 +145,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 await _context.SaveChangesAsync();
 
 
-                _logService.LogAuditAction("Thêm",User.Identity.Name, $"Thêm thành công nhân viên {tblUser.FullName}","Nhân viên", " ", Newtonsoft.Json.JsonConvert.SerializeObject(tblUser.ToLogData()));
+                _logService.LogAuditAction("Thêm nhân viên",User.Identity.Name, $"Thêm thành công nhân viên {tblUser.FullName}","Nhân viên", " ", Newtonsoft.Json.JsonConvert.SerializeObject(tblUser.ToLogData()));
                 TempData["Success"] = "Thêm nhân viên thành công";
                 return RedirectToAction(nameof(Index));
             }
@@ -304,7 +305,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                     if (changes.Count > 0)
                     {
                         _logService.LogAuditAction(
-                            "Sửa",
+                            "Sửa nhân ciên",
                             User.Identity.Name,
                             $"Sửa nhân viên {tblUser.FullName} thành công",
                             "Nhân viên",
@@ -329,7 +330,10 @@ namespace admin_sweetsoft_tech_support.Controllers
             }
 
             ViewData["CreatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblUser.CreatedUser);
-            ViewData["DepartmentId"] = new SelectList(_context.TblDepartments, "DepartmentId", "DepartmentId", tblUser.DepartmentId);
+            ViewData["DepartmentId"] = new SelectList(
+                _context.TblDepartments.Where(d => d.IsDelete == false),
+                "DepartmentId",
+                "DepartmentName", tblUser.DepartmentId);
             ViewData["RoleId"] = new SelectList(_context.TblRoles, "RoleId", "RoleId", tblUser.RoleId);
             ViewData["UpdatedUser"] = new SelectList(_context.TblUsers, "UserId", "UserId", tblUser.UpdatedUser);
             ViewData["Error"] = "Sửa nhân viên thất bại";
@@ -416,9 +420,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 }
             }
 
-            await _context.SaveChangesAsync();
-
-            TempData["Success"] = "Quyền của người dùng đã được cập nhật thành công.";
+            await _context.SaveChangesAsync();TempData["Success"] = "Quyền của người dùng đã được cập nhật thành công.";
             return RedirectToAction(nameof(Index)); // Điều hướng về danh sách người dùng
         }
 
@@ -457,6 +459,7 @@ namespace admin_sweetsoft_tech_support.Controllers
                 _context.Update(tblUser);
                 await _context.SaveChangesAsync();
             }
+            _logService.LogAuditAction("Xóa nhân viên", User.Identity.Name, "Xóa nhân viên thành công", "Nhân viên", Newtonsoft.Json.JsonConvert.SerializeObject(tblUser), "");
             TempData["Success"] = "Xóa nhân viên thành công";
             return RedirectToAction(nameof(Index));
         }

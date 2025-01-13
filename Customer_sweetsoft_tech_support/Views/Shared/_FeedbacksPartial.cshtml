@@ -12,7 +12,7 @@ else
     {
         <div class="chat-message @(feedback.FromUserId != null ? "from-customer" : "from-user")">
             <div class="message-header">
-                <strong>@(feedback.FromUserId != null ? "Nhân viên" : "Khách hàng")</strong>
+                <strong>@(feedback.FromUserId != null ? "Nhân viên" : "Bạn")</strong>
                 <span class="timestamp">@feedback.CreatedAt.ToString("HH:mm dd/MM/yyyy")</span>
             </div>
             <div class="message-content">

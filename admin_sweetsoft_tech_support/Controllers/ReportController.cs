@@ -233,6 +233,7 @@ namespace admin_sweetsoft_tech_support.Controllers
             return Ok(new { departmentPercentages });
         }
 
+
         [HttpGet("api/requests/export-excel")]
         public async Task<IActionResult> ExportSupportRequestsToExcel(DateTime? startDate, DateTime? endDate)
         {
@@ -282,32 +283,41 @@ namespace admin_sweetsoft_tech_support.Controllers
             worksheet.Cells[1, 1].Style.Font.Bold = true;
             worksheet.Cells[1, 1].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
 
+            // Thêm thông tin từ ngày đến ngày
+            worksheet.Cells[2, 1].Value = $"Từ ngày: {startDate:yyyy-MM-dd}  -  Đến ngày: {endDate:yyyy-MM-dd}";
+            worksheet.Cells[2, 1, 2, 7].Merge = true; // Gộp các cột từ 1 đến 7
+            worksheet.Cells[2, 1].Style.Font.Italic = true;
+            worksheet.Cells[2, 1].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
             // Thiết lập tiêu đề cột
-            worksheet.Cells[2, 1].Value = "STT";
-            worksheet.Cells[2, 2].Value = "Mã yêu cầu";
-            worksheet.Cells[2, 3].Value = "Tên khách hàng";
-            worksheet.Cells[2, 4].Value = "Bộ phận tiếp nhận";
-            worksheet.Cells[2, 5].Value = "Thông tin yêu cầu";
-            worksheet.Cells[2, 6].Value = "Ngày tạo";
-            worksheet.Cells[2, 7].Value = "Trạng thái";
+            worksheet.Cells[3, 1].Value = "STT";
+            worksheet.Cells[3, 2].Value = "Mã yêu cầu";
+            worksheet.Cells[3, 3].Value = "Tên khách hàng";
+            worksheet.Cells[3, 4].Value = "Bộ phận tiếp nhận";
+            worksheet.Cells[3, 5].Value = "Thông tin yêu cầu";
+            worksheet.Cells[3, 6].Value = "Ngày tạo";
+            worksheet.Cells[3, 7].Value = "Trạng thái";
+
+            // Tô màu nền cho tiêu đề cột
+            worksheet.Cells[3, 1, 3, 7].Style.Font.Bold = true;
+            worksheet.Cells[3, 1, 3, 7].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+            worksheet.Cells[3, 1, 3, 7].Style.Fill.BackgroundColor.SetColor(System.Drawing.ColorTranslator.FromHtml("#E6E6FA")); // Tím nhạt
 
             // Đổ dữ liệu vào Excel
             for (int i = 0; i < supportRequests.Count; i++)
             {
                 var request = supportRequests[i];
-                worksheet.Cells[i + 3, 1].Value = i + 1; // STT
-                worksheet.Cells[i + 3, 2].Value = request.RequestId;
-                worksheet.Cells[i + 3, 3].Value = request.CustomerName;
-                worksheet.Cells[i + 3, 4].Value = request.DepartmentName;
-                worksheet.Cells[i + 3, 5].Value = request.RequestDetails;
-                worksheet.Cells[i + 3, 6].Value = request.CreatedAt.ToString("yyyy-MM-dd ");
-                worksheet.Cells[i + 3, 7].Value = request.Status;
-
+                worksheet.Cells[i + 4, 1].Value = i + 1; // STT
+                worksheet.Cells[i + 4, 2].Value = request.RequestId;
+                worksheet.Cells[i + 4, 3].Value = request.CustomerName;
+                worksheet.Cells[i + 4, 4].Value = request.DepartmentName;
+                worksheet.Cells[i + 4, 5].Value = request.RequestDetails;
+                worksheet.Cells[i + 4, 6].Value = request.CreatedAt.ToString("yyyy-MM-dd");
+                worksheet.Cells[i + 4, 7].Value = request.Status;
             }
 
-            // Định dạng bảng
-            worksheet.Cells[2, 1, 2, 7].Style.Font.Bold = true; // Tiêu đề cột in đậm
-            worksheet.Cells[1, 1, supportRequests.Count + 2, 7].AutoFitColumns(); // Tự động chỉnh độ rộng cột
+            // Tự động điều chỉnh độ rộng cột
+            worksheet.Cells[1, 1, supportRequests.Count + 3, 7].AutoFitColumns();
 
             // Tên file theo khoảng thời gian
             var fileName = $"Thống kê yêu cầu từ {startDate:yyyy-MM-dd} đến {endDate:yyyy-MM-dd}.xlsx";

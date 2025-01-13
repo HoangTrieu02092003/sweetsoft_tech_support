@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BVvgVsOseudfN2xGWz+zjE5bhKhN0EV5BIpVLB7ftss=",
+  "Hash": "e5EmTwB75esyOQ603UEO2orWmsc3dPrtt8LfUSPrl1I=",
   "Source": "Customer_sweetsoft_tech_support",
   "BasePath": "_content/Customer_sweetsoft_tech_support",
   "Mode": "Default",
@@ -245,6 +245,25 @@
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\carousel2.jpg"
     },
     {
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\carousel2.png",
+      "SourceId": "Customer_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/Customer_sweetsoft_tech_support",
+      "RelativePath": "LayoutUser/img/carousel2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\carousel2.png"
+    },
+    {
       "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\carousel33.jpg",
       "SourceId": "Customer_sweetsoft_tech_support",
       "SourceType": "Discovered",
@@ -300,6 +319,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\caseroul3.jpg"
+    },
+    {
+      "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\caseroul3.png",
+      "SourceId": "Customer_sweetsoft_tech_support",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\",
+      "BasePath": "_content/Customer_sweetsoft_tech_support",
+      "RelativePath": "LayoutUser/img/caseroul3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\LayoutUser\\img\\caseroul3.png"
     },
     {
       "Identity": "D:\\HocTap\\N4\\TTCN\\Git\\Customer_sweetsoft_tech_support\\wwwroot\\LayoutUser\\img\\chungnhan1.jpg",

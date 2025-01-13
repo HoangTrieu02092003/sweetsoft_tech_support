@@ -37,7 +37,8 @@ namespace admin_sweetsoft_tech_support.Attributes
                          "${event-properties:item=Module}, " +
                          "${event-properties:item=OldValue}, " +
                          "${event-properties:item=NewValue}, " +
-                         "${message}",
+                         "${message}, " +
+                         "${event-properties:item=Id}",
                 CreateDirs = true,
                 KeepFileOpen = false
             };

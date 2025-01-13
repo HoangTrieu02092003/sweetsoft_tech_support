@@ -74,5 +74,18 @@ namespace admin_sweetsoft_tech_support.Controllers
 
             return View(await requestContext.ToListAsync());
         }
+
+        [HttpPost]
+        public IActionResult EndSession(int id)
+        {
+            var session = _context.TblSessions.Find(id);
+            if (session != null)
+            {
+                session.ExpiresAt = DateTime.Now;
+                _context.SaveChanges();
+                TempData["Message"] = "Phiên làm việc đã được kết thúc.";
+            }
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
